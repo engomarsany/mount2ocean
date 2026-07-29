@@ -2294,9 +2294,26 @@ function checkCustomerBookingNotifications() {
     { code: 'BHUTAN5K', targetPkg: 'pkg-bhutan', targetName: 'Bhutan Cultural Tour', type: 'FLAT', value: 5000, createdAt: '2026-07-29', status: 'ACTIVE' }
   ];
 
+  window.populatePromoTargetPackageDropdown = function() {
+    const select = document.getElementById('promoTargetPkgSelect');
+    if (!select) return;
+
+    const pkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+    select.innerHTML = '<option value="ALL">🌐 All Packages (সকল প্যাকেজ)</option>';
+
+    pkgs.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = `📦 ${p.name}`;
+      select.appendChild(opt);
+    });
+  };
+
   window.renderAdminPromoCodes = function() {
     const tbody = document.getElementById('adminPromoCodesTbody');
     if (!tbody) return;
+
+    populatePromoTargetPackageDropdown();
 
     let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes'));
     if (!promos || promos.length === 0) {
@@ -2326,7 +2343,9 @@ function checkCustomerBookingNotifications() {
   window.handleCreatePromoCode = function(event) {
     event.preventDefault();
     const code = (document.getElementById('promoCodeInput').value || '').trim().toUpperCase();
-    const targetPkg = document.getElementById('promoTargetPkgSelect').value;
+    const targetPkgSelect = document.getElementById('promoTargetPkgSelect');
+    const targetPkg = targetPkgSelect ? targetPkgSelect.value : 'ALL';
+    const targetName = targetPkgSelect && targetPkgSelect.options[targetPkgSelect.selectedIndex] ? targetPkgSelect.options[targetPkgSelect.selectedIndex].text : 'All Packages';
     const type = document.getElementById('promoDiscountTypeSelect').value;
     const value = parseFloat(document.getElementById('promoDiscountValueInput').value) || 0;
 
@@ -2334,10 +2353,6 @@ function checkCustomerBookingNotifications() {
       if (typeof showToast === 'function') showToast('Please enter a valid code and discount value!', 'error');
       return;
     }
-
-    let targetName = 'All Packages';
-    if (targetPkg === 'pkg-bali-4d3n') targetName = 'BALI PACKAGE 4D/3N';
-    if (targetPkg === 'pkg-bhutan') targetName = 'Bhutan Cultural Tour';
 
     let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes')) || defaultPromoCodes;
     promos = promos.filter(p => p.code !== code);
