@@ -1370,40 +1370,114 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // OWNER ADMIN CUSTOMER BOOKINGS LISTING
   // ==========================================
-  function renderAdminBookings() {
+  const defaultCustomerBookings = [
+    {
+      id: 'M2O-BK-99482',
+      customerName: 'Sharmin Chowdhury',
+      phone: '01977477172',
+      email: 'sharmin@gmail.com',
+      passportNo: 'A0928194',
+      passportExpiry: '2030-10-15',
+      tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
+      travelDate: '2026-08-15',
+      travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren)',
+      paymentMethod: 'bKash Online Payment',
+      price: '৳1,50,000',
+      date: '2026-07-28',
+      status: 'APPROVED'
+    },
+    {
+      id: 'M2O-BK-81723',
+      customerName: 'Arif Ahmed',
+      phone: '01812345678',
+      email: 'arif@gmail.com',
+      passportNo: 'B8273641',
+      passportExpiry: '2029-05-20',
+      tourTitle: 'BALI PACKAGE 4D/3N - Kintamani Volcano & Uluwatu',
+      travelDate: '2026-08-20',
+      travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren)',
+      paymentMethod: 'bKash Direct',
+      price: '৳35,000',
+      date: '2026-07-27',
+      status: 'CONFIRMED'
+    }
+  ];
+
+  window.renderAdminBookings = function() {
     const adminBookingsTbody = document.getElementById('adminBookingsTbody');
     if (!adminBookingsTbody) return;
 
-    const bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [
-      { id: 'M2O-BK-99482', customerName: 'Sharmin Chowdhury', phone: '01700000000', tourTitle: "Cox's Bazar Sea Beach & Saint Martin Coral Island Cruise", travelersCount: '2 Persons', paymentMethod: 'Direct Call Request', date: '28/07/2026', status: 'CONFIRMED' },
-      { id: 'M2O-BK-81723', customerName: 'Arif Ahmed', phone: '01812345678', tourTitle: 'Dubai Desert Safari & Burj Khalifa Entry', travelersCount: '1 Person', paymentMethod: 'bKash / Nagad', date: '27/07/2026', status: 'CONFIRMED' }
-    ];
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
+    if (!bookings || bookings.length === 0) {
+      bookings = defaultCustomerBookings;
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+    }
 
     adminBookingsTbody.innerHTML = '';
     bookings.forEach(b => {
       const tr = document.createElement('tr');
+
+      let statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(245, 158, 11, 0.18); color: #d97706;">⏳ PENDING</span>';
+      if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
+        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(34, 197, 94, 0.18); color: #059669;">✅ APPROVED</span>';
+      } else if (b.status === 'CANCELLED' || b.status === 'REJECTED') {
+        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(239, 68, 68, 0.18); color: #dc2626;">❌ CANCELLED</span>';
+      }
+
+      const idDocStr = b.passportNo ? `🛂 Passport: ${b.passportNo}` : (b.nid ? `🆔 NID: ${b.nid}` : '🆔 Verified Identity');
+
       tr.innerHTML = `
-        <td><strong style="color: #0072bc;">${b.id}</strong></td>
-        <td><strong>${b.customerName}</strong></td>
-        <td><a href="tel:${b.phone}" style="color: #00a651; font-weight: 800;">📞 ${b.phone}</a></td>
-        <td class="pkg-title-cell">${b.tourTitle}</td>
-        <td>${b.travelersCount || '1 Person'}</td>
-        <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem;">${b.paymentMethod || 'Direct Call Request'}</span></td>
-        <td><span class="status-badge-live">🟢 ${b.status || 'Confirmed'}</span></td>
+        <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
         <td>
-          <a href="tel:${b.phone}" class="primary-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; text-decoration: none; display: inline-block;">
-            📞 Call Customer
-          </a>
+          <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${b.customerName}</strong>
+          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">📞 ${b.phone}</a><br>
+          <span style="color: #64748b; font-size: 0.78rem;">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
+        </td>
+        <td><span style="font-size: 0.82rem; font-weight: 700; color: #475569;">${idDocStr}</span></td>
+        <td class="pkg-title-cell">
+          <strong style="color: #0f172a; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
+          <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">📅 Date: ${b.travelDate || b.date}</span><br>
+          <span style="color: #00a651; font-weight: 900; font-size: 0.88rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
+        </td>
+        <td><span style="font-size: 0.85rem; font-weight: 700;">${b.travelersCount || '1 Person'}</span></td>
+        <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 800;">${b.paymentMethod || 'bKash Payment'}</span></td>
+        <td>${statusBadgeHtml}</td>
+        <td>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button type="button" class="primary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem; background: #00a651;" onclick="updateBookingStatusByAdmin('${b.id}', 'APPROVED')">✅ Approve</button>
+            <button type="button" class="danger-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="updateBookingStatusByAdmin('${b.id}', 'CANCELLED')">❌ Cancel</button>
+            <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">📄 File ➔</button>
+          </div>
         </td>
       `;
       adminBookingsTbody.appendChild(tr);
     });
-  }
+  };
+
+  window.updateBookingStatusByAdmin = function(bookingId, newStatus) {
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || defaultCustomerBookings;
+    let bk = bookings.find(b => b.id === bookingId);
+    if (bk) {
+      bk.status = newStatus;
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+    }
+
+    let approvals = JSON.parse(localStorage.getItem('m2o_admin_approvals')) || [];
+    let appItem = approvals.find(b => b.id === bookingId);
+    if (appItem) {
+      appItem.status = newStatus;
+      localStorage.setItem('m2o_admin_approvals', JSON.stringify(approvals));
+    }
+
+    renderAdminBookings();
+    if (typeof renderAdminApprovals === 'function') renderAdminApprovals();
+    if (typeof showToast === 'function') showToast(`Booking ${bookingId} status updated to ${newStatus}`, 'success');
+  };
 
   window.clearAllBookingsHandler = function() {
     localStorage.removeItem('m2o_customer_bookings');
     renderAdminBookings();
-    showToast('Customer bookings list cleared.', 'info');
+    showToast('Customer bookings list reset.', 'info');
   };
 
   renderAdminBookings();
