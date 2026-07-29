@@ -2158,6 +2158,9 @@ function renderCustomerProfileBookings() {
         <span>💳 Method: <strong>${bk.paymentMethod}</strong></span>
       </div>
       ${statusDesc}
+      <button onclick="localStorage.setItem('m2o_active_booking_id', '${bk.id}'); window.location.href='booking_detail.html';" style="margin-top: 0.8rem; padding: 0.45rem 0.95rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; border-radius: 8px; color: #ffffff; font-weight: 800; font-size: 0.82rem; cursor: pointer; width: 100%;">
+        📋 Track Booking File &amp; Live Status ➔
+      </button>
     `;
     container.appendChild(card);
   });
