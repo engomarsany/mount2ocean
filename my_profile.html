@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile &amp; Reservation History | Mount2ocean Travel &amp; Tours</title>
+  <meta name="description" content="View your customer profile, travel reservation history, booking approval status, and print e-ticket vouchers on Mount2ocean.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .profile-header-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .profile-info-flex {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .profile-avatar-large {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0072bc 0%, #00a651 100%);
+      color: #ffffff;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0, 114, 188, 0.3);
+    }
+    .booking-history-card {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 1.6rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .booking-history-card:hover {
+      border-color: #0072bc;
+      transform: translateY(-2px);
+    }
+    .status-pill-pending {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      font-weight: 800;
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+    }
+    .status-pill-approved {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      font-weight: 800;
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+    }
+    .status-pill-rejected {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      font-weight: 800;
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- HEADER NAVIGATION BAR -->
+  <header class="app-header customer-header">
+    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="customer_portal.html#topDestinations" class="customer-nav-item">Destinations</a>
+      <a href="my_profile.html" class="customer-nav-item active">My Profile &amp; Bookings</a>
+      <a href="agent_dashboard.html" target="_blank" class="customer-nav-item">Agent Portal ↗</a>
+      <a href="admin_dashboard.html" target="_blank" class="customer-nav-item">Admin Portal ↗</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
+      <div class="global-header-controls">
+        <div class="lang-switcher-box">
+          <span class="lang-icon">🌐</span>
+          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
+            <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
+            <option value="en">🇺🇸 English (US)</option>
+            <option value="ar">🇦🇪 العربية (AR)</option>
+            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Currency Selector -->
+      <div class="currency-selector">
+        <span class="currency-icon">💵</span>
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+        </select>
+      </div>
+
+      <!-- Sign Out Link -->
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB BANNER -->
+  <div style="background: linear-gradient(135deg, #090d16 0%, #0072bc 100%); padding: 3rem 1.5rem; text-align: center; color: #ffffff; border-bottom: 3px solid #00f2fe;">
+    <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.4rem 1.1rem; border-radius: 9999px; font-weight: 800; font-size: 0.82rem; letter-spacing: 1px;">CUSTOMER RESERVATIONS DASHBOARD</span>
+    <h1 style="font-size: 2.5rem; font-weight: 900; color: #ffffff !important; margin: 0.5rem 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">My Profile &amp; Tour Booking History</h1>
+    <p style="font-size: 1.05rem; color: #e2e8f0; max-width: 680px; margin: 0 auto;">আপনার বুকিংকৃত সকল ট্যুর প্যাকেজ, পেমেন্ট স্ট্যাটাস এবং অ্যাডমিন অনুমোদনের লাইভ ট্র্যাকিং রিপোর্ট।</p>
+  </div>
+
+  <!-- MAIN CUSTOMER PROFILE CONTENT -->
+  <main class="customer-main-content" style="max-width: 1180px; margin: 0 auto; padding: 3rem 1rem;">
+
+    <!-- PROFILE INFORMATION CARD -->
+    <div class="profile-header-card">
+      <div class="profile-info-flex">
+        <div class="profile-avatar-large">🧳</div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.2rem;">
+            <h2 id="profCustName" style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0;">Sharmin Chowdhury</h2>
+            <span style="background: #e0f2fe; color: #0369a1; font-weight: 800; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px;">Verified Customer</span>
+          </div>
+          <p id="profCustContact" style="font-size: 0.95rem; color: #475569; font-weight: 600; margin: 0;">
+            📱 <span id="profCustPhone">+880 1977-477172</span> • ✉️ <span id="profCustEmail">sharmin@gmail.com</span>
+          </p>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; font-weight: 800; padding: 0.75rem 1.4rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+          ➕ Book New Tour
+        </a>
+      </div>
+    </div>
+
+    <!-- BOOKINGS HISTORY LIST HEADER -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <h3 style="font-size: 1.4rem; font-weight: 900; color: #0f172a; margin: 0;">
+        📋 Reservation History (<span id="profBookingsCount" style="color: #0072bc;">0</span> Bookings Found)
+      </h3>
+      <span style="font-size: 0.88rem; color: #64748b; font-weight: 600;">Auto-synced live with Admin Panel</span>
+    </div>
+
+    <!-- DYNAMIC BOOKINGS LIST CONTAINER -->
+    <div id="profBookingsListContainer">
+      <!-- Dynamic Reservation Cards Rendered via JS -->
+    </div>
+
+  </main>
+
+  <!-- RICH FOOTER -->
+  <footer class="customer-footer">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-brand flex-align">
+          <img src="assets/official_logo.png" alt="Mount2ocean Logo" style="height: 42px;">
+          <div>
+            <span style="font-weight: 900; font-size: 1.1rem; color: #ffffff !important; display: block; line-height: 1.2;">MOUNT2OCEAN</span>
+            <span style="font-size: 0.72rem; color: #00f2fe !important; font-weight: 700;">TRAVEL &amp; TOURS</span>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; color: #cbd5e1 !important; line-height: 1.6; margin-bottom: 1.2rem;">
+          Bangladesh's premier multi-role travel &amp; tourism platform. Offering luxury ocean cruises, mountain expeditions, resorts, and flight tickets.
+        </p>
+        <div class="footer-helpline-pill">
+          📞 24/7 Hotline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 800; text-decoration: underline;">+880 1977-477172</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Top Destinations</h4>
+        <ul>
+          <li><a href="tour_packages.html">Bhutan Cultural Tours</a></li>
+          <li><a href="tour_packages.html">Bali Tropical Vacations</a></li>
+          <li><a href="tour_packages.html">Cox's Bazar Beach Packages</a></li>
+          <li><a href="tour_packages.html">Dubai Safari &amp; City Escapes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Travel Services</h4>
+        <ul>
+          <li><a href="tour_packages.html">International Tour Packages</a></li>
+          <li><a href="tour_packages.html">Tourist Visa Assistance</a></li>
+          <li><a href="my_profile.html">Reservation History</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Verified Payment Methods</h4>
+        <div class="payment-icons-grid">
+          <span class="pay-pill">bKash</span>
+          <span class="pay-pill">Nagad</span>
+          <span class="pay-pill">VISA</span>
+          <span class="pay-pill">Mastercard</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>&copy; 2026 <strong>MOUNT2OCEAN TRAVEL &amp; TOURS</strong>. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCustomerProfileAndBookings();
+    });
+
+    function loadCustomerProfileAndBookings() {
+      const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || {
+        name: 'Sharmin Chowdhury',
+        phone: '01977477172',
+        email: 'sharmin@gmail.com'
+      };
+
+      const nameEl = document.getElementById('profCustName');
+      const phoneEl = document.getElementById('profCustPhone');
+      const emailEl = document.getElementById('profCustEmail');
+
+      if (nameEl) nameEl.textContent = loggedUser.name || 'Valued Traveler';
+      if (phoneEl) phoneEl.textContent = loggedUser.phone || loggedUser.user || '01977477172';
+      if (emailEl) emailEl.textContent = loggedUser.email || 'customer@mount2ocean.com';
+
+      const container = document.getElementById('profBookingsListContainer');
+      const countEl = document.getElementById('profBookingsCount');
+      if (!container) return;
+
+      const allBookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+
+      if (countEl) countEl.textContent = allBookings.length;
+      container.innerHTML = '';
+
+      if (allBookings.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 20px; border: 1.5px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
+            <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🧳</div>
+            <h3 style="font-size: 1.4rem; color: #0f172a; font-weight: 800; margin-bottom: 0.4rem;">আপনার কোনো বুকিং রেকর্ড নেই (No Bookings Found)</h3>
+            <p style="color: #64748b; font-size: 0.98rem; margin-bottom: 1.5rem;">আপনার পছন্দের প্যাকেজ সিলেক্ট করে অনলাইনে বুকিং করতে নিচের বাটনে ক্লিক করুন।</p>
+            <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; padding: 0.8rem 1.8rem; font-weight: 800;">
+              🔍 Browse All Tour Packages
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      allBookings.forEach(bk => {
+        const card = document.createElement('div');
+        card.className = 'booking-history-card';
+
+        let statusMarkup = `<span class="status-pill-pending">⏳ PENDING APPROVAL (অ্যাডমিন পর্যালোচনায় রয়েছে)</span>`;
+        if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
+          statusMarkup = `<span class="status-pill-approved">✅ APPROVED BY ADMIN (বুকিং নিশ্চিত হয়েছে)</span>`;
+        } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
+          statusMarkup = `<span class="status-pill-rejected">❌ CANCELLED (বুকিং বাতিল করা হয়েছে)</span>`;
+        }
+
+        const idDocText = bk.passportNo ? `🛂 Passport: ${bk.passportNo} (Expiry: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.8rem;">
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 800; color: #0072bc; letter-spacing: 0.5px;">RESERVATION ID: ${bk.id}</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0;">${bk.tourTitle || 'Tour Package'}</h3>
+            </div>
+            <div>
+              ${statusMarkup}
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; background: #f8fafc; padding: 1.2rem; border-radius: 12px;">
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TRAVEL DEPARTURE DATE</span>
+              <strong style="font-size: 0.98rem; color: #0f172a;">📅 ${bk.travelDate || 'Selected Departure'}</strong>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">GUESTS &amp; TRAVELERS</span>
+              <strong style="font-size: 0.95rem; color: #0f172a;">${bk.travelersCount || 'Travelers'}</strong>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">PAYMENT METHOD</span>
+              <strong style="font-size: 0.95rem; color: #0072bc;">💳 ${bk.paymentMethod || 'bKash/Nagad'}</strong>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOTAL PRICE</span>
+              <strong style="font-size: 1.2rem; color: #00a651; font-weight: 900;">${bk.price || bk.amount || '৳17,500'}</strong>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: #475569;">
+              ${idDocText}
+            </span>
+            <div style="display: flex; gap: 0.6rem;">
+              <button onclick="window.print()" class="secondary-btn" style="padding: 0.45rem 0.95rem; font-weight: 700; font-size: 0.85rem;">
+                🖨️ Print Ticket Voucher
+              </button>
+              <a href="tel:+8801977477172" class="primary-btn" style="text-decoration: none; padding: 0.45rem 1rem; font-weight: 700; font-size: 0.85rem; background: #0072bc;">
+                📞 Contact Support
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

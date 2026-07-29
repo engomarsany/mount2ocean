@@ -540,6 +540,9 @@
 
       const bookingId = 'M2O-BK-' + Math.floor(10000 + Math.random() * 90000);
 
+      const sideTotalEl = document.getElementById('pgSideTotal');
+      const calcTotalText = sideTotalEl ? sideTotalEl.textContent : '৳17,500';
+
       const newBooking = {
         id: bookingId,
         customerName: name,
@@ -550,6 +553,8 @@
         nid: nid,
         travelDate: travelDate,
         tourTitle: tourTitle,
+        price: calcTotalText,
+        amount: calcTotalText,
         travelersCount: travelersCountSummary,
         adults: adults,
         children: children,
@@ -564,6 +569,11 @@
       const existingBookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
       existingBookings.unshift(newBooking);
       localStorage.setItem('m2o_customer_bookings', JSON.stringify(existingBookings));
+
+      // Save to m2o_admin_approvals for Owner / Admin Dashboard Approval List
+      const existingApprovals = JSON.parse(localStorage.getItem('m2o_admin_approvals')) || [];
+      existingApprovals.unshift(newBooking);
+      localStorage.setItem('m2o_admin_approvals', JSON.stringify(existingApprovals));
 
       // Trigger Email Dispatcher Notification
       if (window.sendLiveWebsiteEmail) {
