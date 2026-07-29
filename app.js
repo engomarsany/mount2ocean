@@ -1370,50 +1370,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // OWNER ADMIN CUSTOMER BOOKINGS LISTING
   // ==========================================
-  const defaultCustomerBookings = [
-    {
-      id: 'M2O-BK-99482',
-      customerName: 'Sharmin Chowdhury',
-      phone: '01977477172',
-      email: 'sharmin@gmail.com',
-      passportNo: 'A0928194',
-      passportExpiry: '2030-10-15',
-      tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
-      travelDate: '2026-08-15',
-      travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren)',
-      paymentMethod: 'bKash Online Payment',
-      price: '৳1,50,000',
-      date: '2026-07-28',
-      status: 'APPROVED'
-    },
-    {
-      id: 'M2O-BK-81723',
-      customerName: 'Arif Ahmed',
-      phone: '01812345678',
-      email: 'arif@gmail.com',
-      passportNo: 'B8273641',
-      passportExpiry: '2029-05-20',
-      tourTitle: 'BALI PACKAGE 4D/3N - Kintamani Volcano & Uluwatu',
-      travelDate: '2026-08-20',
-      travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren)',
-      paymentMethod: 'bKash Direct',
-      price: '৳35,000',
-      date: '2026-07-27',
-      status: 'CONFIRMED'
-    }
-  ];
+  const defaultCustomerBookings = [];
 
   window.renderAdminBookings = function() {
     const adminBookingsTbody = document.getElementById('adminBookingsTbody');
     if (!adminBookingsTbody) return;
 
-    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
-    if (!bookings || bookings.length === 0) {
-      bookings = defaultCustomerBookings;
-      localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+
+    const pendingCount = bookings.filter(b => b.status === 'PENDING').length;
+    const alertBanner = document.getElementById('adminBookingAlertBanner');
+    if (alertBanner) {
+      if (pendingCount > 0) {
+        alertBanner.classList.remove('hidden');
+        alertBanner.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(0, 166, 81, 0.15) 0%, rgba(0, 114, 188, 0.15) 100%); border: 2px solid #00a651; padding: 1.2rem 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.15);">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="font-size: 2.2rem;">🔔</span>
+              <div>
+                <h4 style="margin: 0; font-size: 1.1rem; color: #00a651; font-weight: 800;">NEW CUSTOMER BOOKING RECEIVED (${pendingCount} PENDING)</h4>
+                <p style="margin: 0.2rem 0 0; font-size: 0.88rem; color: #475569;">${pendingCount} new customer booking(s) waiting for your approval. Click Approve to finalize sales!</p>
+              </div>
+            </div>
+            <span class="badge-tag" style="background: #ee1c25; color: white; padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 800;">ACTION REQUIRED</span>
+          </div>
+        `;
+      } else {
+        alertBanner.classList.add('hidden');
+      }
     }
 
     adminBookingsTbody.innerHTML = '';
+    if (bookings.length === 0) {
+      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">🎉 কোনো স্যাম্পল বুকিং ডেটা রাখা হয়নি। গ্রাহক বুকিং করার পর এবং ওনার অনুমোদন (Approve) করার পর সাথে সাথে এখানে লাইভ সেলস যুক্ত হবে।</td></tr>`;
+      return;
+    }
+
     bookings.forEach(b => {
       const tr = document.createElement('tr');
 
@@ -1424,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(239, 68, 68, 0.18); color: #dc2626;">❌ CANCELLED</span>';
       }
 
-      const idDocStr = b.passportNo ? `🛂 Passport: ${b.passportNo}` : (b.nid ? `🆔 NID: ${b.nid}` : '🆔 Verified Identity');
+      const idDocStr = b.passportNo ? ` passport: ${b.passportNo}` : (b.nid ? ` NID: ${b.nid}` : ' Verified Identity');
 
       tr.innerHTML = `
         <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
@@ -1455,7 +1447,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.updateBookingStatusByAdmin = function(bookingId, newStatus) {
-    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || defaultCustomerBookings;
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
     let bk = bookings.find(b => b.id === bookingId);
     if (bk) {
       bk.status = newStatus;
@@ -1477,7 +1469,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.clearAllBookingsHandler = function() {
     localStorage.removeItem('m2o_customer_bookings');
     renderAdminBookings();
-    showToast('Customer bookings list reset.', 'info');
+    if (typeof showToast === 'function') showToast('Customer bookings list cleared.', 'info');
   };
 
   renderAdminBookings();
@@ -1844,28 +1836,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // PENDING PARTNER APPROVALS MANAGEMENT (OWNER DASHBOARD)
   // ==========================================
-  const defaultPendingApprovals = [
-    {
-      id: 101,
-      name: 'Rahman Guide (রফিক রহমান)',
-      email: 'rahman.guide@mount2ocean.com',
-      role: 'GUIDE',
-      credentialNo: 'TG-NID-884920192',
-      regionOrAddr: 'Sylhet & Ratargul',
-      date: '27/07/2026',
-      status: 'PENDING'
-    },
-    {
-      id: 102,
-      name: 'SkyLine Travel Agency Ltd.',
-      email: 'b2b@skylinetravels.bd',
-      role: 'AGENT',
-      credentialNo: 'TRAD/DNCC/019284 / IATA-99482',
-      regionOrAddr: 'Banani C/A, Dhaka',
-      date: '27/07/2026',
-      status: 'PENDING'
-    }
-  ];
+  const defaultPendingApprovals = [];
 
   function getPendingApprovals() {
     const saved = localStorage.getItem('m2o_pending_approvals');
@@ -1965,103 +1936,6 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('m2o_pending_approvals', JSON.stringify(defaultPendingApprovals));
       renderAdminApprovals();
       showToast('Reset approval requests list', 'info');
-    });
-  }
-
-  // ==========================================
-  // LIVE CUSTOMER BOOKINGS MANAGEMENT (OWNER DASHBOARD)
-  // ==========================================
-  function renderAdminBookings() {
-    const tbody = document.getElementById('adminBookingsTbody');
-    if (!tbody) return;
-
-    const bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [
-      {
-        id: 'M2O-BK-99482',
-        customerName: 'Sharmin Chowdhury',
-        phone: '01977477172',
-        email: 'sharmin@gmail.com',
-        passportNo: 'A09827364',
-        tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
-        travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)',
-        paymentMethod: 'Direct Call Request',
-        status: 'PENDING',
-        travelDate: '2026-08-10',
-        date: '28/07/2026'
-      }
-    ];
-
-    const pendingCount = bookings.filter(b => b.status === 'PENDING').length;
-    const alertBanner = document.getElementById('adminBookingAlertBanner');
-    if (alertBanner) {
-      if (pendingCount > 0) {
-        alertBanner.classList.remove('hidden');
-        alertBanner.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(0, 166, 81, 0.15) 0%, rgba(0, 114, 188, 0.15) 100%); border: 2px solid #00a651; padding: 1.2rem 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.15);">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-              <span style="font-size: 2.2rem;">🔔</span>
-              <div>
-                <h4 style="margin: 0; font-size: 1.1rem; color: #00a651; font-weight: 800;">NEW BOOKING RESERVATION RECEIVED (${pendingCount} PENDING)</h4>
-                <p style="margin: 0.2rem 0 0; font-size: 0.88rem; color: #475569;">${pendingCount} new customer booking(s) waiting for your approval. Click Approve to trigger Email/SMS confirmation to customer!</p>
-              </div>
-            </div>
-            <span class="badge-tag" style="background: #ee1c25; color: white; padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 800;">ACTION REQUIRED</span>
-          </div>
-        `;
-      } else {
-        alertBanner.classList.add('hidden');
-      }
-    }
-
-    tbody.innerHTML = '';
-    if (bookings.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #94a3b8; padding: 1.5rem;">No customer booking requests found.</td></tr>`;
-      return;
-    }
-
-    bookings.forEach(bk => {
-      const tr = document.createElement('tr');
-      let statusBadgeHtml = '';
-      if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
-        statusBadgeHtml = `<span class="status-badge-live">✅ APPROVED</span>`;
-      } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
-        statusBadgeHtml = `<span style="background: #fee2e2; color: #dc2626; font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 9999px;">❌ CANCELLED</span>`;
-      } else {
-        statusBadgeHtml = `<span style="background: #fef3c7; color: #d97706; font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 9999px;">⏳ PENDING</span>`;
-      }
-
-      let actionsHtml = '';
-      if (bk.status === 'PENDING') {
-        actionsHtml = `
-          <div style="display: flex; gap: 0.4rem;">
-            <button type="button" onclick="approveCustomerBooking('${bk.id}')" style="background: #00a651; color: white; border: none; padding: 0.4rem 0.75rem; font-size: 0.8rem; font-weight: 800; border-radius: 6px; cursor: pointer;">✅ Approve</button>
-            <button type="button" onclick="rejectCustomerBooking('${bk.id}')" style="background: #ef4444; color: white; border: none; padding: 0.4rem 0.75rem; font-size: 0.8rem; font-weight: 800; border-radius: 6px; cursor: pointer;">❌ Cancel</button>
-          </div>
-        `;
-      } else {
-        actionsHtml = `<span style="font-size: 0.78rem; color: #94a3b8;">Finalized (${bk.status})</span>`;
-      }
-
-      const identityDoc = bk.passportNo ? `🌐 <strong>Passport:</strong> ${bk.passportNo}` : (bk.nid ? `🪪 <strong>NID:</strong> ${bk.nid}` : 'Verified');
-
-      tr.innerHTML = `
-        <td><code style="color: #0072bc; font-weight: 800;">${bk.id}</code></td>
-        <td>
-          <strong style="display: block; font-size: 0.92rem;">${bk.customerName}</strong>
-          <a href="tel:${bk.phone}" style="color: #0072bc; font-weight: 700; font-size: 0.82rem; text-decoration: underline;">📞 ${bk.phone}</a><br>
-          <span style="font-size: 0.78rem; color: #64748b;">✉️ ${bk.email}</span>
-        </td>
-        <td style="font-size: 0.84rem;">${identityDoc}</td>
-        <td style="max-width: 220px; font-size: 0.85rem;">
-          <strong style="color: var(--text-main); font-size: 0.88rem; display: block;">${bk.tourTitle}</strong>
-          <span style="font-size: 0.78rem; color: #00a651; font-weight: 700;">🗓️ Date: ${bk.travelDate || bk.date}</span>
-        </td>
-        <td style="font-size: 0.84rem;">${bk.travelersCount}</td>
-        <td><span style="font-size: 0.8rem; background: rgba(0,0,0,0.06); padding: 3px 8px; border-radius: 4px;">${bk.paymentMethod}</span></td>
-        <td>${statusBadgeHtml}</td>
-        <td>${actionsHtml}</td>
-      `;
-      tbody.appendChild(tr);
     });
   }
 
@@ -2484,6 +2358,13 @@ function checkCustomerBookingNotifications() {
   };
 
   function init() {
+    // Clear out any old sample mock sales history if present
+    let savedBk = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+    if (savedBk.some(b => b.id === 'M2O-BK-99482' || b.id === 'M2O-BK-81723')) {
+      savedBk = savedBk.filter(b => b.id !== 'M2O-BK-99482' && b.id !== 'M2O-BK-81723');
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(savedBk));
+    }
+
     renderLiveCustomerTours();
     saveAndRenderAdminPackages();
     renderAdminApprovals();
