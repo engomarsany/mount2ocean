@@ -395,6 +395,43 @@
           </tbody>
         </table>
       </div>
+    <!-- SECTION 7: GLOBAL WEBSITE SETTINGS & BUSINESS HOTLINE CONTROLS -->
+    <section class="admin-section" id="adminGlobalSettingsSection" style="margin-top: 3rem;">
+      <div class="section-header flex-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <span class="badge-tag blue">SITE CONTROL</span>
+          <h2 class="section-title">⚙️ Global Website Settings &amp; Business Hotline Controls</h2>
+          <p class="section-subtitle">ওয়েবসাইটের অফিশিয়াল হটলাইন নম্বর, ইমেইল, অফিস ঠিকানা ও টপ নোটিশ ব্যানার এক ক্লিকে পরিবর্তন করুন।</p>
+        </div>
+      </div>
+
+      <form id="globalSettingsForm" onsubmit="handleSaveGlobalSettings(event)" style="background: var(--bg-input); border: 1.5px solid var(--bg-glass-border); padding: 1.8rem; border-radius: 16px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+          <div class="form-group">
+            <label style="font-size: 0.88rem; font-weight: 800;">📞 24/7 Helpline Phone Number <span class="required">*</span></label>
+            <input type="text" id="settingHotlinePhone" value="+880 1977-477172" required style="padding: 0.75rem 1rem; font-weight: 800; font-size: 0.95rem; color: #00a651;">
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.88rem; font-weight: 800;">✉️ Official Support Email Address <span class="required">*</span></label>
+            <input type="email" id="settingSupportEmail" value="info@mount2ocean.com" required style="padding: 0.75rem 1rem; font-weight: 800; font-size: 0.95rem; color: #0072bc;">
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.88rem; font-weight: 800;">📍 Physical Office Location Address <span class="required">*</span></label>
+            <input type="text" id="settingOfficeAddress" value="Banani C/A, Dhaka 1213, Bangladesh" required style="padding: 0.75rem 1rem; font-weight: 800; font-size: 0.95rem;">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.88rem; font-weight: 800;">📢 Top Announcement Banner Notice Text (ওয়েবসাইটের উপরের নোটিশ বার)</label>
+          <input type="text" id="settingAnnouncementText" value="🎉 Special Summer Discount Offer! Enjoy up to 20% OFF on all International &amp; Domestic Tour Packages!" style="padding: 0.75rem 1rem; font-weight: 800; font-size: 0.92rem;">
+        </div>
+
+        <button type="submit" class="primary-btn" style="padding: 0.85rem 1.8rem; font-weight: 800; font-size: 0.98rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; cursor: pointer;">
+          💾 Save Global Settings Live ➔
+        </button>
+      </form>
     </section>
 
   </main>

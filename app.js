@@ -2414,6 +2414,75 @@ function checkCustomerBookingNotifications() {
     };
   };
 
+  // ==========================================
+  // GLOBAL WEBSITE SETTINGS & BUSINESS CONTROLS
+  // ==========================================
+  const defaultGlobalSettings = {
+    phone: '+880 1977-477172',
+    email: 'info@mount2ocean.com',
+    address: 'Banani C/A, Dhaka 1213, Bangladesh',
+    announcement: '🎉 Special Summer Discount Offer! Enjoy up to 20% OFF on all International & Domestic Tour Packages!'
+  };
+
+  window.renderAdminGlobalSettings = function() {
+    const phoneInput = document.getElementById('settingHotlinePhone');
+    const emailInput = document.getElementById('settingSupportEmail');
+    const addrInput = document.getElementById('settingOfficeAddress');
+    const annInput = document.getElementById('settingAnnouncementText');
+
+    if (!phoneInput) return;
+
+    let settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || defaultGlobalSettings;
+
+    if (phoneInput) phoneInput.value = settings.phone || defaultGlobalSettings.phone;
+    if (emailInput) emailInput.value = settings.email || defaultGlobalSettings.email;
+    if (addrInput) addrInput.value = settings.address || defaultGlobalSettings.address;
+    if (annInput) annInput.value = settings.announcement || defaultGlobalSettings.announcement;
+
+    applyGlobalSettingsToDOM(settings);
+  };
+
+  window.handleSaveGlobalSettings = function(event) {
+    event.preventDefault();
+    const settings = {
+      phone: document.getElementById('settingHotlinePhone').value.trim(),
+      email: document.getElementById('settingSupportEmail').value.trim(),
+      address: document.getElementById('settingOfficeAddress').value.trim(),
+      announcement: document.getElementById('settingAnnouncementText').value.trim()
+    };
+
+    localStorage.setItem('m2o_global_settings', JSON.stringify(settings));
+    applyGlobalSettingsToDOM(settings);
+    if (typeof showToast === 'function') showToast('🎉 Global Website Settings & Hotline saved live!', 'success');
+  };
+
+  window.applyGlobalSettingsToDOM = function(settings) {
+    const s = settings || JSON.parse(localStorage.getItem('m2o_global_settings')) || defaultGlobalSettings;
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(el => {
+      if (s.phone) {
+        el.href = `tel:${s.phone.replace(/[^0-9+]/g, '')}`;
+        if (el.textContent.includes('+880') || el.textContent.includes('01977')) {
+          el.textContent = s.phone;
+        }
+      }
+    });
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+      if (s.email) {
+        el.href = `mailto:${s.email}`;
+        if (el.textContent.includes('@')) {
+          el.textContent = s.email;
+        }
+      }
+    });
+
+    const annEl = document.getElementById('topAnnouncementBar');
+    if (annEl && s.announcement) {
+      annEl.textContent = s.announcement;
+    }
+  };
+
   function init() {
     // Clear out any old sample mock sales history if present
     let savedBk = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
@@ -2428,6 +2497,7 @@ function checkCustomerBookingNotifications() {
     renderAdminBookings();
     renderAdminUserDirectory();
     renderAdminPromoCodes();
+    renderAdminGlobalSettings();
     checkCustomerBookingNotifications();
     updateAdminDashboardMetrics();
   }
