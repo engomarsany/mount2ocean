@@ -1259,8 +1259,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function updateHeroFeaturedPackage() {
+    const heroSlide = document.getElementById('heroSlide');
+    if (!heroSlide) return;
+
+    const packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+    if (!packages || packages.length === 0) return;
+
+    // Get the LATEST added package (last package in array)
+    const latestPkg = packages[packages.length - 1];
+
+    // Calculate +20% regular price for strikethrough display
+    let rawNum = parseInt(latestPkg.price.replace(/[^\d]/g, '')) || 0;
+    let regNum = Math.round(rawNum * 1.20);
+    let regFormatted = '৳' + regNum.toLocaleString();
+
+    // Update hero background image dynamically
+    if (latestPkg.image) {
+      heroSlide.style.backgroundImage = `linear-gradient(to right, rgba(9, 13, 22, 0.88) 35%, rgba(9, 13, 22, 0.4) 100%), url('${latestPkg.image}')`;
+    }
+
+    // Update hero title, description, and price box
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const heroTag = document.getElementById('heroTag');
+    const heroPriceBox = document.getElementById('heroPriceBox');
+    const heroBookBtn = document.getElementById('heroBookBtn');
+
+    if (heroTitle) heroTitle.textContent = latestPkg.name;
+    if (heroDesc) heroDesc.textContent = latestPkg.desc;
+    if (heroTag) heroTag.textContent = `HOT DEAL • 20% OFF • ${(latestPkg.category || 'FEATURED').toUpperCase()}`;
+
+    if (heroPriceBox) {
+      heroPriceBox.innerHTML = `From <del style="color: #94a3b8; text-decoration: line-through; font-size: 1.15rem; margin-right: 0.6rem; font-weight: 700;">${regFormatted}</del> <strong style="color: #00f2fe; font-size: 2.2rem; font-weight: 900;">${latestPkg.price}</strong> <small style="color: #e2e8f0;">/ person</small>`;
+    }
+
+    if (heroBookBtn) {
+      heroBookBtn.onclick = function() {
+        localStorage.setItem('m2o_active_detail_pkg_id', latestPkg.id);
+        window.location.href = 'booking.html';
+      };
+    }
+  }
+
   function renderLiveCustomerTours() {
     populateDestinationDropdown();
+    updateHeroFeaturedPackage();
 
     const toursGrid = document.getElementById('toursGrid');
     if (!toursGrid) return;
