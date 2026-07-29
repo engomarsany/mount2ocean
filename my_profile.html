@@ -333,12 +333,12 @@
               ${idDocText}
             </span>
             <div style="display: flex; gap: 0.6rem;">
-              <button onclick="window.print()" class="secondary-btn" style="padding: 0.45rem 0.95rem; font-weight: 700; font-size: 0.85rem;">
-                🖨️ Print Ticket Voucher
+              <button onclick="localStorage.setItem('m2o_active_booking_id', '${bk.id}'); window.location.href='booking_detail.html';" class="primary-btn" style="padding: 0.5rem 1.1rem; font-weight: 800; font-size: 0.85rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+                📄 View Detailed File Voucher &amp; Status ➔
               </button>
-              <a href="tel:+8801977477172" class="primary-btn" style="text-decoration: none; padding: 0.45rem 1rem; font-weight: 700; font-size: 0.85rem; background: #0072bc;">
-                📞 Contact Support
-              </a>
+              <button onclick="window.print()" class="secondary-btn" style="padding: 0.5rem 0.95rem; font-weight: 700; font-size: 0.85rem;">
+                🖨️ Print
+              </button>
             </div>
           </div>
         `;

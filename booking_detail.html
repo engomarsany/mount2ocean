@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation File &amp; Live Status | Mount2ocean Travel &amp; Tours</title>
+  <meta name="description" content="View your detailed travel reservation file, live approval status, e-ticket voucher, and admin updates on Mount2ocean.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .file-voucher-container {
+      max-width: 980px;
+      margin: 2.5rem auto 4rem;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+    .file-header-banner {
+      background: linear-gradient(135deg, #090d16 0%, #0072bc 100%);
+      color: #ffffff;
+      padding: 2.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    .status-tracker-stepper {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      position: relative;
+      padding: 0 1rem;
+    }
+    .status-tracker-stepper::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .step-item {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      padding: 0 0.8rem;
+      text-align: center;
+    }
+    .step-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #64748b;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.6rem;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+    }
+    .step-item.active .step-circle {
+      background: #00a651;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(0, 166, 81, 0.4);
+    }
+    .step-item.pending .step-circle {
+      background: #f59e0b;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+    }
+    .step-item.cancelled .step-circle {
+      background: #ef4444;
+      color: #ffffff;
+    }
+    .step-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .step-desc {
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+    .file-details-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      padding: 2.2rem;
+    }
+    .file-section-box {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .file-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed #cbd5e1;
+      font-size: 0.92rem;
+    }
+    .file-info-row:last-child {
+      border-bottom: none;
+    }
+    .file-info-label {
+      color: #64748b;
+      font-weight: 700;
+    }
+    .file-info-value {
+      color: #0f172a;
+      font-weight: 800;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .file-details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- HEADER NAVIGATION BAR -->
+  <header class="app-header customer-header">
+    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="my_profile.html" class="customer-nav-item active">My Profile &amp; Bookings</a>
+      <a href="agent_dashboard.html" target="_blank" class="customer-nav-item">Agent Portal ↗</a>
+      <a href="admin_dashboard.html" target="_blank" class="customer-nav-item">Admin Portal ↗</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <!-- Currency Selector -->
+      <div class="currency-selector">
+        <span class="currency-icon">💵</span>
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+        </select>
+      </div>
+
+      <!-- Sign Out Link -->
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN RESERVATION FILE CONTAINER -->
+  <main style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+      <a href="my_profile.html" class="secondary-btn" style="text-decoration: none; font-weight: 800;">
+        ← Back to My Reservations History
+      </a>
+      <div style="display: flex; gap: 0.8rem;">
+        <button onclick="window.print()" class="primary-btn" style="background: #0072bc; font-weight: 800;">
+          🖨️ Print Ticket Voucher
+        </button>
+        <a href="admin_dashboard.html" target="_blank" class="secondary-btn" style="text-decoration: none; font-weight: 800; border-color: #00a651; color: #00a651;">
+          👑 Edit in Owner Panel ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- FILE VOUCHER CARD -->
+    <div class="file-voucher-container">
+      
+      <!-- Banner Header -->
+      <div class="file-header-banner">
+        <div>
+          <span style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.3rem 0.8rem; border-radius: 9999px; font-weight: 800; font-size: 0.78rem;">
+            OFFICIAL RESERVATION VOUCHER FILE
+          </span>
+          <h1 id="dtlFileTitle" style="font-size: 1.8rem; font-weight: 900; color: #ffffff !important; margin: 0.4rem 0 0.2rem;">
+            Bhutan Cultural Tour &amp; Tiger's Nest Hike
+          </h1>
+          <p id="dtlFileId" style="font-size: 0.92rem; color: #cbd5e1; margin: 0; font-weight: 700;">
+            File Voucher ID: M2O-BK-84921 • Date: 2026-07-29
+          </p>
+        </div>
+
+        <div style="text-align: right;">
+          <span id="dtlFileStatusBadge" class="status-badge-live" style="background: #f59e0b; color: #ffffff; font-weight: 900; font-size: 0.95rem; padding: 0.6rem 1.4rem; border-radius: 12px; display: inline-block;">
+            ⏳ PENDING ADMIN APPROVAL
+          </span>
+          <span style="display: block; font-size: 0.78rem; color: #cbd5e1; margin-top: 0.4rem;">Controlled by Admin Panel</span>
+        </div>
+      </div>
+
+      <!-- LIVE STATUS TRACKER STEPPER -->
+      <div style="padding: 1.5rem 2rem 0; background: #ffffff;">
+        <h4 style="font-size: 0.95rem; font-weight: 800; color: #475569; text-align: center; margin: 0 0 1rem;">
+          🚦 Live Reservation Progress &amp; Approval Tracker (লাইভ বুকিং স্ট্যাটাস)
+        </h4>
+
+        <div class="status-tracker-stepper">
+          <div class="step-item active">
+            <div class="step-circle">📝</div>
+            <div class="step-title">Submitted</div>
+            <div class="step-desc">Booking Requested</div>
+          </div>
+          <div class="step-item active">
+            <div class="step-circle">🔍</div>
+            <div class="step-title">Identity Audit</div>
+            <div class="step-desc">Passport/NID Verified</div>
+          </div>
+          <div class="step-item pending" id="stepAdminApproval">
+            <div class="step-circle">👑</div>
+            <div class="step-title" id="stepAdminTitle">Admin Review</div>
+            <div class="step-desc" id="stepAdminDesc">Owner Action</div>
+          </div>
+          <div class="step-item" id="stepVoucherIssued">
+            <div class="step-circle">🎟️</div>
+            <div class="step-title">Voucher Ready</div>
+            <div class="step-desc">Ticket Issued</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILE DETAILS GRID -->
+      <div class="file-details-grid">
+        
+        <!-- Left Column: Customer & Travel File Details -->
+        <div>
+          <!-- Section A: Customer Details -->
+          <div class="file-section-box">
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0072bc; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              👤 Primary Traveler Information (গ্রাহকের তথ্য)
+            </h3>
+            <div class="file-info-row">
+              <span class="file-info-label">Full Name:</span>
+              <span class="file-info-value" id="dtlCustName">Sharmin Chowdhury</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Phone Number:</span>
+              <span class="file-info-value" id="dtlCustPhone">+880 1977-477172</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Email Address:</span>
+              <span class="file-info-value" id="dtlCustEmail">sharmin@gmail.com</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Verified Identity:</span>
+              <span class="file-info-value" id="dtlCustIdentity">🛂 Passport: A0928194 (Exp: 2030-10-15)</span>
+            </div>
+          </div>
+
+          <!-- Section B: Travel & Itinerary File -->
+          <div class="file-section-box">
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: #00a651; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              🌴 Tour Package &amp; Itinerary File (ভ্রমণের তথ্য)
+            </h3>
+            <div class="file-info-row">
+              <span class="file-info-label">Package Name:</span>
+              <span class="file-info-value" id="dtlTourName">3-Night / 4-Day Bhutan Cultural Tour &amp; Tiger's Nest Hike</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Departure Travel Date:</span>
+              <span class="file-info-value" id="dtlTravelDate">📅 2026-08-15</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Travelers Breakdown:</span>
+              <span class="file-info-value" id="dtlTravelers">👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Special Requests/Notes:</span>
+              <span class="file-info-value" id="dtlNotes">Vegetarian meal requested on flight.</span>
+            </div>
+          </div>
+
+          <!-- Section C: Owner / Admin Live Notes & Instructions -->
+          <div class="file-section-box" style="border-color: #0072bc; background: #f0f9ff;">
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0072bc; margin: 0 0 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+              📢 Owner / Admin Live Notice &amp; Instructions (অ্যাডমিন আপডেট)
+            </h3>
+            <p id="dtlAdminNoticeText" style="font-size: 0.95rem; color: #0369a1; font-weight: 700; line-height: 1.6; margin: 0;">
+              আপনার বুকিং ফাইলটি সফলভাবে সিস্টেমে যুক্ত হয়েছে। ওনার প্যানেল থেকে ফাইলটি চূড়ান্ত রিভিউ ও ফ্লাইট কনফার্মেশন সম্পন্ন হলে ই-টিকেট ডাউনলোড করতে পারবেন।
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column: Financial Summary & Actions -->
+        <div>
+          <div class="file-section-box" style="background: #ffffff; border-width: 2px;">
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem;">
+              💳 Billing &amp; Payment Summary
+            </h3>
+            <div class="file-info-row">
+              <span class="file-info-label">Payment Method:</span>
+              <span class="file-info-value" id="dtlPayMethod">bKash Online Payment</span>
+            </div>
+            <div class="file-info-row">
+              <span class="file-info-label">Payment Status:</span>
+              <span class="file-info-value" id="dtlPayStatus" style="color: #d97706;">⏳ Pending Verification</span>
+            </div>
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e2e8f0; text-align: center;">
+              <span style="font-size: 0.82rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.3rem;">TOTAL PAID / DUE AMOUNT</span>
+              <span id="dtlTotalAmount" style="font-size: 2rem; font-weight: 900; color: #00a651;">৳75,000</span>
+            </div>
+          </div>
+
+          <!-- Helpline Card -->
+          <div style="background: linear-gradient(135deg, #0072bc 0%, #00a651 100%); padding: 1.5rem; border-radius: 16px; color: #ffffff; text-align: center;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.4rem; color: #ffffff !important;">Need File Assistance?</h4>
+            <p style="font-size: 0.85rem; color: #e2e8f0 !important; margin-bottom: 1rem;">Call our 24/7 hotline with your File Voucher ID.</p>
+            <a href="tel:+8801977477172" style="background: #ffffff; color: #0072bc; padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 900; text-decoration: none; display: inline-block;">
+              📞 +880 1977-477172
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDetailedBookingFile();
+    });
+
+    function loadDetailedBookingFile() {
+      const activeFileId = localStorage.getItem('m2o_active_booking_id');
+      const allBookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+
+      let bk = allBookings.find(b => b.id === activeFileId) || allBookings[0];
+
+      if (!bk) {
+        bk = {
+          id: 'M2O-BK-84921',
+          customerName: 'Sharmin Chowdhury',
+          phone: '+880 1977-477172',
+          email: 'sharmin@gmail.com',
+          passportNo: 'A0928194',
+          passportExpiry: '2030-10-15',
+          tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
+          travelDate: '2026-08-15',
+          travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)',
+          paymentMethod: 'bKash Online Payment',
+          price: '৳75,000',
+          notes: 'Vegetarian meal requested on flight.',
+          date: '2026-07-29',
+          status: 'PENDING'
+        };
+      }
+
+      // Populate file DOM fields
+      document.getElementById('dtlFileTitle').textContent = bk.tourTitle || 'Tour Package File';
+      document.getElementById('dtlFileId').textContent = `File Voucher ID: ${bk.id} • Date: ${bk.date || '2026-07-29'}`;
+      
+      document.getElementById('dtlCustName').textContent = bk.customerName || 'Sharmin Chowdhury';
+      document.getElementById('dtlCustPhone').textContent = bk.phone || '+880 1977-477172';
+      document.getElementById('dtlCustEmail').textContent = bk.email || 'customer@mount2ocean.com';
+      document.getElementById('dtlCustIdentity').textContent = bk.passportNo ? `🛂 Passport: ${bk.passportNo} (Exp: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
+
+      document.getElementById('dtlTourName').textContent = bk.tourTitle || 'Tour Package File';
+      document.getElementById('dtlTravelDate').textContent = `📅 ${bk.travelDate || '2026-08-15'}`;
+      document.getElementById('dtlTravelers').textContent = bk.travelersCount || 'Travelers';
+      document.getElementById('dtlNotes').textContent = bk.notes || 'None';
+
+      document.getElementById('dtlPayMethod').textContent = bk.paymentMethod || 'bKash Payment';
+      document.getElementById('dtlTotalAmount').textContent = bk.price || bk.amount || '৳17,500';
+
+      const statusBadge = document.getElementById('dtlFileStatusBadge');
+      const stepAdminApproval = document.getElementById('stepAdminApproval');
+      const stepVoucherIssued = document.getElementById('stepVoucherIssued');
+      const stepAdminTitle = document.getElementById('stepAdminTitle');
+      const stepAdminDesc = document.getElementById('stepAdminDesc');
+
+      if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
+        if (statusBadge) {
+          statusBadge.textContent = '✅ APPROVED BY ADMIN';
+          statusBadge.style.background = '#10b981';
+        }
+        if (stepAdminApproval) {
+          stepAdminApproval.className = 'step-item active';
+        }
+        if (stepVoucherIssued) {
+          stepVoucherIssued.className = 'step-item active';
+        }
+        if (stepAdminTitle) stepAdminTitle.textContent = 'Approved';
+        if (stepAdminDesc) stepAdminDesc.textContent = 'Confirmed by Owner';
+        document.getElementById('dtlPayStatus').textContent = '✅ Verified & Paid';
+        document.getElementById('dtlPayStatus').style.color = '#059669';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলের সুবিধাগুলো অনুমোদিত ও নিশ্চিত হয়েছে। ই-টিকেট ভাউচার ডাউনলোডের জন্য প্রস্তুত!';
+      } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
+        if (statusBadge) {
+          statusBadge.textContent = '❌ CANCELLED / REJECTED';
+          statusBadge.style.background = '#ef4444';
+        }
+        if (stepAdminApproval) {
+          stepAdminApproval.className = 'step-item cancelled';
+        }
+        if (stepAdminTitle) stepAdminTitle.textContent = 'Cancelled';
+        if (stepAdminDesc) stepAdminDesc.textContent = 'Declined by Admin';
+        document.getElementById('dtlPayStatus').textContent = '❌ Refund Processed';
+        document.getElementById('dtlPayStatus').style.color = '#dc2626';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলটি অ্যাডমিন দ্বারা সংশোধন বা বাতিল করা হয়েছে। বিস্তারিত জানতে সাপোর্টে কল করুন।';
+      } else {
+        if (statusBadge) {
+          statusBadge.textContent = '⏳ PENDING ADMIN REVIEW';
+          statusBadge.style.background = '#f59e0b';
+        }
+        if (stepAdminApproval) {
+          stepAdminApproval.className = 'step-item pending';
+        }
+        if (stepAdminTitle) stepAdminTitle.textContent = 'Admin Review';
+        if (stepAdminDesc) stepAdminDesc.textContent = 'Under Review';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলটি এডমিন পর্যালোচনা করছেন। অনুমোদন সম্পন্ন হলে লাইভ স্ট্যাটাস সবুজ হয়ে যাবে!';
+      }
+    }
+  </script>
+</body>
+</html>
