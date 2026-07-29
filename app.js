@@ -1444,6 +1444,46 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       adminBookingsTbody.appendChild(tr);
     });
+
+    updateAdminDashboardMetrics();
+  };
+
+  window.updateAdminDashboardMetrics = function() {
+    const pkgCountEl = document.getElementById('totalPackagesCount');
+    const bookingsCountEl = document.getElementById('statCustomerBookingsCount');
+    const revenueEl = document.getElementById('statTotalRevenue');
+    const agentsCountEl = document.getElementById('statRegisteredAgentsCount');
+
+    if (pkgCountEl && window.getCombinedLivePackages) {
+      const pkgs = window.getCombinedLivePackages();
+      pkgCountEl.textContent = pkgs.length;
+    }
+
+    const customerBookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+    
+    if (bookingsCountEl) {
+      bookingsCountEl.textContent = customerBookings.length.toLocaleString('en-US');
+    }
+
+    if (revenueEl) {
+      let totalRev = 0;
+      customerBookings.forEach(b => {
+        if (b.status === 'APPROVED' || b.status === 'CONFIRMED' || !b.status) {
+          const rawPrice = b.price || b.amount || '0';
+          const num = parseInt(String(rawPrice).replace(/[^0-9]/g, ''), 10);
+          if (!isNaN(num) && num > 0) {
+            totalRev += num;
+          }
+        }
+      });
+      revenueEl.textContent = `৳${totalRev.toLocaleString('en-US')}`;
+    }
+
+    const users = JSON.parse(localStorage.getItem('m2o_registered_users')) || [];
+    const agents = users.filter(u => (u.role || '').toUpperCase() === 'B2B AGENT' || (u.role || '').toUpperCase() === 'AGENT');
+    if (agentsCountEl) {
+      agentsCountEl.textContent = agents.length.toLocaleString('en-US');
+    }
   };
 
   window.updateBookingStatusByAdmin = function(bookingId, newStatus) {
@@ -1462,6 +1502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderAdminBookings();
+    updateAdminDashboardMetrics();
     if (typeof renderAdminApprovals === 'function') renderAdminApprovals();
     if (typeof showToast === 'function') showToast(`Booking ${bookingId} status updated to ${newStatus}`, 'success');
   };
@@ -1469,6 +1510,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.clearAllBookingsHandler = function() {
     localStorage.removeItem('m2o_customer_bookings');
     renderAdminBookings();
+    updateAdminDashboardMetrics();
     if (typeof showToast === 'function') showToast('Customer bookings list cleared.', 'info');
   };
 
@@ -2372,6 +2414,7 @@ function checkCustomerBookingNotifications() {
     renderAdminUserDirectory();
     renderAdminPromoCodes();
     checkCustomerBookingNotifications();
+    updateAdminDashboardMetrics();
   }
 
   // Run initialization
