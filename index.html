@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mount2ocean | Multi-Role Authentication Portal</title>
+  <meta name="description" content="Secure and modern multi-role authentication login and signup portal for Customers, Tour Guides, and Travel Agents at Mount2ocean.">
+  
+  <!-- Google Fonts (Google Product Typography Stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- INSTANT INLINE TAB & ROLE SWITCHER (ZERO-DEPENDENCY FAILSAFE) -->
+  <script>
+    var currentRole = 'customer';
+
+    function switchAuthTab(mode) {
+      var signinView = document.getElementById('signinView');
+      var signupView = document.getElementById('signupView');
+      var tabSigninBtn = document.getElementById('tabSigninBtn');
+      var tabSignupBtn = document.getElementById('tabSignupBtn');
+
+      if (mode === 'signin') {
+        if (signinView) signinView.style.display = 'block';
+        if (signupView) signupView.style.display = 'none';
+
+        if (tabSigninBtn) {
+          tabSigninBtn.style.background = 'linear-gradient(135deg, #00a651 0%, #0072bc 100%)';
+          tabSigninBtn.style.color = '#ffffff';
+        }
+        if (tabSignupBtn) {
+          tabSignupBtn.style.background = 'transparent';
+          tabSignupBtn.style.color = '#94a3b8';
+        }
+      } else {
+        if (signupView) signupView.style.display = 'block';
+        if (signinView) signinView.style.display = 'none';
+
+        if (tabSignupBtn) {
+          tabSignupBtn.style.background = 'linear-gradient(135deg, #00a651 0%, #0072bc 100%)';
+          tabSignupBtn.style.color = '#ffffff';
+        }
+        if (tabSigninBtn) {
+          tabSigninBtn.style.background = 'transparent';
+          tabSigninBtn.style.color = '#94a3b8';
+        }
+      }
+    }
+
+    function selectRole(role) {
+      currentRole = role;
+      var cards = document.querySelectorAll('.role-card');
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].getAttribute('data-role') === role) {
+          cards[i].classList.add('active');
+        } else {
+          cards[i].classList.remove('active');
+        }
+      }
+
+      var guideFields = document.getElementById('guideSignupFields');
+      var agentFields = document.getElementById('agentSignupFields');
+
+      if (guideFields) guideFields.style.display = (role === 'guide') ? 'block' : 'none';
+      if (agentFields) agentFields.style.display = (role === 'agent') ? 'block' : 'none';
+    }
+
+    function handleSigninSubmit(e) {
+      e.preventDefault();
+      var identityInput = document.getElementById('signinIdentityInput');
+      var identityVal = identityInput ? identityInput.value : '01977477172';
+      
+      var userData = {
+        name: currentRole === 'customer' ? 'Sharmin Chowdhury' : (currentRole === 'guide' ? 'Tanvir Hossain' : 'SkyLine Travel & Tours'),
+        mobile: identityVal.includes('@') ? '01977477172' : identityVal,
+        email: identityVal.includes('@') ? identityVal : (currentRole === 'customer' ? 'sharmin@gmail.com' : 'partner@mount2ocean.com'),
+        role: currentRole.toUpperCase()
+      };
+
+      if (window.collectAndStoreUser) {
+        window.collectAndStoreUser(userData);
+      } else {
+        localStorage.setItem('m2o_logged_user', JSON.stringify(userData));
+      }
+
+      if (currentRole === 'customer') {
+        window.location.href = 'customer_portal.html';
+      } else {
+        window.location.href = 'agent_dashboard.html';
+      }
+    }
+
+    function handleSignupSubmit(e) {
+      e.preventDefault();
+      
+      var fullName = document.getElementById('signupFullName').value || 'New Registered User';
+      var email = document.getElementById('signupEmail').value || 'new.user@gmail.com';
+      var mobile = document.getElementById('signupMobileInput') ? document.getElementById('signupMobileInput').value : '01712345678';
+
+      var userData = {
+        name: fullName,
+        email: email,
+        mobile: mobile,
+        role: currentRole.toUpperCase()
+      };
+
+      if (window.collectAndStoreUser) {
+        window.collectAndStoreUser(userData);
+      } else {
+        localStorage.setItem('m2o_logged_user', JSON.stringify(userData));
+      }
+
+      if (currentRole === 'customer') {
+        alert('🎉 Customer Account created successfully! User profile stored in Owner Directory. Redirecting to Customer Portal...');
+        window.location.href = 'customer_portal.html';
+      } else {
+        var credentialNo = '';
+        var regionOrAddr = '';
+
+        if (currentRole === 'guide') {
+          credentialNo = document.getElementById('guideLicenseInput').value || 'TG-NID-884920';
+          regionOrAddr = document.getElementById('guideRegionInput').value || 'Cox\'s Bazar & Sylhet';
+        } else if (currentRole === 'agent') {
+          credentialNo = document.getElementById('agencyTradeLicenseInput').value || 'TRAD-DNCC-019284';
+          regionOrAddr = document.getElementById('agencyAddressInput').value || 'Dhaka B2B Office';
+        }
+
+        var approvalRequest = {
+          id: Date.now(),
+          name: fullName || (currentRole === 'guide' ? 'Rahman Guide' : 'SkyLine Travel Agency'),
+          email: email || 'partner@mount2ocean.com',
+          role: currentRole.toUpperCase(),
+          credentialNo: credentialNo,
+          regionOrAddr: regionOrAddr,
+          date: new Date().toLocaleDateString('bn-BD'),
+          status: 'PENDING'
+        };
+
+        var approvals = JSON.parse(localStorage.getItem('m2o_pending_approvals')) || [];
+        approvals.unshift(approvalRequest);
+        localStorage.setItem('m2o_pending_approvals', JSON.stringify(approvals));
+
+        alert('📩 Verification Request Sent!\n\nYour ' + currentRole.toUpperCase() + ' registration (NID/License/Trade No: ' + credentialNo + ') has been submitted to the Mount2ocean Owner Dashboard for verification.\n\nOnce approved by Owner Admin, a confirmation email will be dispatched to your email!');
+        
+        setTimeout(function() {
+          window.location.href = 'agent_dashboard.html';
+        }, 1000);
+      }
+    }
+  </script>
+</head>
+<body class="dark-theme">
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header Navigation -->
+  <header class="app-header">
+    <div class="logo-container">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <div class="header-actions">
+      <!-- GLOBAL CONTROLS: THEME TOGGLE & LANGUAGE TRANSLATOR -->
+      <div class="global-header-controls">
+        <button type="button" class="theme-toggle-btn" id="globalThemeToggle" title="Switch Light/Dark Mode" onclick="toggleAppTheme()">
+          <span class="theme-btn-icon">🌙</span> <span class="theme-btn-text">Dark Mode</span>
+        </button>
+
+        <div class="lang-switcher-box">
+          <span class="lang-icon">🌐</span>
+          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
+            <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
+            <option value="en">🇺🇸 English (US)</option>
+            <option value="ar">🇦🇪 العربية (AR)</option>
+            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+            <option value="es">🇪🇸 Español (ES)</option>
+            <option value="fr">🇫🇷 Français (FR)</option>
+          </select>
+        </div>
+      </div>
+      <div class="demo-badge">Auth Gateway</div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    <div class="portal-wrapper">
+      
+      <!-- Left Showcase Panel -->
+      <section class="showcase-panel">
+        <div class="showcase-content">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span> Intelligent Access Gateway
+          </div>
+          <h1 class="showcase-heading">Explore the World <br><span class="gradient-text">Your Way.</span></h1>
+          <p class="showcase-desc">
+            Seamlessly connect as a <strong>Traveler</strong>, certified <strong>Tour Guide</strong>, or registered <strong>Travel Agent</strong>. Access specialized tools, bookings, and management dashboards tailored to your profile.
+          </p>
+
+          <!-- Interactive Role Feature Highlights -->
+          <div class="role-preview-card" id="roleFeaturePreview">
+            <div class="role-preview-icon" id="previewIcon">🧳</div>
+            <div class="role-preview-info">
+              <h4 id="previewTitle">Customer Account Features</h4>
+              <p id="previewDesc">Book curated tours, save travel itineraries, track active bookings, and earn loyalty rewards.</p>
+            </div>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="feature-list">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Unified Security:</strong> Multi-factor authentication & role permissions</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Instant Switching:</strong> One-click selection between Customer, Guide & Agent</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Password Recovery:</strong> OTP verification modal integrated</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Right Auth Form Card -->
+      <section class="auth-card-section">
+        <div class="glass-card">
+          
+          <!-- Mode Tabs (Sign In / Sign Up) -->
+          <div class="auth-tabs-wrapper" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.08); padding: 0.35rem; border-radius: 12px;">
+            <button type="button" class="tab-switch-btn active" id="tabSigninBtn" onclick="switchAuthTab('signin')" style="flex: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff;">
+              Sign In (লগইন)
+            </button>
+            <button type="button" class="tab-switch-btn" id="tabSignupBtn" onclick="switchAuthTab('signup')" style="flex: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; background: transparent; color: #94a3b8;">
+              Sign Up (সাইন আপ)
+            </button>
+          </div>
+
+          <!-- SIGN IN FORM VIEW -->
+          <div id="signinView" style="display: block;">
+            <div class="form-header">
+              <h2>Welcome Back (লগইন করুন)</h2>
+              <p>Sign in to your account with Email/Mobile &amp; Password.</p>
+            </div>
+            
+            <form id="signinForm" onsubmit="handleSigninSubmit(event)">
+              <div class="form-group">
+                <label>Email or Mobile Number <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">📱</span>
+                  <input type="text" id="signinEmail" placeholder="e.g. 01700000000 or name@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="label-row">
+                  <label>Password <span class="required">*</span></label>
+                  <a href="#" onclick="openForgotModal(event)" class="forgot-link">Forgot Password?</a>
+                </div>
+                <div class="input-wrapper">
+                  <span class="input-icon">🔒</span>
+                  <input type="password" id="signinPassword" placeholder="••••••••" required>
+                </div>
+              </div>
+
+              <div class="form-options">
+                <label class="checkbox-container">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  <span class="checkbox-label">Remember me on this device</span>
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">
+                Sign In Now (লগইন করুন)
+              </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.2rem; color: #94a3b8; font-size: 0.88rem;">
+              Don't have an account yet? 
+              <a href="javascript:void(0)" onclick="switchAuthTab('signup')" style="color: #00f2fe; font-weight: 700; text-decoration: underline; margin-left: 4px;">
+                Create Free Account (সাইন আপ করুন)
+              </a>
+            </p>
+          </div>
+
+          <!-- SIGN UP FORM VIEW -->
+          <div id="signupView" style="display: none;">
+            <div class="form-header">
+              <h2>Create Free Account (সাইন আপ করুন)</h2>
+              <p>Register your new account in seconds.</p>
+            </div>
+            
+            <form id="signupForm" onsubmit="handleSignupSubmit(event)">
+              <div class="form-group">
+                <label>Full Name (আপনার নাম) <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">👤</span>
+                  <input type="text" id="signupFullName" placeholder="Enter your full name" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Email or Mobile Number (ইমেইল অথবা মোবাইল নম্বর) <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">📱</span>
+                  <input type="text" id="signupEmail" placeholder="e.g. 01700000000 or name@example.com" required>
+                </div>
+              </div>
+
+              <!-- DYNAMIC TOUR GUIDE REGISTRATION FIELDS -->
+              <div id="guideSignupFields" style="display: none; background: rgba(0, 176, 155, 0.1); border: 1px solid rgba(0, 176, 155, 0.35); padding: 1rem; border-radius: 12px; margin-bottom: 1.2rem;">
+                <div style="font-weight: 700; color: #00f2fe; margin-bottom: 0.75rem; font-size: 0.88rem;">
+                  🚩 Tour Guide Professional Credentials (গাইড তথ্য):
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label style="font-size: 0.8rem;">Guide License / NID Number (গাইড লাইসেন্স / এনআইডি) <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">🪪</span>
+                    <input type="text" id="guideLicenseInput" placeholder="e.g. TG-884920 or NID 199382746">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label style="font-size: 0.8rem;">Primary Operating Region (প্রধান কাজের এলাকা) <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">📍</span>
+                    <input type="text" id="guideRegionInput" placeholder="e.g. Cox's Bazar, Sylhet, Chittagong">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="font-size: 0.8rem;">Experience & Languages (অভিজ্ঞতা ও ভাষা)</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">🗣️</span>
+                    <input type="text" id="guideExpInput" placeholder="e.g. 5 Years Exp | Bangla, English, Hindi">
+                  </div>
+                </div>
+              </div>
+
+              <!-- DYNAMIC B2B AGENT REGISTRATION FIELDS -->
+              <div id="agentSignupFields" style="display: none; background: rgba(0, 114, 188, 0.1); border: 1px solid rgba(0, 114, 188, 0.35); padding: 1rem; border-radius: 12px; margin-bottom: 1.2rem;">
+                <div style="font-weight: 700; color: #00f2fe; margin-bottom: 0.75rem; font-size: 0.88rem;">
+                  🏢 B2B Travel Agency Details (এজেন্সি তথ্য):
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label style="font-size: 0.8rem;">Agency / Company Name (এজেন্সি/কোম্পানির নাম) <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">🏢</span>
+                    <input type="text" id="agencyNameInput" placeholder="e.g. Green World Travels & Tours Ltd.">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.75rem;">
+                  <label style="font-size: 0.8rem;">Trade License / IATA No. (ট্রেড লাইসেন্স নম্বর) <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">📜</span>
+                    <input type="text" id="agencyTradeLicenseInput" placeholder="e.g. TRAD/DNCC/019284 / IATA-99482">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="font-size: 0.8rem;">Office Address & Designation (ঠিকানা ও পদবী)</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">📍</span>
+                    <input type="text" id="agencyAddressInput" placeholder="e.g. Banani C/A, Dhaka | Managing Director">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Password (পাসওয়ার্ড) <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">🔒</span>
+                  <input type="password" id="signupPassword" placeholder="••••••••" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Confirm Password (পাসওয়ার্ড নিশ্চিত করুন) <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">🔒</span>
+                  <input type="password" id="signupConfirmPassword" placeholder="••••••••" required>
+                </div>
+              </div>
+
+              <div class="form-options">
+                <label class="checkbox-container">
+                  <input type="checkbox" checked required>
+                  <span class="checkmark"></span>
+                  <span class="checkbox-label">I agree to Terms &amp; Privacy Policy</span>
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">
+                Create Free Account (সাইন আপ করুন)
+              </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.2rem; color: #94a3b8; font-size: 0.88rem;">
+              Already registered? 
+              <a href="javascript:void(0)" onclick="switchAuthTab('signin')" style="color: #00f2fe; font-weight: 700; text-decoration: underline; margin-left: 4px;">
+                Sign In Instead (লগইন করুন)
+              </a>
+            </p>
+          </div>
+
+          <!-- ROLE SELECTOR BOX (SHARED) -->
+          <div class="role-selector-box margin-top-md">
+            <div class="role-box-header">
+              <span class="role-box-title">Select Access Account Type (অ্যাকাউন্ট টাইপ সিলেক্ট করুন):</span>
+            </div>
+            <div class="role-options-grid">
+              
+              <!-- Customer Option -->
+              <label class="role-card active" data-role="customer" onclick="selectRole('customer')">
+                <input type="radio" name="accountRoleGlobal" value="customer" checked>
+                <div class="role-card-inner">
+                  <div class="role-icon">🧳</div>
+                  <div class="role-meta">
+                    <span class="role-name">Customer Login</span>
+                    <span class="role-sub">Traveler &amp; Bookings</span>
+                  </div>
+                </div>
+                <span class="active-badge">Selected</span>
+              </label>
+
+              <!-- Guide Option -->
+              <label class="role-card" data-role="guide" onclick="selectRole('guide')">
+                <input type="radio" name="accountRoleGlobal" value="guide">
+                <div class="role-card-inner">
+                  <div class="role-icon">🚩</div>
+                  <div class="role-meta">
+                    <span class="role-name">Guide Login</span>
+                    <span class="role-sub">Tour Guides &amp; Leads</span>
+                  </div>
+                </div>
+                <span class="active-badge">Selected</span>
+              </label>
+
+              <!-- Agent Option -->
+              <label class="role-card" data-role="agent" onclick="selectRole('agent')">
+                <input type="radio" name="accountRoleGlobal" value="agent">
+                <div class="role-card-inner">
+                  <div class="role-icon">🏢</div>
+                  <div class="role-meta">
+                    <span class="role-name">Agent Login</span>
+                    <span class="role-sub">Agencies &amp; Vendors</span>
+                  </div>
+                </div>
+                <span class="active-badge">Selected</span>
+              </label>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FORGOT PASSWORD MODAL -->
+  <div class="modal-overlay hidden" id="forgotModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeForgotModal">&times;</button>
+      
+      <!-- Step 1: Request OTP -->
+      <div id="forgotStep1" class="modal-step">
+        <div class="modal-icon">🔑</div>
+        <h3>Reset Your Password</h3>
+        <p>Enter your registered email address below. We'll send a 6-digit OTP security code.</p>
+        
+        <div class="form-group margin-top-md">
+          <label for="resetEmailInput">Account Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+            <input type="email" id="resetEmailInput" placeholder="your-email@example.com">
+          </div>
+          <span class="field-error" id="resetEmailError"></span>
+        </div>
+
+        <button type="button" id="btnSendOTP" class="primary-btn full-width margin-top-md">
+          Send Verification OTP (কোড পাঠান)
+        </button>
+      </div>
+
+      <!-- Step 2: Verify OTP -->
+      <div id="forgotStep2" class="modal-step hidden">
+        <div class="modal-icon">📩</div>
+        <h3>Enter Security OTP</h3>
+        <p>A 6-digit verification code has been generated. Demo Code: <strong class="code-highlight">789012</strong></p>
+        
+        <div class="otp-inputs-container">
+          <input type="text" maxlength="1" class="otp-digit" data-index="0" autofocus>
+          <input type="text" maxlength="1" class="otp-digit" data-index="1">
+          <input type="text" maxlength="1" class="otp-digit" data-index="2">
+          <input type="text" maxlength="1" class="otp-digit" data-index="3">
+          <input type="text" maxlength="1" class="otp-digit" data-index="4">
+          <input type="text" maxlength="1" class="otp-digit" data-index="5">
+        </div>
+        <span class="field-error center-text" id="otpError"></span>
+
+        <button type="button" id="btnVerifyOTP" class="primary-btn full-width margin-top-md">
+          Verify & Reset Password
+        </button>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div id="forgotStep3" class="modal-step hidden text-center">
+        <div class="modal-icon success-icon">✅</div>
+        <h3>Password Reset Complete!</h3>
+        <p>Your password has been successfully updated. You may now sign in with your new password.</p>
+        <button type="button" id="btnFinishReset" class="primary-btn full-width margin-top-md">
+          Return to Sign In
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUCCESS DASHBOARD PREVIEW MODAL -->
+  <div class="modal-overlay hidden" id="dashboardModal">
+    <div class="modal-card dashboard-card">
+      <button class="modal-close" id="closeDashboardModal">&times;</button>
+      
+      <div class="dashboard-header">
+        <div class="user-avatar" id="dashAvatar">🧳</div>
+        <div class="user-info">
+          <div class="user-role-badge" id="dashRoleBadge">CUSTOMER ACCOUNT</div>
+          <h2 id="dashUserName">Welcome, User!</h2>
+          <p id="dashUserEmail">user@example.com</p>
+        </div>
+      </div>
+
+      <div class="dashboard-body">
+        <div class="status-box">
+          <span class="status-dot green"></span>
+          <span>Authentication Successful (Step 1 Verification Passed)</span>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-stat-card">
+            <span class="stat-label">Active Role</span>
+            <span class="stat-value" id="dashRoleName">Customer</span>
+          </div>
+          <div class="dash-stat-card">
+            <span class="stat-label">Session ID</span>
+            <span class="stat-value" id="dashSessionId">#M2O-99201</span>
+          </div>
+          <div class="dash-stat-card">
+            <span class="stat-label">Access Level</span>
+            <span class="stat-value" id="dashAccessLevel">Full Access</span>
+          </div>
+        </div>
+
+        <div class="dash-actions">
+          <button type="button" id="btnLogout" class="secondary-btn">Sign Out (লগআউট)</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

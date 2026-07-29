@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mount2ocean | Owner & Admin Control Center</title>
+  <meta name="description" content="Mount2ocean Travel & Tours Owner Control Panel - Manage, Add, and Remove Tour Packages in real time.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-portal-body light-theme">
+
+  <!-- ADMIN HEADER NAVIGATION -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="logo-container">
+        <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+      </div>
+
+      <div class="admin-title-badge">
+        <span class="admin-badge-icon">👑</span>
+        <div class="admin-badge-text">
+          <span class="badge-main">OWNER &amp; ADMIN CONTROL CENTER</span>
+          <span class="badge-sub">Live Package &amp; Site Manager</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="#adminStats" class="admin-nav-item active">Overview</a>
+        <a href="#addPackageSection" class="admin-nav-item">Add Package</a>
+        <a href="#livePackagesTableSection" class="admin-nav-item">Manage Packages</a>
+        <a href="customer_portal.html" target="_blank" class="admin-nav-item preview-link">View Customer Site ↗</a>
+      </nav>
+
+      <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
+      <div class="global-header-controls">
+        <div class="lang-switcher-box">
+          <span class="lang-icon">🌐</span>
+          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
+            <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
+            <option value="en">🇺🇸 English (US)</option>
+            <option value="ar">🇦🇪 العربية (AR)</option>
+            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+            <option value="es">🇪🇸 Español (ES)</option>
+            <option value="fr">🇫🇷 Français (FR)</option>
+          </select>
+        </div>
+      </div>
+
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Exit (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN ADMIN CONTENT -->
+  <main class="admin-main-content">
+    
+    <!-- STATS OVERVIEW CARDS -->
+    <section class="admin-stats-grid" id="adminStats">
+      <div class="admin-stat-card green-border">
+        <div class="stat-icon">📦</div>
+        <div class="stat-data">
+          <span class="stat-number" id="totalPackagesCount">6</span>
+          <span class="stat-title">Active Live Packages</span>
+        </div>
+      </div>
+
+      <div class="admin-stat-card blue-border">
+        <div class="stat-icon">🧳</div>
+        <div class="stat-data">
+          <span class="stat-number">1,420</span>
+          <span class="stat-title">Customer Bookings</span>
+        </div>
+      </div>
+
+      <div class="admin-stat-card red-border">
+        <div class="stat-icon">💰</div>
+        <div class="stat-data">
+          <span class="stat-number">৳48,50,000</span>
+          <span class="stat-title">Total Revenue</span>
+        </div>
+      </div>
+
+      <div class="admin-stat-card purple-border">
+        <div class="stat-icon">🏢</div>
+        <div class="stat-data">
+          <span class="stat-number">85</span>
+          <span class="stat-title">Registered Agents</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: ADD NEW PACKAGE FORM -->
+    <section class="admin-section" id="addPackageSection">
+      <div class="admin-section-header">
+        <div class="header-icon green-bg">➕</div>
+        <div>
+          <h2>Add New Tour Package (নতুন প্যাকেজ যুক্ত করুন)</h2>
+          <p>Fill out the form below to publish a new package to the live customer website instantly.</p>
+        </div>
+      </div>
+
+      <form id="addPackageForm" class="admin-form-card">
+        
+        <div class="admin-form-grid">
+          <!-- Package Name -->
+          <div class="form-group span-2">
+            <label for="pkgNameInput">Package Name / Title <span class="required">*</span></label>
+            <input type="text" id="pkgNameInput" placeholder="e.g. Sylhet Ratargul Swamp Forest &amp; Jaflong Nature Tour" required>
+          </div>
+
+          <!-- Destination / Category -->
+          <div class="form-group">
+            <label for="pkgCategorySelect">Destination Category <span class="required">*</span></label>
+            <select id="pkgCategorySelect" required>
+              <option value="coxsbazar">🏖️ Cox's Bazar</option>
+              <option value="dubai">🏙️ Dubai</option>
+              <option value="maldives">🏝️ Maldives</option>
+              <option value="bali">🌺 Bali</option>
+              <option value="sylhet">🍵 Sylhet</option>
+              <option value="nepal">🏔️ Nepal &amp; Mountain Escapes</option>
+            </select>
+          </div>
+
+          <!-- Price in BDT -->
+          <div class="form-group">
+            <label for="pkgPriceInput">Price in BDT (৳) <span class="required">*</span></label>
+            <input type="text" id="pkgPriceInput" placeholder="e.g. ৳14,200" required>
+          </div>
+
+          <!-- Duration -->
+          <div class="form-group">
+            <label for="pkgDurationInput">Duration <span class="required">*</span></label>
+            <input type="text" id="pkgDurationInput" placeholder="e.g. 3 Days / 2 Nights" required>
+          </div>
+
+          <!-- Rating -->
+          <div class="form-group">
+            <label for="pkgRatingInput">Customer Rating</label>
+            <input type="text" id="pkgRatingInput" value="⭐ 4.9 (120 reviews)">
+          </div>
+
+          <!-- Badge Type -->
+          <div class="form-group">
+            <label for="pkgBadgeSelect">Badge Tag</label>
+            <select id="pkgBadgeSelect">
+              <option value="bestseller" selected>🔥 Bestseller</option>
+              <option value="featured">⭐ Featured</option>
+              <option value="luxury">💎 Luxury</option>
+              <option value="trending">📈 Trending</option>
+              <option value="nature">🍃 Nature Escape</option>
+              <option value="winter">❄️ Winter Special</option>
+            </select>
+          </div>
+
+          <!-- Image Select or Upload -->
+          <div class="form-group span-2">
+            <label>Tour Photo (ছবি নির্বাচন বা ডিভাইস থেকে আপলোড করুন)</label>
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+              <input type="file" id="pkgFileUploadInput" accept="image/*" style="flex: 1; padding: 0.5rem; background: var(--bg-input); border: 1px solid var(--bg-glass-border); border-radius: 8px; font-size: 0.82rem;">
+              <select id="pkgImageSelect" style="flex: 1;">
+                <option value="assets/coxsbazar.jpg">Cox's Bazar Beach</option>
+                <option value="assets/dubai.jpg">Dubai Desert &amp; Skyline</option>
+                <option value="assets/maldives.jpg">Maldives Overwater Resort</option>
+                <option value="assets/bali.jpg">Bali Tropical Resort</option>
+                <option value="assets/darjeeling.jpg">Darjeeling Tea Garden</option>
+                <option value="assets/manali.jpg">Manali Snow Valley</option>
+              </select>
+            </div>
+            <input type="text" id="pkgImageUrlInput" placeholder="OR Paste Image Web URL (e.g. https://images.unsplash.com/...)" style="margin-top: 0.5rem;">
+          </div>
+
+          <!-- Description -->
+          <div class="form-group span-2">
+            <label for="pkgDescInput">Short Package Description</label>
+            <input type="text" id="pkgDescInput" placeholder="Brief details about hotel stay, transfers, and activities included." required>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn admin-submit-btn" id="btnAddPackage">
+          ➕ Publish Package to Website (প্যাকেজ যুক্ত করুন)
+        </button>
+
+      </form>
+    </section>
+
+    <!-- SECTION 2: LIVE PACKAGES DIRECTORY (REMOVE ACTION) -->
+    <section class="admin-section margin-top-lg" id="livePackagesTableSection">
+      <div class="admin-section-header flex-between">
+        <div class="flex-align">
+          <div class="header-icon red-bg">🗑️</div>
+          <div>
+            <h2>Manage Live Packages (প্যাকেজ রিমুভ / ডিলিট করুন)</h2>
+            <p>View all active tour packages. Click "Remove Package" to instantly delete a package from the website.</p>
+          </div>
+        </div>
+        <button type="button" class="secondary-btn" id="btnResetPackages">Reset to Default Packages</button>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Package Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Duration</th>
+              <th>Badge</th>
+              <th>Status</th>
+              <th>Action (রিমুভ)</th>
+            </tr>
+          </thead>
+          <tbody id="adminPackagesTbody">
+            <!-- Dynamic Rows rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    <!-- SECTION 3: PENDING PARTNER APPROVALS (GUIDE & B2B AGENT VERIFICATION) -->
+    <section class="admin-section margin-top-lg" id="partnerApprovalsSection">
+      <div class="admin-section-header flex-between">
+        <div class="flex-align">
+          <div class="header-icon blue-bg">🪪</div>
+          <div>
+            <h2>Pending Partner Approvals (গাইড ও এজেন্ট একাউন্ট অনুমোদন)</h2>
+            <p>Review NID, Trade License, and IATA credentials submitted by Tour Guides &amp; B2B Agents. Approve or Reject requests below.</p>
+          </div>
+        </div>
+        <button type="button" class="secondary-btn" id="btnResetApprovals">Clear All Requests</button>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table">
+          <thead>
+            <tr>
+              <th>Partner Type</th>
+              <th>Applicant Name</th>
+              <th>Email / Contact</th>
+              <th>NID / License / IATA No.</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Owner Action (অনুমোদন / বাতিল)</th>
+            </tr>
+          </thead>
+          <tbody id="adminApprovalsTbody">
+            <!-- Dynamic Rows rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: LIVE CUSTOMER BOOKINGS LISTING & CHECKING -->
+    <section class="admin-section margin-top-lg" id="adminBookingsSection">
+      <div class="admin-section-header flex-between">
+        <div class="flex-align">
+          <div class="header-icon green-bg">📑</div>
+          <div>
+            <h2>Live Customer Bookings (গ্রাহকদের সকল বুকিং তালিকা)</h2>
+            <p>View all customer booking reservations, phone numbers, payment options, and voucher IDs.</p>
+          </div>
+        </div>
+        <button type="button" class="secondary-btn" id="btnClearBookings" onclick="clearAllBookingsHandler()">Clear Bookings</button>
+      </div>
+
+      <!-- LIVE NOTIFICATION ALERT BANNER FOR UNAPPROVED BOOKINGS -->
+      <div id="adminBookingAlertBanner" class="hidden"></div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table">
+          <thead>
+            <tr>
+              <th>Voucher ID</th>
+              <th>Customer Name &amp; Contact</th>
+              <th>Identity / Passport No</th>
+              <th>Reserved Tour Package &amp; Date</th>
+              <th>Travelers</th>
+              <th>Payment Option</th>
+              <th>Status</th>
+              <th>Owner Action (অনুমোদন / বাতিল)</th>
+            </tr>
+          </thead>
+          <tbody id="adminBookingsTbody">
+            <!-- Dynamic Customer Bookings Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 5: REGISTERED USERS & CUSTOMER DATA DIRECTORY -->
+    <section class="admin-section margin-top-lg" id="userDirectorySection">
+      <div class="admin-section-header flex-between">
+        <div class="flex-align">
+          <div class="header-icon blue-bg">👥</div>
+          <div>
+            <h2>Registered Users &amp; Customer Data Directory (নিবন্ধিত কাস্টমার ও ইউজার ডিরেক্টরি)</h2>
+            <p>View all collected user profiles, login timestamps, roles, phone numbers, and activity logs.</p>
+          </div>
+        </div>
+        <button type="button" class="secondary-btn" onclick="clearUserDirectoryHandler()">Reset Directory Data</button>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Full Name</th>
+              <th>Contact Details (Mobile &amp; Email)</th>
+              <th>Account Role</th>
+              <th>Registration Date</th>
+              <th>Last Login Activity</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminUserDirectoryTbody">
+            <!-- Dynamic User Directory Rows Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EDIT PACKAGE MODAL -->
+  <div class="modal-overlay hidden" id="editPackageModal">
+    <div class="modal-card admin-section" style="max-width: 680px; padding: 2rem;">
+      <button class="modal-close" id="closeEditPackageModal" onclick="closeEditPackageModalHandler()">&times;</button>
+      
+      <div class="flex-align margin-bottom-md">
+        <div class="header-icon green-bg">✏️</div>
+        <div>
+          <h3 style="font-size: 1.3rem;">Edit Tour Package (প্যাকেজ এডিট করুন)</h3>
+          <p style="font-size: 0.88rem; color: #94a3b8;">Modify package details, price, duration, image, or badge tag below.</p>
+        </div>
+      </div>
+
+      <form id="editPackageForm" onsubmit="saveEditedPackage(event)">
+        <input type="hidden" id="editPkgId">
+
+        <div class="admin-form-grid">
+          <div class="form-group span-2">
+            <label>Package Name / Title <span class="required">*</span></label>
+            <input type="text" id="editPkgName" required>
+          </div>
+
+          <div class="form-group">
+            <label>Destination Category <span class="required">*</span></label>
+            <select id="editPkgCategory" required>
+              <option value="coxsbazar">🏖️ Cox's Bazar</option>
+              <option value="dubai">🏙️ Dubai</option>
+              <option value="maldives">🏝️ Maldives</option>
+              <option value="bali">🌺 Bali</option>
+              <option value="sylhet">🍵 Sylhet</option>
+              <option value="nepal">🏔️ Nepal &amp; Mountain Escapes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Price in BDT (৳) <span class="required">*</span></label>
+            <input type="text" id="editPkgPrice" required>
+          </div>
+
+          <div class="form-group">
+            <label>Duration <span class="required">*</span></label>
+            <input type="text" id="editPkgDuration" required>
+          </div>
+
+          <div class="form-group">
+            <label>Badge Tag</label>
+            <select id="editPkgBadge">
+              <option value="bestseller">🔥 Bestseller</option>
+              <option value="featured">⭐ Featured</option>
+              <option value="luxury">💎 Luxury</option>
+              <option value="trending">📈 Trending</option>
+              <option value="nature">🍃 Nature Escape</option>
+              <option value="winter">❄️ Winter Special</option>
+            </select>
+          </div>
+
+          <div class="form-group span-2">
+            <label>Upload New Photo OR Image URL (নতুন ছবি আপলোড করুন)</label>
+            <input type="file" id="editPkgFileInput" accept="image/*" style="padding: 0.5rem; background: var(--bg-input); border: 1px solid var(--bg-glass-border); border-radius: 8px; font-size: 0.82rem; width: 100%;">
+            <input type="text" id="editPkgImage" placeholder="Image asset path or base64 URL" style="margin-top: 0.5rem;">
+          </div>
+
+          <div class="form-group span-2">
+            <label>Short Package Description</label>
+            <input type="text" id="editPkgDesc" required>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn full-width margin-top-md" style="padding: 0.85rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+          💾 Save Package Changes (সেভ করুন)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

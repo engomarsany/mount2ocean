@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mount2ocean | Agent Partner Portal</title>
+  <meta name="description" content="Mount2ocean Travel Agent Partner Portal for booking Hotels, Flights, Holidays, Visa, and Cabs.">
+  
+  <!-- Google Fonts (Google Product Typography Stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="agent-portal-body light-theme">
+
+  <!-- AGENT TOP NAVBAR -->
+  <header class="agent-header">
+    <div class="agent-header-inner">
+      
+      <!-- Brand Logo -->
+      <div class="logo-container">
+        <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+      </div>
+
+      <!-- Center Quick Navigation -->
+      <nav class="agent-nav">
+        <a href="#" class="agent-nav-item active">Dashboard</a>
+        <a href="#" class="agent-nav-item">My Bookings</a>
+        <a href="#" class="agent-nav-item">Ledger & Wallet</a>
+        <a href="#" class="agent-nav-item">Markup Settings</a>
+      </nav>
+
+      <!-- Right Agent Controls -->
+      <div class="agent-profile-controls">
+        <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
+        <div class="global-header-controls">
+          <div class="lang-switcher-box">
+            <span class="lang-icon">🌐</span>
+            <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
+              <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
+              <option value="en">🇺🇸 English (US)</option>
+              <option value="ar">🇦🇪 العربية (AR)</option>
+              <option value="hi">🇮🇳 हिन्दी (HI)</option>
+              <option value="es">🇪🇸 Español (ES)</option>
+              <option value="fr">🇫🇷 Français (FR)</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Wallet Balance Card -->
+        <div class="wallet-badge" title="Agent Credit Balance">
+          <span class="wallet-icon">👛</span>
+          <div class="wallet-info">
+            <span class="wallet-label">Balance</span>
+            <span class="wallet-amount" id="agentBalance">৳5,50,000</span>
+          </div>
+          <button class="topup-btn" title="Add Funds">+</button>
+        </div>
+
+        <!-- Notification Bell -->
+        <button class="icon-btn" title="Notifications">
+          🔔
+          <span class="notification-dot"></span>
+        </button>
+
+        <!-- Agent Info Dropdown -->
+        <div class="agent-user-menu">
+          <div class="agent-avatar">🏢</div>
+          <div class="agent-meta">
+            <span class="agent-name" id="agentNameDisplay">Green Travels Ltd.</span>
+            <span class="agent-id">Code: M2O-TAG-4491</span>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out to Login Page">
+          Exit (লগআউট)
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO BANNER & SEARCH WIDGET SECTION -->
+  <section class="agent-hero-section">
+    <div class="sky-banner-overlay"></div>
+    
+    <div class="hero-container">
+      
+      <!-- FLOATING MULTI-SERVICE SEARCH CARD -->
+      <div class="search-widget-card">
+        
+        <!-- Service Category Tabs -->
+        <div class="category-tabs-bar" role="tablist">
+          <button class="category-tab" data-service="flights">
+            <span class="cat-icon">✈️</span>
+            <span class="cat-name">Flights</span>
+          </button>
+          
+          <button class="category-tab active" data-service="hotels">
+            <span class="cat-icon">🏢</span>
+            <span class="cat-name">Hotels</span>
+            <span class="active-indicator"></span>
+          </button>
+          
+          <button class="category-tab" data-service="holidays">
+            <span class="cat-icon">🏖️</span>
+            <span class="cat-name">Holidays</span>
+          </button>
+          
+          <button class="category-tab" data-service="buses">
+            <span class="cat-icon">🚌</span>
+            <span class="cat-name">Buses</span>
+          </button>
+          
+          <button class="category-tab" data-service="visa">
+            <span class="cat-icon">🛂</span>
+            <span class="cat-name">Visa</span>
+          </button>
+          
+          <button class="category-tab" data-service="insurance">
+            <span class="cat-icon">🛡️</span>
+            <span class="cat-name">Insurance</span>
+          </button>
+          
+          <button class="category-tab" data-service="cabs">
+            <span class="cat-icon">🚗</span>
+            <span class="cat-name">Cabs</span>
+          </button>
+          
+          <button class="category-tab" data-service="activities">
+            <span class="cat-icon">🥾</span>
+            <span class="cat-name">Activities</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Search Form Grid -->
+        <form id="agentSearchForm" class="search-form-grid">
+          
+          <!-- Destination Field -->
+          <div class="search-field-box">
+            <label class="field-label">Destination</label>
+            <div class="field-value-wrapper">
+              <input type="text" id="destinationInput" value="Mumbai, Maharashtra, India" placeholder="City or Hotel Name" required>
+            </div>
+          </div>
+
+          <!-- Check In Date -->
+          <div class="search-field-box">
+            <label class="field-label">Check In</label>
+            <div class="field-value-wrapper">
+              <input type="date" id="checkInDate" value="2026-07-27">
+            </div>
+          </div>
+
+          <!-- Check Out Date -->
+          <div class="search-field-box">
+            <label class="field-label">Check Out</label>
+            <div class="field-value-wrapper">
+              <input type="date" id="checkOutDate" value="2026-07-28">
+            </div>
+          </div>
+
+          <!-- Rooms & Guests Picker -->
+          <div class="search-field-box">
+            <label class="field-label">Rooms & Guests</label>
+            <div class="field-value-wrapper">
+              <select id="roomsGuestsInput">
+                <option value="1-2" selected>1 Room, 2 Guests</option>
+                <option value="1-1">1 Room, 1 Guest</option>
+                <option value="1-3">1 Room, 3 Guests</option>
+                <option value="2-4">2 Rooms, 4 Guests</option>
+                <option value="3-6">3 Rooms, 6 Guests</option>
+              </select>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Big Search Button -->
+        <div class="search-btn-container">
+          <button type="submit" form="agentSearchForm" class="agent-search-btn" id="btnAgentSearch">
+            Search
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN AGENT PORTAL CONTENT BODY -->
+  <main class="agent-main-content">
+    
+    <!-- SECTION 1: RECENT HOTEL SEARCH -->
+    <section class="portal-section">
+      <div class="section-header">
+        <h2 class="section-title">Recent Hotel Search</h2>
+        <p class="section-subtitle">Compare your search history with starting price</p>
+      </div>
+
+      <div class="recent-search-grid">
+        
+        <!-- Item 1 -->
+        <div class="recent-card" data-city="Udaipur, India">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Udaipur, India</h4>
+            <span class="recent-dates">In 08-08-2026 - Out 09-08-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 3,759 (৳4,250)</strong></span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="recent-card" data-city="Bhubaneshwar, India">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Bhubaneshwar, India</h4>
+            <span class="recent-dates">In 27-07-2026 - Out 28-07-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 1,247 (৳1,410)</strong></span>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="recent-card" data-city="Medina, Saudi Arabia">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Medina, Saudi Arabia</h4>
+            <span class="recent-dates">In 25-08-2026 - Out 29-08-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 12,092 (৳13,660)</strong></span>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="recent-card" data-city="Mumbai, India">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Mumbai, India</h4>
+            <span class="recent-dates">In 29-07-2026 - Out 01-08-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 2,819 (৳3,180)</strong></span>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="recent-card" data-city="Kloten, Sweden">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Kloten, Sweden</h4>
+            <span class="recent-dates">In 11-08-2026 - Out 12-08-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 9,084 (৳10,260)</strong></span>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="recent-card" data-city="Manali, India">
+          <div class="recent-icon">🏢</div>
+          <div class="recent-details">
+            <h4 class="recent-city">Manali, India</h4>
+            <span class="recent-dates">In 27-07-2026 - Out 28-07-2026</span>
+            <span class="recent-price">Room starting at <strong>INR 1,022 (৳1,155)</strong></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: POPULAR INTERNATIONAL HOTELS CAROUSEL -->
+    <section class="portal-section margin-top-lg">
+      <div class="section-header">
+        <h2 class="section-title">Popular International Hotel</h2>
+        <p class="section-subtitle">Check out this popular stay that's getting more bookings than usual</p>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow prev-arrow" id="btnPrevDest" aria-label="Previous Destinations">&lsaquo;</button>
+        
+        <div class="popular-dest-container" id="destCarousel">
+          
+          <!-- Card 1: Manali -->
+          <div class="popular-dest-card">
+            <div class="card-img-wrap">
+              <img src="assets/manali.jpg" alt="Manali Resort Stay">
+              <span class="price-tag">From ৳2,450 / night</span>
+            </div>
+            <div class="card-body-info">
+              <h3>Manali, India</h3>
+              <p>Alpine Snow Valley & Luxury Mountain Resort</p>
+              <div class="card-footer-meta">
+                <span class="rating">⭐ 4.8 (142 reviews)</span>
+                <button class="book-mini-btn">Book Room</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Tokyo -->
+          <div class="popular-dest-card">
+            <div class="card-img-wrap">
+              <img src="assets/tokyo.jpg" alt="Tokyo City Hotel">
+              <span class="price-tag">From ৳8,900 / night</span>
+            </div>
+            <div class="card-body-info">
+              <h3>Tokyo, Japan</h3>
+              <p>Shinjuku Sky Suites & Mount Fuji View</p>
+              <div class="card-footer-meta">
+                <span class="rating">⭐ 4.9 (280 reviews)</span>
+                <button class="book-mini-btn">Book Room</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Kathmandu -->
+          <div class="popular-dest-card">
+            <div class="card-img-wrap">
+              <img src="assets/kathmandu.jpg" alt="Kathmandu Hotel">
+              <span class="price-tag">From ৳3,800 / night</span>
+            </div>
+            <div class="card-body-info">
+              <h3>Kathmandu, Nepal</h3>
+              <p>Himalayan Heritage Inn & Spa Resort</p>
+              <div class="card-footer-meta">
+                <span class="rating">⭐ 4.7 (95 reviews)</span>
+                <button class="book-mini-btn">Book Room</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Darjeeling -->
+          <div class="popular-dest-card">
+            <div class="card-img-wrap">
+              <img src="assets/darjeeling.jpg" alt="Darjeeling Tea Garden Stay">
+              <span class="price-tag">From ৳3,100 / night</span>
+            </div>
+            <div class="card-body-info">
+              <h3>Darjeeling, India</h3>
+              <p>Hilltop Tea Estate & Kanchenjunga View</p>
+              <div class="card-footer-meta">
+                <span class="rating">⭐ 4.8 (110 reviews)</span>
+                <button class="book-mini-btn">Book Room</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-arrow next-arrow" id="btnNextDest" aria-label="Next Destinations">&rsaquo;</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SEARCH RESULTS MODAL PREVIEW -->
+  <div class="modal-overlay hidden" id="searchResultsModal">
+    <div class="modal-card dashboard-card max-width-lg">
+      <button class="modal-close" id="closeResultsModal">&times;</button>
+      
+      <div class="modal-step">
+        <div class="modal-icon">🏨</div>
+        <h3 id="resultsModalTitle">Available Hotels in Mumbai</h3>
+        <p id="resultsModalSubtitle">Found 18 hotels for 27 Jul 2026 - 28 Jul 2026 (1 Room, 2 Guests)</p>
+      </div>
+
+      <div class="hotel-results-list">
+        
+        <!-- Hotel 1 -->
+        <div class="hotel-item-card">
+          <div class="hotel-item-details">
+            <span class="hotel-stars">⭐⭐⭐⭐★ (4-Star Hotel)</span>
+            <h4>Grand Horizon Hotel & Suites Mumbai</h4>
+            <p>Marine Drive, Churchgate | 1.2 km from City Center</p>
+            <div class="perks-pills">
+              <span>Free WiFi</span>
+              <span>Breakfast Included</span>
+              <span>B2B Commission: 12%</span>
+            </div>
+          </div>
+          <div class="hotel-item-pricing">
+            <span class="net-rate">Net Rate: ৳2,850</span>
+            <span class="b2b-price">৳3,200 <small>/ night</small></span>
+            <button class="primary-btn reserve-btn">Reserve Now</button>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="hotel-item-card">
+          <div class="hotel-item-details">
+            <span class="hotel-stars">⭐⭐⭐⭐⭐ (5-Star Luxury)</span>
+            <h4>Taj Mount2ocean Resort & Spa</h4>
+            <p>Colaba Beachfront, Mumbai | Sea View Deluxe Room</p>
+            <div class="perks-pills">
+              <span>Ocean View</span>
+              <span>Airport Shuttle</span>
+              <span>B2B Commission: 15%</span>
+            </div>
+          </div>
+          <div class="hotel-item-pricing">
+            <span class="net-rate">Net Rate: ৳6,100</span>
+            <span class="b2b-price">৳7,200 <small>/ night</small></span>
+            <button class="primary-btn reserve-btn">Reserve Now</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

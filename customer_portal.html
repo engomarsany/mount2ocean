@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mount2ocean | Travel & Tours - For You, Forever, Everywhere</title>
+  <meta name="description" content="Mount2ocean Travel & Tours - Book Luxury Tours, Hotels, Flights, Visa Services, and Holiday Packages.">
+  
+  <!-- Google Fonts (Google Product Typography Stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="customer-portal-body light-theme">
+
+  <!-- TOP HEADER NAVIGATION -->
+  <header class="app-header customer-header">
+    <div class="logo-container">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item active">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages Directory</a>
+      <a href="#topDestinations" class="customer-nav-item">Destinations</a>
+      <a href="#reviewsSection" class="customer-nav-item">Reviews</a>
+      <a href="#contactFooter" class="customer-nav-item">Contact Us</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
+      <div class="global-header-controls">
+        <div class="lang-switcher-box">
+          <span class="lang-icon">🌐</span>
+          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
+            <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
+            <option value="en">🇺🇸 English (US)</option>
+            <option value="ar">🇦🇪 العربية (AR)</option>
+            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+            <option value="es">🇪🇸 Español (ES)</option>
+            <option value="fr">🇫🇷 Français (FR)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Currency Selector -->
+      <div class="currency-selector">
+        <span class="currency-icon">💵</span>
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+        </select>
+      </div>
+
+      <!-- Customer Profile Indicator (Clickable to view bookings) -->
+      <div class="customer-user-badge" onclick="openMyProfileModal()" style="cursor: pointer;" title="View My Bookings & Profile">
+        <span class="cust-avatar">🧳</span>
+        <div class="cust-meta">
+          <span class="cust-name" id="custUserName">My Bookings</span>
+          <span class="cust-status" id="custBookingStatusBadge">📋 View Reservations</span>
+        </div>
+      </div>
+
+      <!-- Sign Out Link -->
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO FEATURED CAROUSEL SECTION -->
+  <section class="customer-hero-section" id="heroSection">
+    <div class="hero-carousel-container">
+      
+      <!-- Slide 1: Dubai -->
+      <div class="hero-slide active" style="background-image: linear-gradient(to right, rgba(9, 13, 22, 0.88) 35%, rgba(9, 13, 22, 0.4) 100%), url('assets/dubai.jpg');">
+        <div class="hero-content">
+          <span class="hero-tag" style="background: #ef4444; color: #ffffff !important; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.8rem; display: inline-block; margin-bottom: 0.8rem;">HOT DEAL • 25% OFF</span>
+          <h1 class="hero-title" style="color: #ffffff !important; text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.95); font-weight: 900; font-size: 2.3rem; margin-bottom: 0.8rem;">DUBAI LUXURY SAFARI &amp; CITY ESCAPE</h1>
+          <p class="hero-desc" style="color: #f1f5f9 !important; text-shadow: 0 2px 10px rgba(0,0,0,0.95); font-size: 1.05rem; font-weight: 600; line-height: 1.6; max-width: 650px;">Experience dune bashing, 5-star desert resorts, Burj Khalifa entry, and marina cruises with certified Mount2ocean guides.</p>
+          <div class="hero-pricing-bar" style="margin-top: 1.2rem;">
+            <span class="hero-price" style="color: #ffffff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">From <strong style="color: #00f2fe;">৳45,000</strong> <small style="color: #e2e8f0;">/ person</small></span>
+            <button class="primary-btn hero-btn" onclick="openBookingModal('Dubai Luxury Safari & City Escape', '৳45,000')">Explore &amp; Book Package</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUICK SEARCH & SEARCH BAR WIDGET -->
+  <div class="customer-search-wrapper">
+    <div class="customer-search-card">
+      <div class="search-tabs">
+        <button class="cust-search-tab active">🌴 Tour Packages</button>
+        <button class="cust-search-tab">🏢 Hotels &amp; Resorts</button>
+        <button class="cust-search-tab">✈️ Flight Tickets</button>
+        <button class="cust-search-tab">🛂 Visa Processing</button>
+      </div>
+      
+      <div class="search-form-row" style="display: grid; grid-template-columns: 2.5fr 1.5fr 1.2fr; gap: 1rem; align-items: end;">
+        <!-- Destination / Package Search Input with Clean Dropdown -->
+        <div class="search-input-box">
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">
+            📍 Select Destination or Type Tour Package (গন্তব্য সিলেক্ট করুন বা টাইপ করুন)
+          </label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <input type="text" id="custSearchInput" list="destPackagesDatalist" placeholder="🔍 Type or select: Bhutan, Dubai, Cox's Bazar, Maldives, Bali..." autocomplete="off" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; color: #0f172a; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
+            <datalist id="destPackagesDatalist">
+              <option value="Bhutan Cultural Tour &amp; Tiger's Nest Hike">
+              <option value="Cox's Bazar Sea Beach &amp; Saint Martin Cruise">
+              <option value="Dubai Desert Safari &amp; Burj Khalifa">
+              <option value="Maldives Overwater Bungalow &amp; Resort">
+              <option value="Bali Tropical Beach &amp; Ubud Swing">
+              <option value="Sylhet Tea Garden &amp; Ratargul Swamp Forest">
+              <option value="Nepal &amp; Darjeeling Himalayan Sunrise Tour">
+              <option value="Bhutan">
+              <option value="Cox's Bazar">
+              <option value="Dubai">
+              <option value="Maldives">
+              <option value="Bali">
+              <option value="Sylhet">
+              <option value="Nepal">
+            </datalist>
+          </div>
+        </div>
+
+        <!-- Departure Travel Date -->
+        <div class="search-input-box">
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">
+            📅 Travel Departure Date (ভ্রমণের তারিখ)
+          </label>
+          <input type="date" id="custSearchDate" value="2026-08-10" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.78rem 1rem; border-radius: 10px; font-weight: 700; font-size: 0.92rem; color: #0f172a; width: 100%;">
+        </div>
+
+        <!-- Search Action Button -->
+        <button type="button" class="primary-btn search-submit-btn" id="btnCustSearch" onclick="executeFindToursSearch()" style="padding: 0.82rem 1.4rem; font-weight: 800; font-size: 1rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,166,81,0.35); cursor: pointer;">
+          Find Tours ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="customer-main-content">
+
+    <!-- SECTION 1: TOP DESTINATION PILLS -->
+    <section class="cust-section" id="topDestinations">
+      <div class="section-header center-title">
+        <span class="badge-tag">TOP DESTINATIONS</span>
+        <h2 class="cust-section-title">Explore Trending Destinations with Mount2ocean</h2>
+        <p class="cust-section-subtitle">Handcrafted tour itineraries for ocean lovers, mountain adventurers, and cultural travelers.</p>
+      </div>
+
+      <!-- City Pills Grid -->
+      <div class="destination-pills-container">
+        <button class="dest-pill active" data-filter="all">🌟 All Destinations</button>
+        <button class="dest-pill" data-filter="bhutan">🇧🇹 Bhutan</button>
+        <button class="dest-pill" data-filter="coxsbazar">🏖️ Cox's Bazar</button>
+        <button class="dest-pill" data-filter="dubai">🏙️ Dubai</button>
+        <button class="dest-pill" data-filter="maldives">🏝️ Maldives</button>
+        <button class="dest-pill" data-filter="bali">🌺 Bali</button>
+        <button class="dest-pill" data-filter="sylhet">🍵 Sylhet</button>
+        <button class="dest-pill" data-filter="nepal">🏔️ Nepal</button>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHY CHOOSE MOUNT2OCEAN -->
+    <section class="why-choose-section">
+      <div class="why-choose-card">
+        <div class="why-icon-box green">🏷️</div>
+        <h4>Best Price Guarantee</h4>
+        <p>Direct partner rates with no hidden fees or extra charges.</p>
+      </div>
+      <div class="why-choose-card">
+        <div class="why-icon-box blue">🎧</div>
+        <h4>24/7 Travel Assistance</h4>
+        <p>Round-the-clock support before, during, and after your trip.</p>
+      </div>
+      <div class="why-choose-card">
+        <div class="why-icon-box green">🚩</div>
+        <h4>Verified Local Guides</h4>
+        <p>Certified local tour guides for authentic travel experiences.</p>
+      </div>
+      <div class="why-choose-card">
+        <div class="why-icon-box red">⚡</div>
+        <h4>Instant Confirmation</h4>
+        <p>Instant e-ticket vouchers &amp; instant booking confirmation.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: BEST SELLING TOURS & PACKAGES GRID -->
+    <section class="cust-section" id="bestSellingTours">
+      <div class="section-header flex-header">
+        <div>
+          <span class="badge-tag">MOST POPULAR</span>
+          <h2 class="cust-section-title">Best Selling Tour Packages</h2>
+          <p class="cust-section-subtitle">Top rated tour experiences booked by thousands of travelers.</p>
+        </div>
+        <button type="button" onclick="window.location.href='tour_packages.html'" class="secondary-btn view-all-btn" style="cursor: pointer;">View All Packages Directory &rarr;</button>
+      </div>
+
+      <!-- Tours Carousel Wrapper with Navigation Arrows -->
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow prev-arrow" id="btnPrevTour" aria-label="Previous Tours">&lsaquo;</button>
+
+        <!-- Tours Grid Container (Dynamically rendered live from Admin packages) -->
+        <div class="tours-grid-container" id="toursGrid">
+
+          <!-- Package 1: Bhutan Cultural Tour -->
+          <div class="tour-card" data-category="bhutan">
+            <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='package_detail.html';" style="cursor: pointer;">
+              <img src="assets/darjeeling.jpg" alt="Bhutan Cultural Tour &amp; Tiger's Nest Hike">
+              <span class="tour-badge cultural" style="background: #00a651;">🇧🇹 Bhutan Special</span>
+              <span class="tour-price-pill">৳75,000</span>
+            </div>
+            <div class="tour-card-body">
+              <div class="tour-meta-row">
+                <span class="tour-location">📍 PARO &amp; THIMPHU, BHUTAN</span>
+                <span class="tour-rating">⭐ 4.9 (160 reviews)</span>
+              </div>
+              <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='package_detail.html';" style="cursor: pointer;">3-Night / 4-Day Bhutan Cultural Tour &amp; Tiger's Nest Hike</h3>
+              <p class="tour-desc">4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike.</p>
+              <div class="tour-card-footer">
+                <span class="tour-duration">⏱️ 4 Days / 3 Nights</span>
+                <button class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='booking.html';">View &amp; Book Package ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 2: BALI PACKAGE 4D/3N -->
+          <div class="tour-card" data-category="bali">
+            <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">
+              <img src="assets/bali_kintamani_volcano.jpg" alt="BALI PACKAGE 4D/3N">
+              <span class="tour-badge tropical" style="background: #00a651;">🇮🇩 Bali Special</span>
+              <span class="tour-price-pill">৳17,500</span>
+            </div>
+            <div class="tour-card-body">
+              <div class="tour-meta-row">
+                <span class="tour-location">📍 KINTAMANI &amp; UBUD, BALI</span>
+                <span class="tour-rating">⭐ 4.9 (185 reviews)</span>
+              </div>
+              <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu &amp; Water Sports</h3>
+              <p class="tour-desc">4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!</p>
+              <div class="tour-card-footer">
+                <span class="tour-duration">⏱️ 4 Days / 3 Nights</span>
+                <button class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='booking.html';">View &amp; Book Package ➔</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-arrow next-arrow" id="btnNextTour" aria-label="Next Tours">&rsaquo;</button>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CUSTOMER REVIEWS & TESTIMONIALS -->
+    <section class="cust-section reviews-section" id="reviewsSection">
+      <div class="section-header center-title">
+        <span class="badge-tag">WHAT TRAVELERS SAY</span>
+        <h2 class="cust-section-title">Loved by 50,000+ Happy Customers</h2>
+        <p class="cust-section-subtitle">Real experiences from travelers who explored the world with Mount2ocean.</p>
+      </div>
+
+      <div class="reviews-grid">
+        
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Mount2ocean organized our Dubai family vacation seamlessly! The desert safari guide was super friendly and everything was perfectly arranged on time."</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">👤</div>
+            <div>
+              <h5 class="reviewer-name">Tanvir &amp; Family</h5>
+              <span class="reviewer-trip">Dubai Desert Safari Tour</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Best sea beach tour experience in Cox's Bazar! Instant ticket booking and hotel check-in were completely hassle-free."</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">👩</div>
+            <div>
+              <h5 class="reviewer-name">Nusrath Jahan</h5>
+              <span class="reviewer-trip">Cox's Bazar Beach Cruise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Booked our honeymoon package to Maldives through Mount2ocean. Unbeatable pricing and amazing customer support throughout!"</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">💑</div>
+            <div>
+              <h5 class="reviewer-name">Sharmin &amp; Arif</h5>
+              <span class="reviewer-trip">Maldives Honeymoon Package</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: MOBILE APP PROMO BANNER -->
+    <section class="app-promo-banner">
+      <div class="app-promo-content">
+        <span class="app-tag">DOWNLOAD MOBILE APP</span>
+        <h2>Mount2ocean at Your Fingertips</h2>
+        <p>Book tours, manage active itineraries, track flights, and receive exclusive app-only deals wherever you travel.</p>
+        <div class="app-store-btns">
+          <button class="store-btn">📱 Google Play</button>
+          <button class="store-btn">🍏 Apple App Store</button>
+        </div>
+      </div>
+      <div class="app-promo-graphic">
+        <div class="phone-mockup">
+          <span class="phone-brand">MOUNT2OCEAN APP</span>
+          <div class="phone-screen-content">
+            <span>✈️ Flight Booking Verified</span>
+            <span>🏝️ Resort Voucher Active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RICH FOOTER (MATCHING REFERENCE SCREENSHOT) -->
+  <footer class="customer-footer" id="contactFooter">
+    <div class="footer-top-container">
+      
+      <!-- Column 1: Brand Info -->
+      <div class="footer-col brand-col">
+        <div class="logo-container margin-bottom-sm">
+          <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+        </div>
+        <p class="footer-desc">Mount2ocean Travel &amp; Tours is your premier travel partner for booking worldwide luxury tours, resort stays, flights, and visa processing.</p>
+        <div class="footer-contact-info">
+          <p>📞 Helpline: <strong>+880 1977-477172</strong></p>
+          <p>✉️ Email: <strong>info@mount2ocean.com</strong></p>
+          <p>📍 Location: <strong>Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217</strong></p>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h4>Top Destinations</h4>
+        <ul>
+          <li><a href="package_detail.html?id=pkg-1">Cox's Bazar Tour Packages</a></li>
+          <li><a href="package_detail.html?id=pkg-2">Dubai Safari &amp; City Escapes</a></li>
+          <li><a href="package_detail.html?id=pkg-3">Maldives Overwater Resorts</a></li>
+          <li><a href="package_detail.html?id=pkg-4">Bali Tropical Vacations</a></li>
+          <li><a href="package_detail.html?id=pkg-5">Nepal &amp; Himalaya Treks</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Travel Services -->
+      <div class="footer-col">
+        <h4>Travel Services</h4>
+        <ul>
+          <li><a href="#topDestinations">International Flight Tickets</a></li>
+          <li><a href="#topDestinations">Luxury Hotel &amp; Resort Bookings</a></li>
+          <li><a href="#topDestinations">Tourist Visa Assistance</a></li>
+          <li><a href="#topDestinations">Travel Insurance Coverage</a></li>
+          <li><a href="javascript:void(0)" onclick="openBookingModal('Group &amp; Corporate Tour Package', '৳12,000')">Group &amp; Corporate Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Payment Methods -->
+      <div class="footer-col">
+        <h4>Verified Payment Methods</h4>
+        <div class="payment-icons-grid">
+          <span class="pay-pill">bKash</span>
+          <span class="pay-pill">Nagad</span>
+          <span class="pay-pill">VISA</span>
+          <span class="pay-pill">Mastercard</span>
+          <span class="pay-pill">AMEX</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom-bar">
+      <p>&copy; 2026 <strong>MOUNT2OCEAN TRAVEL &amp; TOURS</strong>. All Rights Reserved. Slogan: <em>For You, Forever, Everywhere</em>.</p>
+    </div>
+  </footer>
+
+  <!-- SEARCH RESULTS & SMART ALTERNATIVE SUGGESTIONS MODAL -->
+  <div class="modal-overlay hidden" id="searchResultsModal">
+    <div class="modal-card admin-section" style="max-width: 780px;">
+      <button class="modal-close" id="closeResultsModal">&times;</button>
+      
+      <div class="modal-step">
+        <div class="flex-align margin-bottom-sm">
+          <div class="header-icon blue-bg">🔍</div>
+          <div>
+            <h3 id="searchResultsTitle" style="font-size: 1.3rem; margin-bottom: 0.2rem;">Search Results &amp; Suggestions</h3>
+            <p id="searchResultsSub" style="font-size: 0.88rem; color: #64748b;">Checking availability for your selected destination and dates...</p>
+          </div>
+        </div>
+
+        <!-- Date Unavailable Alert Banner -->
+        <div class="search-alert-banner" id="searchAlertBanner">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <h4 id="alertBannerTitle">Date Unavailable for Requested Package</h4>
+            <p id="alertBannerDesc">No direct availability on your selected travel date. Here are top recommended alternative packages available in this location on nearby dates:</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Suggested Packages Container -->
+        <div class="suggested-packages-grid" id="suggestedPackagesGrid">
+          <!-- Dynamic Package Suggestion Cards Rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAN & PROFESSIONAL LOGIN-ENFORCED BOOKING MODAL -->
+  <div class="modal-overlay hidden" id="custBookingModal">
+    <div class="modal-card dashboard-card" style="max-width: 650px; padding: 2rem;">
+      <button class="modal-close" id="closeCustBookingModal">&times;</button>
+      
+      <!-- CHECKOUT FORM VIEW -->
+      <div id="bookingCheckoutStep">
+        <div class="modal-step flex-align margin-bottom-md">
+          <div class="header-icon blue-bg">🛒</div>
+          <div>
+            <h3 id="bookModalTourTitle" style="font-size: 1.3rem; margin-bottom: 0.2rem;">Reserve Tour Package</h3>
+            <p id="bookModalTourPrice" style="font-size: 0.95rem; color: #00f2fe; font-weight: 700;">Price: ৳45,000 per traveler</p>
+          </div>
+        </div>
+
+        <!-- Login Required Warning Banner (Only shown if guest is not logged in) -->
+        <div id="bookingLoginBanner" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1.5px solid rgba(239, 68, 68, 0.4); padding: 1rem; border-radius: 12px; margin-bottom: 1.2rem; text-align: center;">
+          <div style="font-weight: 800; color: #ef4444; font-size: 0.95rem; margin-bottom: 0.4rem;">
+            🔐 Account Login Required for Booking
+          </div>
+          <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.8rem;">
+            বুকিং সম্পন্ন করার আগে আপনার Mount2ocean একাউন্টে লগইন করুন অথবা নতুন একাউন্ট খুলুন।
+          </p>
+          <a href="index.html" class="primary-btn full-width" style="display: block; text-decoration: none; padding: 0.75rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+            🔑 Sign In / Register Account (লগইন করুন) ➔
+          </a>
+        </div>
+
+        <!-- 24/7 Helpline Banner -->
+        <div style="background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.3); padding: 0.85rem 1rem; border-radius: 10px; margin-bottom: 1.2rem;">
+          <div style="font-weight: 700; color: #00f2fe; font-size: 0.88rem; margin-bottom: 0.25rem;">
+            📞 24/7 Customer Support Helpline:
+          </div>
+          <div style="font-size: 0.85rem; color: #e2e8f0; font-weight: 600;">
+            Hotline: <a href="tel:+8801977477172" style="color: #ffffff; text-decoration: underline;">+880 1977-477172</a>
+          </div>
+        </div>
+
+        <form id="custBookingForm" onsubmit="confirmCustomerBooking(event)">
+          <!-- Traveler Basic Info -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem;">
+            <div class="form-group">
+              <label style="font-size: 0.82rem; font-weight: 800;">Traveler Name (আপনার পুরো নাম) <span class="required">*</span></label>
+              <input type="text" id="custBookName" placeholder="Enter your full name" value="Sharmin Chowdhury" required style="padding: 0.75rem 1rem; border-radius: 8px;">
+            </div>
+
+            <div class="form-group">
+              <label style="font-size: 0.82rem; font-weight: 800;">Mobile / WhatsApp (মোবাইল নম্বর) <span class="required">*</span></label>
+              <input type="tel" id="custBookPhone" placeholder="e.g. 01977477172" value="01977477172" required style="padding: 0.75rem 1rem; border-radius: 8px;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem;">
+            <div class="form-group">
+              <label style="font-size: 0.82rem; font-weight: 800;">Email Address (ইমেইল ঠিকানা) <span class="required">*</span></label>
+              <input type="email" id="custBookEmail" placeholder="e.g. sharmin@gmail.com" value="sharmin@gmail.com" required style="padding: 0.75rem 1rem; border-radius: 8px;">
+            </div>
+
+            <div class="form-group">
+              <label style="font-size: 0.82rem; font-weight: 800;">Travel Departure Date (ভ্রমণের তারিখ) <span class="required">*</span></label>
+              <input type="date" id="custBookDate" value="2026-08-10" required style="padding: 0.75rem 1rem; border-radius: 8px;">
+            </div>
+          </div>
+
+          <!-- Tour Type Selection & Dynamic Passport / NID Fields -->
+          <div style="background: rgba(0, 114, 188, 0.08); border: 1.5px solid rgba(0, 114, 188, 0.35); border-radius: 12px; padding: 1.1rem; margin-bottom: 1rem;">
+            <div style="font-size: 0.95rem; font-weight: 800; color: #0072bc; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(0, 114, 188, 0.2); padding-bottom: 0.4rem;">
+              🛂 Identity &amp; Travel Document Verification (পরিচয়পত্র ও তথ্য)
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 0.9rem; flex-wrap: wrap;">
+              <label style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 0.4rem; background: var(--bg-input); padding: 0.5rem 0.85rem; border-radius: 8px; border: 1px solid var(--bg-glass-border);">
+                <input type="radio" name="tourTypeRadio" value="international" checked onclick="togglePassportFields(true)" style="accent-color: #0072bc;">
+                🌐 International Tour (পাসপোর্ট প্রয়োজন)
+              </label>
+              <label style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 0.4rem; background: var(--bg-input); padding: 0.5rem 0.85rem; border-radius: 8px; border: 1px solid var(--bg-glass-border);">
+                <input type="radio" name="tourTypeRadio" value="domestic" onclick="togglePassportFields(false)" style="accent-color: #00a651;">
+                🏖️ Domestic Tour (NID Card)
+              </label>
+            </div>
+
+            <!-- International Tour Passport Fields -->
+            <div id="passportFieldsBox" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 0.3rem;">Passport No. (পাসপোর্ট নম্বর) <span class="required">*</span></label>
+                <input type="text" id="custBookPassportNo" placeholder="e.g. A09827364" value="A09827364" style="padding: 0.75rem 0.9rem; border-radius: 8px; font-weight: 700; color: var(--text-main);">
+              </div>
+              <div class="form-group">
+                <label style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 0.3rem;">Passport Expiry Date (মেয়াদ)</label>
+                <input type="date" id="custBookPassportExpiry" value="2030-12-31" style="padding: 0.75rem 0.9rem; border-radius: 8px; font-weight: 700; color: var(--text-main);">
+              </div>
+            </div>
+
+            <!-- Domestic Tour NID Field -->
+            <div id="nidFieldBox" style="display: none; margin-top: 0.5rem;">
+              <div class="form-group">
+                <label style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 0.3rem;">National ID (NID) Card No. (জাতীয় পরিচয়পত্র)</label>
+                <input type="text" id="custBookNid" placeholder="e.g. 1982736450" value="1982736450" style="padding: 0.75rem 0.9rem; border-radius: 8px; font-weight: 700; color: var(--text-main);">
+              </div>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE TRAVELERS & GUESTS COUNTER & LIVE PRICE CALCULATOR -->
+          <div style="background: var(--bg-input); border: 1.5px solid var(--bg-glass-border); border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem;">
+            <div style="font-size: 0.9rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+              <span>👨‍👩‍👧 Travelers &amp; Guests (যাত্রী সংখ্যা নির্ধারণ করুন)</span>
+              <span id="modalCalcTotalPrice" style="color: #00a651; font-size: 1rem; font-weight: 900;">Calculated Total: ৳1,50,000</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; text-align: center;">
+              <!-- Adults Counter -->
+              <div style="background: var(--bg-secondary); border: 1px solid var(--bg-glass-border); padding: 0.75rem; border-radius: 10px;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: block;">Adults (12+ yrs)</span>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.4rem;">
+                  <button type="button" onclick="changeModalGuest('adults', -1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--bg-glass-border); background: var(--bg-input); font-weight: 800; cursor: pointer;">-</button>
+                  <span id="modalAdultsCount" style="font-weight: 800; font-size: 1rem; color: #00a651;">2</span>
+                  <button type="button" onclick="changeModalGuest('adults', 1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #00a651; background: rgba(0,166,81,0.15); color: #00a651; font-weight: 800; cursor: pointer;">+</button>
+                </div>
+              </div>
+
+              <!-- Children Counter -->
+              <div style="background: var(--bg-secondary); border: 1px solid var(--bg-glass-border); padding: 0.75rem; border-radius: 10px;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: block;">Children (2-11 yrs)</span>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.4rem;">
+                  <button type="button" onclick="changeModalGuest('children', -1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--bg-glass-border); background: var(--bg-input); font-weight: 800; cursor: pointer;">-</button>
+                  <span id="modalChildrenCount" style="font-weight: 800; font-size: 1rem; color: #0072bc;">0</span>
+                  <button type="button" onclick="changeModalGuest('children', 1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #0072bc; background: rgba(0,114,188,0.15); color: #0072bc; font-weight: 800; cursor: pointer;">+</button>
+                </div>
+              </div>
+
+              <!-- Infants Counter -->
+              <div style="background: var(--bg-secondary); border: 1px solid var(--bg-glass-border); padding: 0.75rem; border-radius: 10px;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: block;">Infants (&lt;2 yrs)</span>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.4rem;">
+                  <button type="button" onclick="changeModalGuest('infants', -1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--bg-glass-border); background: var(--bg-input); font-weight: 800; cursor: pointer;">-</button>
+                  <span id="modalInfantsCount" style="font-weight: 800; font-size: 1rem; color: #3b82f6;">0</span>
+                  <button type="button" onclick="changeModalGuest('infants', 1)" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #3b82f6; background: rgba(59,130,246,0.15); color: #3b82f6; font-weight: 800; cursor: pointer;">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label style="font-size: 0.82rem; font-weight: 800;">Payment / Confirmation Option (পেমেন্ট পদ্ধতি) <span class="required">*</span></label>
+            <select id="custPaymentMethod" style="padding: 0.75rem 1rem; border-radius: 8px;">
+              <option value="Direct Call Request">📞 Phone Call to Confirm (+880 1977-477172)</option>
+              <option value="Cash on Office">💵 Cash on Arrival / Office Counter</option>
+              <option value="bKash / Nagad">📱 bKash / Nagad Direct (+880 1977-477172)</option>
+              <option value="Bank Transfer">🏦 Bank Wire / Credit Card</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label style="font-size: 0.82rem; font-weight: 800;">Special Requests / Notes (কোনো বিশেষ চাহিদা)</label>
+            <input type="text" id="custBookNotes" placeholder="e.g. Honeymoon room, ocean view, vegetarian food" style="padding: 0.75rem 1rem; border-radius: 8px;">
+          </div>
+
+          <div style="margin-bottom: 1.2rem; background: rgba(0, 166, 81, 0.08); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid rgba(0, 166, 81, 0.25);">
+            <label style="font-size: 0.82rem; font-weight: 700; color: #00a651; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+              <input type="checkbox" id="chkSendEmailNotification" checked style="width: 16px; height: 16px;">
+              ✉️ Send instant email voucher notification on live website approval
+            </label>
+          </div>
+
+          <button type="submit" id="btnSubmitBooking" class="primary-btn full-width" style="padding: 0.9rem; font-weight: 800; font-size: 1.02rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+            Confirm Booking Reservation (বুকিং নিশ্চিত করুন) ➔
+          </button>
+        </form>
+      </div>
+
+      <!-- BOOKING SUCCESS CONFIRMATION VIEW -->
+      <div id="bookingSuccessStep" style="display: none; text-align: center; padding: 1rem 0;">
+        <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🎉</div>
+        <h3 style="font-size: 1.45rem; color: #22c55e; margin-bottom: 0.4rem;">বুকিং সফলভাবে নিশ্চিত হয়েছে!</h3>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.2rem;">
+          Booking Reference Voucher ID: <strong id="confirmedBookingId" style="color: #00f2fe;">M2O-BK-99482</strong>
+        </p>
+
+        <!-- Prominent Contact Helpline Message Banner -->
+        <div style="background: rgba(34, 197, 94, 0.1); border: 2px solid rgba(34, 197, 94, 0.4); padding: 1.2rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: left;">
+          <div style="font-size: 1rem; font-weight: 800; color: #22c55e; margin-bottom: 0.5rem;">
+            📞 যেকোনো সমস্যা বা পেমেন্ট তথ্যের জন্য এখনই কল করুন:
+          </div>
+          <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.4rem;">
+            হটলাইন: <a href="tel:+8801977477172" style="color: #ffffff; text-decoration: underline;">+880 1977-477172</a>
+          </div>
+          <p style="font-size: 0.85rem; color: #e2e8f0; margin-bottom: 0.2rem;">
+            আপনার বুকিং ভাউচার ও কনফার্মেশন তথ্য আমাদের ওনার ড্যাশবোর্ডে সংরক্ষণ করা হয়েছে।
+          </p>
+        </div>
+
+        <button type="button" class="primary-btn full-width" onclick="closeCustBookingModalHandler()">
+          Done (ঠিক আছে)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MY PROFILE & CUSTOMER BOOKINGS MODAL -->
+  <div class="modal-overlay hidden" id="myProfileModal">
+    <div class="modal-card dashboard-card" style="max-width: 720px; padding: 2rem;">
+      <button class="modal-close" onclick="closeMyProfileModal()">&times;</button>
+      
+      <div class="flex-align margin-bottom-md">
+        <div class="header-icon blue-bg">🧳</div>
+        <div>
+          <h3 style="font-size: 1.35rem; color: var(--text-main); margin-bottom: 0.2rem;">My Profile &amp; Tour Bookings (আমার প্রোফাইল ও বুকিং)</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">আপনার সকল বুকিং ট্র্যাকিং ও অ্যাডমিন অনুমোদনের লাইভ স্ট্যাটাস দেখুন</p>
+        </div>
+      </div>
+
+      <!-- Account Summary Info -->
+      <div style="background: var(--bg-input); border: 1.5px solid var(--bg-glass-border); padding: 1rem 1.2rem; border-radius: 12px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="font-size: 0.78rem; color: var(--text-dim); font-weight: 700;">LOGGED TRAVELER</span>
+          <h4 id="myProfileName" style="font-size: 1.1rem; color: var(--text-main); font-weight: 800;">Sharmin Chowdhury</h4>
+          <span id="myProfileContact" style="font-size: 0.85rem; color: #0072bc;">📱 01977477172 • ✉️ sharmin@gmail.com</span>
+        </div>
+        <div style="text-align: right;">
+          <span class="status-badge-live" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">✔ Verified Customer</span>
+        </div>
+      </div>
+
+      <!-- Bookings List Header -->
+      <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem;">
+        📋 Reservation History (আপনার বুকিং তালিকা)
+      </h4>
+
+      <div id="myBookingsContainer" style="display: flex; flex-direction: column; gap: 1rem; max-height: 380px; overflow-y: auto; padding-right: 0.3rem;">
+        <!-- Dynamic Bookings Rendered Here -->
+      </div>
+
+      <button type="button" class="primary-btn full-width margin-top-md" onclick="closeMyProfileModal()">
+        Close (বন্ধ করুন)
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
