@@ -2296,12 +2296,126 @@ function checkCustomerBookingNotifications() {
     renderAdminUserDirectory();
   };
 
+  // ==========================================
+  // PACKAGE-SPECIFIC PROMO CODE MANAGER ENGINE
+  // ==========================================
+  const defaultPromoCodes = [
+    { code: 'BALI20', targetPkg: 'pkg-bali-4d3n', targetName: 'BALI PACKAGE 4D/3N', type: 'PERCENT', value: 20, createdAt: '2026-07-29', status: 'ACTIVE' },
+    { code: 'BHUTAN5K', targetPkg: 'pkg-bhutan', targetName: 'Bhutan Cultural Tour', type: 'FLAT', value: 5000, createdAt: '2026-07-29', status: 'ACTIVE' }
+  ];
+
+  window.renderAdminPromoCodes = function() {
+    const tbody = document.getElementById('adminPromoCodesTbody');
+    if (!tbody) return;
+
+    let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes'));
+    if (!promos || promos.length === 0) {
+      promos = defaultPromoCodes;
+      localStorage.setItem('m2o_package_promo_codes', JSON.stringify(promos));
+    }
+
+    tbody.innerHTML = '';
+    promos.forEach(p => {
+      const tr = document.createElement('tr');
+      const valStr = p.type === 'PERCENT' ? `${p.value}% OFF` : `৳${p.value.toLocaleString()} FLAT OFF`;
+
+      tr.innerHTML = `
+        <td><strong style="color: #0072bc; font-size: 1rem; letter-spacing: 1px;">${p.code}</strong></td>
+        <td><strong style="color: var(--text-main);">${p.targetName || p.targetPkg}</strong></td>
+        <td><span class="status-badge-live" style="background: rgba(0, 166, 81, 0.15); color: #00a651; font-weight: 800;">${valStr}</span></td>
+        <td><span style="font-size: 0.84rem; color: #64748b;">${p.createdAt}</span></td>
+        <td><span class="status-badge-live" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">✔ ${p.status}</span></td>
+        <td>
+          <button type="button" class="danger-btn" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;" onclick="deletePromoCode('${p.code}')">🗑️ Delete</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  };
+
+  window.handleCreatePromoCode = function(event) {
+    event.preventDefault();
+    const code = (document.getElementById('promoCodeInput').value || '').trim().toUpperCase();
+    const targetPkg = document.getElementById('promoTargetPkgSelect').value;
+    const type = document.getElementById('promoDiscountTypeSelect').value;
+    const value = parseFloat(document.getElementById('promoDiscountValueInput').value) || 0;
+
+    if (!code || value <= 0) {
+      if (typeof showToast === 'function') showToast('Please enter a valid code and discount value!', 'error');
+      return;
+    }
+
+    let targetName = 'All Packages';
+    if (targetPkg === 'pkg-bali-4d3n') targetName = 'BALI PACKAGE 4D/3N';
+    if (targetPkg === 'pkg-bhutan') targetName = 'Bhutan Cultural Tour';
+
+    let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes')) || defaultPromoCodes;
+    promos = promos.filter(p => p.code !== code);
+
+    promos.unshift({
+      code: code,
+      targetPkg: targetPkg,
+      targetName: targetName,
+      type: type,
+      value: value,
+      createdAt: new Date().toLocaleDateString('bn-BD'),
+      status: 'ACTIVE'
+    });
+
+    localStorage.setItem('m2o_package_promo_codes', JSON.stringify(promos));
+    renderAdminPromoCodes();
+    document.getElementById('createPromoCodeForm').reset();
+    if (typeof showToast === 'function') showToast(`🎉 Promo Code ${code} created successfully!`, 'success');
+  };
+
+  window.deletePromoCode = function(code) {
+    if (!confirm(`Delete Promo Code ${code}?`)) return;
+    let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes')) || [];
+    promos = promos.filter(p => p.code !== code);
+    localStorage.setItem('m2o_package_promo_codes', JSON.stringify(promos));
+    renderAdminPromoCodes();
+    if (typeof showToast === 'function') showToast(`Promo Code ${code} removed`, 'info');
+  };
+
+  window.validateAndApplyPromoCode = function(inputCode, currentPkgId, baseAmount) {
+    const cleanCode = (inputCode || '').trim().toUpperCase();
+    let promos = JSON.parse(localStorage.getItem('m2o_package_promo_codes')) || defaultPromoCodes;
+
+    const promo = promos.find(p => p.code === cleanCode && p.status === 'ACTIVE');
+
+    if (!promo) {
+      return { valid: false, message: '❌ Invalid or expired Promo Code!' };
+    }
+
+    if (promo.targetPkg !== 'ALL' && promo.targetPkg !== currentPkgId) {
+      return { valid: false, message: `⚠️ Code ${cleanCode} is valid only for ${promo.targetName || 'specific package'}!` };
+    }
+
+    let discountAmount = 0;
+    if (promo.type === 'PERCENT') {
+      discountAmount = Math.round((baseAmount * promo.value) / 100);
+    } else {
+      discountAmount = Math.min(baseAmount, promo.value);
+    }
+
+    const newTotal = Math.max(0, baseAmount - discountAmount);
+
+    return {
+      valid: true,
+      code: promo.code,
+      discountAmount: discountAmount,
+      newTotal: newTotal,
+      message: `🎉 Promo Code ${promo.code} Applied! You saved ৳${discountAmount.toLocaleString()}!`
+    };
+  };
+
   function init() {
     renderLiveCustomerTours();
     saveAndRenderAdminPackages();
     renderAdminApprovals();
     renderAdminBookings();
     renderAdminUserDirectory();
+    renderAdminPromoCodes();
     checkCustomerBookingNotifications();
   }
 

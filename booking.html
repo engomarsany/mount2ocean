@@ -303,6 +303,20 @@
           </div>
         </div>
 
+        <!-- PROMO CODE & COUPON BOX -->
+        <div style="margin-bottom: 1.2rem; background: #f8fafc; padding: 1rem; border-radius: 12px; border: 1.5px solid #cbd5e1;">
+          <label style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.4rem;">
+            🎟️ Have a Package Promo Code? (প্রমো কোড দিন)
+          </label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" id="pgPromoCodeInput" placeholder="e.g. BALI20, BHUTAN5K" style="flex: 1; padding: 0.65rem 0.8rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-weight: 800; font-size: 0.88rem; text-transform: uppercase; color: #0f172a;">
+            <button type="button" onclick="handleApplyPagePromoCode()" class="primary-btn" style="padding: 0.65rem 1.1rem; font-size: 0.85rem; font-weight: 800; background: #0072bc; cursor: pointer;">
+              Apply ➔
+            </button>
+          </div>
+          <div id="pgPromoNotice" style="font-size: 0.8rem; font-weight: 700; margin-top: 0.4rem; display: none;"></div>
+        </div>
+
         <!-- TOTAL PAYABLE PRICE -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
           <span style="font-size: 1rem; font-weight: 800; color: var(--text-main);">Total Payable:</span>
@@ -486,6 +500,45 @@
       return isNaN(num) || num <= 0 ? 75000 : num;
     }
 
+    window.appliedPromoResult = null;
+
+    window.handleApplyPagePromoCode = function() {
+      const codeInput = document.getElementById('pgPromoCodeInput');
+      const noticeEl = document.getElementById('pgPromoNotice');
+      if (!codeInput || !noticeEl) return;
+
+      const code = codeInput.value.trim().toUpperCase();
+      if (!code) {
+        noticeEl.style.display = 'block';
+        noticeEl.style.color = '#ef4444';
+        noticeEl.textContent = '⚠️ Please enter a promo code!';
+        return;
+      }
+
+      const adults = window.pageGuestCounts.adults;
+      const children = window.pageGuestCounts.children;
+      const baseRate = currentBookingPkg ? parseNumericPrice(currentBookingPkg.price) : 75000;
+      const baseTotal = (adults * baseRate) + (children * baseRate * 0.6);
+
+      const pkgId = currentBookingPkg ? currentBookingPkg.id : 'pkg-bhutan';
+
+      if (window.validateAndApplyPromoCode) {
+        const res = window.validateAndApplyPromoCode(code, pkgId, baseTotal);
+        noticeEl.style.display = 'block';
+        if (res.valid) {
+          window.appliedPromoResult = res;
+          noticeEl.style.color = '#00a651';
+          noticeEl.textContent = res.message;
+          updatePagePriceCalculation();
+        } else {
+          window.appliedPromoResult = null;
+          noticeEl.style.color = '#ef4444';
+          noticeEl.textContent = res.message;
+          updatePagePriceCalculation();
+        }
+      }
+    };
+
     function updatePagePriceCalculation() {
       const calcTotalEl = document.getElementById('pgCalcTotalPrice');
       const sideTotalEl = document.getElementById('sideTotalPrice');
@@ -496,9 +549,14 @@
       const infants = window.pageGuestCounts.infants;
 
       const baseRate = currentBookingPkg ? parseNumericPrice(currentBookingPkg.price) : 75000;
-      const total = (adults * baseRate) + (children * baseRate * 0.6);
+      const baseTotal = (adults * baseRate) + (children * baseRate * 0.6);
+      let finalTotal = baseTotal;
 
-      const formattedTotal = `৳${total.toLocaleString('en-US')}`;
+      if (window.appliedPromoResult && window.appliedPromoResult.valid) {
+        finalTotal = Math.max(0, baseTotal - window.appliedPromoResult.discountAmount);
+      }
+
+      const formattedTotal = `৳${finalTotal.toLocaleString('en-US')}`;
       if (calcTotalEl) calcTotalEl.textContent = `Total: ${formattedTotal}`;
       if (sideTotalEl) sideTotalEl.textContent = formattedTotal;
 

@@ -325,6 +325,76 @@
           </tbody>
         </table>
       </div>
+    <!-- SECTION 6: PACKAGE-SPECIFIC PROMO CODE & DISCOUNT COUPONS MANAGER -->
+    <section class="admin-section" id="adminPromoCodesSection" style="margin-top: 3rem;">
+      <div class="section-header flex-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <span class="badge-tag green">PROMO &amp; DISCOUNTS</span>
+          <h2 class="section-title">🎟️ Package-Specific Promo Code Manager</h2>
+          <p class="section-subtitle">এক একটি প্যাকেজের জন্য আলাদা ডিসকাউন্ট প্রমো কোড ও কুপন যোগ ও নিয়ন্ত্রণ করুন।</p>
+        </div>
+      </div>
+
+      <!-- Create Promo Code Form -->
+      <div style="background: var(--bg-input); border: 1.5px solid var(--bg-glass-border); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
+        <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem;">
+          ➕ Create New Package Promo Code (নতুন প্রমো কোড তৈরি করুন)
+        </h4>
+
+        <form id="createPromoCodeForm" onsubmit="handleCreatePromoCode(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; align-items: end;">
+          <div class="form-group">
+            <label style="font-size: 0.82rem; font-weight: 800;">Promo Code Name <span class="required">*</span></label>
+            <input type="text" id="promoCodeInput" placeholder="e.g. BALI20, BHUTAN5K" required style="padding: 0.75rem 0.9rem; font-weight: 800; text-transform: uppercase;">
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.82rem; font-weight: 800;">Target Package <span class="required">*</span></label>
+            <select id="promoTargetPkgSelect" required style="padding: 0.75rem 0.9rem; font-weight: 700;">
+              <option value="ALL">🌐 All Packages (সকল প্যাকেজ)</option>
+              <option value="pkg-bali-4d3n">🇮🇩 BALI PACKAGE 4D/3N</option>
+              <option value="pkg-bhutan">🇧🇹 Bhutan Cultural Tour</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.82rem; font-weight: 800;">Discount Type <span class="required">*</span></label>
+            <select id="promoDiscountTypeSelect" required style="padding: 0.75rem 0.9rem; font-weight: 700;">
+              <option value="PERCENT">Percentage (% Discount)</option>
+              <option value="FLAT">Flat Cash (৳ Fixed Discount)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.82rem; font-weight: 800;">Discount Value <span class="required">*</span></label>
+            <input type="number" id="promoDiscountValueInput" placeholder="e.g. 15 or 5000" required style="padding: 0.75rem 0.9rem; font-weight: 800;">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="primary-btn" style="padding: 0.8rem 1.4rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+              Create Coupon ➔
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Active Promo Codes Table -->
+      <div class="admin-table-container" style="overflow-x: auto;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Promo Code</th>
+              <th>Target Package</th>
+              <th>Discount Value</th>
+              <th>Created Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminPromoCodesTbody">
+            <!-- Dynamic Promo Codes Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
     </section>
 
   </main>
