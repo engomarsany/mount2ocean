@@ -3167,7 +3167,8 @@ function checkCustomerBookingNotifications() {
     }
 
     // Full Website Knowledge Base AI Engine
-    const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+    const rawLivePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+    const livePkgs = Array.isArray(rawLivePkgs) ? rawLivePkgs : [];
     let botReply = '';
 
     if (lower.includes('sylhet') || lower.includes('সিলেট') || lower.includes('jaflong') || lower.includes('জাফলং') || lower.includes('ratargul') || lower.includes('রাতারগুল')) {

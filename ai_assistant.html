@@ -285,10 +285,10 @@
         <!-- Rendered via renderPageAiChat() -->
       </div>
 
-      <!-- WORLD-CLASS REDESIGNED CHAT INPUT FORM -->
-      <form onsubmit="handlePageAiSubmit(event)" class="ai-chat-input-form">
+      <!-- WORLD-CLASS REDESIGNED CHAT INPUT FORM (FAIL-SAFE SUBMIT GUARD) -->
+      <form onsubmit="handlePageAiSubmit(event); return false;" class="ai-chat-input-form">
         <input type="text" id="pageAiInput" class="ai-chat-input-field" placeholder="Ask anything about tour packages, pricing, bKash, flights..." required>
-        <button type="submit" class="ai-send-btn">
+        <button type="button" onclick="handlePageAiSubmit(event)" class="ai-send-btn">
           <span>Send Message</span>
           <span style="font-size: 1.2rem;">➔</span>
         </button>
@@ -308,7 +308,7 @@
       const msgs = window.getAiChatMessages ? window.getAiChatMessages() : [];
       container.innerHTML = '';
 
-      if (msgs.length === 0) {
+      if (!msgs || msgs.length === 0) {
         container.innerHTML = `
           <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; text-align: center; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
             <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🤖</div>
@@ -343,7 +343,7 @@
           ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">👑 LIVE OWNER SUPPORT TEAM:</strong>' 
           : (isCustomer ? '' : '<strong style="display:block; font-size:0.85rem; color:#00a651 !important; margin-bottom:0.4rem; font-weight:900;">🤖 MOUNT2OCEAN AI ASSISTANT:</strong>');
 
-        div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${m.text.replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.8; margin-top:0.5rem; font-weight:600;">${m.time}</span>`;
+        div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.8; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
         container.appendChild(div);
       });
 
@@ -353,9 +353,12 @@
     };
 
     window.handlePageAiSubmit = function(e) {
-      if (e) e.preventDefault();
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
       const input = document.getElementById('pageAiInput');
-      if (!input || !input.value.trim()) return;
+      if (!input || !input.value.trim()) return false;
 
       const query = input.value.trim();
       input.value = '';
@@ -365,6 +368,8 @@
       }
 
       window.renderPageAiChat();
+      setTimeout(window.renderPageAiChat, 450);
+      return false;
     };
 
     window.sendPageQuickQuery = function(text) {
