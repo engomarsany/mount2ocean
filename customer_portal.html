@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=m2o_exact_brand">
+  <link rel="stylesheet" href="styles.css?v=m2o_single_pass_fix">
 
   <style>
     /* Inline Fail-Safe for Realistic Commercial Jet Network-Adaptive Fog Intro */
@@ -56,9 +56,9 @@
       left: -40%;
       width: 180%;
       transform: translateY(-50%) rotate(-3deg);
-      animation: planeLoopFlight 2.2s cubic-bezier(0.1, 0.85, 0.25, 1) infinite;
+      animation: planeSinglePass 1.2s cubic-bezier(0.1, 0.85, 0.25, 1) forwards !important;
     }
-    @keyframes planeLoopFlight {
+    @keyframes planeSinglePass {
       0% { left: -40%; opacity: 0; }
       15% { opacity: 1; }
       85% { opacity: 1; }
@@ -76,7 +76,7 @@
 </head>
 <body class="customer-portal-body light-theme">
 
-  <!-- ✈️ PHOTOREALISTIC COMMERCIAL AIRLINER NETWORK-ADAPTIVE FOG INTRO SPLASH -->
+  <!-- ✈️ PHOTOREALISTIC COMMERCIAL AIRLINER EXACTLY 1-PASS FOG INTRO SPLASH -->
   <div id="m2oCinematicIntroSplash">
     <div class="mist-cloud-layer"></div>
     <div class="airplane-fly-track">
@@ -149,17 +149,22 @@
   </div>
 
   <script>
-    // Network-Adaptive Loading Handler: Dismiss splash only after network load finishes
-    window.addEventListener('load', function() {
-      setTimeout(function() {
+    // Ensure airplane flies EXACTLY 1 TIME ONLY and disappears immediately
+    (function() {
+      var splashDismissed = false;
+      function dismissSplash() {
+        if (splashDismissed) return;
+        splashDismissed = true;
         var splash = document.getElementById('m2oCinematicIntroSplash');
         if (splash) {
           splash.style.opacity = '0';
           splash.style.visibility = 'hidden';
-          setTimeout(function() { splash.style.display = 'none'; }, 600);
+          setTimeout(function() { splash.style.display = 'none'; }, 500);
         }
-      }, 1200);
-    });
+      }
+      setTimeout(dismissSplash, 1200); // 1.2s exact single flight duration
+      window.addEventListener('load', dismissSplash);
+    })();
   </script>
 
   <!-- TOP HEADER NAVIGATION -->
