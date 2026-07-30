@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pending Partner Approvals Master Directory • Mount2ocean Admin Owner Panel</title>
+  
+  <!-- Security & Performance Meta Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- Inter & Outfit Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .admin-page-header {
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
+      border-bottom: 2px solid var(--bg-glass-border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .admin-metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.4rem;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .metric-card.yellow { border-left: 5px solid #eab308; }
+    .metric-card.green { border-left: 5px solid #00a651; }
+    .metric-card.red { border-left: 5px solid #ef4444; }
+    .metric-card.blue { border-left: 5px solid #0072bc; }
+
+    .metric-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+    }
+
+    .metric-icon-badge.yellow-bg { background: rgba(234, 179, 8, 0.12); color: #eab308; }
+    .metric-icon-badge.green-bg { background: rgba(0, 166, 81, 0.12); color: #00a651; }
+    .metric-icon-badge.red-bg { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+    .metric-icon-badge.blue-bg { background: rgba(0, 114, 188, 0.12); color: #0072bc; }
+
+    .master-toolbar {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toolbar-search-box {
+      flex: 1 1 320px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+    }
+
+    .toolbar-search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+      width: 100%;
+    }
+
+    .toolbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .toolbar-select {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+    }
+  </style>
+</head>
+<body class="admin-portal-body">
+
+  <!-- OWNER TOP HEADER BAR -->
+  <header class="admin-page-header">
+    <div style="display: flex; align-items: center; gap: 1.2rem;">
+      <a href="admin_dashboard.html" title="Return to Owner Dashboard">
+        <img src="assets/official_logo.png" alt="Mount2ocean Logo" style="height: 40px;">
+      </a>
+      <div>
+        <span class="badge-tag" style="background: #0072bc; color: white; padding: 0.2rem 0.6rem; font-size: 0.72rem; font-weight: 800;">PARTNER VERIFICATION</span>
+        <h1 style="font-size: 1.35rem; font-weight: 900; color: #ffffff !important; margin: 0.1rem 0 0;">Partner Approvals Master Directory (গাইড ও এজেন্ট অনুমোদন)</h1>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="admin_dashboard.html" class="secondary-btn" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: 800; font-size: 0.88rem; border-radius: 8px;">
+        ← Back to Dashboard Overview
+      </a>
+      <a href="customer_portal.html" target="_blank" class="primary-btn" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: 800; font-size: 0.88rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 8px;">
+        Live Customer Website ➔
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main style="max-width: 1380px; margin: 2rem auto; padding: 0 1.5rem 4rem;">
+
+    <!-- TOP METRICS OVERVIEW CARDS -->
+    <div class="admin-metrics-bar">
+      <div class="metric-card yellow">
+        <div class="metric-icon-badge yellow-bg">WAIT</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">PENDING APPROVALS</span>
+          <strong id="metricPendingApprovals" style="font-size: 1.6rem; font-weight: 900; color: #d97706;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card green">
+        <div class="metric-icon-badge green-bg">OK</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">APPROVED PARTNERS</span>
+          <strong id="metricApprovedPartners" style="font-size: 1.6rem; font-weight: 900; color: #00a651;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card red">
+        <div class="metric-icon-badge red-bg">REJ</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">REJECTED APPLICANTS</span>
+          <strong id="metricRejectedPartners" style="font-size: 1.6rem; font-weight: 900; color: #ef4444;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card blue">
+        <div class="metric-icon-badge blue-bg">ALL</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOTAL APPLICANTS</span>
+          <strong id="metricTotalApplicants" style="font-size: 1.6rem; font-weight: 900; color: #0072bc;">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="master-toolbar">
+      <div class="toolbar-search-box">
+        <input type="text" id="approvalSearchInput" placeholder="Search by Applicant Name, Phone, Email, or Credential No..." oninput="filterMasterApprovals()">
+      </div>
+
+      <div class="toolbar-controls">
+        <select id="approvalRoleFilterSelect" class="toolbar-select" onchange="filterMasterApprovals()">
+          <option value="ALL">All Partner Roles (সকল রোল)</option>
+          <option value="GUIDE">Tour Guides (ট্যুর গাইড)</option>
+          <option value="AGENT">B2B Agents (এজেন্ট)</option>
+        </select>
+
+        <select id="approvalStatusFilterSelect" class="toolbar-select" onchange="filterMasterApprovals()">
+          <option value="ALL">All Statuses (সকল স্ট্যাটাস)</option>
+          <option value="PENDING">Pending (অনুমোদনের অপেক্ষায়)</option>
+          <option value="APPROVED">Approved (অনুমোদিত)</option>
+          <option value="REJECTED">Rejected (বাতিলকৃত)</option>
+        </select>
+
+        <button type="button" onclick="exportApprovalsCSV()" class="secondary-btn" style="padding: 0.72rem 1.1rem; font-weight: 800; font-size: 0.88rem; border-radius: 10px;">
+          Export CSV Report
+        </button>
+
+        <button type="button" onclick="window.print()" class="secondary-btn" style="padding: 0.72rem 1.1rem; font-weight: 800; font-size: 0.88rem; border-radius: 10px;">
+          Print List
+        </button>
+      </div>
+    </div>
+
+    <!-- DIRECTORY TABLE CARD -->
+    <section class="admin-section" style="background: #ffffff; border-radius: 20px; padding: 1.8rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
+            Partner Applications Directory (<span id="showingApprovalsCount" style="color: #0072bc;">0</span> Applications Found)
+          </h2>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 0.2rem 0 0;">
+            Review NID, Trade License, and IATA credentials submitted by Tour Guides &amp; B2B Agents. Approve or Reject requests below.
+          </p>
+        </div>
+
+        <button type="button" onclick="resetApprovalsHandler()" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 700; color: #ef4444; border-color: #fca5a5;">
+          Clear Requests List
+        </button>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Partner Type</th>
+              <th>Applicant Name</th>
+              <th>Email / Contact</th>
+              <th>NID / License / IATA No.</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Owner Action (অনুমোদন / বাতিল)</th>
+            </tr>
+          </thead>
+          <tbody id="masterApprovalsTbody">
+            <!-- Dynamic Partner Approval Rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMasterApprovalsDirectory();
+
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'm2o_pending_approvals') {
+          renderMasterApprovalsDirectory();
+        }
+      });
+    });
+
+    const defaultPendingApprovals = [
+      { id: 101, role: 'GUIDE', name: 'Tanvir Hossain', email: 'tanvir.guide@gmail.com', credentialNo: 'NID-199201928374', date: '2026-07-28', status: 'PENDING' },
+      { id: 102, role: 'AGENT', name: 'SkyLine Travel & Tours', email: 'b2b@skylinetravel.com', credentialNo: 'IATA-88273641', date: '2026-07-27', status: 'APPROVED' },
+      { id: 103, role: 'GUIDE', name: 'Kamrul Islam', email: 'kamrul.guide@gmail.com', credentialNo: 'NID-198577263514', date: '2026-07-26', status: 'PENDING' }
+    ];
+
+    function getApprovalsList() {
+      let saved = localStorage.getItem('m2o_pending_approvals');
+      if (!saved) {
+        localStorage.setItem('m2o_pending_approvals', JSON.stringify(defaultPendingApprovals));
+        return defaultPendingApprovals;
+      }
+      try {
+        return JSON.parse(saved) || defaultPendingApprovals;
+      } catch(e) {
+        return defaultPendingApprovals;
+      }
+    }
+
+    function updateApprovalMetrics(list) {
+      const pending = list.filter(x => x.status === 'PENDING').length;
+      const approved = list.filter(x => x.status === 'APPROVED').length;
+      const rejected = list.filter(x => x.status === 'REJECTED').length;
+      const total = list.length;
+
+      document.getElementById('metricPendingApprovals').textContent = pending;
+      document.getElementById('metricApprovedPartners').textContent = approved;
+      document.getElementById('metricRejectedPartners').textContent = rejected;
+      document.getElementById('metricTotalApplicants').textContent = total;
+    }
+
+    function renderMasterApprovalsDirectory(customList) {
+      const tbody = document.getElementById('masterApprovalsTbody');
+      const showingCountEl = document.getElementById('showingApprovalsCount');
+      if (!tbody) return;
+
+      const list = customList || getApprovalsList();
+      updateApprovalMetrics(getApprovalsList());
+
+      if (showingCountEl) showingCountEl.textContent = list.length;
+      tbody.innerHTML = '';
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 3rem; color: #64748b; font-weight: 700; background: #f8fafc; border-radius: 12px;">No matching partner approval applications found.</td></tr>`;
+        return;
+      }
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        const roleBadgeStyle = item.role === 'GUIDE' ? 'style="background: rgba(0, 176, 155, 0.15); color: #0072bc; padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 800; font-size: 0.78rem;"' : 'style="background: rgba(0, 114, 188, 0.15); color: #00a651; padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 800; font-size: 0.78rem;"';
+        
+        let statusHtml = '';
+        if (item.status === 'PENDING') {
+          statusHtml = `<span style="background: rgba(234, 179, 8, 0.15); color: #d97706; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">PENDING</span>`;
+        } else if (item.status === 'APPROVED') {
+          statusHtml = `<span style="background: rgba(34, 197, 94, 0.15); color: #059669; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">APPROVED</span>`;
+        } else {
+          statusHtml = `<span style="background: rgba(239, 68, 68, 0.15); color: #dc2626; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">REJECTED</span>`;
+        }
+
+        let actionsHtml = '';
+        if (item.status === 'PENDING') {
+          actionsHtml = `
+            <button type="button" class="primary-btn" onclick="approvePartnerAction(${item.id})" style="padding: 0.3rem 0.6rem; font-size: 0.74rem; background: #00a651; margin-right: 4px;">
+              Approve
+            </button>
+            <button type="button" class="btn-delete-pkg" onclick="rejectPartnerAction(${item.id})" style="padding: 0.3rem 0.6rem; font-size: 0.74rem;">
+              Reject
+            </button>
+          `;
+        } else {
+          actionsHtml = `<span style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Decision Finalized</span>`;
+        }
+
+        tr.innerHTML = `
+          <td><span ${roleBadgeStyle}>${item.role === 'GUIDE' ? 'TOUR GUIDE' : 'B2B AGENT'}</span></td>
+          <td><strong style="color: #0f172a; font-size: 0.95rem;">${item.name}</strong></td>
+          <td><a href="mailto:${item.email}" style="color: #0072bc; font-weight: 700; text-decoration: none;">${item.email}</a></td>
+          <td><code style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px; color: #0f172a; font-weight: 800;">${item.credentialNo}</code></td>
+          <td><span style="font-size: 0.84rem; color: #64748b;">${item.date}</span></td>
+          <td>${statusHtml}</td>
+          <td>${actionsHtml}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function approvePartnerAction(id) {
+      const list = getApprovalsList();
+      const item = list.find(x => x.id == id);
+      if (item) {
+        item.status = 'APPROVED';
+        localStorage.setItem('m2o_pending_approvals', JSON.stringify(list));
+        renderMasterApprovalsDirectory();
+        alert(`✅ Partner Account Approved!\n\n${item.name} (${item.role}) has been verified successfully.\nConfirmation Email sent to: ${item.email}`);
+      }
+    }
+
+    function rejectPartnerAction(id) {
+      const list = getApprovalsList();
+      const item = list.find(x => x.id == id);
+      if (item) {
+        item.status = 'REJECTED';
+        localStorage.setItem('m2o_pending_approvals', JSON.stringify(list));
+        renderMasterApprovalsDirectory();
+        alert(`❌ Partner Account Rejected.\nNotification sent to: ${item.email}`);
+      }
+    }
+
+    function filterMasterApprovals() {
+      const searchVal = (document.getElementById('approvalSearchInput').value || '').trim().toLowerCase();
+      const roleVal = document.getElementById('approvalRoleFilterSelect').value;
+      const statusVal = document.getElementById('approvalStatusFilterSelect').value;
+
+      let list = getApprovalsList();
+
+      if (roleVal !== 'ALL') {
+        list = list.filter(x => x.role === roleVal);
+      }
+
+      if (statusVal !== 'ALL') {
+        list = list.filter(x => x.status === statusVal);
+      }
+
+      if (searchVal) {
+        list = list.filter(x =>
+          (x.name || '').toLowerCase().includes(searchVal) ||
+          (x.email || '').toLowerCase().includes(searchVal) ||
+          (x.credentialNo || '').toLowerCase().includes(searchVal)
+        );
+      }
+
+      renderMasterApprovalsDirectory(list);
+    }
+
+    function resetApprovalsHandler() {
+      if (!confirm('Reset partner approvals list to defaults?')) return;
+      localStorage.setItem('m2o_pending_approvals', JSON.stringify(defaultPendingApprovals));
+      renderMasterApprovalsDirectory();
+    }
+
+    function exportApprovalsCSV() {
+      const list = getApprovalsList();
+      if (list.length === 0) {
+        alert('No records to export!');
+        return;
+      }
+      let csv = 'Role,Applicant Name,Email,Credential Number,Date,Status\n';
+      list.forEach(item => {
+        csv += `"${item.role}","${item.name}","${item.email}","${item.credentialNo}","${item.date}","${item.status}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Mount2ocean_Partner_Approvals_Report_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    }
+  </script>
+</body>
+</html>

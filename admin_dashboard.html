@@ -65,6 +65,26 @@
     </div>
   </header>
 
+  <!-- MASTER NAVIGATION BAR FOR OWNER ADMIN -->
+  <nav style="background: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 0.8rem; overflow-x: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <span style="font-size: 0.82rem; font-weight: 800; color: #64748b; white-space: nowrap;">QUICK MASTER DIRECTORIES:</span>
+    <a href="admin_bookings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0072bc; border-color: #93c5fd;">
+      📋 Live Customer Bookings ➔
+    </a>
+    <a href="admin_approvals.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #d97706; border-color: #fde68a;">
+      🪪 Partner Approvals ➔
+    </a>
+    <a href="admin_users.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #8b5cf6; border-color: #ddd6fe;">
+      👥 Registered Users ➔
+    </a>
+    <a href="admin_promos.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #00a651; border-color: #86efac;">
+      🎟️ Promo Codes ➔
+    </a>
+    <a href="admin_settings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #cbd5e1;">
+      ⚙️ Global Settings ➔
+    </a>
+  </nav>
+
   <!-- MAIN ADMIN CONTENT -->
   <main class="admin-main-content">
     
@@ -229,6 +249,8 @@
           </tbody>
         </table>
       </div>
+    </section>
+
     <!-- SECTION 3: PENDING PARTNER APPROVALS (GUIDE & B2B AGENT VERIFICATION) -->
     <section class="admin-section margin-top-lg" id="partnerApprovalsSection">
       <div class="admin-section-header flex-between">
@@ -239,7 +261,12 @@
             <p>Review NID, Trade License, and IATA credentials submitted by Tour Guides &amp; B2B Agents. Approve or Reject requests below.</p>
           </div>
         </div>
-        <button type="button" class="secondary-btn" id="btnResetApprovals">Clear All Requests</button>
+        <div style="display: flex; gap: 0.8rem; align-items: center;">
+          <a href="admin_approvals.html" class="primary-btn" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3); display: inline-flex; align-items: center; gap: 0.4rem;">
+            Open Approvals Master Page ➔
+          </a>
+          <button type="button" class="secondary-btn" id="btnResetApprovals">Clear All Requests</button>
+        </div>
       </div>
 
       <div class="table-responsive-wrapper">
@@ -314,7 +341,12 @@
             <p>View all collected user profiles, login timestamps, roles, phone numbers, and activity logs.</p>
           </div>
         </div>
-        <button type="button" class="secondary-btn" onclick="clearUserDirectoryHandler()">Reset Directory Data</button>
+        <div style="display: flex; gap: 0.8rem; align-items: center;">
+          <a href="admin_users.html" class="primary-btn" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3); display: inline-flex; align-items: center; gap: 0.4rem;">
+            Open Users Directory Master Page ➔
+          </a>
+          <button type="button" class="secondary-btn" onclick="clearUserDirectoryHandler()">Reset Directory Data</button>
+        </div>
       </div>
 
       <div class="table-responsive-wrapper">
@@ -336,6 +368,8 @@
           </tbody>
         </table>
       </div>
+    </section>
+    
     <!-- SECTION 6: PACKAGE-SPECIFIC PROMO CODE & DISCOUNT COUPONS MANAGER -->
     <section class="admin-section" id="adminPromoCodesSection" style="margin-top: 3rem;">
       <div class="section-header flex-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
@@ -344,6 +378,9 @@
           <h2 class="section-title">🎟️ Package-Specific Promo Code Manager</h2>
           <p class="section-subtitle">এক একটি প্যাকেজের জন্য আলাদা ডিসকাউন্ট প্রমো কোড ও কুপন যোগ ও নিয়ন্ত্রণ করুন।</p>
         </div>
+        <a href="admin_promos.html" class="primary-btn" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3); display: inline-flex; align-items: center; gap: 0.4rem;">
+          Open Promo Codes Master Page ➔
+        </a>
       </div>
 
       <!-- Create Promo Code Form -->
@@ -406,6 +443,8 @@
           </tbody>
         </table>
       </div>
+    </section>
+    
     <!-- SECTION 7: GLOBAL WEBSITE SETTINGS & BUSINESS HOTLINE CONTROLS -->
     <section class="admin-section" id="adminGlobalSettingsSection" style="margin-top: 3rem;">
       <div class="section-header flex-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
@@ -414,6 +453,9 @@
           <h2 class="section-title">⚙️ Global Website Settings &amp; Business Hotline Controls</h2>
           <p class="section-subtitle">ওয়েবসাইটের অফিশিয়াল হটলাইন নম্বর, ইমেইল, অফিস ঠিকানা ও টপ নোটিশ ব্যানার এক ক্লিকে পরিবর্তন করুন।</p>
         </div>
+        <a href="admin_settings.html" class="primary-btn" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3); display: inline-flex; align-items: center; gap: 0.4rem;">
+          Open Global Settings Full Page ➔
+        </a>
       </div>
 
       <form id="globalSettingsForm" onsubmit="handleSaveGlobalSettings(event)" style="background: var(--bg-input); border: 1.5px solid var(--bg-glass-border); padding: 1.8rem; border-radius: 16px;">
