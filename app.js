@@ -171,16 +171,14 @@ window.logMissingPackageSearch = function(rawQuery) {
 window.m2oIsSearching = false;
 
 window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') {
-  if (window.m2oIsSearching) return null;
-  window.m2oIsSearching = true;
-
+  window.m2oIsSearching = false;
   const rawQuery = (userPrompt || '').trim();
   const lowerQuery = rawQuery.toLowerCase();
   
   let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
   cleanQuery = cleanQuery.replace(/\bBT\b/gi, '').trim().toLowerCase();
 
-  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
 
   let matchedPkg = null;
   let matchConfidence = 0;
@@ -193,7 +191,7 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
       'nepal': ['nepal', 'নেপাল', 'kathmandu', 'কাঠমান্ডু', 'pokhara', 'পোখরা', 'annapurna', 'himalaya', 'হিমালয়'],
       'coxsbazar': ['cox', 'কক্সবাজার', 'saint martin', 'সেন্টমার্টিন', 'sea beach', 'সমুদ্র', 'kolatoli', 'কোলাতলী'],
       'dubai': ['dubai', 'দুবাই', 'burj', 'বুর্জ', 'safari', 'সাফারি', 'dhow cruise', 'মেরিনা'],
-      'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট'],
+      'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট', 'bungalow', 'resort'],
       'bhutan': ['bhutan', 'ভুটান', 'tiger', 'nest', 'paro', 'thimphu', 'পারো', 'থিম্পু'],
       'bali': ['bali', 'বালি', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', 'উবুদ']
     };
@@ -215,7 +213,7 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
         { keywords: ['mountain', 'pahar', 'পাহাড়', 'hike', 'trek', 'snow'], category: 'nepal' },
         { keywords: ['tea', 'green', 'rainforest', 'swamp'], category: 'sylhet' },
         { keywords: ['beach', 'ocean', 'sea', 'bengal', 'coral'], category: 'coxsbazar' },
-        { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon'], category: 'maldives' },
+        { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon', 'bungalow', 'overwater'], category: 'maldives' },
         { keywords: ['desert', 'skyscraper', 'shopping', 'burj'], category: 'dubai' },
         { keywords: ['culture', 'temple', 'peace', 'monastery'], category: 'bhutan' },
         { keywords: ['island', 'swing', 'volcano', 'sunset'], category: 'bali' }
@@ -299,6 +297,8 @@ window.executeFindToursSearch = function(event) {
     if (event.preventDefault) event.preventDefault();
     if (event.stopPropagation) event.stopPropagation();
   }
+
+  window.m2oIsSearching = false;
 
   try {
     const searchInput = document.getElementById('custSearchInput');
