@@ -298,20 +298,15 @@ window.executeFindToursSearch = function(event) {
     if (event.stopPropagation) event.stopPropagation();
   }
 
-  window.m2oIsSearching = false;
+  const searchInput = document.getElementById('custSearchInput');
+  const destSelect = document.getElementById('custSearchDest');
 
-  try {
-    const searchInput = document.getElementById('custSearchInput');
-    const destSelect = document.getElementById('custSearchDest');
-    const dateInput = document.getElementById('custSearchDate');
+  let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
+  if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
 
-    let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
-    if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
-    let selectedDate = dateInput ? dateInput.value : '2026-08-10';
-
-    return window.runHiddenAiTourAgent(rawQuery, selectedDate);
-  } catch (e) {
-    console.error("AI Search Agent error:", e);
+  if (rawQuery) {
+    window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}&auto_open=1`;
+  } else {
     window.location.href = 'tour_packages.html';
   }
 };

@@ -284,12 +284,47 @@
       { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" }
     ];
   </script>
-  <script src="app.js?v=v6_force_2_live_packages_always"></script>
+  <script src="app.js?v=v9_ultra_fast_direct_package_open"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const urlSearch = urlParams.get('search') || urlParams.get('q') || '';
       const urlCat = urlParams.get('cat') || 'all';
+      const autoOpen = urlParams.get('auto_open') === '1';
+
+      if (urlSearch && autoOpen) {
+        let pkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
+        const lowerSearch = decodeURIComponent(urlSearch).toLowerCase().trim();
+
+        const destAliases = {
+          'coxsbazar': ['cox', 'coxs', 'bazar', 'saint', 'martin', 'sea', 'beach', 'kolatoli', 'ocean', 'resort'],
+          'sylhet': ['sylhet', 'jaflong', 'ratargul', 'tea', 'garden', 'swamp', 'bisnakandi'],
+          'bhutan': ['bhutan', 'paro', 'thimphu', 'tiger', 'nest', 'hike', 'cultural'],
+          'dubai': ['dubai', 'safari', 'burj', 'khalifa', 'marina', 'dhow', 'desert'],
+          'maldives': ['maldives', 'overwater', 'bungalow', 'villa', 'resort', 'honeymoon', 'snorkeling'],
+          'bali': ['bali', 'kintamani', 'volcano', 'uluwatu', 'swing', 'tegalalang', 'waterfront'],
+          'nepal': ['nepal', 'kathmandu', 'pokhara', 'annapurna', 'himalaya', 'himalayan', 'sunrise']
+        };
+
+        let matched = pkgs.find(p => p.name.toLowerCase().includes(lowerSearch) || lowerSearch.includes(p.name.toLowerCase()));
+
+        if (!matched) {
+          matched = pkgs.find(p => {
+            const cat = (p.category || '').toLowerCase();
+            if (lowerSearch.includes(cat) || cat.includes(lowerSearch)) return true;
+            if (destAliases[cat]) {
+              return destAliases[cat].some(alias => lowerSearch.includes(alias) || alias.includes(lowerSearch));
+            }
+            return false;
+          });
+        }
+
+        if (matched) {
+          localStorage.setItem('m2o_active_detail_pkg_id', matched.id);
+          window.location.href = `package_detail.html?id=${matched.id}&from_search=1`;
+          return;
+        }
+      }
 
       const searchInput = document.getElementById('masterPkgSearchInput');
       const catSelect = document.getElementById('masterPkgCatSelect');
