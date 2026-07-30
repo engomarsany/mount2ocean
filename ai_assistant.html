@@ -19,13 +19,13 @@
     }
 
     .ai-page-header {
-      background: #07111e;
-      border-bottom: 3px solid #00f2fe;
+      background: #060a12 !important;
+      border-bottom: 3px solid #00f2fe !important;
       padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     .ai-page-brand {
@@ -75,7 +75,7 @@
     }
 
     .ai-chat-topbar {
-      background: linear-gradient(135deg, #07111e 0%, #0072bc 100%) !important;
+      background: #07111e !important;
       color: #ffffff !important;
       padding: 1.2rem 1.8rem;
       display: flex;
@@ -86,10 +86,10 @@
 
     .ai-chat-topbar h2 {
       color: #ffffff !important;
-      font-size: 1.3rem !important;
+      font-size: 1.35rem !important;
       font-weight: 900 !important;
       margin: 0 0 0.2rem 0 !important;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
+      text-shadow: 0 0 15px rgba(0, 242, 254, 0.6), 0 2px 10px rgba(0,0,0,0.9) !important;
     }
 
     .ai-chat-messages-area {
@@ -191,7 +191,7 @@
         <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 42px; width: auto; display: block;">
       </div>
       <div>
-        <h1 style="color: #ffffff !important; font-size: 1.3rem; margin: 0; font-weight: 900; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">Mount2ocean Travel AI Assistant</h1>
+        <h1 style="color: #ffffff !important; font-size: 1.3rem; margin: 0; font-weight: 900; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">Mount2ocean Travel AI Assistant</h1>
         <span style="color: #00f2fe !important; font-size: 0.85rem; font-weight: 800; text-shadow: 0 0 8px rgba(0,242,254,0.8);">🤖 24/7 Smart Travel &amp; Tour Guidance</span>
       </div>
     </a>
@@ -238,7 +238,7 @@
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Maldives Overwater Resort Honeymoon')">
           🇲🇻 Maldives Overwater Bungalow Villa
         </button>
-        <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Visa processing and flights assistance')">
+        <button type="button" class="chip-btn" onclick="sendPageQuickQuery('France USA Japan Visa processing fees')">
           🛂 Visa Processing &amp; Flight Tickets
         </button>
         <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626; background: rgba(239,68,68,0.06); font-weight: 900;" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">
@@ -263,7 +263,7 @@
     <!-- RIGHT MAIN CHAT WINDOW -->
     <section class="ai-chat-card">
       
-      <!-- CHAT TOPBAR -->
+      <!-- CHAT TOPBAR (CRISP WHITE & CYAN TEXT) -->
       <div class="ai-chat-topbar">
         <div style="display: flex; align-items: center; gap: 1rem;">
           <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 18px rgba(0,242,254,0.5);">
@@ -271,11 +271,11 @@
           </div>
           <div>
             <h2>Mount2ocean AI Smart Travel Assistant</h2>
-            <span style="font-size: 0.85rem; color: #00f2fe !important; font-weight: 800;">⚡ 24/7 Online • Real-Time AI Travel Advisor</span>
+            <span style="font-size: 0.85rem; color: #00f2fe !important; font-weight: 800; text-shadow: 0 0 8px rgba(0,242,254,0.8);">⚡ 24/7 Online • Real-Time AI Travel Advisor</span>
           </div>
         </div>
 
-        <button type="button" class="primary-btn" onclick="clearPageChatHistory()" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 800; background: rgba(255,255,255,0.18); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; cursor: pointer;">
+        <button type="button" onclick="clearPageChatHistory()" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 800; background: rgba(255,255,255,0.18); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.4); border-radius: 10px; cursor: pointer; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">
           🧹 Clear Chat
         </button>
       </div>
@@ -298,35 +298,33 @@
 
   </main>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- JAVASCRIPT LOGIC ENGINE -->
   <script src="app.js"></script>
   <script>
+    // 100% SELF-CONTAINED CHAT DATA ENGINE
+    function getStoredChatMsgs() {
+      const saved = localStorage.getItem('m2o_customer_chat_messages');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch(e) {}
+      }
+      return [
+        { sender: 'bot', text: '👋 আসসালামু আলাইকুম! Mount2ocean AI স্মার্ট অ্যাসিস্ট্যান্ট এ আপনাকে স্বাগতম! আমি আপনার ২৪/৭ ভার্চুয়াল ট্রাভেল অ্যাডভাইজর। যেকোনো প্রশ্ন নিচে লিখুন!', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+      ];
+    }
+
+    function saveStoredChatMsgs(msgs) {
+      localStorage.setItem('m2o_customer_chat_messages', JSON.stringify(msgs));
+    }
+
     window.renderPageAiChat = function() {
       const container = document.getElementById('pageAiChatBody');
       if (!container) return;
 
-      const msgs = window.getAiChatMessages ? window.getAiChatMessages() : [];
+      const msgs = getStoredChatMsgs();
       container.innerHTML = '';
-
-      if (!msgs || msgs.length === 0) {
-        container.innerHTML = `
-          <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; text-align: center; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
-            <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🤖</div>
-            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
-              Welcome to Mount2ocean AI Travel Assistant!
-            </h3>
-            <p style="font-size: 0.95rem; color: #64748b; font-weight: 700; line-height: 1.6; margin-bottom: 1.5rem;">
-              আমি আপনার ২৪/৭ ভার্চুয়াল ট্রাভেল গাইড। সিলেট চা বাগান, ভুটান হাইক, দুবাই সাফারি, মালদ্বীপ রিসোর্ট, বিকাশ পেমেন্ট অথবা যেকোনো প্রশ্ন নিচে টাইপ করুন!
-            </p>
-            <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="chip-btn" onclick="sendPageQuickQuery('সব ট্যুর প্যাকেজ ও খরচ দেখাও')">📦 View All Packages</button>
-              <button type="button" class="chip-btn" onclick="sendPageQuickQuery('bKash এবং পেমেন্ট প্রসেস কেমন?')">💳 bKash Payment</button>
-              <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626;" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">💬 Speak Live Support</button>
-            </div>
-          </div>
-        `;
-        return;
-      }
 
       msgs.forEach(m => {
         const div = document.createElement('div');
@@ -343,7 +341,7 @@
           ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">👑 LIVE OWNER SUPPORT TEAM:</strong>' 
           : (isCustomer ? '' : '<strong style="display:block; font-size:0.85rem; color:#00a651 !important; margin-bottom:0.4rem; font-weight:900;">🤖 MOUNT2OCEAN AI ASSISTANT:</strong>');
 
-        div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.8; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
+        div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.85; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
         container.appendChild(div);
       });
 
@@ -360,14 +358,33 @@
       const input = document.getElementById('pageAiInput');
       if (!input || !input.value.trim()) return false;
 
-      const query = input.value.trim();
+      const userText = input.value.trim();
       input.value = '';
 
+      const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      let msgs = getStoredChatMsgs();
+      
+      // 1. Instantly append Customer Message
+      msgs.push({ sender: 'customer', text: userText, time: timeStr });
+      saveStoredChatMsgs(msgs);
+      window.renderPageAiChat();
+
+      // 2. Delegate to Global AI Knowledge Base Engine or local fallback
       if (window.processCustomerAiQuery) {
-        window.processCustomerAiQuery(query);
+        window.processCustomerAiQuery(userText);
+      } else {
+        setTimeout(() => {
+          let currentMsgs = getStoredChatMsgs();
+          currentMsgs.push({
+            sender: 'bot',
+            text: `🤖 আপনার প্রশ্নটি পেয়েছি! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ২৬টি দেশের ভিসা প্রসেসিং সার্ভিস বিদ্যমান।\n\n📞 হটলাইন: +880 1977-477172`,
+            time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+          });
+          saveStoredChatMsgs(currentMsgs);
+          window.renderPageAiChat();
+        }, 300);
       }
 
-      window.renderPageAiChat();
       setTimeout(window.renderPageAiChat, 450);
       return false;
     };
