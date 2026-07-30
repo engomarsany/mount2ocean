@@ -75,7 +75,7 @@ window.defaultPackages = [
 
 window.getCombinedLivePackages = function() {
   let live = [];
-  const pkgVersion = 'v5_exact_2_live_packages';
+  const pkgVersion = 'v6_force_2_live_packages_always';
   const savedVersion = localStorage.getItem('m2o_pkg_version');
 
   if (savedVersion !== pkgVersion) {
@@ -89,7 +89,7 @@ window.getCombinedLivePackages = function() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed) && parsed.length >= 2) {
         live = parsed;
       } else {
         live = [...window.defaultPackages];
@@ -101,6 +101,11 @@ window.getCombinedLivePackages = function() {
     live = [...window.defaultPackages];
   }
 
+  if (!Array.isArray(live) || live.length < 2) {
+    live = [...window.defaultPackages];
+  }
+
+  localStorage.setItem('m2o_pkg_version', pkgVersion);
   localStorage.setItem('m2o_live_packages', JSON.stringify(live));
   return live;
 };

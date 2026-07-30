@@ -346,13 +346,20 @@
       const countEl = document.getElementById('catalogTotalCount');
       if (!grid) return;
 
-      const masterCatalog = (allPkgs && allPkgs.length > 0) ? allPkgs : (window.getCombinedLivePackages ? window.getCombinedLivePackages() : []);
-      let displayPkgs = Array.isArray(list) ? list : masterCatalog;
+      let masterCatalog = (allPkgs && Array.isArray(allPkgs) && allPkgs.length >= 2) ? allPkgs : (window.getCombinedLivePackages ? window.getCombinedLivePackages() : []);
+      if (!masterCatalog || masterCatalog.length === 0) {
+        masterCatalog = window.defaultPackages || [];
+      }
+
+      let displayPkgs = (Array.isArray(list) && list.length > 0) ? list : masterCatalog;
+      if (!rawSearchQuery && (!list || list.length === 0)) {
+        displayPkgs = masterCatalog;
+      }
 
       if (countEl) countEl.textContent = displayPkgs.length;
       grid.innerHTML = '';
 
-      if (displayPkgs.length === 0) {
+      if (rawSearchQuery && Array.isArray(list) && list.length === 0) {
         if (countEl) countEl.textContent = '0';
 
         const missingCard = document.createElement('div');
@@ -361,10 +368,10 @@
           <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.08) 100%); border: 2.5px dashed #f59e0b; border-radius: 20px; padding: 2.2rem; text-align: center; margin-bottom: 2.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
             <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🔍</div>
             <h3 style="font-size: 1.45rem; font-weight: 900; color: #dc2626; margin: 0 0 0.5rem;">
-              "${window.sanitizeHTML ? window.sanitizeHTML(rawSearchQuery || 'অনুরোধকৃত') : (rawSearchQuery || 'অনুরোধকৃত')}" প্যাকেজটি এখনো যুক্ত করা হয়নি!
+              "${window.sanitizeHTML ? window.sanitizeHTML(rawSearchQuery) : rawSearchQuery}" প্যাকেজটি এখনো যুক্ত করা হয়নি!
             </h3>
             <p style="font-size: 1rem; color: #475569; font-weight: 700; max-width: 680px; margin: 0 auto 1.4rem; line-height: 1.6;">
-              আপনার কাঙ্ক্ষিত ট্যুর প্যাকেজটি Mount2ocean ওনার ও অ্যাডমিন প্যানেলে রিমাইন্ডার আকারে সংসংযুক্ত করা হয়েছে। অ্যাডমিন টিম খুব শীঘ্রই এটি ড্যাশবোর্ডে যোগ করবে।
+              আপনার কাঙ্ক্ষিত ট্যুর প্যাকেজটি Mount2ocean ওনার ও অ্যাডমিন প্যানেলে রিমাইন্ডার আকারে সংযুক্ত করা হয়েছে। অ্যাডমিন টিম খুব শীঘ্রই এটি ড্যাশবোর্ডে যোগ করবে।
             </p>
             <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #ffffff; border: 1.5px solid #00a651; padding: 0.6rem 1.4rem; border-radius: 30px; color: #00a651; font-weight: 800; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(0,166,81,0.15);">
               <span>🔔 Logged to Admin Dashboard Notification Queue</span>
