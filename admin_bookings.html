@@ -348,7 +348,7 @@
       if (cancelEl) cancelEl.textContent = cancelled;
     }
 
-    function renderMasterBookingsDirectory(customList) {
+    window.renderMasterBookingsDirectory = function(customList) {
       const tbody = document.getElementById('masterBookingsTbody');
       const showingCountEl = document.getElementById('showingBookingsCount');
       if (!tbody) return;
