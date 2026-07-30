@@ -36,16 +36,16 @@
     }
 
     .ai-page-container {
-      max-width: 1200px;
-      margin: 2.5rem auto;
+      max-width: 1280px;
+      margin: 2rem auto;
       padding: 0 1.5rem;
       display: grid;
       grid-template-columns: 320px 1fr;
       gap: 2rem;
-      min-height: 680px;
+      min-height: 720px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .ai-page-container {
         grid-template-columns: 1fr;
         margin: 1rem auto;
@@ -55,7 +55,7 @@
     .ai-sidebar-card {
       background: #ffffff;
       border: 2px solid #cbd5e1;
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 1.5rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       display: flex;
@@ -71,42 +71,100 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      height: 680px;
+      height: 720px;
     }
 
     .ai-chat-topbar {
-      background: linear-gradient(135deg, #07111e 0%, #0072bc 100%);
-      color: #ffffff;
-      padding: 1.2rem 1.6rem;
+      background: linear-gradient(135deg, #07111e 0%, #0072bc 100%) !important;
+      color: #ffffff !important;
+      padding: 1.2rem 1.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #00f2fe;
+      border-bottom: 3px solid #00f2fe;
+    }
+
+    .ai-chat-topbar h2 {
+      color: #ffffff !important;
+      font-size: 1.3rem !important;
+      font-weight: 900 !important;
+      margin: 0 0 0.2rem 0 !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
     }
 
     .ai-chat-messages-area {
       flex: 1;
-      padding: 1.5rem;
+      padding: 1.8rem;
       overflow-y: auto;
-      background: #fafafa;
+      background: #f8fafc;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
+    /* WORLD-CLASS UI/UX INPUT BAR DESIGN */
     .ai-chat-input-form {
-      padding: 1.2rem 1.5rem;
-      background: #ffffff;
-      border-top: 2px solid #e2e8f0;
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
+      padding: 1.2rem 1.8rem !important;
+      background: #ffffff !important;
+      border-top: 2px solid #e2e8f0 !important;
+      display: flex !important;
+      gap: 1rem !important;
+      align-items: center !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .ai-chat-input-field {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 1.1rem 1.4rem !important;
+      border: 2px solid #00a651 !important;
+      border-radius: 16px !important;
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.03) !important;
+      outline: none !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .ai-chat-input-field:focus {
+      border-color: #0072bc !important;
+      box-shadow: 0 0 0 4px rgba(0,114,188,0.15) !important;
+    }
+
+    .ai-send-btn {
+      width: auto !important;
+      flex-shrink: 0 !important;
+      max-width: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.6rem !important;
+      padding: 1.1rem 2.2rem !important;
+      font-size: 1.05rem !important;
+      font-weight: 900 !important;
+      background: linear-gradient(135deg, #00a651 0%, #0072bc 100%) !important;
+      border-radius: 16px !important;
+      color: #ffffff !important;
+      border: none !important;
+      cursor: pointer !important;
+      box-shadow: 0 8px 25px rgba(0,166,81,0.4) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+      white-space: nowrap !important;
+    }
+
+    .ai-send-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 30px rgba(0,166,81,0.5) !important;
     }
 
     .chip-btn {
-      padding: 0.55rem 1rem;
+      padding: 0.65rem 1.1rem;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
       cursor: pointer;
       border: 1.5px solid #cbd5e1;
@@ -120,6 +178,7 @@
       border-color: #0072bc;
       color: #0072bc;
       background: rgba(0, 114, 188, 0.05);
+      transform: translateX(4px);
     }
   </style>
 </head>
@@ -128,20 +187,20 @@
   <!-- HEADER -->
   <header class="ai-page-header">
     <a href="customer_portal.html" class="ai-page-brand">
-      <div style="background: #ffffff; padding: 0.4rem 0.8rem; border-radius: 10px; border: 1.5px solid #00f2fe;">
-        <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 40px; width: auto; display: block;">
+      <div style="background: #ffffff; padding: 0.4rem 0.8rem; border-radius: 12px; border: 2px solid #00f2fe; box-shadow: 0 0 15px rgba(0,242,254,0.4);">
+        <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 42px; width: auto; display: block;">
       </div>
       <div>
-        <h1 style="color: #ffffff; font-size: 1.25rem; margin: 0; font-weight: 900;">Mount2ocean Travel AI Assistant</h1>
-        <span style="color: #00f2fe; font-size: 0.8rem; font-weight: 700;">🤖 24/7 Smart Travel &amp; Tour Assistance</span>
+        <h1 style="color: #ffffff !important; font-size: 1.3rem; margin: 0; font-weight: 900; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">Mount2ocean Travel AI Assistant</h1>
+        <span style="color: #00f2fe !important; font-size: 0.85rem; font-weight: 800; text-shadow: 0 0 8px rgba(0,242,254,0.8);">🤖 24/7 Smart Travel &amp; Tour Guidance</span>
       </div>
     </a>
 
     <div style="display: flex; gap: 1rem; align-items: center;">
-      <a href="customer_portal.html" class="primary-btn" style="text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.9rem; font-weight: 800; background: #0072bc; color: #ffffff; border-radius: 10px;">
+      <a href="customer_portal.html" class="primary-btn" style="text-decoration: none; padding: 0.7rem 1.3rem; font-size: 0.92rem; font-weight: 800; background: #0072bc; color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,114,188,0.3);">
         🏠 Customer Portal
       </a>
-      <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.9rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; border-radius: 10px;">
+      <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; padding: 0.7rem 1.3rem; font-size: 0.92rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,166,81,0.3);">
         📦 Tour Packages
       </a>
     </div>
@@ -152,15 +211,15 @@
     
     <!-- LEFT SIDEBAR: TOPIC QUICK CHIPS & HELPLINE -->
     <aside class="ai-sidebar-card">
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <div style="font-size: 1.8rem;">💡</div>
+      <div style="display: flex; align-items: center; gap: 0.8rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
+        <div style="font-size: 2rem;">💡</div>
         <div>
-          <h3 style="margin: 0; font-size: 1.1rem; font-weight: 900; color: #0f172a;">Quick AI Questions</h3>
-          <span style="font-size: 0.8rem; color: #64748b; font-weight: 700;">1-Click Quick Topics</span>
+          <h3 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0f172a;">Quick AI Topics</h3>
+          <span style="font-size: 0.82rem; color: #64748b; font-weight: 700;">1-Click Quick Questions</span>
         </div>
       </div>
 
-      <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.65rem;">
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('সব ট্যুর প্যাকেজ ও খরচ দেখাও')">
           📦 Browse 7 Luxury Tour Packages
         </button>
@@ -182,20 +241,20 @@
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Visa processing and flights assistance')">
           🛂 Visa Processing &amp; Flight Tickets
         </button>
-        <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626; background: rgba(239,68,68,0.05);" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">
+        <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626; background: rgba(239,68,68,0.06); font-weight: 900;" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">
           💬 Speak with Live Owner Support
         </button>
       </div>
 
       <!-- 24/7 HELPLINE BOX -->
-      <div style="background: rgba(0, 114, 188, 0.06); border: 1.5px solid rgba(0, 114, 188, 0.3); padding: 1.1rem; border-radius: 14px; margin-top: auto;">
-        <div style="font-size: 0.85rem; font-weight: 800; color: #0072bc; margin-bottom: 0.3rem;">
-          📞 24/7 Direct Call Support:
+      <div style="background: rgba(0, 114, 188, 0.08); border: 2px solid rgba(0, 114, 188, 0.3); padding: 1.2rem; border-radius: 16px; margin-top: auto;">
+        <div style="font-size: 0.88rem; font-weight: 900; color: #0072bc; margin-bottom: 0.3rem;">
+          📞 24/7 Hotline Support:
         </div>
-        <div style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin-bottom: 0.2rem;">
-          <a href="tel:+8801977477172" style="color: #0072bc; text-decoration: none;">+880 1977-477172</a>
+        <div style="font-size: 1.2rem; font-weight: 900; color: #0f172a; margin-bottom: 0.3rem;">
+          <a href="tel:+8801977477172" style="color: #0072bc; text-decoration: none; text-shadow: 0 0 10px rgba(0,242,254,0.3);">+880 1977-477172</a>
         </div>
-        <p style="font-size: 0.78rem; color: #64748b; margin: 0; font-weight: 700;">
+        <p style="font-size: 0.8rem; color: #475569; margin: 0; font-weight: 700;">
           Corporate Office: Concord Grand 4th Floor, Shantinagar, Dhaka.
         </p>
       </div>
@@ -207,16 +266,16 @@
       <!-- CHAT TOPBAR -->
       <div class="ai-chat-topbar">
         <div style="display: flex; align-items: center; gap: 1rem;">
-          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,242,254,0.4);">
+          <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 18px rgba(0,242,254,0.5);">
             🤖
           </div>
           <div>
-            <h2 style="margin: 0; font-size: 1.2rem; font-weight: 900; color: #ffffff;">Mount2ocean AI Smart Travel Assistant</h2>
-            <span style="font-size: 0.82rem; color: #00f2fe; font-weight: 800;">⚡ 24/7 Online • Real-Time AI Travel Guidance</span>
+            <h2>Mount2ocean AI Smart Travel Assistant</h2>
+            <span style="font-size: 0.85rem; color: #00f2fe !important; font-weight: 800;">⚡ 24/7 Online • Real-Time AI Travel Advisor</span>
           </div>
         </div>
 
-        <button type="button" class="primary-btn" onclick="clearPageChatHistory()" style="padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 800; background: rgba(255,255,255,0.15); color: #ffffff; border-radius: 8px;">
+        <button type="button" class="primary-btn" onclick="clearPageChatHistory()" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 800; background: rgba(255,255,255,0.18); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; cursor: pointer;">
           🧹 Clear Chat
         </button>
       </div>
@@ -226,11 +285,12 @@
         <!-- Rendered via renderPageAiChat() -->
       </div>
 
-      <!-- CHAT INPUT FORM -->
+      <!-- WORLD-CLASS REDESIGNED CHAT INPUT FORM -->
       <form onsubmit="handlePageAiSubmit(event)" class="ai-chat-input-form">
-        <input type="text" id="pageAiInput" placeholder="Ask anything about packages, pricing, bKash, flights..." style="flex: 1; padding: 0.85rem 1.2rem; border: 2px solid #cbd5e1; border-radius: 14px; font-size: 0.98rem; font-weight: 700; color: #0f172a; outline: none;" required>
-        <button type="submit" class="primary-btn" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 14px; color: #ffffff; box-shadow: 0 6px 20px rgba(0,166,81,0.3);">
-          Send Message ➔
+        <input type="text" id="pageAiInput" class="ai-chat-input-field" placeholder="Ask anything about tour packages, pricing, bKash, flights..." required>
+        <button type="submit" class="ai-send-btn">
+          <span>Send Message</span>
+          <span style="font-size: 1.2rem;">➔</span>
         </button>
       </form>
 
@@ -248,16 +308,36 @@
       const msgs = window.getAiChatMessages ? window.getAiChatMessages() : [];
       container.innerHTML = '';
 
+      if (msgs.length === 0) {
+        container.innerHTML = `
+          <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; text-align: center; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+            <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🤖</div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
+              Welcome to Mount2ocean AI Travel Assistant!
+            </h3>
+            <p style="font-size: 0.95rem; color: #64748b; font-weight: 700; line-height: 1.6; margin-bottom: 1.5rem;">
+              আমি আপনার ২৪/৭ ভার্চুয়াল ট্রাভেল গাইড। সিলেট চা বাগান, ভুটান হাইক, দুবাই সাফারি, মালদ্বীপ রিসোর্ট, বিকাশ পেমেন্ট অথবা যেকোনো প্রশ্ন নিচে টাইপ করুন!
+            </p>
+            <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="chip-btn" onclick="sendPageQuickQuery('সব ট্যুর প্যাকেজ ও খরচ দেখাও')">📦 View All Packages</button>
+              <button type="button" class="chip-btn" onclick="sendPageQuickQuery('bKash এবং পেমেন্ট প্রসেস কেমন?')">💳 bKash Payment</button>
+              <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626;" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">💬 Speak Live Support</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
       msgs.forEach(m => {
         const div = document.createElement('div');
         div.style.cssText = m.sender === 'customer'
-          ? `align-self: flex-end; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.9rem 1.2rem; border-radius: 16px 16px 2px 16px; max-width: 78%; font-size: 0.95rem; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,166,81,0.25);`
+          ? `align-self: flex-end; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 1rem 1.4rem; border-radius: 18px 18px 2px 18px; max-width: 78%; font-size: 1rem; line-height: 1.55; box-shadow: 0 4px 18px rgba(0,166,81,0.25);`
           : (m.sender === 'admin'
-            ? `align-self: flex-start; background: #0f172a; color: #00f2fe; border: 2px solid #00f2fe; padding: 0.9rem 1.2rem; border-radius: 16px 16px 16px 2px; max-width: 78%; font-size: 0.95rem; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,242,254,0.2);`
-            : `align-self: flex-start; background: #ffffff; color: #0f172a; padding: 0.9rem 1.2rem; border-radius: 16px 16px 16px 2px; max-width: 78%; font-size: 0.95rem; line-height: 1.5; border: 1.5px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.05);`);
+            ? `align-self: flex-start; background: #0f172a; color: #00f2fe; border: 2px solid #00f2fe; padding: 1rem 1.4rem; border-radius: 18px 18px 18px 2px; max-width: 78%; font-size: 1rem; line-height: 1.55; box-shadow: 0 4px 18px rgba(0,242,254,0.25);`
+            : `align-self: flex-start; background: #ffffff; color: #0f172a; padding: 1rem 1.4rem; border-radius: 18px 18px 18px 2px; max-width: 78%; font-size: 1rem; line-height: 1.55; border: 1.5px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.05);`);
 
-        const prefix = m.sender === 'admin' ? '<strong style="display:block; font-size:0.8rem; color:#00f2fe; margin-bottom:0.3rem;">👑 LIVE OWNER SUPPORT TEAM:</strong>' : '';
-        div.innerHTML = `${prefix}<span>${m.text.replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.72rem; opacity:0.75; margin-top:0.4rem;">${m.time}</span>`;
+        const prefix = m.sender === 'admin' ? '<strong style="display:block; font-size:0.82rem; color:#00f2fe; margin-bottom:0.3rem;">👑 LIVE OWNER SUPPORT TEAM:</strong>' : '';
+        div.innerHTML = `${prefix}<span>${m.text.replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.75; margin-top:0.4rem;">${m.time}</span>`;
         container.appendChild(div);
       });
 
