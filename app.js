@@ -28,6 +28,36 @@ window.applySavedTheme = function() {
   window.updateThemeToggleUI('light');
 };
 
+// ==========================================
+// WORLD-CLASS SECURITY HARDENING ENGINE (XSS, SANITIZATION & RATE-LIMITING)
+// ==========================================
+window.sanitizeHTML = function(str) {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
+// Rate Limiter against Brute-Force & Bot Spam
+window.SecurityRateLimiter = {
+  attempts: {},
+  check: function(key, maxLimit = 5, windowMs = 60000) {
+    const now = Date.now();
+    if (!this.attempts[key]) {
+      this.attempts[key] = [];
+    }
+    this.attempts[key] = this.attempts[key].filter(t => now - t < windowMs);
+    if (this.attempts[key].length >= maxLimit) {
+      return false; // Blocked
+    }
+    this.attempts[key].push(now);
+    return true; // Allowed
+  }
+};
+
 // Immediate & DOMContentLoaded fail-safe theme application
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', window.applySavedTheme);
@@ -51,14 +81,11 @@ window.getCombinedLivePackages = function() {
     live = [];
   }
 
-  const oldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7'];
+  const oldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7', 'pkg-coxsbazar', 'pkg-dubai', 'pkg-maldives', 'pkg-saintmartin'];
   live = live.filter(p => !oldIds.includes(p.id));
 
-  if (!live.some(p => p.id === 'pkg-bhutan')) {
-    live.unshift(window.defaultPackages[0]);
-  }
-  if (!live.some(p => p.id === 'pkg-bali-4d3n')) {
-    live.push(window.defaultPackages[1]);
+  if (live.length === 0) {
+    live = [...window.defaultPackages];
   }
 
   localStorage.setItem('m2o_live_packages', JSON.stringify(live));
@@ -1454,9 +1481,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const revenueEl = document.getElementById('statTotalRevenue');
     const agentsCountEl = document.getElementById('statRegisteredAgentsCount');
 
-    if (pkgCountEl && window.getCombinedLivePackages) {
-      const pkgs = window.getCombinedLivePackages();
-      pkgCountEl.textContent = pkgs.length;
+    let currentPkgs = JSON.parse(localStorage.getItem('m2o_live_packages'));
+    if (!currentPkgs || currentPkgs.length === 0) {
+      currentPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
+    } else {
+      const oldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7', 'pkg-coxsbazar', 'pkg-dubai', 'pkg-maldives', 'pkg-saintmartin'];
+      currentPkgs = currentPkgs.filter(p => !oldIds.includes(p.id));
+    }
+
+    if (pkgCountEl) {
+      pkgCountEl.textContent = currentPkgs.length.toLocaleString('en-US');
     }
 
     const customerBookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
@@ -1468,7 +1502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (revenueEl) {
       let totalRev = 0;
       customerBookings.forEach(b => {
-        if (b.status === 'APPROVED' || b.status === 'CONFIRMED' || !b.status) {
+        if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
           const rawPrice = b.price || b.amount || '0';
           const num = parseInt(String(rawPrice).replace(/[^0-9]/g, ''), 10);
           if (!isNaN(num) && num > 0) {
@@ -2484,6 +2518,17 @@ function checkCustomerBookingNotifications() {
   };
 
   function init() {
+    // Purge old mock sample packages from localStorage so exact live package count (e.g. 2) is displayed
+    let savedPkgs = JSON.parse(localStorage.getItem('m2o_live_packages')) || [];
+    const mockOldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7', 'pkg-coxsbazar', 'pkg-dubai', 'pkg-maldives', 'pkg-saintmartin'];
+    if (savedPkgs.some(p => mockOldIds.includes(p.id))) {
+      savedPkgs = savedPkgs.filter(p => !mockOldIds.includes(p.id));
+      if (savedPkgs.length === 0) {
+        savedPkgs = [...window.defaultPackages];
+      }
+      localStorage.setItem('m2o_live_packages', JSON.stringify(savedPkgs));
+    }
+
     // Clear out any old sample mock sales history if present
     let savedBk = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
     if (savedBk.some(b => b.id === 'M2O-BK-99482' || b.id === 'M2O-BK-81723')) {
