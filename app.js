@@ -70,12 +70,17 @@ if (document.readyState === 'loading') {
 // ==========================================
 window.defaultPackages = [
   { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
-  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" }
+  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
+  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: '⭐ 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
+  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
+  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
+  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '৳12,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
+  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '৳42,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
 ];
 
 window.getCombinedLivePackages = function() {
   let live = [];
-  const pkgVersion = 'v6_force_2_live_packages_always';
+  const pkgVersion = 'v7_ai_decision_search_engine';
   const savedVersion = localStorage.getItem('m2o_pkg_version');
 
   if (savedVersion !== pkgVersion) {
@@ -270,21 +275,22 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
     localStorage.setItem('m2o_ai_agent_search_logs', JSON.stringify(logs));
   } catch(e){}
 
-  // ROUTING LOGIC (Instant <100ms Tour Packages Search & Redirect):
+  // AI AGENT SEARCH DECISION ROUTING:
   window.m2oIsSearching = false;
 
   if (matchedPkg) {
+    // Decision 1: Package Exists -> Open the exact package details page directly!
     localStorage.setItem('m2o_active_detail_pkg_id', matchedPkg.id);
-    window.location.href = `tour_packages.html?search=${encodeURIComponent(matchedPkg.name)}&cat=${matchedPkg.category || 'all'}`;
+    window.location.href = `package_detail.html?id=${matchedPkg.id}&date=${encodeURIComponent(selectedDate)}&ai_matched=1`;
     return matchedPkg;
   }
 
-  // Case B: No Direct Match -> Log search to Admin requested queue & show search on tour_packages.html
+  // Decision 2: Package Missing -> Log to Admin missing requests queue & stay on tour_packages.html showing notification!
   if (rawQuery && window.logMissingPackageSearch) {
     window.logMissingPackageSearch(rawQuery);
   }
 
-  window.location.href = rawQuery ? `tour_packages.html?search=${encodeURIComponent(rawQuery)}` : 'tour_packages.html';
+  window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}&cat=all`;
   return null;
 };
 
