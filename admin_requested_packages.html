@@ -218,6 +218,43 @@
           </tbody>
         </table>
       </div>
+    <!-- HIDDEN AI TOUR RECOMMENDATION AGENT AUDIT CONSOLE -->
+    <div style="background: #ffffff; border: 2px solid #00a651; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,166,81,0.1); margin-top: 2.5rem; overflow: hidden;">
+      <div style="padding: 1.2rem 1.5rem; background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff !important; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+            🤖 Hidden AI Search Recommendation Agent Console (অদৃশ্য AI এজেন্ট অডিট লগ)
+          </h3>
+          <span style="font-size: 0.8rem; color: #00f2fe !important; font-weight: 700;">
+            100% Background AI Intent Analyzer • Customer UI is 100% Clean & Invisible
+          </span>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <span style="font-size: 0.8rem; font-weight: 800; background: #00a651; color: #ffffff; padding: 0.35rem 0.85rem; border-radius: 999px;">
+            ⚡ AI Mode: Smart Fuzzy Intent (Active)
+          </span>
+          <button onclick="clearAiSearchLogs()" class="secondary-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; background: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.4); font-weight: 800;">
+            Clear AI Logs
+          </button>
+        </div>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-size: 0.82rem; font-weight: 900; color: #475569; text-transform: uppercase;">
+              <th style="padding: 0.9rem 1.2rem;">Customer Prompt</th>
+              <th style="padding: 0.9rem 1.2rem;">Timestamp</th>
+              <th style="padding: 0.9rem 1.2rem;">AI Matched Package</th>
+              <th style="padding: 0.9rem 1.2rem;">AI Confidence</th>
+              <th style="padding: 0.9rem 1.2rem; text-align: right;">AI Decision Route</th>
+            </tr>
+          </thead>
+          <tbody id="aiLogTableBody">
+            <!-- Dynamic AI Log Rows -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </main>
@@ -348,6 +385,68 @@
         renderRequestedPackagesTable();
       }
     }
+
+    function renderAiAgentLogsTable() {
+      const tbody = document.getElementById('aiLogTableBody');
+      if (!tbody) return;
+      
+      let logs = [];
+      try { logs = JSON.parse(localStorage.getItem('m2o_ai_agent_search_logs')) || []; } catch(e){}
+
+      tbody.innerHTML = '';
+      if (logs.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 2.5rem; color: #64748b; font-weight: 700;">
+              🤖 No AI search evaluation logs logged yet. Perform a search in Find Tours to test the AI Agent!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      logs.slice(0, 20).forEach(log => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e2e8f0';
+
+        const isMatch = log.status === 'MATCHED';
+        const badgeColor = isMatch ? '#00a651' : '#f97316';
+        const badgeText = isMatch ? '✅ MATCHED & REDIRECTED' : '⚠️ UNMATCHED (SHOWED ALL PACKAGES)';
+
+        tr.innerHTML = `
+          <td style="padding: 0.9rem 1.2rem; font-weight: 800; color: #0f172a;">
+            🔍 "${window.sanitizeHTML ? window.sanitizeHTML(log.query) : log.query}"
+          </td>
+          <td style="padding: 0.9rem 1.2rem; font-weight: 700; color: #64748b; font-size: 0.85rem;">
+            ⏱️ ${log.timestamp}
+          </td>
+          <td style="padding: 0.9rem 1.2rem; font-weight: 800; color: #0072bc; font-size: 0.92rem;">
+            ${log.matchedPkgName}
+          </td>
+          <td style="padding: 0.9rem 1.2rem; font-weight: 900; color: ${badgeColor}; font-size: 0.9rem;">
+            ⚡ ${log.confidence}
+          </td>
+          <td style="padding: 0.9rem 1.2rem; text-align: right;">
+            <span style="background: ${badgeColor}; color: white; padding: 0.3rem 0.75rem; border-radius: 999px; font-weight: 800; font-size: 0.75rem;">
+              ${badgeText}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function clearAiSearchLogs() {
+      if (confirm('Clear background AI Agent search logs?')) {
+        localStorage.removeItem('m2o_ai_agent_search_logs');
+        renderAiAgentLogsTable();
+      }
+    }
+
+    // Call renderAiAgentLogsTable on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAiAgentLogsTable();
+    });
   </script>
 
   <!-- 🌐 REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->

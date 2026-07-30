@@ -161,6 +161,132 @@ window.logMissingPackageSearch = function(rawQuery) {
   window.dispatchEvent(new CustomEvent('m2o_searches_updated', { detail: searches }));
 };
 
+// ==========================================
+// HIDDEN INVISIBLE AI TOUR RECOMMENDATION AGENT ENGINE
+// (Background AI intent analyzer for Find Tours)
+// ==========================================
+window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') {
+  if (!userPrompt || !userPrompt.trim()) {
+    window.location.href = 'tour_packages.html';
+    return null;
+  }
+
+  const rawQuery = userPrompt.trim();
+  const lowerQuery = rawQuery.toLowerCase();
+  
+  let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+  cleanQuery = cleanQuery.replace(/\bBT\b/gi, '').trim().toLowerCase();
+
+  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+
+  let matchedPkg = null;
+  let matchConfidence = 0;
+  let matchReason = '';
+
+  // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
+  const destMap = {
+    'sylhet': ['sylhet', 'সিলেট', 'jaflong', 'জাফলং', 'ratargul', 'রাতারগুল', 'tea garden', 'চা বাগান'],
+    'nepal': ['nepal', 'নেপাল', 'kathmandu', 'কাঠমান্ডু', 'pokhara', 'পোখরা', 'annapurna', 'himalaya', 'হিমালয়'],
+    'coxsbazar': ['cox', 'কক্সবাজার', 'saint martin', 'সেন্টমার্টিন', 'sea beach', 'সমুদ্র', 'kolatoli', 'কোলাতলী'],
+    'dubai': ['dubai', 'দুবাই', 'burj', 'বুর্জ', 'safari', 'সাফারি', 'dhow cruise', 'মেরিনা'],
+    'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট'],
+    'bhutan': ['bhutan', 'ভুটান', 'tiger', 'nest', 'paro', 'thimphu', 'পারো', 'থিম্পু'],
+    'bali': ['bali', 'বালি', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', 'উবুদ']
+  };
+
+  for (const [catKey, keywords] of Object.entries(destMap)) {
+    if (keywords.some(kw => lowerQuery.includes(kw) || cleanQuery.includes(kw))) {
+      matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === catKey || p.id.includes(catKey));
+      if (matchedPkg) {
+        matchConfidence = 0.98;
+        matchReason = `Direct category AI match for '${catKey}'`;
+        break;
+      }
+    }
+  }
+
+  // 2. Semantic Theme & Intent Matching (Mountain, Beach, Luxury, Tea, Temple, Desert)
+  if (!matchedPkg) {
+    const themeMap = [
+      { keywords: ['mountain', 'pahar', 'পাহাড়', 'hike', 'trek', 'snow'], category: 'nepal' },
+      { keywords: ['tea', 'green', 'rainforest', 'swamp'], category: 'sylhet' },
+      { keywords: ['beach', 'ocean', 'sea', 'bengal', 'coral'], category: 'coxsbazar' },
+      { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon'], category: 'maldives' },
+      { keywords: ['desert', 'skyscraper', 'shopping', 'burj'], category: 'dubai' },
+      { keywords: ['culture', 'temple', 'peace', 'monastery'], category: 'bhutan' },
+      { keywords: ['island', 'swing', 'volcano', 'sunset'], category: 'bali' }
+    ];
+
+    for (const theme of themeMap) {
+      if (theme.keywords.some(kw => lowerQuery.includes(kw))) {
+        matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === theme.category);
+        if (matchedPkg) {
+          matchConfidence = 0.90;
+          matchReason = `Theme intent AI match for '${theme.category}'`;
+          break;
+        }
+      }
+    }
+  }
+
+  // 3. Substring & Multi-word Keyword Fuzzy Matching
+  if (!matchedPkg) {
+    matchedPkg = livePkgs.find(p => p.name.toLowerCase().includes(lowerQuery) || lowerQuery.includes(p.name.toLowerCase()));
+    if (matchedPkg) {
+      matchConfidence = 0.85;
+      matchReason = 'Title substring match';
+    }
+  }
+
+  if (!matchedPkg) {
+    const words = lowerQuery.replace(/[^\w\s]/gi, ' ').split(/\s+/).filter(w => w.length >= 3);
+    if (words.length > 0) {
+      matchedPkg = livePkgs.find(p => {
+        const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
+        return words.some(w => haystack.includes(w));
+      });
+      if (matchedPkg) {
+        matchConfidence = 0.75;
+        matchReason = 'Multi-word fuzzy match';
+      }
+    }
+  }
+
+  // Log to Admin AI Search Console
+  const aiLog = {
+    id: 'AI-SEARCH-' + Date.now(),
+    query: rawQuery,
+    timestamp: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}),
+    matchedPkgId: matchedPkg ? matchedPkg.id : null,
+    matchedPkgName: matchedPkg ? matchedPkg.name : 'No Match (Showing All Packages)',
+    confidence: Math.round(matchConfidence * 100) + '%',
+    status: matchedPkg ? 'MATCHED' : 'FALLBACK_ALL'
+  };
+
+  try {
+    let logs = JSON.parse(localStorage.getItem('m2o_ai_agent_search_logs')) || [];
+    logs.unshift(aiLog);
+    if (logs.length > 100) logs = logs.slice(0, 100);
+    localStorage.setItem('m2o_ai_agent_search_logs', JSON.stringify(logs));
+  } catch(e){}
+
+  // ROUTING LOGIC:
+  // Case A: Package Match Found -> Redirect directly to dedicated detail page
+  if (matchedPkg) {
+    localStorage.setItem('m2o_active_detail_pkg_id', matchedPkg.id);
+    window.location.href = `package_detail.html?id=${matchedPkg.id}&date=${encodeURIComponent(selectedDate)}&ai_redirect=1`;
+    return matchedPkg;
+  }
+
+  // Case B: No Direct Match -> Log search to Admin requested queue & show ALL packages
+  if (window.logMissingPackageSearch) {
+    window.logMissingPackageSearch(rawQuery);
+  }
+
+  window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}`;
+  return null;
+};
+
 window.executeFindToursSearch = function() {
   try {
     const searchInput = document.getElementById('custSearchInput');
@@ -169,54 +295,11 @@ window.executeFindToursSearch = function() {
 
     let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
     if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
-    
-    let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
-    cleanQuery = cleanQuery.replace(/\bBT\b/gi, '').trim().toLowerCase();
     let selectedDate = dateInput ? dateInput.value : '2026-08-10';
 
-    const packages = window.getCombinedLivePackages();
-    let targetPkg = null;
-
-    if (cleanQuery || rawQuery) {
-      const fullRaw = rawQuery.toLowerCase();
-      
-      // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
-      const categories = ['sylhet', 'nepal', 'bhutan', 'dubai', 'coxsbazar', 'maldives', 'bali'];
-      for (const cat of categories) {
-        if (fullRaw.includes(cat) || cleanQuery.includes(cat)) {
-          targetPkg = packages.find(p => (p.category || '').toLowerCase() === cat || p.id.includes(cat));
-          if (targetPkg) break;
-        }
-      }
-
-      // 2. Substring Name matching
-      if (!targetPkg && cleanQuery) {
-        targetPkg = packages.find(p => p.name.toLowerCase().includes(cleanQuery) || cleanQuery.includes(p.name.toLowerCase()));
-      }
-
-      // 3. Multi-word keyword matching
-      if (!targetPkg && cleanQuery) {
-        const words = cleanQuery.split(/\s+/);
-        targetPkg = packages.find(p => {
-          const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
-          return words.some(w => w.length > 2 && haystack.includes(w));
-        });
-      }
-    }
-
-    if (targetPkg) {
-      localStorage.setItem('m2o_active_detail_pkg_id', targetPkg.id);
-      window.location.href = `package_detail.html?id=${targetPkg.id}&date=${selectedDate}`;
-      return;
-    }
-
-    if (rawQuery && window.logMissingPackageSearch) {
-      window.logMissingPackageSearch(rawQuery);
-    }
-
-    window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}`;
+    return window.runHiddenAiTourAgent(rawQuery, selectedDate);
   } catch (e) {
-    console.error("Search execution fallback:", e);
+    console.error("AI Search Agent error:", e);
     window.location.href = 'tour_packages.html';
   }
 };
@@ -2002,7 +2085,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const SCHEDULED_DEPARTURE_DATES = ['2026-08-10', '2026-08-15', '2026-08-20', '2026-09-01', '2026-09-15', '2026-10-01'];
 
-  // Make executeFindToursSearch globally accessible on window immediately
+  // Make executeFindToursSearch globally accessible on window immediately using Hidden AI Agent
   window.executeFindToursSearch = function() {
     try {
       const searchInput = document.getElementById('custSearchInput');
@@ -2010,55 +2093,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const dateInput = document.getElementById('custSearchDate');
 
       let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
-      // Strip out emojis and regional indicator symbols
-      let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
-      cleanQuery = cleanQuery.replace(/\bBT\b/gi, '').trim().toLowerCase();
+      if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
       let selectedDate = dateInput ? dateInput.value : '2026-08-10';
 
-      const packages = getCombinedLivePackages();
-
-      let targetPkg = null;
-
-      if (cleanQuery || rawQuery) {
-        const fullRaw = rawQuery.toLowerCase();
-        
-        // 1. Direct Bhutan match check
-        if (fullRaw.includes('bhutan') || fullRaw.includes('bt') || cleanQuery.includes('bhutan')) {
-          targetPkg = packages.find(p => p.id === 'pkg-bhutan' || (p.category || '').toLowerCase() === 'bhutan');
-        }
-
-        // 2. Direct Category/Destination matching (e.g. dubai, coxsbazar, maldives, bali, sylhet, nepal)
-        if (!targetPkg && cleanQuery) {
-          targetPkg = packages.find(p => cleanQuery.includes((p.category || '').toLowerCase()) || (p.category || '').toLowerCase().includes(cleanQuery));
-        }
-
-        // 3. Substring Name matching
-        if (!targetPkg && cleanQuery) {
-          targetPkg = packages.find(p => p.name.toLowerCase().includes(cleanQuery) || cleanQuery.includes(p.name.toLowerCase()));
-        }
-
-        // 4. Multi-word keyword matching
-        if (!targetPkg && cleanQuery) {
-          const words = cleanQuery.split(/\s+/);
-          targetPkg = packages.find(p => {
-            const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
-            return words.some(w => w.length > 2 && haystack.includes(w));
-          });
-        }
-      }
-
-      // If a package match is found ➔ INSTANTLY REDIRECT TO THAT PACKAGE'S DEDICATED PAGE!
-      if (targetPkg) {
-        localStorage.setItem('m2o_active_detail_pkg_id', targetPkg.id);
-        window.location.href = 'package_detail.html';
-        return;
-      }
-
-      // If no match found OR empty query ➔ INSTANTLY REDIRECT TO ALL PACKAGES CATALOG PAGE!
-      window.location.href = `all_packages.html?search=${encodeURIComponent(rawQuery)}`;
+      return window.runHiddenAiTourAgent(rawQuery, selectedDate);
     } catch (e) {
-      console.error("Search execution fallback:", e);
-      window.location.href = 'all_packages.html';
+      console.error("AI Search Agent fallback:", e);
+      window.location.href = 'tour_packages.html';
     }
   };
 
