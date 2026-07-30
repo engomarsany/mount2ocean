@@ -278,7 +278,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=tour_pkg_footer_fixed"></script>
+  <script src="app.js?v=package_render_sync_fix"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -303,21 +303,27 @@
       if (catSelect) {
         catSelect.addEventListener('change', filterMasterPackages);
       }
+
+      // Live cross-tab & same-tab package update listener (Add / Remove)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'm2o_live_packages') {
+          filterMasterPackages();
+        }
+      });
+      window.addEventListener('m2o_packages_updated', () => {
+        filterMasterPackages();
+      });
     });
 
     function renderMasterPackagesDirectory(filteredList) {
       const grid = document.getElementById('masterPackagesGrid');
-      const countEl = document.getElementById('masterTotalCount');
+      const countEl = document.getElementById('masterPkgCount');
       if (!grid) return;
 
       let packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
 
-      if (Array.isArray(filteredList) && filteredList.length > 0) {
+      if (Array.isArray(filteredList)) {
         packages = filteredList;
-      }
-
-      if (!packages || packages.length === 0) {
-        packages = window.defaultPackages || [];
       }
 
       if (countEl) countEl.textContent = packages.length;
@@ -379,8 +385,10 @@
     }
 
     function filterMasterPackages() {
-      const searchVal = (document.getElementById('masterPkgSearchInput').value || '').trim().toLowerCase();
-      const catVal = (document.getElementById('masterPkgCatSelect').value || 'all').toLowerCase();
+      const searchInput = document.getElementById('masterPkgSearchInput');
+      const catSelect = document.getElementById('masterPkgCatSelect');
+      const searchVal = searchInput ? (searchInput.value || '').trim().toLowerCase() : '';
+      const catVal = catSelect ? (catSelect.value || 'all').toLowerCase() : 'all';
 
       const allPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
 
@@ -398,9 +406,18 @@
     }
 
     function resetMasterFilter() {
-      document.getElementById('masterPkgSearchInput').value = '';
-      document.getElementById('masterPkgCatSelect').value = 'all';
-      renderMasterPackagesDirectory();
+      const searchInput = document.getElementById('masterPkgSearchInput');
+      const catSelect = document.getElementById('masterPkgCatSelect');
+      if (searchInput) searchInput.value = '';
+      if (catSelect) catSelect.value = 'all';
+
+      // Clear search/q/cat query parameters from URL
+      if (window.history.replaceState) {
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+      }
+
+      filterMasterPackages();
     }
   </script>
   <!-- 🌐 REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->

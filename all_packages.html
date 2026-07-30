@@ -359,7 +359,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=single_footer_fix"></script>
+  <script src="app.js?v=package_render_sync_fix"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -384,6 +384,16 @@
       if (catSelect) {
         catSelect.addEventListener('change', filterCatalogPackages);
       }
+
+      // Live cross-tab & same-tab package update listener (Add / Remove)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'm2o_live_packages') {
+          filterCatalogPackages();
+        }
+      });
+      window.addEventListener('m2o_packages_updated', () => {
+        filterCatalogPackages();
+      });
     });
 
     function renderCatalogPackages(list) {
@@ -393,12 +403,8 @@
 
       let packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
 
-      if (Array.isArray(list) && list.length > 0) {
+      if (Array.isArray(list)) {
         packages = list;
-      }
-
-      if (!packages || packages.length === 0) {
-        packages = window.defaultPackages || [];
       }
 
       if (countEl) countEl.textContent = packages.length;
