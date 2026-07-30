@@ -272,7 +272,12 @@
             <p>View all customer booking reservations, phone numbers, payment options, and voucher IDs.</p>
           </div>
         </div>
-        <button type="button" class="secondary-btn" id="btnClearBookings" onclick="clearAllBookingsHandler()">Clear Bookings</button>
+        <div style="display: flex; gap: 0.8rem; align-items: center;">
+          <a href="admin_bookings.html" class="primary-btn" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3); display: inline-flex; align-items: center; gap: 0.4rem;">
+            Open Full Bookings Master Page ➔
+          </a>
+          <button type="button" class="secondary-btn" id="btnClearBookings" onclick="clearAllBookingsHandler()">Clear Bookings</button>
+        </div>
       </div>
 
       <!-- LIVE NOTIFICATION ALERT BANNER FOR UNAPPROVED BOOKINGS -->

@@ -1398,13 +1398,60 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // OWNER ADMIN CUSTOMER BOOKINGS LISTING
   // ==========================================
-  const defaultCustomerBookings = [];
+  const defaultCustomerBookings = [
+    {
+      id: 'M2O-BK-88491',
+      customerName: 'Sharmin Chowdhury',
+      phone: '01977477172',
+      email: 'sharmin@gmail.com',
+      passportNo: 'A09827364',
+      passportExpiry: '2029-11-15',
+      nid: '1992269182374',
+      travelDate: '2026-08-10',
+      tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
+      price: '৳1,50,000',
+      amount: '৳1,50,000',
+      travelersCount: '2 Adults',
+      adults: 2,
+      children: 0,
+      infants: 0,
+      paymentMethod: 'bKash Online Payment',
+      notes: 'Window seats requested on Paro flight',
+      date: '2026-07-29',
+      status: 'PENDING'
+    },
+    {
+      id: 'M2O-BK-73920',
+      customerName: 'Arif Ahmed',
+      phone: '01812345678',
+      email: 'arif.ahmed@gmail.com',
+      passportNo: 'B01928374',
+      passportExpiry: '2030-05-20',
+      nid: '1988123456789',
+      travelDate: '2026-08-15',
+      tourTitle: 'BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports',
+      price: '৳35,000',
+      amount: '৳35,000',
+      travelersCount: '2 Adults',
+      adults: 2,
+      children: 0,
+      infants: 0,
+      paymentMethod: 'Nagad Mobile Banking',
+      notes: 'Honeymoon arrangement requested',
+      date: '2026-07-28',
+      status: 'APPROVED'
+    }
+  ];
 
   window.renderAdminBookings = function() {
     const adminBookingsTbody = document.getElementById('adminBookingsTbody');
     if (!adminBookingsTbody) return;
 
-    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
+    if (!bookings || bookings.length === 0) {
+      bookings = defaultCustomerBookings;
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+    }
 
     const pendingCount = bookings.filter(b => b.status === 'PENDING').length;
     const alertBanner = document.getElementById('adminBookingAlertBanner');
@@ -2529,10 +2576,10 @@ function checkCustomerBookingNotifications() {
       localStorage.setItem('m2o_live_packages', JSON.stringify(savedPkgs));
     }
 
-    // Clear out any old sample mock sales history if present
-    let savedBk = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
-    if (savedBk.some(b => b.id === 'M2O-BK-99482' || b.id === 'M2O-BK-81723')) {
-      savedBk = savedBk.filter(b => b.id !== 'M2O-BK-99482' && b.id !== 'M2O-BK-81723');
+    // Seed active customer bookings if list is empty
+    let savedBk = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
+    if (!savedBk || savedBk.length === 0 || savedBk.some(b => b.id === 'M2O-BK-99482' || b.id === 'M2O-BK-81723')) {
+      savedBk = defaultCustomerBookings;
       localStorage.setItem('m2o_customer_bookings', JSON.stringify(savedBk));
     }
 

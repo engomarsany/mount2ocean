@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Bookings Master Directory • Mount2ocean Admin Owner Panel</title>
+  
+  <!-- Security & Performance Meta Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- Inter & Outfit Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Premium World-Class Admin Dashboard Layout Overrides */
+    .admin-bookings-header {
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
+      border-bottom: 2px solid var(--bg-glass-border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .admin-metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.4rem;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .metric-card.green { border-left: 5px solid #00a651; }
+    .metric-card.yellow { border-left: 5px solid #eab308; }
+    .metric-card.blue { border-left: 5px solid #0072bc; }
+    .metric-card.red { border-left: 5px solid #ef4444; }
+
+    .metric-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+    }
+
+    .metric-icon-badge.green-bg { background: rgba(0, 166, 81, 0.12); color: #00a651; }
+    .metric-icon-badge.yellow-bg { background: rgba(234, 179, 8, 0.12); color: #eab308; }
+    .metric-icon-badge.blue-bg { background: rgba(0, 114, 188, 0.12); color: #0072bc; }
+    .metric-icon-badge.red-bg { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+    .master-toolbar {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toolbar-search-box {
+      flex: 1 1 320px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+    }
+
+    .toolbar-search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+      width: 100%;
+    }
+
+    .toolbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .toolbar-select {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+    }
+  </style>
+</head>
+<body class="admin-portal-body">
+
+  <!-- OWNER TOP HEADER BAR -->
+  <header class="admin-bookings-header">
+    <div style="display: flex; align-items: center; gap: 1.2rem;">
+      <a href="admin_dashboard.html" title="Return to Owner Dashboard">
+        <img src="assets/official_logo.png" alt="Mount2ocean Logo" style="height: 40px;">
+      </a>
+      <div>
+        <span class="badge-tag" style="background: #00a651; color: white; padding: 0.2rem 0.6rem; font-size: 0.72rem; font-weight: 800;">OWNER CONTROL PANEL</span>
+        <h1 style="font-size: 1.35rem; font-weight: 900; color: #ffffff !important; margin: 0.1rem 0 0;">Customer Bookings Master Directory</h1>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="admin_dashboard.html" class="secondary-btn" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: 800; font-size: 0.88rem; border-radius: 8px;">
+        ← Back to Dashboard Overview
+      </a>
+      <a href="customer_portal.html" target="_blank" class="primary-btn" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: 800; font-size: 0.88rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 8px;">
+        Live Customer Website ➔
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN MASTER BOOKINGS CONTAINER -->
+  <main style="max-width: 1380px; margin: 2rem auto; padding: 0 1.5rem 4rem;">
+
+    <!-- TOP METRICS OVERVIEW CARDS -->
+    <div class="admin-metrics-bar">
+      <div class="metric-card green">
+        <div class="metric-icon-badge green-bg">BKG</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOTAL BOOKINGS</span>
+          <strong id="masterTotalBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card yellow">
+        <div class="metric-icon-badge yellow-bg">WAIT</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">PENDING APPROVALS</span>
+          <strong id="masterPendingBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #d97706;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card blue">
+        <div class="metric-icon-badge blue-bg">REV</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">CONFIRMED REVENUE</span>
+          <strong id="masterConfirmedRevenue" style="font-size: 1.6rem; font-weight: 900; color: #0072bc;">৳0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card red">
+        <div class="metric-icon-badge red-bg">CAN</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">CANCELLED / REJECTED</span>
+          <strong id="masterCancelledBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #ef4444;">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- MASTER SEARCH & FILTER TOOLBAR -->
+    <div class="master-toolbar">
+      <div class="toolbar-search-box">
+        <input type="text" id="masterBookingSearchInput" placeholder="Search by Customer Name, Phone, Email, Voucher ID or Package..." oninput="filterMasterBookings()">
+      </div>
+
+      <div class="toolbar-controls">
+        <select id="masterStatusFilterSelect" class="toolbar-select" onchange="filterMasterBookings()">
+          <option value="ALL">All Statuses (সকল স্ট্যাটাস)</option>
+          <option value="PENDING">Pending Approval (অনুমোদনের অপেক্ষায়)</option>
+          <option value="APPROVED">Approved / Confirmed (অনুমোদিত)</option>
+          <option value="CANCELLED">Cancelled / Rejected (বাতিলকৃত)</option>
+        </select>
+
+        <select id="masterSortSelect" class="toolbar-select" onchange="filterMasterBookings()">
+          <option value="NEWEST">Sort: Newest First (সর্বশেষ বুকিং)</option>
+          <option value="OLDEST">Sort: Oldest First</option>
+        </select>
+
+        <button type="button" onclick="exportBookingsCSV()" class="secondary-btn" style="padding: 0.72rem 1.1rem; font-weight: 800; font-size: 0.88rem; border-radius: 10px;">
+          Export CSV Report
+        </button>
+
+        <button type="button" onclick="window.print()" class="secondary-btn" style="padding: 0.72rem 1.1rem; font-weight: 800; font-size: 0.88rem; border-radius: 10px;">
+          Print Master List
+        </button>
+      </div>
+    </div>
+
+    <!-- DIRECTORY TABLE CARD -->
+    <section class="admin-section" style="background: #ffffff; border-radius: 20px; padding: 1.8rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
+            Live Customer Reservations Directory (<span id="showingBookingsCount" style="color: #00a651;">0</span> Entries)
+          </h2>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 0.2rem 0 0;">
+            Real-time synchronized live booking records submitted by customers. Click Approve or Cancel to update reservation status.
+          </p>
+        </div>
+
+        <button type="button" onclick="clearAllBookingsHandler()" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 700; color: #ef4444; border-color: #fca5a5;">
+          Clear All Booking Records
+        </button>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Voucher ID</th>
+              <th>Customer Name &amp; Contact</th>
+              <th>Identity / Passport No</th>
+              <th>Reserved Tour Package &amp; Date</th>
+              <th>Travelers</th>
+              <th>Payment Option</th>
+              <th>Status</th>
+              <th>Owner Actions</th>
+            </tr>
+          </thead>
+          <tbody id="masterBookingsTbody">
+            <!-- Dynamic Master Bookings Rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMasterBookingsDirectory();
+
+      // Listen for live cross-tab changes
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'm2o_customer_bookings') {
+          renderMasterBookingsDirectory();
+        }
+      });
+    });
+
+    function getLiveBookingsList() {
+      let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
+      if (!bookings || bookings.length === 0) {
+        bookings = [
+          {
+            id: 'M2O-BK-88491',
+            customerName: 'Sharmin Chowdhury',
+            phone: '01977477172',
+            email: 'sharmin@gmail.com',
+            passportNo: 'A09827364',
+            passportExpiry: '2029-11-15',
+            nid: '1992269182374',
+            travelDate: '2026-08-10',
+            tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
+            price: '৳1,50,000',
+            amount: '৳1,50,000',
+            travelersCount: '2 Adults',
+            adults: 2,
+            children: 0,
+            infants: 0,
+            paymentMethod: 'bKash Online Payment',
+            notes: 'Window seats requested on Paro flight',
+            date: '2026-07-29',
+            status: 'PENDING'
+          },
+          {
+            id: 'M2O-BK-73920',
+            customerName: 'Arif Ahmed',
+            phone: '01812345678',
+            email: 'arif.ahmed@gmail.com',
+            passportNo: 'B01928374',
+            passportExpiry: '2030-05-20',
+            nid: '1988123456789',
+            travelDate: '2026-08-15',
+            tourTitle: 'BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports',
+            price: '৳35,000',
+            amount: '৳35,000',
+            travelersCount: '2 Adults',
+            adults: 2,
+            children: 0,
+            infants: 0,
+            paymentMethod: 'Nagad Mobile Banking',
+            notes: 'Honeymoon arrangement requested',
+            date: '2026-07-28',
+            status: 'APPROVED'
+          }
+        ];
+        localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+      }
+      return bookings;
+    }
+
+    function updateMasterMetrics(bookings) {
+      const totalEl = document.getElementById('masterTotalBookingsCount');
+      const pendingEl = document.getElementById('masterPendingBookingsCount');
+      const revEl = document.getElementById('masterConfirmedRevenue');
+      const cancelEl = document.getElementById('masterCancelledBookingsCount');
+
+      const total = bookings.length;
+      const pending = bookings.filter(b => b.status === 'PENDING').length;
+      const cancelled = bookings.filter(b => b.status === 'CANCELLED' || b.status === 'REJECTED').length;
+
+      let rev = 0;
+      bookings.forEach(b => {
+        if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
+          const rawPrice = b.price || b.amount || '0';
+          const num = parseInt(String(rawPrice).replace(/[^0-9]/g, ''), 10);
+          if (!isNaN(num) && num > 0) rev += num;
+        }
+      });
+
+      if (totalEl) totalEl.textContent = total;
+      if (pendingEl) pendingEl.textContent = pending;
+      if (revEl) revEl.textContent = '৳' + rev.toLocaleString('en-US');
+      if (cancelEl) cancelEl.textContent = cancelled;
+    }
+
+    function renderMasterBookingsDirectory(customList) {
+      const tbody = document.getElementById('masterBookingsTbody');
+      const showingCountEl = document.getElementById('showingBookingsCount');
+      if (!tbody) return;
+
+      const allBookings = customList || getLiveBookingsList();
+      updateMasterMetrics(getLiveBookingsList());
+
+      if (showingCountEl) showingCountEl.textContent = allBookings.length;
+      tbody.innerHTML = '';
+
+      if (allBookings.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3rem; color: #64748b; font-weight: 700; background: #f8fafc; border-radius: 12px;">No matching customer booking records found.</td></tr>`;
+        return;
+      }
+
+      allBookings.forEach(b => {
+        const tr = document.createElement('tr');
+
+        let statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(245, 158, 11, 0.18); color: #d97706; font-weight: 800;">PENDING</span>';
+        if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
+          statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(34, 197, 94, 0.18); color: #059669; font-weight: 800;">APPROVED</span>';
+        } else if (b.status === 'CANCELLED' || b.status === 'REJECTED') {
+          statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(239, 68, 68, 0.18); color: #dc2626; font-weight: 800;">CANCELLED</span>';
+        }
+
+        const idDocStr = b.passportNo ? `Passport: ${b.passportNo}` : (b.nid ? `NID: ${b.nid}` : 'Verified Identity');
+
+        tr.innerHTML = `
+          <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
+          <td>
+            <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${b.customerName}</strong>
+            <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">${b.phone}</a><br>
+            <span style="color: #64748b; font-size: 0.78rem;">${b.email || 'customer@mount2ocean.com'}</span>
+          </td>
+          <td><span style="font-size: 0.82rem; font-weight: 700; color: #475569;">${idDocStr}</span></td>
+          <td class="pkg-title-cell">
+            <strong style="color: #0f172a; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
+            <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">Date: ${b.travelDate || b.date}</span><br>
+            <span style="color: #00a651; font-weight: 900; font-size: 0.88rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
+          </td>
+          <td><span style="font-size: 0.85rem; font-weight: 700;">${b.travelersCount || '1 Person'}</span></td>
+          <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 800;">${b.paymentMethod || 'bKash Payment'}</span></td>
+          <td>${statusBadgeHtml}</td>
+          <td>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button type="button" class="primary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem; background: #00a651;" onclick="updateBookingStatusByAdmin('${b.id}', 'APPROVED'); renderMasterBookingsDirectory();">Approve</button>
+              <button type="button" class="danger-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="updateBookingStatusByAdmin('${b.id}', 'CANCELLED'); renderMasterBookingsDirectory();">Cancel</button>
+              <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">File ➔</button>
+              <button type="button" class="danger-btn" style="padding: 0.3rem 0.45rem; font-size: 0.74rem; background: #94a3b8;" onclick="deleteBookingRecord('${b.id}')">Del</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterMasterBookings() {
+      const searchVal = (document.getElementById('masterBookingSearchInput').value || '').trim().toLowerCase();
+      const statusVal = document.getElementById('masterStatusFilterSelect').value;
+      const sortVal = document.getElementById('masterSortSelect').value;
+
+      let list = getLiveBookingsList();
+
+      if (statusVal !== 'ALL') {
+        list = list.filter(b => b.status === statusVal);
+      }
+
+      if (searchVal) {
+        list = list.filter(b => 
+          (b.customerName || '').toLowerCase().includes(searchVal) ||
+          (b.phone || '').includes(searchVal) ||
+          (b.email || '').toLowerCase().includes(searchVal) ||
+          (b.id || '').toLowerCase().includes(searchVal) ||
+          (b.tourTitle || '').toLowerCase().includes(searchVal)
+        );
+      }
+
+      if (sortVal === 'OLDEST') {
+        list.reverse();
+      }
+
+      renderMasterBookingsDirectory(list);
+    }
+
+    function deleteBookingRecord(id) {
+      if (!confirm(`Delete booking record ${id}?`)) return;
+      let list = getLiveBookingsList();
+      list = list.filter(b => b.id !== id);
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(list));
+      renderMasterBookingsDirectory();
+    }
+
+    function exportBookingsCSV() {
+      const list = getLiveBookingsList();
+      if (list.length === 0) {
+        alert('No booking records to export!');
+        return;
+      }
+
+      let csv = 'Voucher ID,Customer Name,Phone,Email,Tour Title,Travel Date,Price,Travelers,Payment Method,Status\n';
+      list.forEach(b => {
+        csv += `"${b.id}","${b.customerName}","${b.phone}","${b.email}","${b.tourTitle}","${b.travelDate || b.date}","${b.price || b.amount}","${b.travelersCount}","${b.paymentMethod}","${b.status}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Mount2ocean_Customer_Bookings_Report_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    }
+  </script>
+</body>
+</html>
