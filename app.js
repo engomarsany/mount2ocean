@@ -1251,6 +1251,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // CUSTOMER PORTAL SPECIFIC INTERACTION
   // ==========================================
+  const btnCustSearch = document.getElementById('btnCustSearch');
+  if (btnCustSearch) {
+    btnCustSearch.addEventListener('click', (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      window.executeFindToursSearch(e);
+    });
+  }
+
   const custSearchTabs = document.querySelectorAll('.cust-search-tab');
   if (custSearchTabs.length > 0) {
     custSearchTabs.forEach(tab => {
