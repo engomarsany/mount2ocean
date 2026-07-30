@@ -3545,10 +3545,100 @@ window.changePageGuest = function(delta) {
 window.handleApplyPagePromoCode = function() {
   const promoInput = document.getElementById('pagePromoCodeInput');
   const code = promoInput ? promoInput.value.trim().toUpperCase() : '';
-  if (code === 'M2O2026' || code === 'SAVE10') {
-    if (typeof showToast === 'function') showToast('🎉 Promo code applied! 10% discount added.', 'success');
+  if (!code) return;
+
+  const defaultPromos = [
+    { code: 'M2O2026', type: 'PERCENT', value: 10 },
+    { code: 'SAVE10', type: 'PERCENT', value: 10 },
+    { code: 'BALI20', type: 'PERCENT', value: 20 },
+    { code: 'BHUTAN5K', type: 'FLAT', value: 5000 }
+  ];
+
+  const savedPromos = JSON.parse(localStorage.getItem('m2o_promo_codes')) || defaultPromos;
+  const found = savedPromos.find(p => p.code.toUpperCase() === code);
+
+  if (found) {
+    const desc = found.type === 'PERCENT' ? `${found.value}%` : `৳${found.value}`;
+    if (typeof showToast === 'function') showToast(`🎉 Promo code ${code} applied! ${desc} discount added to your booking.`, 'success');
   } else {
-    if (typeof showToast === 'function') showToast('⚠️ Invalid promo code. Try M2O2026', 'warning');
+    if (typeof showToast === 'function') showToast(`⚠️ Invalid promo code '${code}'. Try M2O2026 or BALI20`, 'warning');
+  }
+};
+
+window.renderAdminPromoCodes = function() {
+  const tbody = document.getElementById('adminPromoCodesTbody');
+  if (!tbody) return;
+
+  const defaultPromos = [
+    { id: 'PROMO-101', code: 'M2O2026', pkg: 'ALL', type: 'PERCENT', value: 10, date: '2026-07-30', status: 'ACTIVE' },
+    { id: 'PROMO-102', code: 'BALI20', pkg: 'Bali Kintamani', type: 'PERCENT', value: 20, date: '2026-07-30', status: 'ACTIVE' },
+    { id: 'PROMO-103', code: 'BHUTAN5K', pkg: 'Bhutan Hike', type: 'FLAT', value: 5000, date: '2026-07-30', status: 'ACTIVE' }
+  ];
+
+  let promos = JSON.parse(localStorage.getItem('m2o_promo_codes')) || defaultPromos;
+  if (!localStorage.getItem('m2o_promo_codes')) {
+    localStorage.setItem('m2o_promo_codes', JSON.stringify(promos));
+  }
+
+  tbody.innerHTML = '';
+  promos.forEach(p => {
+    const tr = document.createElement('tr');
+    const rateText = p.type === 'PERCENT' ? `${p.value}% OFF` : `৳${p.value} FLAT OFF`;
+    tr.innerHTML = `
+      <td><strong style="color:#0072bc; font-size:1rem;">${p.code}</strong></td>
+      <td>${p.pkg || 'All Packages'}</td>
+      <td><span class="badge-tag" style="background:#00a651; color:white;">${rateText}</span></td>
+      <td>${p.date || '2026-07-30'}</td>
+      <td><span class="status-badge-live">ACTIVE</span></td>
+      <td>
+        <button onclick="deletePromoCodeRecord('${p.id || p.code}')" style="background:#ef4444; color:white; border:none; padding:0.3rem 0.7rem; border-radius:6px; font-weight:800; cursor:pointer;">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+};
+
+window.handleCreatePromoCode = function(e) {
+  if (e) e.preventDefault();
+  const codeInput = document.getElementById('promoCodeInput');
+  const pkgSelect = document.getElementById('promoTargetPkgSelect');
+  const typeSelect = document.getElementById('promoDiscountTypeSelect');
+  const valueInput = document.getElementById('promoDiscountValueInput');
+
+  if (!codeInput || !valueInput) return;
+  const code = codeInput.value.trim().toUpperCase();
+  const val = parseFloat(valueInput.value) || 0;
+  if (!code || val <= 0) return;
+
+  const defaultPromos = [
+    { id: 'PROMO-101', code: 'M2O2026', pkg: 'ALL', type: 'PERCENT', value: 10, date: '2026-07-30', status: 'ACTIVE' }
+  ];
+
+  let promos = JSON.parse(localStorage.getItem('m2o_promo_codes')) || defaultPromos;
+  promos.unshift({
+    id: 'PROMO-' + Math.floor(100 + Math.random() * 900),
+    code: code,
+    pkg: pkgSelect ? pkgSelect.value : 'ALL',
+    type: typeSelect ? typeSelect.value : 'PERCENT',
+    value: val,
+    date: new Date().toISOString().split('T')[0],
+    status: 'ACTIVE'
+  });
+
+  localStorage.setItem('m2o_promo_codes', JSON.stringify(promos));
+  if (typeof showToast === 'function') showToast(`🎉 New promo code ${code} published live!`, 'success');
+  codeInput.value = '';
+  valueInput.value = '';
+  if (typeof renderAdminPromoCodes === 'function') renderAdminPromoCodes();
+};
+
+window.deletePromoCodeRecord = function(idOrCode) {
+  if (confirm(`Delete promo code ${idOrCode}?`)) {
+    let promos = JSON.parse(localStorage.getItem('m2o_promo_codes')) || [];
+    promos = promos.filter(p => p.id !== idOrCode && p.code !== idOrCode);
+    localStorage.setItem('m2o_promo_codes', JSON.stringify(promos));
+    if (typeof showToast === 'function') showToast(`Deleted promo code.`, 'info');
+    if (typeof renderAdminPromoCodes === 'function') renderAdminPromoCodes();
   }
 };
 
