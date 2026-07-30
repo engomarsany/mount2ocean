@@ -1146,6 +1146,50 @@ document.addEventListener('DOMContentLoaded', () => {
     if (custBookingModal) custBookingModal.classList.remove('hidden');
   };
 
+  window.renderCustomerPortalToursGrid = function() {
+    const grid = document.getElementById('toursGrid');
+    if (!grid) return;
+
+    const pkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : window.defaultPackages;
+    grid.innerHTML = '';
+
+    pkgs.forEach(pkg => {
+      const card = document.createElement('div');
+      card.className = 'tour-card';
+      card.setAttribute('data-category', pkg.category || 'all');
+
+      card.innerHTML = `
+        <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html?id=${pkg.id}';" style="cursor: pointer;">
+          <img src="${pkg.image}" alt="${pkg.name}">
+          <span class="tour-badge ${pkg.badge || 'tropical'}" style="background: #00a651; color: #ffffff; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 999px;">${pkg.badgeLabel || pkg.badge || 'Featured'}</span>
+          <span class="tour-price-pill" style="background: #0f172a !important; color: #00f2fe !important; font-size: 1.2rem !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; text-shadow: 0 0 10px #00f2fe !important; padding: 0.35rem 0.85rem !important; border-radius: 999px !important;">${pkg.price}</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-meta-row">
+            <span class="tour-location">${(pkg.category || 'DESTINATION').toUpperCase()}</span>
+            <span class="tour-rating">${pkg.rating || '⭐ 4.9'}</span>
+          </div>
+          <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html?id=${pkg.id}';" style="cursor: pointer;">${pkg.name}</h3>
+          <p class="tour-desc">${pkg.desc}</p>
+          <div class="tour-card-footer">
+            <span class="tour-duration">${pkg.duration}</span>
+            <button type="button" class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='booking.html?id=${pkg.id}';" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); cursor: pointer;">View &amp; Book Package ➔</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    const originalCards = Array.from(grid.children);
+    if (originalCards.length > 0) {
+      originalCards.forEach(c => {
+        const clone = c.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        grid.appendChild(clone);
+      });
+    }
+  };
+
   // ==========================================
   // SEAMLESS INFINITE MARQUEE & PAUSE ON HOVER & ARROW CONTROLS
   // ==========================================
@@ -1154,13 +1198,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNextTour = document.getElementById('btnNextTour');
 
   if (toursGrid) {
-    // Clone tour cards to create an invisible, infinite 100% seamless marquee loop
-    const originalCards = Array.from(toursGrid.children);
-    originalCards.forEach(card => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      toursGrid.appendChild(clone);
-    });
+    window.renderCustomerPortalToursGrid();
 
     let isToursHovered = false;
     const scrollSpeed = 0.95; // Smooth Google-grade ticker step
