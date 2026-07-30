@@ -3679,3 +3679,36 @@ window.clearPageChatHistory = function() {
   }
 };
 
+window.showToast = function(message, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type} toast-enter`;
+  
+  const icons = {
+    success: '✔',
+    warning: '⚠️',
+    error: '❌',
+    info: 'ℹ️'
+  };
+
+  toast.innerHTML = `
+    <span class="toast-icon">${icons[type] || 'ℹ️'}</span>
+    <span class="toast-message">${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.remove('toast-enter');
+    toast.classList.add('toast-exit');
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
+};
+
+window.openForgotModal = function() {
+  const modal = document.getElementById('forgotModal');
+  if (modal) modal.classList.remove('hidden');
+};
+
