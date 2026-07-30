@@ -3430,5 +3430,119 @@ body.dark-theme #mobileDetailPkgPrice {
   border-color: #00a651 !important;
 }
 
+/* ==========================================================================
+   $100,000 USD LUXURY AGENCY DESIGN SYSTEM ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Shimmer Button Animations & Glowing Shadows */
+.primary-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 166, 81, 0.28) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.primary-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(30deg);
+  transition: all 0.8s ease;
+}
+
+.primary-btn:hover::after {
+  left: 100%;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(0, 166, 81, 0.45) !important;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 114, 188, 0.15) !important;
+}
+
+/* 2. Glassmorphic App Header & Brand Elevation */
+.app-header {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(0, 166, 81, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+.official-brand-logo-img {
+  filter: drop-shadow(0 2px 8px rgba(0, 166, 81, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover .official-brand-logo-img {
+  transform: scale(1.04);
+}
+
+/* 3. Luxury Tour Cards Elevate */
+.tour-card, .pkg-master-card {
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: #ffffff !important;
+}
+
+.tour-card:hover, .pkg-master-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 22px 45px rgba(0, 114, 188, 0.18) !important;
+  border-color: #00a651 !important;
+}
+
+.tour-img-wrap img, .pkg-master-thumb img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tour-card:hover .tour-img-wrap img, .pkg-master-card:hover .pkg-master-thumb img {
+  transform: scale(1.08) !important;
+}
+
+/* 4. Floating AI Bot Pulse Animation */
+@keyframes botPulse {
+  0% { box-shadow: 0 8px 25px rgba(0, 166, 81, 0.4); transform: scale(1); }
+  50% { box-shadow: 0 12px 35px rgba(0, 166, 81, 0.65); transform: scale(1.06); }
+  100% { box-shadow: 0 8px 25px rgba(0, 166, 81, 0.4); transform: scale(1); }
+}
+
+#m2oAiBotToggleBtn {
+  animation: botPulse 3s infinite ease-in-out;
+}
+
+/* 5. Smooth Fade In Entrance Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-section, .cust-section, .master-toolbar {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* 6. Gold Badge Tag Pulsing Glow */
+.badge-tag {
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
 
 
