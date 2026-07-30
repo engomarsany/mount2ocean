@@ -80,6 +80,16 @@ window.defaultPackages = [
 
 window.getCombinedLivePackages = function() {
   let live = [];
+  const pkgVersion = 'v3_sylhet_nepal_sync';
+  const savedVersion = localStorage.getItem('m2o_pkg_version');
+
+  if (savedVersion !== pkgVersion) {
+    live = [...window.defaultPackages];
+    localStorage.setItem('m2o_pkg_version', pkgVersion);
+    localStorage.setItem('m2o_live_packages', JSON.stringify(live));
+    return live;
+  }
+
   const saved = localStorage.getItem('m2o_live_packages');
   if (saved !== null) {
     try {

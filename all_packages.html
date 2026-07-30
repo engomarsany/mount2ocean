@@ -435,12 +435,30 @@
       
       const filtered = packages.filter(pkg => {
         const matchesCat = (catVal === 'all') || (pkg.category || '').toLowerCase() === catVal;
-        const matchesSearch = !searchVal || 
-          pkg.name.toLowerCase().includes(searchVal) ||
-          (pkg.category || '').toLowerCase().includes(searchVal) ||
-          (pkg.desc || '').toLowerCase().includes(searchVal);
+        if (!matchesCat) return false;
+        if (!searchVal) return true;
 
-        return matchesCat && matchesSearch;
+        const haystack = `${pkg.name} ${pkg.category} ${pkg.desc}`.toLowerCase();
+
+        // 1. Direct includes match
+        if (haystack.includes(searchVal) || searchVal.includes(pkg.name.toLowerCase())) {
+          return true;
+        }
+
+        // 2. Category match
+        const categoryClean = (pkg.category || '').toLowerCase();
+        if (categoryClean && (categoryClean.includes(searchVal) || searchVal.includes(categoryClean))) {
+          return true;
+        }
+
+        // 3. Keyword / Word-by-word match
+        const words = searchVal.replace(/[^\w\s]/gi, ' ').split(/\s+/).filter(w => w.length >= 3);
+        if (words.length > 0) {
+          const matchedWords = words.filter(w => haystack.includes(w));
+          if (matchedWords.length > 0) return true;
+        }
+
+        return false;
       });
 
       if (rawSearch && filtered.length === 0) {
