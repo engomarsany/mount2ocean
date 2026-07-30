@@ -339,8 +339,22 @@
               Reject
             </button>
           `;
+        } else if (item.status === 'APPROVED') {
+          actionsHtml = `
+            <button type="button" class="primary-btn" onclick="approvePartnerAction(${item.id})" style="padding: 0.35rem 0.6rem; font-size: 0.74rem; background: #00a651; opacity: 0.6;" title="Already Approved">
+              ✓ Approved
+            </button>
+            <button type="button" class="btn-delete-pkg" onclick="rejectPartnerAction(${item.id})" style="padding: 0.35rem 0.6rem; font-size: 0.74rem;" title="Revoke & Cancel Approval">
+              ❌ Revoke &amp; Cancel
+            </button>
+          `;
         } else {
-          actionsHtml = `<span style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Decision Finalized</span>`;
+          actionsHtml = `
+            <button type="button" class="primary-btn" onclick="approvePartnerAction(${item.id})" style="padding: 0.35rem 0.6rem; font-size: 0.74rem; background: #00a651;">
+              Approve
+            </button>
+            <span style="font-size: 0.76rem; color: #dc2626; font-weight: 800; margin-left: 4px;">Rejected</span>
+          `;
         }
 
         tr.innerHTML = `
@@ -371,10 +385,12 @@
       const list = getApprovalsList();
       const item = list.find(x => x.id == id);
       if (item) {
+        const reason = prompt(`Enter Cancellation / Rejection reason for Partner (${item.name}):`, 'Documents unverified or policy violation') || 'Administrative Cancellation';
         item.status = 'REJECTED';
+        item.cancellationReason = reason;
         localStorage.setItem('m2o_pending_approvals', JSON.stringify(list));
         renderMasterApprovalsDirectory();
-        alert(`❌ Partner Account Rejected.\nNotification sent to: ${item.email}`);
+        alert(`❌ Partner Account Cancelled / Rejected.\n\nReason: "${reason}"\nNotification sent to: ${item.email}`);
       }
     }
 

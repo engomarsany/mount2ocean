@@ -1723,7 +1723,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cancelReason = '';
 
     if (newStatus === 'CANCELLED') {
-      cancelReason = prompt('Enter cancellation reason for customer (বাতিলের কারণ লিখুন):', 'Seat capacity full / Administrative policy update') || 'Administrative Cancellation';
+      cancelReason = prompt(`Enter Cancellation Reason / Custom Note for Customer (${cleanId}):\n\n(কাস্টমারকে ট্রিপ বাতিলের কারণ ও বার্তা টাইপ করে লিখে দিন):`, 'Flight / hotel schedule changed by airline. Full refund initiated.') || 'Cancelled by Owner due to schedule update';
     }
 
     if (!bk) {
@@ -1744,7 +1744,10 @@ document.addEventListener('DOMContentLoaded', () => {
       bookings.unshift(bk);
     } else {
       bk.status = newStatus;
-      if (cancelReason) bk.cancelReason = cancelReason;
+      if (cancelReason) {
+        bk.cancelReason = cancelReason;
+        bk.cancellationReason = cancelReason;
+      }
     }
 
     localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
@@ -1758,10 +1761,10 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: bk.phone || '',
       email: bk.email || '',
       type: newStatus,
-      title: newStatus === 'APPROVED' ? '✅ Tour Booking Approved & Confirmed!' : '❌ Tour Booking Cancelled',
+      title: newStatus === 'APPROVED' ? '✅ Tour Booking Approved & Confirmed!' : '❌ Tour Booking Cancelled by Owner',
       message: newStatus === 'APPROVED'
         ? `Great news ${bk.customerName}! Your reservation for "${bk.tourTitle}" (Voucher: ${bk.id}) has been APPROVED by Mount2ocean Admin. Your official ticket voucher is active!`
-        : `Notice to ${bk.customerName}: Your reservation for "${bk.tourTitle}" (Voucher: ${bk.id}) has been CANCELLED. Reason: ${cancelReason}`,
+        : `Notice to ${bk.customerName}: Your booking for "${bk.tourTitle}" (Voucher: ${bk.id}) has been CANCELLED by Admin. Reason / Admin Message: "${cancelReason}"`,
       timestamp: new Date().toLocaleString(),
       read: false
     };
@@ -1776,7 +1779,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Trigger local CustomEvent for same-tab instant updates
-    window.dispatchEvent(new CustomEvent('m2o_booking_updated', { detail: { bookingId: cleanId, status: newStatus } }));
+    window.dispatchEvent(new CustomEvent('m2o_booking_updated', { detail: { bookingId: cleanId, status: newStatus, cancelReason } }));
 
     if (typeof renderAdminBookings === 'function') renderAdminBookings();
     if (typeof renderMasterBookingsDirectory === 'function') renderMasterBookingsDirectory();
