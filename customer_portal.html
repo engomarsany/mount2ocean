@@ -251,46 +251,58 @@
     </div>
   </section>
 
-  <!-- QUICK SEARCH & SEARCH BAR WIDGET -->
-  <div class="customer-search-wrapper">
-    <div class="customer-search-card">
-      <div class="search-tabs">
-        <button class="cust-search-tab active">Tour Packages</button>
-        <button class="cust-search-tab">Hotels &amp; Resorts</button>
-        <button class="cust-search-tab">Flight Tickets</button>
-        <button class="cust-search-tab">Visa Processing</button>
-      </div>
+  <!-- RE-DESIGNED 100% BULLETPROOF SEARCH FORM WIDGET -->
+  <section class="customer-search-wrapper" style="margin: -2.5rem auto 2.5rem; max-width: 1100px; padding: 0 1rem; position: relative; z-index: 100;">
+    <div style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); border: 2px solid rgba(0, 242, 254, 0.4); border-radius: 20px; padding: 1.8rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);">
       
-      <div class="search-form-row" style="display: grid; grid-template-columns: 2.5fr 1.5fr 1.2fr; gap: 1rem; align-items: end;">
-        <!-- Destination / Package Search Input -->
-        <div class="search-input-box" style="position: relative;">
-          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">
-            Select Destination or Type Tour Package (গন্তব্য লিখুন বা সিলেক্ট করুন)
+      <!-- Clean Category Service Tabs -->
+      <div style="display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap;">
+        <button type="button" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; border: none; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer;">🌴 Tour Packages</button>
+        <button type="button" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">🏨 Hotels &amp; Resorts</button>
+        <button type="button" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">✈️ Flight Tickets</button>
+        <button type="button" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">🛂 Visa Processing</button>
+      </div>
+
+      <!-- Native Bulletproof HTML Form -->
+      <form action="tour_packages.html" method="GET" style="display: grid; grid-template-columns: 3fr 1.8fr 1.5fr; gap: 1rem; align-items: end;">
+        
+        <!-- Live Packages Selector -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.45rem; display: block;">
+            Select Tour Destination / Package (গন্তব্য বা প্যাকেজ সিলেক্ট করুন)
           </label>
-          <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="custSearchInput" onfocus="openLivePackagesSearchDropdown()" oninput="filterLivePackagesSearchDropdown()" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); executeFindToursSearch(event); }" placeholder="Click to select live package: Bhutan, Maldives, Bali..." autocomplete="off" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; color: #0f172a; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
-          </div>
-          
-          <!-- Dynamic Live Packages Floating Dropdown Container -->
-          <div id="m2oLivePackageDropdown" style="display: none; position: absolute; top: calc(100% + 6px); left: 0; width: 100%; max-height: 320px; overflow-y: auto; background: #ffffff; border: 2px solid #00f2fe; border-radius: 14px; box-shadow: 0 12px 35px rgba(0,0,0,0.18); z-index: 999999; padding: 0.5rem 0;">
-          </div>
+          <select name="search" id="custSearchSelect" style="background: #ffffff; border: 2px solid #cbd5e1; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.95rem; font-weight: 800; color: #0f172a; width: 100%; cursor: pointer; outline: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+            <option value="">🌐 All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>
+            <option value="Bhutan">🇧🇹 3-Night / 4-Day Bhutan Cultural Tour &amp; Tiger's Nest (৳75,000)</option>
+            <option value="Bali">🌺 BALI PACKAGE 4D/3N - Kintamani Volcano &amp; Water Sports (৳17,500)</option>
+            <option value="Maldives">🇲🇻 Maldives Overwater Resort Villa &amp; Speedboat (৳85,000)</option>
+            <option value="Dubai">🇦🇪 Dubai Desert Safari, Burj Khalifa &amp; Dhow Cruise (৳48,000)</option>
+            <option value="Cox's Bazar">🏖️ Cox's Bazar 5-Star Ocean Resort &amp; Saint Martin (৳18,500)</option>
+            <option value="Sylhet">🍵 Sylhet Tea Garden, Jaflong &amp; Ratargul Swamp (৳12,500)</option>
+            <option value="Nepal">🏔️ Nepal Kathmandu, Pokhara &amp; Annapurna Tour (৳42,000)</option>
+          </select>
         </div>
 
-        <!-- Departure Travel Date -->
-        <div class="search-input-box">
-          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">
+        <!-- Departure Date -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.45rem; display: block;">
             Travel Departure Date (ভ্রমণের তারিখ)
           </label>
-          <input type="date" id="custSearchDate" value="2026-08-10" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.78rem 1rem; border-radius: 10px; font-weight: 700; font-size: 0.92rem; color: #0f172a; width: 100%;">
+          <input type="date" name="date" value="2026-08-10" style="background: #ffffff; border: 2px solid #cbd5e1; padding: 0.82rem 1rem; border-radius: 12px; font-weight: 700; font-size: 0.92rem; color: #0f172a; width: 100%; outline: none;">
         </div>
 
-        <!-- Search Action Button -->
-        <button type="button" class="primary-btn search-submit-btn" id="btnCustSearch" onmousedown="executeFindToursSearch(event)" ontouchstart="executeFindToursSearch(event)" onclick="executeFindToursSearch(event)" style="position: relative; z-index: 10000000; padding: 0.82rem 1.4rem; font-weight: 800; font-size: 1rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,166,81,0.35); cursor: pointer;">
-          Find Tours ➔
-        </button>
-      </div>
+        <input type="hidden" name="auto_open" value="1">
+
+        <!-- Native Form Submit Button -->
+        <div>
+          <button type="submit" id="btnCustSearch" style="width: 100%; padding: 0.88rem 1rem; font-weight: 900; font-size: 1.05rem; color: #ffffff; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 166, 81, 0.4); cursor: pointer; transition: all 0.15s ease;">
+            Find Tours ➔
+          </button>
+        </div>
+
+      </form>
     </div>
-  </div>
+  </section>
 
   <!-- MAIN CONTENT CONTAINER -->
   <main class="customer-main-content">
@@ -850,6 +862,6 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v15_unblock_touch_events"></script>
+  <script src="app.js?v=v16_native_bulletproof_form_redesign"></script>
 </body>
 </html>

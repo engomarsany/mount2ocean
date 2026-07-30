@@ -496,6 +496,22 @@ window.executeFindToursSearch = function(event) {
   }
 };
 
+window.populateCustSearchSelect = function() {
+  const select = document.getElementById('custSearchSelect');
+  if (!select) return;
+
+  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
+  
+  select.innerHTML = '<option value="">🌐 All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>';
+
+  livePkgs.forEach(pkg => {
+    const opt = document.createElement('option');
+    opt.value = pkg.name;
+    opt.textContent = `📍 ${pkg.name} (${pkg.price})`;
+    select.appendChild(opt);
+  });
+};
+
 // ==========================================
 // FAIL-SAFE 2-VIEW TAB & ROLE FUNCTIONS
 // ==========================================
@@ -1259,6 +1275,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // CUSTOMER PORTAL SPECIFIC INTERACTION
   // ==========================================
+  if (window.populateCustSearchSelect) window.populateCustSearchSelect();
+
   const btnCustSearch = document.getElementById('btnCustSearch');
   if (btnCustSearch) {
     btnCustSearch.addEventListener('click', (e) => {
