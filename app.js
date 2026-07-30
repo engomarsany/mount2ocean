@@ -3171,7 +3171,7 @@ function checkCustomerBookingNotifications() {
 
     if (lower.includes('sylhet') || lower.includes('সিলেট') || lower.includes('jaflong') || lower.includes('জাফলং') || lower.includes('ratargul') || lower.includes('রাতারগুল')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-sylhet-tea' || (p.category || '').includes('sylhet'));
-      botReply = `🍵 ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" সেকশনে যান!`;
+      botReply = `🍵 ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" পেজে ক্লিক করুন!`;
     } else if (lower.includes('nepal') || lower.includes('নেপাল') || lower.includes('kathmandu') || lower.includes('কাঠমান্ডু') || lower.includes('pokhara') || lower.includes('পোখরা')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-nepal-himalaya' || (p.category || '').includes('nepal'));
       botReply = `🏔️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৪২,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 5 Days / 4 Nights\n📜 অন্তর্ভুক্ত: পশুপতিনাথ মন্দির, ফেওয়া লেকে বোটিং, সারংকোট হিমালয় সানরাইজ পয়েন্ট ও প্যারাগ্লাইডিং।`;
@@ -3191,7 +3191,7 @@ function checkCustomerBookingNotifications() {
       const pkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
       botReply = `🇮🇩 ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১৭,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: কিন্তামানি আগ্নেয়গিরি, ওয়াটার স্পোর্টস বোট রাইড এবং তানাহ লট সানসেট ট্যুর।`;
     } else if (lower.includes('flight') || lower.includes('ticket') || lower.includes('টিকিট') || lower.includes('বিমান') || lower.includes('এয়ারলাইন্স')) {
-      botReply = `✈️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
+      botReply = `✈️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
     } else if (lower.includes('hotel') || lower.includes('হোটেল') || lower.includes('resort') || lower.includes('রিসোর্ট')) {
       botReply = `🏢 হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
     } else if (lower.includes('visa') || lower.includes('ভিসা')) {
@@ -3200,12 +3200,12 @@ function checkCustomerBookingNotifications() {
       let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
       botReply = `📦 আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
     } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('বিকাশ') || lower.includes('পেমেন্ট') || lower.includes('টাকা')) {
-      botReply = `💳 পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Instant Verification\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
+      botReply = `💳 পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Direct (+880 1977-477172)\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer / Cash on Office Counter\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
     } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('বাতিল') || lower.includes('রিফান্ড')) {
       botReply = `🛡️ রিফান্ড পলিসি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে বুকিং ক্যানসেল করলে ১০০% রিফান্ড পাবেন।\n• ওনার/অ্যাডমিন টিম দ্বারা কোনো কারণে সফর স্থগিত হলে তাৎক্ষণিক রিফান্ড সম্পন্ন হয়।`;
-    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন')) {
-      const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: 'Banani C/A, Dhaka 1213, Bangladesh' };
-      botReply = `📞 আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• অফিস: ${settings.address}`;
+    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন') || lower.includes('ঠিকানা') || lower.includes('office')) {
+      const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: '169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217' };
+      botReply = `📞 আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• কর্পোরেট অফিস: ${settings.address}`;
     } else {
       botReply = `🤖 আপনার প্রশ্নের উত্তর দিতে আমি প্রস্তুত! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ভিসা সার্ভিস বিদ্যমান।\n\n💬 আপনি কি সরাসরি আমাদের লাইভ ওনার/অ্যাডমিন সাপোর্ট টিমের সাথে কথা বলতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
       window.aiWaitingEscalationConsent = true;
@@ -3219,7 +3219,9 @@ function checkCustomerBookingNotifications() {
         time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
       });
       saveAiChatMessages(currentMsgs);
-    }, 500);
+      if (typeof window.renderPageAiChat === 'function') window.renderPageAiChat();
+      if (typeof window.renderCustomerChatMessages === 'function') window.renderCustomerChatMessages();
+    }, 400);
   };
 
   // Render Customer Floating Chat Window DOM
