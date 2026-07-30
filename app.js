@@ -84,12 +84,18 @@ window.getCombinedLivePackages = function() {
     }
   } else {
     live = [...window.defaultPackages];
-    localStorage.setItem('m2o_live_packages', JSON.stringify(live));
   }
 
   const oldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7', 'pkg-coxsbazar', 'pkg-dubai', 'pkg-maldives', 'pkg-saintmartin'];
-  live = live.filter(p => !oldIds.includes(p.id));
+  if (live && live.length > 0) {
+    live = live.filter(p => !oldIds.includes(p.id));
+  }
 
+  if (!live || live.length === 0) {
+    live = [...window.defaultPackages];
+  }
+
+  localStorage.setItem('m2o_live_packages', JSON.stringify(live));
   return live;
 };
 

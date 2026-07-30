@@ -375,7 +375,13 @@
       const countEl = document.getElementById('catalogTotalCount');
       if (!grid) return;
 
-      const packages = list || (window.getCombinedLivePackages ? window.getCombinedLivePackages() : (JSON.parse(localStorage.getItem('m2o_live_packages')) || window.defaultPackages));
+      let packages = list;
+      if (!packages) {
+        packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (JSON.parse(localStorage.getItem('m2o_live_packages')) || []);
+      }
+      if (!packages || packages.length === 0) {
+        packages = window.defaultPackages || [];
+      }
 
       if (countEl) countEl.textContent = packages.length;
       grid.innerHTML = '';
