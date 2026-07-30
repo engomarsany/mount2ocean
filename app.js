@@ -496,6 +496,17 @@ window.executeFindToursSearch = function(event) {
   }
 };
 
+window.updateFindToursHref = function(val) {
+  const btn = document.getElementById('btnCustSearch');
+  if (!btn) return;
+  const rawVal = val ? val.trim() : '';
+  if (rawVal) {
+    btn.href = `tour_packages.html?search=${encodeURIComponent(rawVal)}&auto_open=1`;
+  } else {
+    btn.href = 'tour_packages.html';
+  }
+};
+
 window.populateCustSearchSelect = function() {
   const select = document.getElementById('custSearchSelect');
   if (!select) return;
