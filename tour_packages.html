@@ -297,6 +297,13 @@
 
       filterMasterPackages();
 
+      if (urlSearch) {
+        setTimeout(() => {
+          const grid = document.getElementById('masterPackagesGrid');
+          if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+
       if (searchInput) {
         searchInput.addEventListener('input', filterMasterPackages);
       }

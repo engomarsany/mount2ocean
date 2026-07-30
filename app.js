@@ -277,15 +277,16 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
     localStorage.setItem('m2o_ai_agent_search_logs', JSON.stringify(logs));
   } catch(e){}
 
-  // ROUTING LOGIC:
-  // Case A: Package Match Found -> Redirect directly to dedicated detail page
+  // ROUTING LOGIC (Instant <100ms Tour Packages Search & Redirect):
+  window.m2oIsSearching = false;
+
   if (matchedPkg) {
     localStorage.setItem('m2o_active_detail_pkg_id', matchedPkg.id);
-    window.location.href = `package_detail.html?id=${matchedPkg.id}&date=${encodeURIComponent(selectedDate)}&ai_redirect=1`;
+    window.location.href = `tour_packages.html?search=${encodeURIComponent(matchedPkg.name)}&cat=${matchedPkg.category || 'all'}`;
     return matchedPkg;
   }
 
-  // Case B: No Direct Match -> Log search to Admin requested queue & show ALL packages
+  // Case B: No Direct Match -> Log search to Admin requested queue & show search on tour_packages.html
   if (rawQuery && window.logMissingPackageSearch) {
     window.logMissingPackageSearch(rawQuery);
   }
