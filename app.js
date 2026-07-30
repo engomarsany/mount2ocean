@@ -2923,6 +2923,18 @@ function checkCustomerBookingNotifications() {
     if (typeof renderAdminLiveSupportConsole === 'function') renderAdminLiveSupportConsole();
   };
 
+  // 1-Click Test Data Cleanup Utility for Owner Admin
+  window.clearM2OTestData = function() {
+    if (confirm('আপনি কি নিশ্চিত যে সকল টেস্ট বুকিং, টেস্ট টিকিট ও সাপোর্ট মেসেজ ডিলিট করতে চান? (Clear all temporary test data?)')) {
+      localStorage.removeItem('m2o_support_tickets');
+      localStorage.removeItem('m2o_customer_chat_messages');
+      localStorage.setItem('m2o_customer_notifications', JSON.stringify([]));
+      
+      if (typeof showToast === 'function') showToast('🧹 All temporary test data removed successfully!', 'success');
+      setTimeout(() => window.location.reload(), 800);
+    }
+  };
+
   // Process Customer Query using Full Website Research Knowledge Base
   window.processCustomerAiQuery = function(userText) {
     if (!userText || !userText.trim()) return;
