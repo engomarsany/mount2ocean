@@ -69,8 +69,8 @@ if (document.readyState === 'loading') {
 // GLOBAL PACKAGES & SEARCH REDIRECTION ENGINE
 // ==========================================
 window.defaultPackages = [
-  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: '🇧🇹 Bhutan Special', image: 'assets/darjeeling.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
-  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: '🇮🇩 Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" }
+  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/darjeeling.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
+  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" }
 ];
 
 window.getCombinedLivePackages = function() {

@@ -409,13 +409,13 @@
           </div>
           <div class="tour-card-body">
             <div class="tour-meta-row">
-              <span class="tour-location">📍 ${(pkg.category || 'DESTINATION').toUpperCase()}</span>
-              <span class="tour-rating">${pkg.rating || '⭐ 4.9'}</span>
+              <span class="tour-location">${(pkg.category || 'DESTINATION').toUpperCase()}</span>
+              <span class="tour-rating">${pkg.rating || '4.9'}</span>
             </div>
             <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html';" style="cursor: pointer;">${pkg.name}</h3>
             <p class="tour-desc">${pkg.desc}</p>
             <div class="tour-card-footer">
-              <span class="tour-duration">⏱️ ${pkg.duration}</span>
+              <span class="tour-duration">${pkg.duration}</span>
               <div style="display: flex; gap: 0.4rem;">
                 <button class="secondary-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html';" style="padding: 0.45rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
                   Details ➔
