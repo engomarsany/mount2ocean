@@ -3195,8 +3195,44 @@ function checkCustomerBookingNotifications() {
       botReply = `✈️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
     } else if (lower.includes('hotel') || lower.includes('হোটেল') || lower.includes('resort') || lower.includes('রিসোর্ট')) {
       botReply = `🏢 হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
-    } else if (lower.includes('visa') || lower.includes('ভিসা')) {
-      botReply = `🛂 ভিসা প্রসেসিং সার্ভিস:\n• দুবাই (E-Visa 24-48 Hours)\n• থাইল্যান্ড, মালয়েশিয়া, সিঙ্গাপুর, ভারত\n• ইউকে, ইউএসএ ও ইউরোপ শেনজেন ভিসা কনসালটেন্সি ও ফাইল প্রসেসিং।`;
+    } else if (lower.includes('visa') || lower.includes('ভিসা') || lower.includes('উমরাহ') || lower.includes('umrah')) {
+      const visaRates = [
+        { key: ['france', 'ফ্রান্স'], country: 'ফ্রান্স (France)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' },
+        { key: ['usa', 'america', 'আমেরিকা', 'ইউএসএ'], country: 'আমেরিকা (USA)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' },
+        { key: ['korea', 'কোরিয়া', 'কোইরা'], country: 'সাউথ কোরিয়া (South Korea)', duration: '১ - ৩ কর্মদিবস (আনুমানিক)', fee: 'TK 2,500' },
+        { key: ['indonesia', 'ইন্দোনেশিয়া'], country: 'ইন্দোনেশিয়া (Indonesia)', duration: '১ - ২ কর্মদিবস এর অধিক', fee: 'TK 3,500' },
+        { key: ['hongkong', 'হংকং'], country: 'হংকং (Hong Kong)', duration: '১ - ২ কর্মদিবস', fee: 'TK 2,500' },
+        { key: ['japan', 'জাপান'], country: 'জাপান (Japan)', duration: '১ - ২ কর্মদিবস', fee: 'TK 2,500' },
+        { key: ['england', 'uk', 'ইউকে', 'ইংল্যান্ড', 'লন্ডন'], country: 'ইংল্যান্ড / ইউকে (UK)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
+        { key: ['china', 'চায়না', 'চীন'], country: 'চায়না (China)', duration: '১ - ২ কর্মদিবস', fee: 'TK 10,000 - TK 20,000 (ক্যাটাগরি ভিত্তিক)' },
+        { key: ['zealand', 'নিউজিল্যান্ড'], country: 'নিউজিল্যান্ড (New Zealand)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
+        { key: ['singapore', 'সিঙ্গাপুর'], country: 'সিঙ্গাপুর (Singapore)', duration: '১ - ২ কর্মদিবস', fee: 'TK 6,500' },
+        { key: ['canada', 'কানাডা'], country: 'কানাডা (Canada)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
+        { key: ['turkey', 'তুরস্ক'], country: 'তুরস্ক ই-ভিসা (Turkey)', duration: '১ কর্মদিবস (আনুমানিক)', fee: 'TK 7,000' },
+        { key: ['thailand', 'থাইল্যান্ড'], country: 'থাইল্যান্ড ই-ভিসা (Thailand)', duration: '১ - ২ কর্মদিবস', fee: 'TK 6,000' },
+        { key: ['malaysia', 'মালয়েশিয়া'], country: 'মালয়েশিয়া (Malaysia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 5,000' },
+        { key: ['india', 'ভারত'], country: 'ভারত (India)', duration: '১ কর্মদিবস', fee: 'TK 1,000' },
+        { key: ['srilanka', 'শ্রীলঙ্কা'], country: 'শ্রীলঙ্কা (Sri Lanka)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: 'TK 3,500' },
+        { key: ['vietnam', 'ভিয়েতনাম'], country: 'ভিয়েতনাম (Vietnam)', duration: '১ - ২ কর্মদিবস', fee: '⏳ শীঘ্রই শুরু হবে' },
+        { key: ['cambodia', 'কম্বোডিয়া'], country: 'কম্বোডিয়া ই-ভিসা (Cambodia)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: '⏳ শীঘ্রই শুরু হবে' },
+        { key: ['russia', 'রাশিয়া'], country: 'রাশিয়া (Russia)', duration: '৫ - ৭ কর্মদিবস', fee: '📞 অফিসে যোগাযোগের অনুরোধ' },
+        { key: ['saudi', 'umrah', 'সৌদি', 'উমরাহ'], country: 'সৌদি উমরাহ ই-ভিসা (Saudi Umrah)', duration: '২ - ৩ কর্মদিবস (আনুমানিক)', fee: 'TK 22,000' },
+        { key: ['egypt', 'মিশর'], country: 'মিশর (Egypt)', duration: '১ কর্মদিবস (আনুমানিক)', fee: 'TK 2,500' },
+        { key: ['morocco', 'মরক্কো'], country: 'মরক্কো (Morocco)', duration: '১ - ২ কর্মদিবস', fee: '📞 অফিসে যোগাযোগের অনুরোধ' },
+        { key: ['uzbekistan', 'উজবেকিস্তান'], country: 'উজবেকিস্তান (Uzbekistan)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: '⏳ শীঘ্রই শুরু হবে' },
+        { key: ['ethiopia', 'ইথিওপিয়া'], country: 'ইথিওপিয়া ই-ভিসা (Ethiopia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 10,500' },
+        { key: ['australia', 'অস্ট্রেলিয়া'], country: 'অস্ট্রেলিয়া (Australia)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
+        { key: ['italy', 'ইতালি'], country: 'ইতালি (Italy)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' }
+      ];
+
+      const matchedVisa = visaRates.find(v => v.key.some(k => lower.includes(k)));
+
+      if (matchedVisa) {
+        botReply = `🛂 ${matchedVisa.country} ভিসা প্রসেসিং:\n⏱️ সময়কাল: ${matchedVisa.duration}\n💰 চার্জ/ফি: ${matchedVisa.fee}\n\n📞 বিস্তারিত ও ফাইল জমা দিতে কল করুন: +880 1977-477172`;
+      } else {
+        let listText = visaRates.slice(0, 15).map(v => `• ${v.country}: ${v.fee} (${v.duration})`).join('\n');
+        botReply = `🛂 Mount2ocean এর অফিশিয়াল ২৬টি দেশের ভিসা প্রসেসিং রেট কার্ড:\n\n${listText}\n\n...এবং আরও ১১টি দেশ (কানাডা, ইতালি, রাশিয়া, শেনজেন ইত্যাদি)।\n\n📞 কোনো নির্দিষ্ট দেশের ভিসা ফি জানতে উক্ত দেশের নাম টাইপ করুন অথবা কল করুন: +880 1977-477172`;
+      }
     } else if (lower.includes('package') || lower.includes('প্যাকেজ') || lower.includes('price') || lower.includes('cost') || lower.includes('দাম') || lower.includes('খরচ')) {
       let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
       botReply = `📦 আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
