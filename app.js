@@ -477,6 +477,9 @@ window.executeFindToursSearch = function(event) {
     if (event.stopPropagation) event.stopPropagation();
   }
 
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+  if (dropdown) dropdown.style.display = 'none';
+
   try {
     const searchInput = document.getElementById('custSearchInput');
     const destSelect = document.getElementById('custSearchDest');
@@ -486,7 +489,6 @@ window.executeFindToursSearch = function(event) {
 
     const targetUrl = rawQuery ? `tour_packages.html?search=${encodeURIComponent(rawQuery)}&auto_open=1` : 'tour_packages.html';
 
-    // Synchronous instant navigation guarantee (<1ms) - Works 100% on all Mobile & Desktop Browsers!
     window.location.href = targetUrl;
   } catch (err) {
     console.error("Search execution fallback:", err);
