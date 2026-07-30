@@ -1154,17 +1154,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // CUSTOMER PORTAL SPECIFIC INTERACTION
   // ==========================================
   const custSearchTabs = document.querySelectorAll('.cust-search-tab');
-  const custSearchInput = document.getElementById('custSearchInput');
   if (custSearchTabs.length > 0) {
     custSearchTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
+      tab.addEventListener('click', (e) => {
+        if (e && e.preventDefault) e.preventDefault();
         custSearchTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        const serviceName = tab.textContent.trim();
-        if (custSearchInput) {
-          custSearchInput.placeholder = `Search ${serviceName}: type Bhutan, Dubai, Cox's Bazar, Maldives, Bali...`;
-        }
-        if (window.showToast) window.showToast(`Switched search mode to: ${serviceName}`, 'info');
       });
     });
   }
