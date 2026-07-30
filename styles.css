@@ -3624,5 +3624,66 @@ body.dark-theme #mobileDetailPkgPrice {
   100% { opacity: 1; transform: scale(1); }
 }
 
+/* ==========================================================================
+   100% CRYSTAL CLEAR FONT VISIBILITY & ULTRA-CONTRAST SYSTEM
+   ========================================================================== */
+body {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Force Ultra-Legible Contrast in Light Theme */
+body.light-theme {
+  color: #0f172a !important;
+}
+body.light-theme .cust-section-title,
+body.light-theme .tour-name,
+body.light-theme .pkg-master-title,
+body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+body.light-theme p, body.light-theme span:not(.badge-tag):not(.tour-badge) {
+  color: #334155 !important;
+}
+
+/* Force Crisp Readable Contrast in Dark Theme */
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4,
+body.dark-theme .cust-section-title, body.dark-theme .tour-name, body.dark-theme .pkg-master-title {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+body.dark-theme p, body.dark-theme .tour-desc, body.dark-theme .pkg-master-desc {
+  color: #cbd5e1 !important;
+}
+
+/* Hero Section Text Protection Overlay & Drop Shadow */
+.hero-title {
+  color: #ffffff !important;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+  font-weight: 900 !important;
+}
+.hero-desc {
+  color: #f8fafc !important;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95) !important;
+  font-weight: 600 !important;
+}
+
+/* Primary Button Text High Visibility */
+.primary-btn {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* Secondary Button Text Legibility */
+.secondary-btn {
+  font-weight: 800 !important;
+  letter-spacing: 0.2px !important;
+}
+
 
 
