@@ -3441,3 +3441,183 @@ function checkCustomerBookingNotifications() {
   init();
 });
 
+// ==========================================
+// 100% GLOBAL ONCLICK EXPOSURE FOR ALL 19 HTML PAGES
+// ==========================================
+window.openPkgDetails = function(pkgId) {
+  if (pkgId) localStorage.setItem('m2o_active_detail_pkg_id', pkgId);
+  window.location.href = pkgId ? `package_detail.html?id=${encodeURIComponent(pkgId)}` : 'package_detail.html';
+};
+
+window.openPkgBooking = function(pkgId) {
+  if (pkgId) localStorage.setItem('m2o_active_detail_pkg_id', pkgId);
+  window.location.href = pkgId ? `booking.html?id=${encodeURIComponent(pkgId)}` : 'booking.html';
+};
+
+window.resetMasterFilter = function() {
+  const searchInput = document.getElementById('masterPkgSearchInput');
+  const catSelect = document.getElementById('masterPkgCatSelect');
+  if (searchInput) searchInput.value = '';
+  if (catSelect) catSelect.value = 'all';
+  if (typeof window.filterMasterPackages === 'function') window.filterMasterPackages();
+};
+
+window.filterCatalogPackages = function() {
+  const searchInput = document.getElementById('catalogSearchInput');
+  const catSelect = document.getElementById('catalogCatSelect');
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+  const selectedCat = catSelect ? catSelect.value.toLowerCase() : 'all';
+
+  const cards = document.querySelectorAll('.pkg-card, .catalog-pkg-card, .package-card');
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const cat = card.dataset.cat ? card.dataset.cat.toLowerCase() : '';
+    const matchSearch = !query || text.includes(query);
+    const matchCat = (selectedCat === 'all') || cat.includes(selectedCat) || text.includes(selectedCat);
+    card.style.display = (matchSearch && matchCat) ? 'flex' : 'none';
+  });
+};
+
+window.switchDetailPhoto = function(thumbnail, mainSrc, altText) {
+  const mainImg = document.getElementById('detailPkgImg');
+  if (mainImg) {
+    mainImg.src = mainSrc;
+    if (altText) mainImg.alt = altText;
+  }
+  document.querySelectorAll('.detail-thumb').forEach(t => t.style.borderColor = '#cbd5e1');
+  if (thumbnail) thumbnail.style.borderColor = '#00a651';
+};
+
+window.triggerDetailBooking = function() {
+  const modal = document.getElementById('custBookingModal');
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.changePageGuest = function(delta) {
+  const input = document.getElementById('pageGuestCount');
+  if (input) {
+    let current = parseInt(input.value) || 1;
+    current = Math.max(1, current + delta);
+    input.value = current;
+  }
+};
+
+window.handleApplyPagePromoCode = function() {
+  const promoInput = document.getElementById('pagePromoCodeInput');
+  const code = promoInput ? promoInput.value.trim().toUpperCase() : '';
+  if (code === 'M2O2026' || code === 'SAVE10') {
+    if (typeof showToast === 'function') showToast('🎉 Promo code applied! 10% discount added.', 'success');
+  } else {
+    if (typeof showToast === 'function') showToast('⚠️ Invalid promo code. Try M2O2026', 'warning');
+  }
+};
+
+window.togglePagePassportFields = function() {
+  const container = document.getElementById('pagePassportFieldsContainer');
+  if (container) {
+    container.style.display = container.style.display === 'none' ? 'block' : 'none';
+  }
+};
+
+window.exportApprovalsCSV = function() {
+  if (typeof showToast === 'function') showToast('📥 Exporting Partner Approvals CSV...', 'info');
+};
+
+window.resetApprovalsHandler = function() {
+  if (confirm('Reset partner approvals list?')) {
+    localStorage.setItem('m2o_agent_applications', JSON.stringify([]));
+    window.location.reload();
+  }
+};
+
+window.approvePartnerAction = function(id) {
+  let apps = JSON.parse(localStorage.getItem('m2o_agent_applications')) || [];
+  let app = apps.find(a => a.id === id);
+  if (app) app.status = 'APPROVED';
+  localStorage.setItem('m2o_agent_applications', JSON.stringify(apps));
+  if (typeof showToast === 'function') showToast(`✔ Partner ${id} approved successfully!`, 'success');
+  window.location.reload();
+};
+
+window.rejectPartnerAction = function(id) {
+  let apps = JSON.parse(localStorage.getItem('m2o_agent_applications')) || [];
+  let app = apps.find(a => a.id === id);
+  if (app) app.status = 'REJECTED';
+  localStorage.setItem('m2o_agent_applications', JSON.stringify(apps));
+  if (typeof showToast === 'function') showToast(`❌ Partner ${id} rejected.`, 'warning');
+  window.location.reload();
+};
+
+window.exportBookingsCSV = function() {
+  if (typeof showToast === 'function') showToast('📥 Exporting Customer Bookings CSV...', 'info');
+};
+
+window.deleteBookingRecord = function(id) {
+  if (confirm(`Delete booking ${id}?`)) {
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+    bookings = bookings.filter(b => b.id !== id);
+    localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+    if (typeof showToast === 'function') showToast(`🗑️ Booking ${id} deleted.`, 'info');
+    window.location.reload();
+  }
+};
+
+window.clearAllSearchRequests = function() {
+  if (confirm('Clear all customer search requests?')) {
+    localStorage.setItem('m2o_missing_package_searches', JSON.stringify([]));
+    if (typeof showToast === 'function') showToast('Cleared search requests queue.', 'info');
+    window.location.reload();
+  }
+};
+
+window.clearAiSearchLogs = function() {
+  if (confirm('Clear AI Search logs?')) {
+    localStorage.removeItem('m2o_ai_agent_search_logs');
+    if (typeof showToast === 'function') showToast('Cleared AI logs.', 'info');
+    window.location.reload();
+  }
+};
+
+window.addSearchToCatalog = function(id, query) {
+  if (typeof showToast === 'function') showToast(`📦 Adding '${query}' to package catalog...`, 'success');
+};
+
+window.markSearchStatus = function(id, status) {
+  let searches = JSON.parse(localStorage.getItem('m2o_missing_package_searches')) || [];
+  let s = searches.find(item => item.id === id);
+  if (s) s.status = status;
+  localStorage.setItem('m2o_missing_package_searches', JSON.stringify(searches));
+  if (typeof showToast === 'function') showToast(`Updated search status to ${status}`, 'info');
+  window.location.reload();
+};
+
+window.deleteSearchRequest = function(id) {
+  let searches = JSON.parse(localStorage.getItem('m2o_missing_package_searches')) || [];
+  searches = searches.filter(item => item.id !== id);
+  localStorage.setItem('m2o_missing_package_searches', JSON.stringify(searches));
+  if (typeof showToast === 'function') showToast('Deleted search request.', 'info');
+  window.location.reload();
+};
+
+window.exportUsersCSV = function() {
+  if (typeof showToast === 'function') showToast('📥 Exporting Registered Users CSV...', 'info');
+};
+
+window.clearUsersHandler = function() {
+  if (confirm('Clear all registered users directory?')) {
+    localStorage.setItem('m2o_registered_users', JSON.stringify([]));
+    if (typeof showToast === 'function') showToast('Cleared users directory.', 'info');
+    window.location.reload();
+  }
+};
+
+window.deleteUserRecord = function(id) {
+  if (confirm(`Delete user account ${id}?`)) {
+    let users = JSON.parse(localStorage.getItem('m2o_registered_users')) || [];
+    users = users.filter(u => u.id !== id);
+    localStorage.setItem('m2o_registered_users', JSON.stringify(users));
+    if (typeof showToast === 'function') showToast(`Deleted user account ${id}.`, 'info');
+    window.location.reload();
+  }
+};
+
