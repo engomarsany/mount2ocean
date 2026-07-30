@@ -100,6 +100,55 @@ window.getCombinedLivePackages = function() {
   return live;
 };
 
+// ==========================================
+// CUSTOMER MISSING SEARCH LOGGING & ADMIN REMINDER ENGINE
+// ==========================================
+window.getMissingPackageSearches = function() {
+  try {
+    return JSON.parse(localStorage.getItem('m2o_missing_package_searches')) || [];
+  } catch (e) {
+    return [];
+  }
+};
+
+window.logMissingPackageSearch = function(rawQuery) {
+  if (!rawQuery || typeof rawQuery !== 'string') return;
+  const cleanQ = rawQuery.trim();
+  if (cleanQ.length < 2) return;
+
+  // Ignore if it matches any existing default category or name
+  const existingPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : window.defaultPackages;
+  const matchesExisting = existingPkgs.some(p => 
+    p.name.toLowerCase().includes(cleanQ.toLowerCase()) || 
+    (p.category || '').toLowerCase().includes(cleanQ.toLowerCase())
+  );
+  if (matchesExisting) return; // Don't log if package actually exists
+
+  let searches = window.getMissingPackageSearches();
+  const existingIdx = searches.findIndex(s => s.query.toLowerCase() === cleanQ.toLowerCase());
+  const timeNow = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  if (existingIdx !== -1) {
+    searches[existingIdx].count = (searches[existingIdx].count || 1) + 1;
+    searches[existingIdx].lastSearched = timeNow;
+    if (searches[existingIdx].status === 'Dismissed') {
+      searches[existingIdx].status = 'Pending';
+    }
+  } else {
+    searches.unshift({
+      id: 'req-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+      query: cleanQ,
+      count: 1,
+      lastSearched: timeNow,
+      status: 'Pending', // 'Pending' | 'Added' | 'Dismissed'
+      addedByAdmin: false
+    });
+  }
+
+  localStorage.setItem('m2o_missing_package_searches', JSON.stringify(searches));
+  window.dispatchEvent(new CustomEvent('m2o_searches_updated', { detail: searches }));
+};
+
 window.executeFindToursSearch = function() {
   try {
     const searchInput = document.getElementById('custSearchInput');
@@ -147,6 +196,10 @@ window.executeFindToursSearch = function() {
       localStorage.setItem('m2o_active_detail_pkg_id', targetPkg.id);
       window.location.href = `package_detail.html?id=${targetPkg.id}&date=${selectedDate}`;
       return;
+    }
+
+    if (rawQuery && window.logMissingPackageSearch) {
+      window.logMissingPackageSearch(rawQuery);
     }
 
     window.location.href = `all_packages.html?search=${encodeURIComponent(rawQuery)}`;

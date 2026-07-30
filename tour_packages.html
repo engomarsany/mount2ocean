@@ -315,63 +315,91 @@
       });
     });
 
-    function renderMasterPackagesDirectory(filteredList) {
+    function renderMasterPackagesDirectory(filteredList, rawSearchQuery, allPkgs) {
       const grid = document.getElementById('masterPackagesGrid');
       const countEl = document.getElementById('masterPkgCount');
       if (!grid) return;
 
-      let packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+      const masterCatalog = (allPkgs && allPkgs.length > 0) ? allPkgs : (window.getCombinedLivePackages ? window.getCombinedLivePackages() : []);
+      let displayPkgs = Array.isArray(filteredList) ? filteredList : masterCatalog;
 
-      if (Array.isArray(filteredList)) {
-        packages = filteredList;
-      }
-
-      if (countEl) countEl.textContent = packages.length;
+      if (countEl) countEl.textContent = displayPkgs.length;
       grid.innerHTML = '';
 
-      if (packages.length === 0) {
-        grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 20px; border: 1.5px solid #e2e8f0; box-shadow: 0 8px 25px rgba(0,0,0,0.04);">
-            <div style="font-size: 3.5rem; margin-bottom: 0.6rem;">🔍</div>
-            <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 0.4rem; font-weight: 800;">কোনো প্যাকেজ পাওয়া যায়নি (No Packages Found)</h3>
-            <p style="color: #64748b; font-size: 0.98rem; margin-bottom: 1.2rem;">অন্য কোনো নাম বা ক্যাটাগরি দিয়ে ফিল্টার করুন।</p>
-            <button onclick="resetMasterFilter()" class="primary-btn" style="padding: 0.7rem 1.6rem; font-weight: 800;">Reset Filters</button>
+      if (displayPkgs.length === 0) {
+        if (countEl) countEl.textContent = '0';
+
+        const missingCard = document.createElement('div');
+        missingCard.style.cssText = "grid-column: 1 / -1; width: 100%; margin-bottom: 2rem;";
+        missingCard.innerHTML = `
+          <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.08) 100%); border: 2.5px dashed #f59e0b; border-radius: 20px; padding: 2.2rem; text-align: center; margin-bottom: 2.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🔍</div>
+            <h3 style="font-size: 1.45rem; font-weight: 900; color: #dc2626; margin: 0 0 0.5rem;">
+              "${window.sanitizeHTML ? window.sanitizeHTML(rawSearchQuery || 'অনুরোধকৃত') : (rawSearchQuery || 'অনুরোধকৃত')}" প্যাকেজটি এখনো যুক্ত করা হয়নি!
+            </h3>
+            <p style="font-size: 1rem; color: #475569; font-weight: 700; max-width: 680px; margin: 0 auto 1.4rem; line-height: 1.6;">
+              আপনার খোঁজা ট্যুর অফারটি Mount2ocean সিস্টেমের ওনার ও অ্যাডমিন প্যানেলে রিমাইন্ডার আকারে সংসংযুক্ত করা হয়েছে। অ্যাডমিন টিম খুব শীঘ্রই প্যাকেজটি আপডেট করবে।
+            </p>
+            <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #ffffff; border: 1.5px solid #00a651; padding: 0.6rem 1.4rem; border-radius: 30px; color: #00a651; font-weight: 800; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(0,166,81,0.15);">
+              <span>🔔 Logged to Admin Dashboard Notification Queue</span>
+            </div>
+            <div style="margin-top: 1.2rem;">
+              <button onclick="resetMasterFilter()" class="secondary-btn" style="padding: 0.55rem 1.4rem; font-weight: 800;">Clear Search Filter</button>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; text-align: left; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem;">
+            <h3 style="font-size: 1.3rem; font-weight: 900; color: #0072bc; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+              🌴 Available Popular Tour Packages (অন্যান্য জনপ্রিয় প্যাকেজসমূহ)
+            </h3>
+            <p style="font-size: 0.92rem; color: #64748b; font-weight: 700; margin: 0.3rem 0 0;">
+              আপনি চাইলে আমাদের বর্তমান সক্রিয় প্যাকেজগুলো থেকে নির্বাচন করতে পারেন:
+            </p>
           </div>
         `;
+        grid.appendChild(missingCard);
+
+        masterCatalog.forEach(pkg => {
+          appendMasterCard(grid, pkg);
+        });
         return;
       }
 
-      packages.forEach(pkg => {
-        const card = document.createElement('div');
-        card.className = 'pkg-master-card';
-        card.innerHTML = `
-          <div class="pkg-master-thumb" onclick="openPkgDetails('${pkg.id}')" style="cursor: pointer;">
-            <img src="${pkg.image}" alt="${pkg.name}">
-            <span class="pkg-master-badge" style="background: #00a651; color: #ffffff; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 999px;">${pkg.badgeLabel || pkg.badge || 'Featured Tour'}</span>
-            <span class="pkg-master-price" style="background: #0f172a !important; color: #00f2fe !important; font-size: 1.25rem !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; text-shadow: 0 0 10px #00f2fe !important; padding: 0.35rem 0.9rem !important; border-radius: 999px !important;">${pkg.price}</span>
-          </div>
-          <div class="pkg-master-content">
-            <div class="pkg-master-meta">
-              <span>${(pkg.category || 'DESTINATION').toUpperCase()}</span>
-              <span style="color: #eab308;">${pkg.rating || '4.9 (160 reviews)'}</span>
-            </div>
-            <h3 class="pkg-master-title" onclick="openPkgDetails('${pkg.id}')">${pkg.name}</h3>
-            <p class="pkg-master-desc">${pkg.desc}</p>
-            <div class="pkg-master-footer">
-              <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">${pkg.duration}</span>
-              <div style="display: flex; gap: 0.5rem;">
-                <button type="button" class="secondary-btn" onclick="openPkgDetails('${pkg.id}')" style="padding: 0.55rem 0.95rem; font-weight: 800; font-size: 0.85rem;">
-                  Details ➔
-                </button>
-                <button type="button" class="primary-btn" onclick="openPkgBooking('${pkg.id}')" style="padding: 0.55rem 1.1rem; font-weight: 800; font-size: 0.85rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
-                  🛒 Book Now
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
+      displayPkgs.forEach(pkg => {
+        appendMasterCard(grid, pkg);
       });
+    }
+
+    function appendMasterCard(grid, pkg) {
+      const card = document.createElement('div');
+      card.className = 'pkg-master-card';
+      card.innerHTML = `
+        <div class="pkg-master-thumb" onclick="openPkgDetails('${pkg.id}')" style="cursor: pointer;">
+          <img src="${pkg.image}" alt="${pkg.name}">
+          <span class="pkg-master-badge" style="background: #00a651; color: #ffffff; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 999px;">${pkg.badgeLabel || pkg.badge || 'Featured Tour'}</span>
+          <span class="pkg-master-price" style="background: #0f172a !important; color: #00f2fe !important; font-size: 1.25rem !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; text-shadow: 0 0 10px #00f2fe !important; padding: 0.35rem 0.9rem !important; border-radius: 999px !important;">${pkg.price}</span>
+        </div>
+        <div class="pkg-master-content">
+          <div class="pkg-master-meta">
+            <span>${(pkg.category || 'DESTINATION').toUpperCase()}</span>
+            <span style="color: #eab308;">${pkg.rating || '4.9 (160 reviews)'}</span>
+          </div>
+          <h3 class="pkg-master-title" onclick="openPkgDetails('${pkg.id}')">${pkg.name}</h3>
+          <p class="pkg-master-desc">${pkg.desc}</p>
+          <div class="pkg-master-footer">
+            <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">${pkg.duration}</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" class="secondary-btn" onclick="openPkgDetails('${pkg.id}')" style="padding: 0.55rem 0.95rem; font-weight: 800; font-size: 0.85rem;">
+                Details ➔
+              </button>
+              <button type="button" class="primary-btn" onclick="openPkgBooking('${pkg.id}')" style="padding: 0.55rem 1.1rem; font-weight: 800; font-size: 0.85rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
+                🛒 Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
     }
 
     function openPkgDetails(pkgId) {
@@ -387,7 +415,8 @@
     function filterMasterPackages() {
       const searchInput = document.getElementById('masterPkgSearchInput');
       const catSelect = document.getElementById('masterPkgCatSelect');
-      const searchVal = searchInput ? (searchInput.value || '').trim().toLowerCase() : '';
+      const rawSearchVal = searchInput ? (searchInput.value || '').trim() : '';
+      const searchVal = rawSearchVal.toLowerCase();
       const catVal = catSelect ? (catSelect.value || 'all').toLowerCase() : 'all';
 
       const allPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
@@ -402,7 +431,13 @@
         return matchesCat && matchesSearch;
       });
 
-      renderMasterPackagesDirectory(filtered);
+      if (rawSearchVal && filtered.length === 0) {
+        if (window.logMissingPackageSearch) {
+          window.logMissingPackageSearch(rawSearchVal);
+        }
+      }
+
+      renderMasterPackagesDirectory(filtered, rawSearchVal, allPkgs);
     }
 
     function resetMasterFilter() {
@@ -411,7 +446,6 @@
       if (searchInput) searchInput.value = '';
       if (catSelect) catSelect.value = 'all';
 
-      // Clear search/q/cat query parameters from URL
       if (window.history.replaceState) {
         const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
         window.history.replaceState({path: cleanUrl}, '', cleanUrl);
