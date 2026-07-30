@@ -69,11 +69,13 @@ if (document.readyState === 'loading') {
 // GLOBAL PACKAGES & SEARCH REDIRECTION ENGINE
 // ==========================================
 window.defaultPackages = [
-  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/darjeeling.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
+  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
+  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '৳12,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
   { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
-  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
-  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
-  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: '⭐ 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." }
+  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
+  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
+  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: '⭐ 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
+  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '৳42,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
 ];
 
 window.getCombinedLivePackages = function() {
@@ -140,7 +142,7 @@ window.logMissingPackageSearch = function(rawQuery) {
       query: cleanQ,
       count: 1,
       lastSearched: timeNow,
-      status: 'Pending', // 'Pending' | 'Added' | 'Dismissed'
+      status: 'Pending',
       addedByAdmin: false
     });
   }
@@ -156,33 +158,33 @@ window.executeFindToursSearch = function() {
     const dateInput = document.getElementById('custSearchDate');
 
     let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
+    if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
+    
     let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
     cleanQuery = cleanQuery.replace(/\bBT\b/gi, '').trim().toLowerCase();
     let selectedDate = dateInput ? dateInput.value : '2026-08-10';
 
     const packages = window.getCombinedLivePackages();
-
     let targetPkg = null;
 
     if (cleanQuery || rawQuery) {
       const fullRaw = rawQuery.toLowerCase();
       
-      // 1. Direct Bhutan match check
-      if (fullRaw.includes('bhutan') || fullRaw.includes('bt') || cleanQuery.includes('bhutan')) {
-        targetPkg = packages.find(p => p.id === 'pkg-bhutan' || (p.category || '').toLowerCase() === 'bhutan');
+      // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
+      const categories = ['sylhet', 'nepal', 'bhutan', 'dubai', 'coxsbazar', 'maldives', 'bali'];
+      for (const cat of categories) {
+        if (fullRaw.includes(cat) || cleanQuery.includes(cat)) {
+          targetPkg = packages.find(p => (p.category || '').toLowerCase() === cat || p.id.includes(cat));
+          if (targetPkg) break;
+        }
       }
 
-      // 2. Direct Category/Destination matching (e.g. dubai, coxsbazar, maldives, bali, sylhet, nepal)
-      if (!targetPkg && cleanQuery) {
-        targetPkg = packages.find(p => cleanQuery.includes((p.category || '').toLowerCase()) || (p.category || '').toLowerCase().includes(cleanQuery));
-      }
-
-      // 3. Substring Name matching
+      // 2. Substring Name matching
       if (!targetPkg && cleanQuery) {
         targetPkg = packages.find(p => p.name.toLowerCase().includes(cleanQuery) || cleanQuery.includes(p.name.toLowerCase()));
       }
 
-      // 4. Multi-word keyword matching
+      // 3. Multi-word keyword matching
       if (!targetPkg && cleanQuery) {
         const words = cleanQuery.split(/\s+/);
         targetPkg = packages.find(p => {
@@ -202,10 +204,10 @@ window.executeFindToursSearch = function() {
       window.logMissingPackageSearch(rawQuery);
     }
 
-    window.location.href = `all_packages.html?search=${encodeURIComponent(rawQuery)}`;
+    window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}`;
   } catch (e) {
     console.error("Search execution fallback:", e);
-    window.location.href = 'all_packages.html';
+    window.location.href = 'tour_packages.html';
   }
 };
 
