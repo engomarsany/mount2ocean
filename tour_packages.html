@@ -419,7 +419,10 @@
       const searchVal = rawSearchVal.toLowerCase();
       const catVal = catSelect ? (catSelect.value || 'all').toLowerCase() : 'all';
 
-      const allPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+      let allPkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+      if (!allPkgs || allPkgs.length === 0) {
+        allPkgs = window.defaultPackages || [];
+      }
 
       const filtered = allPkgs.filter(pkg => {
         const matchesCat = (catVal === 'all') || (pkg.category || '').toLowerCase() === catVal;

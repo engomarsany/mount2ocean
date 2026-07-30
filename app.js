@@ -80,7 +80,7 @@ window.defaultPackages = [
 
 window.getCombinedLivePackages = function() {
   let live = [];
-  const pkgVersion = 'v3_sylhet_nepal_sync';
+  const pkgVersion = 'v4_bulletproof_packages_sync';
   const savedVersion = localStorage.getItem('m2o_pkg_version');
 
   if (savedVersion !== pkgVersion) {
@@ -91,9 +91,14 @@ window.getCombinedLivePackages = function() {
   }
 
   const saved = localStorage.getItem('m2o_live_packages');
-  if (saved !== null) {
+  if (saved) {
     try {
-      live = JSON.parse(saved) || [];
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        live = parsed;
+      } else {
+        live = [...window.defaultPackages];
+      }
     } catch (e) {
       live = [...window.defaultPackages];
     }
