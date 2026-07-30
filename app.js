@@ -1992,6 +1992,10 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast(`⏳ Booking ${bookingId} Submitted! Pending Admin Approval. Notification sent to Admin Panel!`, 'success');
   };
 
+  window.openMyProfileModal = function() {
+    window.location.href = 'my_profile.html';
+  };
+
   // ==========================================
   // TOAST NOTIFICATION HELPER
   // ==========================================
