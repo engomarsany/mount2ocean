@@ -436,34 +436,41 @@
         if (!matchesCat) return false;
         if (!searchVal) return true;
 
-        const haystack = `${pkg.name} ${pkg.category} ${pkg.desc}`.toLowerCase();
+        const haystack = `${pkg.name} ${pkg.category} ${pkg.desc} ${pkg.badgeLabel || ''}`.toLowerCase();
 
         // 1. Direct includes match
         if (haystack.includes(searchVal) || searchVal.includes(pkg.name.toLowerCase())) {
           return true;
         }
 
-        // 2. Category match (e.g. sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
-        const categoryClean = (pkg.category || '').toLowerCase();
-        if (categoryClean && (categoryClean.includes(searchVal) || searchVal.includes(categoryClean))) {
-          return true;
+        // 2. Smart Destination Alias Keyword Map
+        const destAliases = {
+          'coxsbazar': ['cox', 'coxs', 'bazar', 'saint', 'martin', 'cruise', 'sea', 'beach', 'kolatoli', 'ocean', 'resort'],
+          'sylhet': ['sylhet', 'jaflong', 'ratargul', 'tea', 'garden', 'swamp', 'bisnakandi'],
+          'bhutan': ['bhutan', 'paro', 'thimphu', 'tiger', 'nest', 'hike', 'cultural'],
+          'dubai': ['dubai', 'safari', 'burj', 'khalifa', 'marina', 'dhow', 'desert'],
+          'maldives': ['maldives', 'overwater', 'bungalow', 'villa', 'resort', 'honeymoon', 'snorkeling'],
+          'bali': ['bali', 'kintamani', 'volcano', 'uluwatu', 'swing', 'tegalalang', 'waterfront'],
+          'nepal': ['nepal', 'kathmandu', 'pokhara', 'annapurna', 'himalaya', 'himalayan', 'sunrise']
+        };
+
+        const pkgCat = (pkg.category || '').toLowerCase();
+        if (destAliases[pkgCat]) {
+          const aliases = destAliases[pkgCat];
+          if (aliases.some(alias => searchVal.includes(alias) || alias.includes(searchVal))) {
+            return true;
+          }
         }
 
-        // 3. Keyword / Word-by-word match
+        // 3. Word-by-word intersection match
         const words = searchVal.replace(/[^\w\s]/gi, ' ').split(/\s+/).filter(w => w.length >= 3);
         if (words.length > 0) {
-          const matchedWords = words.filter(w => haystack.includes(w));
-          if (matchedWords.length > 0) return true;
+          const matchedCount = words.filter(w => haystack.includes(w)).length;
+          if (matchedCount > 0) return true;
         }
 
         return false;
       });
-
-      if (rawSearchVal && filtered.length === 0) {
-        if (window.logMissingPackageSearch) {
-          window.logMissingPackageSearch(rawSearchVal);
-        }
-      }
 
       renderMasterPackagesDirectory(filtered, rawSearchVal, allPkgs);
     }
