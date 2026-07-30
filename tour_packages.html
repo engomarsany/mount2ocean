@@ -337,10 +337,31 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=100k_luxury"></script>
+  <script src="app.js?v=single_footer_fix"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderMasterPackagesDirectory();
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlSearch = urlParams.get('search') || urlParams.get('q') || '';
+      const urlCat = urlParams.get('cat') || 'all';
+
+      const searchInput = document.getElementById('masterPkgSearchInput');
+      const catSelect = document.getElementById('masterPkgCatSelect');
+
+      if (searchInput && urlSearch) {
+        searchInput.value = decodeURIComponent(urlSearch);
+      }
+      if (catSelect && urlCat !== 'all') {
+        catSelect.value = urlCat;
+      }
+
+      filterMasterPackages();
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterMasterPackages);
+      }
+      if (catSelect) {
+        catSelect.addEventListener('change', filterMasterPackages);
+      }
     });
 
     function renderMasterPackagesDirectory(filteredList) {

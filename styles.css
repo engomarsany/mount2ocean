@@ -62,7 +62,7 @@ body.light-theme {
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-/* Reset & Global - Google Product Standards */
+/* /* Reset & Global - Google Product Standards */
 /* ==========================================================================
    PERMANENT FULL-SITE HIGH-CONTRAST FONT VISIBILITY ENGINE (MANDATORY RULE)
    Guarantee: Every text, heading, label, button, badge, table, modal, and subtext
@@ -73,19 +73,54 @@ body.light-theme {
 }
 
 body {
-  color: #0f172a !important;
-  font-weight: 600;
-  -webkit-font-smoothing: antialiased;
   font-family: 'Outfit', 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-primary);
-  color: var(--text-main);
-  min-height: 100vh;
+  color: #0f172a !important;
+  font-weight: 700;
+  line-height: 1.6;
   overflow-x: hidden;
-  position: relative;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Light Theme Text Enforcement - 100% Crisp Ultra Dark Slate */
+body.light-theme,
+body.light-theme p,
+body.light-theme span,
+body.light-theme label,
+body.light-theme td,
+body.light-theme th,
+body.light-theme li,
+body.light-theme small {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+  color: #0f172a !important;
+  font-weight: 900 !important;
+}
+
+/* Dark Theme & Footer Text Enforcement - 100% Pure Bright White */
+body.dark-theme,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme label,
+body.dark-theme td,
+body.dark-theme th,
+body.dark-theme li,
+.cust-footer,
+.cust-footer p,
+.cust-footer span,
+.cust-footer a,
+.cust-footer li,
+.cust-footer div {
+  color: #ffffff;
 }
 
 /* Google Product Headings Typography Scale */

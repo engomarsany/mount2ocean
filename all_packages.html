@@ -359,14 +359,30 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js"></script>
+  <script src="app.js?v=single_footer_fix"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderCatalogPackages();
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlSearch = urlParams.get('search') || urlParams.get('q') || '';
+      const urlCat = urlParams.get('cat') || 'all';
 
       const searchInput = document.getElementById('catalogSearchInput');
+      const catSelect = document.getElementById('catalogCategoryFilter');
+
+      if (searchInput && urlSearch) {
+        searchInput.value = decodeURIComponent(urlSearch);
+      }
+      if (catSelect && urlCat !== 'all') {
+        catSelect.value = urlCat;
+      }
+
+      filterCatalogPackages();
+
       if (searchInput) {
         searchInput.addEventListener('input', filterCatalogPackages);
+      }
+      if (catSelect) {
+        catSelect.addEventListener('change', filterCatalogPackages);
       }
     });
 
