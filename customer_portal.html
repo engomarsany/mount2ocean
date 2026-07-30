@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="styles.css?v=100k_luxury">
 
   <style>
-    /* Inline Fail-Safe for Realistic Commercial Jet 1.0-Second Fog Intro */
+    /* Inline Fail-Safe for Realistic Commercial Jet Network-Adaptive Fog Intro */
     #m2oCinematicIntroSplash {
       position: fixed !important;
       top: 0 !important;
@@ -37,59 +37,54 @@
       justify-content: center !important;
       overflow: hidden !important;
       pointer-events: none !important;
-      animation: splashFadeOut 0.3s ease 1.0s forwards !important;
-    }
-    @keyframes splashFadeOut {
-      0% { opacity: 1; visibility: visible; }
-      85% { opacity: 1; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; display: none !important; }
+      transition: opacity 0.6s ease, visibility 0.6s ease !important;
     }
     .mist-cloud-layer {
       position: absolute;
-      inset: -50px;
-      background: radial-gradient(ellipse at center, rgba(0, 242, 254, 0.3) 0%, rgba(255, 255, 255, 0.2) 40%, transparent 80%);
+      inset: -60px;
+      background: radial-gradient(ellipse at center, rgba(0, 242, 254, 0.35) 0%, rgba(255, 255, 255, 0.22) 40%, transparent 85%);
       filter: blur(60px);
-      animation: fogPuff 1.0s ease-out forwards;
+      animation: fogPulse 2.5s infinite alternate ease-in-out;
     }
-    @keyframes fogPuff {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
+    @keyframes fogPulse {
+      0% { transform: scale(1); opacity: 0.85; }
+      100% { transform: scale(1.3); opacity: 1; }
     }
     .airplane-fly-track {
       position: absolute;
-      top: 42%;
-      left: -35%;
-      width: 170%;
+      top: 40%;
+      left: -40%;
+      width: 180%;
       transform: translateY(-50%) rotate(-3deg);
-      animation: planeFlight 1.0s cubic-bezier(0.1, 0.85, 0.25, 1) forwards;
+      animation: planeLoopFlight 2.2s cubic-bezier(0.1, 0.85, 0.25, 1) infinite;
     }
-    @keyframes planeFlight {
-      0% { left: -35%; opacity: 0; }
+    @keyframes planeLoopFlight {
+      0% { left: -40%; opacity: 0; }
       15% { opacity: 1; }
       85% { opacity: 1; }
-      100% { left: 120%; opacity: 0; }
+      100% { left: 125%; opacity: 0; }
     }
     .jet-engine-contrail {
-      width: 450px;
-      height: 10px;
+      width: 600px;
+      height: 14px;
       background: linear-gradient(90deg, rgba(0,242,254,0.95), rgba(0,166,81,0.6), transparent);
       border-radius: 999px;
-      filter: blur(5px);
-      box-shadow: 0 0 25px #00f2fe;
+      filter: blur(6px);
+      box-shadow: 0 0 35px #00f2fe;
     }
   </style>
 </head>
 <body class="customer-portal-body light-theme">
 
-  <!-- ✈️ PHOTOREALISTIC COMMERCIAL AIRLINER 1.0-SECOND FOG INTRO SPLASH -->
+  <!-- ✈️ PHOTOREALISTIC COMMERCIAL AIRLINER NETWORK-ADAPTIVE FOG INTRO SPLASH -->
   <div id="m2oCinematicIntroSplash">
     <div class="mist-cloud-layer"></div>
     <div class="airplane-fly-track">
-      <div style="display: flex; align-items: center; gap: 0.2rem;">
-        <!-- PHOTOREALISTIC 3D BOEING / AIRBUS COMMERCIAL PASSENGER JET -->
-        <svg width="220" height="110" viewBox="0 0 500 250" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 15px 35px rgba(0,242,254,0.7));">
+      <div style="display: flex; align-items: center; gap: 0.4rem;">
+        <!-- LARGE 380px PHOTOREALISTIC 3D BOEING / AIRBUS COMMERCIAL PASSENGER JET -->
+        <svg width="380" height="190" viewBox="0 0 500 250" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 20px 45px rgba(0,242,254,0.85));">
           <!-- JET THRUST FLAME -->
-          <ellipse cx="60" cy="135" rx="40" ry="12" fill="url(#jetThrust)" />
+          <ellipse cx="60" cy="135" rx="55" ry="16" fill="url(#jetThrust)" />
           
           <!-- FUSELAGE -->
           <path d="M480 120 C420 80, 250 85, 120 115 C90 122, 50 130, 30 135 C20 138, 20 142, 30 145 C60 152, 110 155, 200 155 C320 155, 440 148, 480 120 Z" fill="url(#fuselageMetallic)" />
@@ -138,7 +133,7 @@
             </linearGradient>
             <radialGradient id="jetThrust" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#00f2fe" stop-opacity="1" />
-              <stop offset="50%" stop-color="#00a651" stop-opacity="0.6" />
+              <stop offset="50%" stop-color="#00a651" stop-opacity="0.7" />
               <stop offset="100%" stop-color="transparent" stop-opacity="0" />
             </radialGradient>
           </defs>
@@ -148,10 +143,24 @@
     </div>
 
     <div style="position: relative; z-index: 10; text-align: center;">
-      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 75px; filter: drop-shadow(0 0 30px rgba(0,242,254,0.8)); margin-bottom: 0.8rem;">
-      <div style="color: #00f2fe; font-size: 0.95rem; letter-spacing: 6px; font-weight: 900; text-transform: uppercase;">LUXURY TRAVEL &amp; TOURS</div>
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 85px; filter: drop-shadow(0 0 35px rgba(0,242,254,0.9)); margin-bottom: 0.8rem;">
+      <div style="color: #00f2fe; font-size: 1.4rem; letter-spacing: 8px; font-weight: 900; text-transform: uppercase; text-shadow: 0 0 15px rgba(0,242,254,0.8);">MOUNT2OCEAN</div>
     </div>
   </div>
+
+  <script>
+    // Network-Adaptive Loading Handler: Dismiss splash only after network load finishes
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var splash = document.getElementById('m2oCinematicIntroSplash');
+        if (splash) {
+          splash.style.opacity = '0';
+          splash.style.visibility = 'hidden';
+          setTimeout(function() { splash.style.display = 'none'; }, 600);
+        }
+      }, 1200);
+    });
+  </script>
 
   <!-- TOP HEADER NAVIGATION -->
   <header class="app-header customer-header">
