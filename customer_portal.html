@@ -18,17 +18,75 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Stylesheet with Cache-Busting Version -->
+  <link rel="stylesheet" href="styles.css?v=100k_luxury">
+
+  <style>
+    /* Inline Fail-Safe for Cinematic Airplane Fog Intro */
+    #m2oCinematicIntroSplash {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 999999 !important;
+      background: radial-gradient(circle at center, #0f172a 0%, #090d16 100%) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      animation: splashFadeOut 0.8s ease 3.2s forwards !important;
+    }
+    @keyframes splashFadeOut {
+      0% { opacity: 1; visibility: visible; }
+      90% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; display: none !important; }
+    }
+    .mist-cloud-layer {
+      position: absolute;
+      inset: -50px;
+      background: radial-gradient(ellipse at center, rgba(0, 242, 254, 0.25) 0%, rgba(255, 255, 255, 0.15) 35%, transparent 75%);
+      filter: blur(50px);
+      animation: fogPuff 3.5s ease-out forwards;
+    }
+    @keyframes fogPuff {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .airplane-fly-track {
+      position: absolute;
+      top: 40%;
+      left: -30%;
+      width: 160%;
+      transform: translateY(-50%) rotate(-4deg);
+      animation: planeFlight 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes planeFlight {
+      0% { left: -30%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { left: 115%; opacity: 0; }
+    }
+    .airplane-contrail {
+      width: 320px;
+      height: 8px;
+      background: linear-gradient(90deg, rgba(0,242,254,0.9), rgba(0,166,81,0.5), transparent);
+      border-radius: 999px;
+      filter: blur(4px);
+      box-shadow: 0 0 20px #00f2fe;
+    }
+  </style>
 </head>
 <body class="customer-portal-body light-theme">
 
   <!-- ✈️ $100,000 USD CINEMATIC AIRPLANE & FOG ENTRY SPLASH -->
   <div id="m2oCinematicIntroSplash">
-    <div class="mist-cloud-bg"></div>
+    <div class="mist-cloud-layer"></div>
     <div class="airplane-fly-track">
-      <div class="luxury-airplane-wrapper">
-        <svg class="airplane-svg" width="96" height="96" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg width="110" height="110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 15px #00f2fe);">
           <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="url(#planeGlow)"/>
           <defs>
             <linearGradient id="planeGlow" x1="2" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
@@ -42,9 +100,9 @@
       </div>
     </div>
 
-    <div class="splash-brand-title">
-      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 70px; filter: drop-shadow(0 0 25px rgba(0,242,254,0.7)); margin-bottom: 0.8rem;">
-      <div style="color: #00f2fe; font-size: 0.9rem; letter-spacing: 5px; font-weight: 900; text-transform: uppercase;">LUXURY TRAVEL &amp; TOURS</div>
+    <div style="position: relative; z-index: 10; text-align: center;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 75px; filter: drop-shadow(0 0 30px rgba(0,242,254,0.8)); margin-bottom: 0.8rem;">
+      <div style="color: #00f2fe; font-size: 0.95rem; letter-spacing: 6px; font-weight: 900; text-transform: uppercase;">LUXURY TRAVEL &amp; TOURS</div>
     </div>
   </div>
 
@@ -728,6 +786,6 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js"></script>
+  <script src="app.js?v=100k_luxury"></script>
 </body>
 </html>

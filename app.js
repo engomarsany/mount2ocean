@@ -3064,10 +3064,17 @@ function checkCustomerBookingNotifications() {
     `;
 
     widget.innerHTML = `
-      <!-- FLOATING BUTTON -->
-      <button type="button" id="m2oAiBotToggleBtn" onclick="toggleM2OAiChatModal()" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; color: white; font-size: 1.8rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease;">
-        🤖
-      </button>
+      <!-- FLOATING BUTTON & GLOWING BADGE -->
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <div onclick="toggleM2OAiChatModal()" style="cursor: pointer; background: #0f172a; color: #ffffff; padding: 0.45rem 0.95rem; border-radius: 999px; border: 2px solid #00a651; font-weight: 800; font-size: 0.82rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.35); display: flex; align-items: center; gap: 0.5rem; animation: pulseGlow 2s infinite;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #00f2fe; box-shadow: 0 0 8px #00f2fe; display: inline-block;"></span>
+          <span style="color: #00f2fe; font-weight: 900;">AI Support</span> • Ask Anything!
+        </div>
+
+        <button type="button" id="m2oAiBotToggleBtn" onclick="toggleM2OAiChatModal()" style="width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: 2px solid #ffffff; color: white; font-size: 1.9rem; box-shadow: 0 8px 30px rgba(0, 166, 81, 0.5); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; flex-shrink: 0;">
+          🤖
+        </button>
+      </div>
 
       <!-- CHAT MODAL WINDOW -->
       <div id="m2oAiChatModal" class="hidden" style="position: absolute; bottom: 75px; right: 0; width: 380px; height: 500px; background: #ffffff; border-radius: 20px; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; overflow: hidden; animation: slideInUp 0.3s ease;">
