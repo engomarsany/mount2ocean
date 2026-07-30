@@ -3074,7 +3074,7 @@ function checkCustomerBookingNotifications() {
     const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || { name: 'Valued Customer', mobile: '01977477172', email: 'customer@mount2ocean.com' };
 
     // Check if user is replying YES to live support escalation
-    const isEscalationRequest = lower.includes('হ্যাঁ') || lower.includes('yes') || lower.includes('support') || lower.includes('কথা') || lower.includes('কথা বলতে চাই') || lower.includes('লাইভ');
+    const isEscalationRequest = lower.includes('হ্যাঁ') || lower.includes('yes') || lower.includes('support') || lower.includes('কথা') || lower.includes('কথা বলতে চাই') || lower.includes('লাইভ') || lower.includes('প্রতিনিধি');
 
     if (window.aiWaitingEscalationConsent || isEscalationRequest) {
       window.aiWaitingEscalationConsent = false;
@@ -3107,47 +3107,59 @@ function checkCustomerBookingNotifications() {
         let currentMsgs = getAiChatMessages();
         currentMsgs.push({
           sender: 'bot',
-          text: `⏳ আপনার মেসেজটি Mount2ocean লাইভ সাপোর্ট টিমে সাকসেসফুলি ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন ড্যাশবোর্ড থেকে প্রতিনিধি শীঘ্রই আপনাকে সরাসরি রিপ্লাই পাঠাবেন।`,
+          text: `⏳ আপনার রিকোয়েস্টটি Mount2ocean ওনার ও অ্যাডমিন লাইভ সাপোর্ট কনসোলে ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন টিম খুব শীঘ্রই আপনাকে সরাসরি রিপ্লাই দেবেন।`,
           time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         });
         saveAiChatMessages(currentMsgs);
-        if (typeof showToast === 'function') showToast('💬 Request sent to Admin Live Support Team!', 'success');
+        if (typeof showToast === 'function') showToast('💬 Connected to Admin Live Support Team!', 'success');
       }, 600);
 
       return;
     }
 
-    // Full Website Knowledge Base Search
+    // Full Website Knowledge Base AI Engine
     const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
     let botReply = '';
 
-    if (lower.includes('bhutan') || lower.includes('ভুটান')) {
-      const bhutanPkg = livePkgs.find(p => p.id === 'pkg-bhutan' || (p.category || '').includes('bhutan'));
-      if (bhutanPkg) {
-        botReply = `🇧🇹 ${bhutanPkg.name}\n💰 মূল্য: ${bhutanPkg.price} (প্রতি জন)\n⏱️ সময়কাল: ${bhutanPkg.duration}\n📜 বিবরণ: ${bhutanPkg.desc}\n\nবুকিং করার জন্য "Tour Packages" পেজে যান বা বুকিং বাটনে চাপ দিন।`;
-      } else {
-        botReply = `🇧🇹 ভুটান প্যাকেজ: ৪ দিন / ৩ রাত কমপ্লিট ট্যুর রিটার্ন ফ্লাইট, ৩-স্টার হোটেল ও সাইটসিয়িং সহ মূল্য ৳৭৫,০০০।`;
-      }
+    if (lower.includes('sylhet') || lower.includes('সিলেট') || lower.includes('jaflong') || lower.includes('জাফলং') || lower.includes('ratargul') || lower.includes('রাতারগুল')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-sylhet-tea' || (p.category || '').includes('sylhet'));
+      botReply = `🍵 ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" সেকশনে যান!`;
+    } else if (lower.includes('nepal') || lower.includes('নেপাল') || lower.includes('kathmandu') || lower.includes('কাঠমান্ডু') || lower.includes('pokhara') || lower.includes('পোখরা')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-nepal-himalaya' || (p.category || '').includes('nepal'));
+      botReply = `🏔️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৪২,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 5 Days / 4 Nights\n📜 অন্তর্ভুক্ত: পশুপতিনাথ মন্দির, ফেওয়া লেকে বোটিং, সারংকোট হিমালয় সানরাইজ পয়েন্ট ও প্যারাগ্লাইডিং।`;
+    } else if (lower.includes('cox') || lower.includes('কক্সবাজার') || lower.includes('saint') || lower.includes('সেন্টমার্টিন')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-coxsbazar-beach' || (p.category || '').includes('coxsbazar'));
+      botReply = `🏖️ ${pkg ? pkg.name : "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise"}\n💰 মূল্য: ${pkg ? pkg.price : '৳১৮,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: সি-ফ্রন্ট ৫-স্টার রিসোর্ট, সি-ফুড বুফে ব্রেকফাস্ট, সেন্টমার্টিন শিপ ক্রুজ এবং কোলাতলী বিচ ট্যুর।`;
+    } else if (lower.includes('dubai') || lower.includes('দুবাই') || lower.includes('burj') || lower.includes('বুর্জ')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-dubai-safari' || (p.category || '').includes('dubai'));
+      botReply = `🏙️ ${pkg ? pkg.name : 'Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৪৮,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 5 Days / 4 Nights\n📜 অন্তর্ভুক্ত: ৪x৪ ডেসার্ট সাফারি, বুর্জ খলিফা ১২৪ তলার টিকেট, মেরিনা ক্রুজ উইথ বার্বিকিউ ডিনার।`;
+    } else if (lower.includes('maldives') || lower.includes('মালদ্বীপ')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-maldives-resort' || (p.category || '').includes('maldives'));
+      botReply = `🏝️ ${pkg ? pkg.name : 'Maldives Overwater Resort Villa & Speedboat Transfer'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৮৫,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: প্রাইভেট ওভারওয়াটার ভিলা, স্নরকেলিং স্পিডবোট রাইড, অল-ইনক্লুসিভ লাক্সারি মিলস।`;
+    } else if (lower.includes('bhutan') || lower.includes('ভুটান')) {
+      const pkg = livePkgs.find(p => p.id === 'pkg-bhutan' || (p.category || '').includes('bhutan'));
+      botReply = `🇧🇹 ${pkg ? pkg.name : "Bhutan Cultural Tour & Tiger's Nest Hike"}\n💰 মূল্য: ${pkg ? pkg.price : '৳৭৫,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: রিটার্ন এয়ার টিকিট, ৩-স্টার হোটেল, পারো ও থিম্পু সাইটসিয়িং।`;
     } else if (lower.includes('bali') || lower.includes('বালি')) {
-      const baliPkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
-      if (baliPkg) {
-        botReply = `🇮🇩 ${baliPkg.name}\n💰 মূল্য: ${baliPkg.price} (প্রতি জন)\n⏱️ সময়কাল: ${baliPkg.duration}\n📜 বিবরণ: ${baliPkg.desc}`;
-      } else {
-        botReply = `🇮🇩 বালি স্পেশাল ৪ দিন / ৩ রাত ট্যুর প্যাকেজ মূল্য ৳১৭,৫০০। কিন্তামানি ভলকানো, উলুওয়াতু টেম্পল ও ফ্রিতে ওয়াটার স্পোর্টস রাইড অন্তর্ভুক্ত!`;
-      }
+      const pkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
+      botReply = `🇮🇩 ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১৭,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: কিন্তামানি আগ্নেয়গিরি, ওয়াটার স্পোর্টস বোট রাইড এবং তানাহ লট সানসেট ট্যুর।`;
+    } else if (lower.includes('flight') || lower.includes('ticket') || lower.includes('টিকিট') || lower.includes('বিমান') || lower.includes('এয়ারলাইন্স')) {
+      botReply = `✈️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
+    } else if (lower.includes('hotel') || lower.includes('হোটেল') || lower.includes('resort') || lower.includes('রিসোর্ট')) {
+      botReply = `🏢 হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
+    } else if (lower.includes('visa') || lower.includes('ভিসা')) {
+      botReply = `🛂 ভিসা প্রসেসিং সার্ভিস:\n• দুবাই (E-Visa 24-48 Hours)\n• থাইল্যান্ড, মালয়েশিয়া, সিঙ্গাপুর, ভারত\n• ইউকে, ইউএসএ ও ইউরোপ শেনজেন ভিসা কনসালটেন্সি ও ফাইল প্রসেসিং।`;
     } else if (lower.includes('package') || lower.includes('প্যাকেজ') || lower.includes('price') || lower.includes('cost') || lower.includes('দাম') || lower.includes('খরচ')) {
       let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
-      botReply = `📦 আমাদের বর্তমান সক্রিয় ট্যুর প্যাকেজসমূহ:\n${pkgSummaries}\n\nসকল প্যাকেজের বিস্তারিত দেখতে "Tour Packages" সেকশন ভিজিট করুন।`;
+      botReply = `📦 আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
     } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('বিকাশ') || lower.includes('পেমেন্ট') || lower.includes('টাকা')) {
-      botReply = `💳 পেমেন্ট মাধ্যমসমূহ:\n• bKash / Nagad Mobile Banking (অটো ভেরিফাইড)\n• Visa / Mastercard\n• Direct Bank Deposit\n• Direct Call Request\n\nবুকিং চেকআউট পেজে সব পেমেন্ট অপশন পাওয়া যাবে।`;
+      botReply = `💳 পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Instant Verification\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
     } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('বাতিল') || lower.includes('রিফান্ড')) {
-      botReply = `🛡️ রিফান্ড ও বাতিলের নীতি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে ক্যানসেল করলে ১০০% রিফান্ড যোগ্য।\n• ওনার/অ্যাডমিন দ্বারা ট্রিপ ক্যানসেল হলে সাথে সাথে ফুল রিফান্ড প্রসেস করা হয়।\n• বিস্তারিত দেখতে "Refund Policy" পেজ ভিজিট করুন।`;
-    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন') || lower.includes('নাম্বার')) {
+      botReply = `🛡️ রিফান্ড পলিসি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে বুকিং ক্যানসেল করলে ১০০% রিফান্ড পাবেন।\n• ওনার/অ্যাডমিন টিম দ্বারা কোনো কারণে সফর স্থগিত হলে তাৎক্ষণিক রিফান্ড সম্পন্ন হয়।`;
+    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন')) {
       const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: 'Banani C/A, Dhaka 1213, Bangladesh' };
-      botReply = `📞 আমাদের সাথে যোগাযোগের মাধ্যম:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• প্রধান কার্যালয়: ${settings.address}`;
+      botReply = `📞 আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• অফিস: ${settings.address}`;
     } else {
-      // General relevant reply with escalation offer
-      botReply = `🤖 আপনার প্রশ্নের উত্তরে জানাচ্ছি যে, Mount2ocean Travel & Tours এ সকল আন্তর্জাতিক ও অভ্যন্তরীণ ট্যুর প্যাকেজ, এয়ার টিকিট এবং হোটেল রিজার্ভেশন সুবিধা রয়েছে।\n\n💬 আপনি কি আমাদের লাইভ অ্যাডমিন সাপোর্ট টিমের সাথে সরাসরি চ্যাট করতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
+      botReply = `🤖 আপনার প্রশ্নের উত্তর দিতে আমি প্রস্তুত! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ভিসা সার্ভিস বিদ্যমান।\n\n💬 আপনি কি সরাসরি আমাদের লাইভ ওনার/অ্যাডমিন সাপোর্ট টিমের সাথে কথা বলতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
       window.aiWaitingEscalationConsent = true;
     }
 
@@ -3255,11 +3267,20 @@ function checkCustomerBookingNotifications() {
   };
 
   window.toggleM2OAiChatModal = function() {
+    if (!document.getElementById('m2oFloatingAiBotWidget')) {
+      if (typeof window.initM2OFloatingAiWidget === 'function') {
+        window.initM2OFloatingAiWidget();
+      }
+    }
     const modal = document.getElementById('m2oAiChatModal');
     if (modal) {
       modal.classList.toggle('hidden');
       if (!modal.classList.contains('hidden')) {
-        renderCustomerChatMessages();
+        if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
+        const input = document.getElementById('m2oAiChatInput');
+        if (input) input.focus();
+        modal.style.boxShadow = '0 0 35px rgba(0, 242, 254, 0.9)';
+        setTimeout(() => { modal.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)'; }, 1500);
       }
     }
   };
