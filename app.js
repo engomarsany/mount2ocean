@@ -91,11 +91,12 @@ window.getCombinedLivePackages = function() {
     live = live.filter(p => !oldIds.includes(p.id));
   }
 
+  // GUARANTEE: Self-heal & restore default live packages if list is empty
   if (!live || live.length === 0) {
     live = [...window.defaultPackages];
+    localStorage.setItem('m2o_live_packages', JSON.stringify(live));
   }
 
-  localStorage.setItem('m2o_live_packages', JSON.stringify(live));
   return live;
 };
 

@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=2_packages_live">
+  <link rel="stylesheet" href="styles.css?v=fix_0_pkg_error">
   <style>
     .packages-master-grid {
       display: grid;
@@ -345,13 +345,15 @@
 
     function renderMasterPackagesDirectory(filteredList) {
       const grid = document.getElementById('masterPackagesGrid');
-      const countEl = document.getElementById('masterPkgCount');
+      const countEl = document.getElementById('masterTotalCount');
       if (!grid) return;
 
-      let packages = filteredList;
-      if (!packages) {
-        packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (JSON.parse(localStorage.getItem('m2o_live_packages')) || []);
+      let packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+
+      if (Array.isArray(filteredList) && filteredList.length > 0) {
+        packages = filteredList;
       }
+
       if (!packages || packages.length === 0) {
         packages = window.defaultPackages || [];
       }
