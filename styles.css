@@ -3691,5 +3691,140 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   outline: none !important;
 }
 
+/* ==========================================================================
+   100% UNIVERSAL HIGH-CONTRAST FONT VISIBILITY & LEGIBILITY ENGINE
+   ========================================================================== */
+
+/* 1. Universal Contrast Enforcement */
+body.light-theme, 
+body.light-theme p, 
+body.light-theme li, 
+body.light-theme td, 
+body.light-theme th,
+body.light-theme label,
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea {
+  color: #0f172a !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* 2. Headings & Titles Visibility */
+h1, h2, h3, h4, h5, h6,
+.cust-section-title,
+.tour-name,
+.pkg-master-title,
+.section-title,
+.card-title,
+.table-pkg-img + td,
+.pkg-title-cell {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* 3. Table Visibility (Headers & Body Cells) */
+table th {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.5px !important;
+}
+
+table td {
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+/* 4. Form Labels & Inputs Visibility */
+label {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  margin-bottom: 0.35rem !important;
+  display: inline-block !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #94a3b8 !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+/* 5. Navigation Links & Header Elements */
+.customer-nav-item,
+.nav-link,
+.logout-link-btn,
+.secondary-btn {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.customer-nav-item.active {
+  color: #0072bc !important;
+  border-bottom-color: #0072bc !important;
+}
+
+/* 6. Primary Action Buttons */
+.primary-btn {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* 7. Status Badges & Pills Contrast */
+.badge-tag, .tour-badge, .status-badge-live, .pay-pill {
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.status-badge-live {
+  background: rgba(0, 166, 81, 0.15) !important;
+  color: #007036 !important;
+  border: 1px solid rgba(0, 166, 81, 0.3) !important;
+}
+
+.pay-pill {
+  background: rgba(0, 114, 188, 0.15) !important;
+  color: #00568c !important;
+  border: 1px solid rgba(0, 114, 188, 0.3) !important;
+}
+
+/* 8. Muted / Small Secondary Subtext Visibility */
+small, .text-muted, .cust-meta, .tour-location, .tour-duration {
+  color: #475569 !important;
+  font-weight: 700 !important;
+}
+
+/* 9. Hero Overlay Banner Text Contrast Protection */
+.hero-title, .banner-title {
+  color: #ffffff !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+  font-weight: 900 !important;
+}
+
+.hero-desc, .banner-desc {
+  color: #f8fafc !important;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95) !important;
+  font-weight: 700 !important;
+}
+
 
 
