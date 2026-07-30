@@ -3545,83 +3545,15 @@ body.dark-theme #mobileDetailPkgPrice {
 }
 
 /* ==========================================================================
-   CINEMATIC AIRPLANE & MIST SPLASH ENTRY ANIMATION SYSTEM
+   CINEMATIC AIRPLANE & MIST SPLASH ENTRY ANIMATION SYSTEM (Centralized in HTML)
    ========================================================================== */
-#m2oCinematicIntroSplash {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  background: radial-gradient(circle at center, #0a192f 0%, #090d16 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  pointer-events: none;
-  animation: splashFadeOut 0.8s ease 2.2s forwards;
-}
-
-@keyframes splashFadeOut {
-  0% { opacity: 1; visibility: visible; }
-  99% { opacity: 0; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; display: none !important; }
-}
-
-.mist-cloud-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, rgba(0, 166, 81, 0.12) 40%, transparent 80%);
-  filter: blur(40px);
-  animation: fogDissolve 2.5s ease forwards;
-}
-
-@keyframes fogDissolve {
-  0% { transform: scale(1); opacity: 0.9; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-.airplane-fly-track {
-  position: absolute;
-  top: 45%;
-  left: -25%;
-  width: 150%;
-  transform: translateY(-50%) rotate(-5deg);
-  animation: airplaneFlyAcross 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes airplaneFlyAcross {
-  0% { left: -25%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 110%; opacity: 0; }
-}
-
-.luxury-airplane-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.airplane-contrail {
-  width: 250px;
-  height: 6px;
-  background: linear-gradient(90deg, rgba(0, 242, 254, 0.8), rgba(0, 166, 81, 0.4), transparent);
+.jet-engine-contrail {
+  width: 600px;
+  height: 14px;
+  background: linear-gradient(90deg, rgba(0, 242, 254, 0.95), rgba(0, 166, 81, 0.6), transparent);
   border-radius: 999px;
-  filter: blur(3px);
-  box-shadow: 0 0 15px #00f2fe;
-}
-
-.splash-brand-title {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  animation: brandLogoPop 1.8s ease forwards;
-}
-
-@keyframes brandLogoPop {
-  0% { opacity: 0; transform: scale(0.85); }
-  40% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 1; transform: scale(1); }
+  filter: blur(6px);
+  box-shadow: 0 0 35px #00f2fe;
 }
 
 /* ==========================================================================
