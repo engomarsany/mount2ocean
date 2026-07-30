@@ -2224,8 +2224,22 @@ document.addEventListener('DOMContentLoaded', () => {
             ❌ Reject
           </button>
         `;
+      } else if (item.status === 'APPROVED') {
+        actionsHtml = `
+          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #22c55e; opacity: 0.6;" title="Already Approved">
+            ✓ Approved
+          </button>
+          <button type="button" class="btn-delete-pkg" onclick="rejectPartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;" title="Revoke & Cancel Approval">
+            ❌ Revoke &amp; Cancel
+          </button>
+        `;
       } else {
-        actionsHtml = `<span style="font-size: 0.78rem; color: #94a3b8;">Decision Finalized</span>`;
+        actionsHtml = `
+          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #22c55e; margin-right: 4px;">
+            ✅ Approve
+          </button>
+          <span style="font-size: 0.76rem; color: #ef4444; font-weight: 700;">Rejected</span>
+        `;
       }
 
       tr.innerHTML = `
@@ -2256,10 +2270,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = getPendingApprovals();
     const item = list.find(x => x.id == id);
     if (item) {
+      const reason = prompt(`Enter Cancellation / Rejection reason for Partner (${item.name}):`, 'Documents unverified or policy violation') || 'Administrative Cancellation';
       item.status = 'REJECTED';
+      item.cancellationReason = reason;
       savePendingApprovals(list);
-      showToast(`❌ ${item.name} Rejected. Rejection email sent to ${item.email}`, 'error');
-      alert(`❌ Account Rejected!\n\n${item.name} (${item.role}) registration has been rejected.\n\nSimulated Email Sent to: ${item.email}\nSubject: Mount2ocean Account Verification Update`);
+      showToast(`❌ ${item.name} Cancelled/Rejected. Notification sent to ${item.email}`, 'error');
+      alert(`❌ Partner Account Cancelled / Rejected!\n\n${item.name} (${item.role}) registration status updated.\nReason: "${reason}"\n\nNotification Sent to: ${item.email}`);
     }
   };
 
