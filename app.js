@@ -292,6 +292,87 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   return null;
 };
 
+window.show2SecondAirplaneFlightAnimation = function(rawQuery, targetUrl) {
+  let overlay = document.getElementById('m2oFlightAnimOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'm2oFlightAnimOverlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95) 0%, rgba(3, 7, 18, 0.99) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 9999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: all;
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  const queryText = rawQuery ? (window.sanitizeHTML ? window.sanitizeHTML(rawQuery) : rawQuery) : 'All Luxury Destinations';
+
+  overlay.innerHTML = `
+    <style>
+      @keyframes flightPathSoar {
+        0% { transform: translate(-150px, 150px) rotate(-25deg) scale(0.5); opacity: 0; }
+        35% { opacity: 1; }
+        70% { transform: translate(calc(50vw - 40px), calc(-15vh)) rotate(0deg) scale(1.5); opacity: 1; }
+        100% { transform: translate(calc(100vw + 150px), calc(-50vh - 150px)) rotate(25deg) scale(2.2); opacity: 0; }
+      }
+      @keyframes jetTrailGlow {
+        0% { width: 0px; opacity: 0; }
+        50% { width: 300px; opacity: 0.85; }
+        100% { width: 600px; opacity: 0; }
+      }
+      @keyframes pulseTextGlow {
+        0%, 100% { text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); transform: scale(1); }
+        50% { text-shadow: 0 0 35px rgba(0, 242, 254, 1), 0 0 50px rgba(0, 166, 81, 0.8); transform: scale(1.03); }
+      }
+    </style>
+
+    <!-- Flying Airplane Container (2.0s Duration) -->
+    <div style="position: absolute; bottom: 15%; left: 0; width: 100%; pointer-events: none;">
+      <div style="animation: flightPathSoar 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards; display: flex; align-items: center;">
+        <div style="height: 8px; background: linear-gradient(90deg, rgba(0,242,254,0) 0%, rgba(0,242,254,0.9) 60%, #ffffff 100%); border-radius: 999px; box-shadow: 0 0 25px #00f2fe; animation: jetTrailGlow 2.0s ease-out forwards; margin-right: -15px;"></div>
+        <div style="font-size: 5.5rem; filter: drop-shadow(0 0 30px #00f2fe); transform: rotate(45deg);">✈️</div>
+      </div>
+    </div>
+
+    <!-- Flight Status Ticker Text -->
+    <div style="text-align: center; z-index: 10; padding: 2rem; max-width: 650px;">
+      <div style="font-size: 3.8rem; margin-bottom: 0.8rem; animation: pulseTextGlow 2.0s infinite;">🛫</div>
+      <h2 style="font-size: 1.9rem; font-weight: 900; color: #ffffff; margin: 0 0 0.6rem; animation: pulseTextGlow 2.0s infinite; letter-spacing: -0.5px;">
+        Searching Flight &amp; Tour Package for <span style="color: #00f2fe;">"${queryText}"</span>
+      </h2>
+      <p style="font-size: 1.05rem; font-weight: 700; color: #94a3b8; margin: 0 0 1.6rem;">
+        Mount2ocean Flight Engine is opening your destination in 2 seconds...
+      </p>
+      
+      <!-- Progress Bar (2.0s Fill) -->
+      <div style="width: 100%; height: 9px; background: rgba(255,255,255,0.12); border-radius: 999px; overflow: hidden; border: 1.5px solid rgba(0,242,254,0.35);">
+        <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #00a651 0%, #00f2fe 100%); border-radius: 999px; transition: width 2.0s linear;" id="m2oFlightProgressBar"></div>
+      </div>
+    </div>
+  `;
+
+  overlay.style.display = 'flex';
+
+  setTimeout(() => {
+    const bar = document.getElementById('m2oFlightProgressBar');
+    if (bar) bar.style.width = '100%';
+  }, 40);
+
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 2000);
+};
+
 window.executeFindToursSearch = function(event) {
   if (event) {
     if (event.preventDefault) event.preventDefault();
@@ -304,11 +385,9 @@ window.executeFindToursSearch = function(event) {
   let rawQuery = searchInput ? searchInput.value.trim() : (destSelect ? destSelect.value : '');
   if (!rawQuery && destSelect) rawQuery = destSelect.value || '';
 
-  if (rawQuery) {
-    window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}&auto_open=1`;
-  } else {
-    window.location.href = 'tour_packages.html';
-  }
+  const targetUrl = rawQuery ? `tour_packages.html?search=${encodeURIComponent(rawQuery)}&auto_open=1` : 'tour_packages.html';
+
+  window.show2SecondAirplaneFlightAnimation(rawQuery, targetUrl);
 };
 
 // ==========================================
