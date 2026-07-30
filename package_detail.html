@@ -543,7 +543,7 @@
         { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: '🇧🇹 Bhutan Special', image: 'assets/darjeeling.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." }
       ];
 
-      const packages = JSON.parse(localStorage.getItem('m2o_live_packages')) || defaultPkgList;
+      const packages = (window.getCombinedLivePackages ? window.getCombinedLivePackages() : null) || JSON.parse(localStorage.getItem('m2o_live_packages')) || defaultPkgList;
 
       let targetPkg = packages.find(p => p.id === pkgId);
 

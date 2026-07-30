@@ -163,15 +163,15 @@ window.logMissingPackageSearch = function(rawQuery) {
 
 // ==========================================
 // HIDDEN INVISIBLE AI TOUR RECOMMENDATION AGENT ENGINE
-// (Background AI intent analyzer for Find Tours)
+// (Background AI intent analyzer for Find Tours with Single-Execution Guard)
 // ==========================================
-window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') {
-  if (!userPrompt || !userPrompt.trim()) {
-    window.location.href = 'tour_packages.html';
-    return null;
-  }
+window.m2oIsSearching = false;
 
-  const rawQuery = userPrompt.trim();
+window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') {
+  if (window.m2oIsSearching) return null;
+  window.m2oIsSearching = true;
+
+  const rawQuery = (userPrompt || '').trim();
   const lowerQuery = rawQuery.toLowerCase();
   
   let cleanQuery = rawQuery.replace(/[\u{1F300}-\u{1F9FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
@@ -183,71 +183,73 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   let matchConfidence = 0;
   let matchReason = '';
 
-  // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
-  const destMap = {
-    'sylhet': ['sylhet', 'সিলেট', 'jaflong', 'জাফলং', 'ratargul', 'রাতারগুল', 'tea garden', 'চা বাগান'],
-    'nepal': ['nepal', 'নেপাল', 'kathmandu', 'কাঠমান্ডু', 'pokhara', 'পোখরা', 'annapurna', 'himalaya', 'হিমালয়'],
-    'coxsbazar': ['cox', 'কক্সবাজার', 'saint martin', 'সেন্টমার্টিন', 'sea beach', 'সমুদ্র', 'kolatoli', 'কোলাতলী'],
-    'dubai': ['dubai', 'দুবাই', 'burj', 'বুর্জ', 'safari', 'সাফারি', 'dhow cruise', 'মেরিনা'],
-    'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট'],
-    'bhutan': ['bhutan', 'ভুটান', 'tiger', 'nest', 'paro', 'thimphu', 'পারো', 'থিম্পু'],
-    'bali': ['bali', 'বালি', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', 'উবুদ']
-  };
+  if (rawQuery) {
+    // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
+    const destMap = {
+      'sylhet': ['sylhet', 'সিলেট', 'jaflong', 'জাফলং', 'ratargul', 'রাতারগুল', 'tea garden', 'চা বাগান'],
+      'nepal': ['nepal', 'নেপাল', 'kathmandu', 'কাঠমান্ডু', 'pokhara', 'পোখরা', 'annapurna', 'himalaya', 'হিমালয়'],
+      'coxsbazar': ['cox', 'কক্সবাজার', 'saint martin', 'সেন্টমার্টিন', 'sea beach', 'সমুদ্র', 'kolatoli', 'কোলাতলী'],
+      'dubai': ['dubai', 'দুবাই', 'burj', 'বুর্জ', 'safari', 'সাফারি', 'dhow cruise', 'মেরিনা'],
+      'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট'],
+      'bhutan': ['bhutan', 'ভুটান', 'tiger', 'nest', 'paro', 'thimphu', 'পারো', 'থিম্পু'],
+      'bali': ['bali', 'বালি', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', 'উবুদ']
+    };
 
-  for (const [catKey, keywords] of Object.entries(destMap)) {
-    if (keywords.some(kw => lowerQuery.includes(kw) || cleanQuery.includes(kw))) {
-      matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === catKey || p.id.includes(catKey));
-      if (matchedPkg) {
-        matchConfidence = 0.98;
-        matchReason = `Direct category AI match for '${catKey}'`;
-        break;
-      }
-    }
-  }
-
-  // 2. Semantic Theme & Intent Matching (Mountain, Beach, Luxury, Tea, Temple, Desert)
-  if (!matchedPkg) {
-    const themeMap = [
-      { keywords: ['mountain', 'pahar', 'পাহাড়', 'hike', 'trek', 'snow'], category: 'nepal' },
-      { keywords: ['tea', 'green', 'rainforest', 'swamp'], category: 'sylhet' },
-      { keywords: ['beach', 'ocean', 'sea', 'bengal', 'coral'], category: 'coxsbazar' },
-      { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon'], category: 'maldives' },
-      { keywords: ['desert', 'skyscraper', 'shopping', 'burj'], category: 'dubai' },
-      { keywords: ['culture', 'temple', 'peace', 'monastery'], category: 'bhutan' },
-      { keywords: ['island', 'swing', 'volcano', 'sunset'], category: 'bali' }
-    ];
-
-    for (const theme of themeMap) {
-      if (theme.keywords.some(kw => lowerQuery.includes(kw))) {
-        matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === theme.category);
+    for (const [catKey, keywords] of Object.entries(destMap)) {
+      if (keywords.some(kw => lowerQuery.includes(kw) || cleanQuery.includes(kw))) {
+        matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === catKey || p.id.includes(catKey));
         if (matchedPkg) {
-          matchConfidence = 0.90;
-          matchReason = `Theme intent AI match for '${theme.category}'`;
+          matchConfidence = 0.98;
+          matchReason = `Direct category AI match for '${catKey}'`;
           break;
         }
       }
     }
-  }
 
-  // 3. Substring & Multi-word Keyword Fuzzy Matching
-  if (!matchedPkg) {
-    matchedPkg = livePkgs.find(p => p.name.toLowerCase().includes(lowerQuery) || lowerQuery.includes(p.name.toLowerCase()));
-    if (matchedPkg) {
-      matchConfidence = 0.85;
-      matchReason = 'Title substring match';
+    // 2. Semantic Theme & Intent Matching (Mountain, Beach, Luxury, Tea, Temple, Desert)
+    if (!matchedPkg) {
+      const themeMap = [
+        { keywords: ['mountain', 'pahar', 'পাহাড়', 'hike', 'trek', 'snow'], category: 'nepal' },
+        { keywords: ['tea', 'green', 'rainforest', 'swamp'], category: 'sylhet' },
+        { keywords: ['beach', 'ocean', 'sea', 'bengal', 'coral'], category: 'coxsbazar' },
+        { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon'], category: 'maldives' },
+        { keywords: ['desert', 'skyscraper', 'shopping', 'burj'], category: 'dubai' },
+        { keywords: ['culture', 'temple', 'peace', 'monastery'], category: 'bhutan' },
+        { keywords: ['island', 'swing', 'volcano', 'sunset'], category: 'bali' }
+      ];
+
+      for (const theme of themeMap) {
+        if (theme.keywords.some(kw => lowerQuery.includes(kw))) {
+          matchedPkg = livePkgs.find(p => (p.category || '').toLowerCase() === theme.category);
+          if (matchedPkg) {
+            matchConfidence = 0.90;
+            matchReason = `Theme intent AI match for '${theme.category}'`;
+            break;
+          }
+        }
+      }
     }
-  }
 
-  if (!matchedPkg) {
-    const words = lowerQuery.replace(/[^\w\s]/gi, ' ').split(/\s+/).filter(w => w.length >= 3);
-    if (words.length > 0) {
-      matchedPkg = livePkgs.find(p => {
-        const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
-        return words.some(w => haystack.includes(w));
-      });
+    // 3. Substring & Multi-word Keyword Fuzzy Matching
+    if (!matchedPkg) {
+      matchedPkg = livePkgs.find(p => p.name.toLowerCase().includes(lowerQuery) || lowerQuery.includes(p.name.toLowerCase()));
       if (matchedPkg) {
-        matchConfidence = 0.75;
-        matchReason = 'Multi-word fuzzy match';
+        matchConfidence = 0.85;
+        matchReason = 'Title substring match';
+      }
+    }
+
+    if (!matchedPkg) {
+      const words = lowerQuery.replace(/[^\w\s]/gi, ' ').split(/\s+/).filter(w => w.length >= 3);
+      if (words.length > 0) {
+        matchedPkg = livePkgs.find(p => {
+          const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
+          return words.some(w => haystack.includes(w));
+        });
+        if (matchedPkg) {
+          matchConfidence = 0.75;
+          matchReason = 'Multi-word fuzzy match';
+        }
       }
     }
   }
@@ -255,7 +257,7 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   // Log to Admin AI Search Console
   const aiLog = {
     id: 'AI-SEARCH-' + Date.now(),
-    query: rawQuery,
+    query: rawQuery || 'All Packages View',
     timestamp: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}),
     matchedPkgId: matchedPkg ? matchedPkg.id : null,
     matchedPkgName: matchedPkg ? matchedPkg.name : 'No Match (Showing All Packages)',
@@ -279,15 +281,20 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   }
 
   // Case B: No Direct Match -> Log search to Admin requested queue & show ALL packages
-  if (window.logMissingPackageSearch) {
+  if (rawQuery && window.logMissingPackageSearch) {
     window.logMissingPackageSearch(rawQuery);
   }
 
-  window.location.href = `tour_packages.html?search=${encodeURIComponent(rawQuery)}`;
+  window.location.href = rawQuery ? `tour_packages.html?search=${encodeURIComponent(rawQuery)}` : 'tour_packages.html';
   return null;
 };
 
-window.executeFindToursSearch = function() {
+window.executeFindToursSearch = function(event) {
+  if (event) {
+    if (event.preventDefault) event.preventDefault();
+    if (event.stopPropagation) event.stopPropagation();
+  }
+
   try {
     const searchInput = document.getElementById('custSearchInput');
     const destSelect = document.getElementById('custSearchDest');
