@@ -292,6 +292,104 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   return null;
 };
 
+// ==========================================
+// DYNAMIC LIVE PACKAGES SEARCH DROPDOWN ENGINE
+// ==========================================
+window.openLivePackagesSearchDropdown = function() {
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+  if (!dropdown) return;
+  window.renderLivePackagesSearchDropdown();
+  dropdown.style.display = 'block';
+};
+
+window.renderLivePackagesSearchDropdown = function(filterText = '') {
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+  if (!dropdown) return;
+
+  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
+  const lowerFilter = filterText.toLowerCase().trim();
+
+  let matching = livePkgs;
+  if (lowerFilter) {
+    matching = livePkgs.filter(p => {
+      const haystack = `${p.name} ${p.category} ${p.desc}`.toLowerCase();
+      return haystack.includes(lowerFilter);
+    });
+  }
+
+  dropdown.innerHTML = '';
+
+  if (matching.length === 0) {
+    dropdown.innerHTML = `
+      <div style="padding: 1rem; text-align: center; color: #64748b; font-weight: 700; font-size: 0.9rem;">
+        🔍 No matching live packages found. Type another destination!
+      </div>
+    `;
+    return;
+  }
+
+  const headerDiv = document.createElement('div');
+  headerDiv.style.cssText = "padding: 0.4rem 1rem; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; font-size: 0.78rem; font-weight: 900; color: #0072bc; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center;";
+  headerDiv.innerHTML = `<span>🌴 Live Packages Directory (${matching.length})</span><span style="color: #00a651; font-weight: 800;">⚡ Instant Select</span>`;
+  dropdown.appendChild(headerDiv);
+
+  matching.forEach(pkg => {
+    const item = document.createElement('div');
+    item.style.cssText = "display: flex; align-items: center; gap: 0.8rem; padding: 0.65rem 1rem; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.15s ease;";
+    item.onmouseenter = () => { item.style.background = '#f0fdf4'; };
+    item.onmouseleave = () => { item.style.background = '#ffffff'; };
+    
+    item.onclick = (e) => {
+      e.stopPropagation();
+      window.selectLivePackageFromDropdown(pkg.id);
+    };
+
+    item.innerHTML = `
+      <img src="${pkg.image}" alt="${pkg.name}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1; flex-shrink: 0;">
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-weight: 800; font-size: 0.9rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${pkg.name}</div>
+        <div style="font-size: 0.78rem; color: #64748b; font-weight: 700; display: flex; gap: 0.6rem; align-items: center;">
+          <span style="color: #00a651; font-weight: 900;">${pkg.price}</span>
+          <span>• ${pkg.duration}</span>
+        </div>
+      </div>
+      <span style="background: #00a651; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px; flex-shrink: 0;">Select ➔</span>
+    `;
+    dropdown.appendChild(item);
+  });
+};
+
+window.filterLivePackagesSearchDropdown = function() {
+  const searchInput = document.getElementById('custSearchInput');
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+  if (!searchInput || !dropdown) return;
+  dropdown.style.display = 'block';
+  window.renderLivePackagesSearchDropdown(searchInput.value);
+};
+
+window.selectLivePackageFromDropdown = function(pkgId) {
+  const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
+  const pkg = livePkgs.find(p => p.id === pkgId);
+  const searchInput = document.getElementById('custSearchInput');
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+
+  if (pkg && searchInput) {
+    searchInput.value = pkg.name;
+    localStorage.setItem('m2o_active_detail_pkg_id', pkg.id);
+  }
+  if (dropdown) dropdown.style.display = 'none';
+
+  window.executeFindToursSearch();
+};
+
+document.addEventListener('click', (e) => {
+  const dropdown = document.getElementById('m2oLivePackageDropdown');
+  const searchInput = document.getElementById('custSearchInput');
+  if (dropdown && searchInput && !dropdown.contains(e.target) && e.target !== searchInput) {
+    dropdown.style.display = 'none';
+  }
+});
+
 window.show2SecondAirplaneFlightAnimation = function(rawQuery, targetUrl) {
   let overlay = document.getElementById('m2oFlightAnimOverlay');
   if (!overlay) {

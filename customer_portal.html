@@ -263,12 +263,16 @@
       
       <div class="search-form-row" style="display: grid; grid-template-columns: 2.5fr 1.5fr 1.2fr; gap: 1rem; align-items: end;">
         <!-- Destination / Package Search Input -->
-        <div class="search-input-box">
+        <div class="search-input-box" style="position: relative;">
           <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">
             Select Destination or Type Tour Package (গন্তব্য লিখুন বা সিলেক্ট করুন)
           </label>
           <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="custSearchInput" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); executeFindToursSearch(event); }" placeholder="Type destination: Maldives, Bhutan, Bali, Dubai, Cox's Bazar..." autocomplete="off" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; color: #0f172a; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
+            <input type="text" id="custSearchInput" onfocus="openLivePackagesSearchDropdown()" oninput="filterLivePackagesSearchDropdown()" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); executeFindToursSearch(event); }" placeholder="Click to select live package: Bhutan, Maldives, Bali..." autocomplete="off" style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; color: #0f172a; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);">
+          </div>
+          
+          <!-- Dynamic Live Packages Floating Dropdown Container -->
+          <div id="m2oLivePackageDropdown" style="display: none; position: absolute; top: calc(100% + 6px); left: 0; width: 100%; max-height: 320px; overflow-y: auto; background: #ffffff; border: 2px solid #00f2fe; border-radius: 14px; box-shadow: 0 12px 35px rgba(0,0,0,0.18); z-index: 999999; padding: 0.5rem 0;">
           </div>
         </div>
 
@@ -846,6 +850,6 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v11_disconnected_search_tabs"></script>
+  <script src="app.js?v=v12_live_packages_floating_dropdown"></script>
 </body>
 </html>
