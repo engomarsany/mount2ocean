@@ -263,11 +263,15 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterBookingsDirectory();
 
-      // Listen for live cross-tab changes
+      // Listen for live cross-tab & same-tab changes
       window.addEventListener('storage', (e) => {
         if (e.key === 'm2o_customer_bookings') {
-          renderMasterBookingsDirectory();
+          filterMasterBookings();
         }
+      });
+
+      window.addEventListener('m2o_booking_updated', () => {
+        filterMasterBookings();
       });
     });
 
