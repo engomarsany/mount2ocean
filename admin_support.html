@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Customer Support Desk | Mount2ocean Owner Admin Portal</title>
+  <meta name="description" content="Manage AI bot escalated live customer support tickets, chat inquiries, and direct responses from the Owner Panel.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .master-toolbar {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .toolbar-search-box {
+      flex: 1;
+      min-width: 260px;
+    }
+    .toolbar-search-box input {
+      width: 100%;
+      padding: 0.72rem 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+    .toolbar-controls {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar-select {
+      padding: 0.72rem 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0f172a;
+      background: #ffffff;
+    }
+    .metrics-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .metric-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- TOP HEADER NAVIGATION BAR -->
+  <header class="app-header customer-header" style="background: #ffffff; border-bottom: 1.5px solid #e2e8f0;">
+    <div class="logo-container" onclick="window.location.href='admin_dashboard.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="admin_dashboard.html" class="customer-nav-item">Dashboard</a>
+      <a href="admin_bookings.html" class="customer-nav-item">Bookings Master</a>
+      <a href="admin_approvals.html" class="customer-nav-item">Approvals Master</a>
+      <a href="admin_users.html" class="customer-nav-item">Users Directory</a>
+      <a href="admin_promos.html" class="customer-nav-item">Promo Coupons</a>
+      <a href="admin_settings.html" class="customer-nav-item">Global Settings</a>
+      <a href="admin_support.html" class="customer-nav-item active" style="color: #ef4444; font-weight: 800;">Live Support Desk</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <a href="customer_portal.html" target="_blank" class="primary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; background: #00a651; text-decoration: none;">
+        Live Website ↗
+      </a>
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- QUICK MASTER DIRECTORIES NAVIGATION BAR -->
+  <div style="background: #f1f5f9; border-bottom: 1px solid #cbd5e1; padding: 0.6rem 2rem;">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+      <span style="font-size: 0.82rem; font-weight: 800; color: #475569;">👑 QUICK MASTER DIRECTORIES:</span>
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <a href="admin_bookings.html" class="secondary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none;">📋 Bookings Master</a>
+        <a href="admin_approvals.html" class="secondary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none;">🪪 Approvals Master</a>
+        <a href="admin_users.html" class="secondary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none;">👥 Users Directory</a>
+        <a href="admin_promos.html" class="secondary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none;">🎟️ Promo Codes</a>
+        <a href="admin_settings.html" class="secondary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none;">⚙️ Settings</a>
+        <a href="admin_support.html" class="primary-btn" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 800; text-decoration: none; background: #ef4444;">💬 Support Desk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN MASTER PAGE CONTAINER -->
+  <main style="max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem;">
+    
+    <!-- PAGE TITLE HEADER -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 2rem;">
+      <div>
+        <span class="badge-tag" style="background: #ef4444; color: #ffffff;">LIVE CUSTOMER DESK</span>
+        <h1 style="font-size: 2.2rem; font-weight: 900; color: #0f172a; margin: 0.4rem 0 0.2rem;">Live Support Desk &amp; AI Escalation Console</h1>
+        <p style="color: #64748b; font-size: 0.98rem; margin: 0;">Review AI bot escalated customer inquiries and send direct real-time replies from the Owner Panel.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.8rem;">
+        <button type="button" onclick="window.print()" class="secondary-btn" style="padding: 0.7rem 1.2rem; font-weight: 800; border-radius: 10px;">
+          🖨️ Print Console
+        </button>
+        <a href="admin_dashboard.html" class="primary-btn" style="padding: 0.7rem 1.4rem; font-weight: 800; background: #0072bc; text-decoration: none; border-radius: 10px;">
+          ← Return to Dashboard
+        </a>
+      </div>
+    </div>
+
+    <!-- METRICS SUMMARY CARDS -->
+    <div class="metrics-summary-grid">
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;">💬</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">LIVE TICKETS</span>
+          <strong id="metricLiveTickets" style="font-size: 1.6rem; font-weight: 900; color: #dc2626;">0</strong>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(0, 166, 81, 0.15); color: #00a651;">🤖</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">AI BOT RESOLVED</span>
+          <strong style="font-size: 1.6rem; font-weight: 900; color: #00a651;">98.4%</strong>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(0, 114, 188, 0.15); color: #0072bc;">⏱️</div>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">RESPONSE TIME</span>
+          <strong style="font-size: 1.6rem; font-weight: 900; color: #0072bc;">&lt; 1 Min</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE CHAT DESK CONTAINER CARD -->
+    <section class="admin-section" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="font-size: 1.2rem; font-weight: 900; color: #0f172a; margin: 0;">Active Customer Inquiries</h3>
+          <span style="font-size: 0.85rem; color: #64748b;">Direct real-time communication between Owner &amp; Customer.</span>
+        </div>
+      </div>
+
+      <div id="adminSupportTicketsList">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof renderAdminLiveSupportConsole === 'function') {
+        renderAdminLiveSupportConsole();
+      }
+      const tickets = window.getSupportTickets ? window.getSupportTickets() : [];
+      const el = document.getElementById('metricLiveTickets');
+      if (el) el.textContent = tickets.length;
+    });
+  </script>
+</body>
+</html>

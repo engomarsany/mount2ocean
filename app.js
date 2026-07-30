@@ -2879,16 +2879,352 @@ function checkCustomerBookingNotifications() {
 
   // Cross-tab real-time storage sync listener
   window.addEventListener('storage', function(e) {
-    if (e.key === 'm2o_customer_bookings' || e.key === 'm2o_live_packages' || e.key === 'm2o_customer_notifications') {
+    if (e.key === 'm2o_customer_bookings' || e.key === 'm2o_live_packages' || e.key === 'm2o_customer_notifications' || e.key === 'm2o_support_tickets' || e.key === 'm2o_customer_chat_messages') {
       if (typeof renderAdminBookings === 'function') renderAdminBookings();
       if (typeof updateAdminDashboardMetrics === 'function') updateAdminDashboardMetrics();
       if (typeof saveAndRenderAdminPackages === 'function') saveAndRenderAdminPackages();
       if (typeof renderLiveCustomerTours === 'function') renderLiveCustomerTours();
       if (typeof checkCustomerBookingNotifications === 'function') checkCustomerBookingNotifications();
       if (typeof loadCustomerProfileAndBookings === 'function') loadCustomerProfileAndBookings();
+      if (typeof renderAdminLiveSupportConsole === 'function') renderAdminLiveSupportConsole();
+      if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
     }
   });
+
+  // ==========================================
+  // MAGIC AI ASSISTANT BOT & LIVE ADMIN SUPPORT ENGINE
+  // ==========================================
+  const defaultAiInitialMessages = [
+    { sender: 'bot', text: '👋 আসসালামু আলাইকুম! Mount2ocean AI স্মার্ট অ্যাসিস্ট্যান্ট এ আপনাকে স্বাগতম! আমি কীভাবে সাহায্য করতে পারি?', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+  ];
+
+  window.getAiChatMessages = function() {
+    const saved = localStorage.getItem('m2o_customer_chat_messages');
+    if (!saved) {
+      localStorage.setItem('m2o_customer_chat_messages', JSON.stringify(defaultAiInitialMessages));
+      return defaultAiInitialMessages;
+    }
+    try { return JSON.parse(saved); } catch(e) { return defaultAiInitialMessages; }
+  };
+
+  window.saveAiChatMessages = function(msgs) {
+    localStorage.setItem('m2o_customer_chat_messages', JSON.stringify(msgs));
+    if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
+  };
+
+  window.getSupportTickets = function() {
+    const saved = localStorage.getItem('m2o_support_tickets');
+    if (!saved) return [];
+    try { return JSON.parse(saved); } catch(e) { return []; }
+  };
+
+  window.saveSupportTickets = function(tickets) {
+    localStorage.setItem('m2o_support_tickets', JSON.stringify(tickets));
+    if (typeof renderAdminLiveSupportConsole === 'function') renderAdminLiveSupportConsole();
+  };
+
+  // Process Customer Query using Full Website Research Knowledge Base
+  window.processCustomerAiQuery = function(userText) {
+    if (!userText || !userText.trim()) return;
+    const text = userText.trim();
+    const lower = text.toLowerCase();
+    const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+    let messages = getAiChatMessages();
+    messages.push({ sender: 'customer', text: text, time: timeStr });
+    saveAiChatMessages(messages);
+
+    const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || { name: 'Valued Customer', mobile: '01977477172', email: 'customer@mount2ocean.com' };
+
+    // Check if user is replying YES to live support escalation
+    const isEscalationRequest = lower.includes('হ্যাঁ') || lower.includes('yes') || lower.includes('support') || lower.includes('কথা') || lower.includes('কথা বলতে চাই') || lower.includes('লাইভ');
+
+    if (window.aiWaitingEscalationConsent || isEscalationRequest) {
+      window.aiWaitingEscalationConsent = false;
+      
+      // Create / Update Support Ticket for Admin Panel
+      let tickets = getSupportTickets();
+      let ticket = tickets.find(t => t.customerName === loggedUser.name || t.phone === loggedUser.mobile);
+
+      if (!ticket) {
+        ticket = {
+          id: 'TICKET-' + Math.floor(1000 + Math.random() * 9000),
+          customerName: loggedUser.name,
+          phone: loggedUser.mobile,
+          email: loggedUser.email,
+          status: 'ESCALATED_PENDING',
+          updatedAt: timeStr,
+          messages: []
+        };
+        tickets.unshift(ticket);
+      }
+
+      ticket.status = 'ESCALATED_PENDING';
+      ticket.updatedAt = timeStr;
+      ticket.lastMessage = text;
+      ticket.messages.push({ sender: 'customer', text: text, time: timeStr });
+
+      saveSupportTickets(tickets);
+
+      setTimeout(() => {
+        let currentMsgs = getAiChatMessages();
+        currentMsgs.push({
+          sender: 'bot',
+          text: `⏳ আপনার মেসেজটি Mount2ocean লাইভ সাপোর্ট টিমে সাকসেসফুলি ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন ড্যাশবোর্ড থেকে প্রতিনিধি শীঘ্রই আপনাকে সরাসরি রিপ্লাই পাঠাবেন।`,
+          time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+        });
+        saveAiChatMessages(currentMsgs);
+        if (typeof showToast === 'function') showToast('💬 Request sent to Admin Live Support Team!', 'success');
+      }, 600);
+
+      return;
+    }
+
+    // Full Website Knowledge Base Search
+    const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
+    let botReply = '';
+
+    if (lower.includes('bhutan') || lower.includes('ভুটান')) {
+      const bhutanPkg = livePkgs.find(p => p.id === 'pkg-bhutan' || (p.category || '').includes('bhutan'));
+      if (bhutanPkg) {
+        botReply = `🇧🇹 ${bhutanPkg.name}\n💰 মূল্য: ${bhutanPkg.price} (প্রতি জন)\n⏱️ সময়কাল: ${bhutanPkg.duration}\n📜 বিবরণ: ${bhutanPkg.desc}\n\nবুকিং করার জন্য "Tour Packages" পেজে যান বা বুকিং বাটনে চাপ দিন।`;
+      } else {
+        botReply = `🇧🇹 ভুটান প্যাকেজ: ৪ দিন / ৩ রাত কমপ্লিট ট্যুর রিটার্ন ফ্লাইট, ৩-স্টার হোটেল ও সাইটসিয়িং সহ মূল্য ৳৭৫,০০০।`;
+      }
+    } else if (lower.includes('bali') || lower.includes('বালি')) {
+      const baliPkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
+      if (baliPkg) {
+        botReply = `🇮🇩 ${baliPkg.name}\n💰 মূল্য: ${baliPkg.price} (প্রতি জন)\n⏱️ সময়কাল: ${baliPkg.duration}\n📜 বিবরণ: ${baliPkg.desc}`;
+      } else {
+        botReply = `🇮🇩 বালি স্পেশাল ৪ দিন / ৩ রাত ট্যুর প্যাকেজ মূল্য ৳১৭,৫০০। কিন্তামানি ভলকানো, উলুওয়াতু টেম্পল ও ফ্রিতে ওয়াটার স্পোর্টস রাইড অন্তর্ভুক্ত!`;
+      }
+    } else if (lower.includes('package') || lower.includes('প্যাকেজ') || lower.includes('price') || lower.includes('cost') || lower.includes('দাম') || lower.includes('খরচ')) {
+      let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
+      botReply = `📦 আমাদের বর্তমান সক্রিয় ট্যুর প্যাকেজসমূহ:\n${pkgSummaries}\n\nসকল প্যাকেজের বিস্তারিত দেখতে "Tour Packages" সেকশন ভিজিট করুন।`;
+    } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('বিকাশ') || lower.includes('পেমেন্ট') || lower.includes('টাকা')) {
+      botReply = `💳 পেমেন্ট মাধ্যমসমূহ:\n• bKash / Nagad Mobile Banking (অটো ভেরিফাইড)\n• Visa / Mastercard\n• Direct Bank Deposit\n• Direct Call Request\n\nবুকিং চেকআউট পেজে সব পেমেন্ট অপশন পাওয়া যাবে।`;
+    } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('বাতিল') || lower.includes('রিফান্ড')) {
+      botReply = `🛡️ রিফান্ড ও বাতিলের নীতি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে ক্যানসেল করলে ১০০% রিফান্ড যোগ্য।\n• ওনার/অ্যাডমিন দ্বারা ট্রিপ ক্যানসেল হলে সাথে সাথে ফুল রিফান্ড প্রসেস করা হয়।\n• বিস্তারিত দেখতে "Refund Policy" পেজ ভিজিট করুন।`;
+    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন') || lower.includes('নাম্বার')) {
+      const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: 'Banani C/A, Dhaka 1213, Bangladesh' };
+      botReply = `📞 আমাদের সাথে যোগাযোগের মাধ্যম:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• প্রধান কার্যালয়: ${settings.address}`;
+    } else {
+      // General relevant reply with escalation offer
+      botReply = `🤖 আপনার প্রশ্নের উত্তরে জানাচ্ছি যে, Mount2ocean Travel & Tours এ সকল আন্তর্জাতিক ও অভ্যন্তরীণ ট্যুর প্যাকেজ, এয়ার টিকিট এবং হোটেল রিজার্ভেশন সুবিধা রয়েছে।\n\n💬 আপনি কি আমাদের লাইভ অ্যাডমিন সাপোর্ট টিমের সাথে সরাসরি চ্যাট করতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
+      window.aiWaitingEscalationConsent = true;
+    }
+
+    setTimeout(() => {
+      let currentMsgs = getAiChatMessages();
+      currentMsgs.push({
+        sender: 'bot',
+        text: botReply,
+        time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+      });
+      saveAiChatMessages(currentMsgs);
+    }, 500);
+  };
+
+  // Render Customer Floating Chat Window DOM
+  window.renderCustomerChatMessages = function() {
+    const chatContainer = document.getElementById('m2oAiChatBody');
+    if (!chatContainer) return;
+
+    const messages = getAiChatMessages();
+    chatContainer.innerHTML = '';
+
+    messages.forEach(m => {
+      const msgDiv = document.createElement('div');
+      msgDiv.style.cssText = m.sender === 'customer'
+        ? `align-self: flex-end; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.75rem 1rem; border-radius: 14px 14px 2px 14px; max-width: 82%; font-size: 0.88rem; line-height: 1.45; box-shadow: 0 4px 12px rgba(0,166,81,0.2); margin-bottom: 0.6rem;`
+        : (m.sender === 'admin' 
+          ? `align-self: flex-start; background: #0f172a; color: #00f2fe; border: 1px solid #00f2fe; padding: 0.75rem 1rem; border-radius: 14px 14px 14px 2px; max-width: 82%; font-size: 0.88rem; line-height: 1.45; margin-bottom: 0.6rem;`
+          : `align-self: flex-start; background: #f1f5f9; color: #0f172a; padding: 0.75rem 1rem; border-radius: 14px 14px 14px 2px; max-width: 82%; font-size: 0.88rem; line-height: 1.45; border: 1px solid #cbd5e1; margin-bottom: 0.6rem;`);
+
+      const prefix = m.sender === 'admin' ? '<strong style="display:block; font-size:0.75rem; color:#00f2fe; margin-bottom:0.2rem;">👑 ADMIN LIVE SUPPORT TEAM:</strong>' : '';
+      msgDiv.innerHTML = `${prefix}<span>${m.text.replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.68rem; opacity:0.7; margin-top:0.3rem;">${m.time}</span>`;
+      chatContainer.appendChild(msgDiv);
+    });
+
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  };
+
+  // Inject Floating AI Assistant Widget into DOM automatically
+  window.initM2OFloatingAiWidget = function() {
+    if (document.getElementById('m2oFloatingAiBotWidget')) return;
+
+    const widget = document.createElement('div');
+    widget.id = 'm2oFloatingAiBotWidget';
+    widget.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      font-family: 'Outfit', 'Inter', sans-serif;
+    `;
+
+    widget.innerHTML = `
+      <!-- FLOATING BUTTON -->
+      <button type="button" id="m2oAiBotToggleBtn" onclick="toggleM2OAiChatModal()" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; color: white; font-size: 1.8rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease;">
+        🤖
+      </button>
+
+      <!-- CHAT MODAL WINDOW -->
+      <div id="m2oAiChatModal" class="hidden" style="position: absolute; bottom: 75px; right: 0; width: 380px; height: 500px; background: #ffffff; border-radius: 20px; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; overflow: hidden; animation: slideInUp 0.3s ease;">
+        <!-- CHAT HEADER -->
+        <div style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🤖</div>
+            <div>
+              <h4 style="margin: 0; font-size: 1rem; font-weight: 800;">M2O AI Assistant</h4>
+              <span style="font-size: 0.72rem; color: #e2e8f0; font-weight: 600;">⚡ Online • Website Research Bot</span>
+            </div>
+          </div>
+          <button onclick="toggleM2OAiChatModal()" style="border: none; background: transparent; color: white; font-size: 1.2rem; cursor: pointer; font-weight: 800;">✕</button>
+        </div>
+
+        <!-- QUICK ACTION CHIPS -->
+        <div style="background: #f8fafc; padding: 0.5rem 0.8rem; border-bottom: 1px solid #e2e8f0; display: flex; gap: 0.4rem; overflow-x: auto; white-space: nowrap;">
+          <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #0072bc;">📦 Packages</button>
+          <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #00a651;">💳 Payment</button>
+          <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #475569;">📞 Hotline</button>
+          <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 800; color: #dc2626;">💬 Live Team</button>
+        </div>
+
+        <!-- CHAT MESSAGES CONTAINER -->
+        <div id="m2oAiChatBody" style="flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; background: #fafafa;">
+          <!-- Rendered via renderCustomerChatMessages() -->
+        </div>
+
+        <!-- CHAT INPUT FOOTER -->
+        <form onsubmit="handleCustomerAiSend(event)" style="padding: 0.8rem; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; gap: 0.5rem;">
+          <input type="text" id="m2oAiChatInput" placeholder="Type your query (প্রশ্ন লিখুন)..." style="flex: 1; padding: 0.6rem 0.9rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 0.88rem;" required>
+          <button type="submit" class="primary-btn" style="padding: 0.6rem 1rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 800; border-radius: 10px;">
+            Send
+          </button>
+        </form>
+      </div>
+    `;
+
+    document.body.appendChild(widget);
+    renderCustomerChatMessages();
+  };
+
+  window.toggleM2OAiChatModal = function() {
+    const modal = document.getElementById('m2oAiChatModal');
+    if (modal) {
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        renderCustomerChatMessages();
+      }
+    }
+  };
+
+  window.sendAiQuickQuery = function(text) {
+    const input = document.getElementById('m2oAiChatInput');
+    if (input) input.value = text;
+    window.processCustomerAiQuery(text);
+    if (input) input.value = '';
+  };
+
+  window.handleCustomerAiSend = function(e) {
+    e.preventDefault();
+    const input = document.getElementById('m2oAiChatInput');
+    if (!input) return;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    window.processCustomerAiQuery(text);
+  };
+
+  // ==========================================
+  // ADMIN LIVE SUPPORT TEAM CONSOLE & REPLY ENGINE
+  // ==========================================
+  window.renderAdminLiveSupportConsole = function() {
+    const container = document.getElementById('adminSupportTicketsList');
+    if (!container) return;
+
+    const tickets = getSupportTickets();
+    container.innerHTML = '';
+
+    if (tickets.length === 0) {
+      container.innerHTML = `<div style="text-align: center; padding: 2.5rem; color: #94a3b8; font-weight: 700;">কোনো লাইভ কাস্টমার সাপোর্ট রিকোয়েস্ট পেন্ডিং নেই। AI বট কাস্টমারদের প্রশ্নের উত্তর দিচ্ছে।</div>`;
+      return;
+    }
+
+    tickets.forEach(ticket => {
+      const card = document.createElement('div');
+      card.style.cssText = `background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04);`;
+      
+      let msgHistoryHtml = ticket.messages.map(m => `
+        <div style="margin-bottom: 0.4rem; padding: 0.4rem 0.7rem; border-radius: 8px; font-size: 0.84rem; ${m.sender === 'admin' ? 'background: rgba(0,114,188,0.1); color: #0072bc; text-align: right;' : 'background: #f1f5f9; color: #0f172a;'}">
+          <strong>${m.sender === 'admin' ? '👑 Admin Support' : ticket.customerName}:</strong> ${m.text}
+        </div>
+      `).join('');
+
+      card.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span class="badge-tag" style="background: #ef4444; color: white;">LIVE SUPPORT REQUEST</span>
+            <h4 style="margin: 0.3rem 0 0; font-size: 1.05rem; color: #0f172a; font-weight: 800;">${ticket.customerName}</h4>
+            <span style="font-size: 0.82rem; color: #64748b;">📱 ${ticket.phone} • ✉️ ${ticket.email}</span>
+          </div>
+          <span style="font-size: 0.78rem; font-weight: 800; color: #00a651;">Ticket ID: ${ticket.id}</span>
+        </div>
+
+        <div style="max-height: 180px; overflow-y: auto; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.8rem; margin-bottom: 0.8rem;">
+          ${msgHistoryHtml}
+        </div>
+
+        <form onsubmit="handleAdminSupportReply(event, '${ticket.id}')" style="display: flex; gap: 0.5rem;">
+          <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type reply to customer (কাস্টমারকে উত্তর দিন)..." style="flex: 1; padding: 0.55rem 0.85rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.85rem;" required>
+          <button type="submit" class="primary-btn" style="padding: 0.55rem 1.1rem; background: #00a651; font-weight: 800; font-size: 0.85rem;">
+            Send Reply ➔
+          </button>
+        </form>
+      `;
+      container.appendChild(card);
+    });
+  };
+
+  window.handleAdminSupportReply = function(e, ticketId) {
+    e.preventDefault();
+    const input = document.getElementById(`adminReplyInput_${ticketId}`);
+    if (!input) return;
+    const replyText = input.value.trim();
+    if (!replyText) return;
+
+    let tickets = getSupportTickets();
+    let ticket = tickets.find(t => t.id === ticketId);
+    const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+    if (ticket) {
+      ticket.messages.push({ sender: 'admin', text: replyText, time: timeStr });
+      ticket.status = 'RESOLVED';
+      saveSupportTickets(tickets);
+    }
+
+    // Deliver admin message to customer chat messages
+    let msgs = getAiChatMessages();
+    msgs.push({ sender: 'admin', text: replyText, time: timeStr });
+    saveAiChatMessages(msgs);
+
+    input.value = '';
+    if (typeof showToast === 'function') showToast(`✅ Reply sent to customer (${ticket ? ticket.customerName : 'Live Customer'})!`, 'success');
+  };
+
+  // Auto-initialize floating AI widget on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.initM2OFloatingAiWidget();
+      window.renderAdminLiveSupportConsole();
+    });
+  } else {
+    window.initM2OFloatingAiWidget();
+    window.renderAdminLiveSupportConsole();
+  }
 
   // Run initialization
   init();
 });
+

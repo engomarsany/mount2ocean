@@ -83,6 +83,9 @@
     <a href="admin_settings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #cbd5e1;">
       ⚙️ Global Settings ➔
     </a>
+    <a href="admin_support.html" class="primary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; background: #ef4444; color: #ffffff;">
+      💬 Live Support Desk ➔
+    </a>
   </nav>
 
   <!-- MAIN ADMIN CONTENT -->
@@ -515,7 +518,24 @@
         <button type="submit" class="primary-btn" style="padding: 0.85rem 1.8rem; font-weight: 800; font-size: 0.98rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; cursor: pointer;">
           💾 Save Global Settings Live ➔
         </button>
-      </form>
+    <!-- SECTION 6: LIVE CUSTOMER SUPPORT & AI ESCALATION DESK -->
+    <section class="admin-section margin-top-lg" id="adminSupportSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+      <div class="admin-section-header flex-between margin-bottom-md">
+        <div class="flex-align">
+          <div class="header-icon red-bg">💬</div>
+          <div>
+            <h2 style="font-size: 1.35rem; color: #0f172a; font-weight: 800;">Live Customer Support &amp; AI Escalation Desk (লাইভ কাস্টমার সাপোর্ট ডেস্ক)</h2>
+            <p style="font-size: 0.88rem; color: #64748b;">Review AI bot escalated customer inquiries and send direct real-time replies from the Owner Panel.</p>
+          </div>
+        </div>
+        <a href="admin_support.html" class="primary-btn" style="background: linear-gradient(135deg, #ef4444 0%, #0072bc 100%); text-decoration: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(239,68,68,0.3);">
+          Open Full Support Master Page ➔
+        </a>
+      </div>
+
+      <div id="adminSupportTicketsList">
+        <!-- Rendered dynamically via renderAdminLiveSupportConsole() -->
+      </div>
     </section>
 
   </main>
