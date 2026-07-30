@@ -1414,7 +1414,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alertBanner.innerHTML = `
           <div style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(0, 166, 81, 0.15) 0%, rgba(0, 114, 188, 0.15) 100%); border: 2px solid #00a651; padding: 1.2rem 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 8px 25px rgba(0, 166, 81, 0.15);">
             <div style="display: flex; align-items: center; gap: 1rem;">
-              <span style="font-size: 2.2rem;">🔔</span>
               <div>
                 <h4 style="margin: 0; font-size: 1.1rem; color: #00a651; font-weight: 800;">NEW CUSTOMER BOOKING RECEIVED (${pendingCount} PENDING)</h4>
                 <p style="margin: 0.2rem 0 0; font-size: 0.88rem; color: #475569;">${pendingCount} new customer booking(s) waiting for your approval. Click Approve to finalize sales!</p>
@@ -1430,33 +1429,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adminBookingsTbody.innerHTML = '';
     if (bookings.length === 0) {
-      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">🎉 কোনো স্যাম্পল বুকিং ডেটা রাখা হয়নি। গ্রাহক বুকিং করার পর এবং ওনার অনুমোদন (Approve) করার পর সাথে সাথে এখানে লাইভ সেলস যুক্ত হবে।</td></tr>`;
+      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">কোনো স্যাম্পল বুকিং ডেটা রাখা হয়নি। গ্রাহক যেকোনো পেজ থেকে বুকিং করার পর সাথে সাথে এখানে লাইভ দেখতে পাবেন।</td></tr>`;
       return;
     }
 
     bookings.forEach(b => {
       const tr = document.createElement('tr');
 
-      let statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(245, 158, 11, 0.18); color: #d97706;">⏳ PENDING</span>';
+      let statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(245, 158, 11, 0.18); color: #d97706; font-weight: 800;">PENDING</span>';
       if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
-        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(34, 197, 94, 0.18); color: #059669;">✅ APPROVED</span>';
+        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(34, 197, 94, 0.18); color: #059669; font-weight: 800;">APPROVED</span>';
       } else if (b.status === 'CANCELLED' || b.status === 'REJECTED') {
-        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(239, 68, 68, 0.18); color: #dc2626;">❌ CANCELLED</span>';
+        statusBadgeHtml = '<span class="status-badge-live" style="background: rgba(239, 68, 68, 0.18); color: #dc2626; font-weight: 800;">CANCELLED</span>';
       }
 
-      const idDocStr = b.passportNo ? ` passport: ${b.passportNo}` : (b.nid ? ` NID: ${b.nid}` : ' Verified Identity');
+      const idDocStr = b.passportNo ? `Passport: ${b.passportNo}` : (b.nid ? `NID: ${b.nid}` : 'Verified Identity');
 
       tr.innerHTML = `
         <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
         <td>
           <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${b.customerName}</strong>
-          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">📞 ${b.phone}</a><br>
-          <span style="color: #64748b; font-size: 0.78rem;">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
+          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">${b.phone}</a><br>
+          <span style="color: #64748b; font-size: 0.78rem;">${b.email || 'customer@mount2ocean.com'}</span>
         </td>
         <td><span style="font-size: 0.82rem; font-weight: 700; color: #475569;">${idDocStr}</span></td>
         <td class="pkg-title-cell">
           <strong style="color: #0f172a; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
-          <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">📅 Date: ${b.travelDate || b.date}</span><br>
+          <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">Date: ${b.travelDate || b.date}</span><br>
           <span style="color: #00a651; font-weight: 900; font-size: 0.88rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
         </td>
         <td><span style="font-size: 0.85rem; font-weight: 700;">${b.travelersCount || '1 Person'}</span></td>
@@ -1464,9 +1463,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${statusBadgeHtml}</td>
         <td>
           <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-            <button type="button" class="primary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem; background: #00a651;" onclick="updateBookingStatusByAdmin('${b.id}', 'APPROVED')">✅ Approve</button>
-            <button type="button" class="danger-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="updateBookingStatusByAdmin('${b.id}', 'CANCELLED')">❌ Cancel</button>
-            <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">📄 File ➔</button>
+            <button type="button" class="primary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem; background: #00a651;" onclick="updateBookingStatusByAdmin('${b.id}', 'APPROVED')">Approve</button>
+            <button type="button" class="danger-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="updateBookingStatusByAdmin('${b.id}', 'CANCELLED')">Cancel</button>
+            <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">File ➔</button>
           </div>
         </td>
       `;
@@ -2547,6 +2546,16 @@ function checkCustomerBookingNotifications() {
     checkCustomerBookingNotifications();
     updateAdminDashboardMetrics();
   }
+
+  // Cross-tab real-time storage sync listener
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'm2o_customer_bookings' || e.key === 'm2o_live_packages') {
+      if (typeof renderAdminBookings === 'function') renderAdminBookings();
+      if (typeof updateAdminDashboardMetrics === 'function') updateAdminDashboardMetrics();
+      if (typeof saveAndRenderAdminPackages === 'function') saveAndRenderAdminPackages();
+      if (typeof renderLiveCustomerTours === 'function') renderLiveCustomerTours();
+    }
+  });
 
   // Run initialization
   init();
