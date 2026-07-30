@@ -3621,3 +3621,22 @@ window.deleteUserRecord = function(id) {
   }
 };
 
+window.sendPageQuickQuery = function(text) {
+  const input = document.getElementById('pageAiInput') || document.getElementById('m2oAiChatInput');
+  if (input) input.value = text;
+  if (typeof window.handlePageAiSubmit === 'function') {
+    window.handlePageAiSubmit();
+  } else if (typeof window.handleCustomerAiSend === 'function') {
+    window.handleCustomerAiSend();
+  }
+};
+
+window.clearPageChatHistory = function() {
+  if (confirm('Clear chat history?')) {
+    localStorage.removeItem('m2o_ai_chat_messages');
+    if (typeof renderPageAiChat === 'function') renderPageAiChat();
+    if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
+    window.location.reload();
+  }
+};
+
