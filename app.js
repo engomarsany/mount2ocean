@@ -3246,7 +3246,7 @@ function checkCustomerBookingNotifications() {
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
-  // Inject Floating AI Assistant Widget into DOM automatically
+  // Inject Floating AI Assistant Widget & Centered Modal Overlay into DOM automatically
   window.initM2OFloatingAiWidget = function() {
     if (document.getElementById('m2oFloatingAiBotWidget')) return;
 
@@ -3257,7 +3257,7 @@ function checkCustomerBookingNotifications() {
       bottom: 24px;
       right: 24px;
       z-index: 9999;
-      font-family: 'Outfit', 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
     `;
 
     widget.innerHTML = `
@@ -3273,40 +3273,42 @@ function checkCustomerBookingNotifications() {
         </button>
       </div>
 
-      <!-- CHAT MODAL WINDOW -->
-      <div id="m2oAiChatModal" class="hidden" style="position: absolute; bottom: 75px; right: 0; width: 380px; height: 500px; background: #ffffff; border-radius: 20px; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; overflow: hidden; animation: slideInUp 0.3s ease;">
-        <!-- CHAT HEADER -->
-        <div style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center;">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <div style="width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🤖</div>
-            <div>
-              <h4 style="margin: 0; font-size: 1rem; font-weight: 800;">M2O AI Assistant</h4>
-              <span style="font-size: 0.72rem; color: #e2e8f0; font-weight: 600;">⚡ Online • Website Research Bot</span>
+      <!-- CENTERED HIGH-CONTRAST CHAT MODAL OVERLAY -->
+      <div id="m2oAiChatModal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(8px); padding: 1rem;">
+        <div style="width: 100%; max-width: 500px; height: 600px; max-height: 90vh; background: #ffffff; border-radius: 24px; border: 2.5px solid #00a651; box-shadow: 0 20px 60px rgba(0,0,0,0.4); display: flex; flex-direction: column; overflow: hidden;">
+          <!-- CHAT HEADER -->
+          <div style="background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); color: white; padding: 1.1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #00a651;">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,242,254,0.4);">🤖</div>
+              <div>
+                <h4 style="margin: 0; font-size: 1.1rem; font-weight: 900; color: #ffffff !important;">Mount2ocean AI Assistant</h4>
+                <span style="font-size: 0.78rem; color: #00f2fe !important; font-weight: 700;">⚡ 24/7 Online • Smart Travel Assistant</span>
+              </div>
             </div>
+            <button onclick="toggleM2OAiChatModal()" style="border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1.2rem; cursor: pointer; font-weight: 900; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">✕</button>
           </div>
-          <button onclick="toggleM2OAiChatModal()" style="border: none; background: transparent; color: white; font-size: 1.2rem; cursor: pointer; font-weight: 800;">✕</button>
-        </div>
 
-        <!-- QUICK ACTION CHIPS -->
-        <div style="background: #f8fafc; padding: 0.5rem 0.8rem; border-bottom: 1px solid #e2e8f0; display: flex; gap: 0.4rem; overflow-x: auto; white-space: nowrap;">
-          <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #0072bc;">📦 Packages</button>
-          <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #00a651;">💳 Payment</button>
-          <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 700; color: #475569;">📞 Hotline</button>
-          <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.25rem 0.6rem; font-size: 0.74rem; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 800; color: #dc2626;">💬 Live Team</button>
-        </div>
+          <!-- QUICK ACTION CHIPS -->
+          <div style="background: #f8fafc; padding: 0.65rem 0.9rem; border-bottom: 1px solid #e2e8f0; display: flex; gap: 0.5rem; overflow-x: auto; white-space: nowrap;">
+            <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #0072bc;">📦 Tour Packages</button>
+            <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #00a651;">💳 bKash Payment</button>
+            <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #475569;">📞 24/7 Hotline</button>
+            <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: rgba(239, 68, 68, 0.1); border: 1.5px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 900; color: #dc2626;">💬 Live Owner Team</button>
+          </div>
 
-        <!-- CHAT MESSAGES CONTAINER -->
-        <div id="m2oAiChatBody" style="flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; background: #fafafa;">
-          <!-- Rendered via renderCustomerChatMessages() -->
-        </div>
+          <!-- CHAT MESSAGES CONTAINER -->
+          <div id="m2oAiChatBody" style="flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; background: #fafafa;">
+            <!-- Rendered via renderCustomerChatMessages() -->
+          </div>
 
-        <!-- CHAT INPUT FOOTER -->
-        <form onsubmit="handleCustomerAiSend(event)" style="padding: 0.8rem; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; gap: 0.5rem;">
-          <input type="text" id="m2oAiChatInput" placeholder="Type your query (প্রশ্ন লিখুন)..." style="flex: 1; padding: 0.6rem 0.9rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 0.88rem;" required>
-          <button type="submit" class="primary-btn" style="padding: 0.6rem 1rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 800; border-radius: 10px;">
-            Send
-          </button>
-        </form>
+          <!-- CHAT INPUT FOOTER -->
+          <form onsubmit="handleCustomerAiSend(event)" style="padding: 0.9rem 1.1rem; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; gap: 0.6rem; align-items: center;">
+            <input type="text" id="m2oAiChatInput" placeholder="Type your question (প্রশ্ন লিখুন)..." style="flex: 1; padding: 0.75rem 1rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 0.92rem; font-weight: 700; color: #0f172a;" required>
+            <button type="submit" class="primary-btn" style="padding: 0.75rem 1.3rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 900; border-radius: 12px; white-space: nowrap;">
+              Send ➔
+            </button>
+          </form>
+        </div>
       </div>
     `;
 
@@ -3327,8 +3329,6 @@ function checkCustomerBookingNotifications() {
         if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
         const input = document.getElementById('m2oAiChatInput');
         if (input) input.focus();
-        modal.style.boxShadow = '0 0 35px rgba(0, 242, 254, 0.9)';
-        setTimeout(() => { modal.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)'; }, 1500);
       }
     }
   };
