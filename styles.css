@@ -3833,82 +3833,106 @@ small, .text-muted, .cust-meta, .tour-location, .tour-duration {
 }
 
 /* ==========================================================================
-   CLASSIC ORIGINAL FOOTER - HIGH-CONTRAST LUXURY REDESIGN
+   SOLID DARK OBSIDIAN FOOTER (100% UNBREAKABLE HIGH-CONTRAST FIX)
    ========================================================================== */
-.cust-footer, footer.cust-footer {
-  background: linear-gradient(180deg, #090d16 0%, #030712 100%) !important;
+footer, .cust-footer, footer.cust-footer, .global-luxury-footer {
+  background-color: #090d16 !important;
+  background: #090d16 !important;
   color: #ffffff !important;
-  padding: 4rem 1.5rem 2rem 1.5rem !important;
-  border-top: 2px solid rgba(0, 242, 254, 0.3) !important;
+  padding: 4rem 2rem 2.5rem 2rem !important;
+  border-top: 3px solid #00f2fe !important;
+  width: 100% !important;
+  display: block !important;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.5) !important;
   position: relative !important;
-  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif !important;
+  z-index: 100 !important;
+  clear: both !important;
 }
 
-.cust-footer-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
-  gap: 2.5rem;
+.cust-footer-grid, .footer-container {
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr !important;
+  gap: 3rem !important;
+  width: 100% !important;
 }
 
-@media (max-width: 992px) {
-  .cust-footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+@media (max-width: 1024px) {
+  .cust-footer-grid, .footer-container {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.5rem !important;
   }
 }
 
 @media (max-width: 640px) {
-  .cust-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
+  .cust-footer-grid, .footer-container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
   }
 }
 
-.footer-col h4 {
+.footer-col, .footer-brand-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.footer-col h4, .footer-col-title {
   color: #00f2fe !important;
-  font-size: 1.05rem !important;
+  font-size: 1.15rem !important;
   font-weight: 900 !important;
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
-  margin-bottom: 1.2rem !important;
+  margin-bottom: 1.4rem !important;
   border-bottom: 2px solid #00f2fe !important;
   padding-bottom: 0.4rem !important;
   display: inline-block !important;
+  text-shadow: 0 0 10px rgba(0,242,254,0.6) !important;
 }
 
-.footer-col p {
-  color: #cbd5e1 !important;
-  font-size: 0.92rem !important;
-  line-height: 1.6 !important;
-  font-weight: 500 !important;
+.footer-col p, .footer-brand-desc {
+  color: #e2e8f0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.4rem !important;
 }
 
-.footer-col ul li a {
+.footer-col ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.footer-col ul li a, .footer-links-list a {
   color: #ffffff !important;
   font-weight: 700 !important;
+  font-size: 0.95rem !important;
   text-decoration: none !important;
   transition: all 0.25s ease !important;
   display: inline-block !important;
 }
 
-.footer-col ul li a:hover {
+.footer-col ul li a:hover, .footer-links-list a:hover {
   color: #00f2fe !important;
-  transform: translateX(5px) !important;
-  text-shadow: 0 0 10px rgba(0, 242, 254, 0.8) !important;
+  transform: translateX(6px) !important;
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.9) !important;
 }
 
-.pay-badge-pill {
+.pay-badge-pill, .pay-method-badge {
   background: #1e293b !important;
   color: #00f2fe !important;
-  border: 1.5px solid #00f2fe !important;
+  border: 2px solid #00f2fe !important;
   font-weight: 900 !important;
-  padding: 0.45rem 0.9rem !important;
+  padding: 0.5rem 1rem !important;
   border-radius: 8px !important;
-  font-size: 0.85rem !important;
-  letter-spacing: 0.5px !important;
-  box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3) !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.8) !important;
   display: inline-block !important;
 }
 
