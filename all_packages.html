@@ -404,8 +404,8 @@
         card.innerHTML = `
           <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html';" style="cursor: pointer;">
             <img src="${pkg.image}" alt="${pkg.name}">
-            <span class="tour-badge ${pkg.badge || 'bestseller'}" style="background: #00a651;">${pkg.badgeLabel || pkg.badge || 'Featured'}</span>
-            <span class="tour-price-pill">${pkg.price}</span>
+            <span class="tour-badge ${pkg.badge || 'bestseller'}" style="background: #00a651; color: #ffffff; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 999px;">${pkg.badgeLabel || pkg.badge || 'Featured'}</span>
+            <span class="tour-price-pill" style="background: #0f172a !important; color: #00f2fe !important; font-size: 1.25rem !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; text-shadow: 0 0 10px #00f2fe !important; padding: 0.35rem 0.9rem !important; border-radius: 999px !important;">${pkg.price}</span>
           </div>
           <div class="tour-card-body">
             <div class="tour-meta-row">

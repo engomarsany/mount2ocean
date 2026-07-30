@@ -3965,5 +3965,76 @@ small, .text-muted, .cust-meta, .tour-location, .tour-duration {
   font-size: 0.86rem;
 }
 
+/* ==========================================================================
+   HIGH-CONTRAST VISIBILITY FIXES (SCREENSHOT SPECIFIC OVERRIDES)
+   ========================================================================== */
+
+/* 1. TOUR PRICE PILLS ON CARD IMAGES (৳75,000 & ৳17,500) */
+.tour-price-pill, 
+.pkg-master-price, 
+.price-pill,
+[class*="price-pill"],
+.tour-img-wrap .tour-price-pill {
+  background: #0f172a !important;
+  color: #00f2fe !important;
+  font-weight: 900 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid #00f2fe !important;
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.5), 0 0 25px rgba(0, 0, 0, 0.95) !important;
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.9) !important;
+  padding: 0.4rem 1.1rem !important;
+  border-radius: 999px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 2. FOOTER TEXT & PARAGRAPH CONTRAST */
+footer p, 
+.footer-brand-desc, 
+.app-footer p,
+.cust-footer p,
+footer div,
+footer span,
+footer li {
+  color: #f1f5f9 !important;
+  font-weight: 600 !important;
+}
+
+/* 3. FOOTER LINKS CONTRAST */
+footer a, 
+.footer-links-list a, 
+.app-footer a, 
+.cust-footer a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+footer a:hover, 
+.footer-links-list a:hover {
+  color: #00f2fe !important;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.8) !important;
+}
+
+/* 4. VERIFIED PAYMENT METHOD BADGES (BKASH, NAGAD, VISA, MASTERCARD, AMEX) */
+.payment-badge, 
+.payment-pill, 
+.pay-method-badge, 
+[class*="payment-"], 
+.footer-bottom-bar strong {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  color: #00f2fe !important;
+  border: 1.5px solid #00f2fe !important;
+  font-weight: 900 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 1px !important;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3) !important;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.8) !important;
+  display: inline-block !important;
+}
+
 
 

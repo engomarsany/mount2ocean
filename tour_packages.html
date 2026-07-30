@@ -377,8 +377,8 @@
         card.innerHTML = `
           <div class="pkg-master-thumb" onclick="openPkgDetails('${pkg.id}')" style="cursor: pointer;">
             <img src="${pkg.image}" alt="${pkg.name}">
-            <span class="pkg-master-badge">${pkg.badgeLabel || pkg.badge || 'Featured Tour'}</span>
-            <span class="pkg-master-price">${pkg.price}</span>
+            <span class="pkg-master-badge" style="background: #00a651; color: #ffffff; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 999px;">${pkg.badgeLabel || pkg.badge || 'Featured Tour'}</span>
+            <span class="pkg-master-price" style="background: #0f172a !important; color: #00f2fe !important; font-size: 1.25rem !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; text-shadow: 0 0 10px #00f2fe !important; padding: 0.35rem 0.9rem !important; border-radius: 999px !important;">${pkg.price}</span>
           </div>
           <div class="pkg-master-content">
             <div class="pkg-master-meta">
