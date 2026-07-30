@@ -3082,7 +3082,8 @@ function checkCustomerBookingNotifications() {
 
   window.saveAiChatMessages = function(msgs) {
     localStorage.setItem('m2o_customer_chat_messages', JSON.stringify(msgs));
-    if (typeof renderCustomerChatMessages === 'function') renderCustomerChatMessages();
+    if (typeof window.renderCustomerChatMessages === 'function') window.renderCustomerChatMessages();
+    if (typeof window.renderPageAiChat === 'function') window.renderPageAiChat();
   };
 
   window.getSupportTickets = function() {
