@@ -23,6 +23,31 @@
 </head>
 <body class="customer-portal-body light-theme">
 
+  <!-- ✈️ $100,000 USD CINEMATIC AIRPLANE & FOG ENTRY SPLASH -->
+  <div id="m2oCinematicIntroSplash">
+    <div class="mist-cloud-bg"></div>
+    <div class="airplane-fly-track">
+      <div class="luxury-airplane-wrapper">
+        <svg class="airplane-svg" width="96" height="96" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="url(#planeGlow)"/>
+          <defs>
+            <linearGradient id="planeGlow" x1="2" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#00f2fe"/>
+              <stop offset="0.5" stop-color="#00a651"/>
+              <stop offset="1" stop-color="#ffffff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="airplane-contrail"></div>
+      </div>
+    </div>
+
+    <div class="splash-brand-title">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 70px; filter: drop-shadow(0 0 25px rgba(0,242,254,0.7)); margin-bottom: 0.8rem;">
+      <div style="color: #00f2fe; font-size: 0.9rem; letter-spacing: 5px; font-weight: 900; text-transform: uppercase;">LUXURY TRAVEL &amp; TOURS</div>
+    </div>
+  </div>
+
   <!-- TOP HEADER NAVIGATION -->
   <header class="app-header customer-header">
     <div class="logo-container">
@@ -200,6 +225,29 @@
         <div class="why-icon-box red" style="font-weight: 900; font-size: 1.2rem;">★</div>
         <h4>Instant Confirmation</h4>
         <p>Instant e-ticket vouchers &amp; instant booking confirmation.</p>
+      </div>
+    </section>
+
+    <!-- PROMINENT AI SMART ASSISTANT & LIVE SUPPORT BANNER -->
+    <section class="cust-section" style="background: linear-gradient(135deg, #090d16 0%, #0a192f 100%); border-radius: 24px; padding: 2rem 2.5rem; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,166,81,0.25); color: #ffffff; margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 1.2rem;">
+          <div style="width: 64px; height: 64px; border-radius: 20px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 8px 25px rgba(0,242,254,0.4); flex-shrink: 0; animation: botPulse 3s infinite ease-in-out;">
+            🤖
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
+              <span class="badge-tag" style="background: #00a651; color: white; padding: 0.25rem 0.6rem; font-size: 0.74rem;">⚡ AI SUPPORT ONLINE</span>
+              <span style="font-size: 0.8rem; color: #00f2fe; font-weight: 800;">24/7 Smart Assistance</span>
+            </div>
+            <h3 style="font-size: 1.4rem; font-weight: 900; color: #ffffff; margin: 0 0 0.3rem;">Mount2ocean AI Smart Travel Assistant</h3>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; font-weight: 500;">Ask anything about tour packages, pricing, bKash payment, or speak directly with our Live Owner Support Team!</p>
+          </div>
+        </div>
+
+        <button type="button" onclick="toggleM2OAiChatModal()" class="primary-btn" style="padding: 0.9rem 1.8rem; font-size: 1rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; cursor: pointer; white-space: nowrap; box-shadow: 0 8px 25px rgba(0,166,81,0.4);">
+          💬 Chat with AI Assistant Now ➔
+        </button>
       </div>
     </section>
 
