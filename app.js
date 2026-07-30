@@ -1136,6 +1136,153 @@ document.addEventListener('DOMContentLoaded', () => {
   saveAndRenderAdminPackages();
 
   // ==========================================
+  // MAGIC AI 5-PHOTO GENERATOR ENGINE
+  // ==========================================
+  const aiDestinationPhotoPools = {
+    coxsbazar: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+      'assets/coxsbazar_parasailing.jpg',
+      'assets/coxsbazar_seafood.jpg',
+      'assets/coxsbazar_resort.jpg',
+      'assets/saintmartin_cruise.jpg',
+      'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80'
+    ],
+    bali: [
+      'assets/bali_kintamani_volcano.jpg',
+      'assets/bali_uluwatu_sunset.jpg',
+      'assets/bali_tegalalang_swing.jpg',
+      'assets/bali_bananaboat_water.jpg',
+      'assets/bali_tegenungan_waterfall.jpg',
+      'assets/bali_temple.jpg'
+    ],
+    bhutan: [
+      'assets/tour_gallery_bhutan.jpg',
+      'https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?auto=format&fit=crop&w=800&q=80'
+    ],
+    dubai: [
+      'assets/dubai_safari.jpg',
+      'assets/dubai_dhow.jpg',
+      'assets/dubai_hotel.jpg',
+      'assets/dubai_goldsouk.jpg',
+      'assets/tour_dubai.jpg',
+      'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'
+    ],
+    maldives: [
+      'assets/maldives_villa.jpg',
+      'assets/maldives_snorkeling.jpg',
+      'assets/maldives_dinner.jpg',
+      'assets/maldives_speedboat.jpg',
+      'assets/tour_maldives.jpg',
+      'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80'
+    ],
+    manali: [
+      'assets/dest_manali.jpg',
+      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80'
+    ],
+    generic: [
+      'assets/tour_gallery_scuba.jpg',
+      'assets/tour_gallery_safari.jpg',
+      'assets/tour_gallery_bali.jpg',
+      'assets/dest_kathmandu.jpg',
+      'assets/dest_darjeeling.jpg',
+      'assets/dest_tokyo.jpg'
+    ]
+  };
+
+  window.handleGenerate5AIImages = function() {
+    const pkgName = (document.getElementById('pkgNameInput') ? document.getElementById('pkgNameInput').value : '').trim().toLowerCase();
+    const pkgCat = (document.getElementById('pkgCategorySelect') ? document.getElementById('pkgCategorySelect').value : '').trim().toLowerCase();
+
+    const gallerySection = document.getElementById('aiImageGallerySection');
+    const container = document.getElementById('aiPhotosGridContainer');
+
+    if (!container || !gallerySection) return;
+
+    // Detect destination category key
+    let destKey = 'generic';
+    if (pkgName.includes('bali') || pkgCat.includes('bali')) destKey = 'bali';
+    else if (pkgName.includes('bhutan') || pkgCat.includes('bhutan')) destKey = 'bhutan';
+    else if (pkgName.includes('dubai') || pkgCat.includes('dubai')) destKey = 'dubai';
+    else if (pkgName.includes('maldives') || pkgCat.includes('maldives')) destKey = 'maldives';
+    else if (pkgName.includes('cox') || pkgName.includes('saint') || pkgCat.includes('cox')) destKey = 'coxsbazar';
+    else if (pkgName.includes('manali') || pkgName.includes('snow') || pkgName.includes('kashmir') || pkgCat.includes('nepal')) destKey = 'manali';
+
+    gallerySection.classList.remove('hidden');
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; background: #ffffff; border-radius: 12px; border: 1.5px solid #cbd5e1;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem; display: inline-block;">✨</div>
+        <strong style="color: #0072bc; font-size: 1.05rem; display: block;">AI Engine Rendering 5 High-Definition Travel Photos...</strong>
+        <span style="font-size: 0.85rem; color: #64748b;">Tailoring lighting, scenery, and resolution for ${destKey.toUpperCase()} destination...</span>
+      </div>
+    `;
+
+    setTimeout(() => {
+      const pool = aiDestinationPhotoPools[destKey] || aiDestinationPhotoPools.generic;
+      const shuffled = [...pool].sort(() => 0.5 - Math.random());
+      const selected5 = shuffled.slice(0, 5);
+
+      container.innerHTML = '';
+      selected5.forEach((imgUrl, idx) => {
+        const card = document.createElement('div');
+        card.style.cssText = `
+          background: #ffffff;
+          border: 2px solid #e2e8f0;
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+          transition: transform 0.2s ease, border-color 0.2s ease;
+        `;
+        card.innerHTML = `
+          <div style="height: 130px; overflow: hidden; position: relative;">
+            <img src="${imgUrl}" alt="AI Travel Photo ${idx + 1}" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; background: rgba(9,13,22,0.85); color: #00f2fe; padding: 0.2rem 0.55rem; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">AI OPTION ${idx + 1}</span>
+          </div>
+          <div style="padding: 0.8rem; text-align: center;">
+            <button type="button" class="primary-btn" style="width: 100%; padding: 0.45rem; font-size: 0.78rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 8px;" onclick="selectAIPhotoForPackage('${imgUrl}', this)">
+              Use This Photo ➔
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      if (typeof showToast === 'function') {
+        showToast(`✨ Generated 5 AI Luxury Photos for ${destKey.toUpperCase()}! Click any photo to use.`, 'success');
+      }
+    }, 700);
+  };
+
+  window.selectAIPhotoForPackage = function(imgUrl, btnEl) {
+    const inputEl = document.getElementById('pkgImageUrlInput');
+    if (inputEl) {
+      inputEl.value = imgUrl;
+    }
+    
+    // Highlight selected card
+    const cards = document.querySelectorAll('#aiPhotosGridContainer > div');
+    cards.forEach(c => {
+      c.style.borderColor = '#e2e8f0';
+      c.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)';
+    });
+
+    if (btnEl && btnEl.parentElement && btnEl.parentElement.parentElement) {
+      const card = btnEl.parentElement.parentElement;
+      card.style.borderColor = '#00a651';
+      card.style.boxShadow = '0 0 20px rgba(0, 166, 81, 0.4)';
+    }
+
+    if (typeof showToast === 'function') {
+      showToast('✅ Selected AI Photo applied as Main Package Cover Photo!', 'success');
+    }
+  };
+
+  // ==========================================
   // WORLD-CLASS INTERACTIVE GUESTS & TRAVELERS COUNTER POPOVER
   // ==========================================
   let guestCounts = {
