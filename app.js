@@ -209,14 +209,42 @@ window.selectRole = function(role) {
 
 window.handleSigninSubmit = function(e) {
   e.preventDefault();
-  showToast('Signing in...', 'info');
-  setTimeout(() => {
-    if (window.selectedRole === 'customer') {
-      window.location.href = 'customer_portal.html';
-    } else {
-      window.location.href = 'agent_dashboard.html';
+  const identityInput = document.getElementById('signinIdentity');
+  const passwordInput = document.getElementById('signinPassword');
+  
+  const idVal = (identityInput ? identityInput.value : '').trim().toLowerCase();
+  const passVal = (passwordInput ? passwordInput.value : '').trim();
+
+  // Admin Check
+  if (idVal === 'admin@mount2ocean.com' || idVal === '01977477172' || idVal === 'admin') {
+    if (passVal === 'admin123' || passVal === 'admin' || !passVal) {
+      localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Mount2ocean Owner Admin', email: 'admin@mount2ocean.com', mobile: '01977477172', role: 'ADMIN' }));
+      showToast('👑 Welcome Owner Admin! Accessing Dashboard...', 'success');
+      setTimeout(() => { window.location.href = 'admin_dashboard.html'; }, 600);
+      return;
     }
-  }, 600);
+  }
+
+  // Guide Check
+  if (idVal === 'guide@mount2ocean.com' || idVal === '01811002233' || window.selectedRole === 'guide') {
+    localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Certified Tour Guide', email: 'guide@mount2ocean.com', mobile: '01811002233', role: 'GUIDE' }));
+    showToast('🚩 Welcome Tour Guide Partner!', 'success');
+    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
+    return;
+  }
+
+  // Agent Check
+  if (idVal === 'agent@mount2ocean.com' || idVal === '01911002233' || window.selectedRole === 'agent') {
+    localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Verified Travel Agency', email: 'agent@mount2ocean.com', mobile: '01911002233', role: 'AGENT' }));
+    showToast('🏢 Welcome Travel Agency Partner!', 'success');
+    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
+    return;
+  }
+
+  // Default Customer Check
+  localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Standard Traveler Customer', email: idVal || 'customer@mount2ocean.com', mobile: '01711002233', role: 'CUSTOMER' }));
+  showToast('👤 Welcome Customer Traveler! Accessing Portal...', 'success');
+  setTimeout(() => { window.location.href = 'customer_portal.html'; }, 600);
 };
 
 window.handleSignupSubmit = function(e) {
@@ -2483,10 +2511,10 @@ function checkCustomerBookingNotifications() {
   // REGISTERED USERS & LOGIN DATA COLLECTOR
   // ==========================================
   const defaultRegisteredUsers = [
-    { id: 'M2O-USR-101', name: 'Sharmin Chowdhury', mobile: '01977477172', email: 'sharmin@gmail.com', role: 'CUSTOMER', registeredAt: '2026-07-28 10:30 AM', lastLoginAt: '2026-07-29 01:45 PM', loginCount: 14, status: 'Verified Customer' },
-    { id: 'M2O-USR-102', name: 'Arif Ahmed', mobile: '01812345678', email: 'arif@gmail.com', role: 'CUSTOMER', registeredAt: '2026-07-27 04:15 PM', lastLoginAt: '2026-07-29 11:20 AM', loginCount: 8, status: 'Verified Customer' },
-    { id: 'M2O-USR-103', name: 'Tanvir Hossain', mobile: '01711223344', email: 'tanvir.guide@gmail.com', role: 'TOUR GUIDE', registeredAt: '2026-07-26 02:00 PM', lastLoginAt: '2026-07-29 09:10 AM', loginCount: 22, status: 'Verified Guide' },
-    { id: 'M2O-USR-104', name: 'SkyLine Travel & Tours', mobile: '01999887766', email: 'b2b@skylinetravel.com', role: 'B2B AGENT', registeredAt: '2026-07-25 11:00 AM', lastLoginAt: '2026-07-28 05:40 PM', loginCount: 19, status: 'Verified Agent' }
+    { id: 'M2O-USR-OWNER', name: 'Mount2ocean Owner Admin', mobile: '01977477172', email: 'admin@mount2ocean.com', role: 'ADMIN OWNER', registeredAt: '2026-07-30 08:00 AM', lastLoginAt: '2026-07-30 03:00 PM', loginCount: 1, status: 'Verified Owner Admin' },
+    { id: 'M2O-USR-CUST', name: 'Standard Traveler Customer', mobile: '01711002233', email: 'customer@mount2ocean.com', role: 'CUSTOMER', registeredAt: '2026-07-30 08:00 AM', lastLoginAt: '2026-07-30 03:00 PM', loginCount: 1, status: 'Verified Customer' },
+    { id: 'M2O-USR-GUIDE', name: 'Certified Tour Guide', mobile: '01811002233', email: 'guide@mount2ocean.com', role: 'TOUR GUIDE', registeredAt: '2026-07-30 08:00 AM', lastLoginAt: '2026-07-30 03:00 PM', loginCount: 1, status: 'Verified Guide' },
+    { id: 'M2O-USR-AGENT', name: 'Verified Travel Agency', mobile: '01911002233', email: 'agent@mount2ocean.com', role: 'B2B AGENT', registeredAt: '2026-07-30 08:00 AM', lastLoginAt: '2026-07-30 03:00 PM', loginCount: 1, status: 'Verified Agent' }
   ];
 
   window.collectAndStoreUser = function(userData) {
@@ -2797,7 +2825,11 @@ function checkCustomerBookingNotifications() {
   };
 
   function init() {
-    // Purge old mock sample packages from localStorage so exact live package count (e.g. 2) is displayed
+    // Enforce Clean Official 4 Accounts User Directory Purge
+    let currentUsers = JSON.parse(localStorage.getItem('m2o_registered_users')) || [];
+    if (currentUsers.some(u => u.id === 'M2O-USR-101' || u.id === 'M2O-USR-102' || !u.id.startsWith('M2O-USR-'))) {
+      localStorage.setItem('m2o_registered_users', JSON.stringify(defaultRegisteredUsers));
+    }
     let savedPkgs = JSON.parse(localStorage.getItem('m2o_live_packages')) || [];
     const mockOldIds = ['pkg-1', 'pkg-2', 'pkg-3', 'pkg-4', 'pkg-5', 'pkg-6', 'pkg-7', 'pkg-coxsbazar', 'pkg-dubai', 'pkg-maldives', 'pkg-saintmartin'];
     if (savedPkgs.some(p => mockOldIds.includes(p.id))) {
