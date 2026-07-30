@@ -1570,9 +1570,35 @@ document.addEventListener('DOMContentLoaded', () => {
   window.updateBookingStatusByAdmin = function(bookingId, newStatus) {
     let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
     let bk = bookings.find(b => b.id === bookingId);
+    let cancelReason = '';
+
+    if (newStatus === 'CANCELLED') {
+      cancelReason = prompt('Enter cancellation reason for customer (বাতিলের কারণ লিখুন):', 'Seat capacity full / Administrative policy update') || 'Administrative Cancellation';
+    }
+
     if (bk) {
       bk.status = newStatus;
+      if (cancelReason) bk.cancelReason = cancelReason;
       localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+
+      // Push Live Notification into m2o_customer_notifications for the customer
+      let notifications = JSON.parse(localStorage.getItem('m2o_customer_notifications')) || [];
+      const notifItem = {
+        id: 'NOTIF-' + Date.now(),
+        voucherId: bk.id,
+        customerName: bk.customerName || 'Valued Customer',
+        phone: bk.phone || '',
+        email: bk.email || '',
+        type: newStatus,
+        title: newStatus === 'APPROVED' ? '✅ Tour Booking Approved & Confirmed!' : '❌ Tour Booking Cancelled',
+        message: newStatus === 'APPROVED'
+          ? `Great news ${bk.customerName}! Your reservation for "${bk.tourTitle}" (Voucher: ${bk.id}) has been APPROVED by Mount2ocean Admin. Your official ticket voucher is active!`
+          : `Notice to ${bk.customerName}: Your reservation for "${bk.tourTitle}" (Voucher: ${bk.id}) has been CANCELLED. Reason: ${cancelReason}`,
+        timestamp: new Date().toLocaleString(),
+        read: false
+      };
+      notifications.unshift(notifItem);
+      localStorage.setItem('m2o_customer_notifications', JSON.stringify(notifications));
     }
 
     let approvals = JSON.parse(localStorage.getItem('m2o_admin_approvals')) || [];
@@ -1582,10 +1608,14 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('m2o_admin_approvals', JSON.stringify(approvals));
     }
 
-    renderAdminBookings();
-    updateAdminDashboardMetrics();
+    if (typeof renderAdminBookings === 'function') renderAdminBookings();
+    if (typeof renderMasterBookingsDirectory === 'function') renderMasterBookingsDirectory();
+    if (typeof updateAdminDashboardMetrics === 'function') updateAdminDashboardMetrics();
     if (typeof renderAdminApprovals === 'function') renderAdminApprovals();
-    if (typeof showToast === 'function') showToast(`Booking ${bookingId} status updated to ${newStatus}`, 'success');
+    
+    if (typeof showToast === 'function') {
+      showToast(`Booking ${bookingId} marked as ${newStatus}! Customer notified live.`, newStatus === 'APPROVED' ? 'success' : 'error');
+    }
   };
 
   window.clearAllBookingsHandler = function() {
@@ -2594,13 +2624,66 @@ function checkCustomerBookingNotifications() {
     updateAdminDashboardMetrics();
   }
 
+  window.checkCustomerBookingNotifications = function() {
+    const notifications = JSON.parse(localStorage.getItem('m2o_customer_notifications')) || [];
+    const unreadNotif = notifications.find(n => !n.read);
+
+    if (unreadNotif) {
+      let notifBanner = document.getElementById('customerLiveNotificationToast');
+      if (!notifBanner) {
+        notifBanner = document.createElement('div');
+        notifBanner.id = 'customerLiveNotificationToast';
+        notifBanner.style.cssText = `
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 10000;
+          max-width: 420px;
+          background: #ffffff;
+          border-radius: 16px;
+          border: 2px solid ${unreadNotif.type === 'APPROVED' ? '#00a651' : '#ef4444'};
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+          padding: 1.2rem 1.4rem;
+          font-family: 'Inter', sans-serif;
+          animation: slideInRight 0.4s ease;
+        `;
+        document.body.appendChild(notifBanner);
+      }
+
+      const titleColor = unreadNotif.type === 'APPROVED' ? '#00a651' : '#ef4444';
+      notifBanner.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.4rem;">
+          <strong style="color: ${titleColor}; font-size: 1.05rem; font-weight: 800;">${unreadNotif.title}</strong>
+          <button onclick="dismissCustomerNotification('${unreadNotif.id}')" style="border: none; background: transparent; cursor: pointer; font-size: 1.1rem; color: #94a3b8; font-weight: 800;">✕</button>
+        </div>
+        <p style="margin: 0 0 0.8rem; font-size: 0.88rem; color: #334155; line-height: 1.45;">${unreadNotif.message}</p>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <a href="my_profile.html" class="primary-btn" style="padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 800; text-decoration: none; background: ${titleColor};">View My Profile &amp; Ticket ➔</a>
+          <button onclick="dismissCustomerNotification('${unreadNotif.id}')" class="secondary-btn" style="padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 700;">Dismiss</button>
+        </div>
+      `;
+    }
+  };
+
+  window.dismissCustomerNotification = function(notifId) {
+    let notifications = JSON.parse(localStorage.getItem('m2o_customer_notifications')) || [];
+    let item = notifications.find(n => n.id === notifId);
+    if (item) item.read = true;
+    localStorage.setItem('m2o_customer_notifications', JSON.stringify(notifications));
+
+    const notifBanner = document.getElementById('customerLiveNotificationToast');
+    if (notifBanner) notifBanner.remove();
+  };
+
   // Cross-tab real-time storage sync listener
   window.addEventListener('storage', function(e) {
-    if (e.key === 'm2o_customer_bookings' || e.key === 'm2o_live_packages') {
+    if (e.key === 'm2o_customer_bookings' || e.key === 'm2o_live_packages' || e.key === 'm2o_customer_notifications') {
       if (typeof renderAdminBookings === 'function') renderAdminBookings();
       if (typeof updateAdminDashboardMetrics === 'function') updateAdminDashboardMetrics();
       if (typeof saveAndRenderAdminPackages === 'function') saveAndRenderAdminPackages();
       if (typeof renderLiveCustomerTours === 'function') renderLiveCustomerTours();
+      if (typeof checkCustomerBookingNotifications === 'function') checkCustomerBookingNotifications();
+      if (typeof loadCustomerProfileAndBookings === 'function') loadCustomerProfileAndBookings();
     }
   });
 
