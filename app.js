@@ -960,9 +960,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const bookMiniBtns = document.querySelectorAll('.book-mini-btn, .reserve-btn');
+  if (bookMiniBtns.length > 0) {
+    bookMiniBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.showToast) window.showToast('🏨 Agent B2B Hotel Reservation initiated! Opening booking confirmation...', 'success');
+        setTimeout(() => { window.location.href = 'booking.html'; }, 800);
+      });
+    });
+  }
+
   // ==========================================
   // CUSTOMER PORTAL SPECIFIC INTERACTION
   // ==========================================
+  const custSearchTabs = document.querySelectorAll('.cust-search-tab');
+  const custSearchInput = document.getElementById('custSearchInput');
+  if (custSearchTabs.length > 0) {
+    custSearchTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        custSearchTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const serviceName = tab.textContent.trim();
+        if (custSearchInput) {
+          custSearchInput.placeholder = `Search ${serviceName}: type Bhutan, Dubai, Cox's Bazar, Maldives, Bali...`;
+        }
+        if (window.showToast) window.showToast(`Switched search mode to: ${serviceName}`, 'info');
+      });
+    });
+  }
+
   const destPills = document.querySelectorAll('.dest-pill');
   const tourCards = document.querySelectorAll('.tour-card');
   const custBookingModal = document.getElementById('custBookingModal');
