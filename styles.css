@@ -4037,24 +4037,37 @@ footer, .cust-footer, footer.cust-footer, .global-luxury-footer {
    HIGH-CONTRAST VISIBILITY FIXES (SCREENSHOT SPECIFIC OVERRIDES)
    ========================================================================== */
 
-/* 1. TOUR PRICE PILLS ON CARD IMAGES (৳75,000 & ৳17,500) */
+/* 1. GLOWING LUXURY TOUR PRICE PILLS ON CARD IMAGES (৳75,000 & ৳17,500) */
+@keyframes pricePillPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(0, 242, 254, 0.95), 0 0 32px rgba(0, 166, 81, 0.75), inset 0 0 12px rgba(0, 242, 254, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(0, 242, 254, 1), 0 0 50px rgba(0, 166, 81, 0.95), inset 0 0 18px rgba(0, 242, 254, 0.8);
+    transform: scale(1.04);
+  }
+}
+
 .tour-price-pill, 
 .pkg-master-price, 
 .price-pill,
 [class*="price-pill"],
 .tour-img-wrap .tour-price-pill {
-  background: #0f172a !important;
-  color: #00f2fe !important;
+  background: linear-gradient(135deg, #07111e 0%, #004b87 50%, #00a651 100%) !important;
+  color: #ffffff !important;
   font-weight: 900 !important;
-  font-size: 1.25rem !important;
+  font-size: 1.3rem !important;
   letter-spacing: 0.5px !important;
-  border: 2px solid #00f2fe !important;
-  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.5), 0 0 25px rgba(0, 0, 0, 0.95) !important;
-  text-shadow: 0 0 12px rgba(0, 242, 254, 0.9) !important;
-  padding: 0.4rem 1.1rem !important;
+  border: 2.5px solid #00f2fe !important;
+  box-shadow: 0 0 22px rgba(0, 242, 254, 0.9), 0 0 38px rgba(0, 166, 81, 0.8) !important;
+  text-shadow: 0 0 12px #00f2fe, 0 0 22px rgba(0, 242, 254, 0.9) !important;
+  padding: 0.45rem 1.25rem !important;
   border-radius: 999px !important;
   opacity: 1 !important;
   visibility: visible !important;
+  animation: pricePillPulseGlow 2.5s infinite ease-in-out !important;
+  z-index: 20 !important;
 }
 
 /* 2. FOOTER TEXT & PARAGRAPH CONTRAST */
