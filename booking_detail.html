@@ -147,24 +147,24 @@
       <a href="customer_portal.html" class="customer-nav-item">Home</a>
       <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
       <a href="my_profile.html" class="customer-nav-item active">My Profile &amp; Bookings</a>
-      <a href="agent_dashboard.html" target="_blank" class="customer-nav-item">Agent Portal ↗</a>
-      <a href="admin_dashboard.html" target="_blank" class="customer-nav-item">Admin Portal ↗</a>
+      <a href="agent_dashboard.html" target="_blank" class="customer-nav-item">Agent Portal â†—</a>
+      <a href="admin_dashboard.html" target="_blank" class="customer-nav-item">Admin Portal â†—</a>
     </nav>
 
     <!-- Header Right Controls -->
     <div class="header-actions">
       <!-- Currency Selector -->
       <div class="currency-selector">
-        <span class="currency-icon">💵</span>
+        <span class="currency-icon">ðŸ’µ</span>
         <select id="custCurrency">
-          <option value="BDT" selected>BDT (৳)</option>
+          <option value="BDT" selected>BDT (à§³)</option>
           <option value="USD">USD ($)</option>
         </select>
       </div>
 
       <!-- Sign Out Link -->
       <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
-        Sign Out (লগআউট)
+        Sign Out (à¦²à¦—à¦†à¦‰à¦Ÿ)
       </a>
     </div>
   </header>
@@ -174,14 +174,14 @@
     
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
       <a href="my_profile.html" class="secondary-btn" style="text-decoration: none; font-weight: 800;">
-        ← Back to My Reservations History
+        â† Back to My Reservations History
       </a>
       <div style="display: flex; gap: 0.8rem;">
         <button onclick="window.print()" class="primary-btn" style="background: #0072bc; font-weight: 800;">
-          🖨️ Print Ticket Voucher
+          ðŸ–¨ï¸ Print Ticket Voucher
         </button>
         <a href="admin_dashboard.html" target="_blank" class="secondary-btn" style="text-decoration: none; font-weight: 800; border-color: #00a651; color: #00a651;">
-          👑 Edit in Owner Panel ↗
+          ðŸ‘‘ Edit in Owner Panel â†—
         </a>
       </div>
     </div>
@@ -199,13 +199,13 @@
             Bhutan Cultural Tour &amp; Tiger's Nest Hike
           </h1>
           <p id="dtlFileId" style="font-size: 1rem !important; color: #ffffff !important; margin: 0 !important; font-weight: 800 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;">
-            File Voucher ID: M2O-BK-84921 • Date: 2026-07-29
+            File Voucher ID: M2O-BK-84921 â€¢ Date: 2026-07-29
           </p>
         </div>
 
         <div style="text-align: right;">
           <span id="dtlFileStatusBadge" class="status-badge-live" style="background: #f59e0b !important; color: #0f172a !important; font-weight: 900 !important; font-size: 1.02rem !important; padding: 0.65rem 1.5rem !important; border-radius: 12px !important; border: 2px solid #ffffff !important; box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important; display: inline-block !important;">
-            ⏳ PENDING ADMIN APPROVAL
+            â³ PENDING ADMIN APPROVAL
           </span>
           <span style="display: block !important; font-size: 0.88rem !important; color: #ffffff !important; font-weight: 800 !important; margin-top: 0.5rem !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;">Controlled by Admin Panel</span>
         </div>
@@ -214,27 +214,27 @@
       <!-- LIVE STATUS TRACKER STEPPER -->
       <div style="padding: 1.5rem 2rem 0; background: #ffffff;">
         <h4 style="font-size: 0.95rem; font-weight: 800; color: #475569; text-align: center; margin: 0 0 1rem;">
-          🚦 Live Reservation Progress &amp; Approval Tracker (লাইভ বুকিং স্ট্যাটাস)
+          ðŸš¦ Live Reservation Progress &amp; Approval Tracker (à¦²à¦¾à¦‡à¦­ à¦¬à§à¦•à¦¿à¦‚ à¦¸à§à¦Ÿà§à¦¯à¦¾à¦Ÿà¦¾à¦¸)
         </h4>
 
         <div class="status-tracker-stepper">
           <div class="step-item active">
-            <div class="step-circle">📝</div>
+            <div class="step-circle">ðŸ“</div>
             <div class="step-title">Submitted</div>
             <div class="step-desc">Booking Requested</div>
           </div>
           <div class="step-item active">
-            <div class="step-circle">🔍</div>
+            <div class="step-circle">ðŸ”</div>
             <div class="step-title">Identity Audit</div>
             <div class="step-desc">Passport/NID Verified</div>
           </div>
           <div class="step-item pending" id="stepAdminApproval">
-            <div class="step-circle">👑</div>
+            <div class="step-circle">ðŸ‘‘</div>
             <div class="step-title" id="stepAdminTitle">Admin Review</div>
             <div class="step-desc" id="stepAdminDesc">Owner Action</div>
           </div>
           <div class="step-item" id="stepVoucherIssued">
-            <div class="step-circle">🎟️</div>
+            <div class="step-circle">ðŸŽŸï¸</div>
             <div class="step-title">Voucher Ready</div>
             <div class="step-desc">Ticket Issued</div>
           </div>
@@ -249,7 +249,7 @@
           <!-- Section A: Customer Details -->
           <div class="file-section-box">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #0072bc; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              👤 Primary Traveler Information (গ্রাহকের তথ্য)
+              ðŸ‘¤ Primary Traveler Information (à¦—à§à¦°à¦¾à¦¹à¦•à§‡à¦° à¦¤à¦¥à§à¦¯)
             </h3>
             <div class="file-info-row">
               <span class="file-info-label">Full Name:</span>
@@ -265,14 +265,14 @@
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Verified Identity:</span>
-              <span class="file-info-value" id="dtlCustIdentity">🛂 Passport: A0928194 (Exp: 2030-10-15)</span>
+              <span class="file-info-value" id="dtlCustIdentity">ðŸ›‚ Passport: A0928194 (Exp: 2030-10-15)</span>
             </div>
           </div>
 
           <!-- Section B: Travel & Itinerary File -->
           <div class="file-section-box">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #00a651; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              🌴 Tour Package &amp; Itinerary File (ভ্রমণের তথ্য)
+              ðŸŒ´ Tour Package &amp; Itinerary File (à¦­à§à¦°à¦®à¦£à§‡à¦° à¦¤à¦¥à§à¦¯)
             </h3>
             <div class="file-info-row">
               <span class="file-info-label">Package Name:</span>
@@ -280,11 +280,11 @@
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Departure Travel Date:</span>
-              <span class="file-info-value" id="dtlTravelDate">📅 2026-08-15</span>
+              <span class="file-info-value" id="dtlTravelDate">ðŸ“… 2026-08-15</span>
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Travelers Breakdown:</span>
-              <span class="file-info-value" id="dtlTravelers">👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)</span>
+              <span class="file-info-value" id="dtlTravelers">ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ 2 Adult(s), 0 Child(ren), 0 Infant(s)</span>
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Special Requests/Notes:</span>
@@ -295,10 +295,10 @@
           <!-- Section C: Owner / Admin Live Notes & Instructions -->
           <div class="file-section-box" style="border-color: #0072bc; background: #f0f9ff;">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #0072bc; margin: 0 0 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
-              📢 Owner / Admin Live Notice &amp; Instructions (অ্যাডমিন আপডেট)
+              ðŸ“¢ Owner / Admin Live Notice &amp; Instructions (à¦…à§à¦¯à¦¾à¦¡à¦®à¦¿à¦¨ à¦†à¦ªà¦¡à§‡à¦Ÿ)
             </h3>
             <p id="dtlAdminNoticeText" style="font-size: 0.95rem; color: #0369a1; font-weight: 700; line-height: 1.6; margin: 0;">
-              আপনার বুকিং ফাইলটি সফলভাবে সিস্টেমে যুক্ত হয়েছে। ওনার প্যানেল থেকে ফাইলটি চূড়ান্ত রিভিউ ও ফ্লাইট কনফার্মেশন সম্পন্ন হলে ই-টিকেট ডাউনলোড করতে পারবেন।
+              à¦†à¦ªà¦¨à¦¾à¦° à¦¬à§à¦•à¦¿à¦‚ à¦«à¦¾à¦‡à¦²à¦Ÿà¦¿ à¦¸à¦«à¦²à¦­à¦¾à¦¬à§‡ à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®à§‡ à¦¯à§à¦•à§à¦¤ à¦¹à§Ÿà§‡à¦›à§‡à¥¤ à¦“à¦¨à¦¾à¦° à¦ªà§à¦¯à¦¾à¦¨à§‡à¦² à¦¥à§‡à¦•à§‡ à¦«à¦¾à¦‡à¦²à¦Ÿà¦¿ à¦šà§‚à§œà¦¾à¦¨à§à¦¤ à¦°à¦¿à¦­à¦¿à¦‰ à¦“ à¦«à§à¦²à¦¾à¦‡à¦Ÿ à¦•à¦¨à¦«à¦¾à¦°à§à¦®à§‡à¦¶à¦¨ à¦¸à¦®à§à¦ªà¦¨à§à¦¨ à¦¹à¦²à§‡ à¦‡-à¦Ÿà¦¿à¦•à§‡à¦Ÿ à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à¦¬à§‡à¦¨à¥¤
             </p>
           </div>
         </div>
@@ -307,7 +307,7 @@
         <div>
           <div class="file-section-box" style="background: #ffffff; border-width: 2px;">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem;">
-              💳 Billing &amp; Payment Summary
+              ðŸ’³ Billing &amp; Payment Summary
             </h3>
             <div class="file-info-row">
               <span class="file-info-label">Payment Method:</span>
@@ -315,11 +315,11 @@
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Payment Status:</span>
-              <span class="file-info-value" id="dtlPayStatus" style="color: #d97706;">⏳ Pending Verification</span>
+              <span class="file-info-value" id="dtlPayStatus" style="color: #d97706;">â³ Pending Verification</span>
             </div>
             <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e2e8f0; text-align: center;">
               <span style="font-size: 0.82rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.3rem;">TOTAL PAID / DUE AMOUNT</span>
-              <span id="dtlTotalAmount" style="font-size: 2rem; font-weight: 900; color: #00a651;">৳75,000</span>
+              <span id="dtlTotalAmount" style="font-size: 2rem; font-weight: 900; color: #00a651;">à§³75,000</span>
             </div>
           </div>
 
@@ -328,7 +328,7 @@
             <h4 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.4rem; color: #ffffff !important;">Need File Assistance?</h4>
             <p style="font-size: 0.85rem; color: #e2e8f0 !important; margin-bottom: 1rem;">Call our 24/7 hotline with your File Voucher ID.</p>
             <a href="tel:+8801977477172" style="background: #ffffff; color: #0072bc; padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 900; text-decoration: none; display: inline-block;">
-              📞 +880 1977-477172
+              ðŸ“ž +880 1977-477172
             </a>
           </div>
         </div>
@@ -340,7 +340,7 @@
   </main>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v6_force_2_live_packages_always"></script>
+  <script src="app.js?v=v18_full_website_owner_audit"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       loadDetailedBookingFile();
@@ -362,9 +362,9 @@
           passportExpiry: '2030-10-15',
           tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
           travelDate: '2026-08-15',
-          travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)',
+          travelersCount: 'ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ 2 Adult(s), 0 Child(ren), 0 Infant(s)',
           paymentMethod: 'bKash Online Payment',
-          price: '৳75,000',
+          price: 'à§³75,000',
           notes: 'Vegetarian meal requested on flight.',
           date: '2026-07-29',
           status: 'PENDING'
@@ -373,20 +373,20 @@
 
       // Populate file DOM fields
       document.getElementById('dtlFileTitle').textContent = bk.tourTitle || 'Tour Package File';
-      document.getElementById('dtlFileId').textContent = `File Voucher ID: ${bk.id} • Date: ${bk.date || '2026-07-29'}`;
+      document.getElementById('dtlFileId').textContent = `File Voucher ID: ${bk.id} â€¢ Date: ${bk.date || '2026-07-29'}`;
       
       document.getElementById('dtlCustName').textContent = bk.customerName || 'Sharmin Chowdhury';
       document.getElementById('dtlCustPhone').textContent = bk.phone || '+880 1977-477172';
       document.getElementById('dtlCustEmail').textContent = bk.email || 'customer@mount2ocean.com';
-      document.getElementById('dtlCustIdentity').textContent = bk.passportNo ? `🛂 Passport: ${bk.passportNo} (Exp: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
+      document.getElementById('dtlCustIdentity').textContent = bk.passportNo ? `ðŸ›‚ Passport: ${bk.passportNo} (Exp: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `ðŸ†” NID: ${bk.nid}` : 'ðŸ†” Verified Identity');
 
       document.getElementById('dtlTourName').textContent = bk.tourTitle || 'Tour Package File';
-      document.getElementById('dtlTravelDate').textContent = `📅 ${bk.travelDate || '2026-08-15'}`;
+      document.getElementById('dtlTravelDate').textContent = `ðŸ“… ${bk.travelDate || '2026-08-15'}`;
       document.getElementById('dtlTravelers').textContent = bk.travelersCount || 'Travelers';
       document.getElementById('dtlNotes').textContent = bk.notes || 'None';
 
       document.getElementById('dtlPayMethod').textContent = bk.paymentMethod || 'bKash Payment';
-      document.getElementById('dtlTotalAmount').textContent = bk.price || bk.amount || '৳17,500';
+      document.getElementById('dtlTotalAmount').textContent = bk.price || bk.amount || 'à§³17,500';
 
       const statusBadge = document.getElementById('dtlFileStatusBadge');
       const stepAdminApproval = document.getElementById('stepAdminApproval');
@@ -396,7 +396,7 @@
 
       if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
         if (statusBadge) {
-          statusBadge.textContent = '✅ APPROVED BY ADMIN';
+          statusBadge.textContent = 'âœ… APPROVED BY ADMIN';
           statusBadge.style.background = '#10b981';
         }
         if (stepAdminApproval) {
@@ -407,12 +407,12 @@
         }
         if (stepAdminTitle) stepAdminTitle.textContent = 'Approved';
         if (stepAdminDesc) stepAdminDesc.textContent = 'Confirmed by Owner';
-        document.getElementById('dtlPayStatus').textContent = '✅ Verified & Paid';
+        document.getElementById('dtlPayStatus').textContent = 'âœ… Verified & Paid';
         document.getElementById('dtlPayStatus').style.color = '#059669';
-        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলের সুবিধাগুলো অনুমোদিত ও নিশ্চিত হয়েছে। ই-টিকেট ভাউচার ডাউনলোডের জন্য প্রস্তুত!';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'à¦†à¦ªà¦¨à¦¾à¦° à¦¬à§à¦•à¦¿à¦‚ à¦«à¦¾à¦‡à¦²à§‡à¦° à¦¸à§à¦¬à¦¿à¦§à¦¾à¦—à§à¦²à§‹ à¦…à¦¨à§à¦®à§‹à¦¦à¦¿à¦¤ à¦“ à¦¨à¦¿à¦¶à§à¦šà¦¿à¦¤ à¦¹à§Ÿà§‡à¦›à§‡à¥¤ à¦‡-à¦Ÿà¦¿à¦•à§‡à¦Ÿ à¦­à¦¾à¦‰à¦šà¦¾à¦° à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡à§‡à¦° à¦œà¦¨à§à¦¯ à¦ªà§à¦°à¦¸à§à¦¤à§à¦¤!';
       } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
         if (statusBadge) {
-          statusBadge.textContent = '❌ CANCELLED / REJECTED';
+          statusBadge.textContent = 'âŒ CANCELLED / REJECTED';
           statusBadge.style.background = '#ef4444';
         }
         if (stepAdminApproval) {
@@ -420,12 +420,12 @@
         }
         if (stepAdminTitle) stepAdminTitle.textContent = 'Cancelled';
         if (stepAdminDesc) stepAdminDesc.textContent = 'Declined by Admin';
-        document.getElementById('dtlPayStatus').textContent = '❌ Refund Processed';
+        document.getElementById('dtlPayStatus').textContent = 'âŒ Refund Processed';
         document.getElementById('dtlPayStatus').style.color = '#dc2626';
-        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলটি অ্যাডমিন দ্বারা সংশোধন বা বাতিল করা হয়েছে। বিস্তারিত জানতে সাপোর্টে কল করুন।';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'à¦†à¦ªà¦¨à¦¾à¦° à¦¬à§à¦•à¦¿à¦‚ à¦«à¦¾à¦‡à¦²à¦Ÿà¦¿ à¦…à§à¦¯à¦¾à¦¡à¦®à¦¿à¦¨ à¦¦à§à¦¬à¦¾à¦°à¦¾ à¦¸à¦‚à¦¶à§‹à¦§à¦¨ à¦¬à¦¾ à¦¬à¦¾à¦¤à¦¿à¦² à¦•à¦°à¦¾ à¦¹à§Ÿà§‡à¦›à§‡à¥¤ à¦¬à¦¿à¦¸à§à¦¤à¦¾à¦°à¦¿à¦¤ à¦œà¦¾à¦¨à¦¤à§‡ à¦¸à¦¾à¦ªà§‹à¦°à§à¦Ÿà§‡ à¦•à¦² à¦•à¦°à§à¦¨à¥¤';
       } else {
         if (statusBadge) {
-          statusBadge.textContent = '⏳ PENDING ADMIN REVIEW';
+          statusBadge.textContent = 'â³ PENDING ADMIN REVIEW';
           statusBadge.style.background = '#f59e0b';
         }
         if (stepAdminApproval) {
@@ -433,11 +433,11 @@
         }
         if (stepAdminTitle) stepAdminTitle.textContent = 'Admin Review';
         if (stepAdminDesc) stepAdminDesc.textContent = 'Under Review';
-        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'আপনার বুকিং ফাইলটি এডমিন পর্যালোচনা করছেন। অনুমোদন সম্পন্ন হলে লাইভ স্ট্যাটাস সবুজ হয়ে যাবে!';
+        document.getElementById('dtlAdminNoticeText').textContent = bk.adminNotice || 'à¦†à¦ªà¦¨à¦¾à¦° à¦¬à§à¦•à¦¿à¦‚ à¦«à¦¾à¦‡à¦²à¦Ÿà¦¿ à¦à¦¡à¦®à¦¿à¦¨ à¦ªà¦°à§à¦¯à¦¾à¦²à§‹à¦šà¦¨à¦¾ à¦•à¦°à¦›à§‡à¦¨à¥¤ à¦…à¦¨à§à¦®à§‹à¦¦à¦¨ à¦¸à¦®à§à¦ªà¦¨à§à¦¨ à¦¹à¦²à§‡ à¦²à¦¾à¦‡à¦­ à¦¸à§à¦Ÿà§à¦¯à¦¾à¦Ÿà¦¾à¦¸ à¦¸à¦¬à§à¦œ à¦¹à§Ÿà§‡ à¦¯à¦¾à¦¬à§‡!';
       }
     }
   </script>
-  <!-- 🌐 REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
+  <!-- ðŸŒ REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <!-- Col 1: Brand & Official Contact Info -->
@@ -451,15 +451,15 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span style="color: #e11d48; font-size: 1.1rem;">ðŸ“ž</span>
             <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span style="color: #00a651; font-size: 1.1rem;">âœ‰ï¸</span>
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
-            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">📍</span>
+            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">ðŸ“</span>
             <span>Location: <strong style="color: #ffffff !important; font-weight: 900;">Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217</strong></span>
           </div>
         </div>
@@ -504,7 +504,7 @@
 
     <!-- Bottom Bar -->
     <div style="max-width: 1240px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; color: #ffffff !important; font-size: 0.9rem; font-weight: 800 !important;">
-      © 2026 <strong style="color: #00f2fe !important; font-weight: 900 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217.
+      Â© 2026 <strong style="color: #00f2fe !important; font-weight: 900 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217.
     </div>
   </footer>
 </body>

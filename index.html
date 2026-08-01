@@ -115,7 +115,7 @@
       }
 
       if (currentRole === 'customer') {
-        alert('🎉 Customer Account created successfully! User profile stored in Owner Directory. Redirecting to Customer Portal...');
+        alert('ðŸŽ‰ Customer Account created successfully! User profile stored in Owner Directory. Redirecting to Customer Portal...');
         window.location.href = 'customer_portal.html';
       } else {
         var credentialNo = '';
@@ -144,7 +144,7 @@
         approvals.unshift(approvalRequest);
         localStorage.setItem('m2o_pending_approvals', JSON.stringify(approvals));
 
-        alert('📩 Verification Request Sent!\n\nYour ' + currentRole.toUpperCase() + ' registration (NID/License/Trade No: ' + credentialNo + ') has been submitted to the Mount2ocean Owner Dashboard for verification.\n\nOnce approved by Owner Admin, a confirmation email will be dispatched to your email!');
+        alert('ðŸ“© Verification Request Sent!\n\nYour ' + currentRole.toUpperCase() + ' registration (NID/License/Trade No: ' + credentialNo + ') has been submitted to the Mount2ocean Owner Dashboard for verification.\n\nOnce approved by Owner Admin, a confirmation email will be dispatched to your email!');
         
         setTimeout(function() {
           window.location.href = 'agent_dashboard.html';
@@ -170,18 +170,18 @@
       <!-- GLOBAL CONTROLS: THEME TOGGLE & LANGUAGE TRANSLATOR -->
       <div class="global-header-controls">
         <button type="button" class="theme-toggle-btn" id="globalThemeToggle" title="Switch Light/Dark Mode" onclick="toggleAppTheme()">
-          <span class="theme-btn-icon">🌙</span> <span class="theme-btn-text">Dark Mode</span>
+          <span class="theme-btn-icon">ðŸŒ™</span> <span class="theme-btn-text">Dark Mode</span>
         </button>
 
         <div class="lang-switcher-box">
-          <span class="lang-icon">🌐</span>
-          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
-            <option value="bn" selected>🇧🇩 বাংলা (BN)</option>
-            <option value="en">🇺🇸 English (US)</option>
-            <option value="ar">🇦🇪 العربية (AR)</option>
-            <option value="hi">🇮🇳 हिन्दी (HI)</option>
-            <option value="es">🇪🇸 Español (ES)</option>
-            <option value="fr">🇫🇷 Français (FR)</option>
+          <span class="lang-icon">ðŸŒ</span>
+          <select id="globalLangSelect" class="lang-select" title="Select Language / à¦­à¦¾à¦·à¦¾ à¦¸à¦¿à¦²à§‡à¦•à§à¦Ÿ à¦•à¦°à§à¦¨">
+            <option value="bn" selected>ðŸ‡§ðŸ‡© à¦¬à¦¾à¦‚à¦²à¦¾ (BN)</option>
+            <option value="en">ðŸ‡ºðŸ‡¸ English (US)</option>
+            <option value="ar">ðŸ‡¦ðŸ‡ª Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© (AR)</option>
+            <option value="hi">ðŸ‡®ðŸ‡³ à¤¹à¤¿à¤¨à¥à¤¦à¥€ (HI)</option>
+            <option value="es">ðŸ‡ªðŸ‡¸ EspaÃ±ol (ES)</option>
+            <option value="fr">ðŸ‡«ðŸ‡· FranÃ§ais (FR)</option>
           </select>
         </div>
       </div>
@@ -206,7 +206,7 @@
 
           <!-- Interactive Role Feature Highlights -->
           <div class="role-preview-card" id="roleFeaturePreview">
-            <div class="role-preview-icon" id="previewIcon">🧳</div>
+            <div class="role-preview-icon" id="previewIcon">ðŸ§³</div>
             <div class="role-preview-info">
               <h4 id="previewTitle">Customer Account Features</h4>
               <p id="previewDesc">Book curated tours, save travel itineraries, track active bookings, and earn loyalty rewards.</p>
@@ -216,15 +216,15 @@
           <!-- Feature Bullets -->
           <ul class="feature-list">
             <li>
-              <span class="check-icon">✓</span>
+              <span class="check-icon">âœ“</span>
               <span><strong>Unified Security:</strong> Multi-factor authentication & role permissions</span>
             </li>
             <li>
-              <span class="check-icon">✓</span>
+              <span class="check-icon">âœ“</span>
               <span><strong>Instant Switching:</strong> One-click selection between Customer, Guide & Agent</span>
             </li>
             <li>
-              <span class="check-icon">✓</span>
+              <span class="check-icon">âœ“</span>
               <span><strong>Password Recovery:</strong> OTP verification modal integrated</span>
             </li>
           </ul>
@@ -238,17 +238,17 @@
           <!-- Mode Tabs (Sign In / Sign Up) -->
           <div class="auth-tabs-wrapper" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.08); padding: 0.35rem; border-radius: 12px;">
             <button type="button" class="tab-switch-btn active" id="tabSigninBtn" onclick="switchAuthTab('signin')" style="flex: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff;">
-              Sign In (লগইন)
+              Sign In (à¦²à¦—à¦‡à¦¨)
             </button>
             <button type="button" class="tab-switch-btn" id="tabSignupBtn" onclick="switchAuthTab('signup')" style="flex: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; background: transparent; color: #94a3b8;">
-              Sign Up (সাইন আপ)
+              Sign Up (à¦¸à¦¾à¦‡à¦¨ à¦†à¦ª)
             </button>
           </div>
 
           <!-- SIGN IN FORM VIEW -->
           <div id="signinView" style="display: block;">
             <div class="form-header">
-              <h2>Welcome Back (লগইন করুন)</h2>
+              <h2>Welcome Back (à¦²à¦—à¦‡à¦¨ à¦•à¦°à§à¦¨)</h2>
               <p>Sign in to your account with Email/Mobile &amp; Password.</p>
             </div>
             
@@ -256,7 +256,7 @@
               <div class="form-group">
                 <label>Email or Mobile Number <span class="required">*</span></label>
                 <div class="input-wrapper">
-                  <span class="input-icon">📱</span>
+                  <span class="input-icon">ðŸ“±</span>
                   <input type="text" id="signinEmail" placeholder="e.g. 01700000000 or name@example.com" required>
                 </div>
               </div>
@@ -267,8 +267,8 @@
                   <a href="#" onclick="openForgotModal(event)" class="forgot-link">Forgot Password?</a>
                 </div>
                 <div class="input-wrapper">
-                  <span class="input-icon">🔒</span>
-                  <input type="password" id="signinPassword" placeholder="••••••••" required>
+                  <span class="input-icon">ðŸ”’</span>
+                  <input type="password" id="signinPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                 </div>
               </div>
 
@@ -281,14 +281,14 @@
               </div>
 
               <button type="submit" class="primary-btn full-width">
-                Sign In Now (লগইন করুন)
+                Sign In Now (à¦²à¦—à¦‡à¦¨ à¦•à¦°à§à¦¨)
               </button>
             </form>
 
             <p style="text-align: center; margin-top: 1.2rem; color: #94a3b8; font-size: 0.88rem;">
               Don't have an account yet? 
               <a href="#signup" onclick="switchAuthTab('signup'); return false;" style="color: #00f2fe; font-weight: 700; text-decoration: underline; margin-left: 4px;">
-                Create Free Account (সাইন আপ করুন)
+                Create Free Account (à¦¸à¦¾à¦‡à¦¨ à¦†à¦ª à¦•à¦°à§à¦¨)
               </a>
             </p>
           </div>
@@ -296,23 +296,23 @@
           <!-- SIGN UP FORM VIEW -->
           <div id="signupView" style="display: none;">
             <div class="form-header">
-              <h2>Create Free Account (সাইন আপ করুন)</h2>
+              <h2>Create Free Account (à¦¸à¦¾à¦‡à¦¨ à¦†à¦ª à¦•à¦°à§à¦¨)</h2>
               <p>Register your new account in seconds.</p>
             </div>
             
             <form id="signupForm" onsubmit="handleSignupSubmit(event)">
               <div class="form-group">
-                <label>Full Name (আপনার নাম) <span class="required">*</span></label>
+                <label>Full Name (à¦†à¦ªà¦¨à¦¾à¦° à¦¨à¦¾à¦®) <span class="required">*</span></label>
                 <div class="input-wrapper">
-                  <span class="input-icon">👤</span>
+                  <span class="input-icon">ðŸ‘¤</span>
                   <input type="text" id="signupFullName" placeholder="Enter your full name" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label>Email or Mobile Number (ইমেইল অথবা মোবাইল নম্বর) <span class="required">*</span></label>
+                <label>Email or Mobile Number (à¦‡à¦®à§‡à¦‡à¦² à¦…à¦¥à¦¬à¦¾ à¦®à§‹à¦¬à¦¾à¦‡à¦² à¦¨à¦®à§à¦¬à¦°) <span class="required">*</span></label>
                 <div class="input-wrapper">
-                  <span class="input-icon">📱</span>
+                  <span class="input-icon">ðŸ“±</span>
                   <input type="text" id="signupEmail" placeholder="e.g. 01700000000 or name@example.com" required>
                 </div>
               </div>
@@ -320,29 +320,29 @@
               <!-- DYNAMIC TOUR GUIDE REGISTRATION FIELDS -->
               <div id="guideSignupFields" style="display: none; background: rgba(0, 176, 155, 0.1); border: 1px solid rgba(0, 176, 155, 0.35); padding: 1rem; border-radius: 12px; margin-bottom: 1.2rem;">
                 <div style="font-weight: 700; color: #00f2fe; margin-bottom: 0.75rem; font-size: 0.88rem;">
-                  🚩 Tour Guide Professional Credentials (গাইড তথ্য):
+                  ðŸš© Tour Guide Professional Credentials (à¦—à¦¾à¦‡à¦¡ à¦¤à¦¥à§à¦¯):
                 </div>
                 
                 <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label style="font-size: 0.8rem;">Guide License / NID Number (গাইড লাইসেন্স / এনআইডি) <span class="required">*</span></label>
+                  <label style="font-size: 0.8rem;">Guide License / NID Number (à¦—à¦¾à¦‡à¦¡ à¦²à¦¾à¦‡à¦¸à§‡à¦¨à§à¦¸ / à¦à¦¨à¦†à¦‡à¦¡à¦¿) <span class="required">*</span></label>
                   <div class="input-wrapper">
-                    <span class="input-icon">🪪</span>
+                    <span class="input-icon">ðŸªª</span>
                     <input type="text" id="guideLicenseInput" placeholder="e.g. TG-884920 or NID 199382746">
                   </div>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label style="font-size: 0.8rem;">Primary Operating Region (প্রধান কাজের এলাকা) <span class="required">*</span></label>
+                  <label style="font-size: 0.8rem;">Primary Operating Region (à¦ªà§à¦°à¦§à¦¾à¦¨ à¦•à¦¾à¦œà§‡à¦° à¦à¦²à¦¾à¦•à¦¾) <span class="required">*</span></label>
                   <div class="input-wrapper">
-                    <span class="input-icon">📍</span>
+                    <span class="input-icon">ðŸ“</span>
                     <input type="text" id="guideRegionInput" placeholder="e.g. Cox's Bazar, Sylhet, Chittagong">
                   </div>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 0;">
-                  <label style="font-size: 0.8rem;">Experience & Languages (অভিজ্ঞতা ও ভাষা)</label>
+                  <label style="font-size: 0.8rem;">Experience & Languages (à¦…à¦­à¦¿à¦œà§à¦žà¦¤à¦¾ à¦“ à¦­à¦¾à¦·à¦¾)</label>
                   <div class="input-wrapper">
-                    <span class="input-icon">🗣️</span>
+                    <span class="input-icon">ðŸ—£ï¸</span>
                     <input type="text" id="guideExpInput" placeholder="e.g. 5 Years Exp | Bangla, English, Hindi">
                   </div>
                 </div>
@@ -351,47 +351,47 @@
               <!-- DYNAMIC B2B AGENT REGISTRATION FIELDS -->
               <div id="agentSignupFields" style="display: none; background: rgba(0, 114, 188, 0.1); border: 1px solid rgba(0, 114, 188, 0.35); padding: 1rem; border-radius: 12px; margin-bottom: 1.2rem;">
                 <div style="font-weight: 700; color: #00f2fe; margin-bottom: 0.75rem; font-size: 0.88rem;">
-                  🏢 B2B Travel Agency Details (এজেন্সি তথ্য):
+                  ðŸ¢ B2B Travel Agency Details (à¦à¦œà§‡à¦¨à§à¦¸à¦¿ à¦¤à¦¥à§à¦¯):
                 </div>
 
                 <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label style="font-size: 0.8rem;">Agency / Company Name (এজেন্সি/কোম্পানির নাম) <span class="required">*</span></label>
+                  <label style="font-size: 0.8rem;">Agency / Company Name (à¦à¦œà§‡à¦¨à§à¦¸à¦¿/à¦•à§‹à¦®à§à¦ªà¦¾à¦¨à¦¿à¦° à¦¨à¦¾à¦®) <span class="required">*</span></label>
                   <div class="input-wrapper">
-                    <span class="input-icon">🏢</span>
+                    <span class="input-icon">ðŸ¢</span>
                     <input type="text" id="agencyNameInput" placeholder="e.g. Green World Travels & Tours Ltd.">
                   </div>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 0.75rem;">
-                  <label style="font-size: 0.8rem;">Trade License / IATA No. (ট্রেড লাইসেন্স নম্বর) <span class="required">*</span></label>
+                  <label style="font-size: 0.8rem;">Trade License / IATA No. (à¦Ÿà§à¦°à§‡à¦¡ à¦²à¦¾à¦‡à¦¸à§‡à¦¨à§à¦¸ à¦¨à¦®à§à¦¬à¦°) <span class="required">*</span></label>
                   <div class="input-wrapper">
-                    <span class="input-icon">📜</span>
+                    <span class="input-icon">ðŸ“œ</span>
                     <input type="text" id="agencyTradeLicenseInput" placeholder="e.g. TRAD/DNCC/019284 / IATA-99482">
                   </div>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 0;">
-                  <label style="font-size: 0.8rem;">Office Address & Designation (ঠিকানা ও পদবী)</label>
+                  <label style="font-size: 0.8rem;">Office Address & Designation (à¦ à¦¿à¦•à¦¾à¦¨à¦¾ à¦“ à¦ªà¦¦à¦¬à§€)</label>
                   <div class="input-wrapper">
-                    <span class="input-icon">📍</span>
+                    <span class="input-icon">ðŸ“</span>
                     <input type="text" id="agencyAddressInput" placeholder="e.g. Banani C/A, Dhaka | Managing Director">
                   </div>
                 </div>
               </div>
 
               <div class="form-group">
-                <label>Password (পাসওয়ার্ড) <span class="required">*</span></label>
+                <label>Password (à¦ªà¦¾à¦¸à¦“à§Ÿà¦¾à¦°à§à¦¡) <span class="required">*</span></label>
                 <div class="input-wrapper">
-                  <span class="input-icon">🔒</span>
-                  <input type="password" id="signupPassword" placeholder="••••••••" required>
+                  <span class="input-icon">ðŸ”’</span>
+                  <input type="password" id="signupPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label>Confirm Password (পাসওয়ার্ড নিশ্চিত করুন) <span class="required">*</span></label>
+                <label>Confirm Password (à¦ªà¦¾à¦¸à¦“à§Ÿà¦¾à¦°à§à¦¡ à¦¨à¦¿à¦¶à§à¦šà¦¿à¦¤ à¦•à¦°à§à¦¨) <span class="required">*</span></label>
                 <div class="input-wrapper">
-                  <span class="input-icon">🔒</span>
-                  <input type="password" id="signupConfirmPassword" placeholder="••••••••" required>
+                  <span class="input-icon">ðŸ”’</span>
+                  <input type="password" id="signupConfirmPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                 </div>
               </div>
 
@@ -404,14 +404,14 @@
               </div>
 
               <button type="submit" class="primary-btn full-width">
-                Create Free Account (সাইন আপ করুন)
+                Create Free Account (à¦¸à¦¾à¦‡à¦¨ à¦†à¦ª à¦•à¦°à§à¦¨)
               </button>
             </form>
 
             <p style="text-align: center; margin-top: 1.2rem; color: #94a3b8; font-size: 0.88rem;">
               Already registered? 
               <a href="#signin" onclick="switchAuthTab('signin'); return false;" style="color: #00f2fe; font-weight: 700; text-decoration: underline; margin-left: 4px;">
-                Sign In Instead (লগইন করুন)
+                Sign In Instead (à¦²à¦—à¦‡à¦¨ à¦•à¦°à§à¦¨)
               </a>
             </p>
           </div>
@@ -419,7 +419,7 @@
           <!-- ROLE SELECTOR BOX (SHARED) -->
           <div class="role-selector-box margin-top-md">
             <div class="role-box-header">
-              <span class="role-box-title">Select Access Account Type (অ্যাকাউন্ট টাইপ সিলেক্ট করুন):</span>
+              <span class="role-box-title">Select Access Account Type (à¦…à§à¦¯à¦¾à¦•à¦¾à¦‰à¦¨à§à¦Ÿ à¦Ÿà¦¾à¦‡à¦ª à¦¸à¦¿à¦²à§‡à¦•à§à¦Ÿ à¦•à¦°à§à¦¨):</span>
             </div>
             <div class="role-options-grid">
               
@@ -427,7 +427,7 @@
               <label class="role-card active" data-role="customer" onclick="selectRole('customer')">
                 <input type="radio" name="accountRoleGlobal" value="customer" checked>
                 <div class="role-card-inner">
-                  <div class="role-icon">🧳</div>
+                  <div class="role-icon">ðŸ§³</div>
                   <div class="role-meta">
                     <span class="role-name">Customer Login</span>
                     <span class="role-sub">Traveler &amp; Bookings</span>
@@ -440,7 +440,7 @@
               <label class="role-card" data-role="guide" onclick="selectRole('guide')">
                 <input type="radio" name="accountRoleGlobal" value="guide">
                 <div class="role-card-inner">
-                  <div class="role-icon">🚩</div>
+                  <div class="role-icon">ðŸš©</div>
                   <div class="role-meta">
                     <span class="role-name">Guide Login</span>
                     <span class="role-sub">Tour Guides &amp; Leads</span>
@@ -453,7 +453,7 @@
               <label class="role-card" data-role="agent" onclick="selectRole('agent')">
                 <input type="radio" name="accountRoleGlobal" value="agent">
                 <div class="role-card-inner">
-                  <div class="role-icon">🏢</div>
+                  <div class="role-icon">ðŸ¢</div>
                   <div class="role-meta">
                     <span class="role-name">Agent Login</span>
                     <span class="role-sub">Agencies &amp; Vendors</span>
@@ -478,27 +478,27 @@
       
       <!-- Step 1: Request OTP -->
       <div id="forgotStep1" class="modal-step">
-        <div class="modal-icon">🔑</div>
+        <div class="modal-icon">ðŸ”‘</div>
         <h3>Reset Your Password</h3>
         <p>Enter your registered email address below. We'll send a 6-digit OTP security code.</p>
         
         <div class="form-group margin-top-md">
           <label for="resetEmailInput">Account Email Address</label>
           <div class="input-wrapper">
-            <span class="input-icon">✉️</span>
+            <span class="input-icon">âœ‰ï¸</span>
             <input type="email" id="resetEmailInput" placeholder="your-email@example.com">
           </div>
           <span class="field-error" id="resetEmailError"></span>
         </div>
 
         <button type="button" id="btnSendOTP" class="primary-btn full-width margin-top-md">
-          Send Verification OTP (কোড পাঠান)
+          Send Verification OTP (à¦•à§‹à¦¡ à¦ªà¦¾à¦ à¦¾à¦¨)
         </button>
       </div>
 
       <!-- Step 2: Verify OTP -->
       <div id="forgotStep2" class="modal-step hidden">
-        <div class="modal-icon">📩</div>
+        <div class="modal-icon">ðŸ“©</div>
         <h3>Enter Security OTP</h3>
         <p>A 6-digit verification code has been generated. Demo Code: <strong class="code-highlight">789012</strong></p>
         
@@ -519,7 +519,7 @@
 
       <!-- Step 3: Success -->
       <div id="forgotStep3" class="modal-step hidden text-center">
-        <div class="modal-icon success-icon">✅</div>
+        <div class="modal-icon success-icon">âœ…</div>
         <h3>Password Reset Complete!</h3>
         <p>Your password has been successfully updated. You may now sign in with your new password.</p>
         <button type="button" id="btnFinishReset" class="primary-btn full-width margin-top-md">
@@ -536,7 +536,7 @@
       <button class="modal-close" id="closeDashboardModal">&times;</button>
       
       <div class="dashboard-header">
-        <div class="user-avatar" id="dashAvatar">🧳</div>
+        <div class="user-avatar" id="dashAvatar">ðŸ§³</div>
         <div class="user-info">
           <div class="user-role-badge" id="dashRoleBadge">CUSTOMER ACCOUNT</div>
           <h2 id="dashUserName">Welcome, User!</h2>
@@ -566,7 +566,7 @@
         </div>
 
         <div class="dash-actions">
-          <button type="button" id="btnLogout" class="secondary-btn">Sign Out (লগআউট)</button>
+          <button type="button" id="btnLogout" class="secondary-btn">Sign Out (à¦²à¦—à¦†à¦‰à¦Ÿ)</button>
         </div>
       </div>
 
@@ -577,8 +577,8 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v6_force_2_live_packages_always"></script>
-  <!-- 🌐 REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
+  <script src="app.js?v=v18_full_website_owner_audit"></script>
+  <!-- ðŸŒ REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <!-- Col 1: Brand & Official Contact Info -->
@@ -592,15 +592,15 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span style="color: #e11d48; font-size: 1.1rem;">ðŸ“ž</span>
             <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span style="color: #00a651; font-size: 1.1rem;">âœ‰ï¸</span>
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
-            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">📍</span>
+            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">ðŸ“</span>
             <span>Location: <strong style="color: #ffffff !important; font-weight: 900;">Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217</strong></span>
           </div>
         </div>
@@ -645,7 +645,7 @@
 
     <!-- Bottom Bar -->
     <div style="max-width: 1240px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; color: #ffffff !important; font-size: 0.9rem; font-weight: 800 !important;">
-      © 2026 <strong style="color: #00f2fe !important; font-weight: 900 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217.
+      Â© 2026 <strong style="color: #00f2fe !important; font-weight: 900 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217.
     </div>
   </footer>
 </body>
