@@ -4627,5 +4627,75 @@ window.saveVisaApplications = function(apps) {
   localStorage.setItem('m2o_visa_applications', JSON.stringify(apps));
 };
 
+// =========================================================
+// WORDPRESS-STYLE FULL-SITE CONTENT MANAGEMENT SYSTEM (CMS)
+// Enables 100% Live Owner Editability of All Banners, Headings,
+// Hotlines, Address, Flash Deals & Site Text Across Every Section
+// =========================================================
+window.defaultSiteCMSData = {
+  heroTitle: "Discover Extraordinary World Tours & Luxury Resorts",
+  heroSubtitle: "Book handcrafted itineraries, track flights & visas with 100% instant confirmation.",
+  companyName: "MOUNT2OCEAN Travel & Tours",
+  hotlinePhone: "+880 1977-477172",
+  hotlineEmail: "info@mount2ocean.com",
+  officeAddress: "Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217",
+  flashDealTitle: "Bhutan & Bali Resort Packages Offer Expiring Soon!",
+  flashDealDiscount: "25% OFF",
+  mobileAppTitle: "Mount2ocean at Your Fingertips",
+  mobileAppDesc: "Book tours, manage active itineraries, track flights, and receive exclusive app-only deals wherever you travel.",
+  loyaltyPointsPerBooking: 500,
+  loyaltyBdtPerPoint: 1
+};
+
+window.getSiteCMSData = function() {
+  const stored = localStorage.getItem('m2o_full_site_cms');
+  return stored ? JSON.parse(stored) : window.defaultSiteCMSData;
+};
+
+window.saveSiteCMSData = function(cms) {
+  localStorage.setItem('m2o_full_site_cms', JSON.stringify(cms));
+};
+
+window.applyGlobalCMSContent = function() {
+  const cms = window.getSiteCMSData();
+  
+  // Hero Elements
+  const heroTitleEl = document.querySelector('.hero-content h1, #heroTitleText');
+  if (heroTitleEl && cms.heroTitle) heroTitleEl.textContent = cms.heroTitle;
+
+  const heroSubEl = document.querySelector('.hero-content p, #heroSubtitleText');
+  if (heroSubEl && cms.heroSubtitle) heroSubEl.textContent = cms.heroSubtitle;
+
+  // Mobile App Banner
+  const appH2 = document.querySelector('.app-promo-content h2');
+  if (appH2 && cms.mobileAppTitle) appH2.textContent = cms.mobileAppTitle;
+
+  const appP = document.querySelector('.app-promo-content p');
+  if (appP && cms.mobileAppDesc) appP.textContent = cms.mobileAppDesc;
+
+  // Hotlines
+  const phoneEls = document.querySelectorAll('a[href^="tel:"]');
+  phoneEls.forEach(el => {
+    if (cms.hotlinePhone) {
+      el.textContent = cms.hotlinePhone;
+      el.href = `tel:${cms.hotlinePhone.replace(/[^0-9+]/g, '')}`;
+    }
+  });
+
+  const emailEls = document.querySelectorAll('a[href^="mailto:"]');
+  emailEls.forEach(el => {
+    if (cms.hotlineEmail) {
+      el.textContent = cms.hotlineEmail;
+      el.href = `mailto:${cms.hotlineEmail}`;
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.applyGlobalCMSContent) {
+    window.applyGlobalCMSContent();
+  }
+});
+
 
 

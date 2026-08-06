@@ -626,6 +626,56 @@
         <button type="submit" class="primary-btn" style="padding: 0.85rem 1.8rem; font-weight: 800; font-size: 0.98rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; cursor: pointer;">
           💾 Save Global Settings Live ➔
         </button>
+      </form>
+    </section>
+
+    <!-- SECTION: WORDPRESS-STYLE FULL SITE CMS CONTENT EDITOR -->
+    <section class="admin-section margin-top-lg" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #0072bc; box-shadow: 0 15px 40px rgba(0,114,188,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: #0072bc; color: white;">WORDPRESS-STYLE FULL SITE CMS EDITOR</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Website Full-Content Live CMS Editor (সম্পূর্ণ ওয়েবসাইট টেক্সট ও ব্যানার এডিটর)
+          </h2>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0.2rem 0 0;">
+            ওনার প্যানেল থেকে ১-ক্লিকে হোম পেজের টাইটেল, সাবটাইটেল, ফ্লাশ ডিল অফার, হটলাইন ফোন, ইমেইল ও এড্রেস এডিট করুন।
+          </p>
+        </div>
+      </div>
+
+      <form onsubmit="saveOwnerCMSHandler(event)" style="display: flex; flex-direction: column; gap: 1.2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem;">
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Hero Main Headline (হোম পেজ প্রধান শিরোনাম)</label>
+            <input type="text" id="cmsHeroTitle" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Hero Subtitle (উপশিরোনাম)</label>
+            <input type="text" id="cmsHeroSub" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Official Hotline Phone (হটলাইন নম্বর)</label>
+            <input type="text" id="cmsPhone" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Official Support Email (ইমেইল)</label>
+            <input type="email" id="cmsEmail" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Mobile App Banner Title (মোবাইল অ্যাপ ব্যানার টাইটেল)</label>
+          <input type="text" id="cmsAppTitle" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; align-self: start;">
+          💾 Save Full Site CMS Content Live ➔
+        </button>
+      </form>
+    </section>
     <!-- SECTION 6: LIVE CUSTOMER SUPPORT & AI ESCALATION DESK -->
     <section class="admin-section margin-top-lg" id="adminSupportSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
       <div class="admin-section-header flex-between margin-bottom-md">
@@ -740,7 +790,44 @@
         if (pkgDescInput) pkgDescInput.value = `Exclusive tour package for ${addPkgParam}`;
         if (addSec) addSec.scrollIntoView({ behavior: 'smooth' });
       }
+
+      // Populate CMS Fields
+      if (typeof window.getSiteCMSData === 'function') {
+        const cms = window.getSiteCMSData();
+        const heroT = document.getElementById('cmsHeroTitle');
+        const heroS = document.getElementById('cmsHeroSub');
+        const phone = document.getElementById('cmsPhone');
+        const email = document.getElementById('cmsEmail');
+        const appT = document.getElementById('cmsAppTitle');
+
+        if (heroT) heroT.value = cms.heroTitle || '';
+        if (heroS) heroS.value = cms.heroSubtitle || '';
+        if (phone) phone.value = cms.hotlinePhone || '';
+        if (email) email.value = cms.hotlineEmail || '';
+        if (appT) appT.value = cms.mobileAppTitle || '';
+      }
     });
+
+    function saveOwnerCMSHandler(e) {
+      e.preventDefault();
+      const heroT = document.getElementById('cmsHeroTitle').value.trim();
+      const heroS = document.getElementById('cmsHeroSub').value.trim();
+      const phone = document.getElementById('cmsPhone').value.trim();
+      const email = document.getElementById('cmsEmail').value.trim();
+      const appT = document.getElementById('cmsAppTitle').value.trim();
+
+      const cms = window.getSiteCMSData ? window.getSiteCMSData() : {};
+      cms.heroTitle = heroT;
+      cms.heroSubtitle = heroS;
+      cms.hotlinePhone = phone;
+      cms.hotlineEmail = email;
+      cms.mobileAppTitle = appT;
+
+      if (window.saveSiteCMSData) {
+        window.saveSiteCMSData(cms);
+      }
+      alert('Full Site CMS Content updated successfully! Live website text and headers updated.');
+    }
   </script>
   <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
