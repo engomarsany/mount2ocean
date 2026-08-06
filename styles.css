@@ -4053,15 +4053,21 @@ footer, .cust-footer, footer.cust-footer, .global-luxury-footer {
 .pkg-master-price, 
 .price-pill,
 [class*="price-pill"],
-.tour-img-wrap .tour-price-pill {
-  background: linear-gradient(135deg, #07111e 0%, #004b87 50%, #00a651 100%) !important;
-  color: #ffffff !important;
+.tour-img-wrap .tour-price-pill,
+body.light-theme .tour-price-pill,
+body.light-theme .tour-price-pill *,
+body.light-theme [class*="price-pill"],
+body.light-theme [class*="price-pill"] * {
+  background: #060a12 !important;
+  background-color: #060a12 !important;
+  color: #00f2fe !important;
+  -webkit-text-fill-color: #00f2fe !important;
   font-weight: 900 !important;
   font-size: 1.3rem !important;
   letter-spacing: 0.5px !important;
   border: 2.5px solid #00f2fe !important;
-  box-shadow: 0 0 22px rgba(0, 242, 254, 0.9), 0 0 38px rgba(0, 166, 81, 0.8) !important;
-  text-shadow: 0 0 12px #00f2fe, 0 0 22px rgba(0, 242, 254, 0.9) !important;
+  box-shadow: 0 0 22px rgba(0, 242, 254, 0.95), 0 0 40px rgba(0, 242, 254, 0.6), inset 0 0 12px rgba(0, 242, 254, 0.4) !important;
+  text-shadow: 0 0 12px #00f2fe, 0 0 24px #00f2fe, 0 0 35px rgba(0, 242, 254, 0.9) !important;
   padding: 0.45rem 1.25rem !important;
   border-radius: 999px !important;
   opacity: 1 !important;
