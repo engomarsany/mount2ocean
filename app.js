@@ -4058,3 +4058,317 @@ window.openForgotModal = function() {
   if (modal) modal.classList.remove('hidden');
 };
 
+// ==========================================
+// HOTELS & RESORTS MASTER ENGINE (5-STAR, 4-STAR, 3-STAR, 2-STAR ROOMS & OWNER CONTROLS)
+// ==========================================
+
+const defaultLiveHotels = [
+  {
+    id: 'hotel-sayeman',
+    name: "Sayeman Beach Resort Cox's Bazar",
+    city: "Cox's Bazar",
+    starRating: 5,
+    starLabel: "5-Star Luxury Ocean Resort",
+    address: "Marine Drive, Kolatoli Beach, Cox's Bazar, Bangladesh",
+    image: "assets/coxsbazar_resort.jpg",
+    startingPrice: 14500,
+    priceFormatted: "৳14,500",
+    rating: 4.9,
+    reviewsCount: 320,
+    amenities: ["Free High-Speed WiFi", "Infinity Ocean Pool", "Complimentary Breakfast", "Private Beach Access", "24/7 Room Service", "Airport Shuttle"],
+    description: "Experience luxury living right on Kolatoli Beach with breathtaking panoramic Bay of Bengal ocean views, oceanfront infinity swimming pool, and world-class dining.",
+    rooms: [
+      { id: 'sayeman-r1', name: "Ocean View Deluxe Double", rate: 14500, rateFormatted: "৳14,500", capacity: "2 Guests", inclusions: "Breakfast Included, Pool & Gym Access, King Bed", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'sayeman-r2', name: "Super Deluxe Sea Front Villa", rate: 18500, rateFormatted: "৳18,500", capacity: "2 Guests", inclusions: "Private Balcony Sea View, Buffet Breakfast, Welcome Drinks", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
+      { id: 'sayeman-r3', name: "Presidential Ocean Suite", rate: 28000, rateFormatted: "৳28,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Transfer, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-westin-dhaka',
+    name: "The Westin Dhaka Gulshan",
+    city: "Dhaka",
+    starRating: 5,
+    starLabel: "5-Star Luxury City Hotel",
+    address: "Main Gulshan Avenue, Plot 01 Road 45, Dhaka 1212",
+    image: "assets/dubai_hotel_1785235546938.jpg",
+    startingPrice: 19000,
+    priceFormatted: "৳19,000",
+    rating: 4.9,
+    reviewsCount: 450,
+    amenities: ["Skyline Pool & Spa", "Free High-Speed WiFi", "Heavenly Bed", "Fitness Center", "Multiple Fine Dining Restaurants"],
+    description: "Located in the heart of Gulshan's diplomatic district, offering 5-star luxury accommodation with signature Heavenly Beds and panoramic city views.",
+    rooms: [
+      { id: 'westin-r1', name: "Deluxe King Room", rate: 19000, rateFormatted: "৳19,000", capacity: "2 Guests", inclusions: "City Skyline View, Heavenly Bed, Buffet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
+      { id: 'westin-r2', name: "Executive Club Suite", rate: 32000, rateFormatted: "৳32,000", capacity: "2 Guests", inclusions: "Executive Lounge Access, Evening Cocktails, Spa Access", image: "assets/dubai_hotel_1785235546938.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-grand-sultan',
+    name: "Grand Sultan Tea Resort & Golf",
+    city: "Sylhet",
+    starRating: 5,
+    starLabel: "5-Star Nature Tea Resort",
+    address: "Sreemangal, Moulvibazar, Sylhet Division",
+    image: "assets/dest_darjeeling_1785151915453.jpg",
+    startingPrice: 16000,
+    priceFormatted: "৳16,000",
+    rating: 4.8,
+    reviewsCount: 280,
+    amenities: ["Golf Course", "3 Temperature Controlled Pools", "Spa & Sauna", "Tea Garden View", "Free Breakfast"],
+    description: "Bangladesh's premier 5-star tea resort nestled amidst lush green tea gardens of Sreemangal with 9-hole golf course and 3 temperature-controlled pools.",
+    rooms: [
+      { id: 'gs-r1', name: "King Deluxe Tea View", rate: 16000, rateFormatted: "৳16,000", capacity: "2 Guests", inclusions: "Tea Garden View, Buffet Breakfast, Pool Access", image: "assets/dest_darjeeling_1785151915453.jpg" },
+      { id: 'gs-r2', name: "Royal Family Suite", rate: 29000, rateFormatted: "৳29,000", capacity: "4 Guests", inclusions: "2 Bedrooms, Private Lounge, Free Golf Passes", image: "assets/dest_darjeeling_1785151915453.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-mulia-bali',
+    name: "The Mulia Bali Resort & Villas",
+    city: "Bali",
+    starRating: 5,
+    starLabel: "5-Star Beachfront Luxury Resort",
+    address: "Nusa Dua Beachfront, Bali, Indonesia",
+    image: "assets/tour_bali_1785152482323.jpg",
+    startingPrice: 24000,
+    priceFormatted: "৳24,000",
+    rating: 4.9,
+    reviewsCount: 510,
+    amenities: ["Private Beach", "Oceanfront Pool", "24/7 Butler Service", "Balinese Spa", "Free Breakfast"],
+    description: "Award-winning 5-star beachfront luxury resort on Nusa Dua Beach in Bali, featuring tranquil private villas, infinity pools, and Balinese spa therapies.",
+    rooms: [
+      { id: 'mulia-r1', name: "Mulia Ocean View Suite", rate: 24000, rateFormatted: "৳24,000", capacity: "2 Guests", inclusions: "Ocean View Balcony, Jacuzzi Tub, Gourmet Breakfast", image: "assets/tour_bali_1785152482323.jpg" },
+      { id: 'mulia-r2', name: "Beachfront Private Villa with Pool", rate: 45000, rateFormatted: "৳45,000", capacity: "4 Guests", inclusions: "Private Plunge Pool, 24/7 Butler Service, Airport Limousine", image: "assets/bali_kintamani_volcano.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-atlantis-dubai',
+    name: "Atlantis The Palm Dubai",
+    city: "Dubai",
+    starRating: 5,
+    starLabel: "5-Star Iconic Luxury Resort",
+    address: "Crescent Road, Palm Jumeirah, Dubai, UAE",
+    image: "assets/dubai_hotel_1785235546938.jpg",
+    startingPrice: 38000,
+    priceFormatted: "৳38,000",
+    rating: 4.9,
+    reviewsCount: 890,
+    amenities: ["Aquaventure Waterpark", "Lost Chambers Aquarium", "Private Beach", "Michelin Star Dining", "Free Breakfast"],
+    description: "World-famous 5-star iconic resort located at the crown of Palm Jumeirah with complimentary access to Aquaventure Waterpark and Lost Chambers Aquarium.",
+    rooms: [
+      { id: 'atlantis-r1', name: "Ocean Queen Room", rate: 38000, rateFormatted: "৳38,000", capacity: "2 Guests", inclusions: "Arabian Sea View, Waterpark Passes Included, Gourmet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
+      { id: 'atlantis-r2', name: "Underwater Signature Suite", rate: 85000, rateFormatted: "৳85,000", capacity: "2 Guests", inclusions: "Floor-to-ceiling Aquarium View, Personal Butler, Private Chauffeur", image: "assets/dubai_goldsouk_1785235564160.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-adaaran-maldives',
+    name: "Adaaran Prestige Vadoo Maldives",
+    city: "Maldives",
+    starRating: 5,
+    starLabel: "5-Star Overwater Resort Villa",
+    address: "South Male Atoll, Republic of Maldives",
+    image: "assets/maldives_villa_1785235578174.jpg",
+    startingPrice: 48000,
+    priceFormatted: "৳48,000",
+    rating: 4.9,
+    reviewsCount: 640,
+    amenities: ["Overwater Villa", "Glass Floor Panel", "Plunge Pool", "House Reef Snorkeling", "Speedboat Included"],
+    description: "Luxury 5-star overwater bungalows featuring glass bottom floors, private Jacuzzi plunge pools, and direct access to crystal clear reef waters.",
+    rooms: [
+      { id: 'adaaran-r1', name: "Sunrise Water Villa", rate: 48000, rateFormatted: "৳48,000", capacity: "2 Guests", inclusions: "Sunrise Reef View, Plunge Pool, Speedboat Transfer, All Inclusive Meals", image: "assets/maldives_villa_1785235578174.jpg" },
+      { id: 'adaaran-r2', name: "Sunset Ocean Villa with Pool", rate: 68000, rateFormatted: "৳68,000", capacity: "2 Guests", inclusions: "Sunset Ocean View, Butler Service, Champagne Dinner on Arrival", image: "assets/maldives_snorkeling_1785235591954.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-ocean-paradise',
+    name: "Ocean Paradise Hotel & Resort",
+    city: "Cox's Bazar",
+    starRating: 4,
+    starLabel: "4-Star Premium Beach Resort",
+    address: "28-29 Hotel Motel Zone, Kolatoli Road, Cox's Bazar",
+    image: "assets/coxsbazar_resort.jpg",
+    startingPrice: 8500,
+    priceFormatted: "৳8,500",
+    rating: 4.6,
+    reviewsCount: 210,
+    amenities: ["Rooftop Restaurant", "Swimming Pool", "Free WiFi", "Breakfast Included", "AC Rooms"],
+    description: "Popular 4-star beach resort offering elegant rooms, rooftop ocean dining, swimming pool, and easy walk to Cox's Bazar sandy beach.",
+    rooms: [
+      { id: 'op-r1', name: "Deluxe Hill View Double", rate: 8500, rateFormatted: "৳8,500", capacity: "2 Guests", inclusions: "Breakfast Included, AC, Free WiFi", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'op-r2', name: "Executive Sea View Suite", rate: 11500, rateFormatted: "৳11,500", capacity: "2 Guests", inclusions: "Full Sea View Balcony, Free Breakfast", image: "assets/coxsbazar_resort.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-seagull',
+    name: "Seagull Hotel Cox's Bazar",
+    city: "Cox's Bazar",
+    starRating: 4,
+    starLabel: "4-Star Beachfront Hotel",
+    address: "Hotel Motel Zone, Sea Beach, Cox's Bazar",
+    image: "assets/coxsbazar_seafood_1785235487486.jpg",
+    startingPrice: 7000,
+    priceFormatted: "৳7,000",
+    rating: 4.5,
+    reviewsCount: 190,
+    amenities: ["Beachfront Access", "Swimming Pool", "Free Breakfast", "Spacious Gardens", "Free Parking"],
+    description: "Classic 4-star resort with extensive lush green gardens right in front of the beach, swimming pool, and comfortable family rooms.",
+    rooms: [
+      { id: 'seagull-r1', name: "Regular Double Room", rate: 7000, rateFormatted: "৳7,000", capacity: "2 Guests", inclusions: "Breakfast Included, AC Room", image: "assets/coxsbazar_seafood_1785235487486.jpg" },
+      { id: 'seagull-r2', name: "Deluxe Ocean View Room", rate: 10000, rateFormatted: "৳10,000", capacity: "2 Guests", inclusions: "Ocean View, Buffet Breakfast", image: "assets/coxsbazar_seafood_1785235487486.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-white-palace',
+    name: "Hotel White Palace Uttara",
+    city: "Dhaka",
+    starRating: 3,
+    starLabel: "3-Star Deluxe City Hotel",
+    address: "Sector 03, Uttara, Dhaka (Near Airport)",
+    image: "assets/dest_tokyo_1785151883119.jpg",
+    startingPrice: 4500,
+    priceFormatted: "৳4,500",
+    rating: 4.2,
+    reviewsCount: 95,
+    amenities: ["Near Dhaka Airport", "Free High-Speed WiFi", "Air Conditioned", "24h Room Service", "Free Breakfast"],
+    description: "Clean 3-star deluxe hotel located just 10 minutes from Dhaka International Airport, ideal for business travelers and transit stays.",
+    rooms: [
+      { id: 'wp-r1', name: "Standard AC Double Room", rate: 4500, rateFormatted: "৳4,500", capacity: "2 Guests", inclusions: "AC, WiFi, Free Breakfast", image: "assets/dest_tokyo_1785151883119.jpg" },
+      { id: 'wp-r2', name: "Deluxe Twin Suite", rate: 6000, rateFormatted: "৳6,000", capacity: "2 Guests", inclusions: "2 Twin Beds, Free Airport Pick-up", image: "assets/dest_tokyo_1785151883119.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
+    id: 'hotel-beach-way',
+    name: "Beach Way Hotel & Suite",
+    city: "Cox's Bazar",
+    starRating: 2,
+    starLabel: "2-Star Budget Hotel",
+    address: "Kolatoli Road, Cox's Bazar",
+    image: "assets/coxsbazar_resort.jpg",
+    startingPrice: 2200,
+    priceFormatted: "৳2,200",
+    rating: 4.0,
+    reviewsCount: 75,
+    amenities: ["Clean Budget Rooms", "WiFi Available", "Walking Distance to Beach", "24/7 Security"],
+    description: "Affordable 2-star budget hotel located within short walking distance to Kolatoli beach, clean rooms, ideal for student & budget trips.",
+    rooms: [
+      { id: 'bw-r1', name: "Standard Economy Room", rate: 2200, rateFormatted: "৳2,200", capacity: "2 Guests", inclusions: "Attached Bath, Fan/AC", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'bw-r2', name: "Deluxe AC Family Room", rate: 3200, rateFormatted: "৳3,200", capacity: "4 Guests", inclusions: "2 Double Beds, AC, TV", image: "assets/coxsbazar_resort.jpg" }
+    ],
+    status: "ACTIVE"
+  }
+];
+
+window.getCombinedLiveHotels = function() {
+  let saved = JSON.parse(localStorage.getItem('m2o_live_hotels'));
+  if (!saved || saved.length === 0) {
+    saved = defaultLiveHotels;
+    localStorage.setItem('m2o_live_hotels', JSON.stringify(saved));
+  }
+  return saved;
+};
+
+// ==========================================
+// ENTERPRISE HOTEL API & CUSTOM MARKUP ENGINE
+// ==========================================
+const defaultHotelApiConfig = {
+  activeSourceMode: "HYBRID", // NATIVE, API, HYBRID
+  apiProvider: "BOOKING_COM", // BOOKING_COM, AGODA, HOTELBEDS, CUSTOM_REST
+  apiEndpoint: "https://api.mount2ocean.com/v1/hotels/search",
+  apiKey: "m2o_live_key_998472619",
+  markupType: "PERCENTAGE", // PERCENTAGE, FIXED, STAR_TIER
+  globalMarkupPercent: 15, // +15% Markup profit
+  fixedMarkupAmount: 0,
+  starTierMarkups: {
+    star5: 18,
+    star4: 15,
+    star3: 12,
+    star2: 10
+  },
+  autoApplyTax: true,
+  taxPercent: 5
+};
+
+window.getHotelApiConfig = function() {
+  let cfg = JSON.parse(localStorage.getItem('m2o_hotel_api_config'));
+  if (!cfg) {
+    cfg = defaultHotelApiConfig;
+    localStorage.setItem('m2o_hotel_api_config', JSON.stringify(cfg));
+  }
+  return cfg;
+};
+
+window.saveHotelApiConfig = function(newCfg) {
+  localStorage.setItem('m2o_hotel_api_config', JSON.stringify(newCfg));
+  if (typeof showToast === 'function') showToast('Hotel API & Markup Configuration Saved!', 'success');
+};
+
+window.calculateHotelMarkupPrice = function(basePrice, starRating = 5) {
+  const cfg = getHotelApiConfig();
+  let markupPct = cfg.globalMarkupPercent || 15;
+
+  if (cfg.markupType === 'STAR_TIER' && cfg.starTierMarkups) {
+    if (starRating === 5) markupPct = cfg.starTierMarkups.star5 || 18;
+    else if (starRating === 4) markupPct = cfg.starTierMarkups.star4 || 15;
+    else if (starRating === 3) markupPct = cfg.starTierMarkups.star3 || 12;
+    else if (starRating === 2) markupPct = cfg.starTierMarkups.star2 || 10;
+  }
+
+  let finalPrice = basePrice;
+  if (cfg.markupType === 'PERCENTAGE' || cfg.markupType === 'STAR_TIER') {
+    finalPrice = Math.round(basePrice * (1 + (markupPct / 100)));
+  } else if (cfg.markupType === 'FIXED') {
+    finalPrice = basePrice + (cfg.fixedMarkupAmount || 0);
+  }
+
+  if (cfg.autoApplyTax) {
+    finalPrice = Math.round(finalPrice * (1 + ((cfg.taxPercent || 0) / 100)));
+  }
+
+  return {
+    basePrice: basePrice,
+    markupPct: markupPct,
+    finalPrice: finalPrice,
+    profit: finalPrice - basePrice
+  };
+};
+
+window.fetchExternalHotelApiMock = function(cityFilter) {
+  const cfg = getHotelApiConfig();
+  if (cfg.activeSourceMode === 'NATIVE') return [];
+
+  const apiHotels = [
+    {
+      id: 'api-hotel-hilton-dubai',
+      name: "Hilton Dubai Jumeirah Resort (Live API Feed)",
+      city: "Dubai",
+      starRating: 5,
+      starLabel: "5-Star Luxury Resort (Booking.com API)",
+      address: "The Walk, Jumeirah Beach Residence, Dubai, UAE",
+      image: "assets/dubai_hotel_1785235546938.jpg",
+      startingPrice: 32000,
+      isExternalApi: true,
+      apiProviderName: cfg.apiProvider || "Booking.com API",
+      rating: 4.9,
+      reviewsCount: 1120,
+      amenities: ["Live API Instant Booking", "Private Beach Access", "Free High-Speed WiFi", "Infinity Ocean Pool"],
+      description: "Direct Live API Feed from Hilton Worldwide GDS. Features private oceanfront beach, temperature-controlled pool, and 12 dining venues.",
+      rooms: [
+        { id: 'h-api-r1', name: "Executive Sea View Room", rate: 32000, capacity: "2 Guests", inclusions: "Live API Rate, Buffet Breakfast Included", image: "assets/dubai_hotel_1785235546938.jpg" }
+      ],
+      status: "ACTIVE"
+    }
+  ];
+
+  return apiHotels;
+};
+
+
+

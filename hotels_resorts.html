@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Hotels &amp; Resorts Directory • Mount2ocean Travel &amp; Tours Bangladesh</title>
+  <meta name="description" content="Book 5-Star Luxury Resorts, 4-Star Premium Hotels, 3-Star Deluxe & Budget Hotels in Cox's Bazar, Dhaka, Sylhet, Bali, Dubai, Maldives & Bhutan at best prices.">
+  
+  <!-- Security & Performance Meta Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Inter & Outfit Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css?v=v22_enterprise_hotel_api_and_markup">
+
+  <style>
+    .hotel-hero-banner {
+      background: linear-gradient(135deg, #07111e 0%, #004b87 50%, #00a651 100%);
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      color: #ffffff;
+      border-bottom: 4px solid #00a651;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    
+    .hotel-filter-bar {
+      max-width: 1300px;
+      margin: -2rem auto 2.5rem;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 30;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hotel-star-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .star-pill {
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      border: 1.5px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .star-pill.active {
+      background: linear-gradient(135deg, #0072bc 0%, #00a651 100%);
+      color: #ffffff !important;
+      border-color: #00a651;
+      box-shadow: 0 4px 15px rgba(0, 166, 81, 0.3);
+    }
+
+    .hotel-search-input {
+      flex: 1 1 280px;
+      padding: 0.75rem 1.2rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .hotels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      max-width: 1350px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hotels-grid { grid-template-columns: 1fr; }
+    }
+
+    .hotel-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1.5px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      border-color: #0072bc;
+    }
+
+    .hotel-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .hotel-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .hotel-card:hover .hotel-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .hotel-star-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      color: #eab308;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+    }
+
+    .hotel-price-tag {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+    }
+
+    .hotel-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .hotel-location-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #0072bc;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .hotel-name {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 0 0 0.6rem;
+      line-height: 1.35;
+    }
+
+    .hotel-amenities-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.8rem 0 1.2rem;
+    }
+
+    .amenity-chip {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .room-types-mini {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-top: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .room-type-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .room-type-item:last-child { border-bottom: none; }
+
+    /* Room Booking Modal Overlay */
+    .hotel-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(7, 17, 30, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .hotel-modal-card {
+      background: #ffffff;
+      border-radius: 24px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      border: 2px solid #0072bc;
+      position: relative;
+    }
+
+    .hotel-modal-header {
+      background: linear-gradient(135deg, #07111e 0%, #0072bc 100%);
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-close-btn {
+      background: rgba(255,255,255,0.2);
+      color: #ffffff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body class="theme-customer">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div style="background: linear-gradient(90deg, #0072bc 0%, #00a651 100%); color: #ffffff; text-align: center; padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 800;">
+    <span>🏨 HOTELS &amp; RESORTS DEAL: Up to 25% Instant Discount on 5-Star Ocean Resorts &amp; City Luxury Hotels!</span>
+  </div>
+
+  <!-- MAIN CUSTOMER HEADER BAR -->
+  <header class="app-header customer-header" style="padding: 0.6rem 2rem; background: var(--bg-card); border-bottom: 1px solid var(--bg-glass-border);">
+    <a href="customer_portal.html" class="logo-wrap" style="text-decoration: none; display: flex; align-items: center; gap: 0.6rem;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" style="height: 42px;">
+    </a>
+
+    <nav class="customer-nav" style="display: flex; gap: 1rem; align-items: center;">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="hotels_resorts.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 900;">Hotels &amp; Resorts</a>
+      <a href="all_packages.html" class="customer-nav-item">All Catalogue</a>
+      <a href="contact_us.html" class="customer-nav-item">Contact Us</a>
+      <a href="refund_policy.html" class="customer-nav-item">Refund Policy</a>
+      <a href="my_profile.html" class="primary-btn" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; background: #0072bc; text-decoration: none;">
+        My Bookings
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Currency Selector -->
+      <div class="currency-selector">
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+        </select>
+      </div>
+
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hotel-hero-banner">
+    <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.45rem 1.2rem; border-radius: 9999px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; display: inline-block; margin-bottom: 0.8rem;">
+      OFFICIAL HOTELS &amp; RESORTS CATALOGUE
+    </span>
+    <h1 style="font-size: 2.6rem; font-weight: 900; color: #ffffff !important; margin: 0 0 0.6rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+      বিশ্বমানের সেরা হোটেল ও রিসোর্ট বুকিং (Hotels &amp; Resorts Directory)
+    </h1>
+    <p style="font-size: 1.1rem; color: #e2e8f0; max-width: 760px; margin: 0 auto; line-height: 1.6;">
+      কক্সবাজার, ঢাকা, সিলেট, বালি, দুবাই, মালদ্বীপ ও ভূটানের ৫-স্টার লাক্সারি রিসোর্ট, ৪-স্টার প্রিমিয়াম ও বাজেট হোটেল থেকে সরাসরি রুম ক্যাটালগ দেখুন ও বুকিং করুন।
+    </p>
+  </section>
+
+  <!-- FILTER & SEARCH BAR -->
+  <div class="hotel-filter-bar">
+    <div class="hotel-star-pills" id="starFilterGroup">
+      <button type="button" class="star-pill active" onclick="filterHotelsByStar('ALL', this)">🌟 All Hotels (সকল)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(5, this)">💎 5-Star Luxury (৫-স্টার)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(4, this)">⭐ 4-Star Premium (৪-স্টার)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(3, this)">🏨 3-Star Deluxe (৩-স্টার)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(2, this)">🏡 2-Star Budget (বাজেট)</button>
+    </div>
+
+    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; flex: 1; justify-content: flex-end;">
+      <select id="hotelCitySelect" onchange="applyHotelFilters()" style="padding: 0.75rem 1rem; border: 2px solid #cbd5e1; border-radius: 12px; font-weight: 800; font-size: 0.9rem; color: #0f172a; outline: none; cursor: pointer;">
+        <option value="ALL">🌆 All Locations (সকল গন্তব্য)</option>
+        <option value="Cox's Bazar">🏖️ Cox's Bazar</option>
+        <option value="Dhaka">🏙️ Dhaka</option>
+        <option value="Sylhet">🍵 Sylhet</option>
+        <option value="Bali">🌺 Bali</option>
+        <option value="Dubai">🇦🇪 Dubai</option>
+        <option value="Maldives">🇲🇻 Maldives</option>
+      </select>
+
+      <input type="text" id="hotelSearchBox" placeholder="Search hotel name, city or room..." oninput="applyHotelFilters()" class="hotel-search-input">
+    </div>
+  </div>
+
+  <!-- MAIN HOTELS GRID CONTAINER -->
+  <main>
+    <div style="max-width: 1350px; margin: 0 auto 1.5rem; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0;">
+        Available Verified Hotels (<span id="showingHotelsCount" style="color: #00a651;">0</span> Found)
+      </h2>
+      <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;">Owner Verified &amp; 100% Real-time Synchronized</span>
+    </div>
+
+    <div class="hotels-grid" id="hotelsGridContainer">
+      <!-- Dynamic Live Hotel Cards Rendered via JavaScript Engine -->
+    </div>
+  </main>
+
+  <!-- INTERACTIVE HOTEL ROOM SELECTION & BOOKING MODAL -->
+  <div id="hotelBookingModal" class="hotel-modal-overlay hidden">
+    <div class="hotel-modal-card">
+      <div class="hotel-modal-header">
+        <div>
+          <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; font-size: 0.72rem; font-weight: 800;">RESERVE HOTEL ROOM</span>
+          <h3 id="modalHotelName" style="font-size: 1.35rem; font-weight: 900; color: #ffffff; margin: 0.2rem 0 0;">Hotel Name</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeHotelBookingModal()">✕</button>
+      </div>
+
+      <div style="padding: 1.8rem;">
+        <div style="display: flex; gap: 1.2rem; margin-bottom: 1.5rem; align-items: center; background: #f8fafc; padding: 1rem; border-radius: 14px; border: 1.5px solid #e2e8f0;">
+          <img id="modalHotelImg" src="" alt="Hotel" style="width: 90px; height: 75px; object-fit: cover; border-radius: 10px;">
+          <div>
+            <span id="modalHotelStar" style="color: #eab308; font-weight: 900; font-size: 0.88rem;">⭐⭐⭐⭐⭐</span>
+            <h4 id="modalHotelLocation" style="font-size: 0.92rem; font-weight: 800; color: #0072bc; margin: 0.1rem 0;">Location</h4>
+            <p id="modalHotelAddress" style="font-size: 0.82rem; color: #64748b; margin: 0;">Address</p>
+          </div>
+        </div>
+
+        <form id="hotelBookingForm" onsubmit="submitHotelRoomReservation(event)">
+          <input type="hidden" id="modalHotelId">
+
+          <!-- ROOM CATEGORIES SELECTION -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-weight: 900; font-size: 0.95rem; color: #0f172a; margin-bottom: 0.6rem; display: block;">
+              🛏️ Select Room Category (রুম ক্যাটাগরি সিলেক্ট করুন)
+            </label>
+            <div id="modalRoomList" style="display: flex; flex-direction: column; gap: 0.8rem;">
+              <!-- Dynamic Room Options -->
+            </div>
+          </div>
+
+          <!-- DATES & GUEST COUNTERS -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Check-In Date</label>
+              <input type="date" id="hotelCheckIn" required onchange="calculateHotelTotalCost()" style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+            </div>
+            <div>
+              <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Check-Out Date</label>
+              <input type="date" id="hotelCheckOut" required onchange="calculateHotelTotalCost()" style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+            </div>
+            <div>
+              <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Number of Rooms</label>
+              <select id="hotelRoomsCount" onchange="calculateHotelTotalCost()" style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 800; width: 100%;">
+                <option value="1">1 Room</option>
+                <option value="2">2 Rooms</option>
+                <option value="3">3 Rooms</option>
+                <option value="4">4+ Rooms</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- GUEST DETAILS -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Guest Full Name</label>
+              <input type="text" id="hotelGuestName" value="Sharmin Chowdhury" required style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+            </div>
+            <div>
+              <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Phone Number</label>
+              <input type="tel" id="hotelGuestPhone" value="01977477172" required style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+            </div>
+          </div>
+
+          <!-- PAYMENT METHOD & LIVE TOTAL -->
+          <div style="background: #0f172a; color: #ffffff; padding: 1.2rem 1.5rem; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; display: block;">TOTAL CALCULATION</span>
+              <span id="hotelNightsLabel" style="font-size: 0.85rem; font-weight: 800; color: #00f2fe;">1 Night × 1 Room</span>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; display: block;">GRAND TOTAL COST</span>
+              <strong id="modalHotelGrandTotal" style="font-size: 1.6rem; font-weight: 900; color: #00f2fe; text-shadow: 0 0 10px rgba(0,242,254,0.8);">৳14,500</strong>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-btn" style="width: 100%; padding: 0.95rem; font-size: 1.1rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 14px; border: none; color: white; cursor: pointer; box-shadow: 0 8px 25px rgba(0,166,81,0.4);">
+            Confirm Hotel Reservation ➔
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- FOOTER -->
+  <footer class="cust-footer" style="background: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important;">
+    <div style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
+      <div>
+        <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 50px; background: white; padding: 6px 12px; border-radius: 10px; margin-bottom: 1rem;">
+        <p style="color: #ffffff !important; font-size: 0.92rem; line-height: 1.6;">Mount2ocean Travel &amp; Tours - Premier 5-Star Hotel &amp; Luxury Resort Booking Platform Bangladesh.</p>
+      </div>
+      <div>
+        <h4 style="color: #00f2fe; margin-bottom: 1rem;">HOTEL DESTINATIONS</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
+          <li><a href="hotels_resorts.html?city=Cox's Bazar" style="color: white; text-decoration: none;">Cox's Bazar Beach Resorts</a></li>
+          <li><a href="hotels_resorts.html?city=Dhaka" style="color: white; text-decoration: none;">Dhaka 5-Star Luxury Hotels</a></li>
+          <li><a href="hotels_resorts.html?city=Sylhet" style="color: white; text-decoration: none;">Sylhet Tea Garden Resorts</a></li>
+          <li><a href="hotels_resorts.html?city=Bali" style="color: white; text-decoration: none;">Bali Overwater Villas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: #00f2fe; margin-bottom: 1rem;">QUICK LINKS</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
+          <li><a href="customer_portal.html" style="color: white; text-decoration: none;">Home</a></li>
+          <li><a href="tour_packages.html" style="color: white; text-decoration: none;">Tour Packages</a></li>
+          <li><a href="contact_us.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+          <li><a href="refund_policy.html" style="color: white; text-decoration: none;">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: #00f2fe; margin-bottom: 1rem;">VERIFIED PAYMENTS</h4>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">BKASH</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">NAGAD</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">VISA</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">MASTERCARD</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; font-size: 0.88rem; color: white;">
+      © 2026 MOUNT2OCEAN Travel &amp; Tours. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript Engine -->
+  <script src="app.js?v=v22_enterprise_hotel_api_and_markup"></script>
+  <script>
+    let activeStarFilter = 'ALL';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set default check-in and check-out dates (tomorrow & day after)
+      const today = new Date();
+      const checkInDate = new Date(today);
+      checkInDate.setDate(today.getDate() + 5);
+      const checkOutDate = new Date(today);
+      checkOutDate.setDate(today.getDate() + 7);
+
+      const checkInInput = document.getElementById('hotelCheckIn');
+      const checkOutInput = document.getElementById('hotelCheckOut');
+      if (checkInInput) checkInInput.value = checkInDate.toISOString().slice(0,10);
+      if (checkOutInput) checkOutInput.value = checkOutDate.toISOString().slice(0,10);
+
+      // Check URL query parameters (e.g. ?city=Bali)
+      const urlParams = new URLSearchParams(window.location.search);
+      const cityParam = urlParams.get('city');
+      if (cityParam) {
+        const citySelect = document.getElementById('hotelCitySelect');
+        if (citySelect) citySelect.value = cityParam;
+      }
+
+      renderHotelsGrid();
+    });
+
+    window.filterHotelsByStar = function(star, btn) {
+      activeStarFilter = star;
+      document.querySelectorAll('#starFilterGroup .star-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderHotelsGrid();
+    };
+
+    window.applyHotelFilters = function() {
+      renderHotelsGrid();
+    };
+
+    window.renderHotelsGrid = function() {
+      const container = document.getElementById('hotelsGridContainer');
+      const countEl = document.getElementById('showingHotelsCount');
+      if (!container) return;
+
+      const cityVal = document.getElementById('hotelCitySelect').value;
+      const searchVal = (document.getElementById('hotelSearchBox').value || '').trim().toLowerCase();
+
+      let nativeHotels = getCombinedLiveHotels();
+      let apiHotels = typeof fetchExternalHotelApiMock === 'function' ? fetchExternalHotelApiMock(cityVal) : [];
+      let hotels = [...nativeHotels, ...apiHotels];
+
+      // Filter by Star
+      if (activeStarFilter !== 'ALL') {
+        hotels = hotels.filter(h => h.starRating === parseInt(activeStarFilter, 10));
+      }
+
+      // Filter by City
+      if (cityVal !== 'ALL') {
+        hotels = hotels.filter(h => (h.city || '').toLowerCase() === cityVal.toLowerCase());
+      }
+
+      // Filter by Search Text
+      if (searchVal) {
+        hotels = hotels.filter(h => 
+          (h.name || '').toLowerCase().includes(searchVal) ||
+          (h.city || '').toLowerCase().includes(searchVal) ||
+          (h.address || '').toLowerCase().includes(searchVal) ||
+          (h.description || '').toLowerCase().includes(searchVal)
+        );
+      }
+
+      if (countEl) countEl.textContent = hotels.length;
+      container.innerHTML = '';
+
+      if (hotels.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 20px; border: 2px dashed #cbd5e1;">
+            <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🏨</span>
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #0f172a;">No Matching Hotels or Resorts Found</h3>
+            <p style="color: #64748b;">Try selecting "All Cities" or "All Hotels" filter above.</p>
+          </div>
+        `;
+        return;
+      }
+
+      hotels.forEach(h => {
+        let starsStr = '⭐'.repeat(h.starRating || 5);
+        let amenitiesHtml = (h.amenities || []).map(a => `<span class="amenity-chip">✓ ${a}</span>`).join('');
+
+        let markupResult = typeof calculateHotelMarkupPrice === 'function' ? calculateHotelMarkupPrice(h.startingPrice || 0, h.starRating || 5) : { finalPrice: h.startingPrice || 0 };
+        let finalPriceFormatted = '৳' + markupResult.finalPrice.toLocaleString();
+
+        let roomsMiniHtml = (h.rooms || []).map(r => {
+          let rMarkup = typeof calculateHotelMarkupPrice === 'function' ? calculateHotelMarkupPrice(r.rate || 0, h.starRating || 5) : { finalPrice: r.rate || 0 };
+          return `
+            <div class="room-type-item">
+              <span>🛏️ <strong>${r.name}</strong></span>
+              <span style="color: #00a651; font-weight: 900;">৳${rMarkup.finalPrice.toLocaleString()}</span>
+            </div>
+          `;
+        }).join('');
+
+        const card = document.createElement('div');
+        card.className = 'hotel-card';
+        card.innerHTML = `
+          <div class="hotel-img-wrap">
+            <img src="${h.image || 'assets/coxsbazar_resort.jpg'}" alt="${h.name}">
+            <span class="hotel-star-badge">${starsStr} ${h.starLabel || (h.starRating + '-Star')}</span>
+            <div class="hotel-price-tag">
+              <span class="tour-price-pill">${finalPriceFormatted} / Night</span>
+            </div>
+          </div>
+          <div class="hotel-body">
+            <span class="hotel-location-tag">📍 ${h.city || 'BANGLADESH'}</span>
+            <h3 class="hotel-name">${h.name}</h3>
+            <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0 0 0.8rem;">${h.description || ''}</p>
+            
+            <div class="hotel-amenities-row">
+              ${amenitiesHtml}
+            </div>
+
+            <div class="room-types-mini">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #64748b; margin-bottom: 0.3rem;">AVAILABLE ROOM CATEGORIES:</div>
+              ${roomsMiniHtml}
+            </div>
+
+            <button type="button" class="primary-btn" onclick="openHotelBookingModal('${h.id}')" style="width: 100%; padding: 0.85rem; font-weight: 900; font-size: 0.95rem; background: linear-gradient(135deg, #0072bc 0%, #00a651 100%); border-radius: 12px; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,114,188,0.3);">
+              🏨 View Rooms &amp; Book Now ➔
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    };
+
+    let activeSelectedHotel = null;
+
+    window.openHotelBookingModal = function(hotelId) {
+      const hotels = getCombinedLiveHotels();
+      const h = hotels.find(item => item.id === hotelId);
+      if (!h) return;
+
+      activeSelectedHotel = h;
+
+      const modal = document.getElementById('hotelBookingModal');
+      document.getElementById('modalHotelId').value = h.id;
+      document.getElementById('modalHotelName').textContent = h.name;
+      document.getElementById('modalHotelImg').src = h.image || 'assets/coxsbazar_resort.jpg';
+      document.getElementById('modalHotelStar').textContent = '⭐'.repeat(h.starRating || 5) + ' ' + (h.starLabel || '');
+      document.getElementById('modalHotelLocation').textContent = '📍 ' + h.city;
+      document.getElementById('modalHotelAddress').textContent = h.address || h.city;
+
+      // Populate Rooms Radio Buttons
+      const roomListContainer = document.getElementById('modalRoomList');
+      roomListContainer.innerHTML = '';
+
+      (h.rooms || []).forEach((r, idx) => {
+        let rMarkup = typeof calculateHotelMarkupPrice === 'function' ? calculateHotelMarkupPrice(r.rate || 0, h.starRating || 5) : { finalPrice: r.rate || 0 };
+        const roomDiv = document.createElement('div');
+        roomDiv.style.cssText = 'background: #ffffff; border: 2px solid #cbd5e1; border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s ease;';
+        roomDiv.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <input type="radio" name="modalRoomRadio" value="${r.id}" data-rate="${rMarkup.finalPrice}" ${idx === 0 ? 'checked' : ''} onchange="calculateHotelTotalCost()" style="width: 18px; height: 18px; cursor: pointer;">
+            <div>
+              <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${r.name}</strong>
+              <span style="font-size: 0.78rem; color: #64748b;">${r.inclusions || 'Complimentary Breakfast Included'} • (${r.capacity})</span>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <strong style="font-size: 1.1rem; color: #00a651;">৳${rMarkup.finalPrice.toLocaleString()}</strong>
+            <span style="font-size: 0.72rem; color: #64748b; display: block;">Per Night</span>
+          </div>
+        `;
+        roomDiv.onclick = function() {
+          const radio = roomDiv.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            calculateHotelTotalCost();
+          }
+        };
+        roomListContainer.appendChild(roomDiv);
+      });
+
+      calculateHotelTotalCost();
+      if (modal) modal.classList.remove('hidden');
+    };
+
+    window.closeHotelBookingModal = function() {
+      const modal = document.getElementById('hotelBookingModal');
+      if (modal) modal.classList.add('hidden');
+    };
+
+    window.calculateHotelTotalCost = function() {
+      if (!activeSelectedHotel) return;
+
+      const selectedRadio = document.querySelector('input[name="modalRoomRadio"]:checked');
+      const rate = selectedRadio ? parseInt(selectedRadio.dataset.rate, 10) : activeSelectedHotel.startingPrice;
+
+      const checkInVal = document.getElementById('hotelCheckIn').value;
+      const checkOutVal = document.getElementById('hotelCheckOut').value;
+      const roomsCount = parseInt(document.getElementById('hotelRoomsCount').value, 10) || 1;
+
+      let nights = 1;
+      if (checkInVal && checkOutVal) {
+        const d1 = new Date(checkInVal);
+        const d2 = new Date(checkOutVal);
+        const diffTime = Math.abs(d2 - d1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays > 0) nights = diffDays;
+      }
+
+      const total = rate * nights * roomsCount;
+
+      const nightsLabel = document.getElementById('hotelNightsLabel');
+      const totalEl = document.getElementById('modalHotelGrandTotal');
+
+      if (nightsLabel) nightsLabel.textContent = `${nights} Night(s) × ${roomsCount} Room(s)`;
+      if (totalEl) totalEl.textContent = '৳' + total.toLocaleString('en-US');
+    };
+
+    window.submitHotelRoomReservation = function(e) {
+      e.preventDefault();
+
+      if (!activeSelectedHotel) return;
+
+      const selectedRadio = document.querySelector('input[name="modalRoomRadio"]:checked');
+      let roomObj = activeSelectedHotel.rooms ? activeSelectedHotel.rooms[0] : { name: "Standard Room", rate: activeSelectedHotel.startingPrice };
+      if (selectedRadio) {
+        const rFound = (activeSelectedHotel.rooms || []).find(r => r.id === selectedRadio.value);
+        if (rFound) roomObj = rFound;
+      }
+
+      const checkInVal = document.getElementById('hotelCheckIn').value;
+      const checkOutVal = document.getElementById('hotelCheckOut').value;
+      const roomsCount = document.getElementById('hotelRoomsCount').value;
+      const guestName = document.getElementById('hotelGuestName').value;
+      const guestPhone = document.getElementById('hotelGuestPhone').value;
+      const totalCostText = document.getElementById('modalHotelGrandTotal').textContent;
+
+      const bookingId = 'M2O-HTL-' + Math.floor(10000 + Math.random() * 90000);
+
+      const bookingObj = {
+        id: bookingId,
+        customerName: guestName,
+        phone: guestPhone,
+        email: 'customer@mount2ocean.com',
+        travelDate: checkInVal,
+        checkOutDate: checkOutVal,
+        tourTitle: `[HOTEL RESERVATION] ${activeSelectedHotel.name} (${roomObj.name})`,
+        price: totalCostText,
+        amount: totalCostText,
+        travelersCount: `${roomsCount} Room(s) • ${guestName}`,
+        paymentMethod: 'bKash / Nagad Mobile Banking',
+        date: new Date().toISOString().slice(0,10),
+        status: 'PENDING'
+      };
+
+      let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+      bookings.unshift(bookingObj);
+      localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+
+      localStorage.setItem('m2o_active_booking_id', bookingId);
+      closeHotelBookingModal();
+
+      showToast(`Hotel Reservation Submitted! Voucher ID: ${bookingId}`, 'success');
+      setTimeout(() => {
+        window.location.href = 'booking_detail.html';
+      }, 500);
+    };
+  </script>
+</body>
+</html>

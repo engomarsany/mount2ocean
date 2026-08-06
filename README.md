@@ -1,7 +1,7 @@
 # 🌊 MOUNT2OCEAN TRAVEL & TOURS BANGLADESH 🏔️
 ### Full Enterprise Web Application Directory & Master Page Sitemap
 
-Welcome to **Mount2ocean Travel & Tours**, Bangladesh's premier luxury travel booking platform! Below is the complete master sitemap containing direct live links to all **20 web pages** built and deployed in this repository.
+Welcome to **Mount2ocean Travel & Tours**, Bangladesh's premier luxury travel booking platform! Below is the complete master sitemap containing direct live links to all **22 web pages** built and deployed in this repository.
 
 ---
 
@@ -10,12 +10,13 @@ Welcome to **Mount2ocean Travel & Tours**, Bangladesh's premier luxury travel bo
 
 ---
 
-## 👑 1. Owner & Admin Management Suite (8 Pages)
-All master system controls, live package management, booking approvals, revenue metrics, and user permissions.
+## 👑 1. Owner & Admin Management Suite (9 Pages)
+All master system controls, live package management, hotel & resort manager, booking approvals, revenue metrics, and user permissions.
 
 | Page Name | Description & Owner Powers | Direct Live GitHub Pages Link |
 | :--- | :--- | :--- |
 | **Admin Dashboard Overview** | Master Owner Dashboard with System Control Matrix & Real-time Metrics | 🔗 [admin_dashboard.html](https://engomarsany.github.io/mount2ocean/admin_dashboard.html) |
+| **Hotels & Resorts Control** | Owner Master Manager for 5-Star, 4-Star, 3-Star & 2-Star Hotels and Room Categories | 🔗 [admin_hotels.html](https://engomarsany.github.io/mount2ocean/admin_hotels.html) |
 | **Live Customer Bookings** | Approve, Cancel, Print E-Ticket Vouchers & Export CSV Booking Reports | 🔗 [admin_bookings.html](https://engomarsany.github.io/mount2ocean/admin_bookings.html) |
 | **Search Requests Queue** | Review & process missing tour search requests submitted by customers | 🔗 [admin_requested_packages.html](https://engomarsany.github.io/mount2ocean/admin_requested_packages.html) |
 | **B2B Partner Approvals** | Verify & approve travel agent registrations and agency licenses | 🔗 [admin_approvals.html](https://engomarsany.github.io/mount2ocean/admin_approvals.html) |
@@ -26,12 +27,13 @@ All master system controls, live package management, booking approvals, revenue 
 
 ---
 
-## 🌴 2. Customer Portal & Tour Shopping Experience (7 Pages)
-Direct customer-facing pages for browsing, searching, viewing 5-HD images, and reserving tour packages.
+## 🌴 2. Customer Portal & Tour Shopping Experience (8 Pages)
+Direct customer-facing pages for browsing, searching, viewing 5-HD images, and reserving tour & hotel packages.
 
 | Page Name | Description & Customer Features | Direct Live GitHub Pages Link |
 | :--- | :--- | :--- |
 | **Customer Portal Home** | Main homepage with animated 2-sec airplane banner, top destination pills & live package cards | 🔗 [customer_portal.html](https://engomarsany.github.io/mount2ocean/customer_portal.html) |
+| **Hotels & Resorts Directory** | 5-Star, 4-Star, 3-Star & 2-Star luxury hotel catalogue & interactive room reservation engine | 🔗 [hotels_resorts.html](https://engomarsany.github.io/mount2ocean/hotels_resorts.html) |
 | **Tour Packages Directory** | Dynamic search dropdown bar displaying live active tour packages | 🔗 [tour_packages.html](https://engomarsany.github.io/mount2ocean/tour_packages.html) |
 | **All Packages Catalogue** | Comprehensive directory of all international & domestic tour packages with category filters | 🔗 [all_packages.html](https://engomarsany.github.io/mount2ocean/all_packages.html) |
 | **Package Details & Gallery** | Detailed day-by-day tour itinerary, inclusions/exclusions & 5-HD photo gallery | 🔗 [package_detail.html](https://engomarsany.github.io/mount2ocean/package_detail.html) |
