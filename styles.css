@@ -2901,16 +2901,16 @@ body.light-theme .role-selector-box {
 
 /* Admin Main Content & Stats */
 .admin-main-content {
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 2rem auto 4rem;
   padding: 0 1.5rem;
 }
 
 .admin-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .admin-stat-card {
