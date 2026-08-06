@@ -2638,28 +2638,48 @@ body.light-theme .role-selector-box {
 
 /* App Promo Banner */
 .app-promo-banner {
-  background: linear-gradient(135deg, #0072bc 0%, #00a651 100%);
-  border-radius: 20px;
-  padding: 3rem 3.5rem;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  background: linear-gradient(135deg, #005b96 0%, #008a43 100%) !important;
+  border-radius: 24px !important;
+  padding: 3rem 3.5rem !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2rem !important;
+  border: 3px solid #00f2fe !important;
+  box-shadow: 0 15px 45px rgba(0, 114, 188, 0.4) !important;
 }
 
 .app-tag {
-  background: rgba(255,255,255,0.2);
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 0.8rem;
-  display: inline-block;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 0.85rem !important;
+  font-weight: 900 !important;
+  padding: 0.45rem 1.2rem !important;
+  border-radius: 999px !important;
+  margin-bottom: 1rem !important;
+  display: inline-block !important;
+  border: 2px solid #00f2fe !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9) !important;
+  letter-spacing: 1.5px !important;
 }
 
-.app-promo-content h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.6rem; }
-.app-promo-content p { font-size: 1rem; color: #e0f2fe; max-width: 500px; margin-bottom: 1.5rem; }
+.app-promo-content h2 {
+  font-size: 2.4rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.6rem !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+}
+
+.app-promo-content p {
+  font-size: 1.05rem !important;
+  color: #ffffff !important;
+  max-width: 520px !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
+}
 
 .app-store-btns {
   display: flex;
@@ -2667,40 +2687,48 @@ body.light-theme .role-selector-box {
 }
 
 .store-btn {
-  background: #ffffff;
-  color: #0f172a;
-  border: none;
-  padding: 0.75rem 1.4rem;
-  border-radius: 10px;
-  font-weight: 800;
-  font-size: 0.92rem;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #00f2fe !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem !important;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+  transition: transform 0.2s ease;
+}
+
+.store-btn:hover {
+  transform: translateY(-2px);
+  background: #00f2fe !important;
+  color: #0f172a !important;
 }
 
 .phone-mockup {
-  background: #090d16 !important;
-  border: 2.5px solid #00f2fe !important;
+  background: #060911 !important;
+  border: 3px solid #00f2fe !important;
   border-radius: 24px !important;
-  padding: 1.5rem 1.2rem !important;
-  width: 240px !important;
+  padding: 1.6rem 1.4rem !important;
+  width: 260px !important;
   color: #ffffff !important;
   text-align: center !important;
-  box-shadow: 0 0 30px rgba(0, 242, 254, 0.4) !important;
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.7), 0 15px 40px rgba(0,0,0,0.8) !important;
 }
 
 .phone-brand {
-  font-size: 0.88rem !important;
+  font-size: 0.95rem !important;
   font-weight: 900 !important;
-  color: #00f2fe !important;
+  color: #ffffff !important;
   letter-spacing: 1.5px !important;
-  text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe !important;
-  background: rgba(0, 242, 254, 0.15) !important;
-  border: 1.5px solid #00f2fe !important;
-  padding: 0.4rem 0.8rem !important;
-  border-radius: 8px !important;
+  background: #0072bc !important;
+  border: 2px solid #00f2fe !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 10px !important;
   display: inline-block !important;
-  margin-bottom: 0.8rem !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.6) !important;
+  text-shadow: 0 0 10px #00f2fe !important;
 }
 
 .phone-screen-content {
@@ -2711,16 +2739,17 @@ body.light-theme .role-selector-box {
 }
 
 .phone-screen-content span {
-  background: rgba(0, 242, 254, 0.15) !important;
+  background: #0f172a !important;
   color: #00f2fe !important;
-  border: 2px solid #00f2fe !important;
-  padding: 0.65rem 0.9rem !important;
-  border-radius: 10px !important;
-  font-size: 0.85rem !important;
+  border: 2.5px solid #00f2fe !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 12px !important;
+  font-size: 0.92rem !important;
   font-weight: 900 !important;
   text-shadow: 0 0 10px #00f2fe !important;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3) !important;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.5) !important;
   display: block !important;
+  margin-bottom: 0.8rem !important;
 }
 
 /* Rich Footer */
