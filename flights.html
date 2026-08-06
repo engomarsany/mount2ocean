@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Tickets &amp; Airfare Live Request Engine | Mount2ocean</title>
+  <meta name="description" content="Search live flights, compare airline fares (Biman, US-Bangla, Emirates, Qatar Airways), and request instant PNR air ticket booking.">
+  
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+</head>
+<body class="light-theme">
+
+  <!-- TOP HEADER NAVIGATION -->
+  <header class="app-header customer-header">
+    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="hotels_resorts.html" class="customer-nav-item">Hotels &amp; Resorts</a>
+      <a href="flights.html" class="customer-nav-item active">Flight Tickets</a>
+      <a href="visa_services.html" class="customer-nav-item">Visa Processing</a>
+      <a href="contact_us.html" class="customer-nav-item">Contact Us</a>
+      <a href="my_profile.html" class="customer-nav-item">My Bookings</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <div class="currency-selector">
+        <select id="custCurrency" onchange="if(window.setActiveCurrency) window.setActiveCurrency(this.value);">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+          <option value="AED">AED (د.إ)</option>
+          <option value="INR">INR (₹)</option>
+        </select>
+      </div>
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">Sign Out</a>
+    </div>
+  </header>
+
+  <!-- MAIN FLIGHT PORTAL WRAPPER -->
+  <main style="max-width: 1240px; margin: 2.5rem auto; padding: 0 1rem;">
+    
+    <!-- FLIGHT SEARCH BANNER -->
+    <div style="background: linear-gradient(135deg, #060911 0%, #0072bc 100%); color: white; padding: 2.5rem 2rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 2.5rem; text-align: center; border: 2px solid #00f2fe;">
+      <span class="badge-tag" style="background: #00f2fe; color: #0f172a; font-weight: 900; font-size: 0.85rem; padding: 0.4rem 1rem; border-radius: 8px; letter-spacing: 1px; display: inline-block; margin-bottom: 0.8rem;">
+        INTERNATIONAL &amp; DOMESTIC AIRLINES FARE ENGINE
+      </span>
+      <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+        Flight Tickets &amp; Live PNR Airfare Request Portal
+      </h1>
+      <p style="color: #cbd5e1; font-size: 1.05rem; font-weight: 700; max-width: 750px; margin: 0 auto;">
+        Compare lowest airfares across Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, Air Arabia &amp; Singapore Airlines with instant GDS PNR booking request.
+      </p>
+    </div>
+
+    <!-- FLIGHT SEARCH WIDGET BOX -->
+    <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08); margin-bottom: 3rem;">
+      <h3 style="color: #0072bc; font-size: 1.4rem; font-weight: 900; margin-bottom: 1.5rem;">
+        Search Live Airfares &amp; Request PNR Ticket
+      </h3>
+
+      <form onsubmit="handleFlightSearchSubmit(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
+        
+        <!-- Flying From -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">Flying From (কোথা থেকে)</label>
+          <select id="flightFrom" required style="padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.95rem; width: 100%; color: #0f172a; background: #ffffff;">
+            <option value="Dhaka (DAC)" selected>Dhaka (DAC) - Hazrat Shahjalal Int'l</option>
+            <option value="Chittagong (CGP)">Chittagong (CGP) - Shah Amanat Int'l</option>
+            <option value="Sylhet (ZYL)">Sylhet (ZYL) - Osmani Int'l</option>
+          </select>
+        </div>
+
+        <!-- Flying To -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">Flying To (কোথায় যাবেন)</label>
+          <select id="flightTo" required style="padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.95rem; width: 100%; color: #0f172a; background: #ffffff;">
+            <option value="Dubai (DXB)" selected>Dubai (DXB) - United Arab Emirates</option>
+            <option value="Kuala Lumpur (KUL)">Kuala Lumpur (KUL) - Malaysia</option>
+            <option value="Bangkok (BKK)">Bangkok (BKK) - Thailand</option>
+            <option value="Singapore (SIN)">Singapore (SIN) - Changi</option>
+            <option value="London (LHR)">London (LHR) - Heathrow, UK</option>
+            <option value="Jeddah (JED)">Jeddah (JED) - Umrah / Hajj</option>
+            <option value="Cox's Bazar (CXB)">Cox's Bazar (CXB) - Domestic</option>
+          </select>
+        </div>
+
+        <!-- Departure Date -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">Departure Date</label>
+          <input type="date" id="flightDepartDate" required value="2026-08-15" style="padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.95rem; width: 100%; color: #0f172a; background: #ffffff;">
+        </div>
+
+        <!-- Passengers & Cabin Class -->
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">Cabin &amp; Passengers</label>
+          <select id="flightCabin" style="padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.95rem; width: 100%; color: #0f172a; background: #ffffff;">
+            <option value="Economy (1 Adult)" selected>Economy (1 Adult)</option>
+            <option value="Economy (2 Adults)">Economy (2 Adults)</option>
+            <option value="Business Class (1 Adult)">Business Class (1 Adult)</option>
+          </select>
+        </div>
+
+        <!-- Search Button -->
+        <div>
+          <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; width: 100%;">
+            Search Airfares ✈️
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- LIVE AIRFARE COMPARISON RESULTS -->
+    <div id="flightResultsSection">
+      <h2 style="color: #0f172a; font-size: 1.6rem; font-weight: 900; margin-bottom: 1.5rem;">
+        Available Airline Fares for <span id="flightRouteHeading" style="color: #0072bc;">Dhaka (DAC) to Dubai (DXB)</span>
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;" id="flightCardsContainer">
+        
+        <!-- Flight Card 1: Emirates -->
+        <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.5rem; display: grid; grid-template-columns: 180px 1fr 220px; gap: 1.5rem; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+          <div>
+            <span style="background: #e11d48; color: white; font-weight: 900; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">EMIRATES</span>
+            <h4 style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin: 0.4rem 0 0.2rem;">EK-583</h4>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Boeing 777-300ER</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-around; text-align: center;">
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">10:15 AM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dhaka (DAC)</span>
+            </div>
+            <div style="color: #0072bc; font-weight: 800; font-size: 0.85rem;">
+              <span>4h 45m (Non-Stop)</span>
+              <div style="border-bottom: 2px dashed #0072bc; margin: 0.3rem 0;"></div>
+              <span>30kg Baggage</span>
+            </div>
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">02:00 PM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dubai (DXB)</span>
+            </div>
+          </div>
+
+          <div style="text-align: right; border-left: 2px dashed #e2e8f0; padding-left: 1.5rem;">
+            <span style="color: #64748b; font-size: 0.8rem; font-weight: 700;">Total Fare (Tax Included)</span>
+            <div style="color: #0072bc; font-size: 1.6rem; font-weight: 900; margin: 0.2rem 0 0.6rem;">৳48,500</div>
+            <button onclick="openPnrRequestModal('Emirates (EK-583)', 'Dhaka (DAC) to Dubai (DXB)', 48500)" style="background: #00a651; color: white; border: none; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; cursor: pointer; width: 100%;">
+              Request PNR Booking
+            </button>
+          </div>
+        </div>
+
+        <!-- Flight Card 2: Biman Bangladesh Airlines -->
+        <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.5rem; display: grid; grid-template-columns: 180px 1fr 220px; gap: 1.5rem; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+          <div>
+            <span style="background: #00a651; color: white; font-weight: 900; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">BIMAN BANGLADESH</span>
+            <h4 style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin: 0.4rem 0 0.2rem;">BG-347</h4>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dreamliner 787-9</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-around; text-align: center;">
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">08:30 PM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dhaka (DAC)</span>
+            </div>
+            <div style="color: #0072bc; font-weight: 800; font-size: 0.85rem;">
+              <span>5h 10m (Direct)</span>
+              <div style="border-bottom: 2px dashed #0072bc; margin: 0.3rem 0;"></div>
+              <span>35kg Baggage</span>
+            </div>
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">12:40 AM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dubai (DXB)</span>
+            </div>
+          </div>
+
+          <div style="text-align: right; border-left: 2px dashed #e2e8f0; padding-left: 1.5rem;">
+            <span style="color: #64748b; font-size: 0.8rem; font-weight: 700;">Total Fare (Tax Included)</span>
+            <div style="color: #0072bc; font-size: 1.6rem; font-weight: 900; margin: 0.2rem 0 0.6rem;">৳42,000</div>
+            <button onclick="openPnrRequestModal('Biman Bangladesh (BG-347)', 'Dhaka (DAC) to Dubai (DXB)', 42000)" style="background: #00a651; color: white; border: none; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; cursor: pointer; width: 100%;">
+              Request PNR Booking
+            </button>
+          </div>
+        </div>
+
+        <!-- Flight Card 3: US-Bangla Airlines -->
+        <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.5rem; display: grid; grid-template-columns: 180px 1fr 220px; gap: 1.5rem; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+          <div>
+            <span style="background: #0072bc; color: white; font-weight: 900; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">US-BANGLA AIRLINES</span>
+            <h4 style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin: 0.4rem 0 0.2rem;">BS-315</h4>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Airbus A330-300</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-around; text-align: center;">
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">06:45 PM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dhaka (DAC)</span>
+            </div>
+            <div style="color: #0072bc; font-weight: 800; font-size: 0.85rem;">
+              <span>5h 00m (Direct)</span>
+              <div style="border-bottom: 2px dashed #0072bc; margin: 0.3rem 0;"></div>
+              <span>30kg Baggage</span>
+            </div>
+            <div>
+              <strong style="font-size: 1.25rem; color: #0f172a; display: block;">10:45 PM</strong>
+              <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Dubai (DXB)</span>
+            </div>
+          </div>
+
+          <div style="text-align: right; border-left: 2px dashed #e2e8f0; padding-left: 1.5rem;">
+            <span style="color: #64748b; font-size: 0.8rem; font-weight: 700;">Total Fare (Tax Included)</span>
+            <div style="color: #0072bc; font-size: 1.6rem; font-weight: 900; margin: 0.2rem 0 0.6rem;">৳39,500</div>
+            <button onclick="openPnrRequestModal('US-Bangla (BS-315)', 'Dhaka (DAC) to Dubai (DXB)', 39500)" style="background: #00a651; color: white; border: none; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; cursor: pointer; width: 100%;">
+              Request PNR Booking
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- PNR REQUEST MODAL -->
+  <div class="modal-overlay hidden" id="pnrModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <div class="modal-card" style="background: white; border-radius: 20px; padding: 2rem; max-width: 500px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.3);">
+      <h3 id="pnrModalTitle" style="color: #0072bc; font-size: 1.35rem; font-weight: 900; margin-bottom: 0.5rem;">
+        Request Air Ticket PNR Booking
+      </h3>
+      <p id="pnrModalSubtitle" style="color: #475569; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.2rem;">
+        Fill details to issue official airline PNR reservation.
+      </p>
+
+      <form onsubmit="submitPnrBookingForm(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+        <input type="hidden" id="pnrAirline">
+        <input type="hidden" id="pnrRoute">
+        <input type="hidden" id="pnrFare">
+
+        <div>
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Passenger Full Name (Passport Match) *</label>
+          <input type="text" id="pnrPassengerName" required placeholder="e.g. Tanvir Hossain" style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; width: 100%;">
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Passport Number *</label>
+          <input type="text" id="pnrPassportNo" required placeholder="e.g. A0982134" style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; width: 100%;">
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Phone Number / WhatsApp *</label>
+          <input type="tel" id="pnrPhone" required placeholder="+880 1712-000000" style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; width: 100%;">
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+          <button type="submit" style="background: #00a651; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 900; cursor: pointer; flex: 1;">
+            Submit PNR Booking
+          </button>
+          <button type="button" onclick="closePnrModal()" style="background: #64748b; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 800; cursor: pointer;">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="cust-footer" style="background: #060911; color: #ffffff; padding: 3rem 2rem 1.5rem; border-top: 3px solid #00f2fe; margin-top: 4rem;">
+    <div style="max-width: 1240px; margin: 0 auto; text-align: center;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 50px; margin-bottom: 1rem;">
+      <p style="color: #cbd5e1; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Flight Tickets &amp; Airfare GDS Booking Engine.</p>
+    </div>
+  </footer>
+
+  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script>
+    function handleFlightSearchSubmit(e) {
+      e.preventDefault();
+      const from = document.getElementById('flightFrom').value;
+      const to = document.getElementById('flightTo').value;
+      document.getElementById('flightRouteHeading').textContent = `${from} to ${to}`;
+      alert(`Flight Airfares updated for ${from} to ${to}!`);
+    }
+
+    function openPnrRequestModal(airline, route, fare) {
+      document.getElementById('pnrAirline').value = airline;
+      document.getElementById('pnrRoute').value = route;
+      document.getElementById('pnrFare').value = fare;
+      document.getElementById('pnrModalTitle').textContent = `Request PNR Booking: ${airline}`;
+      document.getElementById('pnrModalSubtitle').textContent = `Route: ${route} | Total Fare: ৳${fare.toLocaleString()}`;
+      
+      const modal = document.getElementById('pnrModal');
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+    }
+
+    function closePnrModal() {
+      const modal = document.getElementById('pnrModal');
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+    }
+
+    function submitPnrBookingForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('pnrPassengerName').value.trim();
+      const phone = document.getElementById('pnrPhone').value.trim();
+      const airline = document.getElementById('pnrAirline').value;
+      const route = document.getElementById('pnrRoute').value;
+
+      closePnrModal();
+
+      // Open WhatsApp Share automatically!
+      const pnrRef = "M2O-PNR-" + Math.floor(10000 + Math.random() * 90000);
+      const text = `Hello Mount2ocean! I requested Air Ticket PNR Booking.%0A%0A*Ref ID:* ${pnrRef}%0A*Passenger:* ${name}%0A*Airline:* ${airline}%0A*Route:* ${route}%0A*Phone:* ${phone}%0A%0APlease confirm my PNR reservation.`;
+      
+      const waUrl = `https://api.whatsapp.com/send?phone=8801977477172&text=${text}`;
+      window.open(waUrl, '_blank');
+      alert(`PNR Booking Request ${pnrRef} Submitted! Redirecting to WhatsApp Hotline (+880 1977-477172)...`);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      closePnrModal();
+    });
+  </script>
+</body>
+</html>

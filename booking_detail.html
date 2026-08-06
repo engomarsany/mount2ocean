@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -177,8 +177,11 @@
         ← Back to My Reservations History
       </a>
       <div style="display: flex; gap: 0.8rem;">
+        <button onclick="shareBookingVoucherWhatsApp()" class="primary-btn" style="background: #25D366; font-weight: 900; color: white; border: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          💬 Share via WhatsApp
+        </button>
         <button onclick="window.print()" class="primary-btn" style="background: #0072bc; font-weight: 800;">
-          🖨️ Print Ticket Voucher
+          Print Ticket Voucher
         </button>
         <a href="admin_dashboard.html" target="_blank" class="secondary-btn" style="text-decoration: none; font-weight: 800; border-color: #00a651; color: #00a651;">
           Edit in Owner Panel ↗
@@ -369,6 +372,16 @@
   <!-- JavaScript -->
   <script src="app.js?v=v23_production_ready_launch"></script>
   <script>
+    function shareBookingVoucherWhatsApp() {
+      const title = document.getElementById('dtlFileTitle') ? document.getElementById('dtlFileTitle').textContent.trim() : 'Tour Booking';
+      const fileId = document.getElementById('dtlFileId') ? document.getElementById('dtlFileId').textContent.trim() : '';
+      const name = document.getElementById('dtlCustName') ? document.getElementById('dtlCustName').textContent.trim() : 'Valued Traveler';
+      const pageUrl = window.location.href;
+      
+      const text = `Hello Mount2ocean! Here is my official Booking Voucher:%0A%0A*Package:* ${encodeURIComponent(title)}%0A*Details:* ${encodeURIComponent(fileId)}%0A*Traveler:* ${encodeURIComponent(name)}%0A*Voucher Link:* ${encodeURIComponent(pageUrl)}%0A%0APlease verify my reservation.`;
+      window.open(`https://api.whatsapp.com/send?phone=8801977477172&text=${text}`, '_blank');
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadDetailedBookingFile();
     });
