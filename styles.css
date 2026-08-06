@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
 /* ==========================================================================
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
    ========================================================================== */
@@ -62,21 +64,15 @@ body.light-theme {
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-/* /* Reset & Global - Google Product Standards */
-/* ==========================================================================
-   PERMANENT FULL-SITE HIGH-CONTRAST FONT VISIBILITY ENGINE (MANDATORY RULE)
-   Guarantee: Every text, heading, label, button, badge, table, modal, and subtext
-   across ALL pages (Customer, Admin, Owner, Agent) is 100% crystal clear & readable.
-   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Outfit', 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   background-color: var(--bg-primary);
   color: #0f172a !important;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
