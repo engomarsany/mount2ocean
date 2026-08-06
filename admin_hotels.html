@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -109,10 +109,10 @@
       🏠 Dashboard Overview ➔
     </a>
     <a href="admin_hotels.html" class="primary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; background: #0072bc; color: #ffffff;">
-      🏨 Hotels &amp; Resorts Control ➔
+      Hotels &amp; Resorts Control ➔
     </a>
     <a href="admin_bookings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #cbd5e1;">
-      📋 Live Bookings ➔
+      Live Bookings ➔
     </a>
     <a href="admin_users.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #8b5cf6; border-color: #ddd6fe;">
       👥 User Roles ➔
@@ -166,7 +166,7 @@
         <div>
           <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; font-weight: 800; padding: 0.3rem 0.8rem; font-size: 0.75rem;">ENTERPRISE GDS &amp; REST API ENGINE</span>
           <h2 style="font-size: 1.45rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0;">
-            🌐 Third-Party Hotel API Integration &amp; Custom Markup Profit Engine
+            Third-Party Hotel API Integration &amp; Custom Markup Profit Engine
           </h2>
           <p style="font-size: 0.88rem; color: #cbd5e1; margin: 0.2rem 0 0;">
             Connect external hotel APIs (Booking.com, Agoda, HotelBeds, Expedia, REST APIs) and configure live markup profit margins on top of base rates.
@@ -183,7 +183,7 @@
         <div>
           <label style="font-size: 0.82rem; font-weight: 800; color: #00f2fe; display: block; margin-bottom: 0.35rem;">1. Hotel Data Source Mode</label>
           <select id="cfgSourceMode" style="width: 100%; padding: 0.7rem; border-radius: 8px; font-weight: 800; background: #0f172a; color: #ffffff; border: 1.5px solid #00f2fe; outline: none;">
-            <option value="HYBRID">🌐 HYBRID (Native Owner Hotels + Live API Feeds)</option>
+            <option value="HYBRID">HYBRID (Native Owner Hotels + Live API Feeds)</option>
             <option value="NATIVE">🏠 NATIVE ONLY (Direct Owner Contracts Only)</option>
             <option value="API">🔌 EXTERNAL API ONLY (Booking.com / Agoda Feed Only)</option>
           </select>
@@ -193,10 +193,10 @@
         <div>
           <label style="font-size: 0.82rem; font-weight: 800; color: #00f2fe; display: block; margin-bottom: 0.35rem;">2. API Provider Integration</label>
           <select id="cfgApiProvider" style="width: 100%; padding: 0.7rem; border-radius: 8px; font-weight: 800; background: #0f172a; color: #ffffff; border: 1.5px solid #00f2fe; outline: none;">
-            <option value="BOOKING_COM">🏨 Booking.com B2B Partner API</option>
-            <option value="AGODA">🌴 Agoda Hotel Beds API</option>
+            <option value="BOOKING_COM">Booking.com B2B Partner API</option>
+            <option value="AGODA">Agoda Hotel Beds API</option>
             <option value="HOTELBEDS">🛌 HotelBeds Wholesale GDS</option>
-            <option value="EXPEDIA">🌐 Expedia Partner Solutions</option>
+            <option value="EXPEDIA">Expedia Partner Solutions</option>
             <option value="CUSTOM_REST">🔌 Custom REST / JSON Hotel API</option>
           </select>
         </div>
@@ -206,7 +206,7 @@
           <label style="font-size: 0.82rem; font-weight: 800; color: #00f2fe; display: block; margin-bottom: 0.35rem;">3. Commission Markup Profit System</label>
           <select id="cfgMarkupType" style="width: 100%; padding: 0.7rem; border-radius: 8px; font-weight: 800; background: #0f172a; color: #ffffff; border: 1.5px solid #00f2fe; outline: none;">
             <option value="PERCENTAGE">📈 Percentage (%) Global Markup Margin</option>
-            <option value="FIXED">💵 Fixed Amount (৳) Per Room Night</option>
+            <option value="FIXED">Fixed Amount (৳) Per Room Night</option>
             <option value="STAR_TIER">⭐ Dynamic Star Rating Tiered Markup</option>
           </select>
         </div>
@@ -319,7 +319,7 @@
             <select id="hotelFormStar" style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 800; width: 100%;">
               <option value="5">💎 5-Star Luxury Resort</option>
               <option value="4">⭐ 4-Star Premium Hotel</option>
-              <option value="3">🏨 3-Star Deluxe Hotel</option>
+              <option value="3">3-Star Deluxe Hotel</option>
               <option value="2">🏡 2-Star Budget Hotel</option>
             </select>
           </div>
@@ -345,12 +345,12 @@
               <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; display: block; margin-bottom: 0.2rem;">2. OR Pick High-Res Resort Preset Photo:</span>
               <select id="hotelFormPresetSelect" onchange="handleHotelPresetSelect(this.value)" style="padding: 0.6rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-weight: 700; font-size: 0.82rem; width: 100%; background: #ffffff;">
                 <option value="">-- Choose Preset Resort Photo --</option>
-                <option value="assets/coxsbazar_resort.jpg">🏖️ Cox's Bazar Ocean View Resort</option>
+                <option value="assets/coxsbazar_resort.jpg">️ Cox's Bazar Ocean View Resort</option>
                 <option value="assets/dubai_hotel_1785235546938.jpg">🏙️ Dubai Jumeirah Luxury Hotel</option>
-                <option value="assets/maldives_villa_1785235578174.jpg">🏝️ Maldives Overwater Villa</option>
-                <option value="assets/bali_temple_1785235630444.jpg">🌴 Bali Tropical Jungle Resort</option>
+                <option value="assets/maldives_villa_1785235578174.jpg">️ Maldives Overwater Villa</option>
+                <option value="assets/bali_temple_1785235630444.jpg">Bali Tropical Jungle Resort</option>
                 <option value="assets/dest_tokyo_1785151883119.jpg">🏢 Premium City Hotel Room</option>
-                <option value="assets/dest_manali_1785151868969.jpg">🏔️ Mountain Escape Resort</option>
+                <option value="assets/dest_manali_1785151868969.jpg">️ Mountain Escape Resort</option>
               </select>
             </div>
           </div>

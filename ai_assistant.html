@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -224,32 +224,32 @@
           📦 Browse 7 Luxury Tour Packages
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('bKash এবং পেমেন্ট প্রসেস কেমন?')">
-          💳 bKash / Card Payment Guide
+          bKash / Card Payment Guide
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Sylhet Tea Garden tour package details')">
           ☕ Sylhet Tea Garden &amp; Ratargul Tour
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Bhutan Tigers Nest package itinerary')">
-          🇧🇹 Bhutan Cultural Tour &amp; Hike
+          Bhutan Cultural Tour &amp; Hike
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Dubai Desert Safari price and features')">
-          🇦🇪 Dubai Desert Safari &amp; Burj Khalifa
+          Dubai Desert Safari &amp; Burj Khalifa
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('Maldives Overwater Resort Honeymoon')">
-          🇲🇻 Maldives Overwater Bungalow Villa
+          Maldives Overwater Bungalow Villa
         </button>
         <button type="button" class="chip-btn" onclick="sendPageQuickQuery('France USA Japan Visa processing fees')">
-          🛂 Visa Processing &amp; Flight Tickets
+          Visa Processing &amp; Flight Tickets
         </button>
         <button type="button" class="chip-btn" style="border-color: #ef4444; color: #dc2626; background: rgba(239,68,68,0.06); font-weight: 900;" onclick="sendPageQuickQuery('লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই')">
-          💬 Speak with Live Owner Support
+          Speak with Live Owner Support
         </button>
       </div>
 
       <!-- 24/7 HELPLINE BOX -->
       <div style="background: rgba(0, 114, 188, 0.08); border: 2px solid rgba(0, 114, 188, 0.3); padding: 1.2rem; border-radius: 16px; margin-top: auto;">
         <div style="font-size: 0.88rem; font-weight: 900; color: #0072bc; margin-bottom: 0.3rem;">
-          📞 24/7 Hotline Support:
+          24/7 Hotline Support:
         </div>
         <div style="font-size: 1.2rem; font-weight: 900; color: #0f172a; margin-bottom: 0.3rem;">
           <a href="tel:+8801977477172" style="color: #0072bc; text-decoration: none; text-shadow: 0 0 10px rgba(0,242,254,0.3);">+880 1977-477172</a>
@@ -271,7 +271,7 @@
           </div>
           <div>
             <h2>Mount2ocean AI Smart Travel Assistant</h2>
-            <span style="font-size: 0.85rem; color: #00f2fe !important; font-weight: 800; text-shadow: 0 0 8px rgba(0,242,254,0.8);">⚡ 24/7 Online • Real-Time AI Travel Advisor</span>
+            <span style="font-size: 0.85rem; color: #00f2fe !important; font-weight: 800; text-shadow: 0 0 8px rgba(0,242,254,0.8);">24/7 Online • Real-Time AI Travel Advisor</span>
           </div>
         </div>
 
@@ -338,7 +338,7 @@
             : `align-self: flex-start; background: #ffffff !important; color: #0f172a !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 20px 4px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; border: 2px solid #00a651 !important; box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`);
 
         const prefix = isAdmin 
-          ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">👑 LIVE OWNER SUPPORT TEAM:</strong>' 
+          ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">LIVE OWNER SUPPORT TEAM:</strong>' 
           : (isCustomer ? '' : '<strong style="display:block; font-size:0.85rem; color:#00a651 !important; margin-bottom:0.4rem; font-weight:900;">🤖 MOUNT2OCEAN AI ASSISTANT:</strong>');
 
         div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.85; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
@@ -377,7 +377,7 @@
           let currentMsgs = getStoredChatMsgs();
           currentMsgs.push({
             sender: 'bot',
-            text: `🤖 আপনার প্রশ্নটি পেয়েছি! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ২৬টি দেশের ভিসা প্রসেসিং সার্ভিস বিদ্যমান।\n\n📞 হটলাইন: +880 1977-477172`,
+            text: `🤖 আপনার প্রশ্নটি পেয়েছি! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ২৬টি দেশের ভিসা প্রসেসিং সার্ভিস বিদ্যমান।\n\nহটলাইন: +880 1977-477172`,
             time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
           });
           saveStoredChatMsgs(currentMsgs);
@@ -409,7 +409,7 @@
     });
   </script>
 
-  <!-- 🌐 SINGLE CONSTANT MAIN FOOTER -->
+  <!-- SINGLE CONSTANT MAIN FOOTER -->
   <footer class="cust-footer" style="background: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <div class="footer-col brand-col">
@@ -421,7 +421,7 @@
         </p>
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span style="color: #e11d48; font-size: 1.1rem;"></span>
             <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
@@ -435,15 +435,15 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem;">
           <li><a href="customer_portal.html" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">🏠 Customer Portal Home</a></li>
           <li><a href="tour_packages.html" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">📦 Tour Packages Catalog</a></li>
-          <li><a href="contact_us.html" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">📞 Contact &amp; Helpline</a></li>
+          <li><a href="contact_us.html" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">Contact &amp; Helpline</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4 style="color: #ffffff !important; font-size: 1.1rem; font-weight: 900; margin-bottom: 1.2rem; border-bottom: 2px solid #00a651; padding-bottom: 0.4rem; display: inline-block;">Our Destinations</h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem;">
-          <li><a href="package_detail.html?id=pkg-bhutan" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">🇧🇹 Bhutan Cultural Hike</a></li>
-          <li><a href="package_detail.html?id=pkg-sylhet-3d2n" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">🍵 Sylhet Tea Garden</a></li>
-          <li><a href="package_detail.html?id=pkg-dubai-5d4n" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">🇦🇪 Dubai Desert Safari</a></li>
+          <li><a href="package_detail.html?id=pkg-bhutan" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">Bhutan Cultural Hike</a></li>
+          <li><a href="package_detail.html?id=pkg-sylhet-3d2n" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">Sylhet Tea Garden</a></li>
+          <li><a href="package_detail.html?id=pkg-dubai-5d4n" style="color: #cbd5e1; text-decoration: none; font-weight: 700;">Dubai Desert Safari</a></li>
         </ul>
       </div>
       <div class="footer-col">

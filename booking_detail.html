@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -155,7 +155,7 @@
     <div class="header-actions">
       <!-- Currency Selector -->
       <div class="currency-selector">
-        <span class="currency-icon">💵</span>
+        <span class="currency-icon"></span>
         <select id="custCurrency">
           <option value="BDT" selected>BDT (৳)</option>
           <option value="USD">USD ($)</option>
@@ -181,7 +181,7 @@
           🖨️ Print Ticket Voucher
         </button>
         <a href="admin_dashboard.html" target="_blank" class="secondary-btn" style="text-decoration: none; font-weight: 800; border-color: #00a651; color: #00a651;">
-          👑 Edit in Owner Panel ↗
+          Edit in Owner Panel ↗
         </a>
       </div>
     </div>
@@ -219,22 +219,22 @@
 
         <div class="status-tracker-stepper">
           <div class="step-item active">
-            <div class="step-circle">📝</div>
+            <div class="step-circle"></div>
             <div class="step-title">Submitted</div>
             <div class="step-desc">Booking Requested</div>
           </div>
           <div class="step-item active">
-            <div class="step-circle">🔍</div>
+            <div class="step-circle"></div>
             <div class="step-title">Identity Audit</div>
             <div class="step-desc">Passport/NID Verified</div>
           </div>
           <div class="step-item pending" id="stepAdminApproval">
-            <div class="step-circle">👑</div>
+            <div class="step-circle"></div>
             <div class="step-title" id="stepAdminTitle">Admin Review</div>
             <div class="step-desc" id="stepAdminDesc">Owner Action</div>
           </div>
           <div class="step-item" id="stepVoucherIssued">
-            <div class="step-circle">🎟️</div>
+            <div class="step-circle">️</div>
             <div class="step-title">Voucher Ready</div>
             <div class="step-desc">Ticket Issued</div>
           </div>
@@ -245,7 +245,7 @@
       <div style="background: rgba(0,242,254,0.06); border: 2px dashed #00f2fe; padding: 1.5rem; margin: 1.5rem 2rem 0; border-radius: 16px; text-align: center;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
           <div>
-            <span class="badge-tag" style="background: #00f2fe; color: #0f172a; font-weight: 900; font-size: 0.78rem;">🎟️ DIGITAL BOARDING &amp; CHECK-IN GATE PASS</span>
+            <span class="badge-tag" style="background: #00f2fe; color: #0f172a; font-weight: 900; font-size: 0.78rem;">️ DIGITAL BOARDING &amp; CHECK-IN GATE PASS</span>
             <h4 style="margin: 0.3rem 0 0; font-size: 1.1rem; font-weight: 900; color: #0f172a;">Official Hotel Reception &amp; Airport QR Pass</h4>
           </div>
           <span style="font-size: 0.8rem; color: #64748b; font-weight: 700;">Scan at Check-in Desk</span>
@@ -292,14 +292,14 @@
             </div>
             <div class="file-info-row">
               <span class="file-info-label">Verified Identity:</span>
-              <span class="file-info-value" id="dtlCustIdentity">🛂 Passport: A0928194 (Exp: 2030-10-15)</span>
+              <span class="file-info-value" id="dtlCustIdentity">Passport: A0928194 (Exp: 2030-10-15)</span>
             </div>
           </div>
 
           <!-- Section B: Travel & Itinerary File -->
           <div class="file-section-box">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #00a651; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              🌴 Tour Package &amp; Itinerary File (ভ্রমণের তথ্য)
+              Tour Package &amp; Itinerary File (ভ্রমণের তথ্য)
             </h3>
             <div class="file-info-row">
               <span class="file-info-label">Package Name:</span>
@@ -334,7 +334,7 @@
         <div>
           <div class="file-section-box" style="background: #ffffff; border-width: 2px;">
             <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem;">
-              💳 Billing &amp; Payment Summary
+              Billing &amp; Payment Summary
             </h3>
             <div class="file-info-row">
               <span class="file-info-label">Payment Method:</span>
@@ -355,7 +355,7 @@
             <h4 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.4rem; color: #ffffff !important;">Need File Assistance?</h4>
             <p style="font-size: 0.85rem; color: #e2e8f0 !important; margin-bottom: 1rem;">Call our 24/7 hotline with your File Voucher ID.</p>
             <a href="tel:+8801977477172" style="background: #ffffff; color: #0072bc; padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 900; text-decoration: none; display: inline-block;">
-              📞 +880 1977-477172
+              +880 1977-477172
             </a>
           </div>
         </div>
@@ -405,7 +405,7 @@
       document.getElementById('dtlCustName').textContent = bk.customerName || 'Sharmin Chowdhury';
       document.getElementById('dtlCustPhone').textContent = bk.phone || '+880 1977-477172';
       document.getElementById('dtlCustEmail').textContent = bk.email || 'customer@mount2ocean.com';
-      document.getElementById('dtlCustIdentity').textContent = bk.passportNo ? `🛂 Passport: ${bk.passportNo} (Exp: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
+      document.getElementById('dtlCustIdentity').textContent = bk.passportNo ? `Passport: ${bk.passportNo} (Exp: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
 
       document.getElementById('dtlTourName').textContent = bk.tourTitle || 'Tour Package File';
       document.getElementById('dtlTravelDate').textContent = `📅 ${bk.travelDate || '2026-08-15'}`;
@@ -464,7 +464,7 @@
       }
     }
   </script>
-  <!-- 🌐 REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
+  <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <!-- Col 1: Brand & Official Contact Info -->
@@ -478,7 +478,7 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span style="color: #e11d48; font-size: 1.1rem;"></span>
             <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
@@ -486,7 +486,7 @@
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
-            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">📍</span>
+            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;"></span>
             <span>Location: <strong style="color: #ffffff !important; font-weight: 900;">Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217</strong></span>
           </div>
         </div>

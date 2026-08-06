@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -261,7 +261,7 @@
 
   <!-- TOP ANNOUNCEMENT BAR -->
   <div style="background: linear-gradient(90deg, #0072bc 0%, #00a651 100%); color: #ffffff; text-align: center; padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 800;">
-    <span>🏨 HOTELS &amp; RESORTS DEAL: Up to 25% Instant Discount on 5-Star Ocean Resorts &amp; City Luxury Hotels!</span>
+    <span>HOTELS &amp; RESORTS DEAL: Up to 25% Instant Discount on 5-Star Ocean Resorts &amp; City Luxury Hotels!</span>
   </div>
 
   <!-- MAIN CUSTOMER HEADER BAR -->
@@ -316,19 +316,19 @@
       <button type="button" class="star-pill active" onclick="filterHotelsByStar('ALL', this)">🌟 All Hotels (সকল)</button>
       <button type="button" class="star-pill" onclick="filterHotelsByStar(5, this)">💎 5-Star Luxury (৫-স্টার)</button>
       <button type="button" class="star-pill" onclick="filterHotelsByStar(4, this)">⭐ 4-Star Premium (৪-স্টার)</button>
-      <button type="button" class="star-pill" onclick="filterHotelsByStar(3, this)">🏨 3-Star Deluxe (৩-স্টার)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(3, this)">3-Star Deluxe (৩-স্টার)</button>
       <button type="button" class="star-pill" onclick="filterHotelsByStar(2, this)">🏡 2-Star Budget (বাজেট)</button>
     </div>
 
     <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; flex: 1; justify-content: flex-end;">
       <select id="hotelCitySelect" onchange="applyHotelFilters()" style="padding: 0.75rem 1rem; border: 2px solid #cbd5e1; border-radius: 12px; font-weight: 800; font-size: 0.9rem; color: #0f172a; outline: none; cursor: pointer;">
         <option value="ALL">🌆 All Locations (সকল গন্তব্য)</option>
-        <option value="Cox's Bazar">🏖️ Cox's Bazar</option>
+        <option value="Cox's Bazar">️ Cox's Bazar</option>
         <option value="Dhaka">🏙️ Dhaka</option>
-        <option value="Sylhet">🍵 Sylhet</option>
+        <option value="Sylhet">Sylhet</option>
         <option value="Bali">🌺 Bali</option>
-        <option value="Dubai">🇦🇪 Dubai</option>
-        <option value="Maldives">🇲🇻 Maldives</option>
+        <option value="Dubai">Dubai</option>
+        <option value="Maldives">Maldives</option>
       </select>
 
       <input type="text" id="hotelSearchBox" placeholder="Search hotel name, city or room..." oninput="applyHotelFilters()" class="hotel-search-input">
@@ -557,7 +557,7 @@
       if (hotels.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 20px; border: 2px dashed #cbd5e1;">
-            <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🏨</span>
+            <span style="font-size: 3rem; display: block; margin-bottom: 1rem;"></span>
             <h3 style="font-size: 1.3rem; font-weight: 800; color: #0f172a;">No Matching Hotels or Resorts Found</h3>
             <p style="color: #64748b;">Try selecting "All Cities" or "All Hotels" filter above.</p>
           </div>
@@ -593,7 +593,7 @@
             </div>
           </div>
           <div class="hotel-body">
-            <span class="hotel-location-tag">📍 ${h.city || 'BANGLADESH'}</span>
+            <span class="hotel-location-tag">${h.city || 'BANGLADESH'}</span>
             <h3 class="hotel-name">${h.name}</h3>
             <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0 0 0.8rem;">${h.description || ''}</p>
             
@@ -607,7 +607,7 @@
             </div>
 
             <button type="button" class="primary-btn" onclick="openHotelBookingModal('${h.id}')" style="width: 100%; padding: 0.85rem; font-weight: 900; font-size: 0.95rem; background: linear-gradient(135deg, #0072bc 0%, #00a651 100%); border-radius: 12px; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,114,188,0.3);">
-              🏨 View Rooms &amp; Book Now ➔
+              View Rooms &amp; Book Now ➔
             </button>
           </div>
         `;
@@ -629,7 +629,7 @@
       document.getElementById('modalHotelName').textContent = h.name;
       document.getElementById('modalHotelImg').src = h.image || 'assets/coxsbazar_resort.jpg';
       document.getElementById('modalHotelStar').textContent = '⭐'.repeat(h.starRating || 5) + ' ' + (h.starLabel || '');
-      document.getElementById('modalHotelLocation').textContent = '📍 ' + h.city;
+      document.getElementById('modalHotelLocation').textContent = '' + h.city;
       document.getElementById('modalHotelAddress').textContent = h.address || h.city;
 
       // Populate Rooms Radio Buttons
