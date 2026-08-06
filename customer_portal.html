@@ -349,6 +349,85 @@
     </div>
   </section>
 
+  <!-- ⚡ FLASH DEAL COUNTDOWN TIMER & LIVE SOCIAL PROOF BAR -->
+  <section style="max-width: 1100px; margin: 0 auto 2.5rem; padding: 0 1rem;">
+    <div style="background: linear-gradient(135deg, #e11d48 0%, #0072bc 100%); border-radius: 18px; padding: 1.2rem 1.8rem; color: white; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 10px 30px rgba(225,29,72,0.3);">
+      <div style="display: flex; align-items: center; gap: 0.8rem;">
+        <span style="font-size: 2rem;">⚡</span>
+        <div>
+          <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 1px; background: rgba(255,255,255,0.2); padding: 0.2rem 0.6rem; border-radius: 6px;">LIMITED TIME FLASH DEAL • 25% OFF</span>
+          <h4 style="margin: 0.2rem 0 0; font-size: 1.1rem; font-weight: 900; color: white !important;">Bhutan &amp; Bali Resort Packages Offer Expiring Soon!</h4>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.8rem;">
+        <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 0.8rem; border-radius: 10px; text-align: center;">
+          <strong id="flashHours" style="font-size: 1.3rem; font-weight: 900; color: #00f2fe;">04</strong>
+          <span style="font-size: 0.68rem; display: block; color: #cbd5e1;">HOURS</span>
+        </div>
+        <span style="font-size: 1.2rem; font-weight: 900;">:</span>
+        <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 0.8rem; border-radius: 10px; text-align: center;">
+          <strong id="flashMins" style="font-size: 1.3rem; font-weight: 900; color: #00f2fe;">32</strong>
+          <span style="font-size: 0.68rem; display: block; color: #cbd5e1;">MINS</span>
+        </div>
+        <span style="font-size: 1.2rem; font-weight: 900;">:</span>
+        <div style="background: rgba(0,0,0,0.3); padding: 0.5rem 0.8rem; border-radius: 10px; text-align: center;">
+          <strong id="flashSecs" style="font-size: 1.3rem; font-weight: 900; color: #00f2fe;">45</strong>
+          <span style="font-size: 0.68rem; display: block; color: #cbd5e1;">SECS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🧳 CUSTOM ITINERARY BUILDER & TRIP PLANNER CARD -->
+  <section style="max-width: 1100px; margin: 0 auto 2.5rem; padding: 0 1rem;">
+    <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,166,81,0.12);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <span class="badge-tag" style="background: rgba(0,166,81,0.15); color: #00a651; font-weight: 800;">🧳 BUILD YOUR CUSTOM TRIP</span>
+          <h3 style="font-size: 1.4rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">Custom Itinerary &amp; Budget Planner (নিজের মতো করে ট্যুর প্ল্যান তৈরি করুন)</h3>
+          <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0;">নিজের পছন্দমতো হোটেল ক্যাটাগরি, দিন সংখ্যা ও অ্যাক্টিভিটি সিলেক্ট করে ইনস্ট্যান্ট কাস্টম প্যাকেজ তৈরি করুন।</p>
+        </div>
+      </div>
+
+      <form onsubmit="submitCustomTripPlannerHandler(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
+        <div>
+          <label style="font-size: 0.82rem; font-weight: 800; color: #475569; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
+          <select id="customTripDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="Cox's Bazar">🏖️ Cox's Bazar</option>
+            <option value="Dubai">🏙️ Dubai</option>
+            <option value="Maldives">🏝️ Maldives</option>
+            <option value="Bali">🌺 Bali</option>
+            <option value="Bhutan">🇧🇹 Bhutan</option>
+            <option value="Sylhet">🍵 Sylhet</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.82rem; font-weight: 800; color: #475569; display: block; margin-bottom: 0.35rem;">Hotel Category (হোটেল মান) *</label>
+          <select id="customTripHotelTier" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="5-Star Ultra Luxury">⭐ 5-Star Luxury Resort</option>
+            <option value="4-Star Premium Hotel">⭐ 4-Star Premium Hotel</option>
+            <option value="3-Star Deluxe Hotel">⭐ 3-Star Standard Deluxe</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.82rem; font-weight: 800; color: #475569; display: block; margin-bottom: 0.35rem;">Travel Duration (দিন সংখ্যা) *</label>
+          <select id="customTripDays" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
+            <option value="4 Days / 3 Nights">4 Days / 3 Nights</option>
+            <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
+          </select>
+        </div>
+
+        <button type="submit" class="primary-btn" style="padding: 0.85rem 1.4rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; border: none; color: white; cursor: pointer; height: 48px;">
+          🧳 Submit Custom Plan ➔
+        </button>
+      </form>
+    </div>
+  </section>
+
   <!-- MAIN CONTENT CONTAINER -->
   <main class="customer-main-content">
 
@@ -908,5 +987,41 @@
 
   <!-- JavaScript -->
   <script src="app.js?v=v22_enterprise_hotel_api_and_markup"></script>
+  <script>
+    window.submitCustomTripPlannerHandler = function(e) {
+      e.preventDefault();
+      const dest = document.getElementById('customTripDest').value;
+      const hotel = document.getElementById('customTripHotelTier').value;
+      const days = document.getElementById('customTripDays').value;
+
+      if (typeof window.logMissingPackageSearch === 'function') {
+        window.logMissingPackageSearch(`CUSTOM TRIP: ${dest} (${hotel}, ${days})`);
+      }
+
+      if (typeof showToast === 'function') {
+        showToast(`🧳 Custom Trip Plan for ${dest} (${days}) submitted! Our manager will call you with custom rates.`, 'success');
+      } else {
+        alert(`🧳 Custom Trip Plan for ${dest} Submitted!`);
+      }
+    };
+
+    // Flash Deal Countdown Timer
+    (function() {
+      let secondsLeft = 16365;
+      setInterval(() => {
+        if (secondsLeft <= 0) return;
+        secondsLeft--;
+        const h = Math.floor(secondsLeft / 3600);
+        const m = Math.floor((secondsLeft % 3600) / 60);
+        const s = secondsLeft % 60;
+        const hEl = document.getElementById('flashHours');
+        const mEl = document.getElementById('flashMins');
+        const sEl = document.getElementById('flashSecs');
+        if (hEl) hEl.textContent = h < 10 ? '0' + h : h;
+        if (mEl) mEl.textContent = m < 10 ? '0' + m : m;
+        if (sEl) sEl.textContent = s < 10 ? '0' + s : s;
+      }, 1000);
+    })();
+  </script>
 </body>
 </html>
