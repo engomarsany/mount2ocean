@@ -1,7 +1,86 @@
-/**
- * Mount2ocean Multi-Role Authentication Portal JavaScript Logic
- * Handling tab switching, role switching, validation, modal flows, and state persistence.
- */
+// ==========================================
+// GOOGLE MAPS PLATFORM INTEGRATION ENGINE
+// ==========================================
+window.GOOGLE_MAPS_API_KEY = "AIzaSyDsXE43skvDaWWKK9cz839ALBCBcroBA54";
+
+window.getGoogleMapsApiKey = function() {
+  return localStorage.getItem('m2o_gmaps_key') || window.GOOGLE_MAPS_API_KEY;
+};
+
+window.loadGoogleMapsScript = function(callback) {
+  const key = window.getGoogleMapsApiKey();
+  if (!key) return;
+
+  if (window.google && window.google.maps) {
+    if (typeof callback === 'function') callback();
+    return;
+  }
+
+  const existingScript = document.getElementById('gmaps-sdk-script');
+  if (existingScript) {
+    existingScript.addEventListener('load', () => {
+      if (typeof callback === 'function') callback();
+    });
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.id = 'gmaps-sdk-script';
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places,marker&callback=handleGoogleMapsLoadedAsync&utm_campaign=gmp_git_agentskills_v1`;
+  script.async = true;
+  script.defer = true;
+
+  window.handleGoogleMapsLoadedAsync = function() {
+    if (typeof callback === 'function') callback();
+    window.dispatchEvent(new CustomEvent('m2o_gmaps_loaded'));
+  };
+
+  document.head.appendChild(script);
+};
+
+// Geocoding Coordinates for Key Destinations
+window.M2O_DESTINATION_COORDS = {
+  "coxsbazar": { lat: 21.4272, lng: 91.9702, zoom: 13, title: "Cox's Bazar 5-Star Beach Resort Zone" },
+  "dubai": { lat: 25.2048, lng: 55.2708, zoom: 12, title: "Dubai Downtown & Jumeirah Beach" },
+  "maldives": { lat: 4.1755, lng: 73.5093, zoom: 12, title: "Maldives Male & Overwater Resort Atoll" },
+  "bali": { lat: -8.4095, lng: 115.1889, zoom: 11, title: "Bali Ubud & Uluwatu Resort Coast" },
+  "sylhet": { lat: 24.8949, lng: 91.8687, zoom: 12, title: "Sylhet Tea Gardens & Ratargul Swamp Forest" },
+  "bhutan": { lat: 27.4728, lng: 89.6393, zoom: 11, title: "Bhutan Thimphu & Tiger's Nest Hike" },
+  "dhaka": { lat: 23.7341, lng: 90.4176, zoom: 14, title: "Mount2ocean Corporate Office, Shantinagar, Dhaka" }
+};
+
+window.renderGoogleMapInContainer = function(containerId, locationKey, customTitle) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const loc = window.M2O_DESTINATION_COORDS[(locationKey || '').toLowerCase()] || window.M2O_DESTINATION_COORDS["coxsbazar"];
+
+  window.loadGoogleMapsScript(() => {
+    if (window.google && window.google.maps) {
+      try {
+        const mapOptions = {
+          center: { lat: loc.lat, lng: loc.lng },
+          zoom: loc.zoom || 12,
+          mapTypeId: 'roadmap'
+        };
+
+        const map = new google.maps.Map(container, mapOptions);
+
+        if (google.maps.Marker) {
+          new google.maps.Marker({
+            position: { lat: loc.lat, lng: loc.lng },
+            map: map,
+            title: customTitle || loc.title,
+            animation: google.maps.Animation.DROP
+          });
+        }
+      } catch(e) {
+        console.warn('Google Maps fallback iframe used:', e);
+        container.innerHTML = `<iframe width="100%" height="100%" style="border:0; border-radius:16px;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=${loc.zoom || 12}&output=embed"></iframe>`;
+      }
+    }
+  });
+};
 
 // ==========================================
 // FAIL-SAFE THEME TOGGLE (DARK / LIGHT MODE)

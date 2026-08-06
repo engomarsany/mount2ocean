@@ -145,13 +145,19 @@
       </div>
 
       <!-- Quick WhatsApp Button -->
-      <div style="background: rgba(34, 197, 94, 0.12); border: 1.5px solid rgba(34, 197, 94, 0.35); padding: 1.2rem; border-radius: 14px; text-align: center; margin-top: 2rem;">
+      <div style="background: rgba(34, 197, 94, 0.12); border: 1.5px solid rgba(34, 197, 94, 0.35); padding: 1.2rem; border-radius: 14px; text-align: center; margin-top: 1.5rem;">
         <span style="font-size: 0.9rem; font-weight: 800; color: #00a651; display: block; margin-bottom: 0.4rem;">
           Instant WhatsApp Travel Chat
         </span>
         <a href="https://wa.me/8801977477172" target="_blank" class="primary-btn" style="text-decoration: none; padding: 0.65rem 1.4rem; font-size: 0.9rem; background: #22c55e; display: inline-block;">
           Open WhatsApp Chat (+880 1977-477172)
         </a>
+      </div>
+
+      <!-- INTERACTIVE GOOGLE MAPS HEADQUARTERS PIN -->
+      <div style="margin-top: 1.8rem;">
+        <span style="font-size: 0.85rem; font-weight: 800; color: #0072bc; display: block; margin-bottom: 0.5rem;">📍 Mount2ocean Corporate Office Map Location:</span>
+        <div id="contactGoogleMapContainer" style="height: 280px; width: 100%; border-radius: 16px; overflow: hidden; border: 2px solid #0072bc; box-shadow: 0 8px 25px rgba(0,114,188,0.15);"></div>
       </div>
     </div>
 
@@ -356,6 +362,12 @@
 
   <script src="app.js?v=v22_enterprise_hotel_api_and_markup"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.renderGoogleMapInContainer === 'function') {
+        window.renderGoogleMapInContainer('contactGoogleMapContainer', 'dhaka', 'Mount2ocean Corporate Office, Shantinagar, Dhaka');
+      }
+    });
+
     function handleContactSubmit(event) {
       event.preventDefault();
       const name = document.getElementById('contactName').value;
