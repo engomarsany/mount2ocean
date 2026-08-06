@@ -77,9 +77,48 @@ window.renderGoogleMapInContainer = function(containerId, locationKey, customTit
       } catch(e) {
         console.warn('Google Maps fallback iframe used:', e);
         container.innerHTML = `<iframe width="100%" height="100%" style="border:0; border-radius:16px;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=${loc.zoom || 12}&output=embed"></iframe>`;
-      }
-    }
+// ==========================================
+// MULTI-CURRENCY CONVERTER ENGINE (BDT, USD, AED, INR)
+// ==========================================
+window.M2O_CURRENCY_RATES = {
+  "BDT": { symbol: "৳", rate: 1.0 },
+  "USD": { symbol: "$", rate: 0.0083 },
+  "AED": { symbol: "د.إ ", rate: 0.031 },
+  "INR": { symbol: "₹", rate: 0.70 }
+};
+
+window.getActiveCurrency = function() {
+  return localStorage.getItem('m2o_active_currency') || 'BDT';
+};
+
+window.setActiveCurrency = function(currCode) {
+  if (!window.M2O_CURRENCY_RATES[currCode]) currCode = 'BDT';
+  localStorage.setItem('m2o_active_currency', currCode);
+  window.applyGlobalCurrencyConversion();
+};
+
+window.formatCurrencyPrice = function(bdtPriceStr) {
+  if (!bdtPriceStr || typeof bdtPriceStr !== 'string') return bdtPriceStr;
+  const num = parseInt(bdtPriceStr.replace(/[^\d]/g, ''), 10);
+  if (isNaN(num)) return bdtPriceStr;
+
+  const currCode = window.getActiveCurrency();
+  const info = window.M2O_CURRENCY_RATES[currCode] || window.M2O_CURRENCY_RATES["BDT"];
+
+  const converted = Math.round(num * info.rate);
+  return `${info.symbol}${converted.toLocaleString('en-US')}`;
+};
+
+window.applyGlobalCurrencyConversion = function() {
+  const currCode = window.getActiveCurrency();
+  document.querySelectorAll('#globalCurrencySelect, #custCurrency, .currency-select').forEach(sel => {
+    sel.value = currCode;
+    sel.onchange = function() { window.setActiveCurrency(this.value); };
   });
+
+  if (typeof renderLiveCustomerTours === 'function') renderLiveCustomerTours();
+  if (typeof renderAllPackagesGrid === 'function') renderAllPackagesGrid();
+  if (typeof renderHotelsGrid === 'function') renderHotelsGrid();
 };
 
 // ==========================================
@@ -2048,7 +2087,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html';" style="cursor: pointer;">
           <img src="${pkg.image}" alt="${pkg.name}">
           <span class="tour-badge ${pkg.badge || 'bestseller'}" style="background: #00a651;">${pkg.badgeLabel || pkg.badge || 'Featured'}</span>
-          <span class="tour-price-pill">${pkg.price}</span>
+          <span class="tour-price-pill">${window.formatCurrencyPrice ? window.formatCurrencyPrice(pkg.price) : pkg.price}</span>
         </div>
         <div class="tour-card-body">
           <div class="tour-meta-row">
