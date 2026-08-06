@@ -3714,11 +3714,46 @@ function checkCustomerBookingNotifications() {
 
     // Deliver admin message to customer chat messages
     let msgs = getAiChatMessages();
-    msgs.push({ sender: 'admin', text: replyText, time: timeStr });
+    msgs.push({ sender: 'admin', text: `👑 Mount2ocean Support: ${replyText}`, time: timeStr });
     saveAiChatMessages(msgs);
 
     input.value = '';
     if (typeof showToast === 'function') showToast(`✅ Reply sent to customer (${ticket ? ticket.customerName : 'Live Customer'})!`, 'success');
+  };
+
+  window.ownerInitiateNewCustomerMessage = function(customerName, email, phone, messageText) {
+    if (!customerName || !messageText) return;
+    const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    const ticketId = 'TKT-' + Math.floor(10000 + Math.random() * 90000);
+
+    let tickets = getSupportTickets();
+    let existingTicket = tickets.find(t => t.customerName.toLowerCase() === customerName.toLowerCase() || (email && t.email === email));
+
+    if (existingTicket) {
+      existingTicket.messages.push({ sender: 'admin', text: messageText, time: timeStr });
+      existingTicket.status = 'PENDING_CUSTOMER';
+    } else {
+      tickets.push({
+        id: ticketId,
+        customerName: customerName,
+        email: email || 'customer@mount2ocean.com',
+        phone: phone || '01977477172',
+        status: 'PENDING_CUSTOMER',
+        messages: [
+          { sender: 'admin', text: messageText, time: timeStr }
+        ]
+      });
+    }
+
+    saveSupportTickets(tickets);
+
+    // Deliver admin message to customer live chat stream
+    let msgs = getAiChatMessages();
+    msgs.push({ sender: 'admin', text: `👑 Mount2ocean Support: ${messageText}`, time: timeStr });
+    saveAiChatMessages(msgs);
+
+    if (typeof showToast === 'function') showToast(`💬 Direct Message sent to ${customerName}!`, 'success');
+    if (typeof renderAdminLiveSupportConsole === 'function') renderAdminLiveSupportConsole();
   };
 
   // Auto-initialize floating AI widget on DOM ready
