@@ -295,22 +295,18 @@
       });
     });
 
-    const defaultPendingApprovals = [
-      { id: 101, role: 'GUIDE', name: 'Tanvir Hossain', email: 'tanvir.guide@gmail.com', credentialNo: 'NID-199201928374', date: '2026-07-28', status: 'PENDING' },
-      { id: 102, role: 'AGENT', name: 'SkyLine Travel & Tours', email: 'b2b@skylinetravel.com', credentialNo: 'IATA-88273641', date: '2026-07-27', status: 'APPROVED' },
-      { id: 103, role: 'GUIDE', name: 'Kamrul Islam', email: 'kamrul.guide@gmail.com', credentialNo: 'NID-198577263514', date: '2026-07-26', status: 'PENDING' }
-    ];
+    const defaultPendingApprovals = [];
 
     function getApprovalsList() {
       let saved = localStorage.getItem('m2o_pending_approvals');
-      if (!saved) {
-        localStorage.setItem('m2o_pending_approvals', JSON.stringify(defaultPendingApprovals));
-        return defaultPendingApprovals;
+      if (saved === null) {
+        localStorage.setItem('m2o_pending_approvals', JSON.stringify([]));
+        return [];
       }
       try {
-        return JSON.parse(saved) || defaultPendingApprovals;
+        return JSON.parse(saved) || [];
       } catch(e) {
-        return defaultPendingApprovals;
+        return [];
       }
     }
 
@@ -447,8 +443,8 @@
     }
 
     function resetApprovalsHandler() {
-      if (!confirm('Reset partner approvals list to defaults?')) return;
-      localStorage.setItem('m2o_pending_approvals', JSON.stringify(defaultPendingApprovals));
+      if (!confirm('Clear all partner applications from the directory?')) return;
+      localStorage.setItem('m2o_pending_approvals', JSON.stringify([]));
       renderMasterApprovalsDirectory();
     }
 

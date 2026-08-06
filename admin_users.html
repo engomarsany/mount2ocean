@@ -273,14 +273,14 @@
 
     function getUsersList() {
       let saved = localStorage.getItem('m2o_registered_users');
-      if (!saved) {
-        localStorage.setItem('m2o_registered_users', JSON.stringify(defaultRegisteredUsers));
-        return defaultRegisteredUsers;
+      if (saved === null) {
+        localStorage.setItem('m2o_registered_users', JSON.stringify([]));
+        return [];
       }
       try {
-        return JSON.parse(saved) || defaultRegisteredUsers;
+        return JSON.parse(saved) || [];
       } catch(e) {
-        return defaultRegisteredUsers;
+        return [];
       }
     }
 
