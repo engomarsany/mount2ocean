@@ -329,9 +329,38 @@
           </div>
         </div>
 
-        <div style="margin-bottom: 1rem;">
-          <label style="font-weight: 800; font-size: 0.82rem; color: #475569; display: block; margin-bottom: 0.35rem;">Cover Image URL</label>
-          <input type="text" id="hotelFormImage" placeholder="assets/coxsbazar_resort.jpg" style="padding: 0.75rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+        <!-- HOTEL COVER PHOTO UPLOAD & SELECTOR -->
+        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 1.2rem; border-radius: 14px; margin-bottom: 1rem;">
+          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; display: block; margin-bottom: 0.5rem;">
+            📸 Hotel Cover Photo (কম্পিউটার/মোবাইল ফাইল থেকে আপলোড করুন বা সিলেক্ট করুন)
+          </label>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem;">
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; display: block; margin-bottom: 0.2rem;">1. Select Photo from Computer / Phone:</span>
+              <input type="file" id="hotelFormFileInput" accept="image/*" onchange="handleHotelImageFileUpload(event)" style="padding: 0.5rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.8rem; width: 100%;">
+            </div>
+
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; display: block; margin-bottom: 0.2rem;">2. OR Pick High-Res Resort Preset Photo:</span>
+              <select id="hotelFormPresetSelect" onchange="handleHotelPresetSelect(this.value)" style="padding: 0.6rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-weight: 700; font-size: 0.82rem; width: 100%; background: #ffffff;">
+                <option value="">-- Choose Preset Resort Photo --</option>
+                <option value="assets/coxsbazar_resort.jpg">🏖️ Cox's Bazar Ocean View Resort</option>
+                <option value="assets/dubai_hotel_1785235546938.jpg">🏙️ Dubai Jumeirah Luxury Hotel</option>
+                <option value="assets/maldives_villa_1785235578174.jpg">🏝️ Maldives Overwater Villa</option>
+                <option value="assets/bali_temple_1785235630444.jpg">🌴 Bali Tropical Jungle Resort</option>
+                <option value="assets/dest_tokyo_1785151883119.jpg">🏢 Premium City Hotel Room</option>
+                <option value="assets/dest_manali_1785151868969.jpg">🏔️ Mountain Escape Resort</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <input type="text" id="hotelFormImage" placeholder="OR Paste Custom Image Web URL (e.g. https://images.unsplash.com/...)" oninput="updateHotelImagePreview(this.value)" style="padding: 0.7rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; width: 100%;">
+            <div style="width: 80px; height: 60px; border-radius: 8px; border: 1.5px solid #cbd5e1; overflow: hidden; background: #e2e8f0; flex-shrink: 0; display: flex; align-items: center; justify-content: center;" title="Live Photo Preview">
+              <img id="hotelImagePreviewThumb" src="assets/coxsbazar_resort.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
         </div>
 
         <div style="margin-bottom: 1rem;">
@@ -487,9 +516,35 @@
       });
     };
 
+    window.handleHotelImageFileUpload = function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        document.getElementById('hotelFormImage').value = dataUrl;
+        updateHotelImagePreview(dataUrl);
+        if (typeof showToast === 'function') showToast('Hotel photo uploaded successfully!', 'info');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.handleHotelPresetSelect = function(val) {
+      if (!val) return;
+      document.getElementById('hotelFormImage').value = val;
+      updateHotelImagePreview(val);
+    };
+
+    window.updateHotelImagePreview = function(url) {
+      const img = document.getElementById('hotelImagePreviewThumb');
+      if (img) img.src = url || 'assets/coxsbazar_resort.jpg';
+    };
+
     window.openAddHotelModal = function() {
       document.getElementById('adminHotelForm').reset();
       document.getElementById('hotelEditId').value = '';
+      updateHotelImagePreview('assets/coxsbazar_resort.jpg');
       document.getElementById('modalHotelFormTitle').textContent = '➕ Add New Hotel Property';
       document.getElementById('adminHotelModal').classList.remove('hidden');
     };
@@ -505,6 +560,7 @@
       document.getElementById('hotelFormStar').value = h.starRating;
       document.getElementById('hotelFormPrice').value = h.startingPrice;
       document.getElementById('hotelFormImage').value = h.image || '';
+      updateHotelImagePreview(h.image || 'assets/coxsbazar_resort.jpg');
       document.getElementById('hotelFormDesc').value = h.description || h.address || '';
 
       if (h.rooms && h.rooms.length > 0) {
