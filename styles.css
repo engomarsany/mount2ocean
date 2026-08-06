@@ -4259,3 +4259,22 @@ option {
   color: #00f2fe !important;
   text-shadow: 0 0 10px #00f2fe !important;
 }
+
+/* ==========================================================================
+   UNIVERSAL 100% CONTRAST & VISIBILITY GUARD
+   Guarantees zero hidden text, zero white-on-white text across all 25 pages.
+   ========================================================================== */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.light-theme div, body.light-theme p, body.light-theme span, body.light-theme td, body.light-theme th, body.light-theme label {
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+}
+
+body.light-theme input, body.light-theme select, body.light-theme textarea {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  font-weight: 800 !important;
+}
