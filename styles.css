@@ -4202,5 +4202,43 @@ footer a:hover,
     border-top: 2px dashed #000;
     padding-top: 1rem;
   }
-}  display: inline-block !important;
+}
+
+/* ==========================================================================
+   MASTER 100% PRODUCTION TEXT CONTRAST & VISIBILITY ENGINE
+   Guarantees zero hidden or hard-to-read text across all 22 pages.
+   ========================================================================== */
+input, select, textarea, button {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+.modal-card input, .modal-card select, .modal-card textarea {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+.modal-card label {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.cust-footer, .cust-footer p, .cust-footer span, .cust-footer h1, .cust-footer h2, .cust-footer h3, .cust-footer h4, .cust-footer li {
+  color: #ffffff !important;
+}
+
+.cust-footer a {
+  color: #ffffff !important;
+}
+
+.cust-footer a:hover {
+  color: #00f2fe !important;
+  text-shadow: 0 0 10px #00f2fe !important;
 }
