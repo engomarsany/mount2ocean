@@ -220,12 +220,12 @@
     </section>
 
     <!-- MASTER SEARCH & ACTION TOOLBAR -->
-    <div class="master-toolbar">
-      <div style="flex: 1 1 320px; display: flex; align-items: center; gap: 0.5rem; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.75rem 1rem;">
+    <div class="master-toolbar" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; background: #ffffff; padding: 1rem 1.4rem; border-radius: 16px; border: 1.5px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="flex: 1 1 300px; display: flex; align-items: center; gap: 0.5rem; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.75rem 1rem;">
         <input type="text" id="adminHotelSearchInput" placeholder="Search hotel by name, city or star rating..." oninput="renderAdminHotelsTable()" style="border: none; background: transparent; outline: none; font-weight: 700; font-size: 0.95rem; color: #0f172a; width: 100%;">
       </div>
 
-      <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+      <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center;">
         <select id="adminStarFilterSelect" onchange="renderAdminHotelsTable()" style="padding: 0.75rem 1rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-weight: 700; font-size: 0.9rem; background: #ffffff; outline: none;">
           <option value="ALL">All Star Ratings (সকল)</option>
           <option value="5">5-Star Luxury (৫-স্টার)</option>
@@ -233,6 +233,10 @@
           <option value="3">3-Star Deluxe (৩-স্টার)</option>
           <option value="2">2-Star Budget (২-স্টার)</option>
         </select>
+
+        <button type="button" onclick="openAddHotelModal()" class="primary-btn" style="padding: 0.75rem 1.4rem; font-weight: 900; font-size: 0.92rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.35);">
+          ➕ Add New Hotel / Resort
+        </button>
 
         <button type="button" onclick="resetAdminHotelsToDefault()" class="secondary-btn" style="padding: 0.72rem 1.1rem; font-weight: 800; font-size: 0.88rem; border-radius: 10px;">
           🔄 Reset Default Verified Hotels
@@ -242,7 +246,7 @@
 
     <!-- TABLE CARD -->
     <section style="background: #ffffff; border-radius: 20px; padding: 1.8rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
             Owner Master Hotels Directory (<span id="showingAdminHotelsCount" style="color: #00a651;">0</span> Hotels)
@@ -251,6 +255,10 @@
             Add, edit, or delete live hotel properties and room categories shown on the customer website.
           </p>
         </div>
+
+        <button type="button" onclick="openAddHotelModal()" class="primary-btn" style="padding: 0.75rem 1.4rem; font-weight: 900; font-size: 0.92rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.35);">
+          ➕ Add New Hotel / Resort Property
+        </button>
       </div>
 
       <div class="table-responsive-wrapper">
@@ -349,6 +357,11 @@
     </div>
   </div>
 
+  <!-- FLOATING QUICK ADD HOTEL BUTTON (FAB) -->
+  <button type="button" onclick="openAddHotelModal()" style="position: fixed; bottom: 30px; right: 30px; z-index: 999; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; border: none; padding: 1rem 1.6rem; border-radius: 999px; font-weight: 900; font-size: 1rem; box-shadow: 0 10px 25px rgba(0, 166, 81, 0.5); cursor: pointer; display: flex; align-items: center; gap: 0.6rem; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+    <span>➕ Add New Hotel / Resort</span>
+  </button>
+
   <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -358,6 +371,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadHotelApiConfigToAdmin();
       renderAdminHotelsTable();
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('action') === 'add') {
+        setTimeout(() => {
+          openAddHotelModal();
+        }, 200);
+      }
     });
 
     window.loadHotelApiConfigToAdmin = function() {
