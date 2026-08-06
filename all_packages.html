@@ -96,6 +96,23 @@
         Filter Packages ➔
       </button>
     </div>
+
+    <!-- BUDGET PRICE RANGE FILTER SLIDER & PRESET PILLS -->
+    <div style="max-width: 750px; margin: 1rem auto 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(8px); padding: 1rem 1.4rem; border-radius: 14px; border: 1.5px solid rgba(0,242,254,0.3); color: #ffffff;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.88rem; font-weight: 800; color: #00f2fe;">💰 Filter by Budget Range (বাজেট স্লাইডার):</span>
+        <strong id="priceRangeValueText" style="font-size: 0.95rem; font-weight: 900; color: #00f2fe; background: #060a12; padding: 0.2rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe;">Max: ৳3,00,000</strong>
+      </div>
+
+      <input type="range" id="catalogPriceSlider" min="10000" max="300000" step="5000" value="300000" oninput="updateCatalogPriceRange(this.value)" style="width: 100%; accent-color: #00f2fe; cursor: pointer; margin-bottom: 0.8rem;">
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+        <button type="button" onclick="setPriceFilterPreset(300000)" class="preset-price-btn active" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: #00f2fe; color: #090d16; font-weight: 800; font-size: 0.78rem; cursor: pointer;">🌐 All Budgets</button>
+        <button type="button" onclick="setPriceFilterPreset(20000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳20,000</button>
+        <button type="button" onclick="setPriceFilterPreset(50000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳50,000</button>
+        <button type="button" onclick="setPriceFilterPreset(150000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳1,50,000</button>
+      </div>
+    </div>
   </div>
 
   <!-- MAIN CATALOG CONTENT -->
@@ -439,10 +456,36 @@
       grid.appendChild(card);
     }
 
+    window.updateCatalogPriceRange = function(val) {
+      const textEl = document.getElementById('priceRangeValueText');
+      if (textEl) {
+        const num = parseInt(val, 10);
+        textEl.textContent = num >= 300000 ? 'Max: All Budgets' : `Max: ৳${num.toLocaleString()}`;
+      }
+      filterCatalogPackages();
+    };
+
+    window.setPriceFilterPreset = function(maxPrice) {
+      const slider = document.getElementById('catalogPriceSlider');
+      if (slider) {
+        slider.value = maxPrice;
+        updateCatalogPriceRange(maxPrice);
+      }
+      document.querySelectorAll('.preset-price-btn').forEach(btn => {
+        btn.style.background = 'rgba(0,242,254,0.1)';
+        btn.style.color = '#00f2fe';
+      });
+      if (window.event && window.event.target) {
+        window.event.target.style.background = '#00f2fe';
+        window.event.target.style.color = '#090d16';
+      }
+    };
+
     function filterCatalogPackages() {
       const rawSearch = (document.getElementById('catalogSearchInput').value || '').trim();
       const searchVal = rawSearch.toLowerCase();
       const catVal = (document.getElementById('catalogCategoryFilter').value || 'all').toLowerCase();
+      const maxPriceLimit = parseInt((document.getElementById('catalogPriceSlider') ? document.getElementById('catalogPriceSlider').value : 300000), 10) || 300000;
 
       let packages = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
       if (!packages || packages.length === 0) {
@@ -452,6 +495,10 @@
       const filtered = packages.filter(pkg => {
         const matchesCat = (catVal === 'all') || (pkg.category || '').toLowerCase() === catVal;
         if (!matchesCat) return false;
+
+        let rawPriceNum = parseInt((pkg.price || '').replace(/[^\d]/g, ''), 10) || 0;
+        if (maxPriceLimit < 300000 && rawPriceNum > maxPriceLimit) return false;
+
         if (!searchVal) return true;
 
         const haystack = `${pkg.name} ${pkg.category} ${pkg.desc} ${pkg.badgeLabel || ''}`.toLowerCase();

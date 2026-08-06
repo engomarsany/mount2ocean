@@ -4120,8 +4120,32 @@ footer a:hover,
   border-radius: 8px !important;
   box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3) !important;
   text-shadow: 0 0 8px rgba(0, 242, 254, 0.8) !important;
-  display: inline-block !important;
 }
 
-
-
+/* 5. OFFICIAL 1-PAGE PDF VOUCHER & RECEIPT PRINT ENGINE */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, .header-actions, .no-print, button {
+    display: none !important;
+  }
+  .file-card-box, #fileCardContainer {
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    padding: 1.5rem !important;
+    border-radius: 0 !important;
+  }
+  .file-card-box::after {
+    content: "OFFICIAL MOUNT2OCEAN VERIFIED VOUCHER";
+    display: block;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    border-top: 2px dashed #000;
+    padding-top: 1rem;
+  }
+}  display: inline-block !important;
+}
