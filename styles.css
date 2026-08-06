@@ -4278,3 +4278,59 @@ body.light-theme input, body.light-theme select, body.light-theme textarea {
   background-color: #ffffff !important;
   font-weight: 800 !important;
 }
+
+/* ==========================================================================
+   EXPLICIT HIGH-CONTRAST OVERRIDES FOR MOBILE APP PROMO BANNER
+   ========================================================================== */
+.app-promo-banner {
+  background: linear-gradient(135deg, #090d16 0%, #0072bc 100%) !important;
+  border: 2.5px solid #00f2fe !important;
+  box-shadow: 0 15px 45px rgba(0, 242, 254, 0.4) !important;
+}
+
+.app-tag {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #00f2fe !important;
+  font-weight: 900 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5) !important;
+}
+
+.app-promo-content h2 {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
+}
+
+.app-promo-content p {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;
+}
+
+.phone-mockup {
+  background: #060911 !important;
+  border: 2.5px solid #00f2fe !important;
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.5) !important;
+}
+
+.phone-brand {
+  background: #0072bc !important;
+  color: #ffffff !important;
+  border: 1.5px solid #00f2fe !important;
+  font-weight: 900 !important;
+  font-size: 0.92rem !important;
+  text-shadow: 0 0 10px #00f2fe !important;
+}
+
+.phone-screen-content span {
+  background: #0f172a !important;
+  color: #00f2fe !important;
+  border: 2px solid #00f2fe !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem !important;
+  text-shadow: 0 0 10px #00f2fe !important;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
+}
