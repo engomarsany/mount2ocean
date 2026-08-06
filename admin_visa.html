@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Control Panel | Visa Price List &amp; Application Manager</title>
+  <meta name="description" content="Manage Visa Price Lists, Embassy Fees, Checklists, and Customer Visa Applications in real-time.">
+  
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+</head>
+<body class="admin-portal-body light-theme">
+
+  <!-- ADMIN HEADER NAVIGATION -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="logo-container">
+        <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+      </div>
+
+      <div class="admin-title-badge">
+        <div class="admin-badge-text">
+          <span class="badge-main">VISA SERVICES OWNER CONTROL CENTER</span>
+          <span class="badge-sub">Manage Country Checklists, Fees &amp; Issue Visas</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="admin_dashboard.html" class="admin-nav-item">Dashboard</a>
+        <a href="admin_bookings.html" class="admin-nav-item">Bookings</a>
+        <a href="admin_visa.html" class="admin-nav-item active">Visa Control</a>
+        <a href="visa_services.html" target="_blank" class="admin-nav-item preview-link">View Visa Portal ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN ADMIN VISA CONTENT -->
+  <main style="max-width: 1320px; margin: 2rem auto; padding: 0 1rem;">
+    
+    <!-- SECTION 1: CUSTOMER VISA APPLICATIONS TRACKING & FILE UPLOAD MANAGER -->
+    <div style="background: #ffffff; border: 2px solid #0072bc; border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <span class="badge-tag" style="background: #0072bc; color: white;">LIVE CUSTOMER VISA APPLICATIONS</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Customer Visa Status &amp; File Upload Manager (ভিসা অনুমোদন ও কপি আপলোড)
+          </h2>
+        </div>
+
+        <button type="button" onclick="openAddVisaAppModal()" class="primary-btn" style="background: #00a651; padding: 0.75rem 1.4rem; font-weight: 800;">
+          + New Customer Visa Application
+        </button>
+      </div>
+
+      <!-- VISA APPLICATIONS TABLE -->
+      <div style="overflow-x: auto;">
+        <table class="table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: #0f172a; color: #ffffff;">
+              <th style="padding: 0.85rem;">Ref ID</th>
+              <th style="padding: 0.85rem;">Applicant Name</th>
+              <th style="padding: 0.85rem;">Passport No</th>
+              <th style="padding: 0.85rem;">Country</th>
+              <th style="padding: 0.85rem;">Visa Type</th>
+              <th style="padding: 0.85rem;">Status</th>
+              <th style="padding: 0.85rem;">Issued Visa File</th>
+              <th style="padding: 0.85rem;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="ownerVisaAppsTbody">
+            <!-- Dynamically Rendered -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 2: COUNTRY VISA PRICE LIST & CHECKLIST MANAGER -->
+    <div style="background: #ffffff; border: 2px solid #00a651; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <span class="badge-tag" style="background: #00a651; color: white;">COUNTRY PRICE LIST &amp; CHECKLISTS</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Country Visa Rates &amp; Requirements Master Control (রেট ও রিকোয়ারমেন্ট আপডেট)
+          </h2>
+        </div>
+
+        <button type="button" onclick="openAddVisaPriceModal()" class="primary-btn" style="background: #0072bc; padding: 0.75rem 1.4rem; font-weight: 800;">
+          + Add New Country Visa Rate
+        </button>
+      </div>
+
+      <!-- PRICE LIST TABLE -->
+      <div style="overflow-x: auto;">
+        <table class="table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.88rem;">
+          <thead>
+            <tr style="background: #15803d; color: white;">
+              <th style="padding: 0.85rem;">Country</th>
+              <th style="padding: 0.85rem;">Visa Type</th>
+              <th style="padding: 0.85rem;">Embassy Fee</th>
+              <th style="padding: 0.85rem;">Agency Fee</th>
+              <th style="padding: 0.85rem;">Service Charge</th>
+              <th style="padding: 0.85rem;">Total Fee</th>
+              <th style="padding: 0.85rem;">Validity</th>
+              <th style="padding: 0.85rem;">Processing</th>
+              <th style="padding: 0.85rem;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="ownerVisaPricesTbody">
+            <!-- Dynamically Rendered -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script>
+    function renderOwnerVisaApps() {
+      const tbody = document.getElementById('ownerVisaAppsTbody');
+      if (!tbody) return;
+
+      const apps = window.getVisaApplications ? window.getVisaApplications() : [];
+      if (apps.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="padding: 2rem; color: #64748b;">No visa applications registered.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = apps.map((a, i) => `
+        <tr style="border-bottom: 1px solid #e2e8f0; font-weight: 700; color: #0f172a;">
+          <td style="padding: 0.85rem; color: #0072bc;">${a.refNo}</td>
+          <td style="padding: 0.85rem;">${a.applicantName}</td>
+          <td style="padding: 0.85rem;">${a.passportNo}</td>
+          <td style="padding: 0.85rem;">${a.country}</td>
+          <td style="padding: 0.85rem;">${a.visaType}</td>
+          <td style="padding: 0.85rem;">
+            <select onchange="updateAppStatus(${i}, this.value)" style="padding: 0.35rem; border-radius: 6px; font-weight: 800;">
+              <option value="Pending" ${a.status === 'Pending' ? 'selected' : ''}>Pending</option>
+              <option value="In Embassy" ${a.status === 'In Embassy' ? 'selected' : ''}>In Embassy</option>
+              <option value="Approved" ${a.status === 'Approved' ? 'selected' : ''}>Approved</option>
+              <option value="Rejected" ${a.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+            </select>
+          </td>
+          <td style="padding: 0.85rem;">
+            ${a.issuedVisaFileUrl ? `<a href="${a.issuedVisaFileUrl}" target="_blank" style="color: #22c55e; font-weight: 800;">✔ View File</a>` : `<span style="color: #94a3b8;">Not Uploaded</span>`}
+          </td>
+          <td style="padding: 0.85rem;">
+            <button onclick="promptUploadVisaFile(${i})" style="background: #0072bc; color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 800; cursor: pointer; margin-right: 0.3rem;">Upload Copy</button>
+            <button onclick="deleteVisaApp(${i})" style="background: #ef4444; color: white; border: none; padding: 0.35rem 0.6rem; border-radius: 6px; font-weight: 800; cursor: pointer;">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderOwnerVisaPrices() {
+      const tbody = document.getElementById('ownerVisaPricesTbody');
+      if (!tbody) return;
+
+      const list = window.getVisaPriceList ? window.getVisaPriceList() : [];
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="padding: 2rem; color: #64748b;">No visa price items configured.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map((item, i) => `
+        <tr style="border-bottom: 1px solid #e2e8f0; font-weight: 700; color: #0f172a;">
+          <td style="padding: 0.85rem; color: #ea580c; font-weight: 900;">${item.country}</td>
+          <td style="padding: 0.85rem;">${item.visaType}</td>
+          <td style="padding: 0.85rem;">৳${(item.embassyFee || 0).toLocaleString()}</td>
+          <td style="padding: 0.85rem;">৳${(item.agencyFee || 0).toLocaleString()}</td>
+          <td style="padding: 0.85rem;">৳${(item.serviceCharge || 0).toLocaleString()}</td>
+          <td style="padding: 0.85rem; color: #0072bc; font-weight: 900;">৳${(item.totalVisaFee || 0).toLocaleString()}</td>
+          <td style="padding: 0.85rem;">${item.validity}</td>
+          <td style="padding: 0.85rem;">${item.processingTime}</td>
+          <td style="padding: 0.85rem;">
+            <button onclick="deleteVisaPrice(${i})" style="background: #ef4444; color: white; border: none; padding: 0.35rem 0.6rem; border-radius: 6px; font-weight: 800; cursor: pointer;">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function updateAppStatus(index, newStatus) {
+      const apps = window.getVisaApplications();
+      apps[index].status = newStatus;
+      window.saveVisaApplications(apps);
+      alert(`Application ${apps[index].refNo} status updated to ${newStatus}`);
+    }
+
+    function promptUploadVisaFile(index) {
+      const url = prompt("Enter Issued Visa PDF / Image File URL or Asset Path:", "assets/official_logo.png");
+      if (url) {
+        const apps = window.getVisaApplications();
+        apps[index].issuedVisaFileUrl = url;
+        apps[index].status = "Approved";
+        window.saveVisaApplications(apps);
+        renderOwnerVisaApps();
+        alert("Issued Visa File uploaded successfully! Customer can now download it live.");
+      }
+    }
+
+    function deleteVisaApp(index) {
+      if (confirm("Delete this visa application record?")) {
+        const apps = window.getVisaApplications();
+        apps.splice(index, 1);
+        window.saveVisaApplications(apps);
+        renderOwnerVisaApps();
+      }
+    }
+
+    function deleteVisaPrice(index) {
+      if (confirm("Delete this country visa price entry?")) {
+        const list = window.getVisaPriceList();
+        list.splice(index, 1);
+        window.saveVisaPriceList(list);
+        renderOwnerVisaPrices();
+      }
+    }
+
+    function openAddVisaPriceModal() {
+      const country = prompt("Enter Country Name:", "Singapore");
+      if (!country) return;
+      const visaType = prompt("Enter Visa Type:", "Tourist E-Visa");
+      const embassyFee = parseInt(prompt("Enter Embassy Fee (BDT):", "4500"), 10) || 0;
+      const agencyFee = parseInt(prompt("Enter Agency Fee (BDT):", "1500"), 10) || 0;
+      const serviceCharge = parseInt(prompt("Enter Service Charge (BDT):", "500"), 10) || 0;
+      const totalVisaFee = embassyFee + agencyFee + serviceCharge;
+
+      const newItem = {
+        id: "visa-price-" + Date.now(),
+        country: country,
+        visaType: visaType || "Tourist",
+        embassyFee: embassyFee,
+        agencyFee: agencyFee,
+        serviceCharge: serviceCharge,
+        securityDeposit: "NA",
+        totalVisaFee: totalVisaFee,
+        entries: "Single",
+        maxStay: "30 Days",
+        validity: "60 Days",
+        processingTime: "3 to 5 Working Days",
+        checklistDesc: "Passport original, 2 copies photo with white background, Bank statement.",
+        checklistFileUrl: "#"
+      };
+
+      const list = window.getVisaPriceList();
+      list.push(newItem);
+      window.saveVisaPriceList(list);
+      renderOwnerVisaPrices();
+      alert("New Country Visa Price Item added successfully!");
+    }
+
+    function openAddVisaAppModal() {
+      const name = prompt("Enter Applicant Name:", "Sharmin Chowdhury");
+      if (!name) return;
+      const passportNo = prompt("Enter Passport Number:", "B0912384");
+      const country = prompt("Enter Country:", "Malaysia");
+
+      const newApp = {
+        id: "M2O-VISA-" + Math.floor(10000 + Math.random() * 90000),
+        passportNo: passportNo || "A0000000",
+        refNo: "M2O-VISA-" + Math.floor(10000 + Math.random() * 90000),
+        applicantName: name,
+        country: country || "Malaysia",
+        dob: "1995-05-10",
+        visaType: "Tourist Single Entry",
+        applyDate: "2026-08-06",
+        status: "Pending",
+        issuedVisaFileUrl: "",
+        ownerNotes: "Application submitted to embassy."
+      };
+
+      const apps = window.getVisaApplications();
+      apps.push(newApp);
+      window.saveVisaApplications(apps);
+      renderOwnerVisaApps();
+      alert("New Visa Application created!");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderOwnerVisaApps();
+      renderOwnerVisaPrices();
+    });
+  </script>
+</body>
+</html>

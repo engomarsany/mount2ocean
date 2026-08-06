@@ -4523,5 +4523,109 @@ window.fetchExternalHotelApiMock = function(cityFilter) {
   return apiHotels;
 };
 
+// ==========================================
+// ENTERPRISE VISA SERVICES & TRACKING ENGINE
+// ==========================================
+window.defaultVisaChecklistData = [
+  {
+    id: "visa-price-malaysia",
+    country: "Malaysia",
+    visaType: "Tourist",
+    embassyFee: 3500,
+    agencyFee: 5500,
+    serviceCharge: 500,
+    securityDeposit: "NA",
+    totalVisaFee: 6000,
+    entries: "Single",
+    maxStay: "30 Days",
+    validity: "180 Days",
+    processingTime: "3 to 5 working Days",
+    checklistDesc: "Passport copy (min 6 months validity), 2 copies 35x50mm photo with white background, 6-month bank statement (min 60,000 BDT balance), Bank solvency certificate, NID/Birth Certificate copy.",
+    checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-malaysia-multi",
+    country: "Malaysia",
+    visaType: "Tourist",
+    embassyFee: 16000,
+    agencyFee: 500,
+    serviceCharge: 1000,
+    securityDeposit: "0",
+    totalVisaFee: 20000,
+    entries: "Multiple Entry",
+    maxStay: "30 Days",
+    validity: "180 Days",
+    processingTime: "3 to 5 Working Days",
+    checklistDesc: "Passport original, Previous Malaysia travel proof, 2 copies photo, 6-month bank statement.",
+    checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-dubai",
+    country: "Dubai (UAE)",
+    visaType: "Tourist E-Visa",
+    embassyFee: 9500,
+    agencyFee: 1500,
+    serviceCharge: 500,
+    securityDeposit: "NA",
+    totalVisaFee: 11500,
+    entries: "Single",
+    maxStay: "30 Days",
+    validity: "60 Days",
+    processingTime: "24 to 48 Hours",
+    checklistDesc: "Passport scan first page, 1 copy passport size photo with white background, NID scan copy.",
+    checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-thailand",
+    country: "Thailand",
+    visaType: "Tourist E-Visa / Sticker",
+    embassyFee: 4000,
+    agencyFee: 1500,
+    serviceCharge: 500,
+    securityDeposit: "NA",
+    totalVisaFee: 6000,
+    entries: "Single",
+    maxStay: "60 Days",
+    validity: "90 Days",
+    processingTime: "5 to 7 Working Days",
+    checklistDesc: "Original Passport, Bank statement (min 80,000 BDT per person), Solvency certificate, Trade license copy for businessmen or NOC for employees.",
+    checklistFileUrl: "#"
+  }
+];
+
+window.defaultVisaApplicationsData = [
+  {
+    id: "M2O-VISA-99120",
+    passportNo: "A0874921",
+    refNo: "M2O-VISA-99120",
+    applicantName: "Tanvir Hossain",
+    country: "Malaysia",
+    dob: "1994-08-15",
+    visaType: "Tourist Single Entry",
+    applyDate: "2026-08-01",
+    status: "Approved",
+    issuedVisaFileUrl: "assets/official_logo.png",
+    ownerNotes: "Visa E-Sticker Approved by Embassy of Malaysia. Issued PDF ready for customer download."
+  }
+];
+
+window.getVisaPriceList = function() {
+  const stored = localStorage.getItem('m2o_visa_price_list');
+  return stored ? JSON.parse(stored) : window.defaultVisaChecklistData;
+};
+
+window.saveVisaPriceList = function(list) {
+  localStorage.setItem('m2o_visa_price_list', JSON.stringify(list));
+};
+
+window.getVisaApplications = function() {
+  const stored = localStorage.getItem('m2o_visa_applications');
+  return stored ? JSON.parse(stored) : window.defaultVisaApplicationsData;
+};
+
+window.saveVisaApplications = function(apps) {
+  localStorage.setItem('m2o_visa_applications', JSON.stringify(apps));
+};
+
 
 
