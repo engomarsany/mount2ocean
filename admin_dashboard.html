@@ -39,6 +39,8 @@
 
       <nav class="admin-nav">
         <a href="#adminStats" class="admin-nav-item active">Overview</a>
+        <a href="#adminDatabaseSection" class="admin-nav-item" style="color: #10b981; font-weight: 900;">🗄️ Supabase DB</a>
+        <a href="#adminFlightSection" class="admin-nav-item" style="color: #0072bc; font-weight: 900;">✈️ Flights Manager</a>
         <a href="#addPackageSection" class="admin-nav-item">Add Package</a>
         <a href="#livePackagesTableSection" class="admin-nav-item">Manage Packages</a>
         <a href="admin_visa.html" class="admin-nav-item">Manage Visas</a>
@@ -48,27 +50,28 @@
       <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
       <div class="global-header-controls">
         <div class="lang-switcher-box">
-          <span class="lang-icon"></span>
-          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
-            <option value="bn" selected>🇩 বাংলা (BN)</option>
-            <option value="en">🇺🇸 English (US)</option>
-            <option value="ar">العربية (AR)</option>
-            <option value="hi">🇮🇳 हिन्दी (HI)</option>
-            <option value="es">🇸 Español (ES)</option>
-            <option value="fr">🇫🇷 Français (FR)</option>
-          </select>
+          <button type="button" class="lang-toggle-btn" onclick="toggleLanguageSystem()" title="Switch Language (English / বাংলা)">
+            <span class="lang-flag-icon">🌐</span>
+            <span class="lang-code-text" id="langCodeLabel">বাংলা (BN)</span>
+          </button>
         </div>
-      </div>
 
-      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
-        Exit (লগআউট)
-      </a>
+        <button type="button" onclick="logoutAdmin()" class="secondary-btn logout-link-btn" title="Sign Out">
+          Exit (লগআউট)
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- MASTER NAVIGATION BAR FOR OWNER ADMIN -->
   <nav style="background: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 0.8rem; overflow-x: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
     <span style="font-size: 0.82rem; font-weight: 800; color: #64748b; white-space: nowrap;">QUICK MASTER DIRECTORIES:</span>
+    <a href="#adminDatabaseSection" class="primary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 900; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; box-shadow: 0 4px 12px rgba(16,185,129,0.3);">
+      🗄️ Supabase DB Setup ➔
+    </a>
+    <a href="#adminFlightSection" class="primary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 900; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; background: linear-gradient(135deg, #00a651, #0072bc); color: #ffffff; box-shadow: 0 4px 12px rgba(0,114,188,0.3);">
+      ✈️ Flight Tickets Manager ➔
+    </a>
     <a href="admin_hotels.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #00a651; border-color: #86efac; background: rgba(0,166,81,0.06);">
       Hotels &amp; Resorts Control ➔
     </a>
