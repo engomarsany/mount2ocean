@@ -4766,5 +4766,65 @@ window.deleteOwnerFlightTicket = function(id) {
   window.saveOwnerFlightTickets(list);
 };
 
+// =========================================================
+// FACEBOOK ADS (META PIXEL) & GOOGLE ADS MARKETING ENGINE
+// Automatically injects tracking scripts across all pages
+// =========================================================
+window.initMarketingTrackingScripts = function() {
+  const metaPixelId = localStorage.getItem('m2o_meta_pixel_id');
+  const googleTagId = localStorage.getItem('m2o_google_tag_id');
+
+  // 1. Inject Meta Pixel (Facebook Ads)
+  if (metaPixelId && metaPixelId.trim().length > 5) {
+    if (!window.fbq) {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', metaPixelId.trim());
+      window.fbq('track', 'PageView');
+      console.log('📢 Meta Pixel Active:', metaPixelId.trim());
+    }
+  }
+
+  // 2. Inject Google Ads / Analytics Tag (GTAG)
+  if (googleTagId && googleTagId.trim().length > 3) {
+    if (!document.getElementById('m2oGtagScript')) {
+      const gScript = document.createElement('script');
+      gScript.id = 'm2oGtagScript';
+      gScript.async = true;
+      gScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + googleTagId.trim();
+      document.head.appendChild(gScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', googleTagId.trim());
+      console.log('📢 Google Tag Active:', googleTagId.trim());
+    }
+  }
+};
+
+window.trackAdConversion = function(eventName, eventData) {
+  if (window.fbq) {
+    try { window.fbq('track', eventName, eventData || {}); } catch(e){}
+  }
+  if (window.gtag) {
+    try { window.gtag('event', eventName, eventData || {}); } catch(e){}
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.initMarketingTrackingScripts) {
+    window.initMarketingTrackingScripts();
+  }
+});
+
+
 
 

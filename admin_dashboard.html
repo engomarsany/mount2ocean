@@ -680,6 +680,58 @@
       </form>
     </section>
 
+    <!-- SECTION: FACEBOOK ADS (META PIXEL) & GOOGLE ADS MARKETING ENGINE -->
+    <section class="admin-section margin-top-lg" id="adminMarketingSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #1877f2; box-shadow: 0 15px 40px rgba(24,119,242,0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: #1877f2; color: white; font-weight: 900;">ADS &amp; CONVERSION TRACKING</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Facebook Ads (Meta Pixel) &amp; Google Ads Campaign Engine (বিজ্ঞাপন ট্র্যাকিং)
+          </h2>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0.2rem 0 0;">
+            ফেসবুক অ্যাডস ও গুগল অ্যাডস ক্যাম্পেইন চালানোর জন্য Meta Pixel ID, Conversion API Token ও Google Ads Tag সেটআপ করুন।
+          </p>
+        </div>
+      </div>
+
+      <form onsubmit="saveMarketingAdsHandler(event)" style="background: #f8fafc; border-radius: 14px; padding: 1.5rem; border: 1.5px solid #cbd5e1; display: flex; flex-direction: column; gap: 1.2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem;">
+          
+          <!-- Meta Pixel ID -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">
+              📘 Meta Pixel ID (Facebook Ads Pixel ID)
+            </label>
+            <input type="text" id="mktMetaPixelId" placeholder="e.g. 123456789012345" style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+            <small style="color: #64748b; font-size: 0.78rem;">Facebook Events Manager ➔ Pixel ID এখানে বসান।</small>
+          </div>
+
+          <!-- Google Ads Tag ID -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">
+              🎯 Google Ads / Analytics Tag ID (GTAG)
+            </label>
+            <input type="text" id="mktGoogleTagId" placeholder="e.g. AW-123456789 or G-XXXXXXXXXX" style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+            <small style="color: #64748b; font-size: 0.78rem;">Google Ads Manager ➔ Conversion Tag ID বা GA4 ID বসান।</small>
+          </div>
+
+          <!-- Facebook Conversions API Access Token -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">
+              🔑 Facebook Conversions API Token (Optional)
+            </label>
+            <input type="text" id="mktFbCapiToken" placeholder="e.g. EAAG..." style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+            <small style="color: #64748b; font-size: 0.78rem;">সার্ভার-সাইড ইভেন্ট ট্র্যাকিংয়ের জন্য ফেসবুক CAPI অ্যাক্সেস টোকেন।</small>
+          </div>
+
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #1877f2 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; align-self: start; box-shadow: 0 4px 15px rgba(24,119,242,0.3);">
+          🚀 Save Ads Pixels &amp; Activate Tracking Live ➔
+        </button>
+      </form>
+    </section>
+
     <!-- SECTION: SUPABASE POSTGRESQL CLOUD DATABASE CONFIGURATION -->
     <section class="admin-section margin-top-lg" id="adminDatabaseSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #3ecf8e; box-shadow: 0 15px 40px rgba(62,207,142,0.15);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -943,9 +995,33 @@
         if (appT) appT.value = cms.mobileAppTitle || '';
       }
 
+      // Populate Marketing Ads Fields
+      const pixelEl = document.getElementById('mktMetaPixelId');
+      const gtagEl = document.getElementById('mktGoogleTagId');
+      const capiEl = document.getElementById('mktFbCapiToken');
+      if (pixelEl) pixelEl.value = localStorage.getItem('m2o_meta_pixel_id') || '';
+      if (gtagEl) gtagEl.value = localStorage.getItem('m2o_google_tag_id') || '';
+      if (capiEl) capiEl.value = localStorage.getItem('m2o_fb_capi_token') || '';
+
       // Render Admin Flights List
       renderAdminFlightsList();
     });
+
+    function saveMarketingAdsHandler(e) {
+      e.preventDefault();
+      const pixelId = document.getElementById('mktMetaPixelId').value.trim();
+      const gtagId = document.getElementById('mktGoogleTagId').value.trim();
+      const capiToken = document.getElementById('mktFbCapiToken').value.trim();
+
+      localStorage.setItem('m2o_meta_pixel_id', pixelId);
+      localStorage.setItem('m2o_google_tag_id', gtagId);
+      localStorage.setItem('m2o_fb_capi_token', capiToken);
+
+      if (window.initMarketingTrackingScripts) {
+        window.initMarketingTrackingScripts();
+      }
+      alert('🚀 Facebook Ads Meta Pixel & Google Ads Tags Saved & Activated Live across all pages!');
+    }
 
     function saveOwnerCMSHandler(e) {
       e.preventDefault();
