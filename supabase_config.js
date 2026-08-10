@@ -2,13 +2,13 @@
 // MOUNT2OCEAN - SUPABASE POSTGRESQL DATABASE INTEGRATION & CLIENT ENGINE
 // ==========================================================================
 
-// Supabase Connection Credentials (Pre-filled from your Supabase Dashboard screenshot!)
+// Supabase Connection Credentials (100% Pre-configured with your Supabase Cloud Database!)
 window.SUPABASE_URL = localStorage.getItem('m2o_supabase_url') || "https://righokufbodfnzxgobul.supabase.co";
-window.SUPABASE_ANON_KEY = localStorage.getItem('m2o_supabase_anon_key') || "your-anon-key";
+window.SUPABASE_ANON_KEY = localStorage.getItem('m2o_supabase_anon_key') || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ2hva3VmYm9kZm56eGdvYnVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzNDQ1NTIsImV4cCI6MjEwMTkyMDU1Mn0.UhYfzFxzadSViUVjklKu1-OyLcJ9CAgyOTZ2Q5BCGU8";
 
 // Initialize Supabase Client if SDK is loaded
 window.initSupabaseClient = function() {
-  if (window.supabase && window.supabase.createClient && window.SUPABASE_URL !== "https://your-project-id.supabase.co") {
+  if (window.supabase && window.supabase.createClient && window.SUPABASE_ANON_KEY !== "your-anon-key") {
     try {
       window.supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
       console.log("✅ Supabase PostgreSQL Database Connected Successfully!");
