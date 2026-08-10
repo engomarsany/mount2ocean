@@ -52,54 +52,136 @@ window.M2O_DESTINATION_COORDS = {
 window.openWorldMapAnimation = function(e, targetUrl) {
   if (e && e.preventDefault) e.preventDefault();
   
-  const finalUrl = targetUrl || 'https://www.google.com/maps/search/?api=1&query=Concord+Grand+Shantinagar+Dhaka+Bangladesh';
-  
-  let overlay = document.getElementById('worldMapAnimModal');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.id = 'worldMapAnimModal';
-    overlay.style.cssText = `
+  const finalUrl = targetUrl || 'https://maps.google.com/?q=Concord+Grand+Shantinagar+Dhaka+Bangladesh';
+
+  let modal = document.getElementById('m2oWorldGlobeModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'm2oWorldGlobeModal';
+    modal.style.cssText = `
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(6, 9, 17, 0.96); backdrop-filter: blur(25px);
-      z-index: 999999; display: flex; flex-direction: column;
+      background: rgba(4, 7, 15, 0.97); backdrop-filter: blur(20px);
+      z-index: 9999999; display: flex; flex-direction: column;
       align-items: center; justify-content: center; color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; overflow: hidden; padding: 1.5rem;
     `;
-    overlay.innerHTML = `
-      <div style="max-width: 650px; width: 100%; background: #0b1120; border: 2.5px solid #00f2fe; border-radius: 24px; padding: 2rem; box-shadow: 0 0 50px rgba(0,242,254,0.4); position: relative; max-height: 90vh; overflow-y: auto;">
-        <button onclick="document.getElementById('worldMapAnimModal').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid #cbd5e1; color: white; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Close Window">&times;</button>
-        
-        <div style="display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 1rem;">
-          <span style="font-size: 2.5rem;">🌍</span>
-          <div style="text-align: left;">
-            <span style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.3rem 0.9rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 900; letter-spacing: 1px; display: inline-block;">SATELLITE GPS VERIFIED</span>
-            <h3 style="font-size: 1.35rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0; text-shadow: 0 0 10px #00f2fe;">Mount2ocean Corporate Office Location</h3>
-          </div>
-        </div>
-
-        <p style="color: #00f2fe; font-size: 1rem; font-weight: 800; margin-bottom: 1.2rem; background: rgba(0,242,254,0.08); padding: 0.6rem 1rem; border-radius: 10px; border: 1px solid rgba(0,242,254,0.3);">
-          📍 169/1 Concord Grand (4th Floor), Shantinagar, Dhaka 1217, Bangladesh
-        </p>
-
-        <!-- Embedded Interactive Google Satellite Map Frame -->
-        <div style="border-radius: 16px; overflow: hidden; border: 2px solid #00f2fe; margin-bottom: 1.5rem; height: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-          <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Concord+Grand+Shantinagar+Dhaka+Bangladesh&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
-        </div>
-
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-          <a href="${finalUrl}" target="_blank" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(0,166,81,0.4);">
-            🗺️ Open Full Google Maps App ↗
-          </a>
-          <button onclick="document.getElementById('worldMapAnimModal').style.display='none'" style="background: rgba(255,255,255,0.1); color: white; border: 1.5px solid #cbd5e1; padding: 0.85rem 1.5rem; border-radius: 12px; font-weight: 800; cursor: pointer;">
-            Close Map Window
-          </button>
-        </div>
+    modal.innerHTML = `
+      <canvas id="m2oGlobeCanvas" width="320" height="320" style="margin-bottom: 1.2rem; filter: drop-shadow(0 0 35px #00f2fe);"></canvas>
+      
+      <div style="background: rgba(0, 242, 254, 0.15); border: 2px solid #00f2fe; padding: 0.45rem 1.4rem; border-radius: 9999px; font-weight: 900; font-size: 0.85rem; color: #00f2fe; letter-spacing: 1.5px; margin-bottom: 0.8rem; box-shadow: 0 0 25px rgba(0,242,254,0.5);">
+        🛰️ GPS SATELLITE RADAR LOCKING TARGET
       </div>
+
+      <h2 style="font-size: 1.85rem; font-weight: 900; color: #ffffff !important; margin: 0 0 0.4rem; text-shadow: 0 0 15px #00f2fe;">
+        Zooming World Globe to Mount2ocean Corporate Office...
+      </h2>
+
+      <p style="color: #22c55e; font-size: 1.1rem; font-weight: 900; margin: 0 0 1.2rem;">
+        📍 169/1 Concord Grand (4th Floor), Shantinagar, Dhaka 1217
+      </p>
+
+      <span id="m2oRadarStatus" style="font-size: 0.9rem; color: #cbd5e1; font-weight: 700; background: rgba(255,255,255,0.08); padding: 0.45rem 1.4rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);">
+        Scanning Coordinates: 23.7388° N, 90.4124° E (Dhaka, Bangladesh)...
+      </span>
     `;
-    document.body.appendChild(overlay);
+    document.body.appendChild(modal);
   } else {
-    overlay.style.display = 'flex';
+    modal.style.display = 'flex';
   }
+
+  // Run Canvas 3D Globe Animation Loop
+  const canvas = document.getElementById('m2oGlobeCanvas');
+  if (!canvas) {
+    window.open(finalUrl, '_blank');
+    return;
+  }
+  const ctx = canvas.getContext('2d');
+  let rotY = 0;
+  let zoom = 0.9;
+  let animId;
+  const startTime = Date.now();
+
+  function drawGlobe() {
+    const elapsed = (Date.now() - startTime) / 1000;
+    rotY += 0.08;
+    zoom += 0.007;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const radius = 110 * Math.min(zoom, 1.35);
+
+    // Draw Outer Atmosphere Glow
+    const grad = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.25);
+    grad.addColorStop(0, 'rgba(0, 242, 254, 0.45)');
+    grad.addColorStop(1, 'rgba(0, 242, 254, 0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius * 1.25, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Draw Globe Body
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.fillStyle = '#060d1a';
+    ctx.fill();
+    ctx.strokeStyle = '#00f2fe';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Draw Latitude Lines
+    for (let lat = -60; lat <= 60; lat += 20) {
+      const rLat = (lat * Math.PI) / 180;
+      const y = cy + radius * Math.sin(rLat);
+      const rx = radius * Math.cos(rLat);
+      ctx.beginPath();
+      ctx.ellipse(cx, y, rx, rx * 0.3, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0, 242, 254, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Draw Longitude Lines (Rotating)
+    for (let lon = 0; lon < 360; lon += 30) {
+      const rLon = ((lon + rotY * 25) * Math.PI) / 180;
+      const x = cx + radius * Math.cos(rLon);
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, Math.abs(radius * Math.cos(rLon)), radius, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0, 242, 254, 0.35)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Draw Target Lock Pin onto Dhaka
+    ctx.beginPath();
+    ctx.arc(cx + Math.sin(rotY * 1.5) * 35, cy - Math.cos(rotY * 1.5) * 20, 8 + Math.sin(elapsed * 8) * 3, 0, Math.PI * 2);
+    ctx.fillStyle = '#ef4444';
+    ctx.shadowColor = '#ef4444';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+
+    // Crosshair Target Lines
+    ctx.strokeStyle = '#00f2fe';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx - 30, cy); ctx.lineTo(cx + 30, cy);
+    ctx.moveTo(cx, cy - 30); ctx.lineTo(cx, cy + 30);
+    ctx.stroke();
+
+    if (elapsed < 2.0) {
+      animId = requestAnimationFrame(drawGlobe);
+    } else {
+      cancelAnimationFrame(animId);
+      const statusEl = document.getElementById('m2oRadarStatus');
+      if (statusEl) statusEl.innerHTML = "🎯 Target Locked! Opening Official Google Maps Profile...";
+      setTimeout(() => {
+        window.open(finalUrl, '_blank');
+        modal.style.display = 'none';
+      }, 350);
+    }
+  }
+
+  drawGlobe();
 };
 
 window.renderGoogleMapInContainer = function(containerId, locationKey, customTitle) {
