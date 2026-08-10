@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -53,22 +53,23 @@
     }
 
     .star-pill {
-      padding: 0.5rem 1.1rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      border: 1.5px solid #cbd5e1;
-      background: #f8fafc;
-      color: #475569;
+      font-weight: 900;
+      font-size: 0.88rem;
+      border: 2px solid #cbd5e1;
+      background: #ffffff !important;
+      color: #0f172a !important;
       cursor: pointer;
       transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .star-pill.active {
-      background: linear-gradient(135deg, #0072bc 0%, #00a651 100%);
+      background: linear-gradient(135deg, #0072bc 0%, #00a651 100%) !important;
       color: #ffffff !important;
-      border-color: #00a651;
-      box-shadow: 0 4px 15px rgba(0, 166, 81, 0.3);
+      border-color: #00f2fe !important;
+      box-shadow: 0 4px 15px rgba(0, 166, 81, 0.4) !important;
     }
 
     .hotel-search-input {
@@ -439,43 +440,60 @@
   <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (100% HIGH CONTRAST & OFFICIAL CORPORATE LOCATION) -->
   <footer class="cust-footer" style="background: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important;">
     <div style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <div>
-        <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 50px; background: white; padding: 6px 12px; border-radius: 10px; margin-bottom: 1rem;">
-        <p style="color: #ffffff !important; font-size: 0.92rem; line-height: 1.6;">Mount2ocean Travel &amp; Tours - Premier 5-Star Hotel &amp; Luxury Resort Booking Platform Bangladesh.</p>
+        <div style="background: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 14px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 0 25px rgba(0,242,254,0.5) !important; border: 2px solid #00f2fe !important; margin-bottom: 1.2rem !important;">
+          <img src="assets/official_logo.png" alt="Mount2ocean" style="height: 50px !important; width: auto !important; object-fit: contain !important; display: block !important;">
+        </div>
+        <p style="color: #ffffff !important; font-size: 0.95rem !important; line-height: 1.6; font-weight: 700 !important; margin-bottom: 1rem;">Mount2ocean Travel &amp; Tours - Premier 5-Star Hotel &amp; Luxury Resort Booking Platform Bangladesh.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
+            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
+            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
+            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">📍</span>
+            <span>Location: <strong style="color: #ffffff !important; font-weight: 900;"><a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" onclick="window.openWorldMapAnimation(event, this.href)" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217 📍</a></strong></span>
+          </div>
+        </div>
       </div>
       <div>
-        <h4 style="color: #00f2fe; margin-bottom: 1rem;">HOTEL DESTINATIONS</h4>
+        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block;">HOTEL DESTINATIONS</h4>
         <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
-          <li><a href="hotels_resorts.html?city=Cox's Bazar" style="color: white; text-decoration: none;">Cox's Bazar Beach Resorts</a></li>
-          <li><a href="hotels_resorts.html?city=Dhaka" style="color: white; text-decoration: none;">Dhaka 5-Star Luxury Hotels</a></li>
-          <li><a href="hotels_resorts.html?city=Sylhet" style="color: white; text-decoration: none;">Sylhet Tea Garden Resorts</a></li>
-          <li><a href="hotels_resorts.html?city=Bali" style="color: white; text-decoration: none;">Bali Overwater Villas</a></li>
+          <li><a href="hotels_resorts.html?city=Cox's Bazar" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Cox's Bazar Beach Resorts</a></li>
+          <li><a href="hotels_resorts.html?city=Dhaka" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Dhaka 5-Star Luxury Hotels</a></li>
+          <li><a href="hotels_resorts.html?city=Sylhet" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Sylhet Tea Garden Resorts</a></li>
+          <li><a href="hotels_resorts.html?city=Bali" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Bali Overwater Villas</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color: #00f2fe; margin-bottom: 1rem;">QUICK LINKS</h4>
+        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block;">QUICK LINKS</h4>
         <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
-          <li><a href="customer_portal.html" style="color: white; text-decoration: none;">Home</a></li>
-          <li><a href="tour_packages.html" style="color: white; text-decoration: none;">Tour Packages</a></li>
-          <li><a href="contact_us.html" style="color: white; text-decoration: none;">Contact Us</a></li>
-          <li><a href="refund_policy.html" style="color: white; text-decoration: none;">Refund Policy</a></li>
+          <li><a href="customer_portal.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Home</a></li>
+          <li><a href="tour_packages.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Tour Packages</a></li>
+          <li><a href="contact_us.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Contact Us</a></li>
+          <li><a href="refund_policy.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">Refund Policy</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color: #00f2fe; margin-bottom: 1rem;">VERIFIED PAYMENTS</h4>
+        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block;">VERIFIED PAYMENTS</h4>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">BKASH</span>
-          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">NAGAD</span>
-          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">VISA</span>
-          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1px solid #00f2fe;">MASTERCARD</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1.5px solid #00f2fe; box-shadow: 0 4px 12px rgba(0,242,254,0.4);">BKASH</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1.5px solid #00f2fe; box-shadow: 0 4px 12px rgba(0,242,254,0.4);">NAGAD</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1.5px solid #00f2fe; box-shadow: 0 4px 12px rgba(0,242,254,0.4);">VISA</span>
+          <span style="background: #1e293b; color: #00f2fe; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 900; font-size: 0.8rem; border: 1.5px solid #00f2fe; box-shadow: 0 4px 12px rgba(0,242,254,0.4);">MASTERCARD</span>
         </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; font-size: 0.88rem; color: white;">
-      © 2026 MOUNT2OCEAN Travel &amp; Tours. All Rights Reserved.
+    <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.5rem; font-size: 0.9rem; color: #ffffff !important; font-weight: 800;">
+      © 2026 <strong style="color: #00f2fe !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. <a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" onclick="window.openWorldMapAnimation(event, this.href)" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">Corporate Office-169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217 📍</a>.
     </div>
   </footer>
 
@@ -593,16 +611,16 @@
             </div>
           </div>
           <div class="hotel-body">
-            <span class="hotel-location-tag">${h.city || 'BANGLADESH'}</span>
-            <h3 class="hotel-name">${h.name}</h3>
-            <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0 0 0.8rem;">${h.description || ''}</p>
+            <span class="hotel-location-tag" style="color: #0072bc !important; font-weight: 900 !important;">${h.city || 'BANGLADESH'}</span>
+            <h3 class="hotel-name" style="color: #0f172a !important; font-weight: 900 !important;">${h.name}</h3>
+            <p style="font-size: 0.88rem; color: #334155 !important; line-height: 1.55; margin: 0 0 0.8rem; font-weight: 600;">${h.description || ''}</p>
             
             <div class="hotel-amenities-row">
               ${amenitiesHtml}
             </div>
 
             <div class="room-types-mini">
-              <div style="font-size: 0.78rem; font-weight: 800; color: #64748b; margin-bottom: 0.3rem;">AVAILABLE ROOM CATEGORIES:</div>
+              <div style="font-size: 0.8rem; font-weight: 900; color: #0f172a !important; margin-bottom: 0.35rem;">AVAILABLE ROOM CATEGORIES:</div>
               ${roomsMiniHtml}
             </div>
 
