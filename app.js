@@ -49,6 +49,60 @@ window.M2O_DESTINATION_COORDS = {
   "dhaka": { lat: 23.7341, lng: 90.4176, zoom: 14, title: "Mount2ocean Corporate Office, Shantinagar, Dhaka" }
 };
 
+window.openWorldMapAnimation = function(targetUrl) {
+  const finalUrl = targetUrl || 'https://www.google.com/maps/search/?api=1&query=Concord+Grand+Shantinagar+Dhaka+Bangladesh';
+  
+  let overlay = document.getElementById('worldMapAnimModal');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'worldMapAnimModal';
+    overlay.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(6, 9, 17, 0.96); backdrop-filter: blur(25px);
+      z-index: 999999; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 2rem;
+    `;
+    overlay.innerHTML = `
+      <div style="position: relative; width: 220px; height: 220px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
+        <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid #00f2fe; animation: m2oPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.7;"></div>
+        <div style="position: absolute; width: 75%; height: 75%; border-radius: 50%; border: 2px dashed #00a651; animation: m2oSpin 4s linear infinite;"></div>
+        <div style="font-size: 5rem; text-shadow: 0 0 35px #00f2fe; animation: m2oBounce 1s infinite alternate;">🌍</div>
+      </div>
+
+      <span style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.45rem 1.4rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 900; letter-spacing: 1.2px; margin-bottom: 0.8rem; box-shadow: 0 0 20px rgba(0,242,254,0.5);">
+        GPS SATELLITE RADAR CONNECTING
+      </span>
+
+      <h2 style="font-size: 1.8rem; font-weight: 900; color: #ffffff !important; margin: 0 0 0.5rem; text-shadow: 0 0 15px #00f2fe;">
+        Zooming to Mount2ocean Corporate Headquarters...
+      </h2>
+
+      <p style="color: #00f2fe; font-size: 1.1rem; font-weight: 900; margin: 0 0 1.2rem;">
+        📍 169/1 Concord Grand (4th Floor), Shantinagar, Dhaka 1217
+      </p>
+
+      <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 700; background: rgba(255,255,255,0.08); padding: 0.4rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);">
+        Coordinates: 23.7388° N, 90.4124° E • Opening Official Google Maps Business Profile
+      </span>
+
+      <style>
+        @keyframes m2oSpin { 100% { transform: rotate(360deg); } }
+        @keyframes m2oPing { 75%, 100% { transform: scale(1.4); opacity: 0; } }
+        @keyframes m2oBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
+      </style>
+    `;
+    document.body.appendChild(overlay);
+  } else {
+    overlay.style.display = 'flex';
+  }
+
+  setTimeout(() => {
+    window.open(finalUrl, '_blank');
+    overlay.style.display = 'none';
+  }, 1800);
+};
+
 window.renderGoogleMapInContainer = function(containerId, locationKey, customTitle) {
   const container = document.getElementById(containerId);
   if (!container) return;
