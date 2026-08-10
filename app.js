@@ -49,10 +49,12 @@ window.M2O_DESTINATION_COORDS = {
   "dhaka": { lat: 23.7341, lng: 90.4176, zoom: 14, title: "Mount2ocean Corporate Office, Shantinagar, Dhaka" }
 };
 
+window.M2O_EXACT_GMAP_URL = "https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b85e27dba277:0xa9eff257cadfcd2f!4m15!1m8!3m7!1s0x3755b86088069f7f:0xaa60783f49e22d39!2sConcord+Grand,+Dhaka!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D";
+
 window.openWorldMapAnimation = function(e, targetUrl) {
   if (e && e.preventDefault) e.preventDefault();
   
-  const finalUrl = targetUrl || 'https://maps.google.com/?q=Concord+Grand+Shantinagar+Dhaka+Bangladesh';
+  const finalUrl = (targetUrl && targetUrl.includes('google.com/maps')) ? targetUrl : window.M2O_EXACT_GMAP_URL;
 
   let modal = document.getElementById('m2oWorldGlobeModal');
   if (!modal) {
