@@ -4697,5 +4697,74 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// =========================================================
+// 100% OWNER-CONTROLLED FLIGHT TICKETS ENGINE
+// Only displays flight tickets added/published by the Owner
+// =========================================================
+window.defaultOwnerFlightTickets = [
+  {
+    id: "flt-ek583",
+    airlineName: "EMIRATES",
+    flightNo: "EK-583",
+    fromCity: "Dhaka (DAC)",
+    toCity: "Dubai (DXB)",
+    departTime: "10:15 AM",
+    arriveTime: "02:00 PM",
+    duration: "4h 45m (Non-Stop)",
+    aircraft: "Boeing 777-300ER • 30kg Baggage",
+    fareBdt: 48500,
+    tagBg: "#e11d48"
+  },
+  {
+    id: "flt-bg347",
+    airlineName: "BIMAN BANGLADESH",
+    flightNo: "BG-347",
+    fromCity: "Dhaka (DAC)",
+    toCity: "Dubai (DXB)",
+    departTime: "08:30 PM",
+    arriveTime: "12:40 AM",
+    duration: "5h 10m (Direct)",
+    aircraft: "Dreamliner 787-9 • 35kg Baggage",
+    fareBdt: 42000,
+    tagBg: "#00a651"
+  },
+  {
+    id: "flt-bs315",
+    airlineName: "US-BANGLA AIRLINES",
+    flightNo: "BS-315",
+    fromCity: "Dhaka (DAC)",
+    toCity: "Dubai (DXB)",
+    departTime: "06:45 PM",
+    arriveTime: "10:45 PM",
+    duration: "5h 00m (Direct)",
+    aircraft: "Airbus A330-300 • 30kg Baggage",
+    fareBdt: 39500,
+    tagBg: "#0072bc"
+  }
+];
+
+window.getOwnerFlightTickets = function() {
+  const stored = localStorage.getItem('m2o_owner_flight_tickets');
+  return stored ? JSON.parse(stored) : window.defaultOwnerFlightTickets;
+};
+
+window.saveOwnerFlightTickets = function(tickets) {
+  localStorage.setItem('m2o_owner_flight_tickets', JSON.stringify(tickets));
+};
+
+window.addOwnerFlightTicket = function(ticketData) {
+  const list = window.getOwnerFlightTickets();
+  ticketData.id = "flt-" + Date.now();
+  list.unshift(ticketData);
+  window.saveOwnerFlightTickets(list);
+  return ticketData;
+};
+
+window.deleteOwnerFlightTicket = function(id) {
+  let list = window.getOwnerFlightTickets();
+  list = list.filter(t => t.id !== id);
+  window.saveOwnerFlightTickets(list);
+};
+
 
 

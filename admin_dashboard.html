@@ -676,6 +676,83 @@
         </button>
       </form>
     </section>
+
+    <!-- SECTION: OWNER FLIGHT TICKETS MANAGER -->
+    <section class="admin-section margin-top-lg" id="adminFlightSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,166,81,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: #00a651; color: white;">FLIGHT TICKET MANAGER</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Owner Flight Tickets Manager (ফ্লাইট টিকেট ম্যানেজমেন্ট)
+          </h2>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0.2rem 0 0;">
+            ওনার প্যানেল থেকে পছন্দমতো ফ্লাইট টিকেট যুক্ত করুন। মূল্য না দিলে কাস্টমার প্যানেলে "Price on Request (WhatsApp-এ যোগাযোগ করুন)" বাটন প্রদর্শিত হবে।
+          </p>
+        </div>
+      </div>
+
+      <!-- Add New Flight Ticket Form -->
+      <form onsubmit="saveOwnerFlightTicketHandler(event)" style="background: #f8fafc; border-radius: 14px; padding: 1.5rem; border: 1.5px solid #cbd5e1; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1.2rem;">
+        <h4 style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin: 0;">✈️ Add New Flight Ticket / Route</h4>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Airline Name *</label>
+            <input type="text" id="fltAirline" placeholder="e.g. BIMAN BANGLADESH" required style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Flight No *</label>
+            <input type="text" id="fltNo" placeholder="e.g. BG-347" required style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Flying From *</label>
+            <input type="text" id="fltFrom" placeholder="e.g. Dhaka (DAC)" required style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Flying To *</label>
+            <input type="text" id="fltTo" placeholder="e.g. Dubai (DXB)" required style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Departure Time</label>
+            <input type="text" id="fltDepartTime" placeholder="e.g. 08:30 PM" style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Arrival Time</label>
+            <input type="text" id="fltArriveTime" placeholder="e.g. 12:40 AM" style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Duration & Non-Stop/Direct</label>
+            <input type="text" id="fltDuration" placeholder="e.g. 5h 10m (Direct)" style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Aircraft & Baggage Details</label>
+            <input type="text" id="fltAircraft" placeholder="e.g. Dreamliner 787-9 • 35kg" style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Total Fare in BDT ৳ (ফাঁকা রাখলে WhatsApp কন্ট্রাক্ট)</label>
+            <input type="number" id="fltFare" placeholder="e.g. 42000 (ফাঁকা রাখলে Price on Request)" style="padding: 0.7rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; align-self: start;">
+          ✈️ Publish Flight Ticket Live ➔
+        </button>
+      </form>
+
+      <!-- Active Flight Tickets Table -->
+      <h4 style="font-size: 1.1rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem;">Active Owner Published Flights</h4>
+      <div id="adminFlightsListContainer">
+        <!-- Rendered dynamically via renderAdminFlightsList() -->
+      </div>
+    </section>
     <!-- SECTION 6: LIVE CUSTOMER SUPPORT & AI ESCALATION DESK -->
     <section class="admin-section margin-top-lg" id="adminSupportSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
       <div class="admin-section-header flex-between margin-bottom-md">
@@ -806,6 +883,9 @@
         if (email) email.value = cms.hotlineEmail || '';
         if (appT) appT.value = cms.mobileAppTitle || '';
       }
+
+      // Render Admin Flights List
+      renderAdminFlightsList();
     });
 
     function saveOwnerCMSHandler(e) {
@@ -827,6 +907,104 @@
         window.saveSiteCMSData(cms);
       }
       alert('Full Site CMS Content updated successfully! Live website text and headers updated.');
+    }
+
+    function renderAdminFlightsList() {
+      const container = document.getElementById('adminFlightsListContainer');
+      if (!container) return;
+      const list = window.getOwnerFlightTickets ? window.getOwnerFlightTickets() : [];
+
+      if (!list || list.length === 0) {
+        container.innerHTML = `<p style="color:#64748b; font-weight:700;">No flight tickets added by owner yet. Use the form above to add a flight.</p>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; background:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #cbd5e1;">
+            <thead>
+              <tr style="background:#0f172a; color:#ffffff; text-align:left;">
+                <th style="padding:0.75rem 1rem;">Airline / Flight No</th>
+                <th style="padding:0.75rem 1rem;">Route</th>
+                <th style="padding:0.75rem 1rem;">Timings / Aircraft</th>
+                <th style="padding:0.75rem 1rem;">Price (BDT ৳)</th>
+                <th style="padding:0.75rem 1rem; text-align:center;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${list.map(t => `
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.75rem 1rem;">
+                    <strong style="color:#0f172a;">${t.airlineName}</strong>
+                    <span style="display:block; font-size:0.8rem; color:#0072bc; font-weight:800;">${t.flightNo}</span>
+                  </td>
+                  <td style="padding:0.75rem 1rem; font-weight:700; color:#334155;">
+                    ${t.fromCity} ➔ ${t.toCity}
+                  </td>
+                  <td style="padding:0.75rem 1rem; font-size:0.85rem; color:#475569;">
+                    <div>${t.departTime || 'N/A'} - ${t.arriveTime || 'N/A'}</div>
+                    <small style="color:#64748b;">${t.aircraft || ''}</small>
+                  </td>
+                  <td style="padding:0.75rem 1rem; font-weight:900;">
+                    ${t.fareBdt && Number(t.fareBdt) > 0 
+                      ? `<span style="color:#00a651;">৳${Number(t.fareBdt).toLocaleString('en-IN')}</span>` 
+                      : `<span style="color:#e11d48; background:#ffe4e6; padding:0.2rem 0.5rem; border-radius:6px; font-size:0.8rem;">Price on Request (WhatsApp)</span>`
+                    }
+                  </td>
+                  <td style="padding:0.75rem 1rem; text-align:center;">
+                    <button onclick="deleteAdminFlightTicket('${t.id}')" style="background:#ef4444; color:white; border:none; padding:0.4rem 0.8rem; border-radius:6px; font-weight:800; cursor:pointer;">
+                      🗑️ Delete
+                    </button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function saveOwnerFlightTicketHandler(e) {
+      e.preventDefault();
+      const airline = document.getElementById('fltAirline').value.trim();
+      const fltNo = document.getElementById('fltNo').value.trim();
+      const from = document.getElementById('fltFrom').value.trim();
+      const to = document.getElementById('fltTo').value.trim();
+      const depart = document.getElementById('fltDepartTime').value.trim();
+      const arrive = document.getElementById('fltArriveTime').value.trim();
+      const duration = document.getElementById('fltDuration').value.trim() || 'Direct';
+      const aircraft = document.getElementById('fltAircraft').value.trim();
+      const fareVal = document.getElementById('fltFare').value.trim();
+      const fareBdt = fareVal ? Number(fareVal) : 0;
+
+      const ticketData = {
+        airlineName: airline.toUpperCase(),
+        flightNo: fltNo.toUpperCase(),
+        fromCity: from,
+        toCity: to,
+        departTime: depart,
+        arriveTime: arrive,
+        duration: duration,
+        aircraft: aircraft,
+        fareBdt: fareBdt,
+        tagBg: '#0072bc'
+      };
+
+      if (window.addOwnerFlightTicket) {
+        window.addOwnerFlightTicket(ticketData);
+      }
+      renderAdminFlightsList();
+      e.target.reset();
+      alert(`Flight Ticket ${ticketData.flightNo} (${ticketData.fromCity} to ${ticketData.toCity}) published successfully!`);
+    }
+
+    function deleteAdminFlightTicket(id) {
+      if (confirm('Are you sure you want to delete this flight ticket?')) {
+        if (window.deleteOwnerFlightTicket) {
+          window.deleteOwnerFlightTicket(id);
+        }
+        renderAdminFlightsList();
+      }
     }
   </script>
   <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
