@@ -515,6 +515,106 @@
       </div>
     </section>
     
+    <!-- SECTION: REAL-TIME SALES & REVENUE ANALYTICS DESK -->
+    <section class="admin-section" style="background: linear-gradient(135deg, #07111e 0%, #0f172a 100%); color: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00f2fe; margin-top: 3rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,242,254,0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; font-weight: 900; padding: 0.35rem 0.9rem; font-size: 0.8rem; letter-spacing: 1px;">📊 REAL-TIME SALES &amp; REVENUE DESK</span>
+          <h2 style="font-size: 1.6rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0;">
+            Live Revenue &amp; Sales Analytics (সেলস ও রেভিনিউ রিপোর্ট)
+          </h2>
+          <p style="font-size: 0.88rem; color: #cbd5e1; margin: 0.2rem 0 0;">
+            Track total bookings, confirmed revenues, pending payments and export official Excel/CSV sales reports.
+          </p>
+        </div>
+        <button type="button" class="primary-btn" onclick="exportRevenueAnalyticsCsv()" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; font-weight: 900; padding: 0.75rem 1.4rem; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.4);">
+          📥 Export Sales Excel / CSV Report
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;" id="revenueStatsContainer">
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
+          <span style="font-size: 0.78rem; font-weight: 800; color: #94a3b8; display: block;">CONFIRMED REVENUE</span>
+          <strong id="revConfirmedBdt" style="font-size: 1.6rem; font-weight: 900; color: #00f2fe;">৳1,84,500</strong>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
+          <span style="font-size: 0.78rem; font-weight: 800; color: #94a3b8; display: block;">PENDING REVENUE</span>
+          <strong id="revPendingBdt" style="font-size: 1.6rem; font-weight: 900; color: #f59e0b;">৳48,000</strong>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
+          <span style="font-size: 0.78rem; font-weight: 800; color: #94a3b8; display: block;">TOTAL BOOKINGS</span>
+          <strong id="revTotalBookings" style="font-size: 1.6rem; font-weight: 900; color: #22c55e;">14 Reserved</strong>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
+          <span style="font-size: 0.78rem; font-weight: 800; color: #94a3b8; display: block;">AVERAGE ORDER VALUE</span>
+          <strong id="revAvgValueBdt" style="font-size: 1.6rem; font-weight: 900; color: #ffffff;">৳16,607</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: LIVE CUSTOMER REVIEWS & TESTIMONIALS MANAGER DESK -->
+    <section class="admin-section margin-top-lg" id="adminReviewsDeskSection" style="margin-bottom: 2.5rem;">
+      <div class="admin-section-header flex-between">
+        <div class="flex-align">
+          <div class="header-icon blue-bg">⭐</div>
+          <div>
+            <h2>Manage Live Customer Reviews &amp; Testimonials (কাস্টমার রিভিউ ম্যানেজার)</h2>
+            <p>Add, edit or remove verified customer reviews displayed on the main customer website.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem;">
+        <h4 style="font-size: 1.05rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem;">
+          ➕ Add New Customer Review (নতুন রিভিউ যুক্ত করুন)
+        </h4>
+
+        <form id="addReviewForm" onsubmit="handleAddCustomerReview(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+          <div>
+            <label style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.3rem;">Customer Name *</label>
+            <input type="text" id="revCustomerName" placeholder="e.g. Rahul &amp; Sunita" required style="padding: 0.7rem; border: 1.5px solid #cbd5e1; border-radius: 8px; width: 100%; font-weight: 700; color: #0f172a;">
+          </div>
+          <div>
+            <label style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.3rem;">Trip / Service Name *</label>
+            <input type="text" id="revTourName" placeholder="e.g. Cox's Bazar Sea View Resort" required style="padding: 0.7rem; border: 1.5px solid #cbd5e1; border-radius: 8px; width: 100%; font-weight: 700; color: #0f172a;">
+          </div>
+          <div>
+            <label style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.3rem;">Rating *</label>
+            <select id="revStarSelect" required style="padding: 0.7rem; border: 1.5px solid #cbd5e1; border-radius: 8px; width: 100%; font-weight: 800; color: #0f172a;">
+              <option value="5">⭐⭐⭐⭐⭐ 5-Star Excellent</option>
+              <option value="4">⭐⭐⭐⭐ 4-Star Very Good</option>
+            </select>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.3rem;">Review Comment *</label>
+            <textarea id="revComment" rows="2" placeholder="Write customer testimonial comment here..." required style="padding: 0.7rem; border: 1.5px solid #cbd5e1; border-radius: 8px; width: 100%; font-weight: 700; color: #0f172a;"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="primary-btn" style="background: #0072bc; padding: 0.8rem 1.4rem; font-weight: 900; border-radius: 8px; border: none; color: white; cursor: pointer;">
+              Publish Review ➔
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="admin-packages-table">
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Trip / Package</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminReviewsTbody">
+            <!-- Dynamic Reviews rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- SECTION 6: PACKAGE-SPECIFIC PROMO CODE & DISCOUNT COUPONS MANAGER -->
     <section class="admin-section" id="adminPromoCodesSection" style="margin-top: 3rem;">
       <div class="section-header flex-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">

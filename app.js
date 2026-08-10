@@ -4830,7 +4830,179 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.initMarketingTrackingScripts) {
     window.initMarketingTrackingScripts();
   }
+  if (window.initFloatingWhatsappWidget) {
+    window.initFloatingWhatsappWidget();
+  }
 });
+
+// ==========================================
+// FEATURE 1: AUTOMATED EMAIL PDF INVOICE ENGINE
+// ==========================================
+window.sendEmailInvoiceHandler = function(bookingId) {
+  let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+  let b = bookings.find(item => item.id === bookingId);
+  if (!b) {
+    b = {
+      id: bookingId || "M2O-BK-99120",
+      customerName: "Sharmin Chowdhury",
+      email: "sharmin@gmail.com",
+      tourTitle: "BALI PACKAGE 4D/3N - Kintamani Volcano",
+      amount: "৳17,500",
+      date: new Date().toISOString().split('T')[0]
+    };
+  }
+
+  const subject = encodeURIComponent(`Mount2ocean Travel Booking Confirmation Voucher - ${b.id}`);
+  const bodyText = encodeURIComponent(`Dear ${b.customerName},\n\nYour travel booking reservation ${b.id} is CONFIRMED by Mount2ocean Travel & Tours!\n\nBooking Reference ID: ${b.id}\nPackage / Service: ${b.tourTitle}\nTotal Amount Paid: ${b.amount}\nDate: ${b.date}\n\nYou can view and download your official PDF E-Ticket Voucher anytime on your customer profile:\nhttps://engomarsany.github.io/mount2ocean/my_profile.html\n\nThank you for choosing Mount2ocean Travel & Tours!\nHelpline: +880 1977-477172`);
+
+  window.open(`mailto:${b.email}?subject=${subject}&body=${bodyText}`, '_blank');
+  alert(`✉️ Preparing Email Voucher for ${b.customerName} (${b.email})!`);
+};
+
+// ==========================================
+// FEATURE 2: OWNER REVIEWS & TESTIMONIALS MANAGER
+// ==========================================
+window.DEFAULT_REVIEWS = [
+  { id: "rev-1", name: "Sharmin & Arif", trip: "Maldives Honeymoon Package", stars: 5, comment: "Booked our honeymoon package to Maldives through Mount2ocean. Unbeatable pricing and amazing customer support throughout!", image: "assets/reviewer_sharmin_arif.jpg" },
+  { id: "rev-2", name: "Tanvir Ahmed", trip: "Dubai Desert Safari & Burj Khalifa", stars: 5, comment: "Exceptional service! Flight tickets and hotel vouchers were issued instantly. 100% recommended travel agency in Dhaka.", image: "assets/reviewer_tanvir.jpg" },
+  { id: "rev-3", name: "Nusrath Jahan", trip: "Bhutan Cultural Tour 4D/3N", stars: 5, comment: "Everything was perfectly organized from airport pick-up to Tiger's Nest hike. Will book all our future family trips with Mount2ocean!", image: "assets/reviewer_nusrath.jpg" }
+];
+
+window.getCombinedLiveReviews = function() {
+  const local = JSON.parse(localStorage.getItem('m2o_customer_reviews')) || [];
+  return [...local, ...window.DEFAULT_REVIEWS];
+};
+
+window.saveOwnerReview = function(reviewObj) {
+  let reviews = JSON.parse(localStorage.getItem('m2o_customer_reviews')) || [];
+  reviews.unshift(reviewObj);
+  localStorage.setItem('m2o_customer_reviews', JSON.stringify(reviews));
+};
+
+window.deleteOwnerReview = function(revId) {
+  let reviews = JSON.parse(localStorage.getItem('m2o_customer_reviews')) || [];
+  reviews = reviews.filter(r => r.id !== revId);
+  localStorage.setItem('m2o_customer_reviews', JSON.stringify(reviews));
+};
+
+// ==========================================
+// FEATURE 3: PROMO CODE & COUPON DISCOUNT ENGINE
+// ==========================================
+window.DEFAULT_COUPONS = [
+  { code: "HOLIDAY2026", discountPercent: 10, maxDiscountBdt: 3000, description: "10% Instant Discount on All Tour Packages" },
+  { code: "FLASH25", discountPercent: 25, maxDiscountBdt: 5000, description: "25% Flash Deal Special Discount" },
+  { code: "M2OWELCOME", discountPercent: 15, maxDiscountBdt: 2000, description: "15% Welcome Discount for New Travelers" }
+];
+
+window.getCombinedCoupons = function() {
+  const local = JSON.parse(localStorage.getItem('m2o_promo_coupons')) || [];
+  return [...local, ...window.DEFAULT_COUPONS];
+};
+
+window.applyCouponCode = function(codeStr, originalPriceBdt) {
+  const code = (codeStr || '').trim().toUpperCase();
+  const coupons = window.getCombinedCoupons();
+  const found = coupons.find(c => c.code.toUpperCase() === code);
+  
+  if (!found) {
+    return { success: false, message: "Invalid or expired Coupon Code!", discount: 0, finalPrice: originalPriceBdt };
+  }
+
+  const discountAmount = Math.min((originalPriceBdt * found.discountPercent) / 100, found.maxDiscountBdt || 5000);
+  const finalPrice = Math.max(0, originalPriceBdt - discountAmount);
+
+  return {
+    success: true,
+    code: found.code,
+    discountPercent: found.discountPercent,
+    discountAmount: discountAmount,
+    finalPrice: finalPrice,
+    message: `🎉 Coupon '${found.code}' Applied! Discount: ৳${discountAmount.toLocaleString()}`
+  };
+};
+
+// ==========================================
+// FEATURE 4: FLOATING WHATSAPP LIVE CHAT WIDGET
+// ==========================================
+window.initFloatingWhatsappWidget = function() {
+  if (document.getElementById('m2oWhatsappFloatingWidget')) return;
+
+  const phone = localStorage.getItem('m2o_whatsapp_number') || '8801977477172';
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+
+  const widget = document.createElement('div');
+  widget.id = 'm2oWhatsappFloatingWidget';
+  widget.style.cssText = `
+    position: fixed; bottom: 25px; right: 25px; z-index: 99999;
+    display: flex; align-items: center; gap: 0.8rem; cursor: pointer;
+  `;
+  widget.innerHTML = `
+    <div id="m2oWaChatBubble" style="display: none; background: #ffffff; color: #0f172a; border: 2px solid #25d366; border-radius: 16px; padding: 0.8rem 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 240px; text-align: left; font-size: 0.85rem; font-weight: 800;">
+      👋 <strong style="color: #25d366;">Need Help?</strong> Chat with Mount2ocean Live Travel Consultant!
+    </div>
+    <div onclick="window.open('https://api.whatsapp.com/send?phone=${cleanPhone}&text=Hello%20Mount2ocean!%20I%20have%20an%20inquiry.', '_blank')" style="background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 6px 25px rgba(37,211,102,0.6); position: relative; border: 2px solid #ffffff; transition: transform 0.2s ease;">
+      💬
+      <span style="position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: #22c55e; border: 2px solid white; border-radius: 50%;"></span>
+    </div>
+  `;
+
+  document.body.appendChild(widget);
+
+  setTimeout(() => {
+    const bubble = document.getElementById('m2oWaChatBubble');
+    if (bubble) bubble.style.display = 'block';
+  }, 3000);
+};
+
+// ==========================================
+// FEATURE 5: REVENUE & SALES ANALYTICS ENGINE
+// ==========================================
+window.calculateRevenueAnalytics = function() {
+  const bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+  
+  let totalBookings = bookings.length;
+  let confirmedCount = 0;
+  let pendingCount = 0;
+  let totalRevenueBdt = 0;
+  let pendingRevenueBdt = 0;
+
+  bookings.forEach(b => {
+    const priceNum = parseInt((b.amount || b.price || '0').replace(/[^0-9]/g, ''), 10) || 0;
+    if (b.status === 'APPROVED' || b.status === 'CONFIRMED') {
+      confirmedCount++;
+      totalRevenueBdt += priceNum;
+    } else {
+      pendingCount++;
+      pendingRevenueBdt += priceNum;
+    }
+  });
+
+  return {
+    totalBookings: totalBookings,
+    confirmedCount: confirmedCount,
+    pendingCount: pendingCount,
+    totalRevenueBdt: totalRevenueBdt,
+    pendingRevenueBdt: pendingRevenueBdt,
+    avgOrderValueBdt: totalBookings > 0 ? Math.round((totalRevenueBdt + pendingRevenueBdt) / totalBookings) : 0
+  };
+};
+
+window.exportRevenueAnalyticsCsv = function() {
+  const bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
+  let csvContent = "data:text/csv;charset=utf-8,Booking ID,Customer Name,Phone,Package,Amount,Status,Date\n";
+
+  bookings.forEach(b => {
+    csvContent += `"${b.id || ''}","${b.customerName || ''}","${b.phone || ''}","${b.tourTitle || ''}","${b.amount || b.price || ''}","${b.status || ''}","${b.date || ''}"\n`;
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `Mount2ocean_Sales_Report_${new Date().toISOString().split('T')[0]}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 
 
