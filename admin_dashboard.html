@@ -732,6 +732,37 @@
       </form>
     </section>
 
+    <!-- SECTION: WHATSAPP PRICE DROP & DEAL BROADCAST DESK -->
+    <section class="admin-section margin-top-lg" id="adminBroadcastSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #25d366; box-shadow: 0 15px 40px rgba(37,211,102,0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: #25d366; color: #062419; font-weight: 900;">WHATSAPP DEAL BROADCAST DESK</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            WhatsApp Deal &amp; Flight Price Drop Broadcast Desk (হোয়াটসঅ্যাপ ব্রডকাস্ট)
+          </h2>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0.2rem 0 0;">
+            ওনার প্যানেল থেকে যেকোনো অফার, প্যাকেজ ডিসকাউন্ট বা ফ্লাইট টিকিটের দাম কমার নোটিফিকেশন ১-ক্লিকে হোয়াটসঅ্যাপে প্রচার করুন।
+          </p>
+        </div>
+      </div>
+
+      <form onsubmit="sendWhatsappBroadcastHandler(event)" style="background: #f8fafc; border-radius: 14px; padding: 1.5rem; border: 1.5px solid #cbd5e1; display: flex; flex-direction: column; gap: 1.2rem;">
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Offer Headline / Deal Title *</label>
+          <input type="text" id="waDealTitle" placeholder="e.g. FLASH DEAL: Dhaka to Dubai Flight Fare Dropped to ৳39,500!" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Detailed WhatsApp Message Content *</label>
+          <textarea id="waDealMsg" rows="3" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; width: 100%;">Exclusive offer from Mount2ocean! Book your flight or resort package now at special discounted rates.</textarea>
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #25d366 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; align-self: start; box-shadow: 0 4px 15px rgba(37,211,102,0.35);">
+          📲 Open WhatsApp Broadcast Share ➔
+        </button>
+      </form>
+    </section>
+
     <!-- SECTION: SUPABASE POSTGRESQL CLOUD DATABASE CONFIGURATION -->
     <section class="admin-section margin-top-lg" id="adminDatabaseSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #3ecf8e; box-shadow: 0 15px 40px rgba(62,207,142,0.15);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1021,6 +1052,16 @@
         window.initMarketingTrackingScripts();
       }
       alert('🚀 Facebook Ads Meta Pixel & Google Ads Tags Saved & Activated Live across all pages!');
+    }
+
+    function sendWhatsappBroadcastHandler(e) {
+      e.preventDefault();
+      const title = document.getElementById('waDealTitle').value.trim();
+      const msg = document.getElementById('waDealMsg').value.trim();
+
+      const text = `🎉 *${title}*%0A%0A${msg}%0A%0A*Book Online:* https://engomarsany.github.io/mount2ocean/customer_portal.html%0A*Hotline:* +880 1977-477172`;
+      window.open(`https://api.whatsapp.com/send?phone=8801977477172&text=${text}`, '_blank');
+      alert('📲 Opening WhatsApp Deal Broadcast Share!');
     }
 
     function saveOwnerCMSHandler(e) {

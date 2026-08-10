@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Smart Trip Itinerary Generator | Mount2ocean Travel &amp; Tours</title>
+  <meta name="description" content="Generate custom AI-powered day-by-day travel itineraries and PDF vouchers instantly for Bhutan, Bali, Dubai, Maldives, and more.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+</head>
+<body class="light-theme">
+
+  <!-- HEADER NAVIGATION BAR -->
+  <header class="app-header customer-header">
+    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="ai_itinerary_builder.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 900;">🤖 AI Trip Builder</a>
+      <a href="combo_builder.html" class="customer-nav-item" style="color: #00a651; font-weight: 900;">🧳 Combo Builder</a>
+      <a href="flights.html" class="customer-nav-item">Flight Tickets</a>
+      <a href="visa_services.html" class="customer-nav-item">Visa Processing</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <div class="currency-selector">
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+        </select>
+      </div>
+
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB BANNER -->
+  <div style="background: linear-gradient(135deg, #090d16 0%, #0072bc 100%); padding: 3rem 1.5rem; text-align: center; color: #ffffff; border-bottom: 3px solid #00f2fe;">
+    <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.4rem 1.1rem; border-radius: 9999px; font-weight: 800; font-size: 0.82rem; letter-spacing: 1px;">AI-POWERED TRIP PLANNER ENGINE</span>
+    <h1 style="font-size: 2.3rem; font-weight: 900; color: #ffffff !important; margin: 0.5rem 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">AI Custom Itinerary &amp; PDF Voucher Generator</h1>
+    <p style="font-size: 1.05rem; color: #e2e8f0; max-width: 680px; margin: 0 auto;">আপনার পছন্দের স্থান, দিন সংখ্যা ও বাজেট দিয়ে ১ সেকেন্ডে এআই ডাইনামিক ট্রিপ আইটিনেরারি ও পিডিএফ ডাউনলোড তৈরি করুন।</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main style="max-width: 1100px; margin: 0 auto; padding: 3rem 1rem;">
+    
+    <!-- AI INPUT FORM CARD -->
+    <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #0072bc; box-shadow: 0 15px 40px rgba(0,114,188,0.12); margin-bottom: 2.5rem;">
+      <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 1.2rem;">
+        🤖 Configure Your AI Custom Travel Plan (ট্রিপ পছন্দসমূহ)
+      </h3>
+
+      <form onsubmit="generateAiItineraryHandler(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
+          <select id="aiDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="Bhutan"> Bhutan (Paro &amp; Thimphu)</option>
+            <option value="Bali">🌺 Bali (Kintamani &amp; Ubud)</option>
+            <option value="Dubai">🏙️ Dubai (Safari &amp; Burj Khalifa)</option>
+            <option value="Maldives">️ Maldives Overwater Resort</option>
+            <option value="Cox's Bazar">️ Cox's Bazar &amp; Saint Martin</option>
+            <option value="Sylhet">Sylhet Tea Gardens &amp; Jaflong</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Duration (দিন সংখ্যা) *</label>
+          <select id="aiDuration" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
+            <option value="4 Days / 3 Nights" selected>4 Days / 3 Nights</option>
+            <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
+            <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
+          <select id="aiStyle" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <option value="Honeymoon & Luxury"> Romantic Honeymoon &amp; Luxury</option>
+            <option value="Family Holiday" selected>👨‍👩‍👧‍👦 Family Vacation</option>
+            <option value="Adventure & Nature"> Adventure &amp; Sightseeing</option>
+            <option value="Budget Backpacker"> Budget Friendly</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Approx Budget (আনুমানিক বাজেট) *</label>
+          <input type="text" id="aiBudget" value="৳45,000 per person" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.6rem; border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.35);">
+          🤖 Generate Smart AI Itinerary Live ➔
+        </button>
+      </form>
+    </div>
+
+    <!-- AI RESULT DISPLAY SECTION -->
+    <div id="aiResultContainer" style="display: none;">
+      <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,0,0,0.06);">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
+          <div>
+            <span class="badge-tag" style="background: #00a651; color: white;">AI ITINERARY GENERATED</span>
+            <h2 id="aiResultTitle" style="font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+              Bhutan 4D/3N Customized Tour Plan
+            </h2>
+          </div>
+          <div style="display: flex; gap: 0.8rem;">
+            <button onclick="downloadGeneratedAiPdf()" style="background: #0072bc; color: white; border: none; padding: 0.75rem 1.4rem; border-radius: 10px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 14px rgba(0,114,188,0.3);">
+              🖨️ Download PDF Itinerary Voucher
+            </button>
+            <a href="tour_packages.html" style="background: #00a651; color: white; border: none; padding: 0.75rem 1.4rem; border-radius: 10px; font-weight: 900; text-decoration: none; display: inline-block;">
+              Book This Package ➔
+            </a>
+          </div>
+        </div>
+
+        <div id="aiDaysContent" style="display: flex; flex-direction: column; gap: 1.2rem;">
+          <!-- Day details injected via JS -->
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="pdf_voucher_engine.js"></script>
+  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script>
+    let currentGeneratedPlan = null;
+
+    function generateAiItineraryHandler(e) {
+      e.preventDefault();
+      const dest = document.getElementById('aiDest').value;
+      const duration = document.getElementById('aiDuration').value;
+      const style = document.getElementById('aiStyle').value;
+      const budget = document.getElementById('aiBudget').value;
+
+      currentGeneratedPlan = {
+        dest: dest,
+        duration: duration,
+        style: style,
+        budget: budget
+      };
+
+      document.getElementById('aiResultTitle').textContent = `${dest} — ${duration} (${style})`;
+      
+      const daysContainer = document.getElementById('aiDaysContent');
+      daysContainer.innerHTML = `
+        <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #00a651;">
+          <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 1: Arrival &amp; Welcome Excursion</h4>
+          <p style="margin:0; color:#475569; font-weight:700;">Airport greeting by Mount2ocean executive, luxury hotel check-in, orientation dinner &amp; evening local market exploration.</p>
+        </div>
+        <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #0072bc;">
+          <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 2: Full Day Guided Tour &amp; Iconic Attractions</h4>
+          <p style="margin:0; color:#475569; font-weight:700;">Breakfast at hotel, private AC vehicle tour to top scenic spots, lunch at authentic local restaurant, sunset viewpoint &amp; photography.</p>
+        </div>
+        <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #f59e0b;">
+          <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 3: Adventure / Leisure &amp; Cultural Immersion</h4>
+          <p style="margin:0; color:#475569; font-weight:700;">Optional water sports / nature hike, traditional craft shopping, special cultural dinner show with group photo session.</p>
+        </div>
+        <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #e11d48;">
+          <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 4: Farewell Breakfast &amp; Airport Transfer</h4>
+          <p style="margin:0; color:#475569; font-weight:700;">Buffet breakfast, check-out assistance, transfer to airport with souvenirs and Mount2ocean loyalty reward points!</p>
+        </div>
+      `;
+
+      const resultBox = document.getElementById('aiResultContainer');
+      resultBox.style.display = 'block';
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function downloadGeneratedAiPdf() {
+      if (!currentGeneratedPlan) return;
+      window.generateAndDownloadPdfVoucher({
+        id: "M2O-AI-" + Math.floor(10000 + Math.random() * 90000),
+        customerName: "Valued Traveler",
+        tourTitle: `${currentGeneratedPlan.dest} Custom Tour (${currentGeneratedPlan.duration})`,
+        amount: currentGeneratedPlan.budget,
+        date: new Date().toISOString().split('T')[0],
+        status: "AI ITINERARY VOUCHER"
+      });
+    }
+  </script>
+</body>
+</html>

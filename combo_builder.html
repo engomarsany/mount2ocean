@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Hotel + Flight Combo Package Builder | Mount2ocean</title>
+  <meta name="description" content="Build your custom travel combo by selecting flight, hotel, and sightseeing activities on Mount2ocean Travel & Tours.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+</head>
+<body class="light-theme">
+
+  <!-- HEADER NAVIGATION BAR -->
+  <header class="app-header customer-header">
+    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="customer-nav">
+      <a href="customer_portal.html" class="customer-nav-item">Home</a>
+      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
+      <a href="ai_itinerary_builder.html" class="customer-nav-item" style="color: #0072bc; font-weight: 900;">🤖 AI Trip Builder</a>
+      <a href="combo_builder.html" class="customer-nav-item active" style="color: #00a651; font-weight: 900;">🧳 Combo Builder</a>
+      <a href="flights.html" class="customer-nav-item">Flight Tickets</a>
+      <a href="hotels_resorts.html" class="customer-nav-item">Hotels &amp; Resorts</a>
+    </nav>
+
+    <!-- Header Right Controls -->
+    <div class="header-actions">
+      <div class="currency-selector">
+        <select id="custCurrency">
+          <option value="BDT" selected>BDT (৳)</option>
+          <option value="USD">USD ($)</option>
+        </select>
+      </div>
+
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB BANNER -->
+  <div style="background: linear-gradient(135deg, #090d16 0%, #00a651 100%); padding: 3rem 1.5rem; text-align: center; color: #ffffff; border-bottom: 3px solid #00f2fe;">
+    <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.4rem 1.1rem; border-radius: 9999px; font-weight: 800; font-size: 0.82rem; letter-spacing: 1px;">INTERACTIVE DYNAMIC COMBO BUILDER</span>
+    <h1 style="font-size: 2.3rem; font-weight: 900; color: #ffffff !important; margin: 0.5rem 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Custom Hotel + Flight + Sightseeing Combo Builder</h1>
+    <p style="font-size: 1.05rem; color: #e2e8f0; max-width: 680px; margin: 0 auto;">নিজের পছন্দমতো হোটেল, ফ্লাইট টিকেট ও অ্যাক্টিভিটি যোগ করে পছন্দসই কম্বো প্যাকেজ তৈরি করুন।</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main style="max-width: 1100px; margin: 0 auto; padding: 3rem 1rem;">
+    
+    <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #00a651; box-shadow: 0 15px 40px rgba(0,166,81,0.12); display: grid; grid-template-columns: 1fr 340px; gap: 2rem;">
+      
+      <!-- COMBO BUILDER STEPS FORM -->
+      <div>
+        <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1.5rem;">
+          🧳 Customize Your Travel Combo (কম্বো তথ্য)
+        </h3>
+
+        <form id="comboForm" style="display: flex; flex-direction: column; gap: 1.4rem;">
+          
+          <!-- Step 1: Destination -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">1. Select Destination (গন্তব্য) *</label>
+            <select id="cmbDest" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+              <option value="Dubai" data-price="42000">🏙️ Dubai (UAE)</option>
+              <option value="Bali" data-price="35000">🌺 Bali (Indonesia)</option>
+              <option value="Maldives" data-price="75000">️ Maldives Islands</option>
+              <option value="Bhutan" data-price="68000"> Bhutan Kingdom</option>
+              <option value="Cox's Bazar" data-price="16500">️ Cox's Bazar</option>
+            </select>
+          </div>
+
+          <!-- Step 2: Hotel Tier -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">2. Select Hotel Category (হোটেল মান) *</label>
+            <select id="cmbHotel" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+              <option value="5-Star Luxury Resort" data-price="25000">⭐ 5-Star Luxury Ocean Resort (+৳25,000)</option>
+              <option value="4-Star Premium Hotel" data-price="15000" selected>⭐ 4-Star Premium City Hotel (+৳15,000)</option>
+              <option value="3-Star Deluxe Hotel" data-price="8000">⭐ 3-Star Deluxe Standard Hotel (+৳8,000)</option>
+            </select>
+          </div>
+
+          <!-- Step 3: Flight Option -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">3. Select Airline Flight Option (এয়ারলাইন্স টিকেট) *</label>
+            <select id="cmbFlight" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+              <option value="Biman Bangladesh Airlines" data-price="42000">🇧🇩 Biman Bangladesh (Direct Flight) (+৳42,000)</option>
+              <option value="Emirates Airlines" data-price="48500">🇦🇪 Emirates Airlines (Premium Non-Stop) (+৳48,500)</option>
+              <option value="US-Bangla Airlines" data-price="39500">🇧🇩 US-Bangla Airlines (+৳39,500)</option>
+            </select>
+          </div>
+
+          <!-- Step 4: Add-On Sightseeing Activities -->
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">4. Add-on Sightseeing Activities (অতিরিক্ত অ্যাক্টিভিটি)</label>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; background: #f8fafc; padding: 1rem; border-radius: 10px; border: 1px solid #e2e8f0;">
+              <label style="font-weight: 700; font-size: 0.88rem; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="actSafari" onchange="updateComboCalculations()" value="4500" style="accent-color: #00a651;">
+                Desert Safari / Speedboat Cruise Tour (+৳4,500)
+              </label>
+              <label style="font-weight: 700; font-size: 0.88rem; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="actScuba" onchange="updateComboCalculations()" value="6000" style="accent-color: #00a651;">
+                Scuba Diving &amp; Water Sports Package (+৳6,000)
+              </label>
+              <label style="font-weight: 700; font-size: 0.88rem; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="actDinner" onchange="updateComboCalculations()" value="3500" style="accent-color: #00a651;">
+                Luxury Dhow / Yacht Dinner Cruise (+৳3,500)
+              </label>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- LIVE COMBO SUMMARY & BOOKING SIDEBAR -->
+      <div style="background: #f8fafc; border-radius: 16px; padding: 1.5rem; border: 2px solid #cbd5e1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="background: #0072bc; color: white; font-size: 0.78rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.5rem;">
+            LIVE COMBO SUMMARY
+          </span>
+          <h4 id="cmbSummaryTitle" style="font-size: 1.2rem; font-weight: 900; color: #0f172a; margin: 0 0 1rem;">
+            Custom Dubai Combo
+          </h4>
+
+          <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: #475569; font-weight: 700; border-bottom: 1.5px dashed #cbd5e1; padding-bottom: 1rem; margin-bottom: 1rem;">
+            <div>• Hotel: <span id="cmbSummaryHotel" style="color: #0f172a;">4-Star Premium</span></div>
+            <div>• Flight: <span id="cmbSummaryFlight" style="color: #0f172a;">Biman Bangladesh</span></div>
+            <div>• Activities: <span id="cmbSummaryActivities" style="color: #0f172a;">Standard</span></div>
+          </div>
+
+          <span style="font-size: 0.82rem; color: #64748b; font-weight: 800; display: block;">Total Calculated Fare:</span>
+          <div id="cmbTotalPrice" style="font-size: 2rem; font-weight: 900; color: #00a651; margin-bottom: 1.2rem;">
+            ৳96,500
+          </div>
+        </div>
+
+        <div>
+          <button type="button" onclick="submitCustomComboBooking()" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.9rem; border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; width: 100%; box-shadow: 0 6px 20px rgba(0,166,81,0.35);">
+            Confirm &amp; Book Combo ➔
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="pdf_voucher_engine.js"></script>
+  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script>
+    function updateComboCalculations() {
+      const destSel = document.getElementById('cmbDest');
+      const hotelSel = document.getElementById('cmbHotel');
+      const flightSel = document.getElementById('cmbFlight');
+
+      const destPrice = parseInt(destSel.options[destSel.selectedIndex].getAttribute('data-price') || 0, 10);
+      const hotelPrice = parseInt(hotelSel.options[hotelSel.selectedIndex].getAttribute('data-price') || 0, 10);
+      const flightPrice = parseInt(flightSel.options[flightSel.selectedIndex].getAttribute('data-price') || 0, 10);
+
+      let actPrice = 0;
+      if (document.getElementById('actSafari').checked) actPrice += 4500;
+      if (document.getElementById('actScuba').checked) actPrice += 6000;
+      if (document.getElementById('actDinner').checked) actPrice += 3500;
+
+      const total = destPrice + hotelPrice + flightPrice + actPrice;
+
+      document.getElementById('cmbSummaryTitle').textContent = `Custom ${destSel.value} Combo`;
+      document.getElementById('cmbSummaryHotel').textContent = hotelSel.value;
+      document.getElementById('cmbSummaryFlight').textContent = flightSel.value;
+      document.getElementById('cmbSummaryActivities').textContent = actPrice > 0 ? `৳${actPrice.toLocaleString()} Add-ons` : 'Standard Included';
+      document.getElementById('cmbTotalPrice').textContent = `৳${total.toLocaleString('en-IN')}`;
+    }
+
+    function submitCustomComboBooking() {
+      const name = prompt("Enter your Name for Combo Booking Confirmation:", "Sharmin Chowdhury") || "Guest Traveler";
+      const phone = prompt("Enter your Mobile / WhatsApp Number:", "01977477172") || "01977477172";
+      
+      const dest = document.getElementById('cmbDest').value;
+      const priceText = document.getElementById('cmbTotalPrice').textContent;
+      const refId = "M2O-CMB-" + Math.floor(10000 + Math.random() * 90000);
+
+      window.generateAndDownloadPdfVoucher({
+        id: refId,
+        customerName: name,
+        phone: phone,
+        tourTitle: `Custom ${dest} Combo (Hotel + Flight + Activities)`,
+        amount: priceText,
+        date: new Date().toISOString().split('T')[0],
+        status: "CONFIRMED COMBO"
+      });
+
+      alert(`🎉 Custom Combo Booking ${refId} Confirmed!\n\nGuest: ${name}\nTotal Amount: ${priceText}\n\nPDF E-Ticket Voucher generated. Redirecting to WhatsApp Hotline...`);
+      
+      const text = `Hello Mount2ocean! I booked Custom Combo ${refId}.%0A%0A*Guest:* ${name}%0A*Combo:* Custom ${dest}%0A*Total:* ${priceText}%0A*Phone:* ${phone}%0A%0APlease process my voucher.`;
+      window.open(`https://api.whatsapp.com/send?phone=8801977477172&text=${text}`, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', updateComboCalculations);
+  </script>
+</body>
+</html>
