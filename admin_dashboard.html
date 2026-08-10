@@ -677,6 +677,60 @@
       </form>
     </section>
 
+    <!-- SECTION: SUPABASE POSTGRESQL CLOUD DATABASE CONFIGURATION -->
+    <section class="admin-section margin-top-lg" id="adminDatabaseSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #3ecf8e; box-shadow: 0 15px 40px rgba(62,207,142,0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag" style="background: #3ecf8e; color: #062419; font-weight: 900;">SUPABASE POSTGRESQL DATABASE</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            Supabase PostgreSQL Cloud Database Integration (ক্লাউড ডেটাবেস কানেকশন)
+          </h2>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0.2rem 0 0;">
+            GitHub Pages এর সাথে Supabase ফ্রি PostgreSQL ডেটাবেস যুক্ত করে সকল ডিভাইসে রিয়েল-টাইম অটো-সিঙ্ক ও পারমানেন্ট ক্লাউড স্টোরেজ চালু করুন।
+          </p>
+        </div>
+      </div>
+
+      <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem;">
+        <h4 style="color: #166534; font-size: 1.05rem; font-weight: 900; margin: 0 0 0.5rem;">⚡ Step-by-Step 100% Free Supabase Database Setup Guide:</h4>
+        <ol style="margin: 0; padding-left: 1.2rem; color: #15803d; font-size: 0.9rem; font-weight: 700; line-height: 1.6;">
+          <li>Go to <a href="https://supabase.com" target="_blank" style="color: #0072bc; font-weight: 900;">supabase.com</a> and Create a Free Account &amp; New Project (e.g. <code>mount2ocean-db</code>).</li>
+          <li>In Supabase Dashboard ➔ Go to <strong>SQL Editor</strong> ➔ Click <strong>New Query</strong> ➔ Copy-paste the SQL Schema code below and click <strong>RUN</strong>.</li>
+          <li>In Supabase Dashboard ➔ Go to <strong>Project Settings ➔ API</strong> ➔ Copy your <code>Project URL</code> and <code>anon public key</code> and paste them below.</li>
+        </ol>
+      </div>
+
+      <!-- Supabase Credentials Form -->
+      <form onsubmit="saveSupabaseCredentialsHandler(event)" style="display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem;">
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Supabase Project URL *</label>
+            <input type="text" id="sbProjectUrl" placeholder="https://your-project-id.supabase.co" required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.3rem; display: block;">Supabase Anon Public Key *</label>
+            <input type="text" id="sbAnonKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required style="padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; width: 100%;">
+          </div>
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; align-self: start; box-shadow: 0 4px 15px rgba(16,185,129,0.3);">
+          ⚡ Connect Supabase Cloud Database Live ➔
+        </button>
+      </form>
+
+      <!-- SQL Schema Viewer Modal Toggle -->
+      <div style="background: #0f172a; color: #ffffff; padding: 1.2rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <strong style="color: #3ecf8e; font-size: 0.95rem;">📜 Ready-to-run Supabase PostgreSQL Table Schema (1-Click SQL)</strong>
+          <p style="margin: 0.2rem 0 0; color: #94a3b8; font-size: 0.82rem;">Copy this SQL code and paste into your Supabase SQL Editor to create all 7 tables automatically.</p>
+        </div>
+        <button type="button" onclick="copySupabaseSQLSchema()" style="background: #3ecf8e; color: #062419; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 900; cursor: pointer;">
+          📋 Copy SQL Schema
+        </button>
+      </div>
+    </section>
+
     <!-- SECTION: OWNER FLIGHT TICKETS MANAGER -->
     <section class="admin-section margin-top-lg" id="adminFlightSection" style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; box-shadow: 0 15px 40px rgba(0,166,81,0.1);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -854,6 +908,8 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase_config.js?v=v23_production_ready_launch"></script>
   <script src="app.js?v=v23_production_ready_launch"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -907,6 +963,32 @@
         window.saveSiteCMSData(cms);
       }
       alert('Full Site CMS Content updated successfully! Live website text and headers updated.');
+    }
+
+    function saveSupabaseCredentialsHandler(e) {
+      e.preventDefault();
+      const url = document.getElementById('sbProjectUrl').value.trim();
+      const key = document.getElementById('sbAnonKey').value.trim();
+
+      localStorage.setItem('m2o_supabase_url', url);
+      localStorage.setItem('m2o_supabase_anon_key', key);
+      window.SUPABASE_URL = url;
+      window.SUPABASE_ANON_KEY = key;
+
+      if (window.initSupabaseClient) {
+        window.initSupabaseClient();
+      }
+      alert('⚡ Supabase PostgreSQL Database Credentials Saved! Connected to Cloud DB.');
+    }
+
+    function copySupabaseSQLSchema() {
+      if (window.SUPABASE_SQL_SCHEMA) {
+        navigator.clipboard.writeText(window.SUPABASE_SQL_SCHEMA).then(() => {
+          alert('📋 Supabase PostgreSQL SQL Schema copied to clipboard! Paste it into Supabase SQL Editor and click RUN.');
+        }).catch(err => {
+          prompt('Copy the SQL Schema below:', window.SUPABASE_SQL_SCHEMA);
+        });
+      }
     }
 
     function renderAdminFlightsList() {
