@@ -2,9 +2,9 @@
 // MOUNT2OCEAN - SUPABASE POSTGRESQL DATABASE INTEGRATION & CLIENT ENGINE
 // ==========================================================================
 
-// Supabase Connection Credentials (Replace with your actual Supabase Project URL & Anon Key)
-window.SUPABASE_URL = window.SUPABASE_URL || "https://your-project-id.supabase.co";
-window.SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "your-anon-key";
+// Supabase Connection Credentials (Pre-filled from your Supabase Dashboard screenshot!)
+window.SUPABASE_URL = localStorage.getItem('m2o_supabase_url') || "https://righokufbodfnzxgobul.supabase.co";
+window.SUPABASE_ANON_KEY = localStorage.getItem('m2o_supabase_anon_key') || "your-anon-key";
 
 // Initialize Supabase Client if SDK is loaded
 window.initSupabaseClient = function() {
