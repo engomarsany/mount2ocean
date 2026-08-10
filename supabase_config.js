@@ -12,6 +12,9 @@ window.initSupabaseClient = function() {
     try {
       window.supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
       console.log("✅ Supabase PostgreSQL Database Connected Successfully!");
+      if (window.autoSeedSupabaseData) {
+        window.autoSeedSupabaseData();
+      }
       return true;
     } catch (err) {
       console.warn("⚠️ Supabase Client Init Warning:", err.message);
@@ -19,6 +22,36 @@ window.initSupabaseClient = function() {
   }
   console.log("ℹ️ Running in Hybrid Mode: Using Browser LocalStorage & Supabase Ready Architecture.");
   return false;
+};
+
+// Automatic Seeder for Supabase PostgreSQL tables once created
+window.autoSeedSupabaseData = async function() {
+  if (!window.supabaseClient) return;
+  try {
+    // Check & Seed Flight Tickets
+    const { data: flights } = await window.supabaseClient.from('flight_tickets').select('id').limit(1);
+    if (!flights || flights.length === 0) {
+      const defaults = window.defaultOwnerFlightTickets || [];
+      for (const f of defaults) {
+        await window.supabaseClient.from('flight_tickets').insert([{
+          id: f.id,
+          airline_name: f.airlineName,
+          flight_no: f.flightNo,
+          from_city: f.fromCity,
+          to_city: f.toCity,
+          depart_time: f.departTime,
+          arrive_time: f.arriveTime,
+          duration: f.duration,
+          aircraft: f.aircraft,
+          fare_bdt: f.fareBdt,
+          tag_bg: f.tagBg
+        }]);
+      }
+      console.log("🌱 Auto-seeded initial flight tickets into Supabase!");
+    }
+  } catch (e) {
+    // Table not created yet or RLS policy pending
+  }
 };
 
 // SQL Schema for Supabase SQL Editor (1-Click Setup for Owner)
