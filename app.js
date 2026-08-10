@@ -49,7 +49,9 @@ window.M2O_DESTINATION_COORDS = {
   "dhaka": { lat: 23.7341, lng: 90.4176, zoom: 14, title: "Mount2ocean Corporate Office, Shantinagar, Dhaka" }
 };
 
-window.openWorldMapAnimation = function(targetUrl) {
+window.openWorldMapAnimation = function(e, targetUrl) {
+  if (e && e.preventDefault) e.preventDefault();
+  
   const finalUrl = targetUrl || 'https://www.google.com/maps/search/?api=1&query=Concord+Grand+Shantinagar+Dhaka+Bangladesh';
   
   let overlay = document.getElementById('worldMapAnimModal');
@@ -61,46 +63,43 @@ window.openWorldMapAnimation = function(targetUrl) {
       background: rgba(6, 9, 17, 0.96); backdrop-filter: blur(25px);
       z-index: 999999; display: flex; flex-direction: column;
       align-items: center; justify-content: center; color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 2rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 1.5rem;
     `;
     overlay.innerHTML = `
-      <div style="position: relative; width: 220px; height: 220px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
-        <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid #00f2fe; animation: m2oPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.7;"></div>
-        <div style="position: absolute; width: 75%; height: 75%; border-radius: 50%; border: 2px dashed #00a651; animation: m2oSpin 4s linear infinite;"></div>
-        <div style="font-size: 5rem; text-shadow: 0 0 35px #00f2fe; animation: m2oBounce 1s infinite alternate;">🌍</div>
+      <div style="max-width: 650px; width: 100%; background: #0b1120; border: 2.5px solid #00f2fe; border-radius: 24px; padding: 2rem; box-shadow: 0 0 50px rgba(0,242,254,0.4); position: relative; max-height: 90vh; overflow-y: auto;">
+        <button onclick="document.getElementById('worldMapAnimModal').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid #cbd5e1; color: white; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Close Window">&times;</button>
+        
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 1rem;">
+          <span style="font-size: 2.5rem;">🌍</span>
+          <div style="text-align: left;">
+            <span style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.3rem 0.9rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 900; letter-spacing: 1px; display: inline-block;">SATELLITE GPS VERIFIED</span>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0; text-shadow: 0 0 10px #00f2fe;">Mount2ocean Corporate Office Location</h3>
+          </div>
+        </div>
+
+        <p style="color: #00f2fe; font-size: 1rem; font-weight: 800; margin-bottom: 1.2rem; background: rgba(0,242,254,0.08); padding: 0.6rem 1rem; border-radius: 10px; border: 1px solid rgba(0,242,254,0.3);">
+          📍 169/1 Concord Grand (4th Floor), Shantinagar, Dhaka 1217, Bangladesh
+        </p>
+
+        <!-- Embedded Interactive Google Satellite Map Frame -->
+        <div style="border-radius: 16px; overflow: hidden; border: 2px solid #00f2fe; margin-bottom: 1.5rem; height: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+          <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Concord+Grand+Shantinagar+Dhaka+Bangladesh&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="${finalUrl}" target="_blank" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(0,166,81,0.4);">
+            🗺️ Open Full Google Maps App ↗
+          </a>
+          <button onclick="document.getElementById('worldMapAnimModal').style.display='none'" style="background: rgba(255,255,255,0.1); color: white; border: 1.5px solid #cbd5e1; padding: 0.85rem 1.5rem; border-radius: 12px; font-weight: 800; cursor: pointer;">
+            Close Map Window
+          </button>
+        </div>
       </div>
-
-      <span style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; padding: 0.45rem 1.4rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 900; letter-spacing: 1.2px; margin-bottom: 0.8rem; box-shadow: 0 0 20px rgba(0,242,254,0.5);">
-        GPS SATELLITE RADAR CONNECTING
-      </span>
-
-      <h2 style="font-size: 1.8rem; font-weight: 900; color: #ffffff !important; margin: 0 0 0.5rem; text-shadow: 0 0 15px #00f2fe;">
-        Zooming to Mount2ocean Corporate Headquarters...
-      </h2>
-
-      <p style="color: #00f2fe; font-size: 1.1rem; font-weight: 900; margin: 0 0 1.2rem;">
-        📍 169/1 Concord Grand (4th Floor), Shantinagar, Dhaka 1217
-      </p>
-
-      <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 700; background: rgba(255,255,255,0.08); padding: 0.4rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);">
-        Coordinates: 23.7388° N, 90.4124° E • Opening Official Google Maps Business Profile
-      </span>
-
-      <style>
-        @keyframes m2oSpin { 100% { transform: rotate(360deg); } }
-        @keyframes m2oPing { 75%, 100% { transform: scale(1.4); opacity: 0; } }
-        @keyframes m2oBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
-      </style>
     `;
     document.body.appendChild(overlay);
   } else {
     overlay.style.display = 'flex';
   }
-
-  setTimeout(() => {
-    window.open(finalUrl, '_blank');
-    overlay.style.display = 'none';
-  }, 1800);
 };
 
 window.renderGoogleMapInContainer = function(containerId, locationKey, customTitle) {
