@@ -4927,7 +4927,7 @@ window.applyCouponCode = function(codeStr, originalPriceBdt) {
 window.initFloatingWhatsappWidget = function() {
   if (document.getElementById('m2oWhatsappFloatingWidget')) return;
 
-  const phone = localStorage.getItem('m2o_whatsapp_number') || '8801977477172';
+  const phone = localStorage.getItem('m2o_whatsapp_number') || '8801330303082';
   const cleanPhone = phone.replace(/[^0-9]/g, '');
 
   const widget = document.createElement('div');
