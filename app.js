@@ -5004,6 +5004,89 @@ window.exportRevenueAnalyticsCsv = function() {
   document.body.removeChild(link);
 };
 
+window.currentHotelGalleryImages = [
+  "assets/coxsbazar_resort.jpg",
+  "assets/coxsbazar_parasailing_1785235001886.jpg",
+  "assets/coxsbazar_seafood_1785235487486.jpg",
+  "assets/tour_bali_1785152482323.jpg"
+];
+window.currentHotelImgIdx = 0;
+
+window.prevHotelModalImg = function() {
+  if (!window.currentHotelGalleryImages || window.currentHotelGalleryImages.length === 0) return;
+  window.currentHotelImgIdx = (window.currentHotelImgIdx - 1 + window.currentHotelGalleryImages.length) % window.currentHotelGalleryImages.length;
+  const imgEl = document.getElementById('modalHotelImg');
+  if (imgEl) imgEl.src = window.currentHotelGalleryImages[window.currentHotelImgIdx];
+};
+
+window.nextHotelModalImg = function() {
+  if (!window.currentHotelGalleryImages || window.currentHotelGalleryImages.length === 0) return;
+  window.currentHotelImgIdx = (window.currentHotelImgIdx + 1) % window.currentHotelGalleryImages.length;
+  const imgEl = document.getElementById('modalHotelImg');
+  if (imgEl) imgEl.src = window.currentHotelGalleryImages[window.currentHotelImgIdx];
+};
+
+window.openHotelBookingModal = function(hotelId) {
+  const modal = document.getElementById('hotelBookingModal');
+  if (!modal) return;
+
+  const hotels = typeof window.getCombinedLiveHotels === 'function' ? window.getCombinedLiveHotels() : [];
+  const hotel = hotels.find(h => h.id === hotelId) || hotels[0] || {
+    id: hotelId || 'hotel-ramada',
+    name: "RAMADA BY WYNDHAM COX'S BAZAR KOLATOLI BEACH",
+    address: "Marine Drive Road Kolatoli, Coxs Bazar, 4700 • +880 1330-303082",
+    image: "assets/coxsbazar_resort.jpg",
+    rating: 4.9,
+    rooms: [
+      { id: 'ramada-r1', name: "Deluxe Ocean View Double", rate: 14500, capacity: "2 Guests" },
+      { id: 'ramada-r2', name: "Executive Beachfront Suite", rate: 22000, capacity: "2 Guests" }
+    ]
+  };
+
+  document.getElementById('modalHotelId').value = hotel.id;
+  document.getElementById('modalHotelName').textContent = hotel.name;
+  document.getElementById('modalHotelAddress').textContent = (hotel.address || "Kolatoli Beach, Cox's Bazar") + " • +880 1330-303082";
+  
+  if (hotel.image) {
+    window.currentHotelGalleryImages = [hotel.image, "assets/coxsbazar_resort.jpg", "assets/coxsbazar_parasailing_1785235001886.jpg"];
+    window.currentHotelImgIdx = 0;
+    const imgEl = document.getElementById('modalHotelImg');
+    if (imgEl) imgEl.src = hotel.image;
+  }
+
+  // Populate Rooms
+  const roomList = document.getElementById('modalRoomList');
+  if (roomList && hotel.rooms) {
+    roomList.innerHTML = hotel.rooms.map((r, idx) => `
+      <label style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 1rem 1.2rem; border-radius: 10px; border: 2px solid ${idx===0?'#0072bc':'#e2e8f0'}; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <input type="radio" name="modalRoomChoice" value="${r.id}" data-rate="${r.rate}" ${idx===0?'checked':''} onchange="calculateHotelTotalCost()">
+          <div>
+            <strong style="font-size: 1rem; color: #0f172a; display: block;">${r.name}</strong>
+            <span style="font-size: 0.8rem; color: #64748b;">Max Capacity: ${r.capacity || '2 Guests'} • Free Breakfast Included</span>
+          </div>
+        </div>
+        <strong style="font-size: 1.15rem; color: #0072bc;">৳${(r.rate || 14500).toLocaleString()}/night</strong>
+      </label>
+    `).join('');
+  }
+
+  // Render Map Box
+  if (typeof window.renderGoogleMapInContainer === 'function') {
+    window.renderGoogleMapInContainer('modalGoogleMapBox', 'dhaka', hotel.name);
+  }
+
+  modal.classList.remove('hidden');
+  if (typeof window.calculateHotelTotalCost === 'function') {
+    window.calculateHotelTotalCost();
+  }
+};
+
+window.closeHotelBookingModal = function() {
+  const modal = document.getElementById('hotelBookingModal');
+  if (modal) modal.classList.add('hidden');
+};
+
 
 
 
