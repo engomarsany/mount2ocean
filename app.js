@@ -4224,6 +4224,27 @@ window.openForgotModal = function() {
 
 const defaultLiveHotels = [
   {
+    id: 'hotel-ramada-coxsbazar',
+    name: "Ramada by Wyndham Cox's Bazar Kolatoli Beach",
+    city: "Cox's Bazar",
+    starRating: 5,
+    starLabel: "5-Star Luxury Beach Resort",
+    address: "Marine Drive Road Kolatoli, Coxs Bazar, Bangladesh 4700",
+    image: "assets/coxsbazar_resort.jpg",
+    startingPrice: 9000,
+    priceFormatted: "৳9,000",
+    rating: 4.2,
+    reviewsCount: 106,
+    amenities: ["All-Inclusive", "Free Breakfast Buffet", "WiFi Available", "Restaurant", "Airport Shuttle - Free", "Meeting Room"],
+    description: "Modern 5-star hotel on Marine Drive, by Kolatoli Beach and CXB Airport featuring ocean view suites and fine dining.",
+    rooms: [
+      { id: 'ramada-r1', name: "Deluxe King Room", rate: 9000, rateFormatted: "৳9,000", capacity: "2 Guests", inclusions: "Free Breakfast Buffet, WiFi Included, Air Conditioned", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'ramada-r2', name: "Executive Sea View Suite", rate: 14500, rateFormatted: "৳14,500", capacity: "2 Guests", inclusions: "Sea View Balcony, Buffet Breakfast, Welcome Drink", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
+      { id: 'ramada-r3', name: "Presidential Beach Villa", rate: 22000, rateFormatted: "৳22,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Shuttle, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
+    ],
+    status: "ACTIVE"
+  },
+  {
     id: 'hotel-sayeman',
     name: "Sayeman Beach Resort Cox's Bazar",
     city: "Cox's Bazar",
@@ -4430,6 +4451,9 @@ window.getCombinedLiveHotels = function() {
   let saved = JSON.parse(localStorage.getItem('m2o_live_hotels'));
   if (!saved || saved.length === 0) {
     saved = defaultLiveHotels;
+    localStorage.setItem('m2o_live_hotels', JSON.stringify(saved));
+  } else if (!saved.find(h => h.id === 'hotel-ramada-coxsbazar')) {
+    saved.unshift(defaultLiveHotels[0]);
     localStorage.setItem('m2o_live_hotels', JSON.stringify(saved));
   }
   return saved;
