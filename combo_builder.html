@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+  <link rel="stylesheet" href="styles.css?v=v24_production_audit_ready">
 </head>
 <body class="light-theme">
 
@@ -182,7 +182,7 @@
 
     function submitCustomComboBooking() {
       const name = prompt("Enter your Name for Combo Booking Confirmation:", "Sharmin Chowdhury") || "Guest Traveler";
-      const phone = prompt("Enter your Mobile / WhatsApp Number:", "01977477172") || "01977477172";
+      const phone = prompt("Enter your Mobile / WhatsApp Number:", "01330303082") || "01330303082";
       
       const dest = document.getElementById('cmbDest').value;
       const priceText = document.getElementById('cmbTotalPrice').textContent;
@@ -201,7 +201,7 @@
       alert(`🎉 Custom Combo Booking ${refId} Confirmed!\n\nGuest: ${name}\nTotal Amount: ${priceText}\n\nPDF E-Ticket Voucher generated. Redirecting to WhatsApp Hotline...`);
       
       const text = `Hello Mount2ocean! I booked Custom Combo ${refId}.%0A%0A*Guest:* ${name}%0A*Combo:* Custom ${dest}%0A*Total:* ${priceText}%0A*Phone:* ${phone}%0A%0APlease process my voucher.`;
-      window.open(`https://api.whatsapp.com/send?phone=8801977477172&text=${text}`, '_blank');
+      window.open(`https://api.whatsapp.com/send?phone=8801330303082&text=${text}`, '_blank');
     }
 
     document.addEventListener('DOMContentLoaded', updateComboCalculations);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v23_production_ready_launch">
+  <link rel="stylesheet" href="styles.css?v=v24_production_audit_ready">
   <style>
     .profile-header-card {
       background: #ffffff;
@@ -154,7 +154,7 @@
             <span style="background: #e0f2fe; color: #0369a1; font-weight: 800; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px;">Verified Customer</span>
           </div>
           <p id="profCustContact" style="font-size: 0.95rem; color: #475569; font-weight: 600; margin: 0;">
-            <span id="profCustPhone">+880 1977-477172</span> • <span id="profCustEmail">sharmin@gmail.com</span>
+            <span id="profCustPhone">+880 1330-303082</span> • <span id="profCustEmail">sharmin@gmail.com</span>
           </p>
         </div>
       </div>
@@ -215,7 +215,7 @@
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
             <span style="color: #e11d48; font-size: 1.1rem;"></span>
-            <span>Helpline: <a href="tel:+8801977477172" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1977-477172</a></span>
+            <span>Helpline: <a href="tel:+8801330303082" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1330-303082</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
             <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
@@ -284,7 +284,7 @@
     function loadCustomerProfileAndBookings() {
       const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || {
         name: 'Sharmin Chowdhury',
-        phone: '01977477172',
+        phone: '01330303082',
         email: 'sharmin@gmail.com'
       };
 
@@ -293,7 +293,7 @@
       const emailEl = document.getElementById('profCustEmail');
 
       if (nameEl) nameEl.textContent = loggedUser.name || 'Valued Traveler';
-      if (phoneEl) phoneEl.textContent = loggedUser.phone || loggedUser.user || '01977477172';
+      if (phoneEl) phoneEl.textContent = loggedUser.phone || loggedUser.user || '01330303082';
       if (emailEl) emailEl.textContent = loggedUser.email || 'customer@mount2ocean.com';
 
       const container = document.getElementById('profBookingsListContainer');
