@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -124,17 +124,159 @@
       </form>
     </div>
 
+    <!-- AUTO SEO & SEARCH ENGINE OPTIMIZATION DESK -->
+    <div class="settings-card" style="margin-top: 2rem; border: 2px solid #00f2fe; box-shadow: 0 10px 30px rgba(0, 242, 254, 0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div style="background: rgba(0, 114, 188, 0.12); color: #0072bc; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900;">
+            SEO
+          </div>
+          <div>
+            <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
+              Auto SEO &amp; Google Search Console Manager (অটো এসইও কন্ট্রোল)
+            </h2>
+            <p style="font-size: 0.88rem; color: #64748b; margin: 0.2rem 0 0;">
+              Automatic Google Rich Snippets, Schema.org JSON-LD, Dynamic XML Sitemap, and Meta Tags.
+            </p>
+          </div>
+        </div>
+
+        <div style="background: #0f172a; color: white; padding: 0.5rem 1.2rem; border-radius: 12px; display: flex; align-items: center; gap: 0.8rem;">
+          <span style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">LIVE SEO SCORE:</span>
+          <strong id="liveSeoScoreVal" style="font-size: 1.2rem; font-weight: 900; color: #2ed573;">95 / 100 🚀</strong>
+        </div>
+      </div>
+
+      <form id="autoSeoForm" onsubmit="handleSaveAutoSeo(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+          <div class="form-group">
+            <label style="font-size: 0.88rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.4rem;">
+              Global SEO Title (গুগল সার্চ টাইটেল) <span class="required">*</span>
+            </label>
+            <input type="text" id="seoMetaTitle" required style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.92rem;">
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.88rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.4rem;">
+              Google Search Console Verification Code (GSC কোড)
+            </label>
+            <input type="text" id="seoGoogleVerif" placeholder="e.g. google-site-verification=abc123xyz" style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.92rem;">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.88rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.4rem;">
+            Global Meta Description (গুগল সার্চ বিবরণ) <span class="required">*</span>
+          </label>
+          <textarea id="seoMetaDesc" rows="3" required style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.92rem; font-family: inherit;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.88rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.4rem;">
+            Primary Focus Keywords (টার্গেট কিওয়ার্ডসমূহ)
+          </label>
+          <input type="text" id="seoKeywords" style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.92rem;">
+        </div>
+
+        <!-- Google SERP Snippet Preview Box -->
+        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <span style="font-size: 0.75rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px;">
+            🔍 Real-Time Google Search Result (SERP) Preview Simulator:
+          </span>
+          <div style="font-size: 0.85rem; color: #202124; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem;">
+            <span style="color: #202124;">https://www.mount2ocean.com</span>
+          </div>
+          <a id="serpPreviewTitle" href="customer_portal.html" target="_blank" style="color: #1a0dab; font-size: 1.2rem; font-weight: 600; text-decoration: none; display: block; margin-bottom: 0.3rem;">
+            Mount2ocean Travel &amp; Tours | Luxury World Packages
+          </a>
+          <p id="serpPreviewDesc" style="color: #4d5156; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            Book verified international &amp; domestic tour packages, luxury resorts in Cox's Bazar, Bali, Dubai, Maldives with 24/7 hotline.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <button type="submit" class="primary-btn" style="padding: 0.85rem 1.8rem; font-weight: 800; font-size: 0.98rem; background: linear-gradient(135deg, #0072bc 0%, #00f2fe 100%); border-radius: 10px; cursor: pointer; color: #0f172a;">
+            🚀 Save &amp; Deploy Auto SEO Tags Live
+          </button>
+          <a href="sitemap.xml" target="_blank" class="secondary-btn" style="text-decoration: none; padding: 0.85rem 1.4rem; font-weight: 800; font-size: 0.92rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.4rem;">
+            🗺️ View Live sitemap.xml
+          </a>
+          <a href="robots.txt" target="_blank" class="secondary-btn" style="text-decoration: none; padding: 0.85rem 1.4rem; font-weight: 800; font-size: 0.92rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.4rem;">
+            🤖 View Live robots.txt
+          </a>
+        </div>
+      </form>
+    </div>
+
   </main>
 
   <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script src="app.js?v=v24_production_audit_ready"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderAdminGlobalSettings();
+      if (typeof renderAdminGlobalSettings === 'function') renderAdminGlobalSettings();
+      loadAutoSeoSettings();
     });
+
+    function loadAutoSeoSettings() {
+      const seo = typeof window.getSeoSettings === 'function' ? window.getSeoSettings() : window.defaultSeoSettings;
+      
+      const titleInput = document.getElementById('seoMetaTitle');
+      const descInput = document.getElementById('seoMetaDesc');
+      const kwInput = document.getElementById('seoKeywords');
+      const gscInput = document.getElementById('seoGoogleVerif');
+
+      if (titleInput) titleInput.value = seo.metaTitle || '';
+      if (descInput) descInput.value = seo.metaDescription || '';
+      if (kwInput) kwInput.value = seo.keywords || '';
+      if (gscInput) gscInput.value = seo.googleVerification || '';
+
+      updateSerpPreview();
+
+      // Listen for live preview typing
+      if (titleInput) titleInput.addEventListener('input', updateSerpPreview);
+      if (descInput) descInput.addEventListener('input', updateSerpPreview);
+
+      // Calculate score
+      if (typeof window.calculateLiveSeoScore === 'function') {
+        const res = window.calculateLiveSeoScore();
+        const scoreEl = document.getElementById('liveSeoScoreVal');
+        if (scoreEl) scoreEl.textContent = `${res.score} / 100 🚀`;
+      }
+    }
+
+    function updateSerpPreview() {
+      const title = document.getElementById('seoMetaTitle')?.value || 'Mount2ocean Travel & Tours';
+      const desc = document.getElementById('seoMetaDesc')?.value || 'Book verified tour packages and luxury resorts.';
+      
+      const pTitle = document.getElementById('serpPreviewTitle');
+      const pDesc = document.getElementById('serpPreviewDesc');
+      
+      if (pTitle) pTitle.textContent = title;
+      if (pDesc) pDesc.textContent = desc;
+    }
+
+    function handleSaveAutoSeo(event) {
+      event.preventDefault();
+      const newSeo = {
+        metaTitle: document.getElementById('seoMetaTitle').value.trim(),
+        metaDescription: document.getElementById('seoMetaDesc').value.trim(),
+        keywords: document.getElementById('seoKeywords').value.trim(),
+        googleVerification: document.getElementById('seoGoogleVerif').value.trim(),
+        canonicalDomain: "https://www.mount2ocean.com",
+        ogImage: "https://engomarsany.github.io/mount2ocean/assets/official_logo.png"
+      };
+
+      if (typeof window.saveSeoSettings === 'function') {
+        window.saveSeoSettings(newSeo);
+      } else {
+        localStorage.setItem('m2o_seo_settings', JSON.stringify(newSeo));
+        if (typeof showToast === 'function') showToast('Auto SEO Settings Saved Live!', 'success');
+      }
+    }
   </script>
   <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">

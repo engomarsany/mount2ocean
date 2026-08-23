@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Core Landing & Portal Pages -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/customer_portal.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/index.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Tour Packages Catalogue -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/tour_packages.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/all_packages.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Hotels & Resorts -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/hotels_resorts.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Visa Processing Services -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/visa_services.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Flight Booking Portal -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/flights.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- AI Travel Assistant & Itinerary Builder -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/ai_assistant.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/ai_itinerary_builder.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/combo_builder.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Official Contact & Policies -->
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/contact_us.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://engomarsany.github.io/mount2ocean/refund_policy.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,28 @@
+# ====================================================================
+# MOUNT2OCEAN TRAVEL & TOURS - OFFICIAL ROBOTS.TXT ENGINE
+# Optimized for Googlebot, Bingbot, YandexBot, Applebot & Baiduspider
+# ====================================================================
+
+User-agent: *
+Allow: /
+Allow: /customer_portal.html
+Allow: /tour_packages.html
+Allow: /hotels_resorts.html
+Allow: /visa_services.html
+Allow: /contact_us.html
+Allow: /refund_policy.html
+Allow: /package_detail.html
+Allow: /booking.html
+Allow: /flights.html
+Allow: /assets/
+Allow: /sitemap.xml
+
+# Protect Admin & Backend API from Search Indexing
+Disallow: /admin_*.html
+Disallow: /api/
+Disallow: /scratch/
+Disallow: /.git/
+
+# XML Sitemap Location
+Sitemap: https://engomarsany.github.io/mount2ocean/sitemap.xml
+Sitemap: https://www.mount2ocean.com/sitemap.xml

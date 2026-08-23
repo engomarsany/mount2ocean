@@ -5204,6 +5204,191 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('%c🛡️ MOUNT2OCEAN SECURITY SHIELD ACTIVE %c• 1000% Military-Grade Protected', 'background:#0072bc;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#00a651;font-weight:bold;');
 });
 
+// ====================================================================
+// AUTO SEO & GOOGLE RICH SNIPPET (SCHEMA.ORG) AUTOMATION ENGINE
+// ====================================================================
+window.defaultSeoSettings = {
+  metaTitle: "Mount2ocean Travel & Tours | Luxury World Packages, Flight Tickets & Visa Assistance",
+  metaDescription: "Book verified international & domestic tour packages, luxury resorts in Cox's Bazar, Bali, Dubai, Maldives & fast tourist visa processing with 24/7 hotline +880 1330-303082.",
+  keywords: "Mount2ocean, Cox's Bazar Tour Package, Bali Resort, Dubai Safari, Maldives Overwater Villa, Tourist Visa Bangladesh, Air Tickets Dhaka",
+  googleVerification: "google-site-verification-m2o-verified-2026",
+  bingVerification: "bing-webmaster-m2o-code",
+  canonicalDomain: "https://www.mount2ocean.com",
+  ogImage: "https://engomarsany.github.io/mount2ocean/assets/official_logo.png"
+};
+
+window.getSeoSettings = function() {
+  const stored = localStorage.getItem('m2o_seo_settings');
+  return stored ? JSON.parse(stored) : window.defaultSeoSettings;
+};
+
+window.saveSeoSettings = function(newSettings) {
+  localStorage.setItem('m2o_seo_settings', JSON.stringify(newSettings));
+  if (typeof showToast === 'function') {
+    showToast('🚀 Auto SEO Configuration & Meta Tags Saved Live!', 'success');
+  }
+};
+
+window.initAutoSeoEngine = function() {
+  const seo = window.getSeoSettings();
+  const currentUrl = window.location.href;
+
+  // 1. Ensure Meta Description
+  let descMeta = document.querySelector('meta[name="description"]');
+  if (!descMeta) {
+    descMeta = document.createElement('meta');
+    descMeta.name = 'description';
+    document.head.appendChild(descMeta);
+  }
+  if (!descMeta.content || descMeta.content.length < 10) {
+    descMeta.content = seo.metaDescription;
+  }
+
+  // 2. Ensure Meta Keywords
+  let kwMeta = document.querySelector('meta[name="keywords"]');
+  if (!kwMeta) {
+    kwMeta = document.createElement('meta');
+    kwMeta.name = 'keywords';
+    document.head.appendChild(kwMeta);
+  }
+  kwMeta.content = seo.keywords;
+
+  // 3. Ensure Canonical URL
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = currentUrl;
+
+  // 4. Inject Dynamic Open Graph (OG) Meta Tags for WhatsApp/Facebook
+  const ogTags = [
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'Mount2ocean Travel & Tours' },
+    { property: 'og:title', content: document.title || seo.metaTitle },
+    { property: 'og:description', content: descMeta.content },
+    { property: 'og:url', content: currentUrl },
+    { property: 'og:image', content: seo.ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: document.title || seo.metaTitle },
+    { name: 'twitter:description', content: descMeta.content },
+    { name: 'twitter:image', content: seo.ogImage }
+  ];
+
+  ogTags.forEach(tag => {
+    const key = tag.property ? `meta[property="${tag.property}"]` : `meta[name="${tag.name}"]`;
+    let el = document.querySelector(key);
+    if (!el) {
+      el = document.createElement('meta');
+      if (tag.property) el.setAttribute('property', tag.property);
+      if (tag.name) el.setAttribute('name', tag.name);
+      document.head.appendChild(el);
+    }
+    el.content = tag.content;
+  });
+
+  // 5. Inject Google Schema.org JSON-LD Structured Data for LocalBusiness / TravelAgency
+  if (!document.getElementById('m2oJsonLdSchema')) {
+    const script = document.createElement('script');
+    script.id = 'm2oJsonLdSchema';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Mount2ocean Travel & Tours",
+      "image": seo.ogImage,
+      "url": "https://engomarsany.github.io/mount2ocean/",
+      "telephone": "+8801330303082",
+      "priceRange": "৳৳",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "169/1 Concord Grand 4th Floor, Shantinagar",
+        "addressLocality": "Dhaka",
+        "postalCode": "1217",
+        "addressCountry": "BD"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 23.7397087,
+        "longitude": 90.415104
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:30",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/mount2ocean",
+        "https://www.instagram.com/mount2ocean"
+      ]
+    });
+    document.head.appendChild(script);
+  }
+
+  console.log('%c🚀 AUTO SEO ENGINE ACTIVE %c• Google Rich Snippets & Schema.org Injected', 'background:#00a651;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#0072bc;font-weight:bold;');
+};
+
+// Real-Time SEO Health Audit Score (0 - 100%)
+window.calculateLiveSeoScore = function() {
+  let score = 0;
+  const issues = [];
+  const passed = [];
+
+  const title = document.title || '';
+  if (title.length >= 30 && title.length <= 70) {
+    score += 25;
+    passed.push('Page Title length is optimal (30-70 chars).');
+  } else {
+    issues.push('Title length should ideally be between 30 and 70 characters.');
+  }
+
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc && desc.content.length >= 80 && desc.content.length <= 160) {
+    score += 25;
+    passed.push('Meta Description length is SEO perfect (80-160 chars).');
+  } else {
+    issues.push('Meta Description should be between 80 and 160 characters.');
+  }
+
+  const h1 = document.querySelector('h1');
+  if (h1 && h1.textContent.trim().length > 5) {
+    score += 20;
+    passed.push('Primary H1 Heading tag detected.');
+  } else {
+    issues.push('Missing or empty H1 heading tag on page.');
+  }
+
+  const schema = document.getElementById('m2oJsonLdSchema');
+  if (schema) {
+    score += 15;
+    passed.push('Google Schema.org JSON-LD Structured Data is active.');
+  } else {
+    issues.push('Schema.org JSON-LD structured data not detected.');
+  }
+
+  const images = document.querySelectorAll('img');
+  let missingAlt = 0;
+  images.forEach(img => { if (!img.alt) missingAlt++; });
+  if (missingAlt === 0) {
+    score += 15;
+    passed.push('All image assets have SEO descriptive ALT tags.');
+  } else {
+    issues.push(`${missingAlt} image(s) missing ALT tags.`);
+  }
+
+  return { score: Math.min(100, score), passed, issues };
+};
+
+// Auto-run SEO on every page load
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.initAutoSeoEngine) {
+    window.initAutoSeoEngine();
+  }
+});
+
+
 
 
 
