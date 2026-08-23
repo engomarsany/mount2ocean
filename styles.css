@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
 
 /* ==========================================================================
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
@@ -4334,3 +4334,153 @@ body.light-theme input, body.light-theme select, body.light-theme textarea {
   text-shadow: 0 0 10px #00f2fe !important;
   box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
 }
+
+/* ==========================================================================
+   INTERNATIONAL 5-STAR LUXURY MASTER DESIGN SUITE (AIRBNB LUXE & EMIRATES STYLE)
+   ========================================================================== */
+
+/* 1. Global Typography Enhancement */
+h1, h2, h3, h4, .section-title, .brand-title, .hero-title {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
+body, p, span, li, input, textarea, select, button {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* 2. Universal High-Contrast Readability Guarantee */
+p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *) {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  line-height: 1.68 !important;
+}
+
+/* 3. Luxury 3D Card Hover Effects & Micro-Interactions */
+.package-card,
+.pkg-card,
+.hotel-card,
+.hotel-list-card,
+.feature-box,
+.service-card,
+.promo-card,
+.destination-card,
+.contact-card,
+.settings-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1.5px solid rgba(0, 114, 188, 0.12) !important;
+}
+
+.package-card:hover,
+.pkg-card:hover,
+.hotel-card:hover,
+.hotel-list-card:hover,
+.feature-box:hover,
+.service-card:hover,
+.promo-card:hover,
+.destination-card:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 22px 45px rgba(0, 114, 188, 0.14), 0 0 0 2px rgba(0, 114, 188, 0.25) !important;
+  border-color: #0072bc !important;
+}
+
+/* 4. Luxury Button Glows & Transitions */
+.primary-btn,
+.btn-primary,
+.cta-btn,
+.hotel-select-room-btn,
+.cust-nav-book-btn {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.primary-btn:hover,
+.btn-primary:hover,
+.cta-btn:hover,
+.hotel-select-room-btn:hover,
+.cust-nav-book-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  filter: brightness(1.08) !important;
+  box-shadow: 0 10px 25px rgba(0, 166, 81, 0.35), 0 0 15px rgba(0, 242, 254, 0.3) !important;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px) !important;
+  background: #f8fafc !important;
+  border-color: #0072bc !important;
+  color: #0072bc !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 5. Navigation Bar Glow & Active Links */
+.customer-nav-item {
+  position: relative;
+  font-weight: 800 !important;
+  transition: color 0.2s ease !important;
+}
+
+.customer-nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #0072bc, #00f2fe);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  border-radius: 99px;
+}
+
+.customer-nav-item:hover::after,
+.customer-nav-item.active::after {
+  width: 100%;
+}
+
+.customer-nav-item:hover {
+  color: #0072bc !important;
+}
+
+/* 6. Form Controls & Focus Rings */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #0072bc !important;
+  box-shadow: 0 0 0 3.5px rgba(0, 114, 188, 0.18) !important;
+  background-color: #ffffff !important;
+}
+
+/* 7. International Glassmorphic Modals */
+.modal-backdrop,
+.cust-modal-backdrop,
+.auth-overlay {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* 8. Modern Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0072bc 0%, #00a651 100%);
+  border-radius: 99px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0072bc;
+}
+

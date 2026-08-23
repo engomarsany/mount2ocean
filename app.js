@@ -6039,6 +6039,142 @@ window.initMultiCurrencySelector = function() {
   });
 };
 
+// ====================================================================
+// OWNER CONTROL SUITE: RECOVERY BIN & ACCIDENTAL DELETE ROLLBACK VAULT
+// ====================================================================
+
+// 1. Soft-Delete Items into Recycle Bin
+window.softDeleteItemToRecycleBin = function(type, item) {
+  if (!item || !item.id) return;
+  let bin = JSON.parse(localStorage.getItem('m2o_recycle_bin') || '[]');
+  
+  // Add metadata
+  const entry = {
+    recycleId: 'DEL-' + Date.now(),
+    itemType: type, // 'PACKAGE', 'HOTEL', 'BOOKING', 'USER'
+    itemData: item,
+    deletedAt: new Date().toISOString(),
+    title: item.title || item.name || item.customerName || item.id
+  };
+
+  bin.unshift(entry);
+  localStorage.setItem('m2o_recycle_bin', JSON.stringify(bin.slice(0, 100))); // Keep last 100 deleted items
+
+  if (typeof showToast === 'function') {
+    showToast(`🗑️ "${entry.title}" moved to Recovery Bin. You can restore it anytime!`, 'info');
+  }
+};
+
+// 2. 1-Click Restore Item from Recycle Bin
+window.restoreRecycleItem = function(recycleId) {
+  let bin = JSON.parse(localStorage.getItem('m2o_recycle_bin') || '[]');
+  const index = bin.findIndex(entry => entry.recycleId === recycleId);
+  if (index === -1) return;
+
+  const restored = bin.splice(index, 1)[0];
+  localStorage.setItem('m2o_recycle_bin', JSON.stringify(bin));
+
+  const item = restored.itemData;
+  if (restored.itemType === 'PACKAGE') {
+    let pkgs = JSON.parse(localStorage.getItem('m2o_live_packages') || '[]');
+    pkgs.unshift(item);
+    localStorage.setItem('m2o_live_packages', JSON.stringify(pkgs));
+  } else if (restored.itemType === 'HOTEL') {
+    let hotels = JSON.parse(localStorage.getItem('m2o_live_hotels') || '[]');
+    hotels.unshift(item);
+    localStorage.setItem('m2o_live_hotels', JSON.stringify(hotels));
+  } else if (restored.itemType === 'BOOKING') {
+    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings') || '[]');
+    bookings.unshift(item);
+    localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
+  }
+
+  if (typeof showToast === 'function') {
+    showToast(`♻️ "${restored.title}" restored successfully to live website!`, 'success');
+  }
+  if (typeof renderRecycleBinUI === 'function') {
+    renderRecycleBinUI();
+  }
+};
+
+// 3. Purge Item Permanently
+window.purgeRecycleItem = function(recycleId) {
+  let bin = JSON.parse(localStorage.getItem('m2o_recycle_bin') || '[]');
+  bin = bin.filter(entry => entry.recycleId !== recycleId);
+  localStorage.setItem('m2o_recycle_bin', JSON.stringify(bin));
+  if (typeof showToast === 'function') {
+    showToast(`⚠️ Item permanently wiped from trash.`, 'warning');
+  }
+  if (typeof renderRecycleBinUI === 'function') {
+    renderRecycleBinUI();
+  }
+};
+
+// 4. Full System Snapshot Backup & Restore
+window.exportFullSystemSnapshot = function() {
+  const snapshot = {
+    exportDate: new Date().toISOString(),
+    version: "v25_enterprise_recovery",
+    globalSettings: JSON.parse(localStorage.getItem('m2o_global_settings') || '{}'),
+    seoSettings: JSON.parse(localStorage.getItem('m2o_seo_settings') || '{}'),
+    packages: JSON.parse(localStorage.getItem('m2o_live_packages') || '[]'),
+    hotels: JSON.parse(localStorage.getItem('m2o_live_hotels') || '[]'),
+    bookings: JSON.parse(localStorage.getItem('m2o_customer_bookings') || '[]')
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(snapshot, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `mount2ocean_backup_snapshot_${new Date().toISOString().slice(0,10)}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+
+  if (typeof showToast === 'function') {
+    showToast('📥 Full System Snapshot Backup Downloaded!', 'success');
+  }
+};
+
+// 5. Dynamic Live Frontend Content Binder
+window.syncLiveFrontendWithAdminSettings = function() {
+  const saved = localStorage.getItem('m2o_global_settings');
+  if (!saved) return;
+
+  try {
+    const config = JSON.parse(saved);
+
+    // Update hotline phone links & text
+    if (config.hotlinePhone) {
+      document.querySelectorAll('a[href^="tel:"], .hotline-phone-text').forEach(el => {
+        if (!el.getAttribute('data-preserve-num')) {
+          el.href = `tel:${config.hotlinePhone.replace(/[^0-9+]/g, '')}`;
+        }
+      });
+    }
+
+    // Update email links
+    if (config.supportEmail) {
+      document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+        el.href = `mailto:${config.supportEmail}`;
+      });
+    }
+
+    // Update announcement notice
+    if (config.announcementText) {
+      const topAnnounce = document.getElementById('topAnnouncementBar');
+      if (topAnnounce) topAnnounce.textContent = config.announcementText;
+    }
+  } catch (e) {}
+};
+
+// Auto-run frontend sync on every page load
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.syncLiveFrontendWithAdminSettings) {
+    window.syncLiveFrontendWithAdminSettings();
+  }
+});
+
+
 
 
 
