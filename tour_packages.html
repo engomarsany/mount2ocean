@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -121,38 +121,34 @@
 </head>
 <body class="light-theme">
 
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div style="background: linear-gradient(90deg, #0072bc 0%, #00a651 100%); color: #ffffff !important; text-align: center; padding: 0.45rem 1rem; font-size: 0.85rem; font-weight: 800;">
+    <span id="topAnnouncementBar">🎉 স্পেশাল সামার অফার! সব আন্তর্জাতিক ও অভ্যন্তরীণ ট্যুর প্যাকেজে উপভোগ করুন সর্বোচ্চ ২০% পর্যন্ত ছাড়!</span>
+  </div>
+
   <!-- HEADER NAVIGATION BAR -->
-  <header class="app-header customer-header">
+  <header class="app-header customer-header" style="background: #ffffff; border-bottom: 1.5px solid #e2e8f0; padding: 0.6rem 2rem;">
     <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
       <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
     </div>
 
     <!-- Center Navigation Links -->
-    <nav class="customer-nav">
-      <a href="customer_portal.html" class="customer-nav-item">Home</a>
-      <a href="tour_packages.html" class="customer-nav-item active">All Packages</a>
-      <a href="contact_us.html" class="customer-nav-item">Contact Us</a>
-      <a href="refund_policy.html" class="customer-nav-item">Refund Policy</a>
-      <a href="my_profile.html" class="customer-nav-item">My Bookings</a>
+    <nav class="customer-nav" style="display: flex; gap: 1rem; align-items: center;">
+      <a href="customer_portal.html" class="customer-nav-item">হোম</a>
+      <a href="tour_packages.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 800;">সব প্যাকেজ</a>
+      <a href="hotels_resorts.html" class="customer-nav-item">হোটেল ও রিসোর্ট</a>
+      <a href="contact_us.html" class="customer-nav-item">যোগাযোগ</a>
+      <a href="refund_policy.html" class="customer-nav-item">রিফান্ড পলিসি</a>
+      <a href="my_profile.html" class="primary-btn" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; background: #0072bc; text-decoration: none;">
+        আমার বুকিং
+      </a>
     </nav>
 
     <!-- Header Right Controls -->
     <div class="header-actions">
-      <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
-      <div class="global-header-controls">
-        <div class="lang-switcher-box">
-          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
-            <option value="bn" selected>বাংলা (BN)</option>
-            <option value="en">English (US)</option>
-            <option value="ar">العربية (AR)</option>
-            <option value="hi">हिन्दी (HI)</option>
-          </select>
-        </div>
-      </div>
-
       <!-- Currency Selector -->
       <div class="currency-selector">
-        <select id="custCurrency">
+        <select id="custCurrency" class="currency-select" style="padding: 0.45rem 0.8rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.85rem; color: #0f172a; background: #ffffff;">
           <option value="BDT" selected>BDT (৳)</option>
           <option value="USD">USD ($)</option>
           <option value="EUR">EUR (€)</option>
@@ -161,10 +157,10 @@
 
       <!-- Customer Profile Indicator -->
       <div class="customer-user-badge" onclick="openMyProfileModal()" style="cursor: pointer;" title="View My Bookings &amp; Profile">
-        <span class="cust-avatar"></span>
+        <span class="cust-avatar">👤</span>
         <div class="cust-meta">
-          <span class="cust-name" id="custUserName">Sharmin Chowdhury</span>
-          <span class="cust-status" id="custBookingStatusBadge">View Reservations</span>
+          <span class="cust-name" id="custUserName">Customer</span>
+          <span class="cust-status" id="custBookingStatusBadge">My Account</span>
         </div>
       </div>
 
@@ -176,30 +172,30 @@
   </header>
 
   <!-- BREADCRUMB & HERO HEADER BANNER -->
-  <div style="background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); padding: 3.5rem 1.5rem; text-align: center; color: #ffffff; border-bottom: 4px solid #00a651; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+  <div style="background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); padding: 3.5rem 1.5rem; text-align: center; color: #ffffff !important; border-bottom: 4px solid #00a651; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
     <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; padding: 0.45rem 1.2rem; border-radius: 9999px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; display: inline-block; margin-bottom: 0.8rem;">
       MASTER TOUR PACKAGES DIRECTORY
     </span>
     <h1 style="font-size: 2.6rem; font-weight: 900; color: #ffffff !important; margin: 0 0 0.6rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
       আমাদের সকল ভ্রমণ প্যাকেজের তালিকা (All Active Tour Packages)
     </h1>
-    <p style="font-size: 1.1rem; color: #e2e8f0; max-width: 740px; margin: 0 auto 2rem; line-height: 1.6;">
-      ভূটান, বালি, কক্সবাজার, দুবাই, মালদ্বীপসহ ভবিষ্যতে যুক্ত হওয়া সকল ট্যুর প্যাকেজ একসাথে দেখুন, ৫টি এইচডি ছবি পরীক্ষা করুন এবং সরাসরি বুকিং করুন।
+    <p style="font-size: 1.15rem; color: #ffffff !important; font-weight: 700 !important; max-width: 740px; margin: 0 auto 2rem; line-height: 1.65; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">
+      ভুটান, বালি, কক্সবাজার, দুবাই, মালদ্বীপসহ সকল ট্যুর প্যাকেজ একসাথে দেখুন, এইচডি ছবি পরীক্ষা করুন এবং সরাসরি বুকিং করুন।
     </p>
 
     <!-- Instant Search & Category Filter Pills Bar -->
     <div style="max-width: 820px; margin: 0 auto; background: #ffffff; padding: 1rem 1.4rem; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.3); display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-      <input type="text" id="masterPkgSearchInput" placeholder="Type or search package name or destination..." oninput="filterMasterPackages()" style="flex: 2; min-width: 240px; padding: 0.85rem 1.2rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-weight: 700; font-size: 1rem; color: #0f172a;">
+      <input type="text" id="masterPkgSearchInput" placeholder="প্যাকেজের নাম বা গন্তব্য সার্চ করুন (Search destination)..." oninput="filterMasterPackages()" style="flex: 2; min-width: 240px; padding: 0.85rem 1.2rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-weight: 700; font-size: 1rem; color: #0f172a;">
       
-      <select id="masterPkgCatSelect" onchange="filterMasterPackages()" style="flex: 1; min-width: 170px; padding: 0.85rem 1.2rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-weight: 700; font-size: 0.95rem; color: #0f172a;">
-        <option value="all">All Destinations</option>
-        <option value="bhutan">Bhutan Special</option>
-        <option value="bali">Bali Special</option>
-        <option value="coxsbazar">Cox's Bazar</option>
-        <option value="dubai">Dubai</option>
-        <option value="maldives">Maldives</option>
-        <option value="sylhet">Sylhet</option>
-        <option value="nepal">Nepal</option>
+      <select id="masterPkgCatSelect" onchange="filterMasterPackages()" style="flex: 1; min-width: 170px; padding: 0.85rem 1.2rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
+        <option value="all">সব গন্তব্য (All Destinations)</option>
+        <option value="bhutan">ভুটান স্পেশাল (Bhutan)</option>
+        <option value="bali">বালি ট্যুর (Bali)</option>
+        <option value="coxsbazar">কক্সবাজার (Cox's Bazar)</option>
+        <option value="dubai">দুবাই সাফারি (Dubai)</option>
+        <option value="maldives">মালদ্বীপ রিসোর্ট (Maldives)</option>
+        <option value="sylhet">সিলেট (Sylhet)</option>
+        <option value="nepal">নেপাল (Nepal)</option>
       </select>
     </div>
   </div>
