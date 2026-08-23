@@ -828,6 +828,14 @@
       bookings.unshift(bookingObj);
       localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
 
+      try {
+        fetch('api/booking.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bookingObj)
+        }).catch(err => {});
+      } catch(e) {}
+
       localStorage.setItem('m2o_active_booking_id', bookingId);
       closeHotelBookingModal();
 

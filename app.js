@@ -2682,6 +2682,19 @@ document.addEventListener('DOMContentLoaded', () => {
     existingBookings.unshift(newBooking);
     localStorage.setItem('m2o_customer_bookings', JSON.stringify(existingBookings));
 
+    // Asynchronously send to cPanel PHP MySQL API if hosted
+    try {
+      fetch('api/booking.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newBooking)
+      }).then(res => res.json()).then(data => {
+        console.log('cPanel DB Sync Status:', data);
+      }).catch(err => {
+        console.log('cPanel DB Standby Mode (Active Local & Cloud Sync)');
+      });
+    } catch(e) {}
+
     // Trigger Email Dispatcher / Simulated Web Hosting Notification
     if (window.sendLiveWebsiteEmail) {
       window.sendLiveWebsiteEmail(newBooking, 'confirmation');
