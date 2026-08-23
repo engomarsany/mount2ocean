@@ -4350,11 +4350,21 @@ body, p, span, li, input, textarea, select, button {
 }
 
 /* 2. Universal High-Contrast Readability Guarantee */
-p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *) {
+p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *) {
   color: #0f172a !important;
   font-weight: 700 !important;
   line-height: 1.68 !important;
 }
+
+.policy-hero h1,
+.policy-hero p,
+.policy-hero span,
+.contact-hero h1,
+.contact-hero p,
+.contact-hero span {
+  color: #ffffff !important;
+}
+
 
 /* 3. Luxury 3D Card Hover Effects & Micro-Interactions */
 .package-card,
