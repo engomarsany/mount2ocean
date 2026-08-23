@@ -3803,37 +3803,77 @@ function checkCustomerBookingNotifications() {
 
     tickets.forEach(ticket => {
       const card = document.createElement('div');
-      card.style.cssText = `background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04);`;
+      card.style.cssText = `background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.3rem; margin-bottom: 1.2rem; box-shadow: 0 4px 18px rgba(0,0,0,0.05);`;
       
-      let msgHistoryHtml = ticket.messages.map(m => `
-        <div style="margin-bottom: 0.4rem; padding: 0.4rem 0.7rem; border-radius: 8px; font-size: 0.84rem; ${m.sender === 'admin' ? 'background: rgba(0,114,188,0.1); color: #0072bc; text-align: right;' : 'background: #f1f5f9; color: #0f172a;'}">
-          <strong>${m.sender === 'admin' ? '👑 Admin Support' : ticket.customerName}:</strong> ${m.text}
+      let msgHistoryHtml = (ticket.messages || []).map(m => `
+        <div style="margin-bottom: 0.45rem; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.86rem; ${m.sender === 'admin' ? 'background: rgba(0,114,188,0.12); color: #0072bc; font-weight: 700; text-align: right;' : 'background: #f1f5f9; color: #0f172a; font-weight: 700;'}">
+          <span style="font-size: 0.75rem; opacity: 0.8; display: block; margin-bottom: 0.2rem;">${m.sender === 'admin' ? '👑 Owner Support Team' : (ticket.customerName || 'Customer')} (${m.time || ''})</span>
+          <span>${m.text}</span>
         </div>
       `).join('');
+
+      const cleanPhone = (ticket.phone || '01330303082').replace(/[^0-9]/g, '');
 
       card.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
           <div>
-            <span class="badge-tag" style="background: #ef4444; color: white;">LIVE SUPPORT REQUEST</span>
-            <h4 style="margin: 0.3rem 0 0; font-size: 1.05rem; color: #0f172a; font-weight: 800;">${ticket.customerName}</h4>
-            <span style="font-size: 0.82rem; color: #64748b;">📱 ${ticket.phone} • ✉️ ${ticket.email}</span>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <span class="badge-tag" style="background: #ef4444; color: white; font-weight: 900;">LIVE SUPPORT TICKET</span>
+              <span style="background: #10b981; color: white; padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.75rem; font-weight: 800;">${ticket.status || 'PENDING'}</span>
+            </div>
+            <h4 style="margin: 0.2rem 0; font-size: 1.1rem; color: #0f172a; font-weight: 900;">${ticket.customerName || 'Valued Customer'}</h4>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">📱 ${ticket.phone || 'N/A'} • ✉️ ${ticket.email || 'N/A'}</span>
           </div>
-          <span style="font-size: 0.78rem; font-weight: 800; color: #00a651;">Ticket ID: ${ticket.id}</span>
+          <div style="text-align: right;">
+            <span style="font-size: 0.8rem; font-weight: 800; color: #0072bc; display: block;">ID: ${ticket.id}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">Updated: ${ticket.updatedAt || 'Recent'}</span>
+          </div>
         </div>
 
-        <div style="max-height: 180px; overflow-y: auto; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.8rem; margin-bottom: 0.8rem;">
-          ${msgHistoryHtml}
+        <div style="max-height: 200px; overflow-y: auto; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.8rem; margin-bottom: 1rem;">
+          ${msgHistoryHtml || '<div style="color:#64748b; font-size:0.85rem;">No conversation history.</div>'}
         </div>
 
-        <form onsubmit="handleAdminSupportReply(event, '${ticket.id}')" style="display: flex; gap: 0.5rem;">
-          <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type reply to customer (কাস্টমারকে উত্তর দিন)..." style="flex: 1; padding: 0.55rem 0.85rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.85rem;" required>
-          <button type="submit" class="primary-btn" style="padding: 0.55rem 1.1rem; background: #00a651; font-weight: 800; font-size: 0.85rem;">
-            Send Reply ➔
-          </button>
+        <form onsubmit="handleAdminSupportReply(event, '${ticket.id}')" style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type message/SMS to customer (কাস্টমারকে উত্তর লিখুন)..." style="flex: 1; padding: 0.7rem 1rem; border: 1.5px solid #0072bc; border-radius: 10px; font-size: 0.9rem; font-weight: 700;" required>
+            <button type="submit" class="primary-btn" style="padding: 0.7rem 1.4rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; border-radius: 10px; font-weight: 900; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
+              ✉️ Send Live Reply ➔
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <button type="button" onclick="sendOwnerWhatsappToTicket('${ticket.id}', '${cleanPhone}')" class="primary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; background: #22c55e; border-radius: 8px; font-weight: 800; cursor: pointer;">
+              💬 WhatsApp / SMS Send ➔
+            </button>
+            <a href="tel:${cleanPhone}" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; border-radius: 8px; font-weight: 800; text-decoration: none;">
+              📞 Call: ${ticket.phone || cleanPhone}
+            </a>
+            <button type="button" onclick="markTicketResolved('${ticket.id}')" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; border-radius: 8px; font-weight: 800; cursor: pointer;">
+              ✅ Mark Resolved
+            </button>
+          </div>
         </form>
       `;
       container.appendChild(card);
     });
+  };
+
+  window.sendOwnerWhatsappToTicket = function(ticketId, phone) {
+    const input = document.getElementById(`adminReplyInput_${ticketId}`);
+    const text = input && input.value.trim() ? input.value.trim() : 'আসসালামু আলাইকুম, আমি Mount2ocean ওনার সাপোর্ট টিম থেকে বলছি। আপনার রিকোয়েস্টটির বিষয়ে সাহায্য করতে চাচ্ছি।';
+    const waUrl = `https://wa.me/${phone.startsWith('88') ? phone : '88' + phone}?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+  };
+
+  window.markTicketResolved = function(ticketId) {
+    let tickets = getSupportTickets();
+    let ticket = tickets.find(t => t.id === ticketId);
+    if (ticket) {
+      ticket.status = 'RESOLVED';
+      saveSupportTickets(tickets);
+      if (typeof showToast === 'function') showToast(`✅ Ticket ${ticketId} marked as RESOLVED!`, 'success');
+    }
   };
 
   window.handleAdminSupportReply = function(e, ticketId) {
@@ -3849,17 +3889,18 @@ function checkCustomerBookingNotifications() {
 
     if (ticket) {
       ticket.messages.push({ sender: 'admin', text: replyText, time: timeStr });
-      ticket.status = 'RESOLVED';
+      ticket.status = 'IN_PROGRESS';
+      ticket.updatedAt = timeStr;
       saveSupportTickets(tickets);
     }
 
-    // Deliver admin message to customer chat messages
+    // Deliver admin message directly to customer chat messages in real time
     let msgs = getAiChatMessages();
-    msgs.push({ sender: 'admin', text: `👑 Mount2ocean Support: ${replyText}`, time: timeStr });
+    msgs.push({ sender: 'admin', text: replyText, time: timeStr });
     saveAiChatMessages(msgs);
 
     input.value = '';
-    if (typeof showToast === 'function') showToast(`✅ Reply sent to customer (${ticket ? ticket.customerName : 'Live Customer'})!`, 'success');
+    if (typeof showToast === 'function') showToast(`✅ Live reply delivered to customer! (${ticket ? ticket.customerName : 'Live Customer'})`, 'success');
   };
 
   window.ownerInitiateNewCustomerMessage = function(customerName, email, phone, messageText) {

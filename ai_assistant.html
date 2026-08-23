@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -319,35 +319,111 @@
       localStorage.setItem('m2o_customer_chat_messages', JSON.stringify(msgs));
     }
 
+    let lastKnownMsgCount = 0;
+
     window.renderPageAiChat = function() {
       const container = document.getElementById('pageAiChatBody');
       if (!container) return;
 
       const msgs = getStoredChatMsgs();
+      if (msgs.length === lastKnownMsgCount && container.children.length === msgs.length) {
+        return; // No change, skip DOM rebuild
+      }
+      lastKnownMsgCount = msgs.length;
       container.innerHTML = '';
 
       msgs.forEach(m => {
         const div = document.createElement('div');
         const isCustomer = m.sender === 'customer';
         const isAdmin = m.sender === 'admin';
+        const isEscalationCard = m.isEscalation === true;
 
-        div.style.cssText = isCustomer
-          ? `align-self: flex-end; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%) !important; color: #ffffff !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 4px 20px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; box-shadow: 0 6px 20px rgba(0,166,81,0.3) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`
-          : (isAdmin
-            ? `align-self: flex-start; background: #0f172a !important; color: #00f2fe !important; border: 2.5px solid #00f2fe !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 20px 4px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; box-shadow: 0 6px 20px rgba(0,242,254,0.3) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`
-            : `align-self: flex-start; background: #ffffff !important; color: #0f172a !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 20px 4px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; border: 2px solid #00a651 !important; box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`);
+        if (isEscalationCard) {
+          div.style.cssText = `align-self: flex-start; background: #ffffff !important; color: #0f172a !important; padding: 1.3rem 1.6rem !important; border-radius: 20px !important; max-width: 90% !important; border: 2.5px solid #10b981 !important; box-shadow: 0 8px 25px rgba(16,185,129,0.15) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.8rem !important; width: 100%;`;
+          div.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
+              <span style="background: #10b981; color: white; padding: 0.3rem 0.7rem; border-radius: 99px; font-size: 0.8rem; font-weight: 900;">👑 LIVE OWNER SUPPORT</span>
+              <strong style="color: #059669; font-size: 0.95rem;">টিকেট ওনার প্যানেলে পাঠানো হয়েছে!</strong>
+            </div>
+            <p style="margin: 0 0 0.8rem; font-size: 0.95rem; line-height: 1.6; color: #0f172a !important; font-weight: 700;">
+              🟢 আপনার বার্তাটি সরাসরি ওনার প্যানেলের <strong>Live Support Desk</strong> এ ট্রান্সফার করা হয়েছে <em>(Ticket ID: ${m.ticketId || '#TKT-LIVE'})</em>।<br>
+              ওনার প্যানেল থেকে রিপ্লাই দিলে তা সাথে সাথে এই চ্যাটে ভেসে উঠবে।
+            </p>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem;">
+              <a href="https://wa.me/8801330303082?text=${encodeURIComponent('আসসালামু আলাইকুম, আমি Mount2ocean ওয়েবসাইট থেকে ওনার সাপোর্ট টিমের সাথে কথা বলতে চাচ্ছি। Ticket ID: ' + (m.ticketId || 'LIVE'))}" target="_blank" style="background: #22c55e; color: #ffffff !important; text-decoration: none; padding: 0.65rem 1.2rem; border-radius: 10px; font-weight: 800; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(34,197,94,0.3);">
+                💬 WhatsApp-এ ওনারকে মেসেজ পাঠান ➔
+              </a>
+              <a href="tel:+8801330303082" style="background: #0072bc; color: #ffffff !important; text-decoration: none; padding: 0.65rem 1.2rem; border-radius: 10px; font-weight: 800; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                📞 সরাসরি কল করুন (+৮৮ ০১৩৩০৩০৩০৮২)
+              </a>
+            </div>
+            <span style="display:block; text-align:right; font-size:0.75rem; opacity:0.7; margin-top:0.6rem; font-weight:600;">${m.time || ''}</span>
+          `;
+        } else {
+          div.style.cssText = isCustomer
+            ? `align-self: flex-end; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%) !important; color: #ffffff !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 4px 20px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; box-shadow: 0 6px 20px rgba(0,166,81,0.3) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`
+            : (isAdmin
+              ? `align-self: flex-start; background: #0f172a !important; color: #00f2fe !important; border: 2.5px solid #00f2fe !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 20px 4px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; box-shadow: 0 6px 20px rgba(0,242,254,0.3) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`
+              : `align-self: flex-start; background: #ffffff !important; color: #0f172a !important; padding: 1.1rem 1.4rem !important; border-radius: 20px 20px 20px 4px !important; max-width: 80% !important; font-size: 1.02rem !important; font-weight: 700 !important; line-height: 1.55 !important; border: 2px solid #00a651 !important; box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; margin-bottom: 0.4rem !important;`);
 
-        const prefix = isAdmin 
-          ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">LIVE OWNER SUPPORT TEAM:</strong>' 
-          : (isCustomer ? '' : '<strong style="display:block; font-size:0.85rem; color:#00a651 !important; margin-bottom:0.4rem; font-weight:900;">🤖 MOUNT2OCEAN AI ASSISTANT:</strong>');
+          const prefix = isAdmin 
+            ? '<strong style="display:block; font-size:0.85rem; color:#00f2fe !important; margin-bottom:0.4rem; font-weight:900;">👑 LIVE OWNER SUPPORT TEAM:</strong>' 
+            : (isCustomer ? '' : '<strong style="display:block; font-size:0.85rem; color:#00a651 !important; margin-bottom:0.4rem; font-weight:900;">🤖 MOUNT2OCEAN AI ASSISTANT:</strong>');
 
-        div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.85; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
+          div.innerHTML = `${prefix}<span style="display:block; color:inherit !important;">${(m.text || '').replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.75rem; opacity:0.85; margin-top:0.5rem; font-weight:600;">${m.time || ''}</span>`;
+        }
+        
         container.appendChild(div);
       });
 
       setTimeout(() => {
         container.scrollTop = container.scrollHeight;
       }, 50);
+    };
+
+    window.escalateToLiveOwnerSupport = function(customQuery) {
+      const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      const query = customQuery || 'লাইভ ওনার সাপোর্ট টিমের সাথে কথা বলতে চাই';
+      const ticketId = 'TKT-' + Math.floor(10000 + Math.random() * 90000);
+
+      const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || { 
+        name: 'Live Customer', 
+        mobile: '01330303082', 
+        email: 'customer@mount2ocean.com' 
+      };
+
+      // 1. Save Ticket to Owner Support Desk (m2o_support_tickets)
+      let tickets = JSON.parse(localStorage.getItem('m2o_support_tickets') || '[]');
+      const newTicket = {
+        id: ticketId,
+        customerName: loggedUser.name,
+        phone: loggedUser.mobile,
+        email: loggedUser.email,
+        status: 'ESCALATED_PENDING',
+        updatedAt: timeStr,
+        lastMessage: query,
+        messages: [
+          { sender: 'customer', text: query, time: timeStr }
+        ]
+      };
+      tickets.unshift(newTicket);
+      localStorage.setItem('m2o_support_tickets', JSON.stringify(tickets));
+
+      // 2. Append Customer Message + Escalation Card to Chat
+      let msgs = getStoredChatMsgs();
+      msgs.push({ sender: 'customer', text: query, time: timeStr });
+      msgs.push({ 
+        sender: 'system', 
+        isEscalation: true, 
+        ticketId: ticketId, 
+        time: timeStr 
+      });
+      saveStoredChatMsgs(msgs);
+      window.renderPageAiChat();
+
+      if (typeof showToast === 'function') {
+        showToast(`👑 Live Support Request Sent to Owner Desk! (${ticketId})`, 'success');
+      }
     };
 
     window.handlePageAiSubmit = function(e) {
@@ -360,6 +436,12 @@
 
       const userText = input.value.trim();
       input.value = '';
+
+      const lower = userText.toLowerCase();
+      if (lower.includes('লাইভ') || lower.includes('support') || lower.includes('কথা বলতে চাই') || lower.includes('owner') || lower.includes('ওনার') || lower.includes('প্রতিনিধি')) {
+        window.escalateToLiveOwnerSupport(userText);
+        return false;
+      }
 
       const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
       let msgs = getStoredChatMsgs();
@@ -390,6 +472,11 @@
     };
 
     window.sendPageQuickQuery = function(text) {
+      const lower = text.toLowerCase();
+      if (lower.includes('লাইভ') || lower.includes('support') || lower.includes('কথা') || lower.includes('owner') || lower.includes('ওনার')) {
+        window.escalateToLiveOwnerSupport(text);
+        return;
+      }
       const input = document.getElementById('pageAiInput');
       if (input) input.value = text;
       window.handlePageAiSubmit();
@@ -398,6 +485,7 @@
     window.clearPageChatHistory = function() {
       if (confirm('Clear chat history?')) {
         localStorage.removeItem('m2o_customer_chat_messages');
+        lastKnownMsgCount = 0;
         window.renderPageAiChat();
       }
     };
@@ -406,6 +494,11 @@
       window.renderPageAiChat();
       const input = document.getElementById('pageAiInput');
       if (input) input.focus();
+
+      // REAL-TIME AUTO-POLLING: Checks every 1.5 seconds for Owner replies
+      setInterval(() => {
+        window.renderPageAiChat();
+      }, 1500);
     });
   </script>
 
