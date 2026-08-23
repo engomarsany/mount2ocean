@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -351,6 +351,19 @@
               <span style="font-size: 0.82rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.3rem;">TOTAL PAID / DUE AMOUNT</span>
               <span id="dtlTotalAmount" style="font-size: 2rem; font-weight: 900; color: #00a651;">৳75,000</span>
             </div>
+
+            <!-- Instant Action Buttons -->
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem;">
+              <button type="button" onclick="triggerDirectPaymentCheckout()" style="width: 100%; padding: 0.85rem; background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); color: white; border: none; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 15px rgba(225,29,72,0.35);">
+                💳 Pay Now (bKash / Nagad / Card) ➔
+              </button>
+              <button type="button" onclick="triggerDirectPdfTicketDownload()" style="width: 100%; padding: 0.85rem; background: linear-gradient(135deg, #0072bc 0%, #00f2fe 100%); color: #07111e; border: none; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer;">
+                📄 Download PDF E-Ticket &amp; QR
+              </button>
+              <button type="button" onclick="shareBookingVoucherWhatsApp()" style="width: 100%; padding: 0.85rem; background: #25D366; color: white; border: none; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer;">
+                💬 WhatsApp Confirmation Alert
+              </button>
+            </div>
           </div>
 
           <!-- Helpline Card -->
@@ -370,8 +383,27 @@
   </main>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v23_production_ready_launch"></script>
+  <script src="app.js?v=v24_production_audit_ready"></script>
   <script>
+    let currentLoadedBooking = null;
+
+    function triggerDirectPaymentCheckout() {
+      const bId = currentLoadedBooking ? currentLoadedBooking.id : (document.getElementById('dtlFileId')?.textContent || 'M2O-BK-88491');
+      const amt = currentLoadedBooking ? (currentLoadedBooking.amount || currentLoadedBooking.price) : '৳75,000';
+      const title = currentLoadedBooking ? currentLoadedBooking.tourTitle : 'Mount2ocean Travel Booking';
+
+      if (typeof window.openLivePaymentGatewayModal === 'function') {
+        window.openLivePaymentGatewayModal(bId, amt, title);
+      }
+    }
+
+    function triggerDirectPdfTicketDownload() {
+      const bId = currentLoadedBooking ? currentLoadedBooking.id : 'M2O-BK-88491';
+      if (typeof window.generatePdfETicketWithQr === 'function') {
+        window.generatePdfETicketWithQr(bId);
+      }
+    }
+
     function shareBookingVoucherWhatsApp() {
       const title = document.getElementById('dtlFileTitle') ? document.getElementById('dtlFileTitle').textContent.trim() : 'Tour Booking';
       const fileId = document.getElementById('dtlFileId') ? document.getElementById('dtlFileId').textContent.trim() : '';
@@ -410,6 +442,7 @@
           status: 'PENDING'
         };
       }
+      currentLoadedBooking = bk;
 
       // Populate file DOM fields
       document.getElementById('dtlFileTitle').textContent = bk.tourTitle || 'Tour Package File';
