@@ -6,37 +6,36 @@
 # 1. Enable UTF-8 Encoding
 AddDefaultCharset UTF-8
 
-# 2. Disable Directory Listing & Server Signatures
+# 2. Disable Directory Listing & Server Signatures (Anti-Reconnaissance)
 Options -Indexes -MultiViews
 ServerSignature Off
 
-# 3. Block Vulnerability Scanners, Exploit Bots & Bad User Agents
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+# 3. Explicit File Access Deny Rules (Zero-Leak Protection)
+<Files "db_config.php">
+    Order allow,deny
+    Deny from all
+    Require all denied
+</Files>
 
-    # Block common scanning tools
-    RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|wpscan|dirbuster|havij|acunetix|zmeu|morfeus|nessus|masscan) [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} (libwww-perl|python-requests|curl|wget|scanner) [NC]
-    RewriteCond %{REQUEST_URI} !^/api/ [NC]
-    RewriteRule .* - [F,L]
+<Files "security_shield.php">
+    Order allow,deny
+    Deny from all
+    Require all denied
+</Files>
 
-    # Block SQL Injection Attempts in Query String
-    RewriteCond %{QUERY_STRING} (union\s+select|cast\(|concat\(|base64_|DECLARE\s+@|<script|document\.cookie) [NC]
-    RewriteRule .* - [F,L]
+<Files "database.sql">
+    Order allow,deny
+    Deny from all
+    Require all denied
+</Files>
 
-    # Block Directory Traversal Attacks
-    RewriteCond %{QUERY_STRING} (\.\./|etc/passwd|proc/self/environ) [NC]
-    RewriteRule .* - [F,L]
+<Files ".cpanel.yml">
+    Order allow,deny
+    Deny from all
+    Require all denied
+</Files>
 
-    # Force HTTPS (SSL) when enabled on server
-    RewriteCond %{HTTPS} off
-    RewriteCond %{HTTP_HOST} !^localhost [NC]
-    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
-
-# 4. Strictly Block Direct Access to Sensitive Files & Dotfiles
-<FilesMatch "^(\..*|.*\.(sql|env|ini|log|bak|conf|sh|json|yml|yaml)|db_config\.php|security_shield\.php)$">
+<FilesMatch "\.(sql|env|ini|log|bak|conf|sh|json|yml|yaml|git|md)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -46,9 +45,34 @@ ServerSignature Off
     </IfModule>
 </FilesMatch>
 
-# 5. Enterprise Security & Anti-Hacking Headers (HSTS, Clickjacking, CSP)
+# 4. Web Application Firewall (WAF) Rewrite Rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block Exploit Scanners & Malicious User-Agents
+    RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|wpscan|dirbuster|havij|acunetix|zmeu|morfeus|nessus|masscan|metasploit|nmap) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (libwww-perl|python-requests|curl|wget|scanner) [NC]
+    RewriteCond %{REQUEST_URI} !^/api/ [NC]
+    RewriteRule .* - [F,L]
+
+    # Block SQL Injection Attempts in URI Query String
+    RewriteCond %{QUERY_STRING} (union\s+select|cast\(|concat\(|base64_|DECLARE\s+@|<script|document\.cookie|sleep\(|benchmark\() [NC]
+    RewriteRule .* - [F,L]
+
+    # Block Directory Traversal & Remote File Inclusion (RFI)
+    RewriteCond %{QUERY_STRING} (\.\./|etc/passwd|proc/self/environ|boot\.ini|/win\.ini) [NC]
+    RewriteRule .* - [F,L]
+
+    # Enforce HTTPS (SSL)
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 5. Military-Grade Security Headers
 <IfModule mod_headers.c>
-    # HTTP Strict Transport Security (HSTS - 2 Years)
+    # HTTP Strict Transport Security (HSTS - 2 Years Enforced)
     Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
     
     # Anti-Sniffing MIME Protection
@@ -57,13 +81,13 @@ ServerSignature Off
     # Anti-Clickjacking Protection
     Header always set X-Frame-Options "SAMEORIGIN"
     
-    # Cross-Site Scripting (XSS) Block
+    # Cross-Site Scripting (XSS) Filter Block
     Header always set X-XSS-Protection "1; mode=block"
     
-    # Referrer Information Protection
+    # Strict Referrer Privacy Protection
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Cross-Origin Policies
+    # Cross-Origin Policies (COOP / CORP)
     Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
     Header always set Cross-Origin-Resource-Policy "cross-origin"
     
@@ -71,12 +95,12 @@ ServerSignature Off
     Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=(), payment=(self)"
 </IfModule>
 
-# 6. Gzip Compression for Ultra High Speed
+# 6. Gzip Compression for High-Speed Loading
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
-# 7. Browser Caching
+# 7. Browser Cache Control
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/jpg "access plus 1 year"
@@ -89,5 +113,5 @@ ServerSignature Off
     ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
-# 8. Default Index Document
+# 8. Default Entry Document
 DirectoryIndex customer_portal.html index.html

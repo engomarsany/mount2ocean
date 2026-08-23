@@ -5167,8 +5167,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // 1. Anti-Clickjacking Frame Buster
+  try {
+    if (window.top !== window.self) {
+      window.top.location = window.self.location.href;
+    }
+  } catch (e) {}
+
+  // 2. Strict Admin Route Auth Guard
+  const currentPath = window.location.pathname.toLowerCase();
+  const isAdminPage = currentPath.includes('admin_') || currentPath.endsWith('admin_dashboard.html');
+  
+  if (isAdminPage) {
+    const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user') || 'null');
+    const userRole = localStorage.getItem('m2o_user_role') || (loggedUser ? loggedUser.role : null);
+    
+    if (!userRole || (userRole !== 'OWNER' && userRole !== 'ADMIN' && userRole !== 'SUPER_ADMIN')) {
+      console.warn('🚨 Unauthorized access to admin portal prevented. Redirecting to login.');
+      localStorage.removeItem('m2o_user_role');
+      localStorage.removeItem('m2o_is_logged_in');
+      window.location.replace('index.html');
+    }
+  }
+
+  // 3. Session Inactivity Timeout Guard (45 Minutes)
+  const lastActiveTime = parseInt(localStorage.getItem('m2o_last_active') || '0', 10);
+  const now = Date.now();
+  if (lastActiveTime > 0 && (now - lastActiveTime) > (45 * 60 * 1000)) {
+    // Session expired
+    localStorage.removeItem('m2o_logged_user');
+    localStorage.removeItem('m2o_user_role');
+    localStorage.removeItem('m2o_is_logged_in');
+  }
+  localStorage.setItem('m2o_last_active', now.toString());
+
   console.log('%c🛡️ MOUNT2OCEAN SECURITY SHIELD ACTIVE %c• 1000% Military-Grade Protected', 'background:#0072bc;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#00a651;font-weight:bold;');
 });
+
 
 
 
