@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v25_international_luxe_launch">
+  <link rel="stylesheet" href="styles.css?v=v26_master_contrast_lock">
   <style>
     .profile-header-card {
       background: #ffffff;
@@ -153,7 +153,7 @@
             <h2 id="profCustName" style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0;">Sharmin Chowdhury</h2>
             <span style="background: #e0f2fe; color: #0369a1; font-weight: 800; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px;">Verified Customer</span>
           </div>
-          <p id="profCustContact" style="font-size: 0.95rem; color: #475569; font-weight: 600; margin: 0;">
+          <p id="profCustContact" style="font-size: 0.95rem; color: #1e293b; font-weight: 600; margin: 0;">
             <span id="profCustPhone">+880 1330-303082</span> • <span id="profCustEmail">sharmin@gmail.com</span>
           </p>
         </div>
@@ -190,7 +190,7 @@
       <h3 style="font-size: 1.4rem; font-weight: 900; color: #0f172a; margin: 0;">
         Reservation History (<span id="profBookingsCount" style="color: #0072bc;">0</span> Bookings Found)
       </h3>
-      <span style="font-size: 0.88rem; color: #64748b; font-weight: 600;">Auto-synced live with Admin Panel</span>
+      <span style="font-size: 0.88rem; color: #1e293b; font-weight: 600;">Auto-synced live with Admin Panel</span>
     </div>
 
     <!-- DYNAMIC BOOKINGS LIST CONTAINER -->
@@ -275,7 +275,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v25_international_luxe_launch"></script>
+  <script src="app.js?v=v26_master_contrast_lock"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       loadCustomerProfileAndBookings();
@@ -310,7 +310,7 @@
           <div style="text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 20px; border: 1.5px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
             <div style="font-size: 3.5rem; margin-bottom: 0.8rem;"></div>
             <h3 style="font-size: 1.4rem; color: #0f172a; font-weight: 800; margin-bottom: 0.4rem;">আপনার কোনো বুকিং রেকর্ড নেই (No Bookings Found)</h3>
-            <p style="color: #64748b; font-size: 0.98rem; margin-bottom: 1.5rem;">আপনার পছন্দের প্যাকেজ সিলেক্ট করে অনলাইনে বুকিং করতে নিচের বাটনে ক্লিক করুন।</p>
+            <p style="color: #1e293b; font-size: 0.98rem; margin-bottom: 1.5rem;">আপনার পছন্দের প্যাকেজ সিলেক্ট করে অনলাইনে বুকিং করতে নিচের বাটনে ক্লিক করুন।</p>
             <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; padding: 0.8rem 1.8rem; font-weight: 800;">
               Browse All Tour Packages
             </a>
@@ -345,25 +345,25 @@
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; background: #f8fafc; padding: 1.2rem; border-radius: 12px;">
             <div>
-              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TRAVEL DEPARTURE DATE</span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TRAVEL DEPARTURE DATE</span>
               <strong style="font-size: 0.98rem; color: #0f172a;">📅 ${bk.travelDate || 'Selected Departure'}</strong>
             </div>
             <div>
-              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">GUESTS &amp; TRAVELERS</span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">GUESTS &amp; TRAVELERS</span>
               <strong style="font-size: 0.95rem; color: #0f172a;">${bk.travelersCount || 'Travelers'}</strong>
             </div>
             <div>
-              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">PAYMENT METHOD</span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">PAYMENT METHOD</span>
               <strong style="font-size: 0.95rem; color: #0072bc;">${bk.paymentMethod || 'bKash/Nagad'}</strong>
             </div>
             <div>
-              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOTAL PRICE</span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TOTAL PRICE</span>
               <strong style="font-size: 1.2rem; color: #00a651; font-weight: 900;">${bk.price || bk.amount || '৳17,500'}</strong>
             </div>
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <span style="font-size: 0.85rem; font-weight: 700; color: #475569;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: #1e293b;">
               ${idDocText}
             </span>
             <div style="display: flex; gap: 0.6rem;">

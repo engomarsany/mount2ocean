@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v25_international_luxe_launch">
+  <link rel="stylesheet" href="styles.css?v=v26_master_contrast_lock">
 
   <style>
     .admin-page-header {
@@ -154,7 +154,7 @@
       <div class="metric-card purple">
         <div class="metric-icon-badge purple-bg">USERS</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOTAL REGISTERED USERS</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TOTAL REGISTERED USERS</span>
           <strong id="metricTotalUsers" style="font-size: 1.6rem; font-weight: 900; color: #8b5cf6;">0</strong>
         </div>
       </div>
@@ -162,7 +162,7 @@
       <div class="metric-card green">
         <div class="metric-icon-badge green-bg">CUST</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">CUSTOMERS</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">CUSTOMERS</span>
           <strong id="metricTotalCustomers" style="font-size: 1.6rem; font-weight: 900; color: #00a651;">0</strong>
         </div>
       </div>
@@ -170,7 +170,7 @@
       <div class="metric-card blue">
         <div class="metric-icon-badge blue-bg">AGENT</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">B2B AGENTS</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">B2B AGENTS</span>
           <strong id="metricTotalAgents" style="font-size: 1.6rem; font-weight: 900; color: #0072bc;">0</strong>
         </div>
       </div>
@@ -178,7 +178,7 @@
       <div class="metric-card orange">
         <div class="metric-icon-badge orange-bg">GUIDE</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; display: block;">TOUR GUIDES</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TOUR GUIDES</span>
           <strong id="metricTotalGuides" style="font-size: 1.6rem; font-weight: 900; color: #f97316;">0</strong>
         </div>
       </div>
@@ -215,7 +215,7 @@
           <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
             Registered User Directory (<span id="showingUsersCount" style="color: #8b5cf6;">0</span> Accounts Found)
           </h2>
-          <p style="font-size: 0.88rem; color: #64748b; margin: 0.2rem 0 0;">
+          <p style="font-size: 0.88rem; color: #1e293b; margin: 0.2rem 0 0;">
             View all collected user profiles, login timestamps, roles, phone numbers, and activity logs.
           </p>
         </div>
@@ -252,7 +252,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v25_international_luxe_launch"></script>
+  <script src="app.js?v=v26_master_contrast_lock"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterUsersDirectory();
@@ -308,7 +308,7 @@
       tbody.innerHTML = '';
 
       if (users.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 3rem; color: #64748b; font-weight: 700; background: #f8fafc; border-radius: 12px;">No matching registered user accounts found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 3rem; color: #1e293b; font-weight: 700; background: #f8fafc; border-radius: 12px;">No matching registered user accounts found.</td></tr>`;
         return;
       }
 
@@ -328,14 +328,14 @@
           <td>
             <div style="font-size: 0.86rem; line-height: 1.4;">
               <a href="tel:${u.mobile}" style="color: #00a651; font-weight: 800; text-decoration: none;">Phone: ${u.mobile}</a><br>
-              <span style="color: #64748b; font-size: 0.8rem;">Email: ${u.email}</span>
+              <span style="color: #1e293b; font-size: 0.8rem;">Email: ${u.email}</span>
             </div>
           </td>
           <td><span ${roleBadgeStyle}>${u.role}</span></td>
-          <td><span style="font-size: 0.82rem; color: #64748b;">${u.registeredAt}</span></td>
+          <td><span style="font-size: 0.82rem; color: #1e293b;">${u.registeredAt}</span></td>
           <td>
             <span style="font-size: 0.82rem; color: #00a651; font-weight: 700;">${u.lastLoginAt}</span><br>
-            <span style="font-size: 0.75rem; color: #64748b;">(Sessions: ${u.loginCount || 1})</span>
+            <span style="font-size: 0.75rem; color: #1e293b;">(Sessions: ${u.loginCount || 1})</span>
           </td>
           <td><span class="status-badge-live" style="background: rgba(34,197,94,0.15); color: #22c55e; font-weight: 800;">${u.status || 'Active / Verified'}</span></td>
           <td>

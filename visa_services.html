@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v25_international_luxe_launch">
+  <link rel="stylesheet" href="styles.css?v=v26_master_contrast_lock">
 </head>
 <body class="light-theme">
 
@@ -59,7 +59,7 @@
           <h3 style="color: #ea580c; font-size: 1.4rem; font-weight: 900; margin-bottom: 0.8rem; line-height: 1.3;">
             Track Your Visa Application
           </h3>
-          <p style="color: #475569; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
+          <p style="color: #1e293b; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
             Dear Valued Travelers Please Track Your Visa Application from our portal and get your visa update
           </p>
         </div>
@@ -69,7 +69,7 @@
           <h3 style="color: #ea580c; font-size: 1.4rem; font-weight: 900; margin-bottom: 0.8rem; line-height: 1.3;">
             Download Your Visa Checklist
           </h3>
-          <p style="color: #475569; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
+          <p style="color: #1e293b; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
             Download Your Visa Checklist from your Desire Country
           </p>
         </div>
@@ -183,11 +183,11 @@
   <footer class="cust-footer" style="background: #060911; color: #ffffff; padding: 3rem 2rem 1.5rem; border-top: 3px solid #00f2fe; margin-top: 4rem;">
     <div style="max-width: 1240px; margin: 0 auto; text-align: center;">
       <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 50px; margin-bottom: 1rem;">
-      <p style="color: #cbd5e1; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Visa Services &amp; Application Tracking Center.</p>
+      <p style="color: #1e293b; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Visa Services &amp; Application Tracking Center.</p>
     </div>
   </footer>
 
-  <script src="app.js?v=v25_international_luxe_launch"></script>
+  <script src="app.js?v=v26_master_contrast_lock"></script>
   <script>
     function renderVisaChecklistTable(countryFilter) {
       const heading = document.getElementById('selectedCountryHeading');
@@ -200,7 +200,7 @@
       const filtered = countryFilter === 'All' ? list : list.filter(item => (item.country || '').toLowerCase() === countryFilter.toLowerCase());
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="12" style="padding: 2rem; color: #64748b; font-weight: 700;">No visa checklists found for ${countryFilter}.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="12" style="padding: 2rem; color: #1e293b; font-weight: 700;">No visa checklists found for ${countryFilter}.</td></tr>`;
         return;
       }
 
@@ -267,7 +267,7 @@
           <h4 style="color: #ef4444; font-size: 1.1rem; font-weight: 900; margin-bottom: 0.4rem;">
             Application Record Found for Passport: ${passportNo} (${country})
           </h4>
-          <p style="color: #475569; font-size: 0.9rem; font-weight: 700; margin: 0;">
+          <p style="color: #1e293b; font-size: 0.9rem; font-weight: 700; margin: 0;">
             Status: <strong style="color: #f59e0b;">In Embassy Processing</strong>. Reference ID registered. Check back soon or call hotline +880 1330-303082.
           </p>
         `;

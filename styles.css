@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
 
 /* ==========================================================================
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
@@ -451,7 +451,7 @@ body.dark-theme .brand-subtext {
 .brand-slogan {
   font-size: 0.65rem;
   font-style: italic;
-  color: #64748b;
+  color: #1e293b !important;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -1463,7 +1463,7 @@ body.light-theme .role-selector-box {
 }
 
 .agent-nav-item {
-  color: #64748b;
+  color: #1e293b !important;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.92rem;
@@ -1505,7 +1505,7 @@ body.light-theme .role-selector-box {
 
 .wallet-label {
   font-size: 0.68rem;
-  color: #64748b;
+  color: #1e293b !important;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -1572,7 +1572,7 @@ body.light-theme .role-selector-box {
 
 .agent-id {
   font-size: 0.72rem;
-  color: #64748b;
+  color: #1e293b !important;
 }
 
 .logout-link-btn {
@@ -1644,7 +1644,7 @@ body.light-theme .role-selector-box {
   gap: 0.4rem;
   cursor: pointer;
   position: relative;
-  color: #64748b;
+  color: #1e293b !important;
   font-weight: 600;
   font-size: 0.85rem;
   transition: all var(--transition-fast);
@@ -1699,7 +1699,7 @@ body.light-theme .role-selector-box {
 
 .field-label {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #1e293b !important;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
@@ -1776,7 +1776,7 @@ body.light-theme .role-selector-box {
 
 .section-subtitle {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #1e293b !important;
 }
 
 /* Recent Search Grid (Reference Screenshot Match) */
@@ -1831,7 +1831,7 @@ body.light-theme .role-selector-box {
 
 .recent-dates {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #1e293b !important;
   margin-bottom: 0.25rem;
 }
 
@@ -1948,7 +1948,7 @@ body.light-theme .role-selector-box {
 
 .card-body-info p {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #1e293b !important;
   margin-bottom: 0.8rem;
   height: 2.4rem;
   overflow: hidden;
@@ -2020,7 +2020,7 @@ body.light-theme .role-selector-box {
 
 .hotel-item-details p {
   font-size: 0.82rem;
-  color: #64748b;
+  color: #1e293b !important;
   margin-bottom: 0.5rem;
 }
 
@@ -2127,7 +2127,7 @@ body.light-theme .role-selector-box {
 }
 
 .customer-nav-item {
-  color: #475569;
+  color: #1e293b !important;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.92rem;
@@ -2225,7 +2225,7 @@ body.light-theme .role-selector-box {
 
 .hero-price {
   font-size: 1.1rem;
-  color: #cbd5e1;
+  color: #ffffff !important;
 }
 
 .hero-price strong {
@@ -2266,7 +2266,7 @@ body.light-theme .role-selector-box {
 .cust-search-tab {
   background: #f1f5f9;
   border: 1px solid #cbd5e1;
-  color: #475569;
+  color: #1e293b !important;
   padding: 0.55rem 1.2rem;
   font-weight: 700;
   font-size: 0.88rem;
@@ -2296,7 +2296,7 @@ body.light-theme .role-selector-box {
 .search-input-box label {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #64748b;
+  color: #1e293b !important;
   margin-bottom: 0.35rem;
 }
 
@@ -2353,7 +2353,7 @@ body.light-theme .role-selector-box {
 
 .cust-section-subtitle {
   font-size: 0.98rem;
-  color: #64748b;
+  color: #1e293b !important;
   max-width: 620px;
   margin: 0 auto;
 }
@@ -2442,7 +2442,7 @@ body.light-theme .role-selector-box {
 
 .why-choose-card p {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #1e293b !important;
   line-height: 1.5;
 }
 
@@ -2551,7 +2551,7 @@ body.light-theme .role-selector-box {
   margin-bottom: 0.5rem;
 }
 
-.tour-location { color: #64748b; font-weight: 600; }
+.tour-location { color: #1e293b !important; font-weight: 600; }
 .tour-rating { color: #00a651; font-weight: 800; }
 
 .tour-name {
@@ -2564,7 +2564,7 @@ body.light-theme .role-selector-box {
 
 .tour-desc {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #1e293b !important;
   line-height: 1.5;
   margin-bottom: 1.2rem;
   height: 2.5rem;
@@ -2581,7 +2581,7 @@ body.light-theme .role-selector-box {
 
 .tour-duration {
   font-size: 0.8rem;
-  color: #475569;
+  color: #1e293b !important;
   font-weight: 700;
 }
 
@@ -2755,7 +2755,7 @@ body.light-theme .role-selector-box {
 /* Rich Footer */
 .customer-footer {
   background: #090d16;
-  color: #cbd5e1;
+  color: #ffffff !important;
   padding: 4rem 2rem 1.5rem;
 }
 
@@ -2771,18 +2771,18 @@ body.light-theme .role-selector-box {
 
 .margin-bottom-sm { margin-bottom: 1rem; }
 
-.footer-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.2rem; }
+.footer-desc { font-size: 0.88rem; color: #ffffff !important; line-height: 1.6; margin-bottom: 1.2rem; }
 .footer-contact-info p { font-size: 0.85rem; margin-bottom: 0.4rem; }
 
 .footer-col h4 { font-size: 1.05rem; font-weight: 800; color: #ffffff; margin-bottom: 1.2rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-.footer-col a { color: #94a3b8; text-decoration: none; font-size: 0.88rem; transition: color var(--transition-fast); }
+.footer-col a { color: #ffffff !important; text-decoration: none; font-size: 0.88rem; transition: color var(--transition-fast); }
 .footer-col a:hover { color: #00a651; }
 
 .payment-icons-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .pay-pill { background: rgba(255,255,255,0.1); color: #ffffff; font-size: 0.78rem; font-weight: 800; padding: 0.4rem 0.8rem; border-radius: 6px; }
 
-.footer-bottom-bar { text-align: center; font-size: 0.82rem; color: #64748b; padding-top: 1.8rem; }
+.footer-bottom-bar { text-align: center; font-size: 0.82rem; color: #1e293b !important; padding-top: 1.8rem; }
 
 /* Responsive Breakpoints for Customer Portal */
 @media (max-width: 1024px) {
@@ -2930,12 +2930,12 @@ body.light-theme .role-selector-box {
 
 .admin-badge-text { display: flex; flex-direction: column; }
 .badge-main { font-size: 0.82rem; font-weight: 800; color: #00a651; letter-spacing: 0.05em; }
-.badge-sub { font-size: 0.7rem; color: #64748b; font-weight: 600; }
+.badge-sub { font-size: 0.7rem; color: #1e293b !important; font-weight: 600; }
 
 .admin-nav { display: flex; gap: 1.2rem; }
 
 .admin-nav-item {
-  color: #475569;
+  color: #1e293b !important;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
@@ -2997,7 +2997,7 @@ body.light-theme .role-selector-box {
 
 .stat-data { display: flex; flex-direction: column; }
 .stat-number { font-size: 1.5rem; font-weight: 800; color: #0f172a; line-height: 1.2; }
-.stat-title { font-size: 0.8rem; color: #64748b; font-weight: 600; }
+.stat-title { font-size: 0.8rem; color: #1e293b !important; font-weight: 600; }
 
 /* Admin Sections & Form */
 .admin-section {
@@ -3069,7 +3069,7 @@ body.light-theme .role-selector-box {
 
 .admin-packages-table th {
   background: #f1f5f9;
-  color: #475569;
+  color: #1e293b !important;
   font-weight: 800;
   padding: 0.9rem 1rem;
   border-bottom: 2px solid #cbd5e1;
@@ -4494,3 +4494,98 @@ select:focus {
   background: #0072bc;
 }
 
+
+/* ==========================================================================
+   MASTER WCAG AAA ULTRA-CLARITY & ZERO-INVISIBLE-TEXT OVERRIDES
+   ========================================================================== */
+
+/* 1. Light Theme & Normal Pages: Deep Slate Black Text (Maximum Legibility) */
+body, body.light-theme, .theme-customer {
+  color: #0f172a !important;
+}
+
+p, span, li, label, td, th, div, small, strong, em, b, i, a {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure secondary texts and labels on light cards are bold and crisp */
+body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *),
+.theme-customer p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *) {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+label {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* 2. All Dark Containers, Hero Banners, Promo Banners & Footers: Pure Crisp White */
+.cust-footer,
+.cust-footer p,
+.cust-footer span,
+.cust-footer li,
+.cust-footer a,
+.cust-footer div,
+.footer-col,
+.footer-col a,
+.policy-hero,
+.policy-hero h1,
+.policy-hero p,
+.policy-hero span,
+.contact-hero,
+.contact-hero h1,
+.contact-hero p,
+.contact-hero span,
+.hero-banner,
+.hero-banner h1,
+.hero-banner p,
+.hero-banner span,
+.flight-search-banner,
+.portal-hero-wrapper,
+.portal-hero-wrapper h1,
+.portal-hero-wrapper p,
+.portal-hero-wrapper span,
+.app-promo-content,
+.app-promo-content h2,
+.app-promo-content p,
+.ai-chat-topbar,
+.ai-chat-topbar h2,
+.ai-chat-topbar span {
+  color: #ffffff !important;
+}
+
+.cust-footer a:hover,
+.footer-col a:hover {
+  color: #00f2fe !important;
+  text-decoration: underline !important;
+}
+
+/* 3. Inputs & Forms: Deep Black Text on Crisp White */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+  font-weight: 600 !important;
+  opacity: 0.85 !important;
+}
+
+/* 4. Badges, Price Pills & Numbers */
+.tour-price-pill,
+.pkg-master-price,
+.price-value {
+  color: #00a651 !important;
+  font-weight: 900 !important;
+}

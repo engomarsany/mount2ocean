@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v25_international_luxe_launch">
+  <link rel="stylesheet" href="styles.css?v=v26_master_contrast_lock">
 </head>
 <body class="light-theme">
 
@@ -144,7 +144,7 @@
       <h3 id="pnrModalTitle" style="color: #0072bc; font-size: 1.35rem; font-weight: 900; margin-bottom: 0.5rem;">
         Request Air Ticket PNR Booking
       </h3>
-      <p id="pnrModalSubtitle" style="color: #475569; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.2rem;">
+      <p id="pnrModalSubtitle" style="color: #1e293b; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.2rem;">
         Fill details to issue official airline PNR reservation.
       </p>
 
@@ -184,13 +184,13 @@
   <footer class="cust-footer" style="background: #060911; color: #ffffff; padding: 3rem 2rem 1.5rem; border-top: 3px solid #00f2fe; margin-top: 4rem;">
     <div style="max-width: 1240px; margin: 0 auto; text-align: center;">
       <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 50px; margin-bottom: 1rem;">
-      <p style="color: #cbd5e1; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Flight Tickets &amp; Airfare GDS Booking Engine.</p>
+      <p style="color: #1e293b; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Flight Tickets &amp; Airfare GDS Booking Engine.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v25_international_luxe_launch"></script>
+  <script src="app.js?v=v26_master_contrast_lock"></script>
   <script>
     // ── Render Owner-Published Flight Tickets ───────────────────────────────
     function renderOwnerFlightTickets() {
@@ -200,8 +200,8 @@
       if (!tickets || tickets.length === 0) {
         container.innerHTML = `
           <div style="text-align:center; padding:3rem; background:#f8fafc; border-radius:16px; border:2px dashed #cbd5e1;">
-            <p style="color:#64748b; font-weight:800; font-size:1.1rem;">কোনো ফ্লাইট টিকেট এখনও প্রকাশিত হয়নি।</p>
-            <p style="color:#94a3b8; font-size:0.9rem; margin-top:0.4rem;">Owner Panel থেকে ফ্লাইট টিকেট অ্যাড করুন।</p>
+            <p style="color: #1e293b; font-weight:800; font-size:1.1rem;">কোনো ফ্লাইট টিকেট এখনও প্রকাশিত হয়নি।</p>
+            <p style="color: #1e293b; font-size:0.9rem; margin-top:0.4rem;">Owner Panel থেকে ফ্লাইট টিকেট অ্যাড করুন।</p>
             <a href="https://api.whatsapp.com/send?phone=8801330303082&text=Hello%20Mount2ocean!%20I%20need%20flight%20ticket%20information." target="_blank"
                style="display:inline-block; margin-top:1.2rem; background:linear-gradient(135deg,#00a651,#0072bc); color:white; padding:0.75rem 1.6rem; border-radius:10px; font-weight:900; text-decoration:none;">
               WhatsApp-এ যোগাযোগ করুন
@@ -214,13 +214,13 @@
         const hasPrice = t.fareBdt && Number(t.fareBdt) > 0;
 
         const priceOrContact = hasPrice
-          ? `<span style="color:#64748b; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.2rem;">Total Fare (Tax Included)</span>
+          ? `<span style="color: #1e293b; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.2rem;">Total Fare (Tax Included)</span>
              <div style="color:#0072bc; font-size:1.7rem; font-weight:900; margin-bottom:0.7rem;">৳${Number(t.fareBdt).toLocaleString('en-IN')}</div>
              <button onclick="openPnrRequestModal('${t.airlineName} (${t.flightNo})','${t.fromCity} to ${t.toCity}',${t.fareBdt})"
                style="background:linear-gradient(135deg,#00a651,#0072bc);color:white;border:none;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(0,166,81,0.35);">
                Request PNR Booking
              </button>`
-          : `<span style="color:#64748b; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.5rem;">Price on Request</span>
+          : `<span style="color: #1e293b; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.5rem;">Price on Request</span>
              <a href="https://api.whatsapp.com/send?phone=8801330303082&text=Hello%20Mount2ocean!%20I%20need%20the%20fare%20for%20${encodeURIComponent(t.airlineName + ' ' + t.flightNo + ' — ' + t.fromCity + ' to ' + t.toCity)}" target="_blank"
                style="display:block;background:linear-gradient(135deg,#00c853,#1b5e20);color:white;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(0,166,81,0.4);">
                WhatsApp-এ যোগাযোগ করুন
@@ -235,23 +235,23 @@
             <div>
               <span style="background:${t.tagBg||'#0072bc'};color:white;font-weight:900;font-size:0.78rem;padding:0.25rem 0.7rem;border-radius:6px;letter-spacing:0.5px;">${t.airlineName}</span>
               <h4 style="font-size:1.15rem;font-weight:900;color:#0f172a;margin:0.45rem 0 0.2rem;">${t.flightNo}</h4>
-              <span style="font-size:0.83rem;color:#64748b;font-weight:700;">${t.aircraft||''}</span>
+              <span style="font-size:0.83rem;color: #1e293b;font-weight:700;">${t.aircraft||''}</span>
             </div>
 
             <!-- Route & Timing -->
             <div style="display:flex;align-items:center;justify-content:space-around;text-align:center;gap:0.5rem;">
               <div>
                 <strong style="font-size:1.3rem;color:#0f172a;display:block;font-weight:900;">${t.departTime}</strong>
-                <span style="font-size:0.83rem;color:#64748b;font-weight:700;">${t.fromCity}</span>
+                <span style="font-size:0.83rem;color: #1e293b;font-weight:700;">${t.fromCity}</span>
               </div>
               <div style="flex:1;text-align:center;">
                 <span style="font-size:0.8rem;color:#0072bc;font-weight:800;display:block;">${t.duration}</span>
                 <div style="border-top:2px dashed #0072bc;margin:0.4rem 0.5rem;"></div>
-                <span style="font-size:0.75rem;color:#94a3b8;font-weight:700;">Direct</span>
+                <span style="font-size:0.75rem;color: #1e293b;font-weight:700;">Direct</span>
               </div>
               <div>
                 <strong style="font-size:1.3rem;color:#0f172a;display:block;font-weight:900;">${t.arriveTime}</strong>
-                <span style="font-size:0.83rem;color:#64748b;font-weight:700;">${t.toCity}</span>
+                <span style="font-size:0.83rem;color: #1e293b;font-weight:700;">${t.toCity}</span>
               </div>
             </div>
 

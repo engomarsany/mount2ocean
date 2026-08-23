@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v25_international_luxe_launch">
+  <link rel="stylesheet" href="styles.css?v=v26_master_contrast_lock">
 </head>
 <body class="admin-portal-body light-theme">
 
@@ -118,7 +118,7 @@
 
   </main>
 
-  <script src="app.js?v=v25_international_luxe_launch"></script>
+  <script src="app.js?v=v26_master_contrast_lock"></script>
   <script>
     function renderOwnerVisaApps() {
       const tbody = document.getElementById('ownerVisaAppsTbody');
@@ -126,7 +126,7 @@
 
       const apps = window.getVisaApplications ? window.getVisaApplications() : [];
       if (apps.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="padding: 2rem; color: #64748b;">No visa applications registered.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="padding: 2rem; color: #1e293b;">No visa applications registered.</td></tr>`;
         return;
       }
 
@@ -146,7 +146,7 @@
             </select>
           </td>
           <td style="padding: 0.85rem;">
-            ${a.issuedVisaFileUrl ? `<a href="${a.issuedVisaFileUrl}" target="_blank" style="color: #22c55e; font-weight: 800;">✔ View File</a>` : `<span style="color: #94a3b8;">Not Uploaded</span>`}
+            ${a.issuedVisaFileUrl ? `<a href="${a.issuedVisaFileUrl}" target="_blank" style="color: #22c55e; font-weight: 800;">✔ View File</a>` : `<span style="color: #1e293b;">Not Uploaded</span>`}
           </td>
           <td style="padding: 0.85rem;">
             <button onclick="promptUploadVisaFile(${i})" style="background: #0072bc; color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 800; cursor: pointer; margin-right: 0.3rem;">Upload Copy</button>
@@ -162,7 +162,7 @@
 
       const list = window.getVisaPriceList ? window.getVisaPriceList() : [];
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" style="padding: 2rem; color: #64748b;">No visa price items configured.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="padding: 2rem; color: #1e293b;">No visa price items configured.</td></tr>`;
         return;
       }
 
