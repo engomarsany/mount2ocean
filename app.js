@@ -5562,7 +5562,7 @@ window.executeLivePaymentProcess = function(bookingId, amount) {
 };
 
 // --------------------------------------------------------------------
-// FEATURE 3: 📄 1-CLICK BRANDED PDF E-TICKET WITH SCANNABLE QR CODE
+// FEATURE 3: 📄 5-STAR LUXURY BRANDED PDF E-TICKET & OFFICIAL TRAVEL VOUCHER
 // --------------------------------------------------------------------
 window.generatePdfETicketWithQr = function(bookingId) {
   let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings') || '[]');
@@ -5571,87 +5571,335 @@ window.generatePdfETicketWithQr = function(bookingId) {
     customerName: "Sharmin Chowdhury",
     phone: "+880 1330-303082",
     email: "customer@mount2ocean.com",
-    tourTitle: "BALI PACKAGE 4D/3N - Kintamani Volcano & Luxury Resort",
+    tourTitle: "BALI LUXURY ESCAPE 4D/3N - Private Pool Villa & Kintamani Tour",
     amount: "৳17,500",
     travelDate: new Date().toISOString().split('T')[0],
-    travelersCount: "2 Adults • Deluxe Sea View",
-    status: "CONFIRMED"
+    travelersCount: "2 Adults • Deluxe Suite",
+    paymentMethod: "bKash Verified",
+    status: "CONFIRMED & ISSUED"
   };
 
+  const pnr = 'PNR-' + (b.id ? b.id.replace(/[^0-9]/g, '') : '88491');
+  const issueDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   const qrData = encodeURIComponent(`https://engomarsany.github.io/mount2ocean/booking_detail.html?id=${b.id}`);
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrData}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${qrData}`;
 
   const ticketHtml = `
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
-      <title>Mount2ocean Official E-Ticket - ${b.id}</title>
+      <meta charset="UTF-8">
+      <title>Mount2ocean Official E-Ticket &amp; Travel Voucher - ${b.id}</title>
+      <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
       <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f1f5f9; padding: 2rem; margin: 0; color: #0f172a; }
-        .ticket-card { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 2px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
-        .ticket-header { background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); color: #ffffff; padding: 1.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .ticket-body { padding: 2rem; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-        .info-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; }
-        .info-label { font-size: 0.75rem; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 0.2rem; display: block; }
-        .info-val { font-size: 1.05rem; font-weight: bold; color: #0f172a; }
-        .print-btn { background: #00a651; color: white; border: none; padding: 0.8rem 1.8rem; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        * { box-sizing: border-box; }
+        body {
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+          background: #0f172a;
+          padding: 2.5rem 1rem;
+          margin: 0;
+          color: #0f172a;
+        }
+        .voucher-wrapper {
+          max-width: 880px;
+          margin: 0 auto;
+          background: #ffffff;
+          border-radius: 24px;
+          box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+          overflow: hidden;
+          border: 1px solid #e2e8f0;
+        }
+        .header-band {
+          background: linear-gradient(135deg, #07111e 0%, #003e6b 50%, #0072bc 100%);
+          padding: 2rem 2.5rem;
+          color: #ffffff;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+        }
+        .header-band::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background: linear-gradient(90deg, #00f2fe 0%, #00a651 50%, #eab308 100%);
+        }
+        .brand-title {
+          font-size: 1.65rem;
+          font-weight: 900;
+          letter-spacing: 2px;
+          color: #ffffff;
+          margin: 0;
+        }
+        .brand-subtitle {
+          font-size: 0.82rem;
+          color: #00f2fe;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-top: 0.2rem;
+        }
+        .doc-badge {
+          background: rgba(0, 242, 254, 0.15);
+          border: 1.5px solid #00f2fe;
+          color: #00f2fe;
+          padding: 0.45rem 1rem;
+          border-radius: 9999px;
+          font-size: 0.8rem;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+          display: inline-block;
+        }
+        .body-content {
+          padding: 2.2rem 2.5rem;
+        }
+        .status-strip {
+          background: #f0fdf4;
+          border: 1.5px solid #86efac;
+          padding: 1rem 1.5rem;
+          border-radius: 14px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2rem;
+        }
+        .status-pill {
+          background: #16a34a;
+          color: #ffffff;
+          padding: 0.35rem 0.9rem;
+          border-radius: 9999px;
+          font-size: 0.8rem;
+          font-weight: 800;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .info-grid-3 {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+        .info-card {
+          background: #f8fafc;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 14px;
+          padding: 1.1rem 1.3rem;
+        }
+        .info-label {
+          font-size: 0.72rem;
+          font-weight: 800;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          display: block;
+          margin-bottom: 0.35rem;
+        }
+        .info-val {
+          font-size: 1rem;
+          font-weight: 800;
+          color: #0f172a;
+          display: block;
+          line-height: 1.35;
+        }
+        .itinerary-box {
+          background: linear-gradient(135deg, rgba(0, 114, 188, 0.04) 0%, rgba(0, 242, 254, 0.04) 100%);
+          border: 2px solid #0072bc;
+          border-radius: 16px;
+          padding: 1.5rem 1.8rem;
+          margin-bottom: 2rem;
+        }
+        .stub-divider {
+          position: relative;
+          border-top: 2px dashed #cbd5e1;
+          margin: 2.2rem 0;
+        }
+        .stub-divider::before, .stub-divider::after {
+          content: "";
+          position: absolute;
+          top: -14px;
+          width: 28px;
+          height: 28px;
+          background: #0f172a;
+          border-radius: 50%;
+        }
+        .stub-divider::before { left: -39px; }
+        .stub-divider::after { right: -39px; }
+
+        .barcode-strip {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #f8fafc;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 16px;
+          padding: 1.2rem 1.8rem;
+          margin-bottom: 2rem;
+        }
+        .barcode-visual {
+          font-family: 'Space Mono', monospace;
+          font-size: 2.2rem;
+          letter-spacing: 6px;
+          font-weight: 900;
+          color: #0f172a;
+        }
+        .footer-terms {
+          background: #f1f5f9;
+          border-radius: 14px;
+          padding: 1.2rem 1.5rem;
+          font-size: 0.78rem;
+          color: #475569;
+          line-height: 1.6;
+        }
+        .btn-print {
+          background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);
+          color: #ffffff;
+          border: none;
+          padding: 1rem 2.5rem;
+          font-size: 1.05rem;
+          font-weight: 800;
+          border-radius: 12px;
+          cursor: pointer;
+          box-shadow: 0 8px 25px rgba(0, 166, 81, 0.35);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+        }
+        .btn-print:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 30px rgba(0, 166, 81, 0.45);
+        }
+
+        @media print {
+          body { background: #ffffff; padding: 0; }
+          .voucher-wrapper { box-shadow: none; border: 1px solid #94a3b8; max-width: 100%; }
+          .no-print { display: none !important; }
+          .stub-divider::before, .stub-divider::after { display: none; }
+        }
       </style>
     </head>
     <body>
-      <div class="ticket-card">
-        <div class="ticket-header">
+
+      <div class="no-print" style="text-align: center; margin-bottom: 1.5rem;">
+        <button onclick="window.print()" class="btn-print">
+          🖨️ Print Official Travel Voucher / Save as PDF
+        </button>
+      </div>
+
+      <div class="voucher-wrapper">
+        <!-- Luxury Top Header -->
+        <div class="header-band">
           <div>
-            <div style="font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #00f2fe;">MOUNT2OCEAN TRAVEL &amp; TOURS</div>
-            <div style="font-size: 0.85rem; opacity: 0.9;">Official Confirmed Travel Ticket &amp; Voucher</div>
+            <div class="brand-title">MOUNT2OCEAN TRAVEL &amp; TOURS</div>
+            <div class="brand-subtitle">Official Confirmed Travel Document &amp; E-Ticket</div>
           </div>
           <div style="text-align: right;">
-            <span style="background: #00a651; color: white; padding: 0.3rem 0.8rem; border-radius: 9999px; font-weight: bold; font-size: 0.8rem;">${b.status || 'CONFIRMED'}</span>
-            <div style="font-size: 0.85rem; margin-top: 0.3rem;">Ref: ${b.id}</div>
+            <div class="doc-badge">✓ ISSUED &amp; VERIFIED</div>
+            <div style="font-size: 0.78rem; opacity: 0.85; margin-top: 0.4rem; color: #ffffff;">Issue Date: ${issueDate}</div>
           </div>
         </div>
 
-        <div class="ticket-body">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.2rem; margin-bottom: 1.5rem;">
-            <div>
-              <span class="info-label">TOUR / DESTINATION</span>
-              <div style="font-size: 1.3rem; font-weight: 900; color: #0072bc;">${b.tourTitle}</div>
+        <div class="body-content">
+          <!-- Status Strip -->
+          <div class="status-strip">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span class="status-pill">● ${b.status || 'CONFIRMED & ISSUED'}</span>
+              <span style="font-size: 0.92rem; font-weight: 800; color: #166534;">Reservation Security Validated</span>
             </div>
-            <img src="${qrUrl}" alt="Verification QR" style="width: 100px; height: 100px; border: 2px solid #cbd5e1; border-radius: 8px;">
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">BOOKING REFERENCE (PNR)</span>
+              <div style="font-size: 1.15rem; font-weight: 900; color: #0072bc;">${b.id}</div>
+            </div>
           </div>
 
-          <div class="grid-2">
-            <div class="info-box">
-              <span class="info-label">PASSENGER NAME</span>
+          <!-- Primary Itinerary Box -->
+          <div class="itinerary-box">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem;">
+              <div>
+                <span class="info-label" style="color: #0072bc;">CONFIRMED DESTINATION &amp; PACKAGE</span>
+                <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0.2rem 0 0.4rem;">${b.tourTitle}</h2>
+                <span style="font-size: 0.88rem; color: #64748b; font-weight: 700;">Service Category: Premium Holiday &amp; Hotel Reservation</span>
+              </div>
+              <div style="text-align: right;">
+                <span class="info-label">TOTAL TARIFF PAID</span>
+                <strong style="font-size: 1.6rem; color: #00a651; font-weight: 900;">${b.amount || b.price || '৳17,500'}</strong>
+                <span style="font-size: 0.72rem; color: #16a34a; font-weight: 800; display: block;">✓ 100% Fully Paid (${b.paymentMethod || 'bKash / Card'})</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passenger & Travel Breakdown Grid -->
+          <div class="info-grid-3">
+            <div class="info-card">
+              <span class="info-label">LEAD PASSENGER NAME</span>
               <span class="info-val">👤 ${b.customerName}</span>
             </div>
-            <div class="info-box">
-              <span class="info-label">CONTACT HELPLINE</span>
+            <div class="info-card">
+              <span class="info-label">CONTACT MOBILE &amp; WHATSAPP</span>
               <span class="info-val">📞 ${b.phone}</span>
             </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="info-box">
+            <div class="info-card">
               <span class="info-label">TRAVEL / CHECK-IN DATE</span>
-              <span class="info-val">📅 ${b.travelDate || 'Confirmed'}</span>
-            </div>
-            <div class="info-box">
-              <span class="info-label">TOTAL AMOUNT PAID</span>
-              <span class="info-val" style="color: #00a651;">💰 ${b.amount || b.price}</span>
+              <span class="info-val">📅 ${b.travelDate || 'Confirmed Date'}</span>
             </div>
           </div>
 
-          <div class="info-box" style="margin-bottom: 1.5rem;">
-            <span class="info-label">HEAD OFFICE &amp; VERIFICATION ASSISTANCE</span>
-            <span class="info-val" style="font-size: 0.9rem;">📍 169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217 • Hotline: +880 1330-303082</span>
+          <div class="info-grid-3">
+            <div class="info-card">
+              <span class="info-label">GUESTS / TRAVELERS COUNT</span>
+              <span class="info-val">👨‍👩‍👧 ${b.travelersCount || '2 Adults'}</span>
+            </div>
+            <div class="info-card">
+              <span class="info-label">REGISTERED EMAIL</span>
+              <span class="info-val">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
+            </div>
+            <div class="info-card">
+              <span class="info-label">PAYMENT METHOD</span>
+              <span class="info-val">💳 ${b.paymentMethod || 'Online Gateway'}</span>
+            </div>
           </div>
 
-          <div style="text-align: center; margin-top: 1.5rem;">
-            <button onclick="window.print()" class="print-btn">🖨️ Print / Save as PDF E-Ticket</button>
+          <!-- Perforated Stub Divider -->
+          <div class="stub-divider"></div>
+
+          <!-- Dual QR Code & Security Barcode Strip -->
+          <div class="barcode-strip">
+            <div>
+              <span class="info-label">DIGITAL SECURITY BOARDING CODE</span>
+              <div class="barcode-visual">||| | |||| | ||||| | ||||</div>
+              <span style="font-size: 0.78rem; font-weight: 800; color: #64748b; font-family: 'Space Mono', monospace;">DOC ID: ${b.id} • ${pnr}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1.2rem;">
+              <div style="text-align: right;">
+                <span class="info-label">VERIFY ONLINE</span>
+                <span style="font-size: 0.75rem; color: #64748b; display: block;">Scan QR Code at reception desk for instant check-in.</span>
+              </div>
+              <img src="${qrUrl}" alt="Verification QR" style="width: 100px; height: 100px; border-radius: 10px; border: 2px solid #cbd5e1; padding: 4px; background: white;">
+            </div>
+          </div>
+
+          <!-- Terms, Verification & Office Assistance -->
+          <div class="footer-terms">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.8rem;">
+              <div>
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.2rem;">📌 IMPORTANT PASSENGER GUIDELINES:</strong>
+                <span>• Please present this e-ticket along with a valid Passport / National ID at airport and hotel reception.</span><br>
+                <span>• Standard Hotel Check-in: 02:00 PM | Standard Check-out: 11:00 AM.</span>
+              </div>
+              <div style="text-align: right;">
+                <strong style="color: #0072bc; display: block;">24/7 HELPLINE ASSISTANCE:</strong>
+                <span style="font-weight: 900; color: #0f172a;">+880 1330-303082</span> | <span>+88 02226665749</span>
+              </div>
+            </div>
+            <div style="border-top: 1px dashed #cbd5e1; padding-top: 0.6rem; text-align: center; color: #64748b; font-size: 0.75rem;">
+              📍 Corporate Head Office: 169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh • Email: info@mount2ocean.com
+            </div>
           </div>
         </div>
       </div>
+
     </body>
     </html>
   `;

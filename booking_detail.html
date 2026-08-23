@@ -245,28 +245,33 @@
       </div>
 
       <!-- QR CODE & BARCODE DIGITAL GATE PASS CONTAINER -->
-      <div style="background: rgba(0,242,254,0.06); border: 2px dashed #00f2fe; padding: 1.5rem; margin: 1.5rem 2rem 0; border-radius: 16px; text-align: center;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+      <div style="background: linear-gradient(135deg, rgba(7, 17, 30, 0.03) 0%, rgba(0, 114, 188, 0.06) 100%); border: 2px solid #0072bc; padding: 1.8rem 2rem; margin: 1.5rem 2rem 0; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.2rem; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 0.8rem;">
           <div>
-            <span class="badge-tag" style="background: #00f2fe; color: #0f172a; font-weight: 900; font-size: 0.78rem;">️ DIGITAL BOARDING &amp; CHECK-IN GATE PASS</span>
-            <h4 style="margin: 0.3rem 0 0; font-size: 1.1rem; font-weight: 900; color: #0f172a;">Official Hotel Reception &amp; Airport QR Pass</h4>
+            <span class="badge-tag" style="background: linear-gradient(135deg, #0072bc 0%, #00f2fe 100%); color: #07111e; font-weight: 900; font-size: 0.78rem; letter-spacing: 0.5px;">✓ OFFICIAL VERIFIED BOARDING VOUCHER</span>
+            <h4 style="margin: 0.4rem 0 0; font-size: 1.25rem; font-weight: 900; color: #0f172a;">Official Hotel Reception &amp; Airport Security Gate Pass</h4>
           </div>
-          <span style="font-size: 0.8rem; color: #64748b; font-weight: 700;">Scan at Check-in Desk</span>
+          <div style="text-align: right;">
+            <span style="font-size: 0.75rem; color: #00a651; font-weight: 800; background: #dcfce7; padding: 0.35rem 0.85rem; border-radius: 9999px;">● ACTIVE &amp; READY FOR CHECK-IN</span>
+          </div>
         </div>
 
-        <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; background: #ffffff; padding: 1.2rem; border-radius: 14px; border: 1px solid #cbd5e1;">
-          <div style="text-align: center;">
-            <svg width="110" height="110" viewBox="0 0 100 100" style="border: 2px solid #0f172a; border-radius: 8px; padding: 6px; background: white;">
-              <path d="M0,0 h30 v30 h-30 z M40,0 h20 v10 h-20 z M70,0 h30 v30 h-30 z M0,40 h10 v20 h-10 z M30,40 h40 v10 h-40 z M80,40 h20 v20 h-20 z M0,70 h30 v30 h-30 z M40,70 h20 v30 h-20 z M70,70 h30 v30 h-30 z" fill="#0f172a"/>
-            </svg>
-            <span style="font-size: 0.75rem; font-weight: 800; color: #0f172a; display: block; margin-top: 0.4rem;">QR CODE PASS</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; background: #ffffff; padding: 1.5rem 2rem; border-radius: 16px; border: 1.5px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <img id="liveVoucherQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https%3A%2F%2Fengomarsany.github.io%2Fmount2ocean%2Fbooking_detail.html" alt="Voucher QR" style="width: 105px; height: 105px; border: 2px solid #0072bc; border-radius: 12px; padding: 4px; background: white;">
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">SCAN &amp; VERIFY AT DESK</span>
+              <strong style="font-size: 1.05rem; color: #0f172a; display: block; margin: 0.2rem 0;">Instant Contactless Check-in</strong>
+              <span style="font-size: 0.8rem; color: #0072bc; font-weight: 700;">Show this pass on mobile or in print</span>
+            </div>
           </div>
 
-          <div style="text-align: center;">
-            <div style="font-family: 'Courier New', monospace; font-size: 1.8rem; letter-spacing: 4px; font-weight: 900; color: #0f172a; border-bottom: 2px solid #0f172a; padding-bottom: 0.3rem;">
+          <div style="text-align: right;">
+            <span style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">BOARDING BARCODE (PNR)</span>
+            <div style="font-family: 'Space Mono', monospace, 'Courier New'; font-size: 1.9rem; letter-spacing: 5px; font-weight: 900; color: #0f172a; border-bottom: 2px solid #0f172a; padding-bottom: 0.2rem;">
               ||| | |||| | ||||| | ||||
             </div>
-            <strong id="barcodeVoucherNumber" style="font-size: 0.95rem; font-weight: 900; color: #0072bc; display: block; margin-top: 0.4rem;">M2O-BK-88491</strong>
+            <strong id="barcodeVoucherNumber" style="font-size: 1.05rem; font-weight: 900; color: #0072bc; display: block; margin-top: 0.4rem; letter-spacing: 1px;">M2O-BK-88491</strong>
           </div>
         </div>
       </div>
@@ -460,6 +465,15 @@
 
       document.getElementById('dtlPayMethod').textContent = bk.paymentMethod || 'bKash Payment';
       document.getElementById('dtlTotalAmount').textContent = bk.price || bk.amount || '৳17,500';
+
+      const barcodeEl = document.getElementById('barcodeVoucherNumber');
+      if (barcodeEl) barcodeEl.textContent = bk.id || 'M2O-BK-88491';
+
+      const qrImgEl = document.getElementById('liveVoucherQrImg');
+      if (qrImgEl) {
+        const qrData = encodeURIComponent(`https://engomarsany.github.io/mount2ocean/booking_detail.html?id=${bk.id || 'M2O-BK-88491'}`);
+        qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${qrData}`;
+      }
 
       const statusBadge = document.getElementById('dtlFileStatusBadge');
       const stepAdminApproval = document.getElementById('stepAdminApproval');
