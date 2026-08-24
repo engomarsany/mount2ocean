@@ -4822,6 +4822,29 @@ label {
   text-decoration: underline !important;
 }
 
+/* Original colors for light badges and store buttons inside app promo */
+.app-tag,
+span.app-tag,
+.app-promo-content .app-tag,
+.app-promo-banner .app-tag {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 900 !important;
+  border: 2px solid #00f2fe !important;
+  text-shadow: none !important;
+}
+
+.store-btn,
+button.store-btn,
+.app-promo-content .store-btn,
+.app-promo-banner .store-btn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 900 !important;
+  border: 2px solid #00f2fe !important;
+  text-shadow: none !important;
+}
+
 /* 3. Inputs & Forms: Deep Black Text on Crisp White */
 input[type="text"],
 input[type="tel"],
