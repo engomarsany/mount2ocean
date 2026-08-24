@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
 
 /* ==========================================================================
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
@@ -4509,8 +4509,8 @@ p, span, li, label, td, th, div, small, strong, em, b, i, a {
 }
 
 /* Ensure secondary texts and labels on light cards are bold and crisp */
-body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *),
-.theme-customer p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *) {
+body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.hotel-hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *),
+.theme-customer p:not(.cust-footer *):not(.dark-card *):not(.app-promo-content *):not(.contact-hero *):not(.policy-hero *):not(.hero-banner *):not(.hotel-hero-banner *):not(.visa-hero *):not(.flight-hero *):not(.ai-banner *):not(.portal-hero-wrapper *) {
   color: #0f172a !important;
   font-weight: 700 !important;
 }
@@ -4541,6 +4541,10 @@ label {
 .hero-banner h1,
 .hero-banner p,
 .hero-banner span,
+.hotel-hero-banner,
+.hotel-hero-banner h1,
+.hotel-hero-banner p,
+.hotel-hero-banner span,
 .flight-search-banner,
 .portal-hero-wrapper,
 .portal-hero-wrapper h1,
