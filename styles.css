@@ -3944,29 +3944,33 @@ body {
   -moz-osx-font-smoothing: grayscale !important;
 }
 
-/* Force Ultra-Legible Contrast in Light Theme */
+/* Force Ultra-Legible Contrast in Light Theme on light surfaces only */
 body.light-theme {
-  color: #0f172a !important;
+  color: #0f172a;
 }
 body.light-theme .cust-section-title,
 body.light-theme .tour-name,
 body.light-theme .pkg-master-title,
-body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4 {
+body.light-theme h1:not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *),
+body.light-theme h2:not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *),
+body.light-theme h3:not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *),
+body.light-theme h4:not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *) {
   color: #0f172a !important;
   font-weight: 800 !important;
 }
-body.light-theme p, body.light-theme span:not(.badge-tag):not(.tour-badge) {
-  color: #334155 !important;
+body.light-theme p:not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *):not(.campaign-desc),
+body.light-theme span:not(.badge-tag):not(.tour-badge):not(.trip-hero-section *):not(.customer-hero-section *):not(.hero-slide *):not(.dark-section *):not(.dark-card *):not(.hotel-hero-banner *):not(.flight-search-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not(.portal-hero-wrapper *):not(.app-promo-content *):not(.ai-chat-topbar *):not(.cust-footer *):not([style*="background: linear-gradient(135deg, #0"] *):not([style*="background: #0"] *):not([style*="background: linear-gradient(135deg, #e11d48"] *):not(.campaign-desc):not(.status-badge-live):not(.tour-price-pill) {
+  color: #1e293b !important;
 }
 
-/* Force Crisp Readable Contrast in Dark Theme */
+/* Force Crisp Pure White Contrast on All Dark Banners and Sections */
 body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4,
-body.dark-theme .cust-section-title, body.dark-theme .tour-name, body.dark-theme .pkg-master-title {
+body.dark-theme .cust-section-title, body.dark-theme .tour-name, body.dark-theme .pkg-master-title,
+.trip-hero-section *, .customer-hero-section *, .hero-slide *, .hotel-hero-banner *, .flight-search-banner *, .policy-hero *, .contact-hero *, .portal-hero-wrapper *, .app-promo-content *, .cust-footer * {
   color: #ffffff !important;
-  font-weight: 800 !important;
 }
 body.dark-theme p, body.dark-theme .tour-desc, body.dark-theme .pkg-master-desc {
-  color: #cbd5e1 !important;
+  color: #ffffff !important;
 }
 
 /* Hero Section Text Protection Overlay & Drop Shadow */
