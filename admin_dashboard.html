@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v29_clean_slate_production">
+  <link rel="stylesheet" href="styles.css?v=v30_admin_package_visibility_lock">
 </head>
 <body class="admin-portal-body light-theme">
 
@@ -214,40 +214,40 @@
     </section>
 
     <!-- SECTION: QUICK CREATION MANAGER (HOTELS & TOUR PACKAGES) -->
-    <section class="admin-section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,166,81,0.15);">
+    <section class="admin-section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00a651; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,166,81,0.25);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
-          <span class="badge-tag" style="background: rgba(0, 166, 81, 0.25); color: #00a651; font-weight: 800; padding: 0.35rem 0.9rem; font-size: 0.78rem;">OWNER INVENTORY MANAGER</span>
-          <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0;">
+          <span class="badge-tag" style="background: rgba(0, 166, 81, 0.25); color: #00f2fe; font-weight: 900; padding: 0.35rem 0.9rem; font-size: 0.8rem; border-radius: 999px; border: 1px solid rgba(0,242,254,0.4);">OWNER INVENTORY MANAGER</span>
+          <h2 style="font-size: 1.55rem; font-weight: 900; color: #ffffff !important; margin: 0.3rem 0 0; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
             Add New Hotel, Resort &amp; Tour Package Manager
           </h2>
-          <p style="font-size: 0.88rem; color: #1e293b; margin: 0.2rem 0 0;">
+          <p style="font-size: 0.92rem; color: #ffffff !important; margin: 0.3rem 0 0; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
             Create new 5-Star, 4-Star, 3-Star or 2-Star hotels or tour packages. All entries instantly publish to the customer site.
           </p>
         </div>
 
-        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-          <a href="admin_hotels.html?action=add" class="primary-btn" style="padding: 0.8rem 1.4rem; font-weight: 900; font-size: 0.95rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; border: none; color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 166, 81, 0.4); display: inline-flex; align-items: center; gap: 0.5rem;">
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center;">
+          <a href="admin_hotels.html?action=add" class="primary-btn" style="padding: 0.8rem 1.4rem; font-weight: 900; font-size: 0.95rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; border: none; color: #ffffff !important; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 166, 81, 0.4); display: inline-flex; align-items: center; gap: 0.5rem;">
             ➕ Add New Hotel / Resort (হোটেল যুক্ত করুন)
           </a>
-          <a href="#addPackageSection" class="secondary-btn" style="padding: 0.8rem 1.4rem; font-weight: 900; font-size: 0.95rem; background: rgba(255,255,255,0.1); border-radius: 12px; border: 1.5px solid #cbd5e1; color: white; text-decoration: none;">
-            ️ Add Tour Package Form
+          <a href="#addPackageSection" class="primary-btn" style="padding: 0.8rem 1.4rem; font-weight: 900; font-size: 0.95rem; background: #0072bc; border-radius: 12px; border: 2px solid #00f2fe; color: #ffffff !important; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(0,242,254,0.3); text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
+            ✨ ➕ Add Tour Package Form
           </a>
         </div>
       </div>
     </section>
 
     <!-- SECTION 1: ADD NEW PACKAGE FORM -->
-    <section class="admin-section" id="addPackageSection">
-      <div class="admin-section-header">
-        <div class="header-icon green-bg" style="font-weight: 900; font-size: 1.3rem; display: flex; align-items: center; justify-content: center;">+</div>
+    <section class="admin-section" id="addPackageSection" style="background: #ffffff; border-radius: 20px; padding: 2.2rem; border: 2px solid #00a651; box-shadow: 0 15px 35px rgba(0,0,0,0.06); margin-bottom: 2.5rem;">
+      <div class="admin-section-header" style="margin-bottom: 1.8rem; display: flex; align-items: center; gap: 1rem;">
+        <div class="header-icon green-bg" style="font-weight: 900; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(0, 166, 81, 0.15); color: #00a651;">+</div>
         <div>
-          <h2>Add New Tour Package (নতুন প্যাকেজ যুক্ত করুন)</h2>
-          <p>Fill out the form below to publish a new package to the live customer website instantly.</p>
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin: 0;">Add New Tour Package (নতুন ট্যুর প্যাকেজ যুক্ত করুন)</h2>
+          <p style="font-size: 0.92rem; color: #1e293b !important; font-weight: 700; margin: 0.2rem 0 0;">Fill out the form below to publish a new package to the live customer website instantly.</p>
         </div>
       </div>
 
-      <form id="addPackageForm" class="admin-form-card">
+      <form id="addPackageForm" class="admin-form-card" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 2rem;">
         
         <div class="admin-form-grid">
           <!-- Package Name -->
@@ -1096,7 +1096,7 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v29_clean_slate_production"></script>
+  <script src="app.js?v=v30_admin_package_visibility_lock"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
