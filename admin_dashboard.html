@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v30_admin_package_visibility_lock">
+  <link rel="stylesheet" href="styles.css?v=v31_dark_contrast_master_lock">
 </head>
 <body class="admin-portal-body light-theme">
 
@@ -516,38 +516,38 @@
     </section>
     
     <!-- SECTION: REAL-TIME SALES & REVENUE ANALYTICS DESK -->
-    <section class="admin-section" style="background: linear-gradient(135deg, #07111e 0%, #0f172a 100%); color: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00f2fe; margin-top: 3rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,242,254,0.15);">
+    <section class="admin-section dark-section" style="background: linear-gradient(135deg, #07111e 0%, #0f172a 100%); color: #ffffff; border-radius: 20px; padding: 2rem; border: 2px solid #00f2fe; margin-top: 3rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,242,254,0.25);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
-          <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; font-weight: 900; padding: 0.35rem 0.9rem; font-size: 0.8rem; letter-spacing: 1px;">📊 REAL-TIME SALES &amp; REVENUE DESK</span>
-          <h2 style="font-size: 1.6rem; font-weight: 900; color: #ffffff !important; margin: 0.2rem 0 0;">
+          <span class="badge-tag" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; font-weight: 900; padding: 0.35rem 0.9rem; font-size: 0.8rem; letter-spacing: 1px; border: 1px solid rgba(0,242,254,0.4); border-radius: 999px;">📊 REAL-TIME SALES &amp; REVENUE DESK</span>
+          <h2 style="font-size: 1.6rem; font-weight: 900; color: #ffffff !important; margin: 0.3rem 0 0; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
             Live Revenue &amp; Sales Analytics (সেলস ও রেভিনিউ রিপোর্ট)
           </h2>
-          <p style="font-size: 0.88rem; color: #1e293b; margin: 0.2rem 0 0;">
+          <p style="font-size: 0.92rem; color: #ffffff !important; margin: 0.3rem 0 0; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
             Track total bookings, confirmed revenues, pending payments and export official Excel/CSV sales reports.
           </p>
         </div>
-        <button type="button" class="primary-btn" onclick="exportRevenueAnalyticsCsv()" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; font-weight: 900; padding: 0.75rem 1.4rem; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.4);">
+        <button type="button" class="primary-btn" onclick="exportRevenueAnalyticsCsv()" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 12px; font-weight: 900; padding: 0.75rem 1.4rem; border: none; color: #ffffff !important; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.4);">
           📥 Export Sales Excel / CSV Report
         </button>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;" id="revenueStatsContainer">
-        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
-          <span style="font-size: 0.78rem; font-weight: 800; color: #1e293b; display: block;">CONFIRMED REVENUE</span>
-          <strong id="revConfirmedBdt" style="font-size: 1.6rem; font-weight: 900; color: #00f2fe;">৳1,84,500</strong>
+        <div style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(0,242,254,0.3); padding: 1.2rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #ffffff !important; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">CONFIRMED REVENUE</span>
+          <strong id="revConfirmedBdt" style="font-size: 1.6rem; font-weight: 900; color: #00f2fe !important; text-shadow: 0 0 12px rgba(0,242,254,0.6);">৳1,84,500</strong>
         </div>
-        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
-          <span style="font-size: 0.78rem; font-weight: 800; color: #1e293b; display: block;">PENDING REVENUE</span>
-          <strong id="revPendingBdt" style="font-size: 1.6rem; font-weight: 900; color: #f59e0b;">৳48,000</strong>
+        <div style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(245,158,11,0.3); padding: 1.2rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #ffffff !important; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">PENDING REVENUE</span>
+          <strong id="revPendingBdt" style="font-size: 1.6rem; font-weight: 900; color: #f59e0b !important; text-shadow: 0 0 12px rgba(245,158,11,0.6);">৳48,000</strong>
         </div>
-        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
-          <span style="font-size: 0.78rem; font-weight: 800; color: #1e293b; display: block;">TOTAL BOOKINGS</span>
-          <strong id="revTotalBookings" style="font-size: 1.6rem; font-weight: 900; color: #22c55e;">14 Reserved</strong>
+        <div style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(34,197,94,0.3); padding: 1.2rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #ffffff !important; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">TOTAL BOOKINGS</span>
+          <strong id="revTotalBookings" style="font-size: 1.6rem; font-weight: 900; color: #22c55e !important; text-shadow: 0 0 12px rgba(34,197,94,0.6);">14 Reserved</strong>
         </div>
-        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 1.2rem; border-radius: 14px;">
-          <span style="font-size: 0.78rem; font-weight: 800; color: #1e293b; display: block;">AVERAGE ORDER VALUE</span>
-          <strong id="revAvgValueBdt" style="font-size: 1.6rem; font-weight: 900; color: #ffffff;">৳16,607</strong>
+        <div style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.2); padding: 1.2rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #ffffff !important; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">AVERAGE ORDER VALUE</span>
+          <strong id="revAvgValueBdt" style="font-size: 1.6rem; font-weight: 900; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">৳16,607</strong>
         </div>
       </div>
     </section>
@@ -906,12 +906,12 @@
       </form>
 
       <!-- SQL Schema Viewer Modal Toggle -->
-      <div style="background: #0f172a; color: #ffffff; padding: 1.2rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div class="dark-section" style="background: #0f172a; color: #ffffff; padding: 1.2rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border: 1.5px solid #3ecf8e;">
         <div>
-          <strong style="color: #3ecf8e; font-size: 0.95rem;">📜 Ready-to-run Supabase PostgreSQL Table Schema (1-Click SQL)</strong>
-          <p style="margin: 0.2rem 0 0; color: #1e293b; font-size: 0.82rem;">Copy this SQL code and paste into your Supabase SQL Editor to create all 7 tables automatically.</p>
+          <strong style="color: #3ecf8e !important; font-size: 0.95rem; text-shadow: 0 0 10px rgba(62,207,142,0.5);">📜 Ready-to-run Supabase PostgreSQL Table Schema (1-Click SQL)</strong>
+          <p style="margin: 0.2rem 0 0; color: #ffffff !important; font-size: 0.85rem; font-weight: 600;">Copy this SQL code and paste into your Supabase SQL Editor to create all 7 tables automatically.</p>
         </div>
-        <button type="button" onclick="copySupabaseSQLSchema()" style="background: #3ecf8e; color: #062419; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 900; cursor: pointer;">
+        <button type="button" onclick="copySupabaseSQLSchema()" style="background: #3ecf8e; color: #062419; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 12px rgba(62,207,142,0.4);">
           📋 Copy SQL Schema
         </button>
       </div>
@@ -1096,7 +1096,7 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v30_admin_package_visibility_lock"></script>
+  <script src="app.js?v=v31_dark_contrast_master_lock"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);

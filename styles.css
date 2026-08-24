@@ -79,30 +79,90 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Light Theme Text Enforcement - 100% Crisp Ultra Dark Slate (Excluding Dark Pills & Dark Cards) */
-body.light-theme p:not(.cust-footer *):not(.dark-card *),
-body.light-theme label:not(.cust-footer *),
+/* Light Theme Text Enforcement - 100% Crisp Ultra Dark Slate (Excluding Dark Containers, Dark Pills & Dark Cards) */
+body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.light-theme label:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme td,
 body.light-theme th,
-body.light-theme li:not(.cust-footer *),
-body.light-theme small:not(.tour-price-pill *) {
+body.light-theme li:not(.cust-footer *):not(.dark-card *):not(.dark-section *),
+body.light-theme small:not(.tour-price-pill *):not(.dark-card *):not(.dark-section *) {
   color: #0f172a;
   font-weight: 700;
 }
 
-body.light-theme span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.ai-banner *):not(.showcase-panel *) {
+body.light-theme span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not(.ai-banner *):not(.showcase-panel *) {
   color: #0f172a;
   font-weight: 700;
 }
 
-body.light-theme h1,
-body.light-theme h2,
-body.light-theme h3,
-body.light-theme h4,
+body.light-theme h1:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.light-theme h2:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.light-theme h3:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.light-theme h4:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme h5,
 body.light-theme h6 {
   color: #0f172a;
   font-weight: 900;
+}
+
+/* ==========================================================================
+   UNIVERSAL CONTRAST IMMUNITY FOR ALL DARK CONTAINERS & BANNERS
+   ========================================================================== */
+.dark-section,
+.dark-card,
+[style*="background: linear-gradient(135deg, #0f172a"],
+[style*="background: linear-gradient(135deg, #07111e"],
+[style*="background: linear-gradient(135deg, #090d16"],
+[style*="background: #0f172a"],
+[style*="background: #07111e"],
+[style*="background: #060911"],
+[style*="background: #090d16"],
+[style*="background:#0f172a"],
+[style*="background:#07111e"],
+[style*="background:#060911"],
+[style*="background:#090d16"] {
+  color: #ffffff !important;
+}
+
+.dark-section p,
+.dark-card p,
+[style*="background: linear-gradient(135deg, #0f172a"] p,
+[style*="background: linear-gradient(135deg, #07111e"] p,
+[style*="background: linear-gradient(135deg, #090d16"] p,
+[style*="background: #0f172a"] p,
+[style*="background: #07111e"] p,
+[style*="background: #060911"] p,
+[style*="background: #090d16"] p {
+  color: #ffffff !important;
+  opacity: 0.95 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.dark-section span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+.dark-card span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: linear-gradient(135deg, #0f172a"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: linear-gradient(135deg, #07111e"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: linear-gradient(135deg, #090d16"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: #0f172a"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: #07111e"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: #060911"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill),
+[style*="background: #090d16"] span:not(.badge-tag):not(.status-pill):not(.status-badge):not(.tour-price-pill) {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+.dark-card h1, .dark-card h2, .dark-card h3, .dark-card h4,
+[style*="background: linear-gradient(135deg, #0f172a"] h1,
+[style*="background: linear-gradient(135deg, #0f172a"] h2,
+[style*="background: linear-gradient(135deg, #0f172a"] h3,
+[style*="background: linear-gradient(135deg, #0f172a"] h4,
+[style*="background: linear-gradient(135deg, #07111e"] h1,
+[style*="background: linear-gradient(135deg, #07111e"] h2,
+[style*="background: linear-gradient(135deg, #07111e"] h3,
+[style*="background: linear-gradient(135deg, #07111e"] h4 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
 }
 
 /* Explicit High-Contrast Overrides for Price Pills, AI Banners & Dark Widgets */
