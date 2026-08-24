@@ -2212,7 +2212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adminBookingsTbody.innerHTML = '';
     if (bookings.length === 0) {
-      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">কোনো পুরাতন ডামি বুকিং ডেটা নেই। গ্রাহক লাইভ ওয়েবসাইট থেকে বুকিং করলে সাথে সাথে এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।</td></tr>`;
+      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #1e293b; font-weight: 800; font-size: 0.95rem; padding: 2.5rem; background: #f8fafc; border-radius: 12px;">কোনো পুরাতন ডামি বুকিং ডেটা নেই। গ্রাহক লাইভ ওয়েবসাইট থেকে বুকিং করলে সাথে সাথে এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।</td></tr>`;
       return;
     }
 
@@ -2231,18 +2231,18 @@ document.addEventListener('DOMContentLoaded', () => {
       tr.innerHTML = `
         <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
         <td>
-          <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${b.customerName}</strong>
-          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">${b.phone}</a><br>
-          <span style="color: #64748b; font-size: 0.78rem;">${b.email || 'customer@mount2ocean.com'}</span>
+          <strong style="font-size: 0.95rem; color: #0f172a !important; display: block;">${b.customerName}</strong>
+          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;">📞 ${b.phone}</a><br>
+          <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
         </td>
-        <td><span style="font-size: 0.82rem; font-weight: 700; color: #475569;">${idDocStr}</span></td>
+        <td><span style="font-size: 0.85rem; font-weight: 800; color: #1e293b;">${idDocStr}</span></td>
         <td class="pkg-title-cell">
-          <strong style="color: #0f172a; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
-          <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">Date: ${b.travelDate || b.date}</span><br>
-          <span style="color: #00a651; font-weight: 900; font-size: 0.88rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
+          <strong style="color: #0f172a !important; font-size: 0.92rem; display: block;">${b.tourTitle}</strong>
+          <span style="color: #0072bc; font-size: 0.84rem; font-weight: 800;">Date: ${b.travelDate || b.date}</span><br>
+          <span style="color: #00a651; font-weight: 900; font-size: 0.9rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
         </td>
-        <td><span style="font-size: 0.85rem; font-weight: 700;">${b.travelersCount || '1 Person'}</span></td>
-        <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 800;">${b.paymentMethod || 'bKash Payment'}</span></td>
+        <td><span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">${b.travelersCount || '1 Person'}</span></td>
+        <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.3rem 0.65rem; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">${b.paymentMethod || 'bKash Payment'}</span></td>
         <td>${statusBadgeHtml}</td>
         <td>
           <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
@@ -2746,27 +2746,27 @@ document.addEventListener('DOMContentLoaded', () => {
     tbody.innerHTML = '';
 
     if (list.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: #94a3b8;">No pending partner approval requests found.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2.5rem; color: #1e293b; font-weight: 800; font-size: 0.95rem; background: #f8fafc;">No pending partner approval requests found. (কোনো নতুন অনুমোদন অপেক্ষমাণ নেই)</td></tr>`;
       return;
     }
 
     list.forEach(item => {
       const tr = document.createElement('tr');
-      const roleBadgeStyle = item.role === 'GUIDE' ? 'style="background: rgba(0, 176, 155, 0.2); color: #00f2fe; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700;"' : 'style="background: rgba(0, 114, 188, 0.2); color: #4facfe; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700;"';
+      const roleBadgeStyle = item.role === 'GUIDE' ? 'style="background: #e6f4ea; color: #00a651; padding: 0.3rem 0.65rem; border-radius: 6px; font-weight: 900; border: 1px solid #bbf7d0; display: inline-block;"' : 'style="background: #e0f2fe; color: #0072bc; padding: 0.3rem 0.65rem; border-radius: 6px; font-weight: 900; border: 1px solid #bae6fd; display: inline-block;"';
       
       let statusHtml = '';
       if (item.status === 'PENDING') {
-        statusHtml = `<span style="background: rgba(234, 179, 8, 0.15); color: #eab308; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.78rem;">🟡 Pending Verification</span>`;
+        statusHtml = `<span style="background: rgba(234, 179, 8, 0.15); color: #d97706; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🟡 Pending Verification</span>`;
       } else if (item.status === 'APPROVED') {
-        statusHtml = `<span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.78rem;">🟢 Approved (Email Sent)</span>`;
+        statusHtml = `<span style="background: rgba(34, 197, 94, 0.15); color: #059669; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🟢 Approved (Email Sent)</span>`;
       } else {
-        statusHtml = `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.78rem;">🔴 Rejected (Notification Sent)</span>`;
+        statusHtml = `<span style="background: rgba(239, 68, 68, 0.15); color: #dc2626; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🔴 Rejected (Notification Sent)</span>`;
       }
 
       let actionsHtml = '';
       if (item.status === 'PENDING') {
         actionsHtml = `
-          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #22c55e; margin-right: 4px;">
+          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; margin-right: 4px;">
             ✅ Approve
           </button>
           <button type="button" class="btn-delete-pkg" onclick="rejectPartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;">
@@ -2775,7 +2775,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       } else if (item.status === 'APPROVED') {
         actionsHtml = `
-          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #22c55e; opacity: 0.6;" title="Already Approved">
+          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; opacity: 0.6;" title="Already Approved">
             ✓ Approved
           </button>
           <button type="button" class="btn-delete-pkg" onclick="rejectPartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;" title="Revoke & Cancel Approval">
@@ -2784,7 +2784,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       } else {
         actionsHtml = `
-          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #22c55e; margin-right: 4px;">
+          <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; margin-right: 4px;">
             ✅ Approve
           </button>
           <span style="font-size: 0.76rem; color: #ef4444; font-weight: 700;">Rejected</span>
@@ -2793,10 +2793,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       tr.innerHTML = `
         <td><span ${roleBadgeStyle}>${item.role === 'GUIDE' ? '🚩 GUIDE' : '🏢 AGENT'}</span></td>
-        <td><strong>${item.name}</strong></td>
-        <td>${item.email}</td>
-        <td><code style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: #00f2fe;">${item.credentialNo}</code></td>
-        <td>${item.date}</td>
+        <td style="color: #0f172a !important; font-weight: 800;"><strong>${item.name}</strong></td>
+        <td style="color: #1e293b !important; font-weight: 700;">${item.email}</td>
+        <td><code style="background: #f1f5f9; padding: 3px 8px; border-radius: 6px; color: #0072bc; font-weight: 800; border: 1px solid #cbd5e1;">${item.credentialNo}</code></td>
+        <td style="color: #475569 !important; font-weight: 700;">${item.date}</td>
         <td>${statusHtml}</td>
         <td>${actionsHtml}</td>
       `;
@@ -3101,25 +3101,25 @@ function checkCustomerBookingNotifications() {
       if (u.role === 'B2B AGENT') roleBadgeClass = 'status-badge-live';
 
       tr.innerHTML = `
-        <td><strong style="color: #0072bc;">${u.id}</strong></td>
-        <td><strong>${u.name}</strong></td>
+        <td><strong style="color: #0072bc; font-size: 0.95rem;">${u.id}</strong></td>
+        <td><strong style="color: #0f172a !important; font-weight: 800; font-size: 0.95rem;">${u.name}</strong></td>
         <td>
           <div style="font-size: 0.86rem; line-height: 1.4;">
-            <a href="tel:${u.mobile}" style="color: #00a651; font-weight: 800; text-decoration: none;">📞 ${u.mobile}</a><br>
-            <span style="color: #64748b; font-size: 0.8rem;">✉️ ${u.email}</span>
+            <a href="tel:${u.mobile}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;">📞 ${u.mobile}</a><br>
+            <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">✉️ ${u.email}</span>
           </div>
         </td>
-        <td><span class="${roleBadgeClass}" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">${u.role}</span></td>
-        <td><span style="font-size: 0.82rem; color: #64748b;">${u.registeredAt}</span></td>
+        <td><span class="${roleBadgeClass}" style="padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 800;">${u.role}</span></td>
+        <td><span style="font-size: 0.85rem; color: #1e293b !important; font-weight: 700;">${u.registeredAt}</span></td>
         <td>
-          <span style="font-size: 0.82rem; color: #00a651; font-weight: 700;">🟢 ${u.lastLoginAt}</span><br>
-          <span style="font-size: 0.75rem; color: #64748b;">(Sessions: ${u.loginCount || 1})</span>
+          <span style="font-size: 0.85rem; color: #00a651; font-weight: 800;">🟢 ${u.lastLoginAt}</span><br>
+          <span style="font-size: 0.78rem; color: #1e293b; font-weight: 700;">(Sessions: ${u.loginCount || 1})</span>
         </td>
-        <td><span class="status-badge-live" style="background: rgba(34,197,94,0.15); color: #22c55e;">✔ ${u.status || 'Active'}</span></td>
+        <td><span class="status-badge-live" style="background: rgba(34,197,94,0.15); color: #059669; font-weight: 800;">✔ ${u.status || 'Active'}</span></td>
         <td>
           <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-            <a href="tel:${u.mobile}" class="primary-btn" style="padding: 0.25rem 0.5rem; font-size: 0.74rem; background: #00a651; text-decoration: none;">📞 Call</a>
-            <button type="button" class="danger-btn" style="padding: 0.25rem 0.5rem; font-size: 0.74rem;" onclick="deleteUserDirectoryRecord('${u.id}')">🗑️ Delete</button>
+            <a href="tel:${u.mobile}" class="primary-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; text-decoration: none; font-weight: 800;">📞 Call</a>
+            <button type="button" class="danger-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; font-weight: 800;" onclick="deleteUserDirectoryRecord('${u.id}')">🗑️ Delete</button>
           </div>
         </td>
       `;
@@ -3183,13 +3183,13 @@ function checkCustomerBookingNotifications() {
       const valStr = p.type === 'PERCENT' ? `${p.value}% OFF` : `৳${p.value.toLocaleString()} FLAT OFF`;
 
       tr.innerHTML = `
-        <td><strong style="color: #0072bc; font-size: 1rem; letter-spacing: 1px;">${p.code}</strong></td>
-        <td><strong style="color: var(--text-main);">${p.targetName || p.targetPkg}</strong></td>
-        <td><span class="status-badge-live" style="background: rgba(0, 166, 81, 0.15); color: #00a651; font-weight: 800;">${valStr}</span></td>
-        <td><span style="font-size: 0.84rem; color: #64748b;">${p.createdAt}</span></td>
-        <td><span class="status-badge-live" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">✔ ${p.status}</span></td>
+        <td><strong style="color: #0072bc; font-size: 1rem; letter-spacing: 1px; font-weight: 900;">${p.code}</strong></td>
+        <td><strong style="color: #0f172a !important; font-weight: 800;">${p.targetName || p.targetPkg}</strong></td>
+        <td><span class="status-badge-live" style="background: rgba(0, 166, 81, 0.15); color: #00a651; font-weight: 900;">${valStr}</span></td>
+        <td><span style="font-size: 0.88rem; color: #1e293b !important; font-weight: 700;">${p.createdAt}</span></td>
+        <td><span class="status-badge-live" style="background: rgba(34, 197, 94, 0.15); color: #059669; font-weight: 800;">✔ ${p.status}</span></td>
         <td>
-          <button type="button" class="danger-btn" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;" onclick="deletePromoCode('${p.code}')">🗑️ Delete</button>
+          <button type="button" class="danger-btn" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; font-weight: 800;" onclick="deletePromoCode('${p.code}')">🗑️ Delete</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -6225,6 +6225,77 @@ document.addEventListener('DOMContentLoaded', function() {
     window.syncLiveFrontendWithAdminSettings();
   }
 });
+
+// ==========================================
+// ADMIN DASHBOARD LIVE REVIEWS DESK RENDERER
+// ==========================================
+window.renderAdminReviewsDesk = function() {
+  const tbody = document.getElementById('adminReviewsTbody');
+  if (!tbody) return;
+
+  const reviews = window.getCombinedLiveReviews ? window.getCombinedLiveReviews() : (window.DEFAULT_REVIEWS || []);
+  tbody.innerHTML = '';
+
+  if (reviews.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #1e293b; font-weight: 800; padding: 2rem; background: #f8fafc;">No customer reviews published yet. (এখনো কোনো রিভিউ যুক্ত করা হয়নি)</td></tr>`;
+    return;
+  }
+
+  reviews.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="color: #0f172a !important; font-weight: 800;"><strong>${r.name}</strong></td>
+      <td style="color: #0072bc !important; font-weight: 800;">${r.trip}</td>
+      <td style="color: #f59e0b !important; font-weight: 900; font-size: 1rem;">${'⭐'.repeat(r.stars || 5)}</td>
+      <td style="color: #1e293b !important; font-weight: 600; font-size: 0.88rem; max-width: 320px;">"${r.comment}"</td>
+      <td>
+        <button type="button" class="btn-delete-pkg" onclick="handleDeleteReview('${r.id}')" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; cursor: pointer;">🗑️ Delete</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+};
+
+window.handleAddCustomerReview = function(e) {
+  e.preventDefault();
+  const name = document.getElementById('revCustomerName').value.trim();
+  const trip = document.getElementById('revTourName').value.trim();
+  const stars = parseInt(document.getElementById('revStarSelect').value, 10) || 5;
+  const comment = document.getElementById('revComment').value.trim();
+
+  const newRev = {
+    id: 'rev-' + Date.now(),
+    name: name,
+    trip: trip,
+    stars: stars,
+    comment: comment,
+    image: 'assets/official_logo.png'
+  };
+
+  if (window.saveOwnerReview) {
+    window.saveOwnerReview(newRev);
+  }
+  if (window.renderAdminReviewsDesk) {
+    window.renderAdminReviewsDesk();
+  }
+  e.target.reset();
+  if (typeof showToast === 'function') {
+    showToast('Customer Review published live successfully!', 'success');
+  } else {
+    alert('Customer Review published live successfully!');
+  }
+};
+
+window.handleDeleteReview = function(id) {
+  if (confirm('Are you sure you want to delete this customer review?')) {
+    if (window.deleteOwnerReview) {
+      window.deleteOwnerReview(id);
+    }
+    if (window.renderAdminReviewsDesk) {
+      window.renderAdminReviewsDesk();
+    }
+  }
+};
 
 
 

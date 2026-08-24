@@ -47,19 +47,21 @@
   --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light Theme Variables */
-body.light-theme {
+/* Light Theme & Admin Portal Variables */
+body.light-theme,
+body.admin-portal-body {
   --bg-primary: #f0f4f9;
   --bg-secondary: #ffffff;
   --bg-glass: rgba(255, 255, 255, 0.85);
-  --bg-glass-border: rgba(0, 0, 0, 0.08);
-  --bg-input: #f8fafc;
+  --bg-glass-border: #cbd5e1;
+  --bg-input: #ffffff;
   --bg-input-hover: #f1f5f9;
   --bg-card-hover: #f8fafc;
   
   --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #94a3b8;
+  --text-muted: #1e293b;
+  --text-dim: #334155;
+  color: #0f172a;
   
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
@@ -79,13 +81,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Light Theme Text Enforcement - 100% Crisp Ultra Dark Slate (Excluding Dark Containers, Dark Pills & Dark Cards) */
+/* Light Theme & Admin Portal Text Enforcement - 100% Crisp Ultra Dark Slate (Excluding Dark Containers, Dark Pills & Dark Cards) */
 body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body p:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme label:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body label:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme td:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
+body.admin-portal-body td:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
 body.light-theme th:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
+body.admin-portal-body th:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
 body.light-theme li:not(.cust-footer *):not(.dark-card *):not(.dark-section *),
-body.light-theme small:not(.tour-price-pill *):not(.dark-card *):not(.dark-section *) {
+body.admin-portal-body li:not(.cust-footer *):not(.dark-card *):not(.dark-section *),
+body.light-theme small:not(.tour-price-pill *):not(.dark-card *):not(.dark-section *),
+body.admin-portal-body small:not(.tour-price-pill *):not(.dark-card *):not(.dark-section *) {
   color: #0f172a;
   font-weight: 700;
 }
@@ -111,17 +119,24 @@ th[style*="background: linear-gradient"] {
   text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
-body.light-theme span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not(.ai-banner *):not(.showcase-panel *) {
+body.light-theme span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not(.ai-banner *):not(.showcase-panel *),
+body.admin-portal-body span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not(.ai-banner *):not(.showcase-panel *) {
   color: #0f172a;
   font-weight: 700;
 }
 
 body.light-theme h1:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body h1:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme h2:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body h2:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme h3:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body h3:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme h4:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
+body.admin-portal-body h4:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme h5,
-body.light-theme h6 {
+body.admin-portal-body h5,
+body.light-theme h6,
+body.admin-portal-body h6 {
   color: #0f172a;
   font-weight: 900;
 }
@@ -3158,32 +3173,55 @@ body.light-theme .role-selector-box {
 .flex-between { display: flex; justify-content: space-between; align-items: center; }
 .flex-align { display: flex; align-items: center; gap: 1rem; }
 
-.table-responsive-wrapper {
+.admin-section-header p,
+.section-subtitle,
+.admin-section p {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  margin: 0.25rem 0 0 0 !important;
+}
+
+.table-responsive-wrapper,
+.admin-table-container {
   overflow-x: auto;
   margin-top: 1rem;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
 }
 
-.admin-packages-table {
+.admin-packages-table,
+.admin-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.92rem;
+  background: #ffffff;
 }
 
-.admin-packages-table th {
+.admin-packages-table th,
+.admin-table th {
   background: #f1f5f9;
-  color: #1e293b !important;
-  font-weight: 800;
+  color: #0f172a !important;
+  font-weight: 900 !important;
   padding: 0.9rem 1rem;
   border-bottom: 2px solid #cbd5e1;
+  border-top: 1px solid #e2e8f0;
 }
 
-.admin-packages-table td {
+.admin-packages-table td,
+.admin-table td {
   padding: 1rem;
   border-bottom: 1px solid #e2e8f0;
   vertical-align: middle;
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+.admin-packages-table tr:hover,
+.admin-table tr:hover {
+  background: #f8fafc;
 }
 
 .table-pkg-img {
@@ -3193,8 +3231,8 @@ body.light-theme .role-selector-box {
   border-radius: 6px;
 }
 
-.pkg-title-cell { font-weight: 800; color: #0f172a; }
-.pkg-price-cell { font-weight: 800; color: #00a651; }
+.pkg-title-cell { font-weight: 900 !important; color: #0f172a !important; }
+.pkg-price-cell { font-weight: 900 !important; color: #00a651 !important; }
 
 .status-badge-live {
   background: #e6f4ea;
