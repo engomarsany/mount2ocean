@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=v34_admin_dashboard_all_sections_visibility_lock">
+  <link rel="stylesheet" href="styles.css?v=v35_trip_com_design_upgrade">
 
   <style>
     /* Centralized 1-Single Pass Airplane Fog Splash System */
@@ -229,78 +229,209 @@
     </div>
   </header>
 
-  <!-- HERO FEATURED CAROUSEL SECTION -->
-  <section class="customer-hero-section" id="heroSection">
-    <div class="hero-carousel-container">
+  <!-- TRIP.COM-INSPIRED CURVED HERO BANNER -->
+  <section class="trip-hero-section" id="heroSection">
+    <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 2;">
+      <div class="trip-hero-slogan">
+        <span>✨</span> Every check-in is a new beginning • আপনার স্বপ্নের ভ্রমণ শুরু হোক এখান থেকেই
+      </div>
+      <h1 class="trip-hero-title" id="heroTitle">
+        Explore Worldwide Destinations, Luxury Resorts &amp; Tour Packages
+      </h1>
+      <p class="trip-hero-subtitle" id="heroDesc">
+        বালি, দুবাই, মালদ্বীপ, ভূটান, নেপাল ও কক্সবাজারের সেরা লাক্সারি রিসোর্ট, ট্যুর প্যাকেজ ও ফ্লাইট টিকেট বুক করুন এক ক্লিকে।
+      </p>
+    </div>
+  </section>
+
+  <!-- TRIP.COM SIGNATURE FLOATING MULTI-SERVICE SEARCH ENGINE -->
+  <section class="trip-search-wrapper">
+    <div class="trip-search-box">
       
-      <!-- Dynamic Latest Package Hero Banner -->
-      <div class="hero-slide active" id="heroSlide" style="background-image: linear-gradient(to right, rgba(9, 13, 22, 0.88) 35%, rgba(9, 13, 22, 0.4) 100%), url('assets/bali_kintamani_volcano.jpg');">
-        <div class="hero-content">
-          <span class="hero-tag" id="heroTag" style="background: #ef4444; color: #ffffff !important; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.8rem; display: inline-block; margin-bottom: 0.8rem;">HOT DEAL • 20% OFF • BALI SPECIAL</span>
-          <h1 class="hero-title" id="heroTitle" style="color: #ffffff !important; text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.95); font-weight: 900; font-size: 2.3rem; margin-bottom: 0.8rem;">BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu &amp; Water Sports</h1>
-          <p class="hero-desc" id="heroDesc" style="color: #f1f5f9 !important; text-shadow: 0 2px 10px rgba(0,0,0,0.95); font-size: 1.05rem; font-weight: 600; line-height: 1.6; max-width: 650px;">4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!</p>
-          <div class="hero-pricing-bar" style="margin-top: 1.2rem;">
-            <span class="hero-price" id="heroPriceBox" style="color: #ffffff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
-              From <del style="color: #1e293b; text-decoration: line-through; font-size: 1.15rem; margin-right: 0.6rem; font-weight: 700;">৳21,000</del> <strong style="color: #00f2fe; font-size: 2.2rem; font-weight: 900;">৳17,500</strong> <small style="color: #e2e8f0;">/ person</small>
-            </span>
-            <button class="primary-btn hero-btn" id="heroBookBtn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='booking.html';" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 800; cursor: pointer;">
-              Explore &amp; Book Package ➔
-            </button>
-          </div>
+      <!-- Multi-Service Navigation Tabs -->
+      <div class="trip-tab-nav">
+        <a href="tour_packages.html" class="trip-tab-btn active">
+          <span>🏝️</span> Tour Packages (ট্যুর প্যাকেজ)
+        </a>
+        <a href="hotels_resorts.html" class="trip-tab-btn">
+          <span>🏨</span> Hotels &amp; Resorts (হোটেল ও রিসোর্ট)
+        </a>
+        <a href="flights.html" class="trip-tab-btn">
+          <span>✈️</span> Flights (ফ্লাইট টিকিট)
+        </a>
+        <a href="visa_services.html" class="trip-tab-btn">
+          <span>🛂</span> Visa Processing (ভিসা প্রসেসিং)
+        </a>
+        <a href="ai_itinerary_builder.html" class="trip-tab-btn">
+          <span>🤖</span> AI Trip Builder (এআই প্ল্যানার)
+        </a>
+        <a href="combo_builder.html" class="trip-tab-btn">
+          <span>🧳</span> Combo Trip (কাস্টম ট্রিপ)
+        </a>
+      </div>
+
+      <!-- 1-Line Unified Search Form -->
+      <form action="tour_packages.html" method="GET" class="trip-search-form-grid">
+        
+        <!-- Destination Input -->
+        <div class="trip-input-card">
+          <label class="trip-input-label">
+            <span>📍</span> Destination / Package (গন্তব্য)
+          </label>
+          <select id="custSearchSelect" class="trip-input-field" onchange="if(window.updateFindToursHref) window.updateFindToursHref(this.value);">
+            <option value="">All Destinations (সকল প্যাকেজ ও রিসোর্ট)</option>
+            <option value="Bali">🇮🇩 Bali, Indonesia (4D/3N Special - ৳17,500)</option>
+            <option value="Bhutan">🇧🇹 Bhutan Cultural &amp; Tiger's Nest (4D/3N - ৳75,000)</option>
+            <option value="Maldives">🇲🇻 Maldives Overwater Luxury Villa (4D/3N - ৳85,000)</option>
+            <option value="Dubai">🇦🇪 Dubai Desert Safari &amp; Burj Khalifa (5D/4N - ৳48,000)</option>
+            <option value="Cox's Bazar">🇧🇩 Cox's Bazar 5-Star Ocean View Resort (3D/2N - ৳18,500)</option>
+            <option value="Sylhet">🇧🇩 Sylhet Tea Estate &amp; Ratargul (3D/2N - ৳12,500)</option>
+            <option value="Nepal">🇳🇵 Nepal Kathmandu &amp; Annapurna (5D/4N - ৳42,000)</option>
+            <option value="Sajek">🇧🇩 Sajek Valley Cloud Retreat (3D/2N - ৳14,500)</option>
+          </select>
         </div>
+
+        <!-- Travel Date Selector -->
+        <div class="trip-input-card">
+          <label class="trip-input-label">
+            <span>📅</span> Travel Dates (ভ্রমণের তারিখ)
+          </label>
+          <input type="date" id="custSearchDate" value="2026-08-10" class="trip-input-field">
+        </div>
+
+        <!-- Travelers / Room Selector -->
+        <div class="trip-input-card">
+          <label class="trip-input-label">
+            <span>👥</span> Travelers &amp; Guests (যাত্রী)
+          </label>
+          <select id="custTravelersCount" class="trip-input-field">
+            <option value="1">1 Adult (১ জন)</option>
+            <option value="2" selected>2 Adults (২ জন)</option>
+            <option value="3">3 Adults (৩ জন)</option>
+            <option value="4">4+ Family / Group (৪+ ফ্যামিলি)</option>
+          </select>
+        </div>
+
+        <!-- Search Action Button -->
+        <div>
+          <a href="tour_packages.html" id="btnCustSearch" class="trip-search-btn">
+            <span>🔍</span> Search Deals ➔
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- TRIP.COM-STYLE NEW USER EXCLUSIVE & COUPON TICKET STRIP -->
+  <section class="trip-coupons-section">
+    <div class="trip-section-title-wrap">
+      <div>
+        <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0 0 0.2rem;">
+          🎁 New User Exclusive Deals &amp; Instant Coupons (কুপন ও ডিসকাউন্ট ভাউচার)
+        </h3>
+        <p style="font-size: 0.88rem; color: #475569; font-weight: 700; margin: 0;">
+          প্রথম বুকিংয়ে অতিরিক্ত ডিসকাউন্ট পেতে নিচের ভাউচার ক্লেইম করুন।
+        </p>
+      </div>
+      <button type="button" class="coupon-claim-btn" onclick="claimAllCouponsHandler()" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); padding: 0.6rem 1.2rem; font-weight: 900; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,166,81,0.3);">
+        ⚡ Claim All Coupons (সবগুলো ক্লেইম করুন)
+      </button>
+    </div>
+
+    <div class="trip-coupons-grid">
+      
+      <!-- Coupon 1 -->
+      <div class="trip-coupon-ticket">
+        <div>
+          <span class="coupon-badge-top">NEW USER GIFT</span>
+          <h4 class="coupon-disc-text">৳২,৫00 OFF</h4>
+          <p class="coupon-sub-text">Use Code: <strong>HOLIDAY2026</strong> • Min ৳25k</p>
+        </div>
+        <button type="button" class="coupon-claim-btn" onclick="applyPromoCodeDirectly('HOLIDAY2026')">
+          Claim ➔
+        </button>
+      </div>
+
+      <!-- Coupon 2 -->
+      <div class="trip-coupon-ticket">
+        <div>
+          <span class="coupon-badge-top" style="background: rgba(0, 166, 81, 0.1); color: #00a651;">TOUR SPECIAL</span>
+          <h4 class="coupon-disc-text">10% OFF</h4>
+          <p class="coupon-sub-text">Use Code: <strong>M2O2026</strong> • All Packages</p>
+        </div>
+        <button type="button" class="coupon-claim-btn" onclick="applyPromoCodeDirectly('M2O2026')">
+          Claim ➔
+        </button>
+      </div>
+
+      <!-- Coupon 3 -->
+      <div class="trip-coupon-ticket">
+        <div>
+          <span class="coupon-badge-top" style="background: rgba(0, 114, 188, 0.1); color: #0072bc;">BALI FLASH DEAL</span>
+          <h4 class="coupon-disc-text">20% OFF</h4>
+          <p class="coupon-sub-text">Use Code: <strong>BALI20</strong> • Bali Special</p>
+        </div>
+        <button type="button" class="coupon-claim-btn" onclick="applyPromoCodeDirectly('BALI20')">
+          Claim ➔
+        </button>
+      </div>
+
+      <!-- Coupon 4 -->
+      <div class="trip-coupon-ticket">
+        <div>
+          <span class="coupon-badge-top" style="background: rgba(245, 158, 11, 0.15); color: #d97706;">BHUTAN CASH</span>
+          <h4 class="coupon-disc-text">৳৫,০০০ FLAT</h4>
+          <p class="coupon-sub-text">Use Code: <strong>BHUTAN5K</strong> • Bhutan Tours</p>
+        </div>
+        <button type="button" class="coupon-claim-btn" onclick="applyPromoCodeDirectly('BHUTAN5K')">
+          Claim ➔
+        </button>
       </div>
 
     </div>
   </section>
 
-  <!-- RE-DESIGNED 100% BULLETPROOF SEARCH FORM WIDGET -->
-  <section class="customer-search-wrapper" style="margin: -2.5rem auto 2.5rem; max-width: 1240px; padding: 0 1rem; position: relative; z-index: 100;">
-    <div style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); border: 2px solid rgba(0, 242, 254, 0.4); border-radius: 20px; padding: 1.8rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);">
+  <!-- TRIP.COM-STYLE FEATURED DESTINATION CAMPAIGN BANNERS ("GO JAPAN" STYLE) -->
+  <section style="max-width: 1240px; margin: 0 auto 3rem; padding: 0 1.2rem;">
+    <div class="trip-campaign-grid">
       
-      <!-- Clean Category Service Tabs -->
-      <div style="display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap;">
-        <a href="tour_packages.html" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: #ffffff; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 800; font-size: 0.9rem; display: inline-block;">Tour Packages</a>
-        <a href="hotels_resorts.html" style="background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; display: inline-block;">Hotels &amp; Resorts</a>
-        <a href="flights.html" style="background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; display: inline-block;">Flight Tickets</a>
-        <a href="visa_services.html" style="background: #0072bc; color: #ffffff; border: 2px solid #00f2fe; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 900; font-size: 0.9rem; display: inline-block; box-shadow: 0 4px 15px rgba(0, 114, 188, 0.4);">Visa Processing ↗</a>
-      </div>
-
-      <!-- Native Bulletproof HTML Form -->
-      <form action="tour_packages.html" method="GET" style="display: grid; grid-template-columns: 3fr 1.8fr 1.5fr; gap: 1rem; align-items: end;">
-        
-        <!-- Live Packages Selector -->
-        <div>
-          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.45rem; display: block;">
-            Select Tour Destination / Package (গন্তব্য বা প্যাকেজ সিলেক্ট করুন)
-          </label>
-          <select id="custSearchSelect" onchange="if(window.updateFindToursHref) window.updateFindToursHref(this.value);" style="background: #ffffff; border: 2px solid #cbd5e1; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.95rem; font-weight: 800; color: #0f172a; width: 100%; cursor: pointer; outline: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            <option value="">All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>
-            <option value="Bhutan">3-Night / 4-Day Bhutan Cultural Tour &amp; Tiger's Nest (৳75,000)</option>
-            <option value="Bali">BALI PACKAGE 4D/3N - Kintamani Volcano &amp; Water Sports (৳17,500)</option>
-            <option value="Maldives">Maldives Overwater Resort Villa &amp; Speedboat (৳85,000)</option>
-            <option value="Dubai">Dubai Desert Safari, Burj Khalifa &amp; Dhow Cruise (৳48,000)</option>
-            <option value="Cox's Bazar">Cox's Bazar 5-Star Ocean Resort &amp; Saint Martin (৳18,500)</option>
-            <option value="Sylhet">Sylhet Tea Garden, Jaflong &amp; Ratargul Swamp (৳12,500)</option>
-            <option value="Nepal">Nepal Kathmandu, Pokhara &amp; Annapurna Tour (৳42,000)</option>
-          </select>
+      <!-- Campaign 1: Cox's Bazar -->
+      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/coxs_bazar_sea_pearl.jpg');">
+        <span class="campaign-tag-ribbon">UP TO 20% OFF</span>
+        <div class="trip-campaign-content">
+          <h3 class="campaign-title">GO COX'S BAZAR</h3>
+          <p class="campaign-desc">5-Star Ocean View Resorts &amp; Private Beach Luxury ➔</p>
         </div>
+      </a>
 
-        <!-- Departure Date -->
-        <div>
-          <label style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin-bottom: 0.45rem; display: block;">
-            Travel Departure Date (ভ্রমণের তারিখ)
-          </label>
-          <input type="date" id="custSearchDate" value="2026-08-10" style="background: #ffffff; border: 2px solid #cbd5e1; padding: 0.82rem 1rem; border-radius: 12px; font-weight: 700; font-size: 0.92rem; color: #0f172a; width: 100%; outline: none;">
+      <!-- Campaign 2: Bali -->
+      <a href="tour_packages.html" class="trip-campaign-card" style="background-image: url('assets/bali_kintamani_volcano.jpg');">
+        <span class="campaign-tag-ribbon" style="background: #00a651;">SPECIAL FLASH DEAL</span>
+        <div class="trip-campaign-content">
+          <h3 class="campaign-title">GO BALI</h3>
+          <p class="campaign-desc">Kintamani Volcano, Uluwatu &amp; Water Sports Escape ➔</p>
         </div>
+      </a>
 
-        <!-- Native HTML Direct Hyperlink Button -->
-        <div>
-          <a href="tour_packages.html" id="btnCustSearch" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.88rem 1rem; font-weight: 900; font-size: 1.05rem; color: #ffffff; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 166, 81, 0.4); text-decoration: none; cursor: pointer; text-align: center; transition: all 0.15s ease;">
-            Find Tours ➔
-          </a>
+      <!-- Campaign 3: Dubai -->
+      <a href="tour_packages.html" class="trip-campaign-card" style="background-image: url('assets/dubai_burj_khalifa_desert_safari.jpg');">
+        <span class="campaign-tag-ribbon" style="background: #0072bc;">CITY &amp; DESERT</span>
+        <div class="trip-campaign-content">
+          <h3 class="campaign-title">GO DUBAI</h3>
+          <p class="campaign-desc">Burj Khalifa Observation Deck &amp; 4x4 Safari Pass ➔</p>
         </div>
+      </a>
 
-      </form>
+      <!-- Campaign 4: Maldives -->
+      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/maldives_overwater_villas.jpg');">
+        <span class="campaign-tag-ribbon" style="background: #8b5cf6;">OVERWATER LUXURY</span>
+        <div class="trip-campaign-content">
+          <h3 class="campaign-title">GO MALDIVES</h3>
+          <p class="campaign-desc">Exclusive Overwater Lagoon Villa &amp; Speedboat Transfer ➔</p>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -1002,7 +1133,7 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v34_admin_dashboard_all_sections_visibility_lock"></script>
+  <script src="app.js?v=v35_trip_com_design_upgrade"></script>
   <script>
     window.handleEmbedVisaTrackSubmit = function(e) {
       e.preventDefault();
@@ -1055,6 +1186,25 @@
           if (totalEl) totalEl.textContent = `Calculated Total: ৳${currentPriceNum.toLocaleString()}`;
         }
       }
+    };
+
+    // Trip.com Style Instant Coupon Handlers
+    window.applyPromoCodeDirectly = function(code) {
+      if (typeof showToast === 'function') {
+        showToast(`🎉 Coupon "${code}" Claimed! Discount will be automatically applied at checkout.`, 'success');
+      } else {
+        alert(`🎉 Coupon "${code}" Claimed! Discount will be automatically applied at checkout.`);
+      }
+      localStorage.setItem('m2o_claimed_promo_code', code);
+    };
+
+    window.claimAllCouponsHandler = function() {
+      if (typeof showToast === 'function') {
+        showToast('⚡ All Exclusive New User Coupons Claimed Successfully! Ready to use on your next booking.', 'success');
+      } else {
+        alert('⚡ All Exclusive New User Coupons Claimed Successfully! Ready to use on your next booking.');
+      }
+      localStorage.setItem('m2o_claimed_promo_code', 'HOLIDAY2026');
     };
 
     // Flash Deal Countdown Timer
