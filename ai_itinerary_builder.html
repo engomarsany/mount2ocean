@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v36_user_pages_font_visibility_master">
+  <link rel="stylesheet" href="styles.css?v=v37_pure_white_text_on_all_dark_blocks_master">
 </head>
 <body class="light-theme">
 
@@ -59,13 +59,13 @@
     
     <!-- AI INPUT FORM CARD -->
     <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #0072bc; box-shadow: 0 15px 40px rgba(0,114,188,0.12); margin-bottom: 2.5rem;">
-      <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 1.2rem;">
+      <h3 style="font-size: 1.3rem; font-weight: 900; color: #ffffff; margin-bottom: 1.2rem;">
         🤖 Configure Your AI Custom Travel Plan (ট্রিপ পছন্দসমূহ)
       </h3>
 
       <form onsubmit="generateAiItineraryHandler(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
           <select id="aiDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
             <option value="Bhutan"> Bhutan (Paro &amp; Thimphu)</option>
             <option value="Bali">🌺 Bali (Kintamani &amp; Ubud)</option>
@@ -77,7 +77,7 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Duration (দিন সংখ্যা) *</label>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Duration (দিন সংখ্যা) *</label>
           <select id="aiDuration" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
             <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
             <option value="4 Days / 3 Nights" selected>4 Days / 3 Nights</option>
@@ -87,7 +87,7 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
           <select id="aiStyle" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
             <option value="Honeymoon & Luxury"> Romantic Honeymoon &amp; Luxury</option>
             <option value="Family Holiday" selected>👨‍👩‍👧‍👦 Family Vacation</option>
@@ -97,7 +97,7 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #334155; display: block; margin-bottom: 0.35rem;">Approx Budget (আনুমানিক বাজেট) *</label>
+          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Approx Budget (আনুমানিক বাজেট) *</label>
           <input type="text" id="aiBudget" value="৳45,000 per person" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
         </div>
 
@@ -114,7 +114,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
           <div>
             <span class="badge-tag" style="background: #00a651; color: white;">AI ITINERARY GENERATED</span>
-            <h2 id="aiResultTitle" style="font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
+            <h2 id="aiResultTitle" style="font-size: 1.6rem; font-weight: 900; color: #ffffff; margin: 0.3rem 0 0;">
               Bhutan 4D/3N Customized Tour Plan
             </h2>
           </div>
@@ -138,7 +138,7 @@
   </main>
 
   <script src="pdf_voucher_engine.js"></script>
-  <script src="app.js?v=v36_user_pages_font_visibility_master"></script>
+  <script src="app.js?v=v37_pure_white_text_on_all_dark_blocks_master"></script>
   <script>
     let currentGeneratedPlan = null;
 
@@ -162,19 +162,19 @@
       daysContainer.innerHTML = `
         <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #00a651;">
           <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 1: Arrival &amp; Welcome Excursion</h4>
-          <p style="margin:0; color: #1e293b !important; font-weight: 700; font-weight:700;">Airport greeting by Mount2ocean executive, luxury hotel check-in, orientation dinner &amp; evening local market exploration.</p>
+          <p style="margin:0; color: #ffffff !important; font-weight: 700; font-weight:700;">Airport greeting by Mount2ocean executive, luxury hotel check-in, orientation dinner &amp; evening local market exploration.</p>
         </div>
         <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #0072bc;">
           <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 2: Full Day Guided Tour &amp; Iconic Attractions</h4>
-          <p style="margin:0; color: #1e293b; font-weight:700;">Breakfast at hotel, private AC vehicle tour to top scenic spots, lunch at authentic local restaurant, sunset viewpoint &amp; photography.</p>
+          <p style="margin:0; color: #ffffff; font-weight:700;">Breakfast at hotel, private AC vehicle tour to top scenic spots, lunch at authentic local restaurant, sunset viewpoint &amp; photography.</p>
         </div>
         <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #f59e0b;">
           <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 3: Adventure / Leisure &amp; Cultural Immersion</h4>
-          <p style="margin:0; color: #1e293b; font-weight:700;">Optional water sports / nature hike, traditional craft shopping, special cultural dinner show with group photo session.</p>
+          <p style="margin:0; color: #ffffff; font-weight:700;">Optional water sports / nature hike, traditional craft shopping, special cultural dinner show with group photo session.</p>
         </div>
         <div style="background:#f8fafc; border-radius:12px; padding:1.2rem; border-left:4px solid #e11d48;">
           <h4 style="margin:0 0 0.4rem; color:#0f172a; font-weight:900;">Day 4: Farewell Breakfast &amp; Airport Transfer</h4>
-          <p style="margin:0; color: #1e293b; font-weight:700;">Buffet breakfast, check-out assistance, transfer to airport with souvenirs and Mount2ocean loyalty reward points!</p>
+          <p style="margin:0; color: #ffffff; font-weight:700;">Buffet breakfast, check-out assistance, transfer to airport with souvenirs and Mount2ocean loyalty reward points!</p>
         </div>
       `;
 

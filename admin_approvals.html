@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v36_user_pages_font_visibility_master">
+  <link rel="stylesheet" href="styles.css?v=v37_pure_white_text_on_all_dark_blocks_master">
 
   <style>
     .admin-page-header {
@@ -283,7 +283,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v36_user_pages_font_visibility_master"></script>
+  <script src="app.js?v=v37_pure_white_text_on_all_dark_blocks_master"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterApprovalsDirectory();
@@ -381,10 +381,10 @@
 
         tr.innerHTML = `
           <td><span ${roleBadgeStyle}>${item.role === 'GUIDE' ? 'TOUR GUIDE' : 'B2B AGENT'}</span></td>
-          <td><strong style="color: #0f172a; font-size: 0.95rem;">${item.name}</strong></td>
+          <td><strong style="color: #ffffff; font-size: 0.95rem;">${item.name}</strong></td>
           <td><a href="mailto:${item.email}" style="color: #0072bc; font-weight: 700; text-decoration: none;">${item.email}</a></td>
-          <td><code style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px; color: #0f172a; font-weight: 800;">${item.credentialNo}</code></td>
-          <td><span style="font-size: 0.84rem; color: #1e293b;">${item.date}</span></td>
+          <td><code style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px; color: #ffffff; font-weight: 800;">${item.credentialNo}</code></td>
+          <td><span style="font-size: 0.84rem; color: #ffffff;">${item.date}</span></td>
           <td>${statusHtml}</td>
           <td>${actionsHtml}</td>
         `;

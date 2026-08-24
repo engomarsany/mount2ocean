@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v36_user_pages_font_visibility_master">
+  <link rel="stylesheet" href="styles.css?v=v37_pure_white_text_on_all_dark_blocks_master">
 
   <style>
     /* Premium World-Class Admin Dashboard Layout Overrides */
@@ -168,7 +168,7 @@
     <a href="admin_promos.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #00a651; border-color: #86efac;">
       ️ Promo Codes ➔
     </a>
-    <a href="admin_settings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #1e293b;">
+    <a href="admin_settings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #ffffff; border-color: #ffffff;">
       ⚙️ Global Settings ➔
     </a>
   </nav>
@@ -181,15 +181,15 @@
       <div class="metric-card green">
         <div class="metric-icon-badge green-bg">BKG</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TOTAL BOOKINGS</span>
-          <strong id="masterTotalBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">0</strong>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #ffffff; display: block;">TOTAL BOOKINGS</span>
+          <strong id="masterTotalBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #ffffff;">0</strong>
         </div>
       </div>
 
       <div class="metric-card yellow">
         <div class="metric-icon-badge yellow-bg">WAIT</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">PENDING APPROVALS</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #ffffff; display: block;">PENDING APPROVALS</span>
           <strong id="masterPendingBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #d97706;">0</strong>
         </div>
       </div>
@@ -197,7 +197,7 @@
       <div class="metric-card blue">
         <div class="metric-icon-badge blue-bg">REV</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">CONFIRMED REVENUE</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #ffffff; display: block;">CONFIRMED REVENUE</span>
           <strong id="masterConfirmedRevenue" style="font-size: 1.6rem; font-weight: 900; color: #0072bc;">৳0</strong>
         </div>
       </div>
@@ -205,7 +205,7 @@
       <div class="metric-card red">
         <div class="metric-icon-badge red-bg">CAN</div>
         <div>
-          <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">CANCELLED / REJECTED</span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #ffffff; display: block;">CANCELLED / REJECTED</span>
           <strong id="masterCancelledBookingsCount" style="font-size: 1.6rem; font-weight: 900; color: #ef4444;">0</strong>
         </div>
       </div>
@@ -244,10 +244,10 @@
     <section class="admin-section" style="background: #ffffff; border-radius: 20px; padding: 1.8rem; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
-          <h2 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0;">
+          <h2 style="font-size: 1.45rem; font-weight: 900; color: #ffffff; margin: 0;">
             Live Customer Reservations Directory (<span id="showingBookingsCount" style="color: #00a651;">0</span> Entries)
           </h2>
-          <p style="font-size: 0.88rem; color: #1e293b; margin: 0.2rem 0 0;">
+          <p style="font-size: 0.88rem; color: #ffffff; margin: 0.2rem 0 0;">
             Real-time synchronized live booking records submitted by customers. Click Approve or Cancel to update reservation status.
           </p>
         </div>
@@ -284,7 +284,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v36_user_pages_font_visibility_master"></script>
+  <script src="app.js?v=v37_pure_white_text_on_all_dark_blocks_master"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterBookingsDirectory();
@@ -376,13 +376,13 @@
         tr.innerHTML = `
           <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
           <td>
-            <strong style="font-size: 0.95rem; color: #0f172a; display: block;">${b.customerName}</strong>
+            <strong style="font-size: 0.95rem; color: #ffffff; display: block;">${b.customerName}</strong>
             <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.82rem;">${b.phone}</a><br>
-            <span style="color: #1e293b; font-size: 0.78rem;">${b.email || 'customer@mount2ocean.com'}</span>
+            <span style="color: #ffffff; font-size: 0.78rem;">${b.email || 'customer@mount2ocean.com'}</span>
           </td>
-          <td><span style="font-size: 0.82rem; font-weight: 700; color: #1e293b;">${idDocStr}</span></td>
+          <td><span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">${idDocStr}</span></td>
           <td class="pkg-title-cell">
-            <strong style="color: #0f172a; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
+            <strong style="color: #ffffff; font-size: 0.9rem; display: block;">${b.tourTitle}</strong>
             <span style="color: #0072bc; font-size: 0.82rem; font-weight: 700;">Date: ${b.travelDate || b.date}</span><br>
             <span style="color: #00a651; font-weight: 900; font-size: 0.88rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
           </td>

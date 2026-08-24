@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v36_user_pages_font_visibility_master">
+  <link rel="stylesheet" href="styles.css?v=v37_pure_white_text_on_all_dark_blocks_master">
 
   <style>
     .admin-page-header {
@@ -242,7 +242,7 @@
       <div style="overflow-x: auto;">
         <table style="width: 100%; border-collapse: collapse; text-align: left;">
           <thead>
-            <tr style="background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-size: 0.82rem; font-weight: 900; color: #1e293b; text-transform: uppercase;">
+            <tr style="background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-size: 0.82rem; font-weight: 900; color: #ffffff; text-transform: uppercase;">
               <th style="padding: 0.9rem 1.2rem;">Customer Prompt</th>
               <th style="padding: 0.9rem 1.2rem;">Timestamp</th>
               <th style="padding: 0.9rem 1.2rem;">AI Matched Package</th>
@@ -260,7 +260,7 @@
   </main>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v36_user_pages_font_visibility_master"></script>
+  <script src="app.js?v=v37_pure_white_text_on_all_dark_blocks_master"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderRequestedPackagesTable();
@@ -303,7 +303,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="5" style="text-align: center; padding: 3rem; color: #1e293b; font-weight: 700;">
+            <td colspan="5" style="text-align: center; padding: 3rem; color: #ffffff; font-weight: 700;">
               No requested package searches found matching your filter criteria.
             </td>
           </tr>
@@ -326,13 +326,13 @@
         }
 
         tr.innerHTML = `
-          <td style="padding: 1rem 1.2rem; font-weight: 800; color: #0f172a; font-size: 0.98rem;">
+          <td style="padding: 1rem 1.2rem; font-weight: 800; color: #ffffff; font-size: 0.98rem;">
             "${window.sanitizeHTML ? window.sanitizeHTML(item.query) : item.query}"
           </td>
           <td style="padding: 1rem 1.2rem; font-weight: 800; color: #0072bc;">
             🔥 ${item.count || 1} time(s)
           </td>
-          <td style="padding: 1rem 1.2rem; font-weight: 700; color: #1e293b; font-size: 0.88rem;">
+          <td style="padding: 1rem 1.2rem; font-weight: 700; color: #ffffff; font-size: 0.88rem;">
             📅 ${item.lastSearched || 'Recent'}
           </td>
           <td style="padding: 1rem 1.2rem;">
@@ -397,7 +397,7 @@
       if (logs.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="5" style="text-align: center; padding: 2.5rem; color: #1e293b; font-weight: 700;">
+            <td colspan="5" style="text-align: center; padding: 2.5rem; color: #ffffff; font-weight: 700;">
               🤖 No AI search evaluation logs logged yet. Perform a search in Find Tours to test the AI Agent!
             </td>
           </tr>
@@ -414,10 +414,10 @@
         const badgeText = isMatch ? '✅ MATCHED & REDIRECTED' : '⚠️ UNMATCHED (SHOWED ALL PACKAGES)';
 
         tr.innerHTML = `
-          <td style="padding: 0.9rem 1.2rem; font-weight: 800; color: #0f172a;">
+          <td style="padding: 0.9rem 1.2rem; font-weight: 800; color: #ffffff;">
             "${window.sanitizeHTML ? window.sanitizeHTML(log.query) : log.query}"
           </td>
-          <td style="padding: 0.9rem 1.2rem; font-weight: 700; color: #1e293b; font-size: 0.85rem;">
+          <td style="padding: 0.9rem 1.2rem; font-weight: 700; color: #ffffff; font-size: 0.85rem;">
             ️ ${log.timestamp}
           </td>
           <td style="padding: 0.9rem 1.2rem; font-weight: 800; color: #0072bc; font-size: 0.92rem;">
