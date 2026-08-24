@@ -1,4 +1,32 @@
 // ==========================================
+// AUTO PURGE LEGACY MOCK & DUMMY PAID DATA (CLEAN SLATE START)
+// ==========================================
+(function purgeLegacyMockData() {
+  try {
+    const rawBk = localStorage.getItem('m2o_customer_bookings');
+    if (rawBk) {
+      let bks = JSON.parse(rawBk);
+      if (Array.isArray(bks)) {
+        const filteredBk = bks.filter(b => b && b.id !== 'M2O-BK-88491' && b.id !== 'M2O-BK-73920' && b.id !== 'M2O-BK-99120' && b.id !== 'M2O-BK-84921' && b.customerName !== 'Sharmin Chowdhury' && b.customerName !== 'Arif Ahmed');
+        if (filteredBk.length !== bks.length) {
+          localStorage.setItem('m2o_customer_bookings', JSON.stringify(filteredBk));
+        }
+      }
+    }
+    const rawVisa = localStorage.getItem('m2o_visa_applications');
+    if (rawVisa) {
+      let visas = JSON.parse(rawVisa);
+      if (Array.isArray(visas)) {
+        const filteredVisas = visas.filter(v => v && v.id !== 'M2O-VISA-99120' && v.applicantName !== 'Tanvir Hossain' && v.applicantName !== 'Sharmin Chowdhury');
+        if (filteredVisas.length !== visas.length) {
+          localStorage.setItem('m2o_visa_applications', JSON.stringify(filteredVisas));
+        }
+      }
+    }
+  } catch(e) {}
+})();
+
+// ==========================================
 // GOOGLE MAPS PLATFORM INTEGRATION ENGINE
 // ==========================================
 window.GOOGLE_MAPS_API_KEY = "AIzaSyDsXE43skvDaWWKK9cz839ALBCBcroBA54";
@@ -2142,58 +2170,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // OWNER ADMIN CUSTOMER BOOKINGS LISTING
   // ==========================================
-  const defaultCustomerBookings = [
-    {
-      id: 'M2O-BK-88491',
-      customerName: 'Sharmin Chowdhury',
-      phone: '01977477172',
-      email: 'sharmin@gmail.com',
-      passportNo: 'A09827364',
-      passportExpiry: '2029-11-15',
-      nid: '1992269182374',
-      travelDate: '2026-08-10',
-      tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
-      price: '৳1,50,000',
-      amount: '৳1,50,000',
-      travelersCount: '2 Adults',
-      adults: 2,
-      children: 0,
-      infants: 0,
-      paymentMethod: 'bKash Online Payment',
-      notes: 'Window seats requested on Paro flight',
-      date: '2026-07-29',
-      status: 'PENDING'
-    },
-    {
-      id: 'M2O-BK-73920',
-      customerName: 'Arif Ahmed',
-      phone: '01812345678',
-      email: 'arif.ahmed@gmail.com',
-      passportNo: 'B01928374',
-      passportExpiry: '2030-05-20',
-      nid: '1988123456789',
-      travelDate: '2026-08-15',
-      tourTitle: 'BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports',
-      price: '৳35,000',
-      amount: '৳35,000',
-      travelersCount: '2 Adults',
-      adults: 2,
-      children: 0,
-      infants: 0,
-      paymentMethod: 'Nagad Mobile Banking',
-      notes: 'Honeymoon arrangement requested',
-      date: '2026-07-28',
-      status: 'APPROVED'
-    }
-  ];
+  // ==========================================
+  // OWNER ADMIN CUSTOMER BOOKINGS LISTING
+  // ==========================================
+  const defaultCustomerBookings = [];
 
   window.renderAdminBookings = function() {
     const adminBookingsTbody = document.getElementById('adminBookingsTbody');
     if (!adminBookingsTbody) return;
 
-    let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings'));
-    if (!bookings || bookings.length === 0) {
-      bookings = defaultCustomerBookings;
+    let rawBookings = localStorage.getItem('m2o_customer_bookings');
+    let bookings = rawBookings ? JSON.parse(rawBookings) : [];
+    
+    // Purge old mock/dummy bookings if they were stored previously in browser
+    const cleanedBookings = bookings.filter(b => b && b.id !== 'M2O-BK-88491' && b.id !== 'M2O-BK-73920' && b.id !== 'M2O-BK-99120' && b.customerName !== 'Sharmin Chowdhury' && b.customerName !== 'Arif Ahmed');
+    if (cleanedBookings.length !== bookings.length || !rawBookings) {
+      bookings = cleanedBookings;
       localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
     }
 
@@ -2220,7 +2212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adminBookingsTbody.innerHTML = '';
     if (bookings.length === 0) {
-      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">কোনো স্যাম্পল বুকিং ডেটা রাখা হয়নি। গ্রাহক যেকোনো পেজ থেকে বুকিং করার পর সাথে সাথে এখানে লাইভ দেখতে পাবেন।</td></tr>`;
+      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; font-weight: 700; padding: 2.5rem; background: rgba(0, 114, 188, 0.04); border-radius: 12px;">কোনো পুরাতন ডামি বুকিং ডেটা নেই। গ্রাহক লাইভ ওয়েবসাইট থেকে বুকিং করলে সাথে সাথে এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।</td></tr>`;
       return;
     }
 
@@ -2324,21 +2316,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!bk) {
-      // Fallback if booking was from default set or missing in storage
-      bk = {
-        id: cleanId,
-        customerName: 'Sharmin Chowdhury',
-        phone: '01977477172',
-        email: 'sharmin@gmail.com',
-        tourTitle: 'Bhutan Cultural Tour',
-        travelDate: '2026-08-10',
-        price: '৳17,500',
-        amount: '৳17,500',
-        travelersCount: '2 Adults',
-        paymentMethod: 'bKash Payment',
-        status: newStatus
-      };
-      bookings.unshift(bk);
+      return;
     } else {
       bk.status = newStatus;
       if (cancelReason) {
@@ -4729,21 +4707,7 @@ window.defaultVisaChecklistData = [
   }
 ];
 
-window.defaultVisaApplicationsData = [
-  {
-    id: "M2O-VISA-99120",
-    passportNo: "A0874921",
-    refNo: "M2O-VISA-99120",
-    applicantName: "Tanvir Hossain",
-    country: "Malaysia",
-    dob: "1994-08-15",
-    visaType: "Tourist Single Entry",
-    applyDate: "2026-08-01",
-    status: "Approved",
-    issuedVisaFileUrl: "assets/official_logo.png",
-    ownerNotes: "Visa E-Sticker Approved by Embassy of Malaysia. Issued PDF ready for customer download."
-  }
-];
+window.defaultVisaApplicationsData = [];
 
 window.getVisaPriceList = function() {
   const stored = localStorage.getItem('m2o_visa_price_list');
@@ -4756,7 +4720,13 @@ window.saveVisaPriceList = function(list) {
 
 window.getVisaApplications = function() {
   const stored = localStorage.getItem('m2o_visa_applications');
-  return stored ? JSON.parse(stored) : window.defaultVisaApplicationsData;
+  let apps = stored ? JSON.parse(stored) : [];
+  const cleaned = apps.filter(a => a && a.id !== 'M2O-VISA-99120' && a.applicantName !== 'Tanvir Hossain' && a.applicantName !== 'Sharmin Chowdhury');
+  if (cleaned.length !== apps.length) {
+    apps = cleaned;
+    localStorage.setItem('m2o_visa_applications', JSON.stringify(apps));
+  }
+  return apps;
 };
 
 window.saveVisaApplications = function(apps) {
@@ -5655,18 +5625,11 @@ window.executeLivePaymentProcess = function(bookingId, amount) {
 // --------------------------------------------------------------------
 window.generatePdfETicketWithQr = function(bookingId) {
   let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings') || '[]');
-  let b = bookings.find(item => item.id === bookingId) || {
-    id: bookingId || "M2O-BK-88219",
-    customerName: "Sharmin Chowdhury",
-    phone: "+880 1330-303082",
-    email: "customer@mount2ocean.com",
-    tourTitle: "BALI LUXURY ESCAPE 4D/3N - Private Pool Villa & Kintamani Tour",
-    amount: "৳17,500",
-    travelDate: new Date().toISOString().split('T')[0],
-    travelersCount: "2 Adults • Deluxe Suite",
-    paymentMethod: "bKash Verified",
-    status: "CONFIRMED & ISSUED"
-  };
+  let b = bookings.find(item => item.id === bookingId);
+  if (!b) {
+    alert('Booking record not found.');
+    return;
+  }
 
   const pnr = 'PNR-' + (b.id ? b.id.replace(/[^0-9]/g, '') : '88491');
   const issueDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });

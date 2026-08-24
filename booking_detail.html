@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=v28_budget_slider_contrast_lock">
+  <link rel="stylesheet" href="styles.css?v=v29_clean_slate_production">
   <style>
     .file-voucher-container {
       max-width: 980px;
@@ -388,7 +388,7 @@
   </main>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v28_budget_slider_contrast_lock"></script>
+  <script src="app.js?v=v29_clean_slate_production"></script>
   <script>
     let currentLoadedBooking = null;
 
@@ -430,22 +430,20 @@
       let bk = allBookings.find(b => b.id === activeFileId) || allBookings[0];
 
       if (!bk) {
-        bk = {
-          id: 'M2O-BK-84921',
-          customerName: 'Sharmin Chowdhury',
-          phone: '+880 1330-303082',
-          email: 'sharmin@gmail.com',
-          passportNo: 'A0928194',
-          passportExpiry: '2030-10-15',
-          tourTitle: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike",
-          travelDate: '2026-08-15',
-          travelersCount: '👨‍👩‍👧 2 Adult(s), 0 Child(ren), 0 Infant(s)',
-          paymentMethod: 'bKash Online Payment',
-          price: '৳75,000',
-          notes: 'Vegetarian meal requested on flight.',
-          date: '2026-07-29',
-          status: 'PENDING'
-        };
+        const mainEl = document.querySelector('main');
+        if (mainEl) {
+          mainEl.innerHTML = `
+            <div style="max-width: 800px; margin: 4rem auto; text-align: center; background: #ffffff; padding: 3rem 2rem; border-radius: 20px; border: 2px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+              <h2 style="color: #0f172a; font-size: 1.6rem; font-weight: 900; margin-bottom: 0.5rem;">কোনো সক্রিয় বুকিং পাওয়া যায়নি (No Active Booking Found)</h2>
+              <p style="color: #1e293b; font-size: 0.95rem; font-weight: 700; margin-bottom: 1.5rem;">আপনার কোনো পূর্বের বুকিং থাকলে তা My Profile পেজে দেখতে পাবেন, অথবা নতুন ট্যুর বুক করতে প্যাকেজ ব্রাউজ করুন।</p>
+              <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="tour_packages.html" class="primary-btn" style="text-decoration: none; padding: 0.75rem 1.6rem; font-weight: 800; background: #0072bc; color: white;">Browse Tour Packages ➔</a>
+                <a href="my_profile.html" class="secondary-btn" style="text-decoration: none; padding: 0.75rem 1.6rem; font-weight: 800; color: #0f172a;">My Profile &amp; Bookings</a>
+              </div>
+            </div>
+          `;
+        }
+        return;
       }
       currentLoadedBooking = bk;
 

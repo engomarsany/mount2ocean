@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v28_budget_slider_contrast_lock">
+  <link rel="stylesheet" href="styles.css?v=v29_clean_slate_production">
 
   <style>
     /* Premium World-Class Admin Dashboard Layout Overrides */
@@ -284,7 +284,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v28_budget_slider_contrast_lock"></script>
+  <script src="app.js?v=v29_clean_slate_production"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterBookingsDirectory();
@@ -308,7 +308,13 @@
         return [];
       }
       try {
-        return JSON.parse(saved) || [];
+        let list = JSON.parse(saved) || [];
+        const cleaned = list.filter(b => b && b.id !== 'M2O-BK-88491' && b.id !== 'M2O-BK-73920' && b.id !== 'M2O-BK-99120' && b.customerName !== 'Sharmin Chowdhury' && b.customerName !== 'Arif Ahmed');
+        if (cleaned.length !== list.length) {
+          list = cleaned;
+          localStorage.setItem('m2o_customer_bookings', JSON.stringify(list));
+        }
+        return list;
       } catch(e) {
         return [];
       }
