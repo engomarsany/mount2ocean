@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=v27_hotels_contrast_lock">
+  <link rel="stylesheet" href="styles.css?v=v28_budget_slider_contrast_lock">
 </head>
 <body class="light-theme">
 
@@ -103,19 +103,21 @@
     </div>
 
     <!-- BUDGET PRICE RANGE FILTER SLIDER & PRESET PILLS -->
-    <div style="max-width: 750px; margin: 1rem auto 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(8px); padding: 1rem 1.4rem; border-radius: 14px; border: 1.5px solid rgba(0,242,254,0.3); color: #ffffff;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
-        <span style="font-size: 0.88rem; font-weight: 800; color: #00f2fe;">Filter by Budget Range (বাজেট স্লাইডার):</span>
-        <strong id="priceRangeValueText" style="font-size: 0.95rem; font-weight: 900; color: #00f2fe; background: #060a12; padding: 0.2rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe;">Max: ৳3,00,000</strong>
+    <div style="max-width: 750px; margin: 1rem auto 0; background: #0f172a; border: 2px solid #00f2fe; padding: 1.2rem 1.6rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 242, 254, 0.25); color: #ffffff;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.6rem;">
+        <span style="font-size: 1rem; font-weight: 900; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8); display: flex; align-items: center; gap: 0.4rem;">
+          📊 Filter by Budget Range (বাজেট স্লাইডার):
+        </span>
+        <strong id="priceRangeValueText" style="font-size: 1.05rem; font-weight: 900; color: #00f2fe !important; background: #060911; padding: 0.35rem 1rem; border-radius: 999px; border: 1.5px solid #00f2fe; box-shadow: 0 0 15px rgba(0,242,254,0.4);">Max: ৳3,00,000</strong>
       </div>
 
-      <input type="range" id="catalogPriceSlider" min="10000" max="300000" step="5000" value="300000" oninput="updateCatalogPriceRange(this.value)" style="width: 100%; accent-color: #00f2fe; cursor: pointer; margin-bottom: 0.8rem;">
+      <input type="range" id="catalogPriceSlider" min="10000" max="300000" step="5000" value="300000" oninput="updateCatalogPriceRange(this.value)" style="width: 100%; accent-color: #00f2fe; cursor: pointer; margin-bottom: 1rem; height: 8px;">
 
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-        <button type="button" onclick="setPriceFilterPreset(300000)" class="preset-price-btn active" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: #00f2fe; color: #090d16; font-weight: 800; font-size: 0.78rem; cursor: pointer;">All Budgets</button>
-        <button type="button" onclick="setPriceFilterPreset(20000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳20,000</button>
-        <button type="button" onclick="setPriceFilterPreset(50000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳50,000</button>
-        <button type="button" onclick="setPriceFilterPreset(150000)" class="preset-price-btn" style="padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid #00f2fe; background: rgba(0,242,254,0.1); color: #00f2fe; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Under ৳1,50,000</button>
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center;">
+        <button type="button" onclick="setPriceFilterPreset(300000)" class="preset-price-btn active" style="padding: 0.45rem 1rem; border-radius: 999px; border: 1.5px solid #00f2fe; background: #00f2fe; color: #090d16; font-weight: 900; font-size: 0.82rem; cursor: pointer;">All Budgets</button>
+        <button type="button" onclick="setPriceFilterPreset(20000)" class="preset-price-btn" style="padding: 0.45rem 1rem; border-radius: 999px; border: 1.5px solid #00f2fe; background: rgba(0,242,254,0.15); color: #ffffff !important; font-weight: 800; font-size: 0.82rem; cursor: pointer;">Under ৳20,000</button>
+        <button type="button" onclick="setPriceFilterPreset(50000)" class="preset-price-btn" style="padding: 0.45rem 1rem; border-radius: 999px; border: 1.5px solid #00f2fe; background: rgba(0,242,254,0.15); color: #ffffff !important; font-weight: 800; font-size: 0.82rem; cursor: pointer;">Under ৳50,000</button>
+        <button type="button" onclick="setPriceFilterPreset(150000)" class="preset-price-btn" style="padding: 0.45rem 1rem; border-radius: 999px; border: 1.5px solid #00f2fe; background: rgba(0,242,254,0.15); color: #ffffff !important; font-weight: 800; font-size: 0.82rem; cursor: pointer;">Under ৳1,50,000</button>
       </div>
     </div>
   </div>
@@ -126,7 +128,7 @@
     <div class="flex-header margin-bottom-md" style="display: flex; justify-content: space-between; align-items: center;">
       <div>
         <h2 style="font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0;">Available Packages (<span id="catalogTotalCount">7</span> Tours Found)</h2>
-        <p style="font-size: 0.9rem; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.6); margin: 0.2rem 0 0;">Select any package to view 5 HD photos, complete itinerary, and book directly.</p>
+        <p style="font-size: 0.9rem; color: #1e293b !important; font-weight: 700; margin: 0.2rem 0 0;">Select any package to view 5 HD photos, complete itinerary, and book directly.</p>
       </div>
       <a href="customer_portal.html" class="secondary-btn" style="text-decoration: none; font-weight: 700;">← Back to Home</a>
     </div>
@@ -332,7 +334,7 @@
       { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" }
     ];
   </script>
-  <script src="app.js?v=v27_hotels_contrast_lock"></script>
+  <script src="app.js?v=v28_budget_slider_contrast_lock"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -398,7 +400,7 @@
             <h3 style="font-size: 1.45rem; font-weight: 900; color: #dc2626; margin: 0 0 0.5rem;">
               "${window.sanitizeHTML ? window.sanitizeHTML(rawSearchQuery) : rawSearchQuery}" প্যাকেজটি এখনো যুক্ত করা হয়নি!
             </h3>
-            <p style="font-size: 1rem; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.6); font-weight: 700; max-width: 680px; margin: 0 auto 1.4rem; line-height: 1.6;">
+            <p style="font-size: 1rem; color: #1e293b !important; font-weight: 700; font-weight: 700; max-width: 680px; margin: 0 auto 1.4rem; line-height: 1.6;">
               আপনার কাঙ্ক্ষিত ট্যুর প্যাকেজটি Mount2ocean ওনার ও অ্যাডমিন প্যানেলে রিমাইন্ডার আকারে সংযুক্ত করা হয়েছে। অ্যাডমিন টিম খুব শীঘ্রই এটি ড্যাশবোর্ডে যোগ করবে।
             </p>
             <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #ffffff; border: 1.5px solid #00a651; padding: 0.6rem 1.4rem; border-radius: 30px; color: #00a651; font-weight: 800; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(0,166,81,0.15);">
