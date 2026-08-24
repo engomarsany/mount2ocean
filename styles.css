@@ -82,12 +82,33 @@ body {
 /* Light Theme Text Enforcement - 100% Crisp Ultra Dark Slate (Excluding Dark Containers, Dark Pills & Dark Cards) */
 body.light-theme p:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
 body.light-theme label:not(.cust-footer *):not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *),
-body.light-theme td,
-body.light-theme th,
+body.light-theme td:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
+body.light-theme th:not(.dark-card *):not(.dark-section *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not([style*="background: #15803d"] *),
 body.light-theme li:not(.cust-footer *):not(.dark-card *):not(.dark-section *),
 body.light-theme small:not(.tour-price-pill *):not(.dark-card *):not(.dark-section *) {
   color: #0f172a;
   font-weight: 700;
+}
+
+/* Force pure white on all dark table header rows */
+tr[style*="background: #0"] th,
+tr[style*="background:#0"] th,
+tr[style*="background: #1"] th,
+tr[style*="background:#1"] th,
+thead[style*="background: #0"] th,
+thead[style*="background:#0"] th,
+thead[style*="background: #1"] th,
+thead[style*="background:#1"] th,
+tr[style*="background: linear-gradient"] th,
+thead[style*="background: linear-gradient"] th,
+th[style*="background: #0"],
+th[style*="background:#0"],
+th[style*="background: #1"],
+th[style*="background:#1"],
+th[style*="background: linear-gradient"] {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 body.light-theme span:not(.tour-price-pill):not(.pkg-master-price):not(.tour-badge):not(.pay-badge-pill):not(.badge-tag):not(.hero-tag):not(.cust-footer *):not(.dark-card *):not(.dark-section *):not(.hotel-hero-banner *):not(.policy-hero *):not(.contact-hero *):not(.hero-banner *):not([style*="background: linear-gradient(135deg, #0f172a"] *):not([style*="background: linear-gradient(135deg, #07111e"] *):not([style*="background: #0f172a"] *):not([style*="background: #07111e"] *):not(.ai-banner *):not(.showcase-panel *) {
