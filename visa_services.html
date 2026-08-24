@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visa Processing &amp; Application Tracking | Mount2ocean</title>
-  <meta name="description" content="Track your Visa application live and check country-wise Visa fees, requirements, and checklists.">
+  <title>Visa Processing, Tracking &amp; Country Price Lists | Mount2ocean Travel &amp; Tours</title>
+  <meta name="description" content="Explore official country visa checklists, embassy fees, agency charges, and track your active visa application status in real-time.">
   
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,39 +15,52 @@
 </head>
 <body class="light-theme">
 
-  <!-- TOP HEADER NAVIGATION -->
-  <header class="app-header customer-header">
-    <div class="logo-container" onclick="window.location.href='customer_portal.html'" style="cursor: pointer;">
-      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
-    </div>
+  <!-- TOP HEADER -->
+  <header class="app-header customer-header" style="padding: 0.6rem 2rem; background: #ffffff; border-bottom: 1.5px solid #e2e8f0;">
+    <a href="customer_portal.html" class="logo-wrap" style="text-decoration: none; display: flex; align-items: center; gap: 0.6rem;">
+      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" style="height: 44px;">
+    </a>
 
-    <!-- Center Navigation Links -->
-    <nav class="customer-nav">
-      <a href="customer_portal.html" class="customer-nav-item">Home</a>
-      <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
-      <a href="hotels_resorts.html" class="customer-nav-item">Hotels &amp; Resorts</a>
-      <a href="visa_services.html" class="customer-nav-item active">Visa Processing</a>
-      <a href="contact_us.html" class="customer-nav-item">Contact Us</a>
-      <a href="my_profile.html" class="customer-nav-item">My Bookings</a>
+    <nav class="customer-nav" style="display: flex; gap: 1rem; align-items: center;">
+      <a href="customer_portal.html" class="customer-nav-item">হোম</a>
+      <a href="tour_packages.html" class="customer-nav-item">সব প্যাকেজ</a>
+      <a href="hotels_resorts.html" class="customer-nav-item">হোটেল ও রিসোর্ট</a>
+      <a href="flights.html" class="customer-nav-item">ফ্লাইট টিকেট</a>
+      <a href="visa_services.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 800;">ভিসা সার্ভিস</a>
+      <a href="contact_us.html" class="customer-nav-item">যোগাযোগ</a>
+      <a href="my_profile.html" class="primary-btn" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; background: #0072bc; text-decoration: none;">
+        আমার বুকিং
+      </a>
     </nav>
 
-    <!-- Header Right Controls -->
     <div class="header-actions">
+      <!-- Currency Selector -->
       <div class="currency-selector">
-        <select id="custCurrency" onchange="if(window.setActiveCurrency) window.setActiveCurrency(this.value);">
+        <select id="custCurrency" style="padding: 0.45rem 0.8rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.85rem; color: #0f172a; background: #ffffff;">
           <option value="BDT" selected>BDT (৳)</option>
           <option value="USD">USD ($)</option>
-          <option value="AED">AED (د.إ)</option>
-          <option value="INR">INR (₹)</option>
+          <option value="EUR">EUR (€)</option>
         </select>
       </div>
-      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">Sign Out</a>
+
+      <!-- Customer Profile Indicator -->
+      <div class="customer-user-badge" onclick="window.location.href='my_profile.html'" style="cursor: pointer;" title="View My Bookings &amp; Profile">
+        <span class="cust-avatar">👤</span>
+        <div class="cust-meta">
+          <span class="cust-name" id="custUserName">Customer</span>
+          <span class="cust-status" id="custBookingStatusBadge">My Account</span>
+        </div>
+      </div>
+
+      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+        Sign Out (লগআউট)
+      </a>
     </div>
   </header>
 
-  <!-- MAIN VISA PORTAL WRAPPER -->
+  <!-- MAIN CONTAINER -->
   <main style="max-width: 1240px; margin: 2rem auto; padding: 0 1rem;">
-
+    
     <!-- TOP SECTION: SIDEBAR NOTICE & TRACK YOUR VISA CARD -->
     <div style="display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; margin-bottom: 3rem;">
       
@@ -60,7 +73,7 @@
             Track Your Visa Application
           </h3>
           <p style="color: #1e293b; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
-            Dear Valued Travelers Please Track Your Visa Application from our portal and get your visa update
+            Dear Valued Travelers Please Track Your Visa Application from our portal and get your visa update.
           </p>
         </div>
 
@@ -70,7 +83,7 @@
             Download Your Visa Checklist
           </h3>
           <p style="color: #1e293b; font-size: 0.92rem; font-weight: 700; line-height: 1.6; margin: 0;">
-            Download Your Visa Checklist from your Desire Country
+            Download Your Visa Checklist from your Desire Country.
           </p>
         </div>
 
@@ -84,40 +97,36 @@
       <!-- Right Main Column: Track Your Visa Form Box -->
       <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
         <h2 style="color: #ea580c; font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 1.8rem;">
-          Track Your Visa
+          Track Your Visa Application (ভিসা স্ট্যাটাস ট্র্যাক করুন)
         </h2>
 
         <form onsubmit="handleVisaTrackSubmit(event)" style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem;">
           
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #334155; text-align: right;">Passport Number *</label>
-            <input type="text" id="trackPassportNo" placeholder="Passport Number" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a;">
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Passport Number *</label>
+            <input type="text" id="trackPassportNo" placeholder="Passport Number (পাসপোর্ট নম্বর)" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #334155; text-align: right;">Reference Number *</label>
-            <input type="text" id="trackRefNo" placeholder="Reference Number (e.g. M2O-VISA-99120)" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a;">
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Reference Number *</label>
+            <input type="text" id="trackRefNo" placeholder="Reference Number (e.g. M2O-VISA-99120)" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #334155; text-align: right;">Country Of Visa *</label>
-            <select id="trackCountry" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a;">
-              <option value="Malaysia">Malaysia</option>
-              <option value="Dubai (UAE)">Dubai (UAE)</option>
-              <option value="Thailand">Thailand</option>
-              <option value="Singapore">Singapore</option>
-              <option value="Bhutan">Bhutan</option>
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Country Of Visa *</label>
+            <select id="trackCountry" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
+              <!-- Dynamically Populated -->
             </select>
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #334155; text-align: right;">Date Of Birth *</label>
-            <input type="date" id="trackDob" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a;">
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Date Of Birth *</label>
+            <input type="date" id="trackDob" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
           <div style="text-align: center; margin-top: 0.5rem;">
-            <button type="submit" class="primary-btn" style="background: #0072bc; padding: 0.75rem 2.2rem; font-weight: 800; font-size: 1rem; border-radius: 8px; border: none; color: white; cursor: pointer;">
-              Track Your Visa
+            <button type="submit" class="primary-btn" style="background: linear-gradient(135deg, #0072bc 0%, #00a651 100%); padding: 0.85rem 2.5rem; font-weight: 900; font-size: 1rem; border-radius: 8px; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,114,188,0.3);">
+              Track Your Visa Status ➔
             </button>
           </div>
         </form>
@@ -132,30 +141,31 @@
 
     <!-- BOTTOM SECTION: VISA CHECKLIST & COUNTRY PRICE LIST TABLE -->
     <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
-      <h2 style="color: #ea580c; font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 1.2rem;">
-        Visa Checklist &amp; Price List
+      <h2 style="color: #ea580c; font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 0.4rem;">
+        🌍 Visa Checklist &amp; Country Price List (সকল দেশের ভিসা প্রাইজ লিস্ট)
       </h2>
+      <p style="text-align: center; color: #1e293b; font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem;">
+        যেকোনো দেশ সিলেক্ট করে ভিসা রেট, এম্বাসি ফি, ভ্যালিডিটি ও রিকোয়ারমেন্টস চেক করুন।
+      </p>
 
-      <!-- Country Selector Dropdown -->
-      <div style="text-align: center; margin-bottom: 1.5rem;">
-        <select id="visaCountrySelect" onchange="renderVisaChecklistTable(this.value)" style="padding: 0.65rem 2rem; border-radius: 8px; border: 2px solid #cbd5e1; font-weight: 800; font-size: 1rem; color: #0f172a; background: #ffffff;">
-          <option value="Malaysia" selected>Malaysia</option>
-          <option value="Dubai (UAE)">Dubai (UAE)</option>
-          <option value="Thailand">Thailand</option>
-          <option value="All">All Countries</option>
+      <!-- Country Selector Dropdown & Filter -->
+      <div style="display: flex; justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <label style="font-weight: 800; font-size: 1rem; color: #0f172a;">Select Country (দেশ নির্বাচন করুন):</label>
+        <select id="visaCountrySelect" onchange="renderVisaChecklistTable(this.value)" style="padding: 0.75rem 2rem; border-radius: 10px; border: 2px solid #0072bc; font-weight: 800; font-size: 1rem; color: #0f172a; background: #ffffff; cursor: pointer; box-shadow: 0 4px 12px rgba(0,114,188,0.15);">
+          <!-- Dynamically Populated from Database/LocalStorage -->
         </select>
       </div>
 
       <!-- Country Name Heading -->
-      <h3 id="selectedCountryHeading" style="color: #ea580c; font-size: 1.35rem; font-weight: 900; text-align: center; margin-bottom: 1.5rem;">
+      <h3 id="selectedCountryHeading" style="color: #0072bc; font-size: 1.35rem; font-weight: 900; text-align: center; margin-bottom: 1.5rem;">
         Country Name: Malaysia
       </h3>
 
-      <!-- VISA CHECKLIST TABLE (100% MATCHING USER SCREENSHOT) -->
+      <!-- VISA CHECKLIST TABLE -->
       <div style="overflow-x: auto;">
         <table class="table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: center;">
           <thead>
-            <tr style="background: #15803d; color: #ffffff; font-weight: 800;">
+            <tr style="background: #15803d; color: #ffffff; font-weight: 900;">
               <th style="padding: 0.85rem; border: 1px solid #166534;">Type of Visa</th>
               <th style="padding: 0.85rem; border: 1px solid #166534;">Visa/Embassy Fee</th>
               <th style="padding: 0.85rem; border: 1px solid #166534;">Authorized Agency Fee</th>
@@ -183,12 +193,42 @@
   <footer class="cust-footer" style="background: #060911; color: #ffffff; padding: 3rem 2rem 1.5rem; border-top: 3px solid #00f2fe; margin-top: 4rem;">
     <div style="max-width: 1240px; margin: 0 auto; text-align: center;">
       <img src="assets/official_logo.png" alt="MOUNT2OCEAN" style="height: 50px; margin-bottom: 1rem;">
-      <p style="color: #1e293b; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Visa Services &amp; Application Tracking Center.</p>
+      <p style="color: #ffffff !important; font-weight: 700;">© 2026 MOUNT2OCEAN Travel &amp; Tours. Official Visa Services &amp; Application Tracking Center.</p>
     </div>
   </footer>
 
   <script src="app.js?v=v28_budget_slider_contrast_lock"></script>
   <script>
+    // ==========================================
+    // DYNAMIC COUNTRY VISA PRICE LIST ENGINE
+    // ==========================================
+    function populateVisaCountryDropdown() {
+      const select = document.getElementById('visaCountrySelect');
+      const trackCountrySelect = document.getElementById('trackCountry');
+      if (!select) return;
+
+      const list = window.getVisaPriceList ? window.getVisaPriceList() : [];
+      const uniqueCountries = Array.from(new Set(list.map(i => i.country).filter(Boolean)));
+
+      if (uniqueCountries.length === 0) {
+        select.innerHTML = `<option value="All">All Countries</option>`;
+        return;
+      }
+
+      // Populate checklist filter dropdown
+      let optionsHtml = uniqueCountries.map((c, idx) => `<option value="${c}" ${idx === 0 ? 'selected' : ''}>${c}</option>`).join('');
+      optionsHtml += `<option value="All">🌐 All Countries (সব দেশ দেখুন)</option>`;
+      select.innerHTML = optionsHtml;
+
+      // Populate tracking country dropdown
+      if (trackCountrySelect) {
+        trackCountrySelect.innerHTML = uniqueCountries.map(c => `<option value="${c}">${c}</option>`).join('');
+      }
+
+      // Render default first country
+      renderVisaChecklistTable(uniqueCountries[0]);
+    }
+
     function renderVisaChecklistTable(countryFilter) {
       const heading = document.getElementById('selectedCountryHeading');
       if (heading) heading.textContent = `Country Name: ${countryFilter === 'All' ? 'All Countries' : countryFilter}`;
@@ -197,30 +237,30 @@
       if (!tbody) return;
 
       const list = window.getVisaPriceList ? window.getVisaPriceList() : [];
-      const filtered = countryFilter === 'All' ? list : list.filter(item => (item.country || '').toLowerCase() === countryFilter.toLowerCase());
+      const filtered = countryFilter === 'All' ? list : list.filter(item => (item.country || '').toLowerCase() === (countryFilter || '').toLowerCase());
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="12" style="padding: 2rem; color: #1e293b; font-weight: 700;">No visa checklists found for ${countryFilter}.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="12" style="padding: 2rem; color: #1e293b; font-weight: 700;">No visa rate information found for ${countryFilter}.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = filtered.map(item => `
         <tr style="border-bottom: 1px solid #e2e8f0; font-weight: 700; color: #0f172a;">
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.visaType}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1; font-weight: 800;">${item.visaType}</td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">৳${(item.embassyFee || 0).toLocaleString()}</td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">৳${(item.agencyFee || 0).toLocaleString()}</td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">৳${(item.serviceCharge || 0).toLocaleString()}</td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.securityDeposit || 'NA'}</td>
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1; color: #0072bc; font-weight: 900;">৳${(item.totalVisaFee || 0).toLocaleString()}</td>
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.entries}</td>
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.maxStay}</td>
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.validity}</td>
-          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.processingTime}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1; color: #0072bc; font-weight: 900; font-size: 0.95rem;">৳${(item.totalVisaFee || 0).toLocaleString()}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.entries || 'Single'}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.maxStay || '30 Days'}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.validity || '60 Days'}</td>
+          <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">${item.processingTime || '3 to 5 Working Days'}</td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">
-            <a href="javascript:void(0)" onclick="alert('Checklist Requirements:\\n\\n${item.checklistDesc || 'Standard Visa documents required.'}')" style="color: #ea580c; font-weight: 800; text-decoration: underline;">View</a>
+            <a href="javascript:void(0)" onclick="alert('Checklist Requirements for ${item.country} (${item.visaType}):\\n\\n${item.checklistDesc || 'Passport original, 2 copies photo with white background, 6-month bank statement.'}')" style="color: #ea580c; font-weight: 800; text-decoration: underline;">View</a>
           </td>
           <td style="padding: 0.85rem; border: 1px solid #cbd5e1;">
-            <button type="button" onclick="alert('Visa Application form opened! Contact Hotline +880 1330-303082 for direct submission.')" style="background: #22c55e; color: white; border: none; padding: 0.4rem 0.9rem; border-radius: 6px; font-weight: 800; cursor: pointer;">Apply</button>
+            <button type="button" onclick="alert('Visa Application Request for ${item.country} initiated! Please contact Hotline +880 1330-303082 or WhatsApp support for fast submission.')" style="background: #22c55e; color: white; border: none; padding: 0.4rem 0.9rem; border-radius: 6px; font-weight: 800; cursor: pointer;">Apply</button>
           </td>
         </tr>
       `).join('');
@@ -275,7 +315,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      renderVisaChecklistTable('Malaysia');
+      populateVisaCountryDropdown();
     });
   </script>
 </body>

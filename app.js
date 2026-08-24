@@ -4678,6 +4678,54 @@ window.defaultVisaChecklistData = [
     processingTime: "5 to 7 Working Days",
     checklistDesc: "Original Passport, Bank statement (min 80,000 BDT per person), Solvency certificate, Trade license copy for businessmen or NOC for employees.",
     checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-singapore",
+    country: "Singapore",
+    visaType: "Tourist E-Visa",
+    embassyFee: 3500,
+    agencyFee: 1000,
+    serviceCharge: 500,
+    securityDeposit: "NA",
+    totalVisaFee: 5000,
+    entries: "Single",
+    maxStay: "30 Days",
+    validity: "60 Days",
+    processingTime: "3 to 5 Working Days",
+    checklistDesc: "Passport scanned bio-data page (min 6 months validity), 1 copy digital photo with white background (35x45mm), Official Visiting Card / Trade License / Student ID.",
+    checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-saudi",
+    country: "Saudi Arabia",
+    visaType: "Umrah / Tourist E-Visa",
+    embassyFee: 14500,
+    agencyFee: 1500,
+    serviceCharge: 1000,
+    securityDeposit: "NA",
+    totalVisaFee: 17000,
+    entries: "Multiple Entry",
+    maxStay: "90 Days",
+    validity: "1 Year",
+    processingTime: "24 to 48 Hours",
+    checklistDesc: "Original Passport copy (min 6 months validity), 1 copy color photo with white background, COVID/Health insurance coverage included.",
+    checklistFileUrl: "#"
+  },
+  {
+    id: "visa-price-bhutan",
+    country: "Bhutan",
+    visaType: "Tourist Entry Permit & SDF",
+    embassyFee: 5000,
+    agencyFee: 1500,
+    serviceCharge: 500,
+    securityDeposit: "NA",
+    totalVisaFee: 7000,
+    entries: "Single",
+    maxStay: "14 Days",
+    validity: "30 Days",
+    processingTime: "3 to 5 Working Days",
+    checklistDesc: "Color scan of original passport with at least 6 months validity, 1 digital photograph, Hotel confirmation voucher.",
+    checklistFileUrl: "#"
   }
 ];
 
