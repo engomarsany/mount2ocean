@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap');
 
 /* ==========================================================================
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
@@ -5681,4 +5681,217 @@ textarea::placeholder {
   .trip-rec-links-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==========================================================================
+   TRIP.COM 1:1 EXACT REPLICA ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Trip Hero Bullets */
+.trip-hero-bullets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.trip-hero-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.trip-hero-bullet-item span.bullet-check {
+  color: #2ed573;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+/* 2. Destination Pills with Mini Photo Thumbnails */
+.trip-dest-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.45rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  color: #0f172a;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.trip-dest-pill:hover {
+  border-color: #2b64ff;
+  color: #2b64ff;
+  box-shadow: 0 4px 12px rgba(43, 100, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.trip-dest-pill.active {
+  background: #2b64ff;
+  color: #ffffff;
+  border-color: #2b64ff;
+  box-shadow: 0 4px 15px rgba(43, 100, 255, 0.3);
+}
+
+.trip-dest-pill img.dest-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 3. Trip Full-Bleed Moments Card */
+.trip-moment-fullbleed {
+  height: 290px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  transition: all 0.25s ease;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.trip-moment-fullbleed:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+}
+
+.trip-moment-overlay-bottom {
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 75%);
+  padding: 1.2rem 1rem 0.9rem;
+  color: #ffffff;
+}
+
+.trip-moment-user-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.trip-moment-user-row img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+}
+
+.trip-moment-quote {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.trip-moment-loc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #00f2fe;
+}
+
+/* 4. 3-Column Campaign Grid matching Trip.com */
+.trip-campaign-3grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .trip-campaign-3grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trip-campaign-card-3 {
+  height: 160px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.2rem;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.trip-campaign-card-3:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(43, 100, 255, 0.2);
+}
+
+.trip-campaign-card-3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
+  z-index: 1;
+}
+
+.trip-campaign-card-3 * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 5. Cutout Voucher Tickets */
+.trip-coupon-card-cutout {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.trip-coupon-card-cutout::before,
+.trip-coupon-card-cutout::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: #f5f7fa;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 1.5px solid #e2e8f0;
+}
+
+.trip-coupon-card-cutout::before {
+  left: -8px;
+}
+
+.trip-coupon-card-cutout::after {
+  right: -8px;
 }
