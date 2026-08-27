@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v46_tripcom_sections_replica">
+  <link rel="stylesheet" href="styles.css?v=v47_crystal_text_contrast">
 </head>
 <body class="light-theme">
 
@@ -103,24 +103,24 @@
         <form onsubmit="handleVisaTrackSubmit(event)" style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem;">
           
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #ffffff; text-align: right;">Passport Number *</label>
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Passport Number *</label>
             <input type="text" id="trackPassportNo" placeholder="Passport Number (পাসপোর্ট নম্বর)" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #ffffff; text-align: right;">Reference Number *</label>
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Reference Number *</label>
             <input type="text" id="trackRefNo" placeholder="Reference Number (e.g. M2O-VISA-99120)" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #ffffff; text-align: right;">Country Of Visa *</label>
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Country Of Visa *</label>
             <select id="trackCountry" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
               <!-- Dynamically Populated -->
             </select>
           </div>
 
           <div style="display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center;">
-            <label style="font-weight: 800; font-size: 0.95rem; color: #ffffff; text-align: right;">Date Of Birth *</label>
+            <label style="font-weight: 800; font-size: 0.95rem; color: #0f172a; text-align: right;">Date Of Birth *</label>
             <input type="date" id="trackDob" required style="padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 0.95rem; color: #0f172a; background: #ffffff;">
           </div>
 
@@ -144,13 +144,13 @@
       <h2 style="color: #ea580c; font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 0.4rem;">
          Visa Checklist &amp; Country Price List (সকল দেশের ভিসা প্রাইজ লিস্ট)
       </h2>
-      <p style="text-align: center; color: #ffffff; font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem;">
+      <p style="text-align: center; color: #334155; font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem;">
         যেকোনো দেশ সিলেক্ট করে ভিসা রেট, এম্বাসি ফি, ভ্যালিডিটি ও রিকোয়ারমেন্টস চেক করুন।
       </p>
 
       <!-- Country Selector Dropdown & Filter -->
       <div style="display: flex; justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
-        <label style="font-weight: 800; font-size: 1rem; color: #ffffff;">Select Country (দেশ নির্বাচন করুন):</label>
+        <label style="font-weight: 800; font-size: 1rem; color: #0f172a;">Select Country (দেশ নির্বাচন করুন):</label>
         <select id="visaCountrySelect" onchange="renderVisaChecklistTable(this.value)" style="padding: 0.75rem 2rem; border-radius: 10px; border: 2px solid #0072bc; font-weight: 800; font-size: 1rem; color: #0f172a; background: #ffffff; cursor: pointer; box-shadow: 0 4px 12px rgba(0,114,188,0.15);">
           <!-- Dynamically Populated from Database/LocalStorage -->
         </select>
@@ -197,7 +197,7 @@
     </div>
   </footer>
 
-  <script src="app.js?v=v46_tripcom_sections_replica"></script>
+  <script src="app.js?v=v47_crystal_text_contrast"></script>
   <script>
     // ==========================================
     // DYNAMIC COUNTRY VISA PRICE LIST ENGINE

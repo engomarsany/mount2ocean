@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v46_tripcom_sections_replica">
+  <link rel="stylesheet" href="styles.css?v=v47_crystal_text_contrast">
 </head>
 <body class="light-theme">
 
@@ -61,7 +61,7 @@
       
       <!-- COMBO BUILDER STEPS FORM -->
       <div>
-        <h3 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1.5rem;">
            Customize Your Travel Combo (কম্বো তথ্য)
         </h3>
 
@@ -69,8 +69,8 @@
           
           <!-- Step 1: Destination -->
           <div>
-            <label style="font-weight: 800; font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem; display: block;">1. Select Destination (গন্তব্য) *</label>
-            <select id="cmbDest" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">1. Select Destination (গন্তব্য) *</label>
+            <select id="cmbDest" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
               <option value="Dubai" data-price="42000">️ Dubai (UAE)</option>
               <option value="Bali" data-price="35000"> Bali (Indonesia)</option>
               <option value="Maldives" data-price="75000">️ Maldives Islands</option>
@@ -81,8 +81,8 @@
 
           <!-- Step 2: Hotel Tier -->
           <div>
-            <label style="font-weight: 800; font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem; display: block;">2. Select Hotel Category (হোটেল মান) *</label>
-            <select id="cmbHotel" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">2. Select Hotel Category (হোটেল মান) *</label>
+            <select id="cmbHotel" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
               <option value="5-Star Luxury Resort" data-price="25000"> 5-Star Luxury Ocean Resort (+৳25,000)</option>
               <option value="4-Star Premium Hotel" data-price="15000" selected> 4-Star Premium City Hotel (+৳15,000)</option>
               <option value="3-Star Deluxe Hotel" data-price="8000"> 3-Star Deluxe Standard Hotel (+৳8,000)</option>
@@ -91,8 +91,8 @@
 
           <!-- Step 3: Flight Option -->
           <div>
-            <label style="font-weight: 800; font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem; display: block;">3. Select Airline Flight Option (এয়ারলাইন্স টিকেট) *</label>
-            <select id="cmbFlight" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">3. Select Airline Flight Option (এয়ারলাইন্স টিকেট) *</label>
+            <select id="cmbFlight" onchange="updateComboCalculations()" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
               <option value="Biman Bangladesh Airlines" data-price="42000"> Biman Bangladesh (Direct Flight) (+৳42,000)</option>
               <option value="Emirates Airlines" data-price="48500"> Emirates Airlines (Premium Non-Stop) (+৳48,500)</option>
               <option value="US-Bangla Airlines" data-price="39500"> US-Bangla Airlines (+৳39,500)</option>
@@ -101,17 +101,17 @@
 
           <!-- Step 4: Add-On Sightseeing Activities -->
           <div>
-            <label style="font-weight: 800; font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem; display: block;">4. Add-on Sightseeing Activities (অতিরিক্ত অ্যাক্টিভিটি)</label>
+            <label style="font-weight: 800; font-size: 0.88rem; color: #0f172a; margin-bottom: 0.4rem; display: block;">4. Add-on Sightseeing Activities (অতিরিক্ত অ্যাক্টিভিটি)</label>
             <div style="display: flex; flex-direction: column; gap: 0.6rem; background: #f8fafc; padding: 1rem; border-radius: 10px; border: 1px solid #e2e8f0;">
-              <label style="font-weight: 700; font-size: 0.88rem; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <label style="font-weight: 700; font-size: 0.88rem; color: #0f172a; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
                 <input type="checkbox" id="actSafari" onchange="updateComboCalculations()" value="4500" style="accent-color: #00a651;">
                 Desert Safari / Speedboat Cruise Tour (+৳4,500)
               </label>
-              <label style="font-weight: 700; font-size: 0.88rem; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <label style="font-weight: 700; font-size: 0.88rem; color: #0f172a; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
                 <input type="checkbox" id="actScuba" onchange="updateComboCalculations()" value="6000" style="accent-color: #00a651;">
                 Scuba Diving &amp; Water Sports Package (+৳6,000)
               </label>
-              <label style="font-weight: 700; font-size: 0.88rem; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <label style="font-weight: 700; font-size: 0.88rem; color: #0f172a; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
                 <input type="checkbox" id="actDinner" onchange="updateComboCalculations()" value="3500" style="accent-color: #00a651;">
                 Luxury Dhow / Yacht Dinner Cruise (+৳3,500)
               </label>
@@ -127,17 +127,17 @@
           <span style="background: #0072bc; color: white; font-size: 0.78rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.5rem;">
             LIVE COMBO SUMMARY
           </span>
-          <h4 id="cmbSummaryTitle" style="font-size: 1.2rem; font-weight: 900; color: #ffffff; margin: 0 0 1rem;">
+          <h4 id="cmbSummaryTitle" style="font-size: 1.2rem; font-weight: 900; color: #0f172a; margin: 0 0 1rem;">
             Custom Dubai Combo
           </h4>
 
-          <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: #ffffff; font-weight: 700; border-bottom: 1.5px dashed #cbd5e1; padding-bottom: 1rem; margin-bottom: 1rem;">
-            <div>• Hotel: <span id="cmbSummaryHotel" style="color: #ffffff;">4-Star Premium</span></div>
-            <div>• Flight: <span id="cmbSummaryFlight" style="color: #ffffff;">Biman Bangladesh</span></div>
-            <div>• Activities: <span id="cmbSummaryActivities" style="color: #ffffff;">Standard</span></div>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: #334155; font-weight: 700; border-bottom: 1.5px dashed #cbd5e1; padding-bottom: 1rem; margin-bottom: 1rem;">
+            <div>• Hotel: <span id="cmbSummaryHotel" style="color: #0f172a; font-weight: 800;">4-Star Premium</span></div>
+            <div>• Flight: <span id="cmbSummaryFlight" style="color: #0f172a; font-weight: 800;">Biman Bangladesh</span></div>
+            <div>• Activities: <span id="cmbSummaryActivities" style="color: #0f172a; font-weight: 800;">Standard</span></div>
           </div>
 
-          <span style="font-size: 0.82rem; color: #ffffff; font-weight: 800; display: block;">Total Calculated Fare:</span>
+          <span style="font-size: 0.82rem; color: #64748b; font-weight: 800; display: block;">Total Calculated Fare:</span>
           <div id="cmbTotalPrice" style="font-size: 2rem; font-weight: 900; color: #00a651; margin-bottom: 1.2rem;">
             ৳96,500
           </div>
@@ -155,7 +155,7 @@
   </main>
 
   <script src="pdf_voucher_engine.js"></script>
-  <script src="app.js?v=v46_tripcom_sections_replica"></script>
+  <script src="app.js?v=v47_crystal_text_contrast"></script>
   <script>
     function updateComboCalculations() {
       const destSel = document.getElementById('cmbDest');

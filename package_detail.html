@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Package Details - MOUNT2OCEAN TRAVEL & TOURS</title>
   <meta name="description" content="View detailed tour itinerary, resort accommodation, pricing, inclusions, and book directly with Mount2ocean.">
-  <link rel="stylesheet" href="styles.css?v=v46_tripcom_sections_replica">
+  <link rel="stylesheet" href="styles.css?v=v47_crystal_text_contrast">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
@@ -350,18 +350,18 @@
   <div class="modal-overlay hidden" id="submitReviewModal" style="position: fixed; inset: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
     <div class="modal-card dashboard-card" style="max-width: 520px; padding: 2rem; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 2px solid #00a651;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
-        <h3 style="font-size: 1.3rem; margin: 0; font-weight: 900; color: #ffffff;">️ Write a Traveler Review</h3>
+        <h3 style="font-size: 1.3rem; margin: 0; font-weight: 900; color: #0f172a;">️ Write a Traveler Review</h3>
         <button type="button" onclick="closeSubmitReviewModal()" style="background: transparent; border: none; font-size: 1.4rem; cursor: pointer;"></button>
       </div>
 
       <form onsubmit="submitCustomerReviewHandler(event)">
         <div style="margin-bottom: 1rem;">
-          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #ffffff;">Your Name (আপনার নাম) *</label>
+          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #0f172a;">Your Name (আপনার নাম) *</label>
           <input type="text" id="revName" placeholder="e.g. Tanvir Hossain" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700;">
         </div>
 
         <div style="margin-bottom: 1rem;">
-          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #ffffff;">Select Rating (স্টার রেটিং) *</label>
+          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #0f172a;">Select Rating (স্টার রেটিং) *</label>
           <select id="revStars" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a;">
             <option value="5.0"> 5.0 - Exceptional / Amazing Tour</option>
             <option value="4.5"> 4.5 - Excellent Service</option>
@@ -370,7 +370,7 @@
         </div>
 
         <div style="margin-bottom: 1.2rem;">
-          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #ffffff;">Review Details (আপনার মতামত) *</label>
+          <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.35rem; color: #0f172a;">Review Details (আপনার মতামত) *</label>
           <textarea id="revComment" rows="4" placeholder="Write your review comments..." required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 700; resize: vertical;"></textarea>
         </div>
 
@@ -412,16 +412,16 @@
 
           <!-- Tour Type Selection & Dynamic Passport / NID Fields -->
           <div style="background: rgba(0, 114, 188, 0.08); border: 1.5px solid rgba(0, 114, 188, 0.25); border-radius: 12px; padding: 1rem; margin-bottom: 1rem;">
-            <div style="font-size: 0.88rem; font-weight: 800; color: #00f2fe; margin-bottom: 0.6rem;">
+            <div style="font-size: 0.88rem; font-weight: 800; color: #0072bc; margin-bottom: 0.6rem;">
               Identity &amp; Travel Document Verification (পরিচয়পত্র ও তথ্য)
             </div>
             
             <div style="display: flex; gap: 1.5rem; margin-bottom: 0.8rem;">
-              <label style="font-size: 0.85rem; font-weight: 700; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <label style="font-size: 0.85rem; font-weight: 700; color: #0f172a; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
                 <input type="radio" name="tourTypeRadio" value="international" checked onclick="togglePassportFields(true)">
                 International Tour (পাসপোর্ট প্রয়োজন)
               </label>
-              <label style="font-size: 0.85rem; font-weight: 700; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <label style="font-size: 0.85rem; font-weight: 700; color: #0f172a; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
                 <input type="radio" name="tourTypeRadio" value="domestic" onclick="togglePassportFields(false)">
                 ️ Domestic Tour (NID Card)
               </label>
@@ -430,11 +430,11 @@
             <!-- International Tour Passport Fields -->
             <div id="passportFieldsBox" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <div class="form-group">
-                <label style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">Passport No. (পাসপোর্ট নম্বর) <span class="required">*</span></label>
+                <label style="font-size: 0.8rem; font-weight: 700; color: #0f172a;">Passport No. (পাসপোর্ট নম্বর) <span class="required">*</span></label>
                 <input type="text" id="custBookPassportNo" placeholder="e.g. A09827364" value="A09827364" style="padding: 0.65rem 0.9rem; border-radius: 8px;">
               </div>
               <div class="form-group">
-                <label style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">Passport Expiry Date (মেয়াদ)</label>
+                <label style="font-size: 0.8rem; font-weight: 700; color: #0f172a;">Passport Expiry Date (মেয়াদ)</label>
                 <input type="date" id="custBookPassportExpiry" value="2030-12-31" style="padding: 0.65rem 0.9rem; border-radius: 8px;">
               </div>
             </div>
@@ -442,7 +442,7 @@
             <!-- Domestic Tour NID Field -->
             <div id="nidFieldBox" style="display: none; margin-top: 0.5rem;">
               <div class="form-group">
-                <label style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">National ID (NID) Card No. (জাতীয় পরিচয়পত্র)</label>
+                <label style="font-size: 0.8rem; font-weight: 700; color: #0f172a;">National ID (NID) Card No. (জাতীয় পরিচয়পত্র)</label>
                 <input type="text" id="custBookNid" placeholder="e.g. 1982736450" value="1982736450" style="padding: 0.65rem 0.9rem; border-radius: 8px;">
               </div>
             </div>
@@ -605,7 +605,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v46_tripcom_sections_replica"></script>
+  <script src="app.js?v=v47_crystal_text_contrast"></script>
   <script>
     // Load and render selected package details dynamically per package ID
     document.addEventListener('DOMContentLoaded', () => {

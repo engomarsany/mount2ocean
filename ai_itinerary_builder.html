@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v46_tripcom_sections_replica">
+  <link rel="stylesheet" href="styles.css?v=v47_crystal_text_contrast">
 </head>
 <body class="light-theme">
 
@@ -59,14 +59,14 @@
     
     <!-- AI INPUT FORM CARD -->
     <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #0072bc; box-shadow: 0 15px 40px rgba(0,114,188,0.12); margin-bottom: 2.5rem;">
-      <h3 style="font-size: 1.3rem; font-weight: 900; color: #ffffff; margin-bottom: 1.2rem;">
+      <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 1.2rem;">
          Configure Your AI Custom Travel Plan (ট্রিপ পছন্দসমূহ)
       </h3>
 
       <form onsubmit="generateAiItineraryHandler(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
-          <select id="aiDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+          <label style="font-size: 0.85rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
+          <select id="aiDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
             <option value="Bhutan">Bhutan (Paro &amp; Thimphu)</option>
             <option value="Bali">Bali (Kintamani &amp; Ubud)</option>
             <option value="Dubai">Dubai (Safari &amp; Burj Khalifa)</option>
@@ -77,8 +77,8 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Duration (দিন সংখ্যা) *</label>
-          <select id="aiDuration" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+          <label style="font-size: 0.85rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.35rem;">Duration (দিন সংখ্যা) *</label>
+          <select id="aiDuration" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
             <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
             <option value="4 Days / 3 Nights" selected>4 Days / 3 Nights</option>
             <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
@@ -87,8 +87,8 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
-          <select id="aiStyle" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+          <label style="font-size: 0.85rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
+          <select id="aiStyle" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
             <option value="Honeymoon & Luxury"> Romantic Honeymoon &amp; Luxury</option>
             <option value="Family Holiday" selected> Family Vacation</option>
             <option value="Adventure & Nature"> Adventure &amp; Sightseeing</option>
@@ -97,8 +97,8 @@
         </div>
 
         <div>
-          <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Approx Budget (আনুমানিক বাজেট) *</label>
-          <input type="text" id="aiBudget" value="৳45,000 per person" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
+          <label style="font-size: 0.85rem; font-weight: 800; color: #0f172a; display: block; margin-bottom: 0.35rem;">Approx Budget (আনুমানিক বাজেট) *</label>
+          <input type="text" id="aiBudget" value="৳45,000 per person" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #0f172a; background: #ffffff;">
         </div>
 
         <button type="submit" style="background: linear-gradient(135deg, #2b64ff 0%, #1c52d8 100%); color: white; border: none; padding: 0.85rem 1.6rem; border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.35);">
@@ -114,7 +114,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
           <div>
             <span class="badge-tag" style="background: #00a651; color: white;">AI ITINERARY GENERATED</span>
-            <h2 id="aiResultTitle" style="font-size: 1.6rem; font-weight: 900; color: #ffffff; margin: 0.3rem 0 0;">
+            <h2 id="aiResultTitle" style="font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0.3rem 0 0;">
               Bhutan 4D/3N Customized Tour Plan
             </h2>
           </div>
@@ -138,7 +138,7 @@
   </main>
 
   <script src="pdf_voucher_engine.js"></script>
-  <script src="app.js?v=v46_tripcom_sections_replica"></script>
+  <script src="app.js?v=v47_crystal_text_contrast"></script>
   <script>
     let currentGeneratedPlan = null;
 
