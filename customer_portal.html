@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=v45_tripcom_perfect_replica">
+  <link rel="stylesheet" href="styles.css?v=v46_tripcom_sections_replica">
 
   <style>
     /* Centralized 1-Single Pass Airplane Fog Splash System */
@@ -423,7 +423,7 @@
     <div class="trip-campaign-grid">
       
       <!-- Campaign 1: Cox's Bazar -->
-      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/coxs_bazar_sea_pearl.jpg');">
+      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/coxsbazar_resort.jpg');">
         <span class="campaign-tag-ribbon">UP TO 20% OFF</span>
         <div class="trip-campaign-content">
           <h3 class="campaign-title" style="color: #ffffff !important; font-size: 1.5rem; font-weight: 900; margin: 0 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.95);">GO COX'S BAZAR</h3>
@@ -441,7 +441,7 @@
       </a>
 
       <!-- Campaign 3: Dubai -->
-      <a href="tour_packages.html" class="trip-campaign-card" style="background-image: url('assets/dubai_burj_khalifa_desert_safari.jpg');">
+      <a href="tour_packages.html" class="trip-campaign-card" style="background-image: url('assets/dubai_safari.jpg');">
         <span class="campaign-tag-ribbon" style="background: #0072bc;">CITY &amp; DESERT</span>
         <div class="trip-campaign-content">
           <h3 class="campaign-title" style="color: #ffffff !important; font-size: 1.5rem; font-weight: 900; margin: 0 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.95);">GO DUBAI</h3>
@@ -450,7 +450,7 @@
       </a>
 
       <!-- Campaign 4: Maldives -->
-      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/maldives_overwater_villas.jpg');">
+      <a href="hotels_resorts.html" class="trip-campaign-card" style="background-image: url('assets/maldives_villa.jpg');">
         <span class="campaign-tag-ribbon" style="background: #8b5cf6;">OVERWATER LUXURY</span>
         <div class="trip-campaign-content">
           <h3 class="campaign-title" style="color: #ffffff !important; font-size: 1.5rem; font-weight: 900; margin: 0 0 0.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.95);">GO MALDIVES</h3>
@@ -541,216 +541,373 @@
       </div>
     </div>
   </section>
-
-  <!-- MAIN CONTENT CONTAINER -->
-  <main class="customer-main-content">
-
-    <!-- SECTION 1: TOP DESTINATION PILLS -->
-    <section class="cust-section" id="topDestinations">
-      <div class="section-header center-title">
-        <span class="badge-tag">TOP DESTINATIONS</span>
-        <h2 class="cust-section-title">Explore Trending Destinations with Mount2ocean</h2>
-        <p class="cust-section-subtitle">Handcrafted tour itineraries for ocean lovers, mountain adventurers, and cultural travelers.</p>
+    <section class="cust-section" id="topDestinations" style="margin-bottom: 2.5rem;">
+      <div class="trip-section-row-header">
+        <h2 class="trip-section-main-title">Get inspired for your next trip</h2>
+        <a href="tour_packages.html" class="trip-view-more-link">View All Destinations &gt;</a>
       </div>
 
-      <!-- City Pills Grid -->
-      <div class="destination-pills-container">
-        <button class="dest-pill active" data-filter="all">All Destinations</button>
-        <button class="dest-pill" data-filter="bhutan">Bhutan</button>
+      <!-- Destination Pills Grid -->
+      <div class="destination-pills-container" style="display: flex; gap: 0.75rem; overflow-x: auto; padding-bottom: 0.5rem;">
+        <button class="dest-pill active" data-filter="all">Anywhere</button>
+        <button class="dest-pill" data-filter="nepal">Kathmandu</button>
+        <button class="dest-pill" data-filter="dubai">Shenzhen &amp; Dubai</button>
+        <button class="dest-pill" data-filter="bali">Rome &amp; Bali</button>
+        <button class="dest-pill" data-filter="bhutan">Kunming &amp; Bhutan</button>
         <button class="dest-pill" data-filter="coxsbazar">Cox's Bazar</button>
-        <button class="dest-pill" data-filter="dubai">Dubai</button>
+        <button class="dest-pill" data-filter="sylhet">Sylhet Tea Valley</button>
         <button class="dest-pill" data-filter="maldives">Maldives</button>
-        <button class="dest-pill" data-filter="bali">Bali</button>
-        <button class="dest-pill" data-filter="sylhet">Sylhet</button>
-        <button class="dest-pill" data-filter="nepal">Nepal</button>
       </div>
     </section>
 
-    <!-- SECTION 2: WHY CHOOSE MOUNT2OCEAN -->
-    <section class="why-choose-section">
-      <div class="why-choose-card">
-        <div class="why-icon-box green" style="font-weight: 900; font-size: 1.2rem;">%</div>
-        <h4>Best Price Guarantee</h4>
-        <p>Direct partner rates with no hidden fees or extra charges.</p>
+    <!-- SECTION 2: PLACES YOU MAY LIKE (TRIP.COM 4-COLUMN CARD GRID) -->
+    <section class="cust-section" id="placesYouMayLike" style="margin-bottom: 3rem;">
+      <div class="trip-section-row-header">
+        <div>
+          <h2 class="trip-section-main-title">Places you may like</h2>
+          <p style="font-size: 0.88rem; color: #64748b; font-weight: 600; margin: 0.2rem 0 0;">Recommended worldwide tours and attractions based on traveler ratings.</p>
+        </div>
+        <a href="tour_packages.html" class="trip-view-more-link">View &gt;</a>
       </div>
-      <div class="why-choose-card">
-        <div class="why-icon-box blue" style="font-weight: 800; font-size: 0.9rem;">24/7</div>
-        <h4>24/7 Travel Assistance</h4>
-        <p>Round-the-clock support before, during, and after your trip.</p>
-      </div>
-      <div class="why-choose-card">
-        <div class="why-icon-box green" style="font-weight: 900; font-size: 1.2rem;"></div>
-        <h4>Verified Local Guides</h4>
-        <p>Certified local tour guides for authentic travel experiences.</p>
-      </div>
-      <div class="why-choose-card">
-        <div class="why-icon-box red" style="font-weight: 900; font-size: 1.2rem;"></div>
-        <h4>Instant Confirmation</h4>
-        <p>Instant e-ticket vouchers &amp; instant booking confirmation.</p>
-      </div>
-    </section>
 
-    <!-- PROMINENT AI SMART ASSISTANT & LIVE SUPPORT BANNER -->
-    <section class="cust-section" style="background: linear-gradient(135deg, #060911 0%, #0a192f 100%) !important; border-radius: 24px !important; padding: 2rem 2.5rem !important; border: 2.5px solid #00f2fe !important; box-shadow: 0 15px 45px rgba(0,242,254,0.3) !important; color: #ffffff !important; margin-bottom: 3rem !important;">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1.2rem;">
-          <div style="width: 64px; height: 64px; border-radius: 20px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 8px 25px rgba(0,242,254,0.4); flex-shrink: 0; animation: botPulse 3s infinite ease-in-out;">
-            
+      <div class="trip-4col-grid">
+        <!-- Card 1: Cox's Bazar -->
+        <div class="cust-tour-card" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-coxs-bazar-3d2n'); window.location.href='package_detail.html';" style="cursor: pointer;">
+          <button class="wishlist-heart-btn" title="Save to Wishlist" onclick="event.stopPropagation(); showToast('Saved Cox\'s Bazar to Wishlist!', 'success');">&#9829;</button>
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/coxsbazar_resort.jpg" alt="Cox's Bazar 5-Star Ocean View" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; bottom: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; backdrop-filter: blur(4px);">Cox's Bazar, Bangladesh</span>
           </div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
-              <span class="badge-tag" style="background: #00a651 !important; color: #ffffff !important; font-weight: 800 !important; padding: 0.3rem 0.75rem !important; font-size: 0.76rem !important;">AI SUPPORT ONLINE</span>
-              <span style="font-size: 0.85rem !important; color: #00f2fe !important; font-weight: 900 !important; text-shadow: 0 0 10px rgba(0,242,254,0.8) !important;">24/7 Smart Assistance</span>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem; line-height: 1.4;">Cox's Bazar 5-Star Ocean View Luxury Resort</h4>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span class="trip-card-rating-badge">4.9 &#9733; (2.4k)</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳18,500</strong>
+              </div>
             </div>
-            <h3 style="font-size: 1.45rem !important; font-weight: 900 !important; color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important; margin: 0 0 0.3rem !important;">Mount2ocean AI Smart Travel Assistant</h3>
-            <p style="margin: 0 !important; color: #ffffff !important; font-size: 0.98rem !important; font-weight: 700 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;">Ask anything about tour packages, pricing, bKash payment, or speak directly with our Live Owner Support Team!</p>
           </div>
         </div>
 
-        <a href="ai_assistant.html" class="primary-btn" style="text-decoration: none !important; display: inline-block !important; padding: 0.9rem 1.8rem !important; font-size: 1rem !important; font-weight: 900 !important; background: linear-gradient(135deg, #2b64ff 0%, #1c52d8 100%) !important; border-radius: 12px !important; cursor: pointer !important; white-space: nowrap !important; box-shadow: 0 8px 25px rgba(0,166,81,0.4) !important; color: #ffffff !important;">
-          Chat with AI Assistant Now 
+        <!-- Card 2: Bali -->
+        <div class="cust-tour-card" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">
+          <button class="wishlist-heart-btn" title="Save to Wishlist" onclick="event.stopPropagation(); showToast('Saved Bali to Wishlist!', 'success');">&#9829;</button>
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/bali_kintamani_volcano.jpg" alt="Bali Kintamani Volcano &amp; Ubud" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; bottom: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; backdrop-filter: blur(4px);">Bali, Indonesia</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem; line-height: 1.4;">Bali Kintamani Volcano, Ubud &amp; Water Sports</h4>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span class="trip-card-rating-badge">4.8 &#9733; (1.9k)</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳17,500</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Dubai -->
+        <div class="cust-tour-card" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-dubai-5d4n'); window.location.href='package_detail.html';" style="cursor: pointer;">
+          <button class="wishlist-heart-btn" title="Save to Wishlist" onclick="event.stopPropagation(); showToast('Saved Dubai to Wishlist!', 'success');">&#9829;</button>
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/dubai_safari.jpg" alt="Dubai Burj Khalifa &amp; Desert Safari" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; bottom: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; backdrop-filter: blur(4px);">Dubai, UAE</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem; line-height: 1.4;">Dubai Burj Khalifa &amp; 4x4 Desert Safari</h4>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span class="trip-card-rating-badge">4.9 &#9733; (3.2k)</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳48,000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Maldives -->
+        <div class="cust-tour-card" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-maldives-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">
+          <button class="wishlist-heart-btn" title="Save to Wishlist" onclick="event.stopPropagation(); showToast('Saved Maldives to Wishlist!', 'success');">&#9829;</button>
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/maldives_villa.jpg" alt="Maldives Overwater Luxury Lagoon" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; bottom: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; backdrop-filter: blur(4px);">Malé, Maldives</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem; line-height: 1.4;">Maldives Overwater Lagoon Villa Stay</h4>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span class="trip-card-rating-badge">5.0 &#9733; (980)</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳85,000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MAGICAL TRIP MOMENTS THAT LAST (TRIP.COM 4-COLUMN MOMENTS GRID) -->
+    <section class="cust-section" id="magicalMoments" style="margin-bottom: 3rem;">
+      <div class="trip-section-row-header">
+        <div>
+          <h2 class="trip-section-main-title">Magical trip moments that last</h2>
+          <p style="font-size: 0.88rem; color: #64748b; font-weight: 600; margin: 0.2rem 0 0;">Real traveler memories captured with Mount2ocean worldwide.</p>
+        </div>
+        <a href="tour_packages.html" class="trip-view-more-link">View &gt;</a>
+      </div>
+
+      <div class="trip-4col-grid">
+        <!-- Moment 1 -->
+        <div class="trip-moment-card">
+          <div class="trip-moment-img-wrap">
+            <img src="assets/coxsbazar_resort.jpg" alt="Cox's Bazar Sunset Moment">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0,0,0,0.75); color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px;">Cox's Bazar Beach</span>
+          </div>
+          <div class="trip-moment-body">
+            <p style="font-size: 0.86rem; color: #334155; font-weight: 600; line-height: 1.5; margin: 0 0 0.8rem;">"Best sea beach tour experience in Cox's Bazar! Instant ticket booking and hotel check-in were completely hassle-free."</p>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: auto;">
+              <img src="assets/reviewer_tanvir.jpg" alt="Tanvir &amp; Family" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <strong style="font-size: 0.82rem; color: #0f172a; display: block;">Tanvir Hossain</strong>
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Beachfront Cruise</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moment 2 -->
+        <div class="trip-moment-card">
+          <div class="trip-moment-img-wrap">
+            <img src="assets/bali_kintamani_volcano.jpg" alt="Bali Rice Terrace Moment">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0,0,0,0.75); color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px;">Bali Ubud</span>
+          </div>
+          <div class="trip-moment-body">
+            <p style="font-size: 0.86rem; color: #334155; font-weight: 600; line-height: 1.5; margin: 0 0 0.8rem;">"Private pool villa in Ubud and Kintamani volcano tour were beyond breathtaking! 10/10 recommended."</p>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: auto;">
+              <img src="assets/reviewer_nusrath.jpg" alt="Nusrath Jahan" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <strong style="font-size: 0.82rem; color: #0f172a; display: block;">Nusrath Jahan</strong>
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Bali Special</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moment 3 -->
+        <div class="trip-moment-card">
+          <div class="trip-moment-img-wrap">
+            <img src="assets/dubai_safari.jpg" alt="Dubai Safari Moment">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0,0,0,0.75); color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px;">Dubai Desert</span>
+          </div>
+          <div class="trip-moment-body">
+            <p style="font-size: 0.86rem; color: #334155; font-weight: 600; line-height: 1.5; margin: 0 0 0.8rem;">"Desert safari dune bashing and Burj Khalifa observation deck were unforgettable! Seamless visa process."</p>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: auto;">
+              <img src="assets/reviewer_sharmin_arif.jpg" alt="Sharmin &amp; Arif" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <strong style="font-size: 0.82rem; color: #0f172a; display: block;">Sharmin &amp; Arif</strong>
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Dubai Safari Pass</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moment 4 -->
+        <div class="trip-moment-card">
+          <div class="trip-moment-img-wrap">
+            <img src="assets/maldives_villa.jpg" alt="Maldives Lagoon Moment">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0,0,0,0.75); color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px;">Maldives Lagoon</span>
+          </div>
+          <div class="trip-moment-body">
+            <p style="font-size: 0.86rem; color: #334155; font-weight: 600; line-height: 1.5; margin: 0 0 0.8rem;">"Crystal turquoise water and overwater villa luxury. Thank you Mount2ocean for making our honeymoon dream come true!"</p>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: auto;">
+              <img src="assets/reviewer_tanvir.jpg" alt="Dr. Kamrul Hasan" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <strong style="font-size: 0.82rem; color: #0f172a; display: block;">Dr. Kamrul Hasan</strong>
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Maldives Honeymoon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: STAY COSY AT OUR HANDPICKED HOTELS (TRIP.COM 4-COLUMN HOTELS GRID) -->
+    <section class="cust-section" id="handpickedHotels" style="margin-bottom: 3rem;">
+      <div class="trip-section-row-header">
+        <div>
+          <h2 class="trip-section-main-title">Stay cosy at our handpicked hotels</h2>
+          <p style="font-size: 0.88rem; color: #64748b; font-weight: 600; margin: 0.2rem 0 0;">Top verified 5-Star luxury hotels and beachfront resorts.</p>
+        </div>
+        <a href="hotels_resorts.html" class="trip-view-more-link">View &gt;</a>
+      </div>
+
+      <div class="trip-4col-grid">
+        <!-- Hotel 1 -->
+        <div class="hotel-card" onclick="window.location.href='hotels_resorts.html';" style="cursor: pointer;">
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/coxsbazar_resort.jpg" alt="Sea Pearl Beach Resort &amp; Spa" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #eab308; font-size: 0.75rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px;">&#9733;&#9733;&#9733;&#9733;&#9733; 5-Star</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <div>
+              <span style="font-size: 0.76rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Inani Beach, Cox's Bazar</span>
+              <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.4rem; line-height: 1.4;">Sea Pearl Beach Resort &amp; Spa</h4>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span style="background: #eef4ff; color: #2b64ff; font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.5rem; border-radius: 4px;">4.9 / 5 Outstanding</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From / night</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳18,500</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="hotel-card" onclick="window.location.href='hotels_resorts.html';" style="cursor: pointer;">
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/dubai_hotel.jpg" alt="The Westin Dhaka" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #eab308; font-size: 0.75rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px;">&#9733;&#9733;&#9733;&#9733;&#9733; 5-Star</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <div>
+              <span style="font-size: 0.76rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Gulshan 2, Dhaka</span>
+              <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.4rem; line-height: 1.4;">The Westin Dhaka</h4>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span style="background: #eef4ff; color: #2b64ff; font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.5rem; border-radius: 4px;">4.8 / 5 Excellent</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From / night</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳16,000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel-card" onclick="window.location.href='hotels_resorts.html';" style="cursor: pointer;">
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/darjeeling.jpg" alt="Grand Sultan Tea Resort &amp; Golf" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #eab308; font-size: 0.75rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px;">&#9733;&#9733;&#9733;&#9733;&#9733; 5-Star</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <div>
+              <span style="font-size: 0.76rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Sreemangal, Sylhet</span>
+              <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.4rem; line-height: 1.4;">Grand Sultan Tea Resort &amp; Golf</h4>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span style="background: #eef4ff; color: #2b64ff; font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.5rem; border-radius: 4px;">4.8 / 5 Wonderful</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From / night</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳14,500</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel-card" onclick="window.location.href='hotels_resorts.html';" style="cursor: pointer;">
+          <div style="height: 180px; position: relative; overflow: hidden;">
+            <img src="assets/coxsbazar.jpg" alt="Radisson Blu Water Garden" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(15,23,42,0.85); color: #eab308; font-size: 0.75rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 6px;">&#9733;&#9733;&#9733;&#9733;&#9733; 5-Star</span>
+          </div>
+          <div style="padding: 1rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <div>
+              <span style="font-size: 0.76rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Airport Road, Dhaka</span>
+              <h4 style="font-size: 0.98rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0 0.4rem; line-height: 1.4;">Radisson Blu Water Garden</h4>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem;">
+              <span style="background: #eef4ff; color: #2b64ff; font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.5rem; border-radius: 4px;">4.7 / 5 Very Good</span>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; display: block;">From / night</span>
+                <strong style="color: #2b64ff; font-size: 1.1rem; font-weight: 900;">৳15,000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: MULTIPLE WAYS TO ROAM AROUND (TRIP.COM 4-COLUMN TRANSPORT GRID) -->
+    <section class="cust-section" id="waysToRoam" style="margin-bottom: 3rem;">
+      <div class="trip-section-row-header">
+        <div>
+          <h2 class="trip-section-main-title">Multiple ways to roam around</h2>
+          <p style="font-size: 0.88rem; color: #64748b; font-weight: 600; margin: 0.2rem 0 0;">Airport transfers, chauffeured car rentals, speedboat cruises, and custom day tours.</p>
+        </div>
+      </div>
+
+      <div class="trip-4col-grid">
+        <a href="contact_us.html" class="trip-roam-card">
+          <div>
+            <span style="font-size: 1.8rem; display: block; margin-bottom: 0.4rem;">&#128663;</span>
+            <h4 style="font-size: 1rem; font-weight: 900; color: #0f172a; margin: 0 0 0.3rem;">Airport Transfers</h4>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600; margin: 0;">Chauffeur-driven AC Sedan &amp; Microbus pickup directly from Dhaka or Cox's Bazar Airport.</p>
+          </div>
+          <span style="font-size: 0.84rem; color: #2b64ff; font-weight: 800; margin-top: 1rem; display: block;">Book Transfer &gt;</span>
+        </a>
+
+        <a href="contact_us.html" class="trip-roam-card">
+          <div>
+            <span style="font-size: 1.8rem; display: block; margin-bottom: 0.4rem;">&#128660;</span>
+            <h4 style="font-size: 1rem; font-weight: 900; color: #0f172a; margin: 0 0 0.3rem;">Car &amp; Microbus Rentals</h4>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600; margin: 0;">Daily &amp; weekly chauffeured car rentals for city travel, corporate trips, and family tours.</p>
+          </div>
+          <span style="font-size: 0.84rem; color: #2b64ff; font-weight: 800; margin-top: 1rem; display: block;">Explore Cars &gt;</span>
+        </a>
+
+        <a href="tour_packages.html" class="trip-roam-card">
+          <div>
+            <span style="font-size: 1.8rem; display: block; margin-bottom: 0.4rem;">&#9973;</span>
+            <h4 style="font-size: 1rem; font-weight: 900; color: #0f172a; margin: 0 0 0.3rem;">Speedboat &amp; Sea Cruises</h4>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600; margin: 0;">Private sunset cruise in Cox's Bazar and Saint Martin island catamaran boat transfers.</p>
+          </div>
+          <span style="font-size: 0.84rem; color: #2b64ff; font-weight: 800; margin-top: 1rem; display: block;">Book Cruise &gt;</span>
+        </a>
+
+        <a href="ai_itinerary_builder.html" class="trip-roam-card">
+          <div>
+            <span style="font-size: 1.8rem; display: block; margin-bottom: 0.4rem;">&#128205;</span>
+            <h4 style="font-size: 1rem; font-weight: 900; color: #0f172a; margin: 0 0 0.3rem;">Custom Day Sightseeing</h4>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600; margin: 0;">Tailored 1-day sightseeing itineraries with private local guide and designated transport.</p>
+          </div>
+          <span style="font-size: 0.84rem; color: #2b64ff; font-weight: 800; margin-top: 1rem; display: block;">Plan Trip &gt;</span>
         </a>
       </div>
     </section>
 
-    <!-- SECTION 3: BEST SELLING TOURS & PACKAGES GRID -->
-    <section class="cust-section" id="bestSellingTours">
-      <div class="section-header flex-header">
-        <div>
-          <span class="badge-tag">MOST POPULAR</span>
-          <h2 class="cust-section-title">Best Selling Tour Packages</h2>
-          <p class="cust-section-subtitle">Top rated tour experiences booked by thousands of travelers.</p>
-        </div>
-        <button type="button" onclick="window.location.href='tour_packages.html'" class="secondary-btn view-all-btn" style="cursor: pointer;">View All Packages Directory &rarr;</button>
-      </div>
-
-      <!-- Tours Carousel Wrapper with Navigation Arrows -->
-      <div class="carousel-wrapper">
-        <button class="carousel-arrow prev-arrow" id="btnPrevTour" aria-label="Previous Tours">&lsaquo;</button>
-
-        <!-- Tours Grid Container (Dynamically rendered live from Admin packages) -->
-        <div class="tours-grid-container" id="toursGrid">
-
-          <!-- Package 1: Bhutan Cultural Tour -->
-          <div class="tour-card" data-category="bhutan">
-            <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='package_detail.html';" style="cursor: pointer;">
-              <img src="assets/darjeeling.jpg" alt="Bhutan Cultural Tour &amp; Tiger's Nest Hike">
-              <span class="tour-badge cultural" style="background: #00a651;">Bhutan Special</span>
-              <span class="tour-price-pill">৳75,000</span>
-            </div>
-            <div class="tour-card-body">
-              <div class="tour-meta-row">
-                <span class="tour-location">PARO &amp; THIMPHU, BHUTAN</span>
-                <span class="tour-rating">4.9 (160 reviews)</span>
-              </div>
-              <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='package_detail.html';" style="cursor: pointer;">3-Night / 4-Day Bhutan Cultural Tour &amp; Tiger's Nest Hike</h3>
-              <p class="tour-desc">4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike.</p>
-              <div class="tour-card-footer">
-                <span class="tour-duration">4 Days / 3 Nights</span>
-                <button class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bhutan'); window.location.href='booking.html';">View &amp; Book Package </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Package 2: BALI PACKAGE 4D/3N -->
-          <div class="tour-card" data-category="bali">
-            <div class="tour-img-wrap" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">
-              <img src="assets/bali_kintamani_volcano.jpg" alt="BALI PACKAGE 4D/3N">
-              <span class="tour-badge tropical" style="background: #00a651;">Bali Special</span>
-              <span class="tour-price-pill">৳17,500</span>
-            </div>
-            <div class="tour-card-body">
-              <div class="tour-meta-row">
-                <span class="tour-location">KINTAMANI &amp; UBUD, BALI</span>
-                <span class="tour-rating">4.9 (185 reviews)</span>
-              </div>
-              <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='package_detail.html';" style="cursor: pointer;">BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu &amp; Water Sports</h3>
-              <p class="tour-desc">4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!</p>
-              <div class="tour-card-footer">
-                <span class="tour-duration">4 Days / 3 Nights</span>
-                <button class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', 'pkg-bali-4d3n'); window.location.href='booking.html';">View &amp; Book Package </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <button class="carousel-arrow next-arrow" id="btnNextTour" aria-label="Next Tours">&rsaquo;</button>
-      </div>
-    </section>
-
-    <!-- SECTION 4: CUSTOMER REVIEWS & TESTIMONIALS -->
-    <section class="cust-section reviews-section" id="reviewsSection">
-      <div class="section-header center-title">
-        <span class="badge-tag">WHAT TRAVELERS SAY</span>
-        <h2 class="cust-section-title">Loved by 50,000+ Happy Customers</h2>
-        <p class="cust-section-subtitle">Real experiences from travelers who explored the world with Mount2ocean.</p>
-      </div>
-
-      <div class="reviews-grid">
-        
-        <!-- Review 1 -->
-        <div class="review-card">
-          <div class="review-stars"></div>
-          <p class="review-text">"Mount2ocean organized our Dubai family vacation seamlessly! The desert safari guide was super friendly and everything was perfectly arranged on time."</p>
-          <div class="reviewer-info" style="display: flex; align-items: center; gap: 0.9rem;">
-            <img src="assets/reviewer_tanvir.jpg" alt="Tanvir &amp; Family" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00a651; box-shadow: 0 4px 10px rgba(0,166,81,0.25);">
-            <div>
-              <h5 class="reviewer-name" style="font-weight: 800; font-size: 1rem; color: #0f172a; margin: 0;">Tanvir &amp; Family</h5>
-              <span class="reviewer-trip" style="font-size: 0.82rem; color: #1e293b; font-weight: 700;">Dubai Desert Safari Tour</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-card">
-          <div class="review-stars"></div>
-          <p class="review-text">"Best sea beach tour experience in Cox's Bazar! Instant ticket booking and hotel check-in were completely hassle-free."</p>
-          <div class="reviewer-info" style="display: flex; align-items: center; gap: 0.9rem;">
-            <img src="assets/reviewer_nusrath.jpg" alt="Nusrath Jahan" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #0072bc; box-shadow: 0 4px 10px rgba(0,114,188,0.25);">
-            <div>
-              <h5 class="reviewer-name" style="font-weight: 800; font-size: 1rem; color: #0f172a; margin: 0;">Nusrath Jahan</h5>
-              <span class="reviewer-trip" style="font-size: 0.82rem; color: #1e293b; font-weight: 700;">Cox's Bazar Beach Cruise</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card">
-          <div class="review-stars"></div>
-          <p class="review-text">"Booked our honeymoon package to Maldives through Mount2ocean. Unbeatable pricing and amazing customer support throughout!"</p>
-          <div class="reviewer-info" style="display: flex; align-items: center; gap: 0.9rem;">
-            <img src="assets/reviewer_sharmin_arif.jpg" alt="Sharmin &amp; Arif" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #e11d48; box-shadow: 0 4px 10px rgba(225,29,72,0.25);">
-            <div>
-              <h5 class="reviewer-name" style="font-weight: 800; font-size: 1rem; color: #0f172a; margin: 0;">Sharmin &amp; Arif</h5>
-              <span class="reviewer-trip" style="font-size: 0.82rem; color: #1e293b; font-weight: 700;">Maldives Honeymoon Package</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    <!-- SECTION 5: MOBILE APP PROMO BANNER -->
-    <section class="app-promo-banner">
+    <!-- SECTION 6: YOUR ALL-IN-ONE TRAVEL APP (TRIP.COM PROMO BANNER) -->
+    <section class="app-promo-banner" style="margin-bottom: 3rem;">
       <div class="app-promo-content">
-        <span class="app-tag" style="background: #ffffff !important; color: #0f172a !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; padding: 0.45rem 1.2rem !important; border-radius: 999px !important; display: inline-block !important; letter-spacing: 1.5px !important; box-shadow: 0 0 20px rgba(255, 255, 255, 0.9) !important; font-size: 0.85rem !important;">DOWNLOAD MOBILE APP</span>
-        <h2 style="color: #ffffff !important; font-size: 2.2rem !important; font-weight: 900 !important; text-shadow: 0 2px 12px rgba(0,0,0,0.9) !important; margin: 0.4rem 0 0.8rem !important;">Mount2ocean at Your Fingertips</h2>
-        <p style="color: #ffffff !important; font-size: 1.05rem !important; font-weight: 700 !important; text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important; margin-bottom: 1.5rem !important;">Book tours, manage active itineraries, track flights, and receive exclusive app-only deals wherever you travel.</p>
+        <span class="app-tag" style="background: rgba(255,255,255,0.2) !important; color: #ffffff !important; font-weight: 900 !important; border: 1px solid rgba(255,255,255,0.4) !important; padding: 0.4rem 1.1rem !important; border-radius: 999px !important; display: inline-block !important; letter-spacing: 1.2px !important; font-size: 0.82rem !important; margin-bottom: 0.5rem;">YOUR ALL-IN-ONE TRAVEL APP</span>
+        <h2 style="color: #ffffff !important; font-size: 2.2rem !important; font-weight: 900 !important; margin: 0.2rem 0 0.6rem !important;">Mount2ocean at Your Fingertips</h2>
+        <p style="color: rgba(255,255,255,0.92) !important; font-size: 1rem !important; font-weight: 600 !important; margin-bottom: 1.2rem !important;">Book tours, manage active hotel itineraries, track flight gates, and receive app-only discounts wherever you travel.</p>
+        
+        <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <div style="color: #ffffff; font-weight: 800; font-size: 0.88rem;">&#10004; App-only flash deals</div>
+          <div style="color: #ffffff; font-weight: 800; font-size: 0.88rem;">&#10004; Live order &amp; flight status</div>
+          <div style="color: #ffffff; font-weight: 800; font-size: 0.88rem;">&#10004; 24/7 instant chat helpline</div>
+        </div>
+
         <div class="app-store-btns">
-          <button class="store-btn" onclick="showToast('Mount2ocean Official Android App coming soon to Google Play!', 'info')" style="background: #ffffff !important; color: #0f172a !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; padding: 0.8rem 1.5rem !important; border-radius: 12px !important; cursor: pointer !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important; font-size: 0.95rem !important;">Google Play</button>
-          <button class="store-btn" onclick="showToast('Mount2ocean Official iOS App coming soon to Apple App Store!', 'info')" style="background: #ffffff !important; color: #0f172a !important; font-weight: 900 !important; border: 2px solid #00f2fe !important; padding: 0.8rem 1.5rem !important; border-radius: 12px !important; cursor: pointer !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important; font-size: 0.95rem !important;">Apple App Store</button>
+          <button class="store-btn" onclick="showToast('Mount2ocean Official Android App coming soon to Google Play!', 'info')" style="background: #ffffff !important; color: #0f172a !important; font-weight: 900 !important; border: none !important; padding: 0.75rem 1.4rem !important; border-radius: 10px !important; cursor: pointer !important; font-size: 0.9rem !important;">Google Play</button>
+          <button class="store-btn" onclick="showToast('Mount2ocean Official iOS App coming soon to Apple App Store!', 'info')" style="background: #ffffff !important; color: #0f172a !important; font-weight: 900 !important; border: none !important; padding: 0.75rem 1.4rem !important; border-radius: 10px !important; cursor: pointer !important; font-size: 0.9rem !important;">Apple App Store</button>
         </div>
       </div>
       <div class="app-promo-graphic">
-        <div class="phone-mockup" style="background: #060911 !important; border: 3px solid #00f2fe !important; border-radius: 20px !important; padding: 1.5rem !important; box-shadow: 0 0 35px rgba(0, 242, 254, 0.6), 0 15px 40px rgba(0,0,0,0.8) !important; width: 260px !important; text-align: center !important;">
-          <span class="phone-brand" style="background: #0072bc !important; color: #ffffff !important; font-weight: 900 !important; font-size: 0.95rem !important; padding: 0.55rem 1.2rem !important; border-radius: 10px !important; display: block !important; margin-bottom: 1rem !important; border: 2px solid #00f2fe !important; box-shadow: 0 0 15px rgba(0, 242, 254, 0.6) !important; text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;">
-            MOUNT2OCEAN APP
+        <div class="phone-mockup" style="background: #0f172a !important; border: 3px solid rgba(255,255,255,0.3) !important; border-radius: 24px !important; padding: 1.5rem !important; box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important; width: 250px !important; text-align: center !important;">
+          <span class="phone-brand" style="background: #2b64ff !important; color: #ffffff !important; font-weight: 900 !important; font-size: 0.88rem !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; display: block !important; margin-bottom: 1rem !important;">
+            MOUNT2OCEAN OTA
           </span>
-          <div class="phone-screen-content" style="display: flex !important; flex-direction: column !important; gap: 0.8rem !important;">
-            <span style="background: #0f172a !important; color: #ffffff !important; border: 2px solid #00f2fe !important; padding: 0.75rem 1rem !important; border-radius: 12px !important; font-size: 0.9rem !important; font-weight: 900 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;">
-               Flight Booking Verified
+          <div class="phone-screen-content" style="display: flex !important; flex-direction: column !important; gap: 0.65rem !important;">
+            <span style="background: #1e293b !important; color: #ffffff !important; border: 1px solid #334155 !important; padding: 0.65rem 0.8rem !important; border-radius: 8px !important; font-size: 0.82rem !important; font-weight: 700 !important;">
+              Flight Booking Verified
             </span>
-            <span style="background: #0f172a !important; color: #ffffff !important; border: 2px solid #00f2fe !important; padding: 0.75rem 1rem !important; border-radius: 12px !important; font-size: 0.9rem !important; font-weight: 900 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;">
-               Resort Voucher Active
+            <span style="background: #1e293b !important; color: #ffffff !important; border: 1px solid #334155 !important; padding: 0.65rem 0.8rem !important; border-radius: 8px !important; font-size: 0.82rem !important; font-weight: 700 !important;">
+              5★ Resort Voucher Active
             </span>
           </div>
         </div>
@@ -1201,7 +1358,7 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v45_tripcom_perfect_replica"></script>
+  <script src="app.js?v=v46_tripcom_sections_replica"></script>
   <script>
     window.handleEmbedVisaTrackSubmit = function(e) {
       e.preventDefault();
