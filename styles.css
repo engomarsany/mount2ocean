@@ -5352,10 +5352,199 @@ textarea::placeholder {
   padding: 3rem 2rem !important;
 }
 
+/* 8. Trip.com Portal 2-Column Layout & Vertical Left Sidebar */
+.trip-portal-wrapper {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.trip-sidebar-menu {
+  width: 210px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 0.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+  z-index: 50;
+}
+
+.trip-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #334155;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.trip-sidebar-link:hover,
+.trip-sidebar-link.active {
+  background: #eef4ff;
+  color: #2b64ff;
+  font-weight: 800;
+}
+
+.trip-sidebar-badge-new {
+  background: #ff4d4f;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.trip-main-view {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 9. Top Navigation Quick Search Bar (Trip.com Topbar) */
+.header-quick-search {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem 0.35rem 1rem;
+  width: 320px;
+  transition: all 0.2s ease;
+}
+
+.header-quick-search:focus-within {
+  background: #ffffff;
+  border-color: #2b64ff;
+  box-shadow: 0 0 0 3px rgba(43, 100, 255, 0.15);
+}
+
+.header-quick-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #0f172a;
+  width: 100%;
+}
+
+.header-search-icon-btn {
+  background: #2b64ff;
+  color: #ffffff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  transition: background 0.2s ease;
+}
+
+.header-search-icon-btn:hover {
+  background: #1c52d8;
+}
+
+/* 10. Recommendations Directory Section */
+.trip-recommendations-box {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 1.8rem 2rem;
+  margin: 3rem auto 0;
+  max-width: 1240px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.trip-rec-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1.5px solid #f1f5f9;
+}
+
+.trip-rec-tab {
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #64748b;
+  text-decoration: none;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trip-rec-tab:hover,
+.trip-rec-tab.active {
+  background: #2b64ff;
+  color: #ffffff;
+  border-color: #2b64ff;
+}
+
+.trip-rec-links-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem 1.2rem;
+}
+
+.trip-rec-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trip-rec-link:hover {
+  color: #2b64ff;
+  text-decoration: underline;
+}
+
 /* Responsive adjustments */
+@media (max-width: 1100px) {
+  .trip-sidebar-menu {
+    display: none;
+  }
+  .trip-rec-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 992px) {
   .trip-search-form-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .header-quick-search {
+    display: none;
+  }
+  .trip-rec-links-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -5376,6 +5565,9 @@ textarea::placeholder {
     padding: 1.2rem;
   }
   .trip-search-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .trip-rec-links-grid {
     grid-template-columns: 1fr;
   }
 }

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v44_tripcom_signature_redesign">
+  <link rel="stylesheet" href="styles.css?v=v45_tripcom_perfect_replica">
 </head>
 <body class="light-theme">
 
@@ -50,7 +50,7 @@
   <main style="max-width: 1240px; margin: 2.5rem auto; padding: 0 1rem;">
     
     <!-- FLIGHT SEARCH BANNER -->
-    <div style="background: linear-gradient(135deg, #060911 0%, #0072bc 100%); color: #ffffff !important; padding: 2.5rem 2rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 2.5rem; text-align: center; border: 2px solid #00f2fe;">
+    <div style="background: linear-gradient(135deg, #1c52d8 0%, #2b64ff 55%, #00d2ff 100%); color: #ffffff !important; padding: 2.5rem 2rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 2.5rem; text-align: center; border: 2px solid #00f2fe;">
       <span class="badge-tag" style="background: #00f2fe; color: #ffffff; font-weight: 900; font-size: 0.85rem; padding: 0.4rem 1rem; border-radius: 8px; letter-spacing: 1px; display: inline-block; margin-bottom: 0.8rem;">
         INTERNATIONAL &amp; DOMESTIC AIRLINES FARE ENGINE
       </span>
@@ -190,7 +190,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v44_tripcom_signature_redesign"></script>
+  <script src="app.js?v=v45_tripcom_perfect_replica"></script>
   <script>
     //  Render Owner-Published Flight Tickets 
     function renderOwnerFlightTickets() {
@@ -203,7 +203,7 @@
             <p style="color: #1e293b; font-weight:800; font-size:1.1rem;">কোনো ফ্লাইট টিকেট এখনও প্রকাশিত হয়নি।</p>
             <p style="color: #1e293b; font-size:0.9rem; margin-top:0.4rem;">Owner Panel থেকে ফ্লাইট টিকেট অ্যাড করুন।</p>
             <a href="https://api.whatsapp.com/send?phone=8801330303082&text=Hello%20Mount2ocean!%20I%20need%20flight%20ticket%20information." target="_blank"
-               style="display:inline-block; margin-top:1.2rem; background:linear-gradient(135deg,#00a651,#0072bc); color:white; padding:0.75rem 1.6rem; border-radius:10px; font-weight:900; text-decoration:none;">
+               style="display:inline-block; margin-top:1.2rem; background:linear-gradient(135deg, #2b64ff, #1c52d8); color:white; padding:0.75rem 1.6rem; border-radius:10px; font-weight:900; text-decoration:none;">
               WhatsApp-এ যোগাযোগ করুন
             </a>
           </div>`;
@@ -217,12 +217,12 @@
           ? `<span style="color: #ffffff; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.2rem;">Total Fare (Tax Included)</span>
              <div style="color:#0072bc; font-size:1.7rem; font-weight:900; margin-bottom:0.7rem;">৳${Number(t.fareBdt).toLocaleString('en-IN')}</div>
              <button onclick="openPnrRequestModal('${t.airlineName} (${t.flightNo})','${t.fromCity} to ${t.toCity}',${t.fareBdt})"
-               style="background:linear-gradient(135deg,#00a651,#0072bc);color:white;border:none;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(0,166,81,0.35);">
+               style="background:linear-gradient(135deg, #2b64ff, #1c52d8);color:white;border:none;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(0,166,81,0.35);">
                Request PNR Booking
              </button>`
           : `<span style="color: #ffffff; font-size:0.8rem; font-weight:700; display:block; margin-bottom:0.5rem;">Price on Request</span>
              <a href="https://api.whatsapp.com/send?phone=8801330303082&text=Hello%20Mount2ocean!%20I%20need%20the%20fare%20for%20${encodeURIComponent(t.airlineName + ' ' + t.flightNo + ' — ' + t.fromCity + ' to ' + t.toCity)}" target="_blank"
-               style="display:block;background:linear-gradient(135deg,#00c853,#1b5e20);color:white;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(0,166,81,0.4);">
+               style="display:block;background:linear-gradient(135deg, #2b64ff, #1c52d8);color:white;padding:0.7rem 1.2rem;border-radius:10px;font-weight:900;font-size:0.92rem;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(0,166,81,0.4);">
                WhatsApp-এ যোগাযোগ করুন
              </a>`;
 

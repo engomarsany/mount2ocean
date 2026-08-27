@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet with Cache-Busting Version -->
-  <link rel="stylesheet" href="styles.css?v=v44_tripcom_signature_redesign">
+  <link rel="stylesheet" href="styles.css?v=v45_tripcom_perfect_replica">
 
   <style>
     /* Centralized 1-Single Pass Airplane Fog Splash System */
@@ -172,59 +172,61 @@
     })();
   </script>
 
-  <!-- TOP HEADER NAVIGATION -->
-  <header class="app-header customer-header">
-    <div class="logo-container">
-      <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+  <!-- TOP HEADER NAVIGATION (TRIP.COM STYLE) -->
+  <header class="app-header customer-header" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2rem; gap: 1.5rem;">
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <div class="logo-container">
+        <a href="customer_portal.html">
+          <img src="assets/official_logo.png" alt="MOUNT2OCEAN TRAVEL &amp; TOURS" class="official-brand-logo-img">
+        </a>
+      </div>
+
+      <!-- Trip.com Header Quick Search -->
+      <div class="header-quick-search">
+        <input type="text" placeholder="Destination, package, hotel, flight..." onkeydown="if(event.key==='Enter') window.location.href='tour_packages.html?q='+encodeURIComponent(this.value)">
+        <button type="button" class="header-search-icon-btn" onclick="window.location.href='tour_packages.html'" title="Search">
+          &#128269;
+        </button>
+      </div>
     </div>
 
     <!-- Center Navigation Links -->
-    <nav class="customer-nav">
+    <nav class="customer-nav" style="display: flex; align-items: center; gap: 1rem;">
       <a href="customer_portal.html" class="customer-nav-item active">Home</a>
       <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
       <a href="hotels_resorts.html" class="customer-nav-item">Hotels &amp; Resorts</a>
-      <a href="visa_services.html" class="customer-nav-item">Visa Processing</a>
-      <a href="contact_us.html" class="customer-nav-item">Contact Us</a>
-      <a href="refund_policy.html" class="customer-nav-item">Refund Policy</a>
+      <a href="flights.html" class="customer-nav-item">Flights</a>
+      <a href="visa_services.html" class="customer-nav-item">Visa</a>
+      <a href="contact_us.html" class="customer-nav-item">Contact</a>
       <a href="my_profile.html" class="customer-nav-item">My Bookings</a>
     </nav>
 
     <!-- Header Right Controls -->
-    <div class="header-actions">
-      <!-- GLOBAL CONTROLS: LANGUAGE TRANSLATOR -->
-      <div class="global-header-controls">
-        <div class="lang-switcher-box">
-          <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
-            <option value="bn" selected>বাংলা (BN)</option>
-            <option value="en">English (US)</option>
-            <option value="ar">العربية (AR)</option>
-            <option value="hi">हिन्दी (HI)</option>
-            <option value="es">Español (ES)</option>
-            <option value="fr">Français (FR)</option>
-          </select>
-        </div>
+    <div class="header-actions" style="display: flex; align-items: center; gap: 0.8rem;">
+      <!-- Language -->
+      <div class="lang-switcher-box">
+        <select id="globalLangSelect" class="lang-select" title="Language">
+          <option value="bn" selected>বাংলা (BN)</option>
+          <option value="en">English (US)</option>
+        </select>
       </div>
 
-      <!-- Currency Selector -->
+      <!-- Currency -->
       <div class="currency-selector">
         <select id="custCurrency">
           <option value="BDT" selected>BDT (৳)</option>
           <option value="USD">USD ($)</option>
-          <option value="EUR">EUR (€)</option>
         </select>
       </div>
 
-      <!-- Customer Profile Indicator (Clickable to view bookings) -->
-      <div class="customer-user-badge" onclick="window.location.href='my_profile.html'" style="cursor: pointer;" title="View My Bookings &amp; Profile">
-        <div class="cust-meta">
-          <span class="cust-name" id="custUserName">My Profile &amp; Bookings</span>
-          <span class="cust-status" id="custBookingStatusBadge">View Reservations</span>
-        </div>
-      </div>
+      <!-- Partner Hub Link -->
+      <a href="index.html" class="secondary-btn" style="text-decoration: none; padding: 0.5rem 0.9rem; font-size: 0.82rem; font-weight: 800; border-radius: 20px; white-space: nowrap; border: 1.5px solid #2b64ff; color: #2b64ff; background: #ffffff;">
+        Partner Hub
+      </a>
 
-      <!-- Sign Out Link -->
-      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
-        Sign Out (লগআউট)
+      <!-- Sign In / Profile Link -->
+      <a href="index.html" class="primary-btn" style="text-decoration: none; padding: 0.5rem 1.2rem; font-size: 0.84rem; font-weight: 800; border-radius: 20px; white-space: nowrap; background: #2b64ff; color: #ffffff;">
+        Sign In / Register
       </a>
     </div>
   </header>
@@ -323,11 +325,35 @@
     </div>
   </section>
 
-  <!-- TRIP.COM-STYLE NEW USER EXCLUSIVE & COUPON TICKET STRIP -->
-  <section class="trip-coupons-section">
-    <div class="trip-section-title-wrap">
-      <div>
-        <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0 0 0.2rem;">
+  <!-- TRIP.COM 2-COLUMN PORTAL CONTAINER (SIDEBAR + MAIN FEED) -->
+  <div class="trip-portal-wrapper">
+    
+    <!-- LEFT VERTICAL NAVIGATION SIDEBAR (TRIP.COM STYLE) -->
+    <aside class="trip-sidebar-menu">
+      <a href="hotels_resorts.html" class="trip-sidebar-link">Hotels &amp; Homes</a>
+      <a href="flights.html" class="trip-sidebar-link">Flights</a>
+      <a href="tour_packages.html" class="trip-sidebar-link active">Tour Packages</a>
+      <a href="visa_services.html" class="trip-sidebar-link">Visa Processing</a>
+      <a href="ai_itinerary_builder.html" class="trip-sidebar-link">AI Trip Planner <span class="trip-sidebar-badge-new">NEW</span></a>
+      <a href="combo_builder.html" class="trip-sidebar-link">Combo Packages</a>
+      <a href="all_packages.html?cat=coxsbazar" class="trip-sidebar-link">Cox's Bazar</a>
+      <a href="all_packages.html?cat=bali" class="trip-sidebar-link">Bali Packages</a>
+      <a href="all_packages.html?cat=dubai" class="trip-sidebar-link">Dubai Escapes</a>
+      <a href="all_packages.html?cat=maldives" class="trip-sidebar-link">Maldives Villas</a>
+      <a href="all_packages.html?cat=bhutan" class="trip-sidebar-link">Bhutan Tours</a>
+      <a href="contact_us.html" class="trip-sidebar-link">24/7 Support Desk</a>
+      <a href="refund_policy.html" class="trip-sidebar-link">Refund &amp; Policies</a>
+      <a href="my_profile.html" class="trip-sidebar-link">My Bookings</a>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT VIEW -->
+    <main class="trip-main-view">
+
+      <!-- TRIP.COM-STYLE NEW USER EXCLUSIVE & COUPON TICKET STRIP -->
+      <section class="trip-coupons-section" style="max-width: 100%; padding: 0;">
+        <div class="trip-section-title-wrap">
+          <div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0 0 0.2rem;">
            New User Exclusive Deals &amp; Instant Coupons (কুপন ও ডিসকাউন্ট ভাউচার)
         </h3>
         <p style="font-size: 0.88rem; color: #475569; font-weight: 700; margin: 0;">
@@ -770,7 +796,8 @@
       </div>
     </section>
 
-  </main>
+    </main>
+  </div>
 
   <!-- SEARCH RESULTS & SMART ALTERNATIVE SUGGESTIONS MODAL -->
   <div class="modal-overlay hidden" id="searchResultsModal">
@@ -1056,74 +1083,115 @@
     </div>
   </div>
 
-  <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
-  <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
+  <!-- TRIP.COM-STYLE RECOMMENDATIONS DIRECTORY -->
+  <section class="trip-recommendations-box">
+    <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin: 0 0 1.2rem;">
+      Mount2ocean Travel Recommendations
+    </h3>
+    
+    <!-- Tabbed Categories -->
+    <div class="trip-rec-tabs">
+      <button type="button" class="trip-rec-tab active">Popular Destinations</button>
+      <button type="button" class="trip-rec-tab">Trending Hotels</button>
+      <button type="button" class="trip-rec-tab">Direct Flights</button>
+      <button type="button" class="trip-rec-tab">Visa Services</button>
+      <button type="button" class="trip-rec-tab">Custom Combos</button>
+    </div>
+
+    <!-- 5-Column Link Directory -->
+    <div class="trip-rec-links-grid">
+      <a href="tour_packages.html?cat=coxsbazar" class="trip-rec-link">Tours in Cox's Bazar</a>
+      <a href="tour_packages.html?cat=bali" class="trip-rec-link">Tours in Bali</a>
+      <a href="tour_packages.html?cat=dubai" class="trip-rec-link">Tours in Dubai</a>
+      <a href="tour_packages.html?cat=maldives" class="trip-rec-link">Tours in Maldives</a>
+      <a href="tour_packages.html?cat=bhutan" class="trip-rec-link">Tours in Bhutan</a>
+      <a href="hotels_resorts.html" class="trip-rec-link">Hotels in Cox's Bazar</a>
+      <a href="hotels_resorts.html" class="trip-rec-link">Resorts in Bali</a>
+      <a href="hotels_resorts.html" class="trip-rec-link">Hotels in Dubai</a>
+      <a href="hotels_resorts.html" class="trip-rec-link">Water Villas in Maldives</a>
+      <a href="hotels_resorts.html" class="trip-rec-link">Hotels in Sylhet</a>
+      <a href="flights.html" class="trip-rec-link">Flights to Dubai</a>
+      <a href="flights.html" class="trip-rec-link">Flights to Bali</a>
+      <a href="flights.html" class="trip-rec-link">Flights to Bangkok</a>
+      <a href="flights.html" class="trip-rec-link">Flights to Singapore</a>
+      <a href="flights.html" class="trip-rec-link">Flights to Cox's Bazar</a>
+      <a href="visa_services.html" class="trip-rec-link">Dubai Tourist Visa</a>
+      <a href="visa_services.html" class="trip-rec-link">Thailand Tourist Visa</a>
+      <a href="visa_services.html" class="trip-rec-link">Malaysia Tourist Visa</a>
+      <a href="visa_services.html" class="trip-rec-link">Singapore Visa Support</a>
+      <a href="visa_services.html" class="trip-rec-link">Schengen Visa Consultation</a>
+    </div>
+  </section>
+
+  <!-- TRIP.COM-STYLE MODERN LIGHT FOOTER -->
+  <footer class="cust-footer" style="background: #f8fafc !important; color: #334155 !important; padding: 4rem 2rem 2.5rem !important; border-top: 1px solid #e2e8f0 !important; width: 100% !important; margin-top: 4rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">
       <!-- Col 1: Brand & Official Contact Info -->
       <div class="footer-col brand-col">
-        <div style="background: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 14px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 0 25px rgba(0,242,254,0.5) !important; border: 2px solid #00f2fe !important; margin-bottom: 1.2rem !important;">
-          <img src="assets/official_logo.png" alt="Mount2ocean Travel &amp; Tours" style="height: 55px !important; width: auto !important; object-fit: contain !important; display: block !important;">
+        <div style="background: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important; border: 1.5px solid #e2e8f0 !important; margin-bottom: 1.2rem !important;">
+          <img src="assets/official_logo.png" alt="Mount2ocean Travel &amp; Tours" style="height: 50px !important; width: auto !important; object-fit: contain !important; display: block !important;">
         </div>
-        <p style="color: #ffffff !important; font-size: 0.95rem !important; line-height: 1.65; margin-bottom: 1.2rem; font-weight: 700 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
-          Mount2ocean Travel &amp; Tours is your premier travel partner for booking worldwide luxury tours, resort stays, flights, and visa processing.
+        <p style="color: #475569 !important; font-size: 0.92rem !important; line-height: 1.65; margin-bottom: 1.2rem; font-weight: 600 !important;">
+          Mount2ocean Travel &amp; Tours is your premier OTA partner for booking verified luxury tours, hotel &amp; resort stays, international flights, and expedited tourist visa processing.
         </p>
         
-        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-          <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;"></span>
-            <span>Helpline: <a href="tel:+8801330303082" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1330-303082</a></span>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: #0f172a !important; font-weight: 800; font-size: 0.92rem;">
+            <span>Helpline: <a href="tel:+8801330303082" style="color: #2b64ff !important; font-weight: 900 !important; text-decoration: none; font-size: 1.05rem;">+880 1330-303082</a></span>
           </div>
-          <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;"></span>
-            <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: #0f172a !important; font-weight: 800; font-size: 0.92rem;">
+            <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
-            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;"></span>
-            <span>Location: <strong style="color: #ffffff !important; font-weight: 900;"><a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b85e27dba277:0xa9eff257cadfcd2f!4m15!1m8!3m7!1s0x3755b86088069f7f:0xaa60783f49e22d39!2sConcord+Grand,+Dhaka!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh </a></strong></span>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #475569 !important; font-weight: 600; font-size: 0.86rem;">
+            <span>Location: <a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b85e27dba277:0xa9eff257cadfcd2f!4m15!1m8!3m7!1s0x3755b86088069f7f:0xaa60783f49e22d39!2sConcord+Grand,+Dhaka!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: #2b64ff !important; text-decoration: underline; font-weight: 700;">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh</a></span>
           </div>
         </div>
       </div>
 
       <!-- Col 2: Top Destinations -->
       <div class="footer-col">
-        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block; text-shadow: 0 0 10px rgba(0,242,254,0.6);">TOP DESTINATIONS</h4>
+        <h4 style="color: #0f172a !important; font-size: 1.05rem !important; font-weight: 900 !important; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #2b64ff; padding-bottom: 0.4rem; display: inline-block;">TOP DESTINATIONS</h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem;">
-          <li><a href="all_packages.html?cat=coxsbazar" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Cox's Bazar Tour Packages</a></li>
-          <li><a href="all_packages.html?cat=dubai" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Dubai Safari &amp; City Escapes</a></li>
-          <li><a href="all_packages.html?cat=maldives" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Maldives Overwater Resorts</a></li>
-          <li><a href="all_packages.html?cat=bali" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Bali Tropical Vacations</a></li>
-          <li><a href="all_packages.html?cat=bhutan" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Nepal &amp; Himalaya Treks</a></li>
+          <li><a href="all_packages.html?cat=coxsbazar" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Cox's Bazar Tour Packages</a></li>
+          <li><a href="all_packages.html?cat=dubai" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Dubai Safari &amp; City Escapes</a></li>
+          <li><a href="all_packages.html?cat=maldives" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Maldives Overwater Resorts</a></li>
+          <li><a href="all_packages.html?cat=bali" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Bali Tropical Vacations</a></li>
+          <li><a href="all_packages.html?cat=bhutan" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Nepal &amp; Himalaya Treks</a></li>
         </ul>
       </div>
 
       <!-- Col 3: Travel Services -->
       <div class="footer-col">
-        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block; text-shadow: 0 0 10px rgba(0,242,254,0.6);">TRAVEL SERVICES</h4>
+        <h4 style="color: #0f172a !important; font-size: 1.05rem !important; font-weight: 900 !important; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #2b64ff; padding-bottom: 0.4rem; display: inline-block;">TRAVEL SERVICES</h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem;">
-          <li><a href="customer_portal.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">International Flight Tickets</a></li>
-          <li><a href="customer_portal.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Luxury Hotel &amp; Resort Bookings</a></li>
-          <li><a href="visa_services.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Tourist Visa Assistance &amp; Tracking</a></li>
-          <li><a href="customer_portal.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Travel Insurance Coverage</a></li>
-          <li><a href="customer_portal.html" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none; font-size: 0.95rem;">Group &amp; Corporate Tours</a></li>
+          <li><a href="flights.html" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">International Flight Tickets</a></li>
+          <li><a href="hotels_resorts.html" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Luxury Hotel &amp; Resort Bookings</a></li>
+          <li><a href="visa_services.html" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Tourist Visa Assistance &amp; Tracking</a></li>
+          <li><a href="ai_itinerary_builder.html" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">AI Smart Travel Planner</a></li>
+          <li><a href="contact_us.html" style="color: #475569 !important; font-weight: 700 !important; text-decoration: none; font-size: 0.92rem;">Group &amp; Corporate Tours</a></li>
         </ul>
       </div>
 
-      <!-- Col 4: Verified Payment Methods -->
+      <!-- Col 4: Verified Payment Methods & Trust Badges -->
       <div class="footer-col">
-        <h4 style="color: #00f2fe !important; font-size: 1.12rem !important; font-weight: 900 !important; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #00f2fe; padding-bottom: 0.4rem; display: inline-block; text-shadow: 0 0 10px rgba(0,242,254,0.6);">VERIFIED PAYMENT METHODS</h4>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem;">
-          <span class="pay-badge-pill" style="background: #1e293b !important; color: #00f2fe !important; border: 2px solid #00f2fe !important; font-weight: 900 !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; font-size: 0.88rem !important; letter-spacing: 1px !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important; text-shadow: 0 0 8px rgba(0,242,254,0.8) !important; display: inline-block !important;">BKASH</span>
-          <span class="pay-badge-pill" style="background: #1e293b !important; color: #00f2fe !important; border: 2px solid #00f2fe !important; font-weight: 900 !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; font-size: 0.88rem !important; letter-spacing: 1px !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important; text-shadow: 0 0 8px rgba(0,242,254,0.8) !important; display: inline-block !important;">NAGAD</span>
-          <span class="pay-badge-pill" style="background: #1e293b !important; color: #00f2fe !important; border: 2px solid #00f2fe !important; font-weight: 900 !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; font-size: 0.88rem !important; letter-spacing: 1px !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important; text-shadow: 0 0 8px rgba(0,242,254,0.8) !important; display: inline-block !important;">VISA</span>
-          <span class="pay-badge-pill" style="background: #1e293b !important; color: #00f2fe !important; border: 2px solid #00f2fe !important; font-weight: 900 !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; font-size: 0.88rem !important; letter-spacing: 1px !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important; text-shadow: 0 0 8px rgba(0,242,254,0.8) !important; display: inline-block !important;">MASTERCARD</span>
-          <span class="pay-badge-pill" style="background: #1e293b !important; color: #00f2fe !important; border: 2px solid #00f2fe !important; font-weight: 900 !important; padding: 0.5rem 1rem !important; border-radius: 8px !important; font-size: 0.88rem !important; letter-spacing: 1px !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important; text-shadow: 0 0 8px rgba(0,242,254,0.8) !important; display: inline-block !important;">AMEX</span>
+        <h4 style="color: #0f172a !important; font-size: 1.05rem !important; font-weight: 900 !important; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.2rem; border-bottom: 2px solid #2b64ff; padding-bottom: 0.4rem; display: inline-block;">PAYMENT &amp; VERIFICATION</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; margin-bottom: 1.2rem;">
+          <span class="pay-badge-pill" style="background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #cbd5e1 !important; font-weight: 800 !important; padding: 0.4rem 0.8rem !important; border-radius: 6px !important; font-size: 0.82rem !important; display: inline-block !important;">BKASH</span>
+          <span class="pay-badge-pill" style="background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #cbd5e1 !important; font-weight: 800 !important; padding: 0.4rem 0.8rem !important; border-radius: 6px !important; font-size: 0.82rem !important; display: inline-block !important;">NAGAD</span>
+          <span class="pay-badge-pill" style="background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #cbd5e1 !important; font-weight: 800 !important; padding: 0.4rem 0.8rem !important; border-radius: 6px !important; font-size: 0.82rem !important; display: inline-block !important;">VISA</span>
+          <span class="pay-badge-pill" style="background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #cbd5e1 !important; font-weight: 800 !important; padding: 0.4rem 0.8rem !important; border-radius: 6px !important; font-size: 0.82rem !important; display: inline-block !important;">MASTERCARD</span>
+          <span class="pay-badge-pill" style="background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #cbd5e1 !important; font-weight: 800 !important; padding: 0.4rem 0.8rem !important; border-radius: 6px !important; font-size: 0.82rem !important; display: inline-block !important;">AMEX</span>
+        </div>
+
+        <div style="font-size: 0.82rem; color: #64748b; font-weight: 700; line-height: 1.5;">
+          Official Tourism Partner &amp; Civil Aviation Verified OTA
         </div>
       </div>
     </div>
 
     <!-- Bottom Bar -->
-    <div style="max-width: 1240px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; color: #ffffff !important; font-size: 0.9rem; font-weight: 800 !important;">
-      © 2026 <strong style="color: #00f2fe !important; font-weight: 900 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. <a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b85e27dba277:0xa9eff257cadfcd2f!4m15!1m8!3m7!1s0x3755b86088069f7f:0xaa60783f49e22d39!2sConcord+Grand,+Dhaka!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh </a>.
+    <div style="max-width: 1320px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b !important; font-size: 0.86rem; font-weight: 600 !important;">
+      © 2026 <strong style="color: #0f172a !important; font-weight: 800 !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved.
     </div>
   </footer>
 
@@ -1133,7 +1201,7 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v44_tripcom_signature_redesign"></script>
+  <script src="app.js?v=v45_tripcom_perfect_replica"></script>
   <script>
     window.handleEmbedVisaTrackSubmit = function(e) {
       e.preventDefault();
