@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
 </head>
 <body class="light-theme">
 
@@ -113,7 +113,7 @@
         <!-- Search Button -->
         <div>
           <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 10px; font-weight: 900; font-size: 1rem; cursor: pointer; width: 100%;">
-            Search Airfares ✈️
+            Search Airfares ️
           </button>
         </div>
       </form>
@@ -190,9 +190,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase_config.js?v=v23_production_ready_launch"></script>
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
-    // ── Render Owner-Published Flight Tickets ───────────────────────────────
+    //  Render Owner-Published Flight Tickets 
     function renderOwnerFlightTickets() {
       const container = document.getElementById('flightCardsContainer');
       const tickets = window.getOwnerFlightTickets ? window.getOwnerFlightTickets() : [];
@@ -263,7 +263,7 @@
       }).join('');
     }
 
-    // ── PNR Modal Logic ─────────────────────────────────────────────────────
+    //  PNR Modal Logic 
     function openPnrRequestModal(airline, route, fare) {
       document.getElementById('pnrAirline').value = airline;
       document.getElementById('pnrRoute').value = route;
@@ -302,7 +302,7 @@
       renderOwnerFlightTickets();
     }
 
-    // ── Init ────────────────────────────────────────────────────────────────
+    //  Init 
     document.addEventListener('DOMContentLoaded', function() {
       closePnrModal();
       renderOwnerFlightTickets();

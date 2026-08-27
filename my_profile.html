@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
   <style>
     .profile-header-card {
       background: #ffffff;
@@ -110,10 +110,10 @@
         <div class="lang-switcher-box">
           <span class="lang-icon"></span>
           <select id="globalLangSelect" class="lang-select" title="Select Language / ভাষা সিলেক্ট করুন">
-            <option value="bn" selected>🇩 বাংলা (BN)</option>
-            <option value="en">🇺🇸 English (US)</option>
+            <option value="bn" selected> বাংলা (BN)</option>
+            <option value="en"> English (US)</option>
             <option value="ar">العربية (AR)</option>
-            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+            <option value="hi"> हिन्दी (HI)</option>
           </select>
         </div>
       </div>
@@ -170,7 +170,7 @@
     <div style="background: linear-gradient(135deg, #060911 0%, #059669 100%) !important; color: #ffffff !important; border: 2.5px solid #10b981 !important; border-radius: 20px !important; padding: 1.6rem 2rem !important; margin-bottom: 2rem !important; display: flex !important; justify-content: space-between !important; align-items: center !important; flex-wrap: wrap !important; gap: 1.2rem !important; box-shadow: 0 12px 30px rgba(16,185,129,0.25) !important;">
       <div>
         <span style="background: #ffffff !important; color: #047857 !important; font-weight: 900 !important; font-size: 0.82rem !important; padding: 0.35rem 0.85rem !important; border-radius: 8px !important; display: inline-block !important; margin-bottom: 0.6rem !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;">
-          🎁 M2O LOYALTY REWARDS &amp; CASHBACK WALLET
+           M2O LOYALTY REWARDS &amp; CASHBACK WALLET
         </span>
         <h3 style="font-size: 1.45rem !important; font-weight: 900 !important; color: #ffffff !important; margin: 0 0 0.3rem !important; text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;">
           Your Active Loyalty Credit: <span style="color: #00f2fe !important; font-weight: 900 !important; text-shadow: 0 0 10px #00f2fe !important;">৳2,500 BDT</span> <span style="color: #e2e8f0 !important; font-size: 1.1rem !important;">(2,500 Reward Points)</span>
@@ -181,7 +181,7 @@
       </div>
 
       <button type="button" onclick="alert('Loyalty Wallet Active! 2,500 BDT credit can be applied on your next tour booking checkout.')" style="background: linear-gradient(135deg, #00f2fe 0%, #10b981 100%) !important; color: #ffffff !important; border: none !important; padding: 0.8rem 1.6rem !important; border-radius: 12px !important; font-weight: 900 !important; font-size: 0.95rem !important; cursor: pointer !important; box-shadow: 0 4px 15px rgba(0,242,254,0.4) !important;">
-        Redeem Points ➔
+        Redeem Points 
       </button>
     </div>
 
@@ -218,7 +218,7 @@
             <span>Helpline: <a href="tel:+8801330303082" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1330-303082</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span style="color: #00a651; font-size: 1.1rem;">️</span>
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
@@ -275,7 +275,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       loadCustomerProfileAndBookings();
@@ -323,14 +323,14 @@
         const card = document.createElement('div');
         card.className = 'booking-history-card';
 
-        let statusMarkup = `<span class="status-pill-pending">⏳ PENDING APPROVAL (অ্যাডমিন পর্যালোচনায় রয়েছে)</span>`;
+        let statusMarkup = `<span class="status-pill-pending"> PENDING APPROVAL (অ্যাডমিন পর্যালোচনায় রয়েছে)</span>`;
         if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
-          statusMarkup = `<span class="status-pill-approved">✅ APPROVED BY ADMIN (বুকিং নিশ্চিত হয়েছে)</span>`;
+          statusMarkup = `<span class="status-pill-approved"> APPROVED BY ADMIN (বুকিং নিশ্চিত হয়েছে)</span>`;
         } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
-          statusMarkup = `<span class="status-pill-rejected">❌ CANCELLED (বুকিং বাতিল করা হয়েছে)</span>`;
+          statusMarkup = `<span class="status-pill-rejected"> CANCELLED (বুকিং বাতিল করা হয়েছে)</span>`;
         }
 
-        const idDocText = bk.passportNo ? `Passport: ${bk.passportNo} (Expiry: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? `🆔 NID: ${bk.nid}` : '🆔 Verified Identity');
+        const idDocText = bk.passportNo ? `Passport: ${bk.passportNo} (Expiry: ${bk.passportExpiry || 'N/A'})` : (bk.nid ? ` NID: ${bk.nid}` : ' Verified Identity');
 
         card.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.8rem;">
@@ -346,7 +346,7 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; background: #f8fafc; padding: 1.2rem; border-radius: 12px;">
             <div>
               <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">TRAVEL DEPARTURE DATE</span>
-              <strong style="font-size: 0.98rem; color: #0f172a;">📅 ${bk.travelDate || 'Selected Departure'}</strong>
+              <strong style="font-size: 0.98rem; color: #0f172a;"> ${bk.travelDate || 'Selected Departure'}</strong>
             </div>
             <div>
               <span style="font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block;">GUESTS &amp; TRAVELERS</span>
@@ -368,10 +368,10 @@
             </span>
             <div style="display: flex; gap: 0.6rem;">
               <button onclick="localStorage.setItem('m2o_active_booking_id', '${bk.id}'); window.location.href='booking_detail.html';" class="primary-btn" style="padding: 0.5rem 1.1rem; font-weight: 800; font-size: 0.85rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
-                📄 View Detailed File Voucher &amp; Status ➔
+                 View Detailed File Voucher &amp; Status 
               </button>
               <button onclick="window.print()" class="secondary-btn" style="padding: 0.5rem 0.95rem; font-weight: 700; font-size: 0.85rem;">
-                🖨️ Print
+                ️ Print
               </button>
             </div>
           </div>

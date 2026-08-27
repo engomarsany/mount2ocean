@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // MOUNT2OCEAN - BRANDED PDF E-TICKET & VOUCHER DOWNLOAD ENGINE
 // ==========================================================================
 
@@ -81,13 +81,13 @@ window.generateAndDownloadPdfVoucher = function(voucherData) {
     </div>
 
     <div style="background: #e0f2fe; border: 1.5px solid #00f2fe; padding: 1rem 1.2rem; border-radius: 10px; font-size: 0.88rem; color: #0369a1; font-weight: 700; line-height: 1.5;">
-      📌 IMPORTANT NOTICE: Please present this official PDF voucher along with your Passport/NID at check-in or airport counter. For assistance, contact Hotline: +880 1977-477172.
+       IMPORTANT NOTICE: Please present this official PDF voucher along with your Passport/NID at check-in or airport counter. For assistance, contact Hotline: +880 1977-477172.
     </div>
 
     <div class="barcode-box">
       <div class="barcode-mock">||| ||||| |||| |||||| |||</div>
       <p style="margin: 0.5rem 0 0; font-size: 0.82rem; color: #64748b; font-weight: 700;">Verified Security Voucher • Barcode ID: ${vId}</p>
-      <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print Voucher</button>
+      <button class="print-btn" onclick="window.print()">️ Save as PDF / Print Voucher</button>
     </div>
   </div>
 </body>

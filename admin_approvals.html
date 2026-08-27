@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
 
   <style>
     .admin-page-header {
@@ -141,7 +141,7 @@
         ← Back to Dashboard Overview
       </a>
       <a href="customer_portal.html" target="_blank" class="primary-btn" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: 800; font-size: 0.88rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 8px;">
-        Live Customer Website ➔
+        Live Customer Website 
       </a>
     </div>
   </header>
@@ -150,25 +150,25 @@
   <nav style="background: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 0.8rem; overflow-x: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
     <span style="font-size: 0.82rem; font-weight: 800; color: #1e293b; white-space: nowrap;">QUICK MASTER DIRECTORIES:</span>
     <a href="admin_dashboard.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #1e293b;">
-      🏠 Dashboard ➔
+       Dashboard 
     </a>
     <a href="admin_bookings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0072bc; border-color: #93c5fd;">
-      Live Customer Bookings ➔
+      Live Customer Bookings 
     </a>
     <a href="admin_requested_packages.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #f97316; border-color: #fed7aa;">
-      Customer Search Requests ➔
+      Customer Search Requests 
     </a>
     <a href="admin_approvals.html" class="primary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; background: #d97706; color: #ffffff;">
-      🪪 Partner Approvals ➔
+       Partner Approvals 
     </a>
     <a href="admin_users.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #8b5cf6; border-color: #ddd6fe;">
-      👥 Registered Users ➔
+       Registered Users 
     </a>
     <a href="admin_promos.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #00a651; border-color: #86efac;">
-      ️ Promo Codes ➔
+      ️ Promo Codes 
     </a>
     <a href="admin_settings.html" class="secondary-btn" style="text-decoration: none; padding: 0.45rem 0.9rem; font-weight: 800; font-size: 0.82rem; border-radius: 8px; white-space: nowrap; color: #0f172a; border-color: #1e293b;">
-      ⚙️ Global Settings ➔
+      ️ Global Settings 
     </a>
   </nav>
 
@@ -283,7 +283,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterApprovalsDirectory();
@@ -364,10 +364,10 @@
         } else if (item.status === 'APPROVED') {
           actionsHtml = `
             <button type="button" class="primary-btn" onclick="approvePartnerAction(${item.id})" style="padding: 0.35rem 0.6rem; font-size: 0.74rem; background: #00a651; opacity: 1;" title="Already Approved">
-              ✓ Approved
+               Approved
             </button>
             <button type="button" class="btn-delete-pkg" onclick="rejectPartnerAction(${item.id})" style="padding: 0.35rem 0.6rem; font-size: 0.74rem;" title="Revoke & Cancel Approval">
-              ❌ Revoke &amp; Cancel
+               Revoke &amp; Cancel
             </button>
           `;
         } else {
@@ -399,7 +399,7 @@
         item.status = 'APPROVED';
         localStorage.setItem('m2o_pending_approvals', JSON.stringify(list));
         renderMasterApprovalsDirectory();
-        alert(`✅ Partner Account Approved!\n\n${item.name} (${item.role}) has been verified successfully.\nConfirmation Email sent to: ${item.email}`);
+        alert(` Partner Account Approved!\n\n${item.name} (${item.role}) has been verified successfully.\nConfirmation Email sent to: ${item.email}`);
       }
     }
 
@@ -412,7 +412,7 @@
         item.cancellationReason = reason;
         localStorage.setItem('m2o_pending_approvals', JSON.stringify(list));
         renderMasterApprovalsDirectory();
-        alert(`❌ Partner Account Cancelled / Rejected.\n\nReason: "${reason}"\nNotification sent to: ${item.email}`);
+        alert(` Partner Account Cancelled / Rejected.\n\nReason: "${reason}"\nNotification sent to: ${item.email}`);
       }
     }
 
@@ -484,7 +484,7 @@
             <span>Helpline: <a href="tel:+8801330303082" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1330-303082</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span style="color: #00a651; font-size: 1.1rem;">️</span>
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">

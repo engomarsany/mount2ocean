@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
 </head>
 <body class="light-theme">
 
@@ -26,8 +26,8 @@
     <nav class="customer-nav">
       <a href="customer_portal.html" class="customer-nav-item">Home</a>
       <a href="tour_packages.html" class="customer-nav-item">Tour Packages</a>
-      <a href="ai_itinerary_builder.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 900;">🤖 AI Trip Builder</a>
-      <a href="combo_builder.html" class="customer-nav-item" style="color: #00a651; font-weight: 900;">🧳 Combo Builder</a>
+      <a href="ai_itinerary_builder.html" class="customer-nav-item active" style="color: #0072bc; font-weight: 900;"> AI Trip Builder</a>
+      <a href="combo_builder.html" class="customer-nav-item" style="color: #00a651; font-weight: 900;"> Combo Builder</a>
       <a href="flights.html" class="customer-nav-item">Flight Tickets</a>
       <a href="visa_services.html" class="customer-nav-item">Visa Processing</a>
     </nav>
@@ -60,18 +60,18 @@
     <!-- AI INPUT FORM CARD -->
     <div style="background: #ffffff; border-radius: 20px; padding: 2rem; border: 2.5px solid #0072bc; box-shadow: 0 15px 40px rgba(0,114,188,0.12); margin-bottom: 2.5rem;">
       <h3 style="font-size: 1.3rem; font-weight: 900; color: #ffffff; margin-bottom: 1.2rem;">
-        🤖 Configure Your AI Custom Travel Plan (ট্রিপ পছন্দসমূহ)
+         Configure Your AI Custom Travel Plan (ট্রিপ পছন্দসমূহ)
       </h3>
 
       <form onsubmit="generateAiItineraryHandler(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: end;">
         <div>
           <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Destination (গন্তব্য) *</label>
           <select id="aiDest" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
-            <option value="Bhutan"> Bhutan (Paro &amp; Thimphu)</option>
-            <option value="Bali">🌺 Bali (Kintamani &amp; Ubud)</option>
-            <option value="Dubai">🏙️ Dubai (Safari &amp; Burj Khalifa)</option>
-            <option value="Maldives">️ Maldives Overwater Resort</option>
-            <option value="Cox's Bazar">️ Cox's Bazar &amp; Saint Martin</option>
+            <option value="Bhutan">Bhutan (Paro &amp; Thimphu)</option>
+            <option value="Bali">Bali (Kintamani &amp; Ubud)</option>
+            <option value="Dubai">Dubai (Safari &amp; Burj Khalifa)</option>
+            <option value="Maldives">Maldives Overwater Resort</option>
+            <option value="Cox's Bazar">Cox's Bazar &amp; Saint Martin</option>
             <option value="Sylhet">Sylhet Tea Gardens &amp; Jaflong</option>
           </select>
         </div>
@@ -90,7 +90,7 @@
           <label style="font-size: 0.85rem; font-weight: 800; color: #ffffff; display: block; margin-bottom: 0.35rem;">Travel Style (ভ্রমণের ধরন) *</label>
           <select id="aiStyle" required style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800;">
             <option value="Honeymoon & Luxury"> Romantic Honeymoon &amp; Luxury</option>
-            <option value="Family Holiday" selected>👨‍👩‍👧‍👦 Family Vacation</option>
+            <option value="Family Holiday" selected> Family Vacation</option>
             <option value="Adventure & Nature"> Adventure &amp; Sightseeing</option>
             <option value="Budget Backpacker"> Budget Friendly</option>
           </select>
@@ -102,7 +102,7 @@
         </div>
 
         <button type="submit" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; padding: 0.85rem 1.6rem; border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,166,81,0.35);">
-          🤖 Generate Smart AI Itinerary Live ➔
+           Generate Smart AI Itinerary Live 
         </button>
       </form>
     </div>
@@ -120,10 +120,10 @@
           </div>
           <div style="display: flex; gap: 0.8rem;">
             <button onclick="downloadGeneratedAiPdf()" style="background: #0072bc; color: white; border: none; padding: 0.75rem 1.4rem; border-radius: 10px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 14px rgba(0,114,188,0.3);">
-              🖨️ Download PDF Itinerary Voucher
+               Download PDF Itinerary Voucher
             </button>
             <a href="tour_packages.html" style="background: #00a651; color: white; border: none; padding: 0.75rem 1.4rem; border-radius: 10px; font-weight: 900; text-decoration: none; display: inline-block;">
-              Book This Package ➔
+              Book This Package 
             </a>
           </div>
         </div>
@@ -138,7 +138,7 @@
   </main>
 
   <script src="pdf_voucher_engine.js"></script>
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     let currentGeneratedPlan = null;
 

@@ -1,4 +1,4 @@
-// ==========================================
+﻿// ==========================================
 // AUTO PURGE LEGACY MOCK & DUMMY PAID DATA (CLEAN SLATE START)
 // ==========================================
 (function purgeLegacyMockData() {
@@ -222,13 +222,13 @@ if (document.readyState === 'loading') {
 // GLOBAL PACKAGES & SEARCH REDIRECTION ENGINE
 // ==========================================
 window.defaultPackages = [
-  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
-  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: '⭐ 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
-  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: '⭐ 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
-  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
-  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
-  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '৳12,500', duration: '3 Days / 2 Nights', rating: '⭐ 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
-  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '৳42,000', duration: '5 Days / 4 Nights', rating: '⭐ 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
+  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: ' 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
+  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: ' 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
+  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: ' 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
+  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
+  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
+  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '৳12,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
+  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '৳42,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
 ];
 
 window.getCombinedLivePackages = function() {
@@ -475,7 +475,7 @@ window.renderLivePackagesSearchDropdown = function(filterText = '') {
   if (matching.length === 0) {
     dropdown.innerHTML = `
       <div style="padding: 1rem; text-align: center; color: #64748b; font-weight: 700; font-size: 0.9rem;">
-        🔍 No matching live packages found. Type another destination!
+         No matching live packages found. Type another destination!
       </div>
     `;
     return;
@@ -483,7 +483,7 @@ window.renderLivePackagesSearchDropdown = function(filterText = '') {
 
   const headerDiv = document.createElement('div');
   headerDiv.style.cssText = "padding: 0.4rem 1rem; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; font-size: 0.78rem; font-weight: 900; color: #0072bc; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center;";
-  headerDiv.innerHTML = `<span>🌴 Live Packages Directory (${matching.length})</span><span style="color: #00a651; font-weight: 800;">⚡ Instant Select</span>`;
+  headerDiv.innerHTML = `<span> Live Packages Directory (${matching.length})</span><span style="color: #00a651; font-weight: 800;"> Instant Select</span>`;
   dropdown.appendChild(headerDiv);
 
   matching.forEach(pkg => {
@@ -506,7 +506,7 @@ window.renderLivePackagesSearchDropdown = function(filterText = '') {
           <span>• ${pkg.duration}</span>
         </div>
       </div>
-      <span style="background: #00a651; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px; flex-shrink: 0;">Select ➔</span>
+      <span style="background: #00a651; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px; flex-shrink: 0;">Select </span>
     `;
     dropdown.appendChild(item);
   });
@@ -591,13 +591,13 @@ window.show2SecondAirplaneFlightAnimation = function(rawQuery, targetUrl) {
     <div style="position: absolute; bottom: 15%; left: 0; width: 100%; pointer-events: none;">
       <div style="animation: flightPathSoar 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards; display: flex; align-items: center;">
         <div style="height: 8px; background: linear-gradient(90deg, rgba(0,242,254,0) 0%, rgba(0,242,254,0.9) 60%, #ffffff 100%); border-radius: 999px; box-shadow: 0 0 25px #00f2fe; animation: jetTrailGlow 2.0s ease-out forwards; margin-right: -15px;"></div>
-        <div style="font-size: 5.5rem; filter: drop-shadow(0 0 30px #00f2fe); transform: rotate(45deg);">✈️</div>
+        <div style="font-size: 5.5rem; filter: drop-shadow(0 0 30px #00f2fe); transform: rotate(45deg);">️</div>
       </div>
     </div>
 
     <!-- Flight Status Ticker Text -->
     <div style="text-align: center; z-index: 10; padding: 2rem; max-width: 650px;">
-      <div style="font-size: 3.8rem; margin-bottom: 0.8rem; animation: pulseTextGlow 2.0s infinite;">🛫</div>
+      <div style="font-size: 3.8rem; margin-bottom: 0.8rem; animation: pulseTextGlow 2.0s infinite;"></div>
       <h2 style="font-size: 1.9rem; font-weight: 900; color: #ffffff; margin: 0 0 0.6rem; animation: pulseTextGlow 2.0s infinite; letter-spacing: -0.5px;">
         Searching Flight &amp; Tour Package for <span style="color: #00f2fe;">"${queryText}"</span>
       </h2>
@@ -666,12 +666,12 @@ window.populateCustSearchSelect = function() {
 
   const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
   
-  select.innerHTML = '<option value="">🌐 All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>';
+  select.innerHTML = '<option value=""> All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>';
 
   livePkgs.forEach(pkg => {
     const opt = document.createElement('option');
     opt.value = pkg.name;
-    opt.textContent = `📍 ${pkg.name} (${pkg.price})`;
+    opt.textContent = ` ${pkg.name} (${pkg.price})`;
     select.appendChild(opt);
   });
 };
@@ -740,7 +740,7 @@ window.handleSigninSubmit = function(e) {
   if (idVal === 'admin@mount2ocean.com' || idVal === '01977477172' || idVal === 'admin') {
     if (passVal === 'admin123' || passVal === 'admin' || !passVal) {
       localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Mount2ocean Owner Admin', email: 'admin@mount2ocean.com', mobile: '01977477172', role: 'ADMIN' }));
-      showToast('👑 Welcome Owner Admin! Accessing Dashboard...', 'success');
+      showToast(' Welcome Owner Admin! Accessing Dashboard...', 'success');
       setTimeout(() => { window.location.href = 'admin_dashboard.html'; }, 600);
       return;
     }
@@ -749,7 +749,7 @@ window.handleSigninSubmit = function(e) {
   // Guide Check
   if (idVal === 'guide@mount2ocean.com' || idVal === '01811002233' || window.selectedRole === 'guide') {
     localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Certified Tour Guide', email: 'guide@mount2ocean.com', mobile: '01811002233', role: 'GUIDE' }));
-    showToast('🚩 Welcome Tour Guide Partner!', 'success');
+    showToast(' Welcome Tour Guide Partner!', 'success');
     setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
     return;
   }
@@ -757,14 +757,14 @@ window.handleSigninSubmit = function(e) {
   // Agent Check
   if (idVal === 'agent@mount2ocean.com' || idVal === '01911002233' || window.selectedRole === 'agent') {
     localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Verified Travel Agency', email: 'agent@mount2ocean.com', mobile: '01911002233', role: 'AGENT' }));
-    showToast('🏢 Welcome Travel Agency Partner!', 'success');
+    showToast(' Welcome Travel Agency Partner!', 'success');
     setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
     return;
   }
 
   // Default Customer Check
   localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Standard Traveler Customer', email: idVal || 'customer@mount2ocean.com', mobile: '01711002233', role: 'CUSTOMER' }));
-  showToast('👤 Welcome Customer Traveler! Accessing Portal...', 'success');
+  showToast(' Welcome Customer Traveler! Accessing Portal...', 'success');
   setTimeout(() => { window.location.href = 'customer_portal.html'; }, 600);
 };
 
@@ -795,7 +795,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roleConfig = {
     customer: {
       name: 'Customer',
-      icon: '🧳',
+      icon: '',
       badgeText: 'CUSTOMER ACCOUNT',
       submitSigninText: 'Sign In as Customer (কাস্টমার লগইন)',
       submitSignupText: 'Create Customer Account (কাস্টমার সাইন আপ)',
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     guide: {
       name: 'Tour Guide',
-      icon: '🚩',
+      icon: '',
       badgeText: 'TOUR GUIDE ACCOUNT',
       submitSigninText: 'Sign In as Tour Guide (গাইড লগইন)',
       submitSignupText: 'Register as Tour Guide (গাইড সাইন আপ)',
@@ -815,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     agent: {
       name: 'Travel Agent',
-      icon: '🏢',
+      icon: '',
       badgeText: 'TRAVEL AGENCY ACCOUNT',
       submitSigninText: 'Sign In as Travel Agent (এজেন্ট লগইন)',
       submitSignupText: 'Register Travel Agency (এজেন্ট সাইন আপ)',
@@ -925,8 +925,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const allThemeBtns = document.querySelectorAll('#themeToggle, #globalThemeToggle');
     allThemeBtns.forEach(btn => {
       btn.innerHTML = theme === 'dark' 
-        ? '<span class="theme-btn-icon">☀️</span> <span class="theme-btn-text">Light Mode</span>'
-        : '<span class="theme-btn-icon">🌙</span> <span class="theme-btn-text">Dark Mode</span>';
+        ? '<span class="theme-btn-icon">️</span> <span class="theme-btn-text">Light Mode</span>'
+        : '<span class="theme-btn-icon"></span> <span class="theme-btn-text">Dark Mode</span>';
     });
   }
 
@@ -1106,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   togglePasswordBtn.addEventListener('click', () => {
     const isPassword = passwordInput.type === 'password';
     passwordInput.type = isPassword ? 'text' : 'password';
-    togglePasswordBtn.textContent = isPassword ? '🙈' : '👁️';
+    togglePasswordBtn.textContent = isPassword ? '' : '️';
   });
 
   // ==========================================
@@ -1430,7 +1430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bookMiniBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (window.showToast) window.showToast('🏨 Agent B2B Hotel Reservation initiated! Opening booking confirmation...', 'success');
+        if (window.showToast) window.showToast(' Agent B2B Hotel Reservation initiated! Opening booking confirmation...', 'success');
         setTimeout(() => { window.location.href = 'booking.html'; }, 800);
       });
     });
@@ -1531,13 +1531,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tour-card-body">
           <div class="tour-meta-row">
             <span class="tour-location">${(pkg.category || 'DESTINATION').toUpperCase()}</span>
-            <span class="tour-rating">${pkg.rating || '⭐ 4.9'}</span>
+            <span class="tour-rating">${pkg.rating || ' 4.9'}</span>
           </div>
           <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html?id=${pkg.id}';" style="cursor: pointer;">${pkg.name}</h3>
           <p class="tour-desc">${pkg.desc}</p>
           <div class="tour-card-footer">
             <span class="tour-duration">${pkg.duration}</span>
-            <button type="button" class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='booking.html?id=${pkg.id}';" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); cursor: pointer;">View &amp; Book Package ➔</button>
+            <button type="button" class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='booking.html?id=${pkg.id}';" style="background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); cursor: pointer;">View &amp; Book Package </button>
           </div>
         </div>
       `;
@@ -1625,10 +1625,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <td><span class="status-badge-live">Live</span></td>
         <td>
           <button type="button" class="primary-btn" onclick="openEditPackageModal('${pkg.id}')" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #0072bc; margin-right: 4px;">
-            ✏️ Edit
+            ️ Edit
           </button>
           <button type="button" class="btn-delete-pkg" onclick="deletePackage('${pkg.id}')" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;">
-            🗑️ Remove
+            ️ Remove
           </button>
         </td>
       `;
@@ -1716,7 +1716,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const category = document.getElementById('pkgCategorySelect').value;
       const price = document.getElementById('pkgPriceInput').value.trim();
       const duration = document.getElementById('pkgDurationInput').value.trim();
-      const rating = document.getElementById('pkgRatingInput') ? document.getElementById('pkgRatingInput').value.trim() : '⭐ 4.9';
+      const rating = document.getElementById('pkgRatingInput') ? document.getElementById('pkgRatingInput').value.trim() : ' 4.9';
       const badge = document.getElementById('pkgBadgeSelect').value;
       const badgeSelect = document.getElementById('pkgBadgeSelect');
       const badgeLabel = badgeSelect.options[badgeSelect.selectedIndex].text;
@@ -1841,7 +1841,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gallerySection.classList.remove('hidden');
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; background: #ffffff; border-radius: 12px; border: 1.5px solid #cbd5e1;">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem; display: inline-block;">✨</div>
+        <div style="font-size: 2rem; margin-bottom: 0.5rem; display: inline-block;"></div>
         <strong style="color: #0072bc; font-size: 1.05rem; display: block;">AI Engine Rendering 5 High-Definition Travel Photos...</strong>
         <span style="font-size: 0.85rem; color: #64748b;">Tailoring lighting, scenery, and resolution for ${destKey.toUpperCase()} destination...</span>
       </div>
@@ -1870,7 +1870,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="padding: 0.8rem; text-align: center;">
             <button type="button" class="primary-btn" style="width: 100%; padding: 0.45rem; font-size: 0.78rem; font-weight: 800; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 8px;" onclick="selectAIPhotoForPackage('${imgUrl}', this)">
-              Use This Photo ➔
+              Use This Photo 
             </button>
           </div>
         `;
@@ -1878,7 +1878,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (typeof showToast === 'function') {
-        showToast(`✨ Generated 5 AI Luxury Photos for ${destKey.toUpperCase()}! Click any photo to use.`, 'success');
+        showToast(` Generated 5 AI Luxury Photos for ${destKey.toUpperCase()}! Click any photo to use.`, 'success');
       }
     }, 700);
   };
@@ -1903,7 +1903,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (typeof showToast === 'function') {
-      showToast('✅ Selected AI Photo applied as Main Package Cover Photo!', 'success');
+      showToast(' Selected AI Photo applied as Main Package Cover Photo!', 'success');
     }
   };
 
@@ -2009,7 +2009,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (guestCounts.infants > 0) {
         parts.push(`${guestCounts.infants} Infant${guestCounts.infants > 1 ? 's' : ''}`);
       }
-      summaryTextEl.textContent = '👨‍👩‍👧 ' + parts.join(', ');
+      summaryTextEl.textContent = '‍‍ ' + parts.join(', ');
     }
 
     window.updateGuestButtonsUI();
@@ -2126,15 +2126,15 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="tour-card-body">
           <div class="tour-meta-row">
-            <span class="tour-location">📍 ${pkg.category ? pkg.category.toUpperCase() : 'Global Destination'}</span>
-            <span class="tour-rating">${pkg.rating || '⭐ 4.9 (150 reviews)'}</span>
+            <span class="tour-location"> ${pkg.category ? pkg.category.toUpperCase() : 'Global Destination'}</span>
+            <span class="tour-rating">${pkg.rating || ' 4.9 (150 reviews)'}</span>
           </div>
           <h3 class="tour-name" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='package_detail.html';" style="cursor: pointer;">${pkg.name}</h3>
           <p class="tour-desc">${pkg.desc}</p>
           <div class="tour-card-footer">
-            <span class="tour-duration">⏱️ ${pkg.duration}</span>
+            <span class="tour-duration">️ ${pkg.duration}</span>
             <button class="primary-btn book-tour-btn" onclick="localStorage.setItem('m2o_active_detail_pkg_id', '${pkg.id}'); window.location.href='booking.html';">
-              View &amp; Book Package ➔
+              View &amp; Book Package 
             </button>
           </div>
         </div>
@@ -2232,8 +2232,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <td><strong style="color: #0072bc; font-size: 0.95rem;">${b.id}</strong></td>
         <td>
           <strong style="font-size: 0.95rem; color: #0f172a !important; display: block;">${b.customerName}</strong>
-          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;">📞 ${b.phone}</a><br>
-          <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
+          <a href="tel:${b.phone}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;"> ${b.phone}</a><br>
+          <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">️ ${b.email || 'customer@mount2ocean.com'}</span>
         </td>
         <td><span style="font-size: 0.85rem; font-weight: 800; color: #1e293b;">${idDocStr}</span></td>
         <td class="pkg-title-cell">
@@ -2248,7 +2248,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
             <button type="button" class="primary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem; background: #00a651;" onclick="updateBookingStatusByAdmin('${b.id}', 'APPROVED')">Approve</button>
             <button type="button" class="danger-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="updateBookingStatusByAdmin('${b.id}', 'CANCELLED')">Cancel</button>
-            <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">File ➔</button>
+            <button type="button" class="secondary-btn" style="padding: 0.3rem 0.55rem; font-size: 0.74rem;" onclick="localStorage.setItem('m2o_active_booking_id', '${b.id}'); window.open('booking_detail.html', '_blank');">File </button>
           </div>
         </td>
       `;
@@ -2336,7 +2336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: bk.phone || '',
       email: bk.email || '',
       type: newStatus,
-      title: newStatus === 'APPROVED' ? '✅ Tour Booking Approved & Confirmed!' : '❌ Tour Booking Cancelled by Owner',
+      title: newStatus === 'APPROVED' ? ' Tour Booking Approved & Confirmed!' : ' Tour Booking Cancelled by Owner',
       message: newStatus === 'APPROVED'
         ? `Great news ${bk.customerName}! Your reservation for "${bk.tourTitle}" (Voucher: ${bk.id}) has been APPROVED by Mount2ocean Admin. Your official ticket voucher is active!`
         : `Notice to ${bk.customerName}: Your booking for "${bk.tourTitle}" (Voucher: ${bk.id}) has been CANCELLED by Admin. Reason / Admin Message: "${cancelReason}"`,
@@ -2433,16 +2433,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const searchBtn = document.getElementById('btnCustSearch');
 
       if (tabText.includes('Hotels')) {
-        if (searchBtn) searchBtn.innerHTML = '🏢 Find Resort Packages ➔';
+        if (searchBtn) searchBtn.innerHTML = ' Find Resort Packages ';
         showToast('Switched to Hotels & Resorts Search', 'info');
       } else if (tabText.includes('Flight')) {
-        if (searchBtn) searchBtn.innerHTML = '✈️ Find Flight Deals ➔';
+        if (searchBtn) searchBtn.innerHTML = '️ Find Flight Deals ';
         showToast('Switched to Flight Tickets Search', 'info');
       } else if (tabText.includes('Visa')) {
-        if (searchBtn) searchBtn.innerHTML = '🛂 Visa Assistance ➔';
+        if (searchBtn) searchBtn.innerHTML = ' Visa Assistance ';
         showToast('Switched to Visa Processing Search', 'info');
       } else {
-        if (searchBtn) searchBtn.innerHTML = '🌴 Find Tour Packages ➔';
+        if (searchBtn) searchBtn.innerHTML = ' Find Tour Packages ';
         showToast('Switched to Tour Packages Search', 'info');
       }
     });
@@ -2607,7 +2607,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLogged = loggedUser || localStorage.getItem('m2o_is_logged_in') === 'true';
 
     if (!isLogged) {
-      showToast('🔐 Please Sign In or Create an Account to complete your booking!', 'error');
+      showToast(' Please Sign In or Create an Account to complete your booking!', 'error');
       window.location.href = 'index.html';
       return;
     }
@@ -2625,7 +2625,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const adults = window.modalGuestCounts ? window.modalGuestCounts.adults : 2;
     const children = window.modalGuestCounts ? window.modalGuestCounts.children : 0;
     const infants = window.modalGuestCounts ? window.modalGuestCounts.infants : 0;
-    const travelersCountSummary = `👨‍👩‍👧 ${adults} Adult(s), ${children} Child(ren), ${infants} Infant(s)`;
+    const travelersCountSummary = `‍‍ ${adults} Adult(s), ${children} Child(ren), ${infants} Infant(s)`;
 
     const method = document.getElementById('custPaymentMethod') ? document.getElementById('custPaymentMethod').value : 'Direct Call Request';
     const notes = document.getElementById('custBookNotes') ? document.getElementById('custBookNotes').value.trim() : '';
@@ -2688,7 +2688,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutStep) checkoutStep.style.display = 'none';
     if (successStep) successStep.style.display = 'block';
 
-    showToast(`⏳ Booking ${bookingId} Submitted! Pending Admin Approval. Notification sent to Admin Panel!`, 'success');
+    showToast(` Booking ${bookingId} Submitted! Pending Admin Approval. Notification sent to Admin Panel!`, 'success');
   };
 
   window.openMyProfileModal = function() {
@@ -2703,7 +2703,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     
-    const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+    const icon = type === 'success' ? '' : type === 'error' ? '' : 'ℹ️';
     toast.innerHTML = `<span>${icon}</span><span>${message}</span>`;
     
     toastContainer.appendChild(toast);
@@ -2756,43 +2756,43 @@ document.addEventListener('DOMContentLoaded', () => {
       
       let statusHtml = '';
       if (item.status === 'PENDING') {
-        statusHtml = `<span style="background: rgba(234, 179, 8, 0.15); color: #d97706; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🟡 Pending Verification</span>`;
+        statusHtml = `<span style="background: rgba(234, 179, 8, 0.15); color: #d97706; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;"> Pending Verification</span>`;
       } else if (item.status === 'APPROVED') {
-        statusHtml = `<span style="background: rgba(34, 197, 94, 0.15); color: #059669; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🟢 Approved (Email Sent)</span>`;
+        statusHtml = `<span style="background: rgba(34, 197, 94, 0.15); color: #059669; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;"> Approved (Email Sent)</span>`;
       } else {
-        statusHtml = `<span style="background: rgba(239, 68, 68, 0.15); color: #dc2626; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">🔴 Rejected (Notification Sent)</span>`;
+        statusHtml = `<span style="background: rgba(239, 68, 68, 0.15); color: #dc2626; padding: 0.3rem 0.7rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem;"> Rejected (Notification Sent)</span>`;
       }
 
       let actionsHtml = '';
       if (item.status === 'PENDING') {
         actionsHtml = `
           <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; margin-right: 4px;">
-            ✅ Approve
+             Approve
           </button>
           <button type="button" class="btn-delete-pkg" onclick="rejectPartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;">
-            ❌ Reject
+             Reject
           </button>
         `;
       } else if (item.status === 'APPROVED') {
         actionsHtml = `
           <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; opacity: 0.6;" title="Already Approved">
-            ✓ Approved
+             Approved
           </button>
           <button type="button" class="btn-delete-pkg" onclick="rejectPartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem;" title="Revoke & Cancel Approval">
-            ❌ Revoke &amp; Cancel
+             Revoke &amp; Cancel
           </button>
         `;
       } else {
         actionsHtml = `
           <button type="button" class="primary-btn" onclick="approvePartner(${item.id})" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; margin-right: 4px;">
-            ✅ Approve
+             Approve
           </button>
           <span style="font-size: 0.76rem; color: #ef4444; font-weight: 700;">Rejected</span>
         `;
       }
 
       tr.innerHTML = `
-        <td><span ${roleBadgeStyle}>${item.role === 'GUIDE' ? '🚩 GUIDE' : '🏢 AGENT'}</span></td>
+        <td><span ${roleBadgeStyle}>${item.role === 'GUIDE' ? ' GUIDE' : ' AGENT'}</span></td>
         <td style="color: #0f172a !important; font-weight: 800;"><strong>${item.name}</strong></td>
         <td style="color: #1e293b !important; font-weight: 700;">${item.email}</td>
         <td><code style="background: #f1f5f9; padding: 3px 8px; border-radius: 6px; color: #0072bc; font-weight: 800; border: 1px solid #cbd5e1;">${item.credentialNo}</code></td>
@@ -2810,8 +2810,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item) {
       item.status = 'APPROVED';
       savePendingApprovals(list);
-      showToast(`✅ ${item.name} Approved! Instant confirmation email sent to ${item.email}`, 'success');
-      alert(`✅ Account Approved!\n\n${item.name} (${item.role}) has been verified.\n\nSimulated Email Sent to: ${item.email}\nSubject: Mount2ocean Partner Account Verification Approved! 🎉`);
+      showToast(` ${item.name} Approved! Instant confirmation email sent to ${item.email}`, 'success');
+      alert(` Account Approved!\n\n${item.name} (${item.role}) has been verified.\n\nSimulated Email Sent to: ${item.email}\nSubject: Mount2ocean Partner Account Verification Approved! `);
     }
   };
 
@@ -2823,8 +2823,8 @@ document.addEventListener('DOMContentLoaded', () => {
       item.status = 'REJECTED';
       item.cancellationReason = reason;
       savePendingApprovals(list);
-      showToast(`❌ ${item.name} Cancelled/Rejected. Notification sent to ${item.email}`, 'error');
-      alert(`❌ Partner Account Cancelled / Rejected!\n\n${item.name} (${item.role}) registration status updated.\nReason: "${reason}"\n\nNotification Sent to: ${item.email}`);
+      showToast(` ${item.name} Cancelled/Rejected. Notification sent to ${item.email}`, 'error');
+      alert(` Partner Account Cancelled / Rejected!\n\n${item.name} (${item.role}) registration status updated.\nReason: "${reason}"\n\nNotification Sent to: ${item.email}`);
     }
   };
 
@@ -2846,13 +2846,13 @@ window.sendLiveWebsiteEmail = function(bookingData, emailType) {
   let bodyText = '';
 
   if (emailType === 'approval') {
-    subject = `🎉 CONFIRMED: Your Mount2ocean Booking #${bookingData.id} is APPROVED!`;
-    bodyText = `Dear ${bookingData.customerName},\n\nWe are delighted to confirm your tour booking for "${bookingData.tourTitle}"!\n\n📋 RESERVATION SUMMARY:\n• Voucher ID: ${bookingData.id}\n• Travel Date: ${bookingData.travelDate || bookingData.date}\n• Travelers: ${bookingData.travelersCount}\n• Identity/Passport: ${bookingData.passportNo ? 'Passport #' + bookingData.passportNo : 'NID Verified'}\n• Payment Option: ${bookingData.paymentMethod}\n\nOur travel manager will reach you shortly at ${bookingData.phone} to coordinate tickets & vouchers.\n\nThank you for choosing Mount2ocean Travel & Tours!\nHotline: +880 1977-477172\nEmail: info@mount2ocean.com`;
+    subject = ` CONFIRMED: Your Mount2ocean Booking #${bookingData.id} is APPROVED!`;
+    bodyText = `Dear ${bookingData.customerName},\n\nWe are delighted to confirm your tour booking for "${bookingData.tourTitle}"!\n\n RESERVATION SUMMARY:\n• Voucher ID: ${bookingData.id}\n• Travel Date: ${bookingData.travelDate || bookingData.date}\n• Travelers: ${bookingData.travelersCount}\n• Identity/Passport: ${bookingData.passportNo ? 'Passport #' + bookingData.passportNo : 'NID Verified'}\n• Payment Option: ${bookingData.paymentMethod}\n\nOur travel manager will reach you shortly at ${bookingData.phone} to coordinate tickets & vouchers.\n\nThank you for choosing Mount2ocean Travel & Tours!\nHotline: +880 1977-477172\nEmail: info@mount2ocean.com`;
   } else if (emailType === 'cancellation' || emailType === 'rejection') {
-    subject = `⚠️ UPDATE: Booking Reservation Status #${bookingData.id}`;
+    subject = `️ UPDATE: Booking Reservation Status #${bookingData.id}`;
     bodyText = `Dear ${bookingData.customerName},\n\nYour booking reservation #${bookingData.id} for "${bookingData.tourTitle}" has been CANCELLED.\n\nReason: ${bookingData.cancellationReason || 'Requested departure date fully booked'}.\n\nPlease contact our helpline at +880 1977-477172 for alternate travel dates or assistance.`;
   } else {
-    subject = `📥 RECEIVED: Booking Reservation #${bookingData.id} Submitted Successfully!`;
+    subject = ` RECEIVED: Booking Reservation #${bookingData.id} Submitted Successfully!`;
     bodyText = `Dear ${bookingData.customerName},\n\nThank you for submitting your booking reservation for "${bookingData.tourTitle}".\n\nBooking Reference ID: ${bookingData.id}\nStatus: PENDING ADMIN APPROVAL\n\nOur team is reviewing your request and will notify you upon confirmation.`;
   }
 
@@ -2886,8 +2886,8 @@ window.approveCustomerBooking = function(bookingId) {
     renderAdminBookings();
     
     const emailResult = window.sendLiveWebsiteEmail(target, 'approval');
-    showToast(`✅ Booking ${bookingId} Approved! Confirmation Email sent to ${target.email || target.phone}`, 'success');
-    alert(`✅ Booking ${bookingId} Approved Successfully!\n\nCustomer Name: ${target.customerName}\nPhone: ${target.phone}\nTour Package: ${target.tourTitle}\n\n✉️ LIVE WEBSITE EMAIL SENT TO: ${emailResult.emailTo}\nSubject: ${emailResult.subject}\n\nBody Preview:\n${emailResult.bodyText}`);
+    showToast(` Booking ${bookingId} Approved! Confirmation Email sent to ${target.email || target.phone}`, 'success');
+    alert(` Booking ${bookingId} Approved Successfully!\n\nCustomer Name: ${target.customerName}\nPhone: ${target.phone}\nTour Package: ${target.tourTitle}\n\n️ LIVE WEBSITE EMAIL SENT TO: ${emailResult.emailTo}\nSubject: ${emailResult.subject}\n\nBody Preview:\n${emailResult.bodyText}`);
   }
 };
 
@@ -2906,8 +2906,8 @@ window.rejectCustomerBooking = function(bookingId) {
     renderAdminBookings();
     
     const emailResult = window.sendLiveWebsiteEmail(target, 'cancellation');
-    showToast(`❌ Booking ${bookingId} Cancelled. Notification sent to customer.`, 'error');
-    alert(`❌ Booking ${bookingId} Cancelled!\n\nCustomer Name: ${target.customerName}\nReason: ${target.cancellationReason}\n\n✉️ LIVE WEBSITE CANCELLATION EMAIL SENT TO: ${emailResult.emailTo}\nSubject: ${emailResult.subject}`);
+    showToast(` Booking ${bookingId} Cancelled. Notification sent to customer.`, 'error');
+    alert(` Booking ${bookingId} Cancelled!\n\nCustomer Name: ${target.customerName}\nReason: ${target.cancellationReason}\n\n️ LIVE WEBSITE CANCELLATION EMAIL SENT TO: ${emailResult.emailTo}\nSubject: ${emailResult.subject}`);
   }
 };
 
@@ -2945,7 +2945,7 @@ function renderCustomerProfileBookings() {
   const nameEl = document.getElementById('myProfileName');
   const contactEl = document.getElementById('myProfileContact');
   if (nameEl) nameEl.textContent = loggedName;
-  if (contactEl) contactEl.textContent = `📱 ${loggedPhone} • ✉️ ${loggedEmail}`;
+  if (contactEl) contactEl.textContent = ` ${loggedPhone} • ️ ${loggedEmail}`;
 
   const bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [
     {
@@ -2975,17 +2975,17 @@ function renderCustomerProfileBookings() {
     let statusTagHtml = '';
     let statusDesc = '';
     if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
-      statusTagHtml = `<span style="background: rgba(0, 166, 81, 0.18); color: #22c55e; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(34, 197, 94, 0.3);">✅ APPROVED (অনুমোদিত)</span>`;
-      statusDesc = `<p style="font-size: 0.85rem; color: #22c55e; font-weight: 700; margin-top: 0.6rem;">🎉 অভিনন্দন! আপনার ট্রিপ বুকিং ওনার দ্বারা অনুমোদিত হয়েছে! কনফার্মেশন ইমেইল আপনার ঠিকানায় পাঠানো হয়েছে।</p>`;
+      statusTagHtml = `<span style="background: rgba(0, 166, 81, 0.18); color: #22c55e; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(34, 197, 94, 0.3);"> APPROVED (অনুমোদিত)</span>`;
+      statusDesc = `<p style="font-size: 0.85rem; color: #22c55e; font-weight: 700; margin-top: 0.6rem;"> অভিনন্দন! আপনার ট্রিপ বুকিং ওনার দ্বারা অনুমোদিত হয়েছে! কনফার্মেশন ইমেইল আপনার ঠিকানায় পাঠানো হয়েছে।</p>`;
     } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
-      statusTagHtml = `<span style="background: rgba(239, 68, 68, 0.18); color: #ef4444; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(239, 68, 68, 0.3);">❌ CANCELLED (বাতিলকৃত)</span>`;
+      statusTagHtml = `<span style="background: rgba(239, 68, 68, 0.18); color: #ef4444; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(239, 68, 68, 0.3);"> CANCELLED (বাতিলকৃত)</span>`;
       statusDesc = `<div style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.6rem;">
-        <span style="font-size: 0.82rem; color: #ef4444; font-weight: 800; display: block;">❌ বাতিলের কারণ: ${bk.cancellationReason || 'নির্ধারিত তারিখে পর্যাপ্ত সিট খালি নেই'}</span>
+        <span style="font-size: 0.82rem; color: #ef4444; font-weight: 800; display: block;"> বাতিলের কারণ: ${bk.cancellationReason || 'নির্ধারিত তারিখে পর্যাপ্ত সিট খালি নেই'}</span>
         <span style="font-size: 0.78rem; color: #cbd5e1;">সহায়তার জন্য হটলাইনে কল করুন: +880 1977-477172</span>
       </div>`;
     } else {
-      statusTagHtml = `<span style="background: rgba(234, 179, 8, 0.18); color: #eab308; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(234, 179, 8, 0.3);">⏳ PENDING (অনুমোদনের অপেক্ষায়)</span>`;
-      statusDesc = `<p style="font-size: 0.85rem; color: #eab308; font-weight: 700; margin-top: 0.6rem;">⏳ আপনার বুকিং আবেদন ওনার ড্যাশবোর্ডে পর্যালোচনার জন্য জমা রয়েছে।</p>`;
+      statusTagHtml = `<span style="background: rgba(234, 179, 8, 0.18); color: #eab308; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(234, 179, 8, 0.3);"> PENDING (অনুমোদনের অপেক্ষায়)</span>`;
+      statusDesc = `<p style="font-size: 0.85rem; color: #eab308; font-weight: 700; margin-top: 0.6rem;"> আপনার বুকিং আবেদন ওনার ড্যাশবোর্ডে পর্যালোচনার জন্য জমা রয়েছে।</p>`;
     }
 
     card.innerHTML = `
@@ -2998,14 +2998,14 @@ function renderCustomerProfileBookings() {
       </div>
       <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--text-main);">${bk.tourTitle}</h4>
       <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; color: var(--text-muted); margin-bottom: 0.4rem;">
-        <span>🗓️ Date: <strong>${bk.travelDate || bk.date}</strong></span>
-        <span>👥 Travelers: <strong>${bk.travelersCount}</strong></span>
-        ${bk.passportNo ? `<span>🛂 Passport: <strong>${bk.passportNo}</strong></span>` : ''}
-        <span>💳 Method: <strong>${bk.paymentMethod}</strong></span>
+        <span>️ Date: <strong>${bk.travelDate || bk.date}</strong></span>
+        <span> Travelers: <strong>${bk.travelersCount}</strong></span>
+        ${bk.passportNo ? `<span> Passport: <strong>${bk.passportNo}</strong></span>` : ''}
+        <span> Method: <strong>${bk.paymentMethod}</strong></span>
       </div>
       ${statusDesc}
       <button onclick="localStorage.setItem('m2o_active_booking_id', '${bk.id}'); window.location.href='booking_detail.html';" style="margin-top: 0.8rem; padding: 0.45rem 0.95rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: none; border-radius: 8px; color: #ffffff; font-weight: 800; font-size: 0.82rem; cursor: pointer; width: 100%;">
-        📋 Track Booking File &amp; Live Status ➔
+         Track Booking File &amp; Live Status 
       </button>
     `;
     container.appendChild(card);
@@ -3017,7 +3017,7 @@ function checkCustomerBookingNotifications() {
   const approvedOne = bookings.find(b => b.status === 'APPROVED');
   const badgeEl = document.getElementById('custBookingStatusBadge');
   if (approvedOne && badgeEl) {
-    badgeEl.textContent = `🎉 Approved (${approvedOne.id})`;
+    badgeEl.textContent = ` Approved (${approvedOne.id})`;
     badgeEl.style.color = '#00a651';
   }
 }
@@ -3105,21 +3105,21 @@ function checkCustomerBookingNotifications() {
         <td><strong style="color: #0f172a !important; font-weight: 800; font-size: 0.95rem;">${u.name}</strong></td>
         <td>
           <div style="font-size: 0.86rem; line-height: 1.4;">
-            <a href="tel:${u.mobile}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;">📞 ${u.mobile}</a><br>
-            <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">✉️ ${u.email}</span>
+            <a href="tel:${u.mobile}" style="color: #00a651; font-weight: 800; text-decoration: none; font-size: 0.84rem;"> ${u.mobile}</a><br>
+            <span style="color: #475569; font-size: 0.8rem; font-weight: 700;">️ ${u.email}</span>
           </div>
         </td>
         <td><span class="${roleBadgeClass}" style="padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 800;">${u.role}</span></td>
         <td><span style="font-size: 0.85rem; color: #1e293b !important; font-weight: 700;">${u.registeredAt}</span></td>
         <td>
-          <span style="font-size: 0.85rem; color: #00a651; font-weight: 800;">🟢 ${u.lastLoginAt}</span><br>
+          <span style="font-size: 0.85rem; color: #00a651; font-weight: 800;"> ${u.lastLoginAt}</span><br>
           <span style="font-size: 0.78rem; color: #1e293b; font-weight: 700;">(Sessions: ${u.loginCount || 1})</span>
         </td>
-        <td><span class="status-badge-live" style="background: rgba(34,197,94,0.15); color: #059669; font-weight: 800;">✔ ${u.status || 'Active'}</span></td>
+        <td><span class="status-badge-live" style="background: rgba(34,197,94,0.15); color: #059669; font-weight: 800;"> ${u.status || 'Active'}</span></td>
         <td>
           <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-            <a href="tel:${u.mobile}" class="primary-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; text-decoration: none; font-weight: 800;">📞 Call</a>
-            <button type="button" class="danger-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; font-weight: 800;" onclick="deleteUserDirectoryRecord('${u.id}')">🗑️ Delete</button>
+            <a href="tel:${u.mobile}" class="primary-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; background: #00a651; text-decoration: none; font-weight: 800;"> Call</a>
+            <button type="button" class="danger-btn" style="padding: 0.25rem 0.55rem; font-size: 0.74rem; font-weight: 800;" onclick="deleteUserDirectoryRecord('${u.id}')">️ Delete</button>
           </div>
         </td>
       `;
@@ -3155,12 +3155,12 @@ function checkCustomerBookingNotifications() {
     if (!select) return;
 
     const pkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
-    select.innerHTML = '<option value="ALL">🌐 All Packages (সকল প্যাকেজ)</option>';
+    select.innerHTML = '<option value="ALL"> All Packages (সকল প্যাকেজ)</option>';
 
     pkgs.forEach(p => {
       const opt = document.createElement('option');
       opt.value = p.id;
-      opt.textContent = `📦 ${p.name}`;
+      opt.textContent = ` ${p.name}`;
       select.appendChild(opt);
     });
   };
@@ -3187,9 +3187,9 @@ function checkCustomerBookingNotifications() {
         <td><strong style="color: #0f172a !important; font-weight: 800;">${p.targetName || p.targetPkg}</strong></td>
         <td><span class="status-badge-live" style="background: rgba(0, 166, 81, 0.15); color: #00a651; font-weight: 900;">${valStr}</span></td>
         <td><span style="font-size: 0.88rem; color: #1e293b !important; font-weight: 700;">${p.createdAt}</span></td>
-        <td><span class="status-badge-live" style="background: rgba(34, 197, 94, 0.15); color: #059669; font-weight: 800;">✔ ${p.status}</span></td>
+        <td><span class="status-badge-live" style="background: rgba(34, 197, 94, 0.15); color: #059669; font-weight: 800;"> ${p.status}</span></td>
         <td>
-          <button type="button" class="danger-btn" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; font-weight: 800;" onclick="deletePromoCode('${p.code}')">🗑️ Delete</button>
+          <button type="button" class="danger-btn" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; font-weight: 800;" onclick="deletePromoCode('${p.code}')">️ Delete</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -3226,7 +3226,7 @@ function checkCustomerBookingNotifications() {
     localStorage.setItem('m2o_package_promo_codes', JSON.stringify(promos));
     renderAdminPromoCodes();
     document.getElementById('createPromoCodeForm').reset();
-    if (typeof showToast === 'function') showToast(`🎉 Promo Code ${code} created successfully!`, 'success');
+    if (typeof showToast === 'function') showToast(` Promo Code ${code} created successfully!`, 'success');
   };
 
   window.deletePromoCode = function(code) {
@@ -3245,11 +3245,11 @@ function checkCustomerBookingNotifications() {
     const promo = promos.find(p => p.code === cleanCode && p.status === 'ACTIVE');
 
     if (!promo) {
-      return { valid: false, message: '❌ Invalid or expired Promo Code!' };
+      return { valid: false, message: ' Invalid or expired Promo Code!' };
     }
 
     if (promo.targetPkg !== 'ALL' && promo.targetPkg !== currentPkgId) {
-      return { valid: false, message: `⚠️ Code ${cleanCode} is valid only for ${promo.targetName || 'specific package'}!` };
+      return { valid: false, message: `️ Code ${cleanCode} is valid only for ${promo.targetName || 'specific package'}!` };
     }
 
     let discountAmount = 0;
@@ -3266,7 +3266,7 @@ function checkCustomerBookingNotifications() {
       code: promo.code,
       discountAmount: discountAmount,
       newTotal: newTotal,
-      message: `🎉 Promo Code ${promo.code} Applied! You saved ৳${discountAmount.toLocaleString()}!`
+      message: ` Promo Code ${promo.code} Applied! You saved ৳${discountAmount.toLocaleString()}!`
     };
   };
 
@@ -3277,7 +3277,7 @@ function checkCustomerBookingNotifications() {
     phone: '+880 1977-477172',
     email: 'info@mount2ocean.com',
     address: 'Banani C/A, Dhaka 1213, Bangladesh',
-    announcement: '🎉 Special Summer Discount Offer! Enjoy up to 20% OFF on all International & Domestic Tour Packages!'
+    announcement: ' Special Summer Discount Offer! Enjoy up to 20% OFF on all International & Domestic Tour Packages!'
   };
 
   window.renderAdminGlobalSettings = function() {
@@ -3309,7 +3309,7 @@ function checkCustomerBookingNotifications() {
 
     localStorage.setItem('m2o_global_settings', JSON.stringify(settings));
     applyGlobalSettingsToDOM(settings);
-    if (typeof showToast === 'function') showToast('🎉 Global Website Settings & Hotline saved live!', 'success');
+    if (typeof showToast === 'function') showToast(' Global Website Settings & Hotline saved live!', 'success');
   };
 
   window.applyGlobalSettingsToDOM = function(settings) {
@@ -3403,11 +3403,11 @@ function checkCustomerBookingNotifications() {
       notifBanner.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.4rem;">
           <strong style="color: ${titleColor}; font-size: 1.05rem; font-weight: 800;">${unreadNotif.title}</strong>
-          <button onclick="dismissCustomerNotification('${unreadNotif.id}')" style="border: none; background: transparent; cursor: pointer; font-size: 1.1rem; color: #94a3b8; font-weight: 800;">✕</button>
+          <button onclick="dismissCustomerNotification('${unreadNotif.id}')" style="border: none; background: transparent; cursor: pointer; font-size: 1.1rem; color: #94a3b8; font-weight: 800;"></button>
         </div>
         <p style="margin: 0 0 0.8rem; font-size: 0.88rem; color: #334155; line-height: 1.45;">${unreadNotif.message}</p>
         <div style="display: flex; gap: 0.6rem; align-items: center;">
-          <a href="my_profile.html" class="primary-btn" style="padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 800; text-decoration: none; background: ${titleColor};">View My Profile &amp; Ticket ➔</a>
+          <a href="my_profile.html" class="primary-btn" style="padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 800; text-decoration: none; background: ${titleColor};">View My Profile &amp; Ticket </a>
           <button onclick="dismissCustomerNotification('${unreadNotif.id}')" class="secondary-btn" style="padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 700;">Dismiss</button>
         </div>
       `;
@@ -3442,7 +3442,7 @@ function checkCustomerBookingNotifications() {
   // MAGIC AI ASSISTANT BOT & LIVE ADMIN SUPPORT ENGINE
   // ==========================================
   const defaultAiInitialMessages = [
-    { sender: 'bot', text: '👋 আসসালামু আলাইকুম! Mount2ocean AI স্মার্ট অ্যাসিস্ট্যান্ট এ আপনাকে স্বাগতম! আমি কীভাবে সাহায্য করতে পারি?', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+    { sender: 'bot', text: ' আসসালামু আলাইকুম! Mount2ocean AI স্মার্ট অ্যাসিস্ট্যান্ট এ আপনাকে স্বাগতম! আমি কীভাবে সাহায্য করতে পারি?', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
   ];
 
   window.getAiChatMessages = function() {
@@ -3478,7 +3478,7 @@ function checkCustomerBookingNotifications() {
       localStorage.removeItem('m2o_customer_chat_messages');
       localStorage.setItem('m2o_customer_notifications', JSON.stringify([]));
       
-      if (typeof showToast === 'function') showToast('🧹 All temporary test data removed successfully!', 'success');
+      if (typeof showToast === 'function') showToast(' All temporary test data removed successfully!', 'success');
       setTimeout(() => window.location.reload(), 800);
     }
   };
@@ -3530,11 +3530,11 @@ function checkCustomerBookingNotifications() {
         let currentMsgs = getAiChatMessages();
         currentMsgs.push({
           sender: 'bot',
-          text: `⏳ আপনার রিকোয়েস্টটি Mount2ocean ওনার ও অ্যাডমিন লাইভ সাপোর্ট কনসোলে ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন টিম খুব শীঘ্রই আপনাকে সরাসরি রিপ্লাই দেবেন।`,
+          text: ` আপনার রিকোয়েস্টটি Mount2ocean ওনার ও অ্যাডমিন লাইভ সাপোর্ট কনসোলে ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন টিম খুব শীঘ্রই আপনাকে সরাসরি রিপ্লাই দেবেন।`,
           time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         });
         saveAiChatMessages(currentMsgs);
-        if (typeof showToast === 'function') showToast('💬 Connected to Admin Live Support Team!', 'success');
+        if (typeof showToast === 'function') showToast(' Connected to Admin Live Support Team!', 'success');
       }, 600);
 
       return;
@@ -3547,29 +3547,29 @@ function checkCustomerBookingNotifications() {
 
     if (lower.includes('sylhet') || lower.includes('সিলেট') || lower.includes('jaflong') || lower.includes('জাফলং') || lower.includes('ratargul') || lower.includes('রাতারগুল')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-sylhet-tea' || (p.category || '').includes('sylhet'));
-      botReply = `🍵 ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" পেজে ক্লিক করুন!`;
+      botReply = ` ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n️ সময়কাল: 3 Days / 2 Nights\n অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" পেজে ক্লিক করুন!`;
     } else if (lower.includes('nepal') || lower.includes('নেপাল') || lower.includes('kathmandu') || lower.includes('কাঠমান্ডু') || lower.includes('pokhara') || lower.includes('পোখরা')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-nepal-himalaya' || (p.category || '').includes('nepal'));
-      botReply = `🏔️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৪২,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 5 Days / 4 Nights\n📜 অন্তর্ভুক্ত: পশুপতিনাথ মন্দির, ফেওয়া লেকে বোটিং, সারংকোট হিমালয় সানরাইজ পয়েন্ট ও প্যারাগ্লাইডিং।`;
+      botReply = `️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n মূল্য: ${pkg ? pkg.price : '৳৪২,০০০'} (প্রতি জন)\n️ সময়কাল: 5 Days / 4 Nights\n অন্তর্ভুক্ত: পশুপতিনাথ মন্দির, ফেওয়া লেকে বোটিং, সারংকোট হিমালয় সানরাইজ পয়েন্ট ও প্যারাগ্লাইডিং।`;
     } else if (lower.includes('cox') || lower.includes('কক্সবাজার') || lower.includes('saint') || lower.includes('সেন্টমার্টিন')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-coxsbazar-beach' || (p.category || '').includes('coxsbazar'));
-      botReply = `🏖️ ${pkg ? pkg.name : "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise"}\n💰 মূল্য: ${pkg ? pkg.price : '৳১৮,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 3 Days / 2 Nights\n📜 অন্তর্ভুক্ত: সি-ফ্রন্ট ৫-স্টার রিসোর্ট, সি-ফুড বুফে ব্রেকফাস্ট, সেন্টমার্টিন শিপ ক্রুজ এবং কোলাতলী বিচ ট্যুর।`;
+      botReply = `️ ${pkg ? pkg.name : "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise"}\n মূল্য: ${pkg ? pkg.price : '৳১৮,৫০০'} (প্রতি জন)\n️ সময়কাল: 3 Days / 2 Nights\n অন্তর্ভুক্ত: সি-ফ্রন্ট ৫-স্টার রিসোর্ট, সি-ফুড বুফে ব্রেকফাস্ট, সেন্টমার্টিন শিপ ক্রুজ এবং কোলাতলী বিচ ট্যুর।`;
     } else if (lower.includes('dubai') || lower.includes('দুবাই') || lower.includes('burj') || lower.includes('বুর্জ')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-dubai-safari' || (p.category || '').includes('dubai'));
-      botReply = `🏙️ ${pkg ? pkg.name : 'Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৪৮,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 5 Days / 4 Nights\n📜 অন্তর্ভুক্ত: ৪x৪ ডেসার্ট সাফারি, বুর্জ খলিফা ১২৪ তলার টিকেট, মেরিনা ক্রুজ উইথ বার্বিকিউ ডিনার।`;
+      botReply = `️ ${pkg ? pkg.name : 'Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise'}\n মূল্য: ${pkg ? pkg.price : '৳৪৮,০০০'} (প্রতি জন)\n️ সময়কাল: 5 Days / 4 Nights\n অন্তর্ভুক্ত: ৪x৪ ডেসার্ট সাফারি, বুর্জ খলিফা ১২৪ তলার টিকেট, মেরিনা ক্রুজ উইথ বার্বিকিউ ডিনার।`;
     } else if (lower.includes('maldives') || lower.includes('মালদ্বীপ')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-maldives-resort' || (p.category || '').includes('maldives'));
-      botReply = `🏝️ ${pkg ? pkg.name : 'Maldives Overwater Resort Villa & Speedboat Transfer'}\n💰 মূল্য: ${pkg ? pkg.price : '৳৮৫,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: প্রাইভেট ওভারওয়াটার ভিলা, স্নরকেলিং স্পিডবোট রাইড, অল-ইনক্লুসিভ লাক্সারি মিলস।`;
+      botReply = `️ ${pkg ? pkg.name : 'Maldives Overwater Resort Villa & Speedboat Transfer'}\n মূল্য: ${pkg ? pkg.price : '৳৮৫,০০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: প্রাইভেট ওভারওয়াটার ভিলা, স্নরকেলিং স্পিডবোট রাইড, অল-ইনক্লুসিভ লাক্সারি মিলস।`;
     } else if (lower.includes('bhutan') || lower.includes('ভুটান')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-bhutan' || (p.category || '').includes('bhutan'));
-      botReply = `🇧🇹 ${pkg ? pkg.name : "Bhutan Cultural Tour & Tiger's Nest Hike"}\n💰 মূল্য: ${pkg ? pkg.price : '৳৭৫,০০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: রিটার্ন এয়ার টিকিট, ৩-স্টার হোটেল, পারো ও থিম্পু সাইটসিয়িং।`;
+      botReply = ` ${pkg ? pkg.name : "Bhutan Cultural Tour & Tiger's Nest Hike"}\n মূল্য: ${pkg ? pkg.price : '৳৭৫,০০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: রিটার্ন এয়ার টিকিট, ৩-স্টার হোটেল, পারো ও থিম্পু সাইটসিয়িং।`;
     } else if (lower.includes('bali') || lower.includes('বালি')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
-      botReply = `🇮🇩 ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n💰 মূল্য: ${pkg ? pkg.price : '৳১৭,৫০০'} (প্রতি জন)\n⏱️ সময়কাল: 4 Days / 3 Nights\n📜 অন্তর্ভুক্ত: কিন্তামানি আগ্নেয়গিরি, ওয়াটার স্পোর্টস বোট রাইড এবং তানাহ লট সানসেট ট্যুর।`;
+      botReply = ` ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n মূল্য: ${pkg ? pkg.price : '৳১৭,৫০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: কিন্তামানি আগ্নেয়গিরি, ওয়াটার স্পোর্টস বোট রাইড এবং তানাহ লট সানসেট ট্যুর।`;
     } else if (lower.includes('flight') || lower.includes('ticket') || lower.includes('টিকিট') || lower.includes('বিমান') || lower.includes('এয়ারলাইন্স')) {
-      botReply = `✈️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
+      botReply = `️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
     } else if (lower.includes('hotel') || lower.includes('হোটেল') || lower.includes('resort') || lower.includes('রিসোর্ট')) {
-      botReply = `🏢 হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
+      botReply = ` হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
     } else if (lower.includes('visa') || lower.includes('ভিসা') || lower.includes('উমরাহ') || lower.includes('umrah')) {
       const visaRates = [
         { key: ['france', 'ফ্রান্স'], country: 'ফ্রান্স (France)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' },
@@ -3588,13 +3588,13 @@ function checkCustomerBookingNotifications() {
         { key: ['malaysia', 'মালয়েশিয়া'], country: 'মালয়েশিয়া (Malaysia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 5,000' },
         { key: ['india', 'ভারত'], country: 'ভারত (India)', duration: '১ কর্মদিবস', fee: 'TK 1,000' },
         { key: ['srilanka', 'শ্রীলঙ্কা'], country: 'শ্রীলঙ্কা (Sri Lanka)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: 'TK 3,500' },
-        { key: ['vietnam', 'ভিয়েতনাম'], country: 'ভিয়েতনাম (Vietnam)', duration: '১ - ২ কর্মদিবস', fee: '⏳ শীঘ্রই শুরু হবে' },
-        { key: ['cambodia', 'কম্বোডিয়া'], country: 'কম্বোডিয়া ই-ভিসা (Cambodia)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: '⏳ শীঘ্রই শুরু হবে' },
-        { key: ['russia', 'রাশিয়া'], country: 'রাশিয়া (Russia)', duration: '৫ - ৭ কর্মদিবস', fee: '📞 অফিসে যোগাযোগের অনুরোধ' },
+        { key: ['vietnam', 'ভিয়েতনাম'], country: 'ভিয়েতনাম (Vietnam)', duration: '১ - ২ কর্মদিবস', fee: ' শীঘ্রই শুরু হবে' },
+        { key: ['cambodia', 'কম্বোডিয়া'], country: 'কম্বোডিয়া ই-ভিসা (Cambodia)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: ' শীঘ্রই শুরু হবে' },
+        { key: ['russia', 'রাশিয়া'], country: 'রাশিয়া (Russia)', duration: '৫ - ৭ কর্মদিবস', fee: ' অফিসে যোগাযোগের অনুরোধ' },
         { key: ['saudi', 'umrah', 'সৌদি', 'উমরাহ'], country: 'সৌদি উমরাহ ই-ভিসা (Saudi Umrah)', duration: '২ - ৩ কর্মদিবস (আনুমানিক)', fee: 'TK 22,000' },
         { key: ['egypt', 'মিশর'], country: 'মিশর (Egypt)', duration: '১ কর্মদিবস (আনুমানিক)', fee: 'TK 2,500' },
-        { key: ['morocco', 'মরক্কো'], country: 'মরক্কো (Morocco)', duration: '১ - ২ কর্মদিবস', fee: '📞 অফিসে যোগাযোগের অনুরোধ' },
-        { key: ['uzbekistan', 'উজবেকিস্তান'], country: 'উজবেকিস্তান (Uzbekistan)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: '⏳ শীঘ্রই শুরু হবে' },
+        { key: ['morocco', 'মরক্কো'], country: 'মরক্কো (Morocco)', duration: '১ - ২ কর্মদিবস', fee: ' অফিসে যোগাযোগের অনুরোধ' },
+        { key: ['uzbekistan', 'উজবেকিস্তান'], country: 'উজবেকিস্তান (Uzbekistan)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: ' শীঘ্রই শুরু হবে' },
         { key: ['ethiopia', 'ইথিওপিয়া'], country: 'ইথিওপিয়া ই-ভিসা (Ethiopia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 10,500' },
         { key: ['australia', 'অস্ট্রেলিয়া'], country: 'অস্ট্রেলিয়া (Australia)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
         { key: ['italy', 'ইতালি'], country: 'ইতালি (Italy)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' }
@@ -3603,23 +3603,23 @@ function checkCustomerBookingNotifications() {
       const matchedVisa = visaRates.find(v => v.key.some(k => lower.includes(k)));
 
       if (matchedVisa) {
-        botReply = `🛂 ${matchedVisa.country} ভিসা প্রসেসিং:\n⏱️ সময়কাল: ${matchedVisa.duration}\n💰 চার্জ/ফি: ${matchedVisa.fee}\n\n📞 বিস্তারিত ও ফাইল জমা দিতে কল করুন: +880 1977-477172`;
+        botReply = ` ${matchedVisa.country} ভিসা প্রসেসিং:\n️ সময়কাল: ${matchedVisa.duration}\n চার্জ/ফি: ${matchedVisa.fee}\n\n বিস্তারিত ও ফাইল জমা দিতে কল করুন: +880 1977-477172`;
       } else {
         let listText = visaRates.slice(0, 15).map(v => `• ${v.country}: ${v.fee} (${v.duration})`).join('\n');
-        botReply = `🛂 Mount2ocean এর অফিশিয়াল ২৬টি দেশের ভিসা প্রসেসিং রেট কার্ড:\n\n${listText}\n\n...এবং আরও ১১টি দেশ (কানাডা, ইতালি, রাশিয়া, শেনজেন ইত্যাদি)।\n\n📞 কোনো নির্দিষ্ট দেশের ভিসা ফি জানতে উক্ত দেশের নাম টাইপ করুন অথবা কল করুন: +880 1977-477172`;
+        botReply = ` Mount2ocean এর অফিশিয়াল ২৬টি দেশের ভিসা প্রসেসিং রেট কার্ড:\n\n${listText}\n\n...এবং আরও ১১টি দেশ (কানাডা, ইতালি, রাশিয়া, শেনজেন ইত্যাদি)।\n\n কোনো নির্দিষ্ট দেশের ভিসা ফি জানতে উক্ত দেশের নাম টাইপ করুন অথবা কল করুন: +880 1977-477172`;
       }
     } else if (lower.includes('package') || lower.includes('প্যাকেজ') || lower.includes('price') || lower.includes('cost') || lower.includes('দাম') || lower.includes('খরচ')) {
       let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
-      botReply = `📦 আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
+      botReply = ` আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
     } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('বিকাশ') || lower.includes('পেমেন্ট') || lower.includes('টাকা')) {
-      botReply = `💳 পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Direct (+880 1977-477172)\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer / Cash on Office Counter\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
+      botReply = ` পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Direct (+880 1977-477172)\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer / Cash on Office Counter\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
     } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('বাতিল') || lower.includes('রিফান্ড')) {
-      botReply = `🛡️ রিফান্ড পলিসি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে বুকিং ক্যানসেল করলে ১০০% রিফান্ড পাবেন।\n• ওনার/অ্যাডমিন টিম দ্বারা কোনো কারণে সফর স্থগিত হলে তাৎক্ষণিক রিফান্ড সম্পন্ন হয়।`;
+      botReply = `️ রিফান্ড পলিসি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে বুকিং ক্যানসেল করলে ১০০% রিফান্ড পাবেন।\n• ওনার/অ্যাডমিন টিম দ্বারা কোনো কারণে সফর স্থগিত হলে তাৎক্ষণিক রিফান্ড সম্পন্ন হয়।`;
     } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন') || lower.includes('ঠিকানা') || lower.includes('office')) {
       const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: '169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217' };
-      botReply = `📞 আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• কর্পোরেট অফিস: ${settings.address}`;
+      botReply = ` আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• কর্পোরেট অফিস: ${settings.address}`;
     } else {
-      botReply = `🤖 আপনার প্রশ্নের উত্তর দিতে আমি প্রস্তুত! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ভিসা সার্ভিস বিদ্যমান।\n\n💬 আপনি কি সরাসরি আমাদের লাইভ ওনার/অ্যাডমিন সাপোর্ট টিমের সাথে কথা বলতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
+      botReply = ` আপনার প্রশ্নের উত্তর দিতে আমি প্রস্তুত! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ভিসা সার্ভিস বিদ্যমান।\n\n আপনি কি সরাসরি আমাদের লাইভ ওনার/অ্যাডমিন সাপোর্ট টিমের সাথে কথা বলতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
       window.aiWaitingEscalationConsent = true;
     }
 
@@ -3652,7 +3652,7 @@ function checkCustomerBookingNotifications() {
           ? `align-self: flex-start; background: #0f172a; color: #00f2fe; border: 1px solid #00f2fe; padding: 0.75rem 1rem; border-radius: 14px 14px 14px 2px; max-width: 82%; font-size: 0.88rem; line-height: 1.45; margin-bottom: 0.6rem;`
           : `align-self: flex-start; background: #f1f5f9; color: #0f172a; padding: 0.75rem 1rem; border-radius: 14px 14px 14px 2px; max-width: 82%; font-size: 0.88rem; line-height: 1.45; border: 1px solid #cbd5e1; margin-bottom: 0.6rem;`);
 
-      const prefix = m.sender === 'admin' ? '<strong style="display:block; font-size:0.75rem; color:#00f2fe; margin-bottom:0.2rem;">👑 ADMIN LIVE SUPPORT TEAM:</strong>' : '';
+      const prefix = m.sender === 'admin' ? '<strong style="display:block; font-size:0.75rem; color:#00f2fe; margin-bottom:0.2rem;"> ADMIN LIVE SUPPORT TEAM:</strong>' : '';
       msgDiv.innerHTML = `${prefix}<span>${m.text.replace(/\n/g, '<br>')}</span><span style="display:block; text-align:right; font-size:0.68rem; opacity:0.7; margin-top:0.3rem;">${m.time}</span>`;
       chatContainer.appendChild(msgDiv);
     });
@@ -3683,7 +3683,7 @@ function checkCustomerBookingNotifications() {
         </div>
 
         <button type="button" id="m2oAiBotToggleBtn" onclick="toggleM2OAiChatModal()" style="width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border: 2px solid #ffffff; color: white; font-size: 1.9rem; box-shadow: 0 8px 30px rgba(0, 166, 81, 0.5); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; flex-shrink: 0;">
-          🤖
+          
         </button>
       </div>
 
@@ -3693,21 +3693,21 @@ function checkCustomerBookingNotifications() {
           <!-- CHAT HEADER -->
           <div style="background: linear-gradient(135deg, #07111e 0%, #0072bc 100%); color: white; padding: 1.1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #00a651;">
             <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,242,254,0.4);">🤖</div>
+              <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #00a651 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,242,254,0.4);"></div>
               <div>
                 <h4 style="margin: 0; font-size: 1.1rem; font-weight: 900; color: #ffffff !important;">Mount2ocean AI Assistant</h4>
-                <span style="font-size: 0.78rem; color: #00f2fe !important; font-weight: 700;">⚡ 24/7 Online • Smart Travel Assistant</span>
+                <span style="font-size: 0.78rem; color: #00f2fe !important; font-weight: 700;"> 24/7 Online • Smart Travel Assistant</span>
               </div>
             </div>
-            <button onclick="toggleM2OAiChatModal()" style="border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1.2rem; cursor: pointer; font-weight: 900; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">✕</button>
+            <button onclick="toggleM2OAiChatModal()" style="border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1.2rem; cursor: pointer; font-weight: 900; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"></button>
           </div>
 
           <!-- QUICK ACTION CHIPS -->
           <div style="background: #f8fafc; padding: 0.65rem 0.9rem; border-bottom: 1px solid #e2e8f0; display: flex; gap: 0.5rem; overflow-x: auto; white-space: nowrap;">
-            <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #0072bc;">📦 Tour Packages</button>
-            <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #00a651;">💳 bKash Payment</button>
-            <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #475569;">📞 24/7 Hotline</button>
-            <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: rgba(239, 68, 68, 0.1); border: 1.5px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 900; color: #dc2626;">💬 Live Owner Team</button>
+            <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #0072bc;"> Tour Packages</button>
+            <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #00a651;"> bKash Payment</button>
+            <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #475569;"> 24/7 Hotline</button>
+            <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: rgba(239, 68, 68, 0.1); border: 1.5px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 900; color: #dc2626;"> Live Owner Team</button>
           </div>
 
           <!-- CHAT MESSAGES CONTAINER -->
@@ -3719,7 +3719,7 @@ function checkCustomerBookingNotifications() {
           <form onsubmit="handleCustomerAiSend(event)" style="padding: 0.9rem 1.1rem; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; gap: 0.6rem; align-items: center;">
             <input type="text" id="m2oAiChatInput" placeholder="Type your question (প্রশ্ন লিখুন)..." style="flex: 1; padding: 0.75rem 1rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 0.92rem; font-weight: 700; color: #0f172a;" required>
             <button type="submit" class="primary-btn" style="padding: 0.75rem 1.3rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 900; border-radius: 12px; white-space: nowrap;">
-              Send ➔
+              Send 
             </button>
           </form>
         </div>
@@ -3785,7 +3785,7 @@ function checkCustomerBookingNotifications() {
       
       let msgHistoryHtml = (ticket.messages || []).map(m => `
         <div style="margin-bottom: 0.45rem; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.86rem; ${m.sender === 'admin' ? 'background: rgba(0,114,188,0.12); color: #0072bc; font-weight: 700; text-align: right;' : 'background: #f1f5f9; color: #0f172a; font-weight: 700;'}">
-          <span style="font-size: 0.75rem; opacity: 0.8; display: block; margin-bottom: 0.2rem;">${m.sender === 'admin' ? '👑 Owner Support Team' : (ticket.customerName || 'Customer')} (${m.time || ''})</span>
+          <span style="font-size: 0.75rem; opacity: 0.8; display: block; margin-bottom: 0.2rem;">${m.sender === 'admin' ? ' Owner Support Team' : (ticket.customerName || 'Customer')} (${m.time || ''})</span>
           <span>${m.text}</span>
         </div>
       `).join('');
@@ -3800,7 +3800,7 @@ function checkCustomerBookingNotifications() {
               <span style="background: #10b981; color: white; padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.75rem; font-weight: 800;">${ticket.status || 'PENDING'}</span>
             </div>
             <h4 style="margin: 0.2rem 0; font-size: 1.1rem; color: #0f172a; font-weight: 900;">${ticket.customerName || 'Valued Customer'}</h4>
-            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;">📱 ${ticket.phone || 'N/A'} • ✉️ ${ticket.email || 'N/A'}</span>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700;"> ${ticket.phone || 'N/A'} • ️ ${ticket.email || 'N/A'}</span>
           </div>
           <div style="text-align: right;">
             <span style="font-size: 0.8rem; font-weight: 800; color: #0072bc; display: block;">ID: ${ticket.id}</span>
@@ -3816,19 +3816,19 @@ function checkCustomerBookingNotifications() {
           <div style="display: flex; gap: 0.5rem;">
             <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type message/SMS to customer (কাস্টমারকে উত্তর লিখুন)..." style="flex: 1; padding: 0.7rem 1rem; border: 1.5px solid #0072bc; border-radius: 10px; font-size: 0.9rem; font-weight: 700;" required>
             <button type="submit" class="primary-btn" style="padding: 0.7rem 1.4rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; border-radius: 10px; font-weight: 900; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
-              ✉️ Send Live Reply ➔
+              ️ Send Live Reply 
             </button>
           </div>
 
           <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
             <button type="button" onclick="sendOwnerWhatsappToTicket('${ticket.id}', '${cleanPhone}')" class="primary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; background: #22c55e; border-radius: 8px; font-weight: 800; cursor: pointer;">
-              💬 WhatsApp / SMS Send ➔
+               WhatsApp / SMS Send 
             </button>
             <a href="tel:${cleanPhone}" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; border-radius: 8px; font-weight: 800; text-decoration: none;">
-              📞 Call: ${ticket.phone || cleanPhone}
+               Call: ${ticket.phone || cleanPhone}
             </a>
             <button type="button" onclick="markTicketResolved('${ticket.id}')" class="secondary-btn" style="padding: 0.5rem 1rem; font-size: 0.82rem; border-radius: 8px; font-weight: 800; cursor: pointer;">
-              ✅ Mark Resolved
+               Mark Resolved
             </button>
           </div>
         </form>
@@ -3850,7 +3850,7 @@ function checkCustomerBookingNotifications() {
     if (ticket) {
       ticket.status = 'RESOLVED';
       saveSupportTickets(tickets);
-      if (typeof showToast === 'function') showToast(`✅ Ticket ${ticketId} marked as RESOLVED!`, 'success');
+      if (typeof showToast === 'function') showToast(` Ticket ${ticketId} marked as RESOLVED!`, 'success');
     }
   };
 
@@ -3878,7 +3878,7 @@ function checkCustomerBookingNotifications() {
     saveAiChatMessages(msgs);
 
     input.value = '';
-    if (typeof showToast === 'function') showToast(`✅ Live reply delivered to customer! (${ticket ? ticket.customerName : 'Live Customer'})`, 'success');
+    if (typeof showToast === 'function') showToast(` Live reply delivered to customer! (${ticket ? ticket.customerName : 'Live Customer'})`, 'success');
   };
 
   window.ownerInitiateNewCustomerMessage = function(customerName, email, phone, messageText) {
@@ -3909,10 +3909,10 @@ function checkCustomerBookingNotifications() {
 
     // Deliver admin message to customer live chat stream
     let msgs = getAiChatMessages();
-    msgs.push({ sender: 'admin', text: `👑 Mount2ocean Support: ${messageText}`, time: timeStr });
+    msgs.push({ sender: 'admin', text: ` Mount2ocean Support: ${messageText}`, time: timeStr });
     saveAiChatMessages(msgs);
 
-    if (typeof showToast === 'function') showToast(`💬 Direct Message sent to ${customerName}!`, 'success');
+    if (typeof showToast === 'function') showToast(` Direct Message sent to ${customerName}!`, 'success');
     if (typeof renderAdminLiveSupportConsole === 'function') renderAdminLiveSupportConsole();
   };
 
@@ -4009,9 +4009,9 @@ window.handleApplyPagePromoCode = function() {
 
   if (found) {
     const desc = found.type === 'PERCENT' ? `${found.value}%` : `৳${found.value}`;
-    if (typeof showToast === 'function') showToast(`🎉 Promo code ${code} applied! ${desc} discount added to your booking.`, 'success');
+    if (typeof showToast === 'function') showToast(` Promo code ${code} applied! ${desc} discount added to your booking.`, 'success');
   } else {
-    if (typeof showToast === 'function') showToast(`⚠️ Invalid promo code '${code}'. Try M2O2026 or BALI20`, 'warning');
+    if (typeof showToast === 'function') showToast(`️ Invalid promo code '${code}'. Try M2O2026 or BALI20`, 'warning');
   }
 };
 
@@ -4076,7 +4076,7 @@ window.handleCreatePromoCode = function(e) {
   });
 
   localStorage.setItem('m2o_promo_codes', JSON.stringify(promos));
-  if (typeof showToast === 'function') showToast(`🎉 New promo code ${code} published live!`, 'success');
+  if (typeof showToast === 'function') showToast(` New promo code ${code} published live!`, 'success');
   codeInput.value = '';
   valueInput.value = '';
   if (typeof renderAdminPromoCodes === 'function') renderAdminPromoCodes();
@@ -4100,7 +4100,7 @@ window.togglePagePassportFields = function() {
 };
 
 window.exportApprovalsCSV = function() {
-  if (typeof showToast === 'function') showToast('📥 Exporting Partner Approvals CSV...', 'info');
+  if (typeof showToast === 'function') showToast(' Exporting Partner Approvals CSV...', 'info');
 };
 
 window.resetApprovalsHandler = function() {
@@ -4115,7 +4115,7 @@ window.approvePartnerAction = function(id) {
   let app = apps.find(a => a.id === id);
   if (app) app.status = 'APPROVED';
   localStorage.setItem('m2o_agent_applications', JSON.stringify(apps));
-  if (typeof showToast === 'function') showToast(`✔ Partner ${id} approved successfully!`, 'success');
+  if (typeof showToast === 'function') showToast(` Partner ${id} approved successfully!`, 'success');
   window.location.reload();
 };
 
@@ -4124,12 +4124,12 @@ window.rejectPartnerAction = function(id) {
   let app = apps.find(a => a.id === id);
   if (app) app.status = 'REJECTED';
   localStorage.setItem('m2o_agent_applications', JSON.stringify(apps));
-  if (typeof showToast === 'function') showToast(`❌ Partner ${id} rejected.`, 'warning');
+  if (typeof showToast === 'function') showToast(` Partner ${id} rejected.`, 'warning');
   window.location.reload();
 };
 
 window.exportBookingsCSV = function() {
-  if (typeof showToast === 'function') showToast('📥 Exporting Customer Bookings CSV...', 'info');
+  if (typeof showToast === 'function') showToast(' Exporting Customer Bookings CSV...', 'info');
 };
 
 window.deleteBookingRecord = function(id) {
@@ -4137,7 +4137,7 @@ window.deleteBookingRecord = function(id) {
     let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings')) || [];
     bookings = bookings.filter(b => b.id !== id);
     localStorage.setItem('m2o_customer_bookings', JSON.stringify(bookings));
-    if (typeof showToast === 'function') showToast(`🗑️ Booking ${id} deleted.`, 'info');
+    if (typeof showToast === 'function') showToast(`️ Booking ${id} deleted.`, 'info');
     window.location.reload();
   }
 };
@@ -4159,7 +4159,7 @@ window.clearAiSearchLogs = function() {
 };
 
 window.addSearchToCatalog = function(id, query) {
-  if (typeof showToast === 'function') showToast(`📦 Adding '${query}' to package catalog...`, 'success');
+  if (typeof showToast === 'function') showToast(` Adding '${query}' to package catalog...`, 'success');
 };
 
 window.markSearchStatus = function(id, status) {
@@ -4180,7 +4180,7 @@ window.deleteSearchRequest = function(id) {
 };
 
 window.exportUsersCSV = function() {
-  if (typeof showToast === 'function') showToast('📥 Exporting Registered Users CSV...', 'info');
+  if (typeof showToast === 'function') showToast(' Exporting Registered Users CSV...', 'info');
 };
 
 window.clearUsersHandler = function() {
@@ -4228,9 +4228,9 @@ window.showToast = function(message, type = 'info') {
   toast.className = `toast toast-${type} toast-enter`;
   
   const icons = {
-    success: '✔',
-    warning: '⚠️',
-    error: '❌',
+    success: '',
+    warning: '️',
+    error: '',
     info: 'ℹ️'
   };
 
@@ -4893,7 +4893,7 @@ window.initMarketingTrackingScripts = function() {
       'https://connect.facebook.net/en_US/fbevents.js');
       window.fbq('init', metaPixelId.trim());
       window.fbq('track', 'PageView');
-      console.log('📢 Meta Pixel Active:', metaPixelId.trim());
+      console.log(' Meta Pixel Active:', metaPixelId.trim());
     }
   }
 
@@ -4911,7 +4911,7 @@ window.initMarketingTrackingScripts = function() {
       window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', googleTagId.trim());
-      console.log('📢 Google Tag Active:', googleTagId.trim());
+      console.log(' Google Tag Active:', googleTagId.trim());
     }
   }
 };
@@ -4955,7 +4955,7 @@ window.sendEmailInvoiceHandler = function(bookingId) {
   const bodyText = encodeURIComponent(`Dear ${b.customerName},\n\nYour travel booking reservation ${b.id} is CONFIRMED by Mount2ocean Travel & Tours!\n\nBooking Reference ID: ${b.id}\nPackage / Service: ${b.tourTitle}\nTotal Amount Paid: ${b.amount}\nDate: ${b.date}\n\nYou can view and download your official PDF E-Ticket Voucher anytime on your customer profile:\nhttps://engomarsany.github.io/mount2ocean/my_profile.html\n\nThank you for choosing Mount2ocean Travel & Tours!\nHelpline: +880 1977-477172`);
 
   window.open(`mailto:${b.email}?subject=${subject}&body=${bodyText}`, '_blank');
-  alert(`✉️ Preparing Email Voucher for ${b.customerName} (${b.email})!`);
+  alert(`️ Preparing Email Voucher for ${b.customerName} (${b.email})!`);
 };
 
 // ==========================================
@@ -5016,7 +5016,7 @@ window.applyCouponCode = function(codeStr, originalPriceBdt) {
     discountPercent: found.discountPercent,
     discountAmount: discountAmount,
     finalPrice: finalPrice,
-    message: `🎉 Coupon '${found.code}' Applied! Discount: ৳${discountAmount.toLocaleString()}`
+    message: ` Coupon '${found.code}' Applied! Discount: ৳${discountAmount.toLocaleString()}`
   };
 };
 
@@ -5037,10 +5037,10 @@ window.initFloatingWhatsappWidget = function() {
   `;
   widget.innerHTML = `
     <div id="m2oWaChatBubble" style="display: none; background: #ffffff; color: #0f172a; border: 2px solid #25d366; border-radius: 16px; padding: 0.8rem 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 240px; text-align: left; font-size: 0.85rem; font-weight: 800;">
-      👋 <strong style="color: #25d366;">Need Help?</strong> Chat with Mount2ocean Live Travel Consultant!
+       <strong style="color: #25d366;">Need Help?</strong> Chat with Mount2ocean Live Travel Consultant!
     </div>
     <div onclick="window.open('https://api.whatsapp.com/send?phone=${cleanPhone}&text=Hello%20Mount2ocean!%20I%20have%20an%20inquiry.', '_blank')" style="background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 6px 25px rgba(37,211,102,0.6); position: relative; border: 2px solid #ffffff; transition: transform 0.2s ease;">
-      💬
+      
       <span style="position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: #22c55e; border: 2px solid white; border-radius: 50%;"></span>
     </div>
   `;
@@ -5245,7 +5245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const userRole = localStorage.getItem('m2o_user_role') || (loggedUser ? loggedUser.role : null);
     
     if (!userRole || (userRole !== 'OWNER' && userRole !== 'ADMIN' && userRole !== 'SUPER_ADMIN')) {
-      console.warn('🚨 Unauthorized access to admin portal prevented. Redirecting to login.');
+      console.warn(' Unauthorized access to admin portal prevented. Redirecting to login.');
       localStorage.removeItem('m2o_user_role');
       localStorage.removeItem('m2o_is_logged_in');
       window.location.replace('index.html');
@@ -5263,7 +5263,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   localStorage.setItem('m2o_last_active', now.toString());
 
-  console.log('%c🛡️ MOUNT2OCEAN SECURITY SHIELD ACTIVE %c• 1000% Military-Grade Protected', 'background:#0072bc;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#00a651;font-weight:bold;');
+  console.log('%c️ MOUNT2OCEAN SECURITY SHIELD ACTIVE %c• 1000% Military-Grade Protected', 'background:#0072bc;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#00a651;font-weight:bold;');
 });
 
 // ====================================================================
@@ -5287,7 +5287,7 @@ window.getSeoSettings = function() {
 window.saveSeoSettings = function(newSettings) {
   localStorage.setItem('m2o_seo_settings', JSON.stringify(newSettings));
   if (typeof showToast === 'function') {
-    showToast('🚀 Auto SEO Configuration & Meta Tags Saved Live!', 'success');
+    showToast(' Auto SEO Configuration & Meta Tags Saved Live!', 'success');
   }
 };
 
@@ -5389,7 +5389,7 @@ window.initAutoSeoEngine = function() {
     document.head.appendChild(script);
   }
 
-  console.log('%c🚀 AUTO SEO ENGINE ACTIVE %c• Google Rich Snippets & Schema.org Injected', 'background:#00a651;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#0072bc;font-weight:bold;');
+  console.log('%c AUTO SEO ENGINE ACTIVE %c• Google Rich Snippets & Schema.org Injected', 'background:#00a651;color:white;font-weight:bold;padding:3px 8px;border-radius:4px;', 'color:#0072bc;font-weight:bold;');
 };
 
 // Real-Time SEO Health Audit Score (0 - 100%)
@@ -5461,7 +5461,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ====================================================================
 
 // --------------------------------------------------------------------
-// FEATURE 1: 📱 SMART SMS & WHATSAPP BOOKING ALERT GATEWAY
+// FEATURE 1:  SMART SMS & WHATSAPP BOOKING ALERT GATEWAY
 // --------------------------------------------------------------------
 window.triggerSmartSmsAndWhatsAppAlerts = function(booking) {
   if (!booking) return;
@@ -5473,10 +5473,10 @@ window.triggerSmartSmsAndWhatsAppAlerts = function(booking) {
   const title = booking.tourTitle || 'Tour Package / Hotel Reservation';
   const travelDate = booking.travelDate || 'Selected Date';
 
-  const customerMsg = `🎉 Mount2ocean Booking Confirmed!\nBooking ID: ${bookingId}\nPackage/Hotel: ${title}\nAmount: ${amount}\nDate: ${travelDate}\nHotline: +8801330303082\nThank you for choosing Mount2ocean!`;
-  const ownerMsg = `🚨 NEW BOOKING ALERT!\nID: ${bookingId}\nCustomer: ${booking.customerName}\nPhone: ${booking.phone}\nPackage: ${title}\nAmount: ${amount}\nDate: ${travelDate}`;
+  const customerMsg = ` Mount2ocean Booking Confirmed!\nBooking ID: ${bookingId}\nPackage/Hotel: ${title}\nAmount: ${amount}\nDate: ${travelDate}\nHotline: +8801330303082\nThank you for choosing Mount2ocean!`;
+  const ownerMsg = ` NEW BOOKING ALERT!\nID: ${bookingId}\nCustomer: ${booking.customerName}\nPhone: ${booking.phone}\nPackage: ${title}\nAmount: ${amount}\nDate: ${travelDate}`;
 
-  console.log('📱 SMS & WhatsApp Dispatch Queue:', { customerPhone, customerMsg, ownerMsg });
+  console.log(' SMS & WhatsApp Dispatch Queue:', { customerPhone, customerMsg, ownerMsg });
 
   // Store in Local Notification Queue
   let alerts = JSON.parse(localStorage.getItem('m2o_sms_alerts_queue') || '[]');
@@ -5497,7 +5497,7 @@ window.triggerSmartSmsAndWhatsAppAlerts = function(booking) {
 };
 
 // --------------------------------------------------------------------
-// FEATURE 2: 💳 LIVE bKASH, NAGAD & CARD PAYMENT GATEWAY CHECKOUT MODAL
+// FEATURE 2:  LIVE bKASH, NAGAD & CARD PAYMENT GATEWAY CHECKOUT MODAL
 // --------------------------------------------------------------------
 window.openLivePaymentGatewayModal = function(bookingId, amountStr, titleStr) {
   let modal = document.getElementById('m2oLivePaymentModal');
@@ -5522,7 +5522,7 @@ window.openLivePaymentGatewayModal = function(bookingId, amountStr, titleStr) {
           <span style="background: #00a651; color: white; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">100% SECURE CHECKOUT</span>
           <h3 style="margin: 0.3rem 0 0; font-size: 1.25rem; font-weight: 900;">Mount2ocean Payment Portal</h3>
         </div>
-        <button onclick="document.getElementById('m2oLivePaymentModal').style.display='none'" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-weight: 900; cursor: pointer;">✕</button>
+        <button onclick="document.getElementById('m2oLivePaymentModal').style.display='none'" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-weight: 900; cursor: pointer;"></button>
       </div>
 
       <!-- Payment Summary -->
@@ -5570,10 +5570,10 @@ window.openLivePaymentGatewayModal = function(bookingId, amountStr, titleStr) {
         </div>
 
         <button type="button" onclick="executeLivePaymentProcess('${bookingId}', '${cleanAmount}')" style="width: 100%; padding: 0.95rem; background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); color: white; border: none; border-radius: 10px; font-size: 1rem; font-weight: 900; cursor: pointer; box-shadow: 0 4px 15px rgba(225,29,72,0.4);">
-          Confirm &amp; Pay ${cleanAmount} ➔
+          Confirm &amp; Pay ${cleanAmount} 
         </button>
         <div style="text-align: center; margin-top: 0.8rem; font-size: 0.75rem; color: #64748b;">
-          🔒 256-Bit SSL Encrypted • PCI-DSS Certified Gateway
+           256-Bit SSL Encrypted • PCI-DSS Certified Gateway
         </div>
       </div>
     </div>
@@ -5609,19 +5609,19 @@ window.executeLivePaymentProcess = function(bookingId, amount) {
   if (modal) modal.style.display = 'none';
 
   if (typeof showToast === 'function') {
-    showToast(`🎉 Payment of ${amount} Verified Successfully! TrxID: ${trxId}`, 'success');
+    showToast(` Payment of ${amount} Verified Successfully! TrxID: ${trxId}`, 'success');
   }
 
   // Offer PDF Download
   setTimeout(() => {
-    if (confirm(`🎉 Payment Successful! TrxID: ${trxId}\n\nWould you like to download your Official PDF E-Ticket & Voucher now?`)) {
+    if (confirm(` Payment Successful! TrxID: ${trxId}\n\nWould you like to download your Official PDF E-Ticket & Voucher now?`)) {
       window.generatePdfETicketWithQr(bookingId);
     }
   }, 400);
 };
 
 // --------------------------------------------------------------------
-// FEATURE 3: 📄 5-STAR LUXURY BRANDED PDF E-TICKET & OFFICIAL TRAVEL VOUCHER
+// FEATURE 3:  5-STAR LUXURY BRANDED PDF E-TICKET & OFFICIAL TRAVEL VOUCHER
 // --------------------------------------------------------------------
 window.generatePdfETicketWithQr = function(bookingId) {
   let bookings = JSON.parse(localStorage.getItem('m2o_customer_bookings') || '[]');
@@ -5836,7 +5836,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
 
       <div class="no-print" style="text-align: center; margin-bottom: 1.5rem;">
         <button onclick="window.print()" class="btn-print">
-          🖨️ Print Official Travel Voucher / Save as PDF
+          ️ Print Official Travel Voucher / Save as PDF
         </button>
       </div>
 
@@ -5848,7 +5848,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
             <div class="brand-subtitle">Official Confirmed Travel Document &amp; E-Ticket</div>
           </div>
           <div style="text-align: right;">
-            <div class="doc-badge">✓ ISSUED &amp; VERIFIED</div>
+            <div class="doc-badge"> ISSUED &amp; VERIFIED</div>
             <div style="font-size: 0.78rem; opacity: 0.85; margin-top: 0.4rem; color: #ffffff;">Issue Date: ${issueDate}</div>
           </div>
         </div>
@@ -5877,7 +5877,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
               <div style="text-align: right;">
                 <span class="info-label">TOTAL TARIFF PAID</span>
                 <strong style="font-size: 1.6rem; color: #00a651; font-weight: 900;">${b.amount || b.price || '৳17,500'}</strong>
-                <span style="font-size: 0.72rem; color: #16a34a; font-weight: 800; display: block;">✓ 100% Fully Paid (${b.paymentMethod || 'bKash / Card'})</span>
+                <span style="font-size: 0.72rem; color: #16a34a; font-weight: 800; display: block;"> 100% Fully Paid (${b.paymentMethod || 'bKash / Card'})</span>
               </div>
             </div>
           </div>
@@ -5886,30 +5886,30 @@ window.generatePdfETicketWithQr = function(bookingId) {
           <div class="info-grid-3">
             <div class="info-card">
               <span class="info-label">LEAD PASSENGER NAME</span>
-              <span class="info-val">👤 ${b.customerName}</span>
+              <span class="info-val"> ${b.customerName}</span>
             </div>
             <div class="info-card">
               <span class="info-label">CONTACT MOBILE &amp; WHATSAPP</span>
-              <span class="info-val">📞 ${b.phone}</span>
+              <span class="info-val"> ${b.phone}</span>
             </div>
             <div class="info-card">
               <span class="info-label">TRAVEL / CHECK-IN DATE</span>
-              <span class="info-val">📅 ${b.travelDate || 'Confirmed Date'}</span>
+              <span class="info-val"> ${b.travelDate || 'Confirmed Date'}</span>
             </div>
           </div>
 
           <div class="info-grid-3">
             <div class="info-card">
               <span class="info-label">GUESTS / TRAVELERS COUNT</span>
-              <span class="info-val">👨‍👩‍👧 ${b.travelersCount || '2 Adults'}</span>
+              <span class="info-val">‍‍ ${b.travelersCount || '2 Adults'}</span>
             </div>
             <div class="info-card">
               <span class="info-label">REGISTERED EMAIL</span>
-              <span class="info-val">✉️ ${b.email || 'customer@mount2ocean.com'}</span>
+              <span class="info-val">️ ${b.email || 'customer@mount2ocean.com'}</span>
             </div>
             <div class="info-card">
               <span class="info-label">PAYMENT METHOD</span>
-              <span class="info-val">💳 ${b.paymentMethod || 'Online Gateway'}</span>
+              <span class="info-val"> ${b.paymentMethod || 'Online Gateway'}</span>
             </div>
           </div>
 
@@ -5936,7 +5936,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
           <div class="footer-terms">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.8rem;">
               <div>
-                <strong style="color: #0f172a; display: block; margin-bottom: 0.2rem;">📌 IMPORTANT PASSENGER GUIDELINES:</strong>
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.2rem;"> IMPORTANT PASSENGER GUIDELINES:</strong>
                 <span>• Please present this e-ticket along with a valid Passport / National ID at airport and hotel reception.</span><br>
                 <span>• Standard Hotel Check-in: 02:00 PM | Standard Check-out: 11:00 AM.</span>
               </div>
@@ -5946,7 +5946,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
               </div>
             </div>
             <div style="border-top: 1px dashed #cbd5e1; padding-top: 0.6rem; text-align: center; color: #64748b; font-size: 0.75rem;">
-              📍 Corporate Head Office: 169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh • Email: info@mount2ocean.com
+               Corporate Head Office: 169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh • Email: info@mount2ocean.com
             </div>
           </div>
         </div>
@@ -5962,12 +5962,12 @@ window.generatePdfETicketWithQr = function(bookingId) {
 };
 
 // --------------------------------------------------------------------
-// FEATURE 4: 🎙️ AI VOICE SEARCH & VOICE COMMAND ASSISTANT
+// FEATURE 4: ️ AI VOICE SEARCH & VOICE COMMAND ASSISTANT
 // --------------------------------------------------------------------
 window.startAiVoiceSearch = function(targetInputId) {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRecognition) {
-    alert('⚠️ Voice recognition is not supported on this browser. Please use Google Chrome, Edge, or Safari.');
+    alert('️ Voice recognition is not supported on this browser. Please use Google Chrome, Edge, or Safari.');
     return;
   }
 
@@ -5977,22 +5977,22 @@ window.startAiVoiceSearch = function(targetInputId) {
   recognition.interimResults = false;
 
   if (typeof showToast === 'function') {
-    showToast('🎙️ Listening... Please speak your destination or hotel query!', 'info');
+    showToast('️ Listening... Please speak your destination or hotel query!', 'info');
   }
 
   recognition.onstart = function() {
-    console.log('🎙️ AI Voice Search Listening...');
+    console.log('️ AI Voice Search Listening...');
   };
 
   recognition.onresult = function(event) {
     const spokenText = event.results[0][0].transcript;
-    console.log('🎙️ Spoken Query:', spokenText);
+    console.log('️ Spoken Query:', spokenText);
 
     const input = document.getElementById(targetInputId) || document.getElementById('searchQuery') || document.getElementById('hotelSearchBox');
     if (input) {
       input.value = spokenText;
       if (typeof showToast === 'function') {
-        showToast(`🎙️ Recognized: "${spokenText}"`, 'success');
+        showToast(`️ Recognized: "${spokenText}"`, 'success');
       }
       
       // Trigger instant search
@@ -6005,7 +6005,7 @@ window.startAiVoiceSearch = function(targetInputId) {
   recognition.onerror = function(event) {
     console.warn('Voice search error:', event.error);
     if (typeof showToast === 'function') {
-      showToast('⚠️ Voice search canceled or microphone not detected.', 'warning');
+      showToast('️ Voice search canceled or microphone not detected.', 'warning');
     }
   };
 
@@ -6020,7 +6020,7 @@ window.initAiVoiceSearchButtons = function() {
       micBtn.type = 'button';
       micBtn.className = 'voice-mic-btn';
       micBtn.title = 'Speak to Search with AI Voice';
-      micBtn.innerHTML = '🎙️';
+      micBtn.innerHTML = '️';
       micBtn.style.cssText = 'background:none; border:none; font-size:1.2rem; cursor:pointer; padding:0 0.4rem;';
       micBtn.onclick = function() {
         const input = container.querySelector('input') || container;
@@ -6032,7 +6032,7 @@ window.initAiVoiceSearchButtons = function() {
 };
 
 // --------------------------------------------------------------------
-// FEATURE 5: 💱 MULTI-CURRENCY LIVE AUTO-CONVERTER ENGINE
+// FEATURE 5:  MULTI-CURRENCY LIVE AUTO-CONVERTER ENGINE
 // --------------------------------------------------------------------
 window.exchangeRates = {
   BDT: 1.0,
@@ -6067,7 +6067,7 @@ window.switchGlobalCurrency = function(currencyCode) {
   });
 
   if (typeof showToast === 'function') {
-    showToast(`💱 Currency converted to ${code} (${symbol})`, 'info');
+    showToast(` Currency converted to ${code} (${symbol})`, 'info');
   }
 };
 
@@ -6113,7 +6113,7 @@ window.softDeleteItemToRecycleBin = function(type, item) {
   localStorage.setItem('m2o_recycle_bin', JSON.stringify(bin.slice(0, 100))); // Keep last 100 deleted items
 
   if (typeof showToast === 'function') {
-    showToast(`🗑️ "${entry.title}" moved to Recovery Bin. You can restore it anytime!`, 'info');
+    showToast(`️ "${entry.title}" moved to Recovery Bin. You can restore it anytime!`, 'info');
   }
 };
 
@@ -6142,7 +6142,7 @@ window.restoreRecycleItem = function(recycleId) {
   }
 
   if (typeof showToast === 'function') {
-    showToast(`♻️ "${restored.title}" restored successfully to live website!`, 'success');
+    showToast(`️ "${restored.title}" restored successfully to live website!`, 'success');
   }
   if (typeof renderRecycleBinUI === 'function') {
     renderRecycleBinUI();
@@ -6155,7 +6155,7 @@ window.purgeRecycleItem = function(recycleId) {
   bin = bin.filter(entry => entry.recycleId !== recycleId);
   localStorage.setItem('m2o_recycle_bin', JSON.stringify(bin));
   if (typeof showToast === 'function') {
-    showToast(`⚠️ Item permanently wiped from trash.`, 'warning');
+    showToast(`️ Item permanently wiped from trash.`, 'warning');
   }
   if (typeof renderRecycleBinUI === 'function') {
     renderRecycleBinUI();
@@ -6183,7 +6183,7 @@ window.exportFullSystemSnapshot = function() {
   downloadAnchor.remove();
 
   if (typeof showToast === 'function') {
-    showToast('📥 Full System Snapshot Backup Downloaded!', 'success');
+    showToast(' Full System Snapshot Backup Downloaded!', 'success');
   }
 };
 
@@ -6246,10 +6246,10 @@ window.renderAdminReviewsDesk = function() {
     tr.innerHTML = `
       <td style="color: #0f172a !important; font-weight: 800;"><strong>${r.name}</strong></td>
       <td style="color: #0072bc !important; font-weight: 800;">${r.trip}</td>
-      <td style="color: #f59e0b !important; font-weight: 900; font-size: 1rem;">${'⭐'.repeat(r.stars || 5)}</td>
+      <td style="color: #f59e0b !important; font-weight: 900; font-size: 1rem;">${''.repeat(r.stars || 5)}</td>
       <td style="color: #1e293b !important; font-weight: 600; font-size: 0.88rem; max-width: 320px;">"${r.comment}"</td>
       <td>
-        <button type="button" class="btn-delete-pkg" onclick="handleDeleteReview('${r.id}')" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; cursor: pointer;">🗑️ Delete</button>
+        <button type="button" class="btn-delete-pkg" onclick="handleDeleteReview('${r.id}')" style="padding: 0.3rem 0.65rem; font-size: 0.78rem; cursor: pointer;">️ Delete</button>
       </td>
     `;
     tbody.appendChild(tr);

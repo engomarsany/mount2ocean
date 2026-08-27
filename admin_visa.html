@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
   <style>
     .visa-modal-overlay {
       position: fixed;
@@ -114,7 +114,7 @@
     <div style="background: #ffffff; border: 2px solid #00a651; border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
         <div>
-          <span class="badge-tag" style="background: #00a651; color: white;">🌍 COUNTRY VISA PRICE LIST &amp; CHECKLISTS</span>
+          <span class="badge-tag" style="background: #00a651; color: white;"> COUNTRY VISA PRICE LIST &amp; CHECKLISTS</span>
           <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin: 0.3rem 0 0;">
             Country Visa Rates &amp; Requirements Master (যেকোনো দেশের ভিসা রেট ও রিকোয়ারমেন্ট যুক্ত করুন)
           </h2>
@@ -161,7 +161,7 @@
     <div style="background: #ffffff; border: 2px solid #0072bc; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
         <div>
-          <span class="badge-tag" style="background: #0072bc; color: white;">📋 LIVE CUSTOMER VISA APPLICATIONS</span>
+          <span class="badge-tag" style="background: #0072bc; color: white;"> LIVE CUSTOMER VISA APPLICATIONS</span>
           <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin: 0.3rem 0 0;">
             Customer Visa Status &amp; File Upload Manager (ভিসা অনুমোদন ও কপি আপলোড)
           </h2>
@@ -203,7 +203,7 @@
         <h3 id="visaPriceModalTitle" style="margin: 0; font-size: 1.3rem; font-weight: 900; color: #ffffff;">
           Add New Country Visa Rate
         </h3>
-        <button type="button" onclick="closeVisaPriceModal()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-weight: 900; font-size: 1.1rem;">✕</button>
+        <button type="button" onclick="closeVisaPriceModal()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-weight: 900; font-size: 1.1rem;"></button>
       </div>
       <div class="visa-modal-body">
         <form id="visaPriceForm" onsubmit="saveCountryVisaRateHandler(event)">
@@ -292,7 +292,7 @@
               Cancel
             </button>
             <button type="submit" class="primary-btn" style="padding: 0.75rem 2rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);">
-              Save Country Visa Rate 💾
+              Save Country Visa Rate 
             </button>
           </div>
         </form>
@@ -300,7 +300,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     // ==========================================
     // OWNER VISA PRICE LIST ENGINE
@@ -444,7 +444,7 @@
       window.saveVisaPriceList(list);
       closeVisaPriceModal();
       renderOwnerVisaPrices();
-      alert(`🎉 Country Visa Rate for '${country}' saved successfully! Public Visa Portal is now updated.`);
+      alert(` Country Visa Rate for '${country}' saved successfully! Public Visa Portal is now updated.`);
     }
 
     function deleteVisaPrice(index) {
@@ -492,7 +492,7 @@
             </select>
           </td>
           <td style="padding: 0.85rem;">
-            ${a.issuedVisaFileUrl ? `<a href="${a.issuedVisaFileUrl}" target="_blank" style="color: #22c55e; font-weight: 900; text-decoration: underline;">✔ View / Download File</a>` : `<span style="color: #64748b;">Not Uploaded</span>`}
+            ${a.issuedVisaFileUrl ? `<a href="${a.issuedVisaFileUrl}" target="_blank" style="color: #22c55e; font-weight: 900; text-decoration: underline;"> View / Download File</a>` : `<span style="color: #64748b;">Not Uploaded</span>`}
           </td>
           <td style="padding: 0.85rem; white-space: nowrap;">
             <button onclick="promptUploadVisaFile(${i})" style="background: #0072bc; color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 800; cursor: pointer; margin-right: 0.3rem;">Upload Copy</button>

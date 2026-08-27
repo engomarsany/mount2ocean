@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
 
   <style>
     .hotel-hero-banner {
@@ -314,20 +314,20 @@
   <!-- FILTER & SEARCH BAR -->
   <div class="hotel-filter-bar">
     <div class="hotel-star-pills" id="starFilterGroup">
-      <button type="button" class="star-pill active" onclick="filterHotelsByStar('ALL', this)">🌟 All Hotels (সকল)</button>
-      <button type="button" class="star-pill" onclick="filterHotelsByStar(5, this)">💎 5-Star Luxury (৫-স্টার)</button>
-      <button type="button" class="star-pill" onclick="filterHotelsByStar(4, this)">⭐ 4-Star Premium (৪-স্টার)</button>
+      <button type="button" class="star-pill active" onclick="filterHotelsByStar('ALL', this)"> All Hotels (সকল)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(5, this)"> 5-Star Luxury (৫-স্টার)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(4, this)"> 4-Star Premium (৪-স্টার)</button>
       <button type="button" class="star-pill" onclick="filterHotelsByStar(3, this)">3-Star Deluxe (৩-স্টার)</button>
-      <button type="button" class="star-pill" onclick="filterHotelsByStar(2, this)">🏡 2-Star Budget (বাজেট)</button>
+      <button type="button" class="star-pill" onclick="filterHotelsByStar(2, this)"> 2-Star Budget (বাজেট)</button>
     </div>
 
     <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; flex: 1; justify-content: flex-end;">
       <select id="hotelCitySelect" onchange="applyHotelFilters()" style="padding: 0.75rem 1rem; border: 2px solid #cbd5e1; border-radius: 12px; font-weight: 800; font-size: 0.9rem; color: #0f172a; outline: none; cursor: pointer;">
-        <option value="ALL">🌆 All Locations (সকল গন্তব্য)</option>
-        <option value="Cox's Bazar">️ Cox's Bazar</option>
-        <option value="Dhaka">🏙️ Dhaka</option>
+        <option value="ALL"> All Locations (সকল গন্তব্য)</option>
+        <option value="Cox's Bazar">Cox's Bazar</option>
+        <option value="Dhaka"> Dhaka</option>
         <option value="Sylhet">Sylhet</option>
-        <option value="Bali">🌺 Bali</option>
+        <option value="Bali">Bali</option>
         <option value="Dubai">Dubai</option>
         <option value="Maldives">Maldives</option>
       </select>
@@ -370,7 +370,7 @@
             <button type="button" onclick="document.getElementById('hotelBookingForm').scrollIntoView({behavior: 'smooth'})" style="background: #d97706; color: #ffffff; font-weight: 900; font-size: 0.9rem; padding: 0.75rem 1.4rem; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(217,119,6,0.3);">
               SEARCH ROOMS
             </button>
-            <button type="button" onclick="closeHotelBookingModal()" style="background: #f1f5f9; border: 1.5px solid #cbd5e1; width: 38px; height: 38px; border-radius: 6px; font-weight: 900; font-size: 1.2rem; cursor: pointer; color: #ffffff;">✕</button>
+            <button type="button" onclick="closeHotelBookingModal()" style="background: #f1f5f9; border: 1.5px solid #cbd5e1; width: 38px; height: 38px; border-radius: 6px; font-weight: 900; font-size: 1.2rem; cursor: pointer; color: #ffffff;"></button>
           </div>
         </div>
       </div>
@@ -398,7 +398,7 @@
               <strong style="font-size: 1.05rem; font-weight: 900; color: #ffffff;">11:00 am</strong>
             </div>
             <div style="text-align: right;">
-              <span id="modalHotelStar" style="font-size: 0.9rem; font-weight: 900; color: #ffffff;">4.2 ⭐⭐⭐⭐⭐</span>
+              <span id="modalHotelStar" style="font-size: 0.9rem; font-weight: 900; color: #ffffff;">4.2 </span>
               <span style="font-size: 0.72rem; color: #ffffff; display: block;">(106 ratings)</span>
             </div>
           </div>
@@ -407,12 +407,12 @@
           <div style="margin-bottom: 1.2rem;">
             <h4 style="font-size: 0.85rem; font-weight: 900; color: #ffffff; text-transform: uppercase; margin-bottom: 0.6rem; letter-spacing: 0.5px;">FEATURED AMENITIES</h4>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; font-size: 0.82rem; font-weight: 700; color: #ffffff;">
-              <div>⭐ All-Inclusive</div>
-              <div>☕ Free Breakfast Buffet</div>
-              <div>📶 WiFi Available</div>
-              <div>🍽️ Restaurant</div>
-              <div>🚌 Airport Shuttle - Free</div>
-              <div>🏢 Meeting Room</div>
+              <div> All-Inclusive</div>
+              <div> Free Breakfast Buffet</div>
+              <div> WiFi Available</div>
+              <div> Restaurant</div>
+              <div> Airport Shuttle - Free</div>
+              <div> Meeting Room</div>
             </div>
           </div>
 
@@ -427,7 +427,7 @@
       <!-- BOTTOM ACCORDION: ROOM SELECTION & RESERVATION FORM -->
       <div style="background: #f8fafc; padding: 1.5rem 1.8rem; border-top: 1.5px solid #e2e8f0;">
         <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-          🛏️ Select Room Category &amp; Reserve Online
+           Select Room Category &amp; Reserve Online
         </h3>
 
         <form id="hotelBookingForm" onsubmit="submitHotelRoomReservation(event)">
@@ -486,7 +486,7 @@
           </div>
 
           <button type="submit" class="primary-btn" style="width: 100%; padding: 0.95rem; font-size: 1.1rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 10px; border: none; color: white; cursor: pointer; box-shadow: 0 8px 25px rgba(0,166,81,0.4);">
-            Confirm Hotel Reservation ➔
+            Confirm Hotel Reservation 
           </button>
         </form>
       </div>
@@ -497,7 +497,7 @@
           </div>
 
           <button type="submit" class="primary-btn" style="width: 100%; padding: 0.95rem; font-size: 1.1rem; font-weight: 900; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); border-radius: 14px; border: none; color: white; cursor: pointer; box-shadow: 0 8px 25px rgba(0,166,81,0.4);">
-            Confirm Hotel Reservation ➔
+            Confirm Hotel Reservation 
           </button>
         </form>
       </div>
@@ -518,16 +518,16 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.95rem;">
-            <span style="color: #e11d48; font-size: 1.1rem;">📞</span>
+            <span style="color: #e11d48; font-size: 1.1rem;"></span>
             <span>Helpline: <a href="tel:+8801330303082" style="color: #00f2fe !important; font-weight: 900 !important; text-decoration: none; font-size: 1.08rem; text-shadow: 0 0 10px rgba(0,242,254,0.8);">+880 1330-303082</a></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.92rem;">
-            <span style="color: #00a651; font-size: 1.1rem;">✉️</span>
+            <span style="color: #00a651; font-size: 1.1rem;"></span>
             <span>Email: <a href="mailto:info@mount2ocean.com" style="color: #ffffff !important; font-weight: 800 !important; text-decoration: none;">info@mount2ocean.com</a></span>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.6rem; color: #ffffff !important; font-weight: 800; font-size: 0.88rem;">
-            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;">📍</span>
-            <span>Location: <strong style="color: #ffffff !important; font-weight: 900;"><a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh 📍</a></strong></span>
+            <span style="color: #eab308; font-size: 1.1rem; margin-top: 2px;"></span>
+            <span>Location: <strong style="color: #ffffff !important; font-weight: 900;"><a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh </a></strong></span>
           </div>
         </div>
       </div>
@@ -560,12 +560,12 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.5rem; font-size: 0.9rem; color: #ffffff !important; font-weight: 800;">
-      © 2026 <strong style="color: #00f2fe !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. <a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh 📍</a>.
+      © 2026 <strong style="color: #00f2fe !important;">MOUNT2OCEAN Travel &amp; Tours</strong>. All Rights Reserved. <a href="https://www.google.com/maps/place/Mount+2+Ocean+Travel+%26+Tourism+Ltd/@23.739496,90.4149669,3a,90y,41.39h,116.84t/data=!3m8!1e1!3m5!1sOEyA3PMgfs2c6ilalXSV9g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.843444905208116%26panoid%3DOEyA3PMgfs2c6ilalXSV9g%26yaw%3D41.388515509663385!7i16384!8i8192!5s0x3755b86088069f7f:0xaa60783f49e22d39!3b1!8m2!3d23.7397186!4d90.4150585!16s%2Fm%2F0p3r5yn!3m5!1s0x3755b862017827e5:0x7333735a54d6a1b7!8m2!3d23.7397087!4d90.415104!16s%2Fg%2F11c6dzylfd" target="_blank" style="color: #00f2fe !important; text-decoration: underline; font-weight: 900; cursor: pointer; display: inline-block;" title="Click to view Mount2ocean Corporate Office on Google Maps">169/1 Concord Grand 4th Floor, Shantinagar, Dhaka-1217, Bangladesh </a>.
     </div>
   </footer>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     let activeStarFilter = 'ALL';
 
@@ -651,7 +651,7 @@
       }
 
       hotels.forEach(h => {
-        let starsStr = '⭐'.repeat(h.starRating || 5);
+        let starsStr = ''.repeat(h.starRating || 5);
         let markupResult = typeof calculateHotelMarkupPrice === 'function' ? calculateHotelMarkupPrice(h.startingPrice || 0, h.starRating || 5) : { finalPrice: h.startingPrice || 0 };
         let finalPriceFormatted = '৳' + markupResult.finalPrice.toLocaleString();
 
@@ -662,10 +662,10 @@
           <div style="position: relative; border-radius: 10px; overflow: hidden; height: 160px; cursor: pointer;" onclick="openHotelBookingModal('${h.id}')">
             <img src="${h.image || 'assets/coxsbazar_resort.jpg'}" alt="${h.name}" style="width: 100%; height: 100%; object-fit: cover;">
             <!-- Heart Icon Bottom-Left -->
-            <div style="position: absolute; bottom: 8px; left: 8px; color: #ffffff; font-size: 1.3rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); cursor: pointer;">♡</div>
+            <div style="position: absolute; bottom: 8px; left: 8px; color: #ffffff; font-size: 1.3rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); cursor: pointer;"></div>
             <!-- Photos Count Badge Bottom-Right -->
             <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7); color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; gap: 0.3rem;">
-              📷 Photos
+               Photos
             </div>
           </div>
 
@@ -675,7 +675,7 @@
               ${h.name}
             </h3>
             <div style="font-size: 0.88rem; font-weight: 800; color: #e11d48; margin-bottom: 0.4rem;">
-              4.2 ⭐⭐⭐⭐⭐ <span style="color: #e11d48; font-size: 0.82rem; font-weight: 600;">(${h.reviewsCount || 106} ratings)</span>
+              4.2  <span style="color: #e11d48; font-size: 0.82rem; font-weight: 600;">(${h.reviewsCount || 106} ratings)</span>
             </div>
             <div style="font-size: 0.88rem; color: #1e293b; font-weight: 600; margin-bottom: 0.4rem;">
               ${h.address || 'Marine Drive Road Kolatoli, Coxs Bazar, Bangladesh 4700'} 
@@ -685,7 +685,7 @@
               ${h.description || 'Modern hotel on Marine Drive, by Kolatoli Beach and CXB Airport'}
             </p>
             <div onclick="openHotelBookingModal('${h.id}')" style="color: #e11d48; font-size: 0.88rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;">
-              Amenities ∨
+              Amenities 
             </div>
           </div>
 
@@ -715,7 +715,7 @@
       document.getElementById('modalHotelId').value = h.id;
       document.getElementById('modalHotelName').textContent = h.name;
       document.getElementById('modalHotelImg').src = h.image || 'assets/coxsbazar_resort.jpg';
-      document.getElementById('modalHotelStar').textContent = '⭐'.repeat(h.starRating || 5) + ' ' + (h.starLabel || '');
+      document.getElementById('modalHotelStar').textContent = ''.repeat(h.starRating || 5) + ' ' + (h.starLabel || '');
       document.getElementById('modalHotelLocation').textContent = '' + h.city;
       document.getElementById('modalHotelAddress').textContent = h.address || h.city;
 

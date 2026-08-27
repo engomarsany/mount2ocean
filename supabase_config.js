@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // MOUNT2OCEAN - SUPABASE POSTGRESQL DATABASE INTEGRATION & CLIENT ENGINE
 // ==========================================================================
 
@@ -11,13 +11,13 @@ window.initSupabaseClient = function() {
   if (window.supabase && window.supabase.createClient && window.SUPABASE_ANON_KEY !== "your-anon-key") {
     try {
       window.supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-      console.log("✅ Supabase PostgreSQL Database Connected Successfully!");
+      console.log(" Supabase PostgreSQL Database Connected Successfully!");
       if (window.autoSeedSupabaseData) {
         window.autoSeedSupabaseData();
       }
       return true;
     } catch (err) {
-      console.warn("⚠️ Supabase Client Init Warning:", err.message);
+      console.warn("️ Supabase Client Init Warning:", err.message);
     }
   }
   console.log("ℹ️ Running in Hybrid Mode: Using Browser LocalStorage & Supabase Ready Architecture.");
@@ -47,7 +47,7 @@ window.autoSeedSupabaseData = async function() {
           tag_bg: f.tagBg
         }]);
       }
-      console.log("🌱 Auto-seeded initial flight tickets into Supabase!");
+      console.log(" Auto-seeded initial flight tickets into Supabase!");
     }
   } catch (e) {
     // Table not created yet or RLS policy pending

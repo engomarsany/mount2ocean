@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=v41_app_promo_original_colors_restored">
+  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
 </head>
 <body class="light-theme">
 
@@ -45,7 +45,7 @@
 
       <!-- Customer Profile Indicator -->
       <div class="customer-user-badge" onclick="window.location.href='my_profile.html'" style="cursor: pointer;" title="View My Bookings &amp; Profile">
-        <span class="cust-avatar">👤</span>
+        <span class="cust-avatar"></span>
         <div class="cust-meta">
           <span class="cust-name" id="custUserName">Customer</span>
           <span class="cust-status" id="custBookingStatusBadge">My Account</span>
@@ -126,7 +126,7 @@
 
           <div style="text-align: center; margin-top: 0.5rem;">
             <button type="submit" class="primary-btn" style="background: linear-gradient(135deg, #0072bc 0%, #00a651 100%); padding: 0.85rem 2.5rem; font-weight: 900; font-size: 1rem; border-radius: 8px; border: none; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,114,188,0.3);">
-              Track Your Visa Status ➔
+              Track Your Visa Status 
             </button>
           </div>
         </form>
@@ -142,7 +142,7 @@
     <!-- BOTTOM SECTION: VISA CHECKLIST & COUNTRY PRICE LIST TABLE -->
     <div style="background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
       <h2 style="color: #ea580c; font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 0.4rem;">
-        🌍 Visa Checklist &amp; Country Price List (সকল দেশের ভিসা প্রাইজ লিস্ট)
+         Visa Checklist &amp; Country Price List (সকল দেশের ভিসা প্রাইজ লিস্ট)
       </h2>
       <p style="text-align: center; color: #ffffff; font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem;">
         যেকোনো দেশ সিলেক্ট করে ভিসা রেট, এম্বাসি ফি, ভ্যালিডিটি ও রিকোয়ারমেন্টস চেক করুন।
@@ -197,7 +197,7 @@
     </div>
   </footer>
 
-  <script src="app.js?v=v41_app_promo_original_colors_restored"></script>
+  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
   <script>
     // ==========================================
     // DYNAMIC COUNTRY VISA PRICE LIST ENGINE
@@ -217,7 +217,7 @@
 
       // Populate checklist filter dropdown
       let optionsHtml = uniqueCountries.map((c, idx) => `<option value="${c}" ${idx === 0 ? 'selected' : ''}>${c}</option>`).join('');
-      optionsHtml += `<option value="All">🌐 All Countries (সব দেশ দেখুন)</option>`;
+      optionsHtml += `<option value="All"> All Countries (সব দেশ দেখুন)</option>`;
       select.innerHTML = optionsHtml;
 
       // Populate tracking country dropdown
