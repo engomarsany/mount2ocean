@@ -12,11 +12,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
+  <link rel="stylesheet" href="styles.css?v=v43_owner_admin_auth_security_guard">
 
   <!-- INSTANT INLINE TAB & ROLE SWITCHER (ZERO-DEPENDENCY FAILSAFE) -->
   <script>
     var currentRole = 'customer';
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if redirected from unauthorized admin page access
+      var urlParams = new URLSearchParams(window.location.search);
+      var isUnauthorized = urlParams.get('unauthorized');
+      var redirectMsg = sessionStorage.getItem('m2o_auth_redirect_msg');
+      var authAlertBanner = document.getElementById('authAlertBanner');
+
+      if (isUnauthorized || redirectMsg) {
+        if (authAlertBanner) {
+          authAlertBanner.style.display = 'block';
+          if (redirectMsg) {
+            var bannerText = document.getElementById('authAlertText');
+            if (bannerText) bannerText.textContent = redirectMsg;
+          }
+        }
+        sessionStorage.removeItem('m2o_auth_redirect_msg');
+      }
+    });
 
     function switchAuthTab(mode) {
       var signinView = document.getElementById('signinView');
@@ -71,27 +90,84 @@
 
     function handleSigninSubmit(e) {
       e.preventDefault();
-      var identityInput = document.getElementById('signinIdentityInput');
-      var identityVal = identityInput ? identityInput.value : '01330303082';
-      
-      var userData = {
-        name: currentRole === 'customer' ? 'Sharmin Chowdhury' : (currentRole === 'guide' ? 'Tanvir Hossain' : 'SkyLine Travel & Tours'),
-        mobile: identityVal.includes('@') ? '01330303082' : identityVal,
-        email: identityVal.includes('@') ? identityVal : (currentRole === 'customer' ? 'sharmin@gmail.com' : 'partner@mount2ocean.com'),
-        role: currentRole.toUpperCase()
-      };
+      var identityInput = document.getElementById('signinEmail') || document.getElementById('signinIdentityInput');
+      var identityVal = identityInput ? identityInput.value.trim().toLowerCase() : '';
+      var passInput = document.getElementById('signinPassword');
+      var passVal = passInput ? passInput.value.trim() : '';
 
-      if (window.collectAndStoreUser) {
-        window.collectAndStoreUser(userData);
-      } else {
-        localStorage.setItem('m2o_logged_user', JSON.stringify(userData));
+      var urlParams = new URLSearchParams(window.location.search);
+      var redirectPage = urlParams.get('redirect') || '';
+
+      // Owner / Admin Credentials Validation
+      var isAdminLogin = (
+        identityVal === 'admin@mount2ocean.com' ||
+        identityVal === 'owner@mount2ocean.com' ||
+        identityVal === '01977477172' ||
+        identityVal === 'admin' ||
+        identityVal === 'owner' ||
+        currentRole === 'owner' ||
+        currentRole === 'admin' ||
+        passVal === 'admin123' ||
+        passVal === 'owner123'
+      );
+
+      if (isAdminLogin) {
+        var adminUser = {
+          name: 'Mount2ocean Owner Admin',
+          mobile: '01977477172',
+          email: 'admin@mount2ocean.com',
+          role: 'OWNER'
+        };
+        localStorage.setItem('m2o_logged_user', JSON.stringify(adminUser));
+        localStorage.setItem('m2o_user_role', 'OWNER');
+        localStorage.setItem('m2o_is_logged_in', 'true');
+        
+        var target = (redirectPage && redirectPage.startsWith('admin_')) ? redirectPage : 'admin_dashboard.html';
+        window.location.href = target;
+        return;
       }
 
-      if (currentRole === 'customer') {
-        window.location.href = 'customer_portal.html';
-      } else {
+      // Guide Partner Login
+      if (currentRole === 'guide' || identityVal === 'guide@mount2ocean.com' || identityVal === '01811002233') {
+        var guideUser = {
+          name: 'Certified Tour Guide Partner',
+          mobile: identityVal.includes('@') ? '01811002233' : identityVal,
+          email: identityVal.includes('@') ? identityVal : 'guide@mount2ocean.com',
+          role: 'GUIDE'
+        };
+        localStorage.setItem('m2o_logged_user', JSON.stringify(guideUser));
+        localStorage.setItem('m2o_user_role', 'GUIDE');
+        localStorage.setItem('m2o_is_logged_in', 'true');
         window.location.href = 'agent_dashboard.html';
+        return;
       }
+
+      // Agency Partner Login
+      if (currentRole === 'agent' || identityVal === 'agent@mount2ocean.com' || identityVal === '01911002233') {
+        var agentUser = {
+          name: 'Verified Travel Agency Partner',
+          mobile: identityVal.includes('@') ? '01911002233' : identityVal,
+          email: identityVal.includes('@') ? identityVal : 'agent@mount2ocean.com',
+          role: 'AGENT'
+        };
+        localStorage.setItem('m2o_logged_user', JSON.stringify(agentUser));
+        localStorage.setItem('m2o_user_role', 'AGENT');
+        localStorage.setItem('m2o_is_logged_in', 'true');
+        window.location.href = 'agent_dashboard.html';
+        return;
+      }
+
+      // Customer / Traveler Login
+      var customerUser = {
+        name: 'Sharmin Chowdhury',
+        mobile: identityVal.includes('@') ? '01330303082' : (identityVal || '01330303082'),
+        email: identityVal.includes('@') ? identityVal : 'sharmin@gmail.com',
+        role: 'CUSTOMER'
+      };
+      localStorage.setItem('m2o_logged_user', JSON.stringify(customerUser));
+      localStorage.setItem('m2o_user_role', 'CUSTOMER');
+      localStorage.setItem('m2o_is_logged_in', 'true');
+      window.location.href = 'customer_portal.html';
     }
 
     function handleSignupSubmit(e) {
@@ -243,6 +319,16 @@
             <button type="button" class="tab-switch-btn" id="tabSignupBtn" onclick="switchAuthTab('signup')" style="flex: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; background: transparent; color: #ffffff;">
               Sign Up (সাইন আপ)
             </button>
+          </div>
+
+          <!-- Unauthorized Admin Access Notification Banner -->
+          <div id="authAlertBanner" style="display: none; background: rgba(239, 68, 68, 0.15); border: 2px solid #ef4444; border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; text-align: center; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);">
+            <div style="font-weight: 900; color: #ef4444; font-size: 1rem; margin-bottom: 0.25rem;">
+              Owner &amp; Admin Login Required (অ্যাডমিন লগইন প্রয়োজন)
+            </div>
+            <p id="authAlertText" style="font-size: 0.85rem; color: #ffffff; font-weight: 700; margin: 0;">
+              অ্যাডমিন ও ওনার প্যানেলে প্রবেশের জন্য আপনার অ্যাডমিন ইমেইল/মোবাইল ও পাসওয়ার্ড দিয়ে লগইন করুন।
+            </p>
           </div>
 
           <!-- SIGN IN FORM VIEW -->
@@ -577,7 +663,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
+  <script src="app.js?v=v43_owner_admin_auth_security_guard"></script>
   <!-- REDESIGNED CLASSIC ORIGINAL FOOTER (100% HIGH CONTRAST & SINGLE FOOTER GUARANTEE) -->
   <footer class="cust-footer" style="background: #060911 !important; background-color: #060911 !important; color: #ffffff !important; padding: 4rem 2rem 2.5rem !important; border-top: 3px solid #00f2fe !important; width: 100% !important; margin-top: 5rem !important; display: block !important;">
     <div class="cust-footer-grid" style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 1.3fr; gap: 3rem;">

@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
+  <link rel="stylesheet" href="styles.css?v=v43_owner_admin_auth_security_guard">
 
   <style>
     .admin-page-header {
@@ -91,6 +91,24 @@
     .status-pill-badge.added { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
     .status-pill-badge.dismissed { background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; }
   </style>
+  <!-- STRICT SYNCHRONOUS OWNER / ADMIN ROUTE AUTH GUARD -->
+  <script>
+    (function() {
+      try {
+        var loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user') || 'null');
+        var userRole = (localStorage.getItem('m2o_user_role') || (loggedUser ? loggedUser.role : '') || '').toUpperCase();
+        var isValidAdmin = (userRole === 'OWNER' || userRole === 'ADMIN' || userRole === 'SUPER_ADMIN' || userRole === 'SUPERADMIN');
+        
+        if (!loggedUser || !isValidAdmin) {
+          sessionStorage.setItem('m2o_auth_redirect_msg', 'Access Restricted: Please log in as Owner or Admin to access this panel.');
+          var currentPage = window.location.pathname.split('/').pop() || 'admin_dashboard.html';
+          window.location.replace('index.html?unauthorized=1&redirect=' + encodeURIComponent(currentPage));
+        }
+      } catch(err) {
+        window.location.replace('index.html?unauthorized=1');
+      }
+    })();
+  </script>
 </head>
 <body class="light-theme">
 
@@ -114,7 +132,7 @@
       <a href="admin_dashboard.html" class="secondary-btn" style="padding: 0.5rem 1rem; font-weight: 800; text-decoration: none;">
         ← Back to Dashboard
       </a>
-      <a href="index.html" class="secondary-btn logout-link-btn" title="Sign Out">
+      <a href="javascript:void(0)" onclick="logoutAdmin()" class="secondary-btn logout-link-btn" title="Sign Out">
         Exit (লগআউট)
       </a>
     </div>
@@ -260,7 +278,7 @@
   </main>
 
   <!-- JavaScript -->
-  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
+  <script src="app.js?v=v43_owner_admin_auth_security_guard"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderRequestedPackagesTable();

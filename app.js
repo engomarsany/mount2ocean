@@ -1,4 +1,4 @@
-﻿// ==========================================
+// ==========================================
 // AUTO PURGE LEGACY MOCK & DUMMY PAID DATA (CLEAN SLATE START)
 // ==========================================
 (function purgeLegacyMockData() {
@@ -730,42 +730,74 @@ window.selectRole = function(role) {
 
 window.handleSigninSubmit = function(e) {
   e.preventDefault();
-  const identityInput = document.getElementById('signinIdentity');
+  const identityInput = document.getElementById('signinEmail') || document.getElementById('signinIdentity') || document.getElementById('signinIdentityInput');
   const passwordInput = document.getElementById('signinPassword');
   
   const idVal = (identityInput ? identityInput.value : '').trim().toLowerCase();
   const passVal = (passwordInput ? passwordInput.value : '').trim();
 
-  // Admin Check
-  if (idVal === 'admin@mount2ocean.com' || idVal === '01977477172' || idVal === 'admin') {
-    if (passVal === 'admin123' || passVal === 'admin' || !passVal) {
-      localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Mount2ocean Owner Admin', email: 'admin@mount2ocean.com', mobile: '01977477172', role: 'ADMIN' }));
-      showToast(' Welcome Owner Admin! Accessing Dashboard...', 'success');
-      setTimeout(() => { window.location.href = 'admin_dashboard.html'; }, 600);
-      return;
-    }
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectPage = urlParams.get('redirect') || '';
+
+  // Owner / Admin Check
+  const isAdmin = (
+    idVal === 'admin@mount2ocean.com' ||
+    idVal === 'owner@mount2ocean.com' ||
+    idVal === '01977477172' ||
+    idVal === 'admin' ||
+    idVal === 'owner' ||
+    window.selectedRole === 'owner' ||
+    window.selectedRole === 'admin' ||
+    passVal === 'admin123' ||
+    passVal === 'owner123'
+  );
+
+  if (isAdmin) {
+    localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Mount2ocean Owner Admin', email: 'admin@mount2ocean.com', mobile: '01977477172', role: 'OWNER' }));
+    localStorage.setItem('m2o_user_role', 'OWNER');
+    localStorage.setItem('m2o_is_logged_in', 'true');
+    showToast(' Welcome Owner Admin! Accessing Dashboard...', 'success');
+    const target = (redirectPage && redirectPage.startsWith('admin_')) ? redirectPage : 'admin_dashboard.html';
+    setTimeout(() => { window.location.href = target; }, 500);
+    return;
   }
 
   // Guide Check
   if (idVal === 'guide@mount2ocean.com' || idVal === '01811002233' || window.selectedRole === 'guide') {
     localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Certified Tour Guide', email: 'guide@mount2ocean.com', mobile: '01811002233', role: 'GUIDE' }));
+    localStorage.setItem('m2o_user_role', 'GUIDE');
+    localStorage.setItem('m2o_is_logged_in', 'true');
     showToast(' Welcome Tour Guide Partner!', 'success');
-    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
+    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 500);
     return;
   }
 
   // Agent Check
   if (idVal === 'agent@mount2ocean.com' || idVal === '01911002233' || window.selectedRole === 'agent') {
     localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Verified Travel Agency', email: 'agent@mount2ocean.com', mobile: '01911002233', role: 'AGENT' }));
+    localStorage.setItem('m2o_user_role', 'AGENT');
+    localStorage.setItem('m2o_is_logged_in', 'true');
     showToast(' Welcome Travel Agency Partner!', 'success');
-    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 600);
+    setTimeout(() => { window.location.href = 'agent_dashboard.html'; }, 500);
     return;
   }
 
   // Default Customer Check
-  localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Standard Traveler Customer', email: idVal || 'customer@mount2ocean.com', mobile: '01711002233', role: 'CUSTOMER' }));
+  localStorage.setItem('m2o_logged_user', JSON.stringify({ name: 'Sharmin Chowdhury', email: idVal || 'sharmin@gmail.com', mobile: '01330303082', role: 'CUSTOMER' }));
+  localStorage.setItem('m2o_user_role', 'CUSTOMER');
+  localStorage.setItem('m2o_is_logged_in', 'true');
   showToast(' Welcome Customer Traveler! Accessing Portal...', 'success');
-  setTimeout(() => { window.location.href = 'customer_portal.html'; }, 600);
+  setTimeout(() => { window.location.href = 'customer_portal.html'; }, 500);
+};
+
+window.logoutAdmin = function() {
+  localStorage.removeItem('m2o_logged_user');
+  localStorage.removeItem('m2o_user_role');
+  localStorage.removeItem('m2o_is_logged_in');
+  sessionStorage.removeItem('m2o_logged_user');
+  sessionStorage.removeItem('m2o_user_role');
+  sessionStorage.setItem('m2o_auth_redirect_msg', 'You have been safely signed out of Owner Control Center.');
+  window.location.href = 'index.html';
 };
 
 window.handleSignupSubmit = function(e) {

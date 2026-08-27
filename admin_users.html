@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=v42_clean_zero_symbols_enterprise_codebase">
+  <link rel="stylesheet" href="styles.css?v=v43_owner_admin_auth_security_guard">
 
   <style>
     .admin-page-header {
@@ -121,6 +121,24 @@
       outline: none;
     }
   </style>
+  <!-- STRICT SYNCHRONOUS OWNER / ADMIN ROUTE AUTH GUARD -->
+  <script>
+    (function() {
+      try {
+        var loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user') || 'null');
+        var userRole = (localStorage.getItem('m2o_user_role') || (loggedUser ? loggedUser.role : '') || '').toUpperCase();
+        var isValidAdmin = (userRole === 'OWNER' || userRole === 'ADMIN' || userRole === 'SUPER_ADMIN' || userRole === 'SUPERADMIN');
+        
+        if (!loggedUser || !isValidAdmin) {
+          sessionStorage.setItem('m2o_auth_redirect_msg', 'Access Restricted: Please log in as Owner or Admin to access this panel.');
+          var currentPage = window.location.pathname.split('/').pop() || 'admin_dashboard.html';
+          window.location.replace('index.html?unauthorized=1&redirect=' + encodeURIComponent(currentPage));
+        }
+      } catch(err) {
+        window.location.replace('index.html?unauthorized=1');
+      }
+    })();
+  </script>
 </head>
 <body class="admin-portal-body light-theme">
 
@@ -144,7 +162,8 @@
         Live Customer Website 
       </a>
     </div>
-  </header>
+  <button type="button" onclick="logoutAdmin()" class="secondary-btn logout-link-btn" style="padding: 0.55rem 1.1rem; font-weight: 800; font-size: 0.85rem; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; cursor: pointer;" title="Sign Out">Exit (à¦²à¦—à¦†à¦‰à¦Ÿ)</button>
+</header>
 
   <!-- MAIN CONTAINER -->
   <main style="max-width: 1380px; margin: 2rem auto; padding: 0 1.5rem 4rem;">
@@ -252,7 +271,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Engine -->
-  <script src="app.js?v=v42_clean_zero_symbols_enterprise_codebase"></script>
+  <script src="app.js?v=v43_owner_admin_auth_security_guard"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       renderMasterUsersDirectory();
