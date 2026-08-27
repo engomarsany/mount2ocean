@@ -4,43 +4,54 @@
    TravelSphere Multi-Role Auth Portal - Design Tokens & Stylesheet
    ========================================================================== */
 
-/* Design Tokens - Aligned with Official MOUNT2OCEAN Logo Colors */
+/* Design Tokens - Aligned with Trip.com Signature Royal Blue Theme */
 :root {
   /* Official Logo Brand Colors */
   --m2o-green: #00a651;
   --m2o-red: #ee1c25;
-  --m2o-blue: #0072bc;
+  --m2o-blue: #2b64ff;
   
-  /* Color Palette - High-Contrast Standard Palette (Default) */
-  --bg-primary: #f0f4f9;
+  /* Trip.com Signature Blue Theme Palette */
+  --trip-blue: #2b64ff;
+  --trip-blue-hover: #1c52d8;
+  --trip-blue-light: #eef4ff;
+  --trip-cyan: #00d2ff;
+  --trip-orange: #ff7a00;
+  --trip-red: #ff4d4f;
+  
+  /* High-Contrast Modern Canvas Palette */
+  --bg-primary: #f5f7fa;
   --bg-secondary: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.95);
-  --bg-glass-border: #cbd5e1;
+  --bg-glass: rgba(255, 255, 255, 0.98);
+  --bg-glass-border: #e2e8f0;
   --bg-input: #ffffff;
   --bg-input-hover: #f1f5f9;
-  --bg-card-hover: #f8fafc;
+  --bg-card-hover: #ffffff;
   
   --text-main: #0f172a;
-  --text-muted: #1e293b;
-  --text-dim: #334155;
+  --text-muted: #475569;
+  --text-dim: #64748b;
   
-  /* Primary Gradients */
-  --accent-cyan: #00a651;
-  --accent-blue: #0072bc;
-  --accent-purple: #ee1c25;
-  --accent-emerald: #00a651;
+  /* Signature Gradients */
+  --accent-cyan: #00d2ff;
+  --accent-blue: #2b64ff;
+  --accent-purple: #7c3aed;
+  --accent-emerald: #10b981;
   
-  --primary-gradient: linear-gradient(135deg, #00a651 0%, #0072bc 100%);
-  --guide-gradient: linear-gradient(135deg, #00a651 0%, #8dc63f 100%);
-  --agent-gradient: linear-gradient(135deg, #0072bc 0%, #ee1c25 100%);
+  --primary-gradient: linear-gradient(135deg, #2b64ff 0%, #1c52d8 100%);
+  --hero-gradient: linear-gradient(135deg, #1c52d8 0%, #2b64ff 60%, #00d2ff 100%);
+  --guide-gradient: linear-gradient(135deg, #2b64ff 0%, #00a651 100%);
+  --agent-gradient: linear-gradient(135deg, #1c52d8 0%, #2b64ff 100%);
   
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 30px rgba(0, 166, 81, 0.2);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 43, 128, 0.10);
+  --shadow-glow: 0 0 30px rgba(43, 100, 255, 0.25);
   
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 24px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
   
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3816,7 +3827,9 @@ body.dark-theme #mobileDetailPkgPrice {
 .primary-btn {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0, 166, 81, 0.28) !important;
+  background: linear-gradient(135deg, #2b64ff 0%, #1c52d8 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(43, 100, 255, 0.28) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -3838,24 +3851,24 @@ body.dark-theme #mobileDetailPkgPrice {
 
 .primary-btn:hover {
   transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 8px 25px rgba(0, 166, 81, 0.45) !important;
+  box-shadow: 0 8px 25px rgba(43, 100, 255, 0.45) !important;
 }
 
 .secondary-btn:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(0, 114, 188, 0.15) !important;
+  box-shadow: 0 6px 20px rgba(43, 100, 255, 0.15) !important;
 }
 
 /* 2. Glassmorphic App Header & Brand Elevation */
 .app-header {
-  background: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(0, 166, 81, 0.15) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
 }
 
 .official-brand-logo-img {
-  filter: drop-shadow(0 2px 8px rgba(0, 166, 81, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(43, 100, 255, 0.15));
   transition: transform 0.3s ease;
 }
 
@@ -4869,8 +4882,10 @@ textarea::placeholder {
 /* 4. Badges, Price Pills & Numbers */
 .tour-price-pill,
 .pkg-master-price,
-.price-value {
-  color: #00a651 !important;
+.price-value,
+.tour-card-price,
+.hotel-price {
+  color: #2b64ff !important;
   font-weight: 900 !important;
 }
 
@@ -4881,13 +4896,13 @@ textarea::placeholder {
 /* 1. Curved Hero Banner */
 .trip-hero-section {
   position: relative;
-  background: linear-gradient(135deg, #090d16 0%, #0072bc 60%, #00a651 100%);
+  background: linear-gradient(135deg, #1c52d8 0%, #2b64ff 55%, #00d2ff 100%);
   color: #ffffff;
-  padding: 3.5rem 1.5rem 6.5rem;
+  padding: 4rem 1.5rem 7rem;
   border-bottom-left-radius: 36px;
   border-bottom-right-radius: 36px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 114, 188, 0.2);
+  box-shadow: 0 15px 45px rgba(28, 82, 216, 0.28);
   overflow: hidden;
 }
 
@@ -4895,7 +4910,7 @@ textarea::placeholder {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.18) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -4903,44 +4918,44 @@ textarea::placeholder {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.4rem 1.2rem;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.45rem 1.3rem;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.5px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   color: #ffffff !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .trip-hero-title,
 #tripHeroTitle {
-  font-size: 2.6rem !important;
+  font-size: 2.7rem !important;
   font-weight: 900 !important;
   line-height: 1.2 !important;
-  margin: 0 0 0.8rem !important;
+  margin: 0 0 0.85rem !important;
   color: #ffffff !important;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.95) !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.8) !important;
 }
 
 .trip-hero-subtitle,
 #tripHeroDesc {
-  font-size: 1.15rem !important;
+  font-size: 1.18rem !important;
   color: #ffffff !important;
-  max-width: 780px !important;
+  max-width: 800px !important;
   margin: 0 auto !important;
   font-weight: 700 !important;
-  line-height: 1.6 !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
+  line-height: 1.65 !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7) !important;
 }
 
 /* 2. Floating Multi-Service Search Engine Box */
 .trip-search-wrapper {
   max-width: 1240px;
-  margin: -4.5rem auto 2.5rem;
+  margin: -4.8rem auto 2.8rem;
   padding: 0 1.2rem;
   position: relative;
   z-index: 120;
@@ -4948,8 +4963,8 @@ textarea::placeholder {
 
 .trip-search-box {
   background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 43, 128, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8);
   padding: 1.5rem 1.8rem;
   transition: all 0.3s ease;
 }
@@ -4957,7 +4972,7 @@ textarea::placeholder {
 .trip-tab-nav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   overflow-x: auto;
   padding-bottom: 0.8rem;
   margin-bottom: 1.2rem;
@@ -4969,12 +4984,12 @@ textarea::placeholder {
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 1.25rem;
-  border-radius: 12px;
+  border-radius: 999px;
   font-size: 0.92rem;
-  font-weight: 800;
-  color: #334155;
+  font-weight: 700;
+  color: #475569;
   text-decoration: none;
-  background: #f8fafc;
+  background: transparent;
   border: 1.5px solid transparent;
   white-space: nowrap;
   transition: all 0.2s ease;
@@ -4983,15 +4998,15 @@ textarea::placeholder {
 
 .trip-tab-btn:hover {
   background: #f1f5f9;
-  color: #0072bc;
-  border-color: #cbd5e1;
+  color: #2b64ff;
 }
 
 .trip-tab-btn.active {
-  background: linear-gradient(135deg, #0072bc 0%, #00a651 100%);
-  color: #ffffff !important;
-  border-color: transparent;
-  box-shadow: 0 4px 15px rgba(0, 114, 188, 0.35);
+  background: #eef4ff;
+  color: #2b64ff !important;
+  border-color: #2b64ff;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(43, 100, 255, 0.15);
 }
 
 .trip-search-form-grid {
@@ -5003,16 +5018,16 @@ textarea::placeholder {
 
 .trip-input-card {
   background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid #e2e8f0;
   border-radius: 14px;
   padding: 0.65rem 1rem;
   transition: all 0.2s ease;
 }
 
 .trip-input-card:focus-within {
-  border-color: #0072bc;
+  border-color: #2b64ff;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(0, 114, 188, 0.15);
+  box-shadow: 0 0 0 3px rgba(43, 100, 255, 0.15);
 }
 
 .trip-input-label {
@@ -5045,21 +5060,22 @@ textarea::placeholder {
   gap: 0.5rem;
   width: 100%;
   height: 56px;
-  background: linear-gradient(135deg, #00a651 0%, #0072bc 100%);
+  background: #2b64ff;
   color: #ffffff !important;
   font-size: 1.05rem;
-  font-weight: 900;
+  font-weight: 800;
   border: none;
-  border-radius: 14px;
+  border-radius: 28px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 166, 81, 0.35);
+  box-shadow: 0 6px 20px rgba(43, 100, 255, 0.35);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .trip-search-btn:hover {
+  background: #1c52d8;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 166, 81, 0.45);
+  box-shadow: 0 10px 25px rgba(43, 100, 255, 0.45);
 }
 
 /* 3. New User Exclusive Coupon Strip (Trip.com Ticket Style) */
@@ -5101,8 +5117,8 @@ textarea::placeholder {
 
 .trip-coupon-ticket:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  border-color: #00a651;
+  box-shadow: 0 10px 25px rgba(43, 100, 255, 0.08);
+  border-color: #2b64ff;
 }
 
 .trip-coupon-ticket::before {
@@ -5112,14 +5128,14 @@ textarea::placeholder {
   top: 0;
   bottom: 0;
   width: 5px;
-  background: linear-gradient(to bottom, #00a651, #0072bc);
+  background: linear-gradient(to bottom, #2b64ff, #00d2ff);
 }
 
 .coupon-badge-top {
-  background: rgba(238, 28, 37, 0.1);
-  color: #ee1c25;
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 800;
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
   display: inline-block;
@@ -5142,11 +5158,11 @@ textarea::placeholder {
 }
 
 .coupon-claim-btn {
-  background: #0072bc;
+  background: #2b64ff;
   color: #ffffff !important;
   border: none;
-  padding: 0.55rem 1rem;
-  border-radius: 10px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 20px;
   font-weight: 800;
   font-size: 0.82rem;
   cursor: pointer;
@@ -5155,7 +5171,7 @@ textarea::placeholder {
 }
 
 .coupon-claim-btn:hover {
-  background: #00a651;
+  background: #1c52d8;
 }
 
 /* 4. Featured Campaign Deals Banners (Trip.com "Go Japan" style) */
@@ -5169,14 +5185,14 @@ textarea::placeholder {
 .trip-campaign-card {
   position: relative;
   height: 180px;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.5rem;
   text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   background-size: cover;
   background-position: center;
@@ -5186,7 +5202,7 @@ textarea::placeholder {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(9, 13, 22, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15, 23, 42, 0.88) 100%);
   transition: all 0.3s ease;
 }
 
@@ -5196,7 +5212,7 @@ textarea::placeholder {
 }
 
 .trip-campaign-card:hover::before {
-  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(9, 13, 22, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(15, 23, 42, 0.94) 100%);
 }
 
 .trip-campaign-content {
@@ -5208,15 +5224,15 @@ textarea::placeholder {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: #ef4444;
+  background: #ff4d4f;
   color: #ffffff !important;
-  font-weight: 900;
+  font-weight: 800;
   font-size: 0.76rem;
   padding: 0.3rem 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   letter-spacing: 0.5px;
   z-index: 2;
-  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 4px 10px rgba(255, 77, 79, 0.4);
 }
 
 .campaign-title {
@@ -5229,30 +5245,85 @@ textarea::placeholder {
 
 .campaign-desc {
   font-size: 0.85rem;
-  color: #e2e8f0 !important;
+  color: #f1f5f9 !important;
   margin: 0;
   font-weight: 600;
   text-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 
-/* 5. Wishlist Heart & Card Overlay Ratings */
+/* 5. Destination Pills ("Get Inspired for your next trip") */
+.dest-pill-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.dest-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #334155;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.dest-pill:hover,
+.dest-pill.active {
+  background: #2b64ff;
+  color: #ffffff !important;
+  border-color: #2b64ff;
+  box-shadow: 0 4px 14px rgba(43, 100, 255, 0.3);
+}
+
+/* 6. Universal Elevated Cards (4-Column Layouts) */
+.cust-tour-card,
+.hotel-card,
+.flight-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.cust-tour-card:hover,
+.hotel-card:hover,
+.flight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(43, 100, 255, 0.12);
+  border-color: #bfdbfe;
+}
+
 .wishlist-heart-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.9);
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   transition: all 0.2s ease;
 }
 
@@ -5261,20 +5332,24 @@ textarea::placeholder {
   background: #ffffff;
 }
 
-.wishlist-heart-btn.active {
-  color: #ef4444;
-}
-
 .trip-card-rating-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: #0072bc;
+  background: #2b64ff;
   color: #ffffff !important;
   font-weight: 800;
   font-size: 0.78rem;
   padding: 0.25rem 0.55rem;
   border-radius: 6px;
+}
+
+/* 7. App Promo Banner */
+.app-promo-banner {
+  background: linear-gradient(105deg, #1c52d8 0%, #2b64ff 50%, #0284c7 100%) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 15px 45px rgba(43, 100, 255, 0.25) !important;
+  padding: 3rem 2rem !important;
 }
 
 /* Responsive adjustments */
@@ -5286,15 +5361,15 @@ textarea::placeholder {
 
 @media (max-width: 600px) {
   .trip-hero-section {
-    padding: 2.5rem 1rem 5rem;
+    padding: 2.8rem 1rem 5.5rem;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
   }
   .trip-hero-title {
-    font-size: 1.9rem;
+    font-size: 2rem !important;
   }
   .trip-search-wrapper {
-    margin-top: -3.5rem;
+    margin-top: -3.8rem;
     padding: 0 0.8rem;
   }
   .trip-search-box {
