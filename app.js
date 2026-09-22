@@ -1,4 +1,4 @@
-// ==========================================
+﻿// ==========================================
 // AUTO PURGE LEGACY MOCK & DUMMY PAID DATA (CLEAN SLATE START)
 // ==========================================
 (function purgeLegacyMockData() {
@@ -116,7 +116,7 @@ window.renderGoogleMapInContainer = function(containerId, locationKey, customTit
 // MULTI-CURRENCY CONVERTER ENGINE (BDT, USD, AED, INR)
 // ==========================================
 window.M2O_CURRENCY_RATES = {
-  "BDT": { symbol: "৳", rate: 1.0 },
+  "BDT": { symbol: "", rate: 1.0 },
   "USD": { symbol: "$", rate: 0.0083 },
   "AED": { symbol: "د.إ ", rate: 0.031 },
   "INR": { symbol: "₹", rate: 0.70 }
@@ -222,13 +222,13 @@ if (document.readyState === 'loading') {
 // GLOBAL PACKAGES & SEARCH REDIRECTION ENGINE
 // ==========================================
 window.defaultPackages = [
-  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '৳75,000', duration: '4 Days / 3 Nights', rating: ' 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
-  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '৳17,500', duration: '4 Days / 3 Nights', rating: ' 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
-  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '৳85,000', duration: '4 Days / 3 Nights', rating: ' 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
-  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '৳48,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
-  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '৳18,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
-  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '৳12,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
-  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '৳42,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
+  { id: 'pkg-bhutan', name: "3-Night / 4-Day Bhutan Cultural Tour & Tiger's Nest Hike", category: 'bhutan', price: '75,000', duration: '4 Days / 3 Nights', rating: ' 4.9 (160 reviews)', badge: 'cultural', badgeLabel: 'Bhutan Special', image: 'assets/tour_gallery_bhutan.jpg', desc: "4 Days / 3 Nights complete Bhutan tour including Return Drukair Flights (Dhaka-Paro-Dhaka), 3-Star Hotel stay, all meals, Thimphu sightseeing, and Tiger's Nest hike." },
+  { id: 'pkg-bali-4d3n', name: "BALI PACKAGE 4D/3N - Kintamani Volcano, Uluwatu & Water Sports", category: 'bali', price: '17,500', duration: '4 Days / 3 Nights', rating: ' 4.9 (185 reviews)', badge: 'tropical', badgeLabel: 'Bali Special', image: 'assets/bali_kintamani_volcano.jpg', desc: "4 Days / 3 Nights complete Bali tour including 3-Star/4-Star Hotel stay, daily breakfast, Kintamani Volcano view, Tegalalang rice terraces, Uluwatu sunset cliff temple, Tegenungan waterfall, and complimentary Banana Boat ride!" },
+  { id: 'pkg-maldives-resort', name: "Maldives Overwater Resort Villa & Speedboat Transfer", category: 'maldives', price: '85,000', duration: '4 Days / 3 Nights', rating: ' 5.0 (140 reviews)', badge: 'luxury', badgeLabel: 'Luxury Escape', image: 'assets/maldives_villa.jpg', desc: "4 Days / 3 Nights private overwater villa stay in Maldives with all-inclusive meals, coral reef snorkeling, and luxury speedboat airport transfers." },
+  { id: 'pkg-dubai-safari', name: "Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise", category: 'dubai', price: '48,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (320 reviews)', badge: 'featured', badgeLabel: 'Featured', image: 'assets/dubai_safari.jpg', desc: "5 Days / 4 Nights luxury Dubai tour with 4-Star hotel, 4x4 dune bashing desert safari, BBQ dinner, Burj Khalifa top floor entry, and Marina cruise." },
+  { id: 'pkg-coxsbazar-beach', name: "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise", category: 'coxsbazar', price: '18,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (210 reviews)', badge: 'bestseller', badgeLabel: 'Bestseller', image: 'assets/coxsbazar_resort.jpg', desc: "3 Days / 2 Nights luxury oceanfront resort stay at Cox's Bazar including seafood buffet breakfast, Saint Martin Ship Cruise, and Kolatoli Beach tour." },
+  { id: 'pkg-sylhet-tea', name: "Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour", category: 'sylhet', price: '12,500', duration: '3 Days / 2 Nights', rating: ' 4.8 (195 reviews)', badge: 'eco', badgeLabel: 'Sylhet Special', image: 'assets/dest_darjeeling.jpg', desc: "3 Days / 2 Nights eco tour in Sylhet including Luxury Resort Stay, Lakkatura Tea Garden walk, Jaflong Zero Point boat ride, Ratargul Swamp Forest boat tour, and Bisnakandi." },
+  { id: 'pkg-nepal-himalaya', name: "Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour", category: 'nepal', price: '42,000', duration: '5 Days / 4 Nights', rating: ' 4.9 (175 reviews)', badge: 'mountain', badgeLabel: 'Himalayan Escape', image: 'assets/dest_kathmandu.jpg', desc: "5 Days / 4 Nights mountain escape in Nepal covering Kathmandu Pashupatinath Temple, Pokhara Phewa Lake boating, Sarangkot Himalayan Sunrise view, and Paragliding adventure." }
 ];
 
 window.getCombinedLivePackages = function() {
@@ -340,13 +340,13 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
   if (rawQuery) {
     // 1. Direct Category/Destination matching (sylhet, nepal, bhutan, dubai, coxsbazar, maldives, bali)
     const destMap = {
-      'sylhet': ['sylhet', 'সিলেট', 'jaflong', 'জাফলং', 'ratargul', 'রাতারগুল', 'tea garden', 'চা বাগান'],
-      'nepal': ['nepal', 'নেপাল', 'kathmandu', 'কাঠমান্ডু', 'pokhara', 'পোখরা', 'annapurna', 'himalaya', 'হিমালয়'],
-      'coxsbazar': ['cox', 'কক্সবাজার', 'saint martin', 'সেন্টমার্টিন', 'sea beach', 'সমুদ্র', 'kolatoli', 'কোলাতলী'],
-      'dubai': ['dubai', 'দুবাই', 'burj', 'বুর্জ', 'safari', 'সাফারি', 'dhow cruise', 'মেরিনা'],
-      'maldives': ['maldives', 'মালদ্বীপ', 'overwater', 'villa', 'snorkeling', 'স্পিডবোট', 'bungalow', 'resort'],
-      'bhutan': ['bhutan', 'ভুটান', 'tiger', 'nest', 'paro', 'thimphu', 'পারো', 'থিম্পু'],
-      'bali': ['bali', 'বালি', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', 'উবুদ']
+      'sylhet': ['sylhet', '', 'jaflong', '', 'ratargul', '', 'tea garden', ' '],
+      'nepal': ['nepal', '', 'kathmandu', '', 'pokhara', '', 'annapurna', 'himalaya', ''],
+      'coxsbazar': ['cox', '', 'saint martin', '', 'sea beach', '', 'kolatoli', ''],
+      'dubai': ['dubai', '', 'burj', '', 'safari', '', 'dhow cruise', ''],
+      'maldives': ['maldives', '', 'overwater', 'villa', 'snorkeling', '', 'bungalow', 'resort'],
+      'bhutan': ['bhutan', '', 'tiger', 'nest', 'paro', 'thimphu', '', ''],
+      'bali': ['bali', '', 'volcano', 'kintamani', 'tanah lot', 'nusa penida', '']
     };
 
     for (const [catKey, keywords] of Object.entries(destMap)) {
@@ -363,7 +363,7 @@ window.runHiddenAiTourAgent = function(userPrompt, selectedDate = '2026-08-10') 
     // 2. Semantic Theme & Intent Matching (Mountain, Beach, Luxury, Tea, Temple, Desert)
     if (!matchedPkg) {
       const themeMap = [
-        { keywords: ['mountain', 'pahar', 'পাহাড়', 'hike', 'trek', 'snow'], category: 'nepal' },
+        { keywords: ['mountain', 'pahar', '', 'hike', 'trek', 'snow'], category: 'nepal' },
         { keywords: ['tea', 'green', 'rainforest', 'swamp'], category: 'sylhet' },
         { keywords: ['beach', 'ocean', 'sea', 'bengal', 'coral'], category: 'coxsbazar' },
         { keywords: ['luxury', 'villa', 'water', 'resort', 'honeymoon', 'bungalow', 'overwater'], category: 'maldives' },
@@ -666,7 +666,7 @@ window.populateCustSearchSelect = function() {
 
   const livePkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : (window.defaultPackages || []);
   
-  select.innerHTML = '<option value=""> All Live Tour Packages (সবকটি প্যাকেজ দেখুন)</option>';
+  select.innerHTML = '<option value=""> All Live Tour Packages (  )</option>';
 
   livePkgs.forEach(pkg => {
     const opt = document.createElement('option');
@@ -699,7 +699,7 @@ window.switchAuthTab = function(mode) {
       tabSignupBtn.style.background = 'transparent';
       tabSignupBtn.style.color = '#94a3b8';
     }
-    showToast('Switched to Sign In (লগইন করুন)', 'info');
+    showToast('Switched to Sign In ( )', 'info');
   } else {
     if (signupView) signupView.style.display = 'block';
     if (signinView) signinView.style.display = 'none';
@@ -712,7 +712,7 @@ window.switchAuthTab = function(mode) {
       tabSigninBtn.style.background = 'transparent';
       tabSigninBtn.style.color = '#94a3b8';
     }
-    showToast('Switched to Sign Up (সাইন আপ করুন)', 'info');
+    showToast('Switched to Sign Up (  )', 'info');
   }
 };
 
@@ -829,8 +829,8 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Customer',
       icon: '',
       badgeText: 'CUSTOMER ACCOUNT',
-      submitSigninText: 'Sign In as Customer (কাস্টমার লগইন)',
-      submitSignupText: 'Create Customer Account (কাস্টমার সাইন আপ)',
+      submitSigninText: 'Sign In as Customer ( )',
+      submitSignupText: 'Create Customer Account (  )',
       previewTitle: 'Customer Account Features',
       previewDesc: 'Book curated tours, save travel itineraries, track active bookings, and earn loyalty rewards.',
       accentColor: '#00f2fe'
@@ -839,8 +839,8 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Tour Guide',
       icon: '',
       badgeText: 'TOUR GUIDE ACCOUNT',
-      submitSigninText: 'Sign In as Tour Guide (গাইড লগইন)',
-      submitSignupText: 'Register as Tour Guide (গাইড সাইন আপ)',
+      submitSigninText: 'Sign In as Tour Guide ( )',
+      submitSignupText: 'Register as Tour Guide (  )',
       previewTitle: 'Tour Guide Features',
       previewDesc: 'List tour services, manage trip schedules, connect directly with travelers, and receive payments.',
       accentColor: '#00b09b'
@@ -849,8 +849,8 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Travel Agent',
       icon: '',
       badgeText: 'TRAVEL AGENCY ACCOUNT',
-      submitSigninText: 'Sign In as Travel Agent (এজেন্ট লগইন)',
-      submitSignupText: 'Register Travel Agency (এজেন্ট সাইন আপ)',
+      submitSigninText: 'Sign In as Travel Agent ( )',
+      submitSignupText: 'Register Travel Agency (  )',
       previewTitle: 'Agency Partner Features',
       previewDesc: 'Bulk booking management, customized agency packages, analytics dashboards, and B2B pricing.',
       accentColor: '#e100ff'
@@ -1000,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
     state.mode = newMode;
     updateModeUI();
     clearErrors();
-    showToast(`Switched mode to: ${newMode === 'signin' ? 'Sign In (লগইন)' : 'Sign Up (সাইন আপ)'}`, 'info');
+    showToast(`Switched mode to: ${newMode === 'signin' ? 'Sign In ()' : 'Sign Up ( )'}`, 'info');
   }
 
   window.setMode = setMode;
@@ -1036,7 +1036,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabSignupEl.style.color = '#94a3b8';
       }
 
-      if (formTitleEl) formTitleEl.textContent = 'Welcome Back (লগইন করুন)';
+      if (formTitleEl) formTitleEl.textContent = 'Welcome Back ( )';
       if (formSubtitleEl && roleConfig[state.role]) formSubtitleEl.textContent = `Sign in to your ${roleConfig[state.role].name} account with Email/Mobile & Password.`;
       
       // Hide Signup-only fields (Full Name, Confirm Password)
@@ -1046,9 +1046,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (switchPromptTextEl) switchPromptTextEl.textContent = "Don't have an account yet?";
-      if (btnToggleModeEl) btnToggleModeEl.textContent = "Create Free Account (সাইন আপ করুন)";
+      if (btnToggleModeEl) btnToggleModeEl.textContent = "Create Free Account (  )";
       if (rememberTextEl) rememberTextEl.textContent = "Remember me on this device";
-      if (submitBtnTextEl && roleConfig[state.role]) submitBtnTextEl.textContent = `Sign In as ${roleConfig[state.role].name} (লগইন করুন)`;
+      if (submitBtnTextEl && roleConfig[state.role]) submitBtnTextEl.textContent = `Sign In as ${roleConfig[state.role].name} ( )`;
 
     } else {
       if (tabSignupEl) {
@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabSigninEl.style.color = '#94a3b8';
       }
 
-      if (formTitleEl) formTitleEl.textContent = 'Create New Free Account (সাইন আপ করুন)';
+      if (formTitleEl) formTitleEl.textContent = 'Create New Free Account (  )';
       if (formSubtitleEl && roleConfig[state.role]) formSubtitleEl.textContent = `Register a new ${roleConfig[state.role].name} account in seconds.`;
       
       // Show Signup-only fields (Full Name, Confirm Password)
@@ -1072,9 +1072,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (switchPromptTextEl) switchPromptTextEl.textContent = "Already have an account?";
-      if (btnToggleModeEl) btnToggleModeEl.textContent = "Sign In Instead (লগইন করুন)";
+      if (btnToggleModeEl) btnToggleModeEl.textContent = "Sign In Instead ( )";
       if (rememberTextEl) rememberTextEl.textContent = "I agree to the Terms of Service & Privacy Policy";
-      if (submitBtnTextEl && roleConfig[state.role]) submitBtnTextEl.textContent = `Create Free ${roleConfig[state.role].name} Account (সাইন আপ করুন)`;
+      if (submitBtnTextEl && roleConfig[state.role]) submitBtnTextEl.textContent = `Create Free ${roleConfig[state.role].name} Account (  )`;
     }
   }
 
@@ -2104,7 +2104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calculate +20% regular price for strikethrough display
     let rawNum = parseInt(latestPkg.price.replace(/[^\d]/g, '')) || 0;
     let regNum = Math.round(rawNum * 1.20);
-    let regFormatted = '৳' + regNum.toLocaleString();
+    let regFormatted = '' + regNum.toLocaleString();
 
     // Update hero background image dynamically
     if (latestPkg.image) {
@@ -2244,7 +2244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adminBookingsTbody.innerHTML = '';
     if (bookings.length === 0) {
-      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #1e293b; font-weight: 800; font-size: 0.95rem; padding: 2.5rem; background: #f8fafc; border-radius: 12px;">কোনো পুরাতন ডামি বুকিং ডেটা নেই। গ্রাহক লাইভ ওয়েবসাইট থেকে বুকিং করলে সাথে সাথে এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।</td></tr>`;
+      adminBookingsTbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #1e293b; font-weight: 800; font-size: 0.95rem; padding: 2.5rem; background: #f8fafc; border-radius: 12px;">     ।            ।</td></tr>`;
       return;
     }
 
@@ -2271,7 +2271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="pkg-title-cell">
           <strong style="color: #0f172a !important; font-size: 0.92rem; display: block;">${b.tourTitle}</strong>
           <span style="color: #0072bc; font-size: 0.84rem; font-weight: 800;">Date: ${b.travelDate || b.date}</span><br>
-          <span style="color: #00a651; font-weight: 900; font-size: 0.9rem;">Price: ${b.price || b.amount || '৳17,500'}</span>
+          <span style="color: #00a651; font-weight: 900; font-size: 0.9rem;">Price: ${b.price || b.amount || '17,500'}</span>
         </td>
         <td><span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">${b.travelersCount || '1 Person'}</span></td>
         <td><span class="pay-pill" style="background: rgba(0, 114, 188, 0.1); color: #0072bc; padding: 0.3rem 0.65rem; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">${b.paymentMethod || 'bKash Payment'}</span></td>
@@ -2325,7 +2325,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
-      revenueEl.textContent = `৳${totalRev.toLocaleString('en-US')}`;
+      revenueEl.textContent = `${totalRev.toLocaleString('en-US')}`;
     }
 
     const users = JSON.parse(localStorage.getItem('m2o_registered_users')) || [];
@@ -2344,7 +2344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cancelReason = '';
 
     if (newStatus === 'CANCELLED') {
-      cancelReason = prompt(`Enter Cancellation Reason / Custom Note for Customer (${cleanId}):\n\n(কাস্টমারকে ট্রিপ বাতিলের কারণ ও বার্তা টাইপ করে লিখে দিন):`, 'Flight / hotel schedule changed by airline. Full refund initiated.') || 'Cancelled by Owner due to schedule update';
+      cancelReason = prompt(`Enter Cancellation Reason / Custom Note for Customer (${cleanId}):\n\n(         ):`, 'Flight / hotel schedule changed by airline. Full refund initiated.') || 'Cancelled by Owner due to schedule update';
     }
 
     if (!bk) {
@@ -2547,7 +2547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal Fallback handler if elements exist on current page
     if (custBookingModal && bookModalTourTitle && bookModalTourPrice) {
       bookModalTourTitle.textContent = title || 'Luxury Tour Package';
-      bookModalTourPrice.textContent = `Package Price: ${price || '৳75,000'} per traveler`;
+      bookModalTourPrice.textContent = `Package Price: ${price || '75,000'} per traveler`;
 
       const checkoutStep = document.getElementById('bookingCheckoutStep');
       const successStep = document.getElementById('bookingSuccessStep');
@@ -2628,7 +2628,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const basePrice = 14200;
     const total = (adults * basePrice) + (children * basePrice * 0.6);
-    priceEl.textContent = `Calculated Total: ৳${total.toLocaleString('en-US')}`;
+    priceEl.textContent = `Calculated Total: ${total.toLocaleString('en-US')}`;
   };
 
   window.confirmCustomerBooking = function(event) {
@@ -2778,7 +2778,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tbody.innerHTML = '';
 
     if (list.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2.5rem; color: #1e293b; font-weight: 800; font-size: 0.95rem; background: #f8fafc;">No pending partner approval requests found. (কোনো নতুন অনুমোদন অপেক্ষমাণ নেই)</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2.5rem; color: #1e293b; font-weight: 800; font-size: 0.95rem; background: #f8fafc;">No pending partner approval requests found. (    )</td></tr>`;
       return;
     }
 
@@ -2996,7 +2996,7 @@ function renderCustomerProfileBookings() {
 
   container.innerHTML = '';
   if (bookings.length === 0) {
-    container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem;">আপনার কোনো বুকিং রেকর্ড পাওয়া যায়নি।</p>`;
+    container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem;">     ।</p>`;
     return;
   }
 
@@ -3007,17 +3007,17 @@ function renderCustomerProfileBookings() {
     let statusTagHtml = '';
     let statusDesc = '';
     if (bk.status === 'APPROVED' || bk.status === 'CONFIRMED') {
-      statusTagHtml = `<span style="background: rgba(0, 166, 81, 0.18); color: #22c55e; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(34, 197, 94, 0.3);"> APPROVED (অনুমোদিত)</span>`;
-      statusDesc = `<p style="font-size: 0.85rem; color: #22c55e; font-weight: 700; margin-top: 0.6rem;"> অভিনন্দন! আপনার ট্রিপ বুকিং ওনার দ্বারা অনুমোদিত হয়েছে! কনফার্মেশন ইমেইল আপনার ঠিকানায় পাঠানো হয়েছে।</p>`;
+      statusTagHtml = `<span style="background: rgba(0, 166, 81, 0.18); color: #22c55e; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(34, 197, 94, 0.3);"> APPROVED ()</span>`;
+      statusDesc = `<p style="font-size: 0.85rem; color: #22c55e; font-weight: 700; margin-top: 0.6rem;"> !       !      ।</p>`;
     } else if (bk.status === 'CANCELLED' || bk.status === 'REJECTED') {
-      statusTagHtml = `<span style="background: rgba(239, 68, 68, 0.18); color: #ef4444; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(239, 68, 68, 0.3);"> CANCELLED (বাতিলকৃত)</span>`;
+      statusTagHtml = `<span style="background: rgba(239, 68, 68, 0.18); color: #ef4444; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(239, 68, 68, 0.3);"> CANCELLED ()</span>`;
       statusDesc = `<div style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.6rem;">
-        <span style="font-size: 0.82rem; color: #ef4444; font-weight: 800; display: block;"> বাতিলের কারণ: ${bk.cancellationReason || 'নির্ধারিত তারিখে পর্যাপ্ত সিট খালি নেই'}</span>
-        <span style="font-size: 0.78rem; color: #cbd5e1;">সহায়তার জন্য হটলাইনে কল করুন: +880 1977-477172</span>
+        <span style="font-size: 0.82rem; color: #ef4444; font-weight: 800; display: block;">  : ${bk.cancellationReason || '     '}</span>
+        <span style="font-size: 0.78rem; color: #cbd5e1;">    : +880 1977-477172</span>
       </div>`;
     } else {
-      statusTagHtml = `<span style="background: rgba(234, 179, 8, 0.18); color: #eab308; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(234, 179, 8, 0.3);"> PENDING (অনুমোদনের অপেক্ষায়)</span>`;
-      statusDesc = `<p style="font-size: 0.85rem; color: #eab308; font-weight: 700; margin-top: 0.6rem;"> আপনার বুকিং আবেদন ওনার ড্যাশবোর্ডে পর্যালোচনার জন্য জমা রয়েছে।</p>`;
+      statusTagHtml = `<span style="background: rgba(234, 179, 8, 0.18); color: #eab308; font-weight: 800; font-size: 0.8rem; padding: 0.3rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(234, 179, 8, 0.3);"> PENDING ( )</span>`;
+      statusDesc = `<p style="font-size: 0.85rem; color: #eab308; font-weight: 700; margin-top: 0.6rem;">         ।</p>`;
     }
 
     card.innerHTML = `
@@ -3187,7 +3187,7 @@ function checkCustomerBookingNotifications() {
     if (!select) return;
 
     const pkgs = window.getCombinedLivePackages ? window.getCombinedLivePackages() : [];
-    select.innerHTML = '<option value="ALL"> All Packages (সকল প্যাকেজ)</option>';
+    select.innerHTML = '<option value="ALL"> All Packages ( )</option>';
 
     pkgs.forEach(p => {
       const opt = document.createElement('option');
@@ -3212,7 +3212,7 @@ function checkCustomerBookingNotifications() {
     tbody.innerHTML = '';
     promos.forEach(p => {
       const tr = document.createElement('tr');
-      const valStr = p.type === 'PERCENT' ? `${p.value}% OFF` : `৳${p.value.toLocaleString()} FLAT OFF`;
+      const valStr = p.type === 'PERCENT' ? `${p.value}% OFF` : `${p.value.toLocaleString()} FLAT OFF`;
 
       tr.innerHTML = `
         <td><strong style="color: #0072bc; font-size: 1rem; letter-spacing: 1px; font-weight: 900;">${p.code}</strong></td>
@@ -3298,7 +3298,7 @@ function checkCustomerBookingNotifications() {
       code: promo.code,
       discountAmount: discountAmount,
       newTotal: newTotal,
-      message: ` Promo Code ${promo.code} Applied! You saved ৳${discountAmount.toLocaleString()}!`
+      message: ` Promo Code ${promo.code} Applied! You saved ${discountAmount.toLocaleString()}!`
     };
   };
 
@@ -3474,7 +3474,7 @@ function checkCustomerBookingNotifications() {
   // MAGIC AI ASSISTANT BOT & LIVE ADMIN SUPPORT ENGINE
   // ==========================================
   const defaultAiInitialMessages = [
-    { sender: 'bot', text: ' আসসালামু আলাইকুম! Mount2ocean AI স্মার্ট অ্যাসিস্ট্যান্ট এ আপনাকে স্বাগতম! আমি কীভাবে সাহায্য করতে পারি?', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+    { sender: 'bot', text: '  ! Mount2ocean AI     !     ?', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
   ];
 
   window.getAiChatMessages = function() {
@@ -3505,7 +3505,7 @@ function checkCustomerBookingNotifications() {
 
   // 1-Click Test Data Cleanup Utility for Owner Admin
   window.clearM2OTestData = function() {
-    if (confirm('আপনি কি নিশ্চিত যে সকল টেস্ট বুকিং, টেস্ট টিকিট ও সাপোর্ট মেসেজ ডিলিট করতে চান? (Clear all temporary test data?)')) {
+    if (confirm('      ,        ? (Clear all temporary test data?)')) {
       localStorage.removeItem('m2o_support_tickets');
       localStorage.removeItem('m2o_customer_chat_messages');
       localStorage.setItem('m2o_customer_notifications', JSON.stringify([]));
@@ -3529,7 +3529,7 @@ function checkCustomerBookingNotifications() {
     const loggedUser = JSON.parse(localStorage.getItem('m2o_logged_user')) || { name: 'Valued Customer', mobile: '01977477172', email: 'customer@mount2ocean.com' };
 
     // Check if user is replying YES to live support escalation
-    const isEscalationRequest = lower.includes('হ্যাঁ') || lower.includes('yes') || lower.includes('support') || lower.includes('কথা') || lower.includes('কথা বলতে চাই') || lower.includes('লাইভ') || lower.includes('প্রতিনিধি');
+    const isEscalationRequest = lower.includes('') || lower.includes('yes') || lower.includes('support') || lower.includes('') || lower.includes('  ') || lower.includes('') || lower.includes('');
 
     if (window.aiWaitingEscalationConsent || isEscalationRequest) {
       window.aiWaitingEscalationConsent = false;
@@ -3562,7 +3562,7 @@ function checkCustomerBookingNotifications() {
         let currentMsgs = getAiChatMessages();
         currentMsgs.push({
           sender: 'bot',
-          text: ` আপনার রিকোয়েস্টটি Mount2ocean ওনার ও অ্যাডমিন লাইভ সাপোর্ট কনসোলে ট্রান্সফার করা হয়েছে। ওনার/অ্যাডমিন টিম খুব শীঘ্রই আপনাকে সরাসরি রিপ্লাই দেবেন।`,
+          text: `   Mount2ocean         । /       ।`,
           time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         });
         saveAiChatMessages(currentMsgs);
@@ -3577,81 +3577,81 @@ function checkCustomerBookingNotifications() {
     const livePkgs = Array.isArray(rawLivePkgs) ? rawLivePkgs : [];
     let botReply = '';
 
-    if (lower.includes('sylhet') || lower.includes('সিলেট') || lower.includes('jaflong') || lower.includes('জাফলং') || lower.includes('ratargul') || lower.includes('রাতারগুল')) {
+    if (lower.includes('sylhet') || lower.includes('') || lower.includes('jaflong') || lower.includes('') || lower.includes('ratargul') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-sylhet-tea' || (p.category || '').includes('sylhet'));
-      botReply = ` ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n মূল্য: ${pkg ? pkg.price : '৳১২,৫০০'} (প্রতি জন)\n️ সময়কাল: 3 Days / 2 Nights\n অন্তর্ভুক্ত: গ্রিন টি গার্ডেন রিসোর্ট স্টেই, রাতারগুল বোট রাইড, জাফলং জিরো পয়েন্ট সফর ও মিলস।\n\nসরাসরি বুক করতে "Tour Packages" পেজে ক্লিক করুন!`;
-    } else if (lower.includes('nepal') || lower.includes('নেপাল') || lower.includes('kathmandu') || lower.includes('কাঠমান্ডু') || lower.includes('pokhara') || lower.includes('পোখরা')) {
+      botReply = ` ${pkg ? pkg.name : 'Sylhet Tea Garden, Jaflong & Ratargul Swamp Forest Tour'}\n : ${pkg ? pkg.price : ','} ( )\n️ : 3 Days / 2 Nights\n :     ,   ,      ।\n\n   "Tour Packages"   !`;
+    } else if (lower.includes('nepal') || lower.includes('') || lower.includes('kathmandu') || lower.includes('') || lower.includes('pokhara') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-nepal-himalaya' || (p.category || '').includes('nepal'));
-      botReply = `️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n মূল্য: ${pkg ? pkg.price : '৳৪২,০০০'} (প্রতি জন)\n️ সময়কাল: 5 Days / 4 Nights\n অন্তর্ভুক্ত: পশুপতিনাথ মন্দির, ফেওয়া লেকে বোটিং, সারংকোট হিমালয় সানরাইজ পয়েন্ট ও প্যারাগ্লাইডিং।`;
-    } else if (lower.includes('cox') || lower.includes('কক্সবাজার') || lower.includes('saint') || lower.includes('সেন্টমার্টিন')) {
+      botReply = `️ ${pkg ? pkg.name : 'Nepal Kathmandu, Pokhara & Annapurna Himalayan Sunrise Tour'}\n : ${pkg ? pkg.price : ','} ( )\n️ : 5 Days / 4 Nights\n :  ,   ,      ।`;
+    } else if (lower.includes('cox') || lower.includes('') || lower.includes('saint') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-coxsbazar-beach' || (p.category || '').includes('coxsbazar'));
-      botReply = `️ ${pkg ? pkg.name : "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise"}\n মূল্য: ${pkg ? pkg.price : '৳১৮,৫০০'} (প্রতি জন)\n️ সময়কাল: 3 Days / 2 Nights\n অন্তর্ভুক্ত: সি-ফ্রন্ট ৫-স্টার রিসোর্ট, সি-ফুড বুফে ব্রেকফাস্ট, সেন্টমার্টিন শিপ ক্রুজ এবং কোলাতলী বিচ ট্যুর।`;
-    } else if (lower.includes('dubai') || lower.includes('দুবাই') || lower.includes('burj') || lower.includes('বুর্জ')) {
+      botReply = `️ ${pkg ? pkg.name : "Cox's Bazar 5-Star Ocean Resort & Saint Martin Coral Cruise"}\n : ${pkg ? pkg.price : ','} ( )\n️ : 3 Days / 2 Nights\n : - - , -  ,       ।`;
+    } else if (lower.includes('dubai') || lower.includes('') || lower.includes('burj') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-dubai-safari' || (p.category || '').includes('dubai'));
-      botReply = `️ ${pkg ? pkg.name : 'Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise'}\n মূল্য: ${pkg ? pkg.price : '৳৪৮,০০০'} (প্রতি জন)\n️ সময়কাল: 5 Days / 4 Nights\n অন্তর্ভুক্ত: ৪x৪ ডেসার্ট সাফারি, বুর্জ খলিফা ১২৪ তলার টিকেট, মেরিনা ক্রুজ উইথ বার্বিকিউ ডিনার।`;
-    } else if (lower.includes('maldives') || lower.includes('মালদ্বীপ')) {
+      botReply = `️ ${pkg ? pkg.name : 'Dubai Desert Safari, Burj Khalifa & Marina Dhow Cruise'}\n : ${pkg ? pkg.price : ','} ( )\n️ : 5 Days / 4 Nights\n : x  ,     ,     ।`;
+    } else if (lower.includes('maldives') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-maldives-resort' || (p.category || '').includes('maldives'));
-      botReply = `️ ${pkg ? pkg.name : 'Maldives Overwater Resort Villa & Speedboat Transfer'}\n মূল্য: ${pkg ? pkg.price : '৳৮৫,০০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: প্রাইভেট ওভারওয়াটার ভিলা, স্নরকেলিং স্পিডবোট রাইড, অল-ইনক্লুসিভ লাক্সারি মিলস।`;
-    } else if (lower.includes('bhutan') || lower.includes('ভুটান')) {
+      botReply = `️ ${pkg ? pkg.name : 'Maldives Overwater Resort Villa & Speedboat Transfer'}\n : ${pkg ? pkg.price : ','} ( )\n️ : 4 Days / 3 Nights\n :   ,   , -  ।`;
+    } else if (lower.includes('bhutan') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-bhutan' || (p.category || '').includes('bhutan'));
-      botReply = ` ${pkg ? pkg.name : "Bhutan Cultural Tour & Tiger's Nest Hike"}\n মূল্য: ${pkg ? pkg.price : '৳৭৫,০০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: রিটার্ন এয়ার টিকিট, ৩-স্টার হোটেল, পারো ও থিম্পু সাইটসিয়িং।`;
-    } else if (lower.includes('bali') || lower.includes('বালি')) {
+      botReply = ` ${pkg ? pkg.name : "Bhutan Cultural Tour & Tiger's Nest Hike"}\n : ${pkg ? pkg.price : ','} ( )\n️ : 4 Days / 3 Nights\n :   , - ,    ।`;
+    } else if (lower.includes('bali') || lower.includes('')) {
       const pkg = livePkgs.find(p => p.id === 'pkg-bali-4d3n' || (p.category || '').includes('bali'));
-      botReply = ` ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n মূল্য: ${pkg ? pkg.price : '৳১৭,৫০০'} (প্রতি জন)\n️ সময়কাল: 4 Days / 3 Nights\n অন্তর্ভুক্ত: কিন্তামানি আগ্নেয়গিরি, ওয়াটার স্পোর্টস বোট রাইড এবং তানাহ লট সানসেট ট্যুর।`;
-    } else if (lower.includes('flight') || lower.includes('ticket') || lower.includes('টিকিট') || lower.includes('বিমান') || lower.includes('এয়ারলাইন্স')) {
-      botReply = `️ এয়ার টিকিট সার্ভিস:\n• অভ্যন্তরীণ ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean এজেন্ট ড্যাশবোর্ড থেকে তাৎক্ষণিক সার্চ ও সিট কনফার্মেশন সুবিধা।`;
-    } else if (lower.includes('hotel') || lower.includes('হোটেল') || lower.includes('resort') || lower.includes('রিসোর্ট')) {
-      botReply = ` হোটেল ও রিসোর্ট বুকিং:\n• ৩-স্টার, ৪-স্টার এবং ৫-স্টার লাক্সারি রিসোর্ট ডিসকাউন্ট রেটে।\n• বাংলাদেশ, দুবাই, বালি, মালদ্বীপ ও ইউরোপসহ সকল জনপ্রিয় ডেসটিনেশনের হোটেল সুবিধা।`;
-    } else if (lower.includes('visa') || lower.includes('ভিসা') || lower.includes('উমরাহ') || lower.includes('umrah')) {
+      botReply = ` ${pkg ? pkg.name : 'Bali Kintamani Volcano, Tanah Lot & Nusa Penida Cruise'}\n : ${pkg ? pkg.price : ','} ( )\n️ : 4 Days / 3 Nights\n :  ,         ।`;
+    } else if (lower.includes('flight') || lower.includes('ticket') || lower.includes('') || lower.includes('') || lower.includes('')) {
+      botReply = `️   :\n•       (Biman Bangladesh, US-Bangla, Emirates, Qatar Airways, AirAsia)\n• Mount2ocean         ।`;
+    } else if (lower.includes('hotel') || lower.includes('') || lower.includes('resort') || lower.includes('')) {
+      botReply = `    :\n• -, -  -    ।\n• , , ,        ।`;
+    } else if (lower.includes('visa') || lower.includes('') || lower.includes('') || lower.includes('umrah')) {
       const visaRates = [
-        { key: ['france', 'ফ্রান্স'], country: 'ফ্রান্স (France)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' },
-        { key: ['usa', 'america', 'আমেরিকা', 'ইউএসএ'], country: 'আমেরিকা (USA)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' },
-        { key: ['korea', 'কোরিয়া', 'কোইরা'], country: 'সাউথ কোরিয়া (South Korea)', duration: '১ - ৩ কর্মদিবস (আনুমানিক)', fee: 'TK 2,500' },
-        { key: ['indonesia', 'ইন্দোনেশিয়া'], country: 'ইন্দোনেশিয়া (Indonesia)', duration: '১ - ২ কর্মদিবস এর অধিক', fee: 'TK 3,500' },
-        { key: ['hongkong', 'হংকং'], country: 'হংকং (Hong Kong)', duration: '১ - ২ কর্মদিবস', fee: 'TK 2,500' },
-        { key: ['japan', 'জাপান'], country: 'জাপান (Japan)', duration: '১ - ২ কর্মদিবস', fee: 'TK 2,500' },
-        { key: ['england', 'uk', 'ইউকে', 'ইংল্যান্ড', 'লন্ডন'], country: 'ইংল্যান্ড / ইউকে (UK)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
-        { key: ['china', 'চায়না', 'চীন'], country: 'চায়না (China)', duration: '১ - ২ কর্মদিবস', fee: 'TK 10,000 - TK 20,000 (ক্যাটাগরি ভিত্তিক)' },
-        { key: ['zealand', 'নিউজিল্যান্ড'], country: 'নিউজিল্যান্ড (New Zealand)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
-        { key: ['singapore', 'সিঙ্গাপুর'], country: 'সিঙ্গাপুর (Singapore)', duration: '১ - ২ কর্মদিবস', fee: 'TK 6,500' },
-        { key: ['canada', 'কানাডা'], country: 'কানাডা (Canada)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
-        { key: ['turkey', 'তুরস্ক'], country: 'তুরস্ক ই-ভিসা (Turkey)', duration: '১ কর্মদিবস (আনুমানিক)', fee: 'TK 7,000' },
-        { key: ['thailand', 'থাইল্যান্ড'], country: 'থাইল্যান্ড ই-ভিসা (Thailand)', duration: '১ - ২ কর্মদিবস', fee: 'TK 6,000' },
-        { key: ['malaysia', 'মালয়েশিয়া'], country: 'মালয়েশিয়া (Malaysia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 5,000' },
-        { key: ['india', 'ভারত'], country: 'ভারত (India)', duration: '১ কর্মদিবস', fee: 'TK 1,000' },
-        { key: ['srilanka', 'শ্রীলঙ্কা'], country: 'শ্রীলঙ্কা (Sri Lanka)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: 'TK 3,500' },
-        { key: ['vietnam', 'ভিয়েতনাম'], country: 'ভিয়েতনাম (Vietnam)', duration: '১ - ২ কর্মদিবস', fee: ' শীঘ্রই শুরু হবে' },
-        { key: ['cambodia', 'কম্বোডিয়া'], country: 'কম্বোডিয়া ই-ভিসা (Cambodia)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: ' শীঘ্রই শুরু হবে' },
-        { key: ['russia', 'রাশিয়া'], country: 'রাশিয়া (Russia)', duration: '৫ - ৭ কর্মদিবস', fee: ' অফিসে যোগাযোগের অনুরোধ' },
-        { key: ['saudi', 'umrah', 'সৌদি', 'উমরাহ'], country: 'সৌদি উমরাহ ই-ভিসা (Saudi Umrah)', duration: '২ - ৩ কর্মদিবস (আনুমানিক)', fee: 'TK 22,000' },
-        { key: ['egypt', 'মিশর'], country: 'মিশর (Egypt)', duration: '১ কর্মদিবস (আনুমানিক)', fee: 'TK 2,500' },
-        { key: ['morocco', 'মরক্কো'], country: 'মরক্কো (Morocco)', duration: '১ - ২ কর্মদিবস', fee: ' অফিসে যোগাযোগের অনুরোধ' },
-        { key: ['uzbekistan', 'উজবেকিস্তান'], country: 'উজবেকিস্তান (Uzbekistan)', duration: '৩ কর্মদিবস (আনুমানিক)', fee: ' শীঘ্রই শুরু হবে' },
-        { key: ['ethiopia', 'ইথিওপিয়া'], country: 'ইথিওপিয়া ই-ভিসা (Ethiopia)', duration: '১ - ২ কর্মদিবস', fee: 'TK 10,500' },
-        { key: ['australia', 'অস্ট্রেলিয়া'], country: 'অস্ট্রেলিয়া (Australia)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 7,000' },
-        { key: ['italy', 'ইতালি'], country: 'ইতালি (Italy)', duration: '৫ - ৭ কর্মদিবস', fee: 'TK 5,000' }
+        { key: ['france', ''], country: ' (France)', duration: ' -  ', fee: 'TK 5,000' },
+        { key: ['usa', 'america', '', ''], country: ' (USA)', duration: ' -  ', fee: 'TK 5,000' },
+        { key: ['korea', '', ''], country: '  (South Korea)', duration: ' -   ()', fee: 'TK 2,500' },
+        { key: ['indonesia', ''], country: ' (Indonesia)', duration: ' -    ', fee: 'TK 3,500' },
+        { key: ['hongkong', ''], country: ' (Hong Kong)', duration: ' -  ', fee: 'TK 2,500' },
+        { key: ['japan', ''], country: ' (Japan)', duration: ' -  ', fee: 'TK 2,500' },
+        { key: ['england', 'uk', '', '', ''], country: ' /  (UK)', duration: ' -  ', fee: 'TK 7,000' },
+        { key: ['china', '', ''], country: ' (China)', duration: ' -  ', fee: 'TK 10,000 - TK 20,000 ( )' },
+        { key: ['zealand', ''], country: ' (New Zealand)', duration: ' -  ', fee: 'TK 7,000' },
+        { key: ['singapore', ''], country: ' (Singapore)', duration: ' -  ', fee: 'TK 6,500' },
+        { key: ['canada', ''], country: ' (Canada)', duration: ' -  ', fee: 'TK 7,000' },
+        { key: ['turkey', ''], country: ' - (Turkey)', duration: '  ()', fee: 'TK 7,000' },
+        { key: ['thailand', ''], country: ' - (Thailand)', duration: ' -  ', fee: 'TK 6,000' },
+        { key: ['malaysia', ''], country: ' (Malaysia)', duration: ' -  ', fee: 'TK 5,000' },
+        { key: ['india', ''], country: ' (India)', duration: ' ', fee: 'TK 1,000' },
+        { key: ['srilanka', ''], country: ' (Sri Lanka)', duration: '  ()', fee: 'TK 3,500' },
+        { key: ['vietnam', ''], country: ' (Vietnam)', duration: ' -  ', fee: '   ' },
+        { key: ['cambodia', ''], country: ' - (Cambodia)', duration: '  ()', fee: '   ' },
+        { key: ['russia', ''], country: ' (Russia)', duration: ' -  ', fee: '   ' },
+        { key: ['saudi', 'umrah', '', ''], country: '  - (Saudi Umrah)', duration: ' -   ()', fee: 'TK 22,000' },
+        { key: ['egypt', ''], country: ' (Egypt)', duration: '  ()', fee: 'TK 2,500' },
+        { key: ['morocco', ''], country: ' (Morocco)', duration: ' -  ', fee: '   ' },
+        { key: ['uzbekistan', ''], country: ' (Uzbekistan)', duration: '  ()', fee: '   ' },
+        { key: ['ethiopia', ''], country: ' - (Ethiopia)', duration: ' -  ', fee: 'TK 10,500' },
+        { key: ['australia', ''], country: ' (Australia)', duration: ' -  ', fee: 'TK 7,000' },
+        { key: ['italy', ''], country: ' (Italy)', duration: ' -  ', fee: 'TK 5,000' }
       ];
 
       const matchedVisa = visaRates.find(v => v.key.some(k => lower.includes(k)));
 
       if (matchedVisa) {
-        botReply = ` ${matchedVisa.country} ভিসা প্রসেসিং:\n️ সময়কাল: ${matchedVisa.duration}\n চার্জ/ফি: ${matchedVisa.fee}\n\n বিস্তারিত ও ফাইল জমা দিতে কল করুন: +880 1977-477172`;
+        botReply = ` ${matchedVisa.country}  :\n️ : ${matchedVisa.duration}\n /: ${matchedVisa.fee}\n\n       : +880 1977-477172`;
       } else {
         let listText = visaRates.slice(0, 15).map(v => `• ${v.country}: ${v.fee} (${v.duration})`).join('\n');
-        botReply = ` Mount2ocean এর অফিশিয়াল ২৬টি দেশের ভিসা প্রসেসিং রেট কার্ড:\n\n${listText}\n\n...এবং আরও ১১টি দেশ (কানাডা, ইতালি, রাশিয়া, শেনজেন ইত্যাদি)।\n\n কোনো নির্দিষ্ট দেশের ভিসা ফি জানতে উক্ত দেশের নাম টাইপ করুন অথবা কল করুন: +880 1977-477172`;
+        botReply = ` Mount2ocean        :\n\n${listText}\n\n...    (, , ,  )।\n\n              : +880 1977-477172`;
       }
-    } else if (lower.includes('package') || lower.includes('প্যাকেজ') || lower.includes('price') || lower.includes('cost') || lower.includes('দাম') || lower.includes('খরচ')) {
+    } else if (lower.includes('package') || lower.includes('') || lower.includes('price') || lower.includes('cost') || lower.includes('') || lower.includes('')) {
       let pkgSummaries = livePkgs.map(p => `• ${p.name}: ${p.price} (${p.duration})`).join('\n');
-      botReply = ` আমাদের বর্তমান সক্রিয় ৭টি লাক্সারি ট্যুর প্যাকেজ:\n${pkgSummaries}\n\nপ্যাকেজের ছবি ও ফুল ডিটেইলস দেখতে "Tour Packages" পেজে ক্লিক করুন।`;
-    } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('বিকাশ') || lower.includes('পেমেন্ট') || lower.includes('টাকা')) {
-      botReply = ` পেমেন্ট অপশনসমূহ:\n• bKash / Nagad Direct (+880 1977-477172)\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer / Cash on Office Counter\n\nবুকিং করার সময় আপনার পছন্দের পেমেন্ট অপশন সিলেক্ট করতে পারবেন।`;
-    } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('বাতিল') || lower.includes('রিফান্ড')) {
-      botReply = `️ রিফান্ড পলিসি:\n• ট্রিপ শুরুর ৭ দিন পূর্বে বুকিং ক্যানসেল করলে ১০০% রিফান্ড পাবেন।\n• ওনার/অ্যাডমিন টিম দ্বারা কোনো কারণে সফর স্থগিত হলে তাৎক্ষণিক রিফান্ড সম্পন্ন হয়।`;
-    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('যোগাযোগ') || lower.includes('ফোন') || lower.includes('ঠিকানা') || lower.includes('office')) {
+      botReply = `       :\n${pkgSummaries}\n\n      "Tour Packages"   ।`;
+    } else if (lower.includes('bkash') || lower.includes('payment') || lower.includes('') || lower.includes('') || lower.includes('')) {
+      botReply = `  :\n• bKash / Nagad Direct (+880 1977-477172)\n• Visa / Mastercard Credit/Debit Card\n• Direct Bank Transfer / Cash on Office Counter\n\n         ।`;
+    } else if (lower.includes('refund') || lower.includes('cancel') || lower.includes('') || lower.includes('')) {
+      botReply = `️  :\n•         %  ।\n• /           ।`;
+    } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('mobile') || lower.includes('helpline') || lower.includes('') || lower.includes('') || lower.includes('') || lower.includes('office')) {
       const settings = JSON.parse(localStorage.getItem('m2o_global_settings')) || { phone: '+880 1977-477172', email: 'info@mount2ocean.com', address: '169/1 Concord Grand 4th Floor, Shantinagar, Dhaka, Bangladesh, 1217' };
-      botReply = ` আমাদের যোগাযোগের তথ্য:\n• ২৪/৭ হটলাইন: ${settings.phone}\n• ইমেইল: ${settings.email}\n• কর্পোরেট অফিস: ${settings.address}`;
+      botReply = `   :\n• / : ${settings.phone}\n• : ${settings.email}\n•  : ${settings.address}`;
     } else {
-      botReply = ` আপনার প্রশ্নের উত্তর দিতে আমি প্রস্তুত! Mount2ocean এ সকল ট্যুর প্যাকেজ, এয়ার টিকিট, হোটেল এবং ভিসা সার্ভিস বিদ্যমান।\n\n আপনি কি সরাসরি আমাদের লাইভ ওনার/অ্যাডমিন সাপোর্ট টিমের সাথে কথা বলতে চান? 'হ্যাঁ' বা 'Yes' লিখে জানান।`;
+      botReply = `      ! Mount2ocean    ,  ,     ।\n\n      /      ? ''  'Yes'  ।`;
       window.aiWaitingEscalationConsent = true;
     }
 
@@ -3736,10 +3736,10 @@ function checkCustomerBookingNotifications() {
 
           <!-- QUICK ACTION CHIPS -->
           <div style="background: #f8fafc; padding: 0.65rem 0.9rem; border-bottom: 1px solid #e2e8f0; display: flex; gap: 0.5rem; overflow-x: auto; white-space: nowrap;">
-            <button type="button" onclick="sendAiQuickQuery('প্যাকেজ ও খরচ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #0072bc;"> Tour Packages</button>
-            <button type="button" onclick="sendAiQuickQuery('পেমেন্ট অপশন')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #00a651;"> bKash Payment</button>
-            <button type="button" onclick="sendAiQuickQuery('হটলাইন নাম্বার')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #475569;"> 24/7 Hotline</button>
-            <button type="button" onclick="sendAiQuickQuery('লাইভ সাপোর্ট টিমের সাথে কথা বলতে চাই')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: rgba(239, 68, 68, 0.1); border: 1.5px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 900; color: #dc2626;"> Live Owner Team</button>
+            <button type="button" onclick="sendAiQuickQuery('  ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #0072bc;"> Tour Packages</button>
+            <button type="button" onclick="sendAiQuickQuery(' ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #00a651;"> bKash Payment</button>
+            <button type="button" onclick="sendAiQuickQuery(' ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 999px; cursor: pointer; font-weight: 800; color: #475569;"> 24/7 Hotline</button>
+            <button type="button" onclick="sendAiQuickQuery('      ')" style="padding: 0.3rem 0.75rem; font-size: 0.78rem; background: rgba(239, 68, 68, 0.1); border: 1.5px solid #ef4444; border-radius: 999px; cursor: pointer; font-weight: 900; color: #dc2626;"> Live Owner Team</button>
           </div>
 
           <!-- CHAT MESSAGES CONTAINER -->
@@ -3749,7 +3749,7 @@ function checkCustomerBookingNotifications() {
 
           <!-- CHAT INPUT FOOTER -->
           <form onsubmit="handleCustomerAiSend(event)" style="padding: 0.9rem 1.1rem; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; gap: 0.6rem; align-items: center;">
-            <input type="text" id="m2oAiChatInput" placeholder="Type your question (প্রশ্ন লিখুন)..." style="flex: 1; padding: 0.75rem 1rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 0.92rem; font-weight: 700; color: #0f172a;" required>
+            <input type="text" id="m2oAiChatInput" placeholder="Type your question ( )..." style="flex: 1; padding: 0.75rem 1rem; border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 0.92rem; font-weight: 700; color: #0f172a;" required>
             <button type="submit" class="primary-btn" style="padding: 0.75rem 1.3rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); font-weight: 900; border-radius: 12px; white-space: nowrap;">
               Send 
             </button>
@@ -3807,7 +3807,7 @@ function checkCustomerBookingNotifications() {
     container.innerHTML = '';
 
     if (tickets.length === 0) {
-      container.innerHTML = `<div style="text-align: center; padding: 2.5rem; color: #94a3b8; font-weight: 700;">কোনো লাইভ কাস্টমার সাপোর্ট রিকোয়েস্ট পেন্ডিং নেই। AI বট কাস্টমারদের প্রশ্নের উত্তর দিচ্ছে।</div>`;
+      container.innerHTML = `<div style="text-align: center; padding: 2.5rem; color: #94a3b8; font-weight: 700;">      । AI     ।</div>`;
       return;
     }
 
@@ -3846,7 +3846,7 @@ function checkCustomerBookingNotifications() {
 
         <form onsubmit="handleAdminSupportReply(event, '${ticket.id}')" style="display: flex; flex-direction: column; gap: 0.6rem;">
           <div style="display: flex; gap: 0.5rem;">
-            <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type message/SMS to customer (কাস্টমারকে উত্তর লিখুন)..." style="flex: 1; padding: 0.7rem 1rem; border: 1.5px solid #0072bc; border-radius: 10px; font-size: 0.9rem; font-weight: 700;" required>
+            <input type="text" id="adminReplyInput_${ticket.id}" placeholder="Type message/SMS to customer (  )..." style="flex: 1; padding: 0.7rem 1rem; border: 1.5px solid #0072bc; border-radius: 10px; font-size: 0.9rem; font-weight: 700;" required>
             <button type="submit" class="primary-btn" style="padding: 0.7rem 1.4rem; background: linear-gradient(135deg, #00a651 0%, #0072bc 100%); color: white; border: none; border-radius: 10px; font-weight: 900; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
               ️ Send Live Reply 
             </button>
@@ -3871,7 +3871,7 @@ function checkCustomerBookingNotifications() {
 
   window.sendOwnerWhatsappToTicket = function(ticketId, phone) {
     const input = document.getElementById(`adminReplyInput_${ticketId}`);
-    const text = input && input.value.trim() ? input.value.trim() : 'আসসালামু আলাইকুম, আমি Mount2ocean ওনার সাপোর্ট টিম থেকে বলছি। আপনার রিকোয়েস্টটির বিষয়ে সাহায্য করতে চাচ্ছি।';
+    const text = input && input.value.trim() ? input.value.trim() : ' ,  Mount2ocean     ।      ।';
     const waUrl = `https://wa.me/${phone.startsWith('88') ? phone : '88' + phone}?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
   };
@@ -4040,7 +4040,7 @@ window.handleApplyPagePromoCode = function() {
   const found = savedPromos.find(p => p.code.toUpperCase() === code);
 
   if (found) {
-    const desc = found.type === 'PERCENT' ? `${found.value}%` : `৳${found.value}`;
+    const desc = found.type === 'PERCENT' ? `${found.value}%` : `${found.value}`;
     if (typeof showToast === 'function') showToast(` Promo code ${code} applied! ${desc} discount added to your booking.`, 'success');
   } else {
     if (typeof showToast === 'function') showToast(`️ Invalid promo code '${code}'. Try M2O2026 or BALI20`, 'warning');
@@ -4065,7 +4065,7 @@ window.renderAdminPromoCodes = function() {
   tbody.innerHTML = '';
   promos.forEach(p => {
     const tr = document.createElement('tr');
-    const rateText = p.type === 'PERCENT' ? `${p.value}% OFF` : `৳${p.value} FLAT OFF`;
+    const rateText = p.type === 'PERCENT' ? `${p.value}% OFF` : `${p.value} FLAT OFF`;
     tr.innerHTML = `
       <td><strong style="color:#0072bc; font-size:1rem;">${p.code}</strong></td>
       <td>${p.pkg || 'All Packages'}</td>
@@ -4299,15 +4299,15 @@ const defaultLiveHotels = [
     address: "Marine Drive Road Kolatoli, Coxs Bazar, Bangladesh 4700",
     image: "assets/coxsbazar_resort.jpg",
     startingPrice: 9000,
-    priceFormatted: "৳9,000",
+    priceFormatted: "9,000",
     rating: 4.2,
     reviewsCount: 106,
     amenities: ["All-Inclusive", "Free Breakfast Buffet", "WiFi Available", "Restaurant", "Airport Shuttle - Free", "Meeting Room"],
     description: "Modern 5-star hotel on Marine Drive, by Kolatoli Beach and CXB Airport featuring ocean view suites and fine dining.",
     rooms: [
-      { id: 'ramada-r1', name: "Deluxe King Room", rate: 9000, rateFormatted: "৳9,000", capacity: "2 Guests", inclusions: "Free Breakfast Buffet, WiFi Included, Air Conditioned", image: "assets/coxsbazar_resort.jpg" },
-      { id: 'ramada-r2', name: "Executive Sea View Suite", rate: 14500, rateFormatted: "৳14,500", capacity: "2 Guests", inclusions: "Sea View Balcony, Buffet Breakfast, Welcome Drink", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
-      { id: 'ramada-r3', name: "Presidential Beach Villa", rate: 22000, rateFormatted: "৳22,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Shuttle, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
+      { id: 'ramada-r1', name: "Deluxe King Room", rate: 9000, rateFormatted: "9,000", capacity: "2 Guests", inclusions: "Free Breakfast Buffet, WiFi Included, Air Conditioned", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'ramada-r2', name: "Executive Sea View Suite", rate: 14500, rateFormatted: "14,500", capacity: "2 Guests", inclusions: "Sea View Balcony, Buffet Breakfast, Welcome Drink", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
+      { id: 'ramada-r3', name: "Presidential Beach Villa", rate: 22000, rateFormatted: "22,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Shuttle, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4320,15 +4320,15 @@ const defaultLiveHotels = [
     address: "Marine Drive, Kolatoli Beach, Cox's Bazar, Bangladesh",
     image: "assets/coxsbazar_resort.jpg",
     startingPrice: 14500,
-    priceFormatted: "৳14,500",
+    priceFormatted: "14,500",
     rating: 4.9,
     reviewsCount: 320,
     amenities: ["Free High-Speed WiFi", "Infinity Ocean Pool", "Complimentary Breakfast", "Private Beach Access", "24/7 Room Service", "Airport Shuttle"],
     description: "Experience luxury living right on Kolatoli Beach with breathtaking panoramic Bay of Bengal ocean views, oceanfront infinity swimming pool, and world-class dining.",
     rooms: [
-      { id: 'sayeman-r1', name: "Ocean View Deluxe Double", rate: 14500, rateFormatted: "৳14,500", capacity: "2 Guests", inclusions: "Breakfast Included, Pool & Gym Access, King Bed", image: "assets/coxsbazar_resort.jpg" },
-      { id: 'sayeman-r2', name: "Super Deluxe Sea Front Villa", rate: 18500, rateFormatted: "৳18,500", capacity: "2 Guests", inclusions: "Private Balcony Sea View, Buffet Breakfast, Welcome Drinks", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
-      { id: 'sayeman-r3', name: "Presidential Ocean Suite", rate: 28000, rateFormatted: "৳28,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Transfer, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
+      { id: 'sayeman-r1', name: "Ocean View Deluxe Double", rate: 14500, rateFormatted: "14,500", capacity: "2 Guests", inclusions: "Breakfast Included, Pool & Gym Access, King Bed", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'sayeman-r2', name: "Super Deluxe Sea Front Villa", rate: 18500, rateFormatted: "18,500", capacity: "2 Guests", inclusions: "Private Balcony Sea View, Buffet Breakfast, Welcome Drinks", image: "assets/coxsbazar_parasailing_1785235001886.jpg" },
+      { id: 'sayeman-r3', name: "Presidential Ocean Suite", rate: 28000, rateFormatted: "28,000", capacity: "4 Guests", inclusions: "Jacuzzi Bath, VIP Airport Transfer, Executive Lounge", image: "assets/coxsbazar_resort.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4341,14 +4341,14 @@ const defaultLiveHotels = [
     address: "Main Gulshan Avenue, Plot 01 Road 45, Dhaka 1212",
     image: "assets/dubai_hotel_1785235546938.jpg",
     startingPrice: 19000,
-    priceFormatted: "৳19,000",
+    priceFormatted: "19,000",
     rating: 4.9,
     reviewsCount: 450,
     amenities: ["Skyline Pool & Spa", "Free High-Speed WiFi", "Heavenly Bed", "Fitness Center", "Multiple Fine Dining Restaurants"],
     description: "Located in the heart of Gulshan's diplomatic district, offering 5-star luxury accommodation with signature Heavenly Beds and panoramic city views.",
     rooms: [
-      { id: 'westin-r1', name: "Deluxe King Room", rate: 19000, rateFormatted: "৳19,000", capacity: "2 Guests", inclusions: "City Skyline View, Heavenly Bed, Buffet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
-      { id: 'westin-r2', name: "Executive Club Suite", rate: 32000, rateFormatted: "৳32,000", capacity: "2 Guests", inclusions: "Executive Lounge Access, Evening Cocktails, Spa Access", image: "assets/dubai_hotel_1785235546938.jpg" }
+      { id: 'westin-r1', name: "Deluxe King Room", rate: 19000, rateFormatted: "19,000", capacity: "2 Guests", inclusions: "City Skyline View, Heavenly Bed, Buffet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
+      { id: 'westin-r2', name: "Executive Club Suite", rate: 32000, rateFormatted: "32,000", capacity: "2 Guests", inclusions: "Executive Lounge Access, Evening Cocktails, Spa Access", image: "assets/dubai_hotel_1785235546938.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4361,14 +4361,14 @@ const defaultLiveHotels = [
     address: "Sreemangal, Moulvibazar, Sylhet Division",
     image: "assets/dest_darjeeling_1785151915453.jpg",
     startingPrice: 16000,
-    priceFormatted: "৳16,000",
+    priceFormatted: "16,000",
     rating: 4.8,
     reviewsCount: 280,
     amenities: ["Golf Course", "3 Temperature Controlled Pools", "Spa & Sauna", "Tea Garden View", "Free Breakfast"],
     description: "Bangladesh's premier 5-star tea resort nestled amidst lush green tea gardens of Sreemangal with 9-hole golf course and 3 temperature-controlled pools.",
     rooms: [
-      { id: 'gs-r1', name: "King Deluxe Tea View", rate: 16000, rateFormatted: "৳16,000", capacity: "2 Guests", inclusions: "Tea Garden View, Buffet Breakfast, Pool Access", image: "assets/dest_darjeeling_1785151915453.jpg" },
-      { id: 'gs-r2', name: "Royal Family Suite", rate: 29000, rateFormatted: "৳29,000", capacity: "4 Guests", inclusions: "2 Bedrooms, Private Lounge, Free Golf Passes", image: "assets/dest_darjeeling_1785151915453.jpg" }
+      { id: 'gs-r1', name: "King Deluxe Tea View", rate: 16000, rateFormatted: "16,000", capacity: "2 Guests", inclusions: "Tea Garden View, Buffet Breakfast, Pool Access", image: "assets/dest_darjeeling_1785151915453.jpg" },
+      { id: 'gs-r2', name: "Royal Family Suite", rate: 29000, rateFormatted: "29,000", capacity: "4 Guests", inclusions: "2 Bedrooms, Private Lounge, Free Golf Passes", image: "assets/dest_darjeeling_1785151915453.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4381,14 +4381,14 @@ const defaultLiveHotels = [
     address: "Nusa Dua Beachfront, Bali, Indonesia",
     image: "assets/tour_bali_1785152482323.jpg",
     startingPrice: 24000,
-    priceFormatted: "৳24,000",
+    priceFormatted: "24,000",
     rating: 4.9,
     reviewsCount: 510,
     amenities: ["Private Beach", "Oceanfront Pool", "24/7 Butler Service", "Balinese Spa", "Free Breakfast"],
     description: "Award-winning 5-star beachfront luxury resort on Nusa Dua Beach in Bali, featuring tranquil private villas, infinity pools, and Balinese spa therapies.",
     rooms: [
-      { id: 'mulia-r1', name: "Mulia Ocean View Suite", rate: 24000, rateFormatted: "৳24,000", capacity: "2 Guests", inclusions: "Ocean View Balcony, Jacuzzi Tub, Gourmet Breakfast", image: "assets/tour_bali_1785152482323.jpg" },
-      { id: 'mulia-r2', name: "Beachfront Private Villa with Pool", rate: 45000, rateFormatted: "৳45,000", capacity: "4 Guests", inclusions: "Private Plunge Pool, 24/7 Butler Service, Airport Limousine", image: "assets/bali_kintamani_volcano.jpg" }
+      { id: 'mulia-r1', name: "Mulia Ocean View Suite", rate: 24000, rateFormatted: "24,000", capacity: "2 Guests", inclusions: "Ocean View Balcony, Jacuzzi Tub, Gourmet Breakfast", image: "assets/tour_bali_1785152482323.jpg" },
+      { id: 'mulia-r2', name: "Beachfront Private Villa with Pool", rate: 45000, rateFormatted: "45,000", capacity: "4 Guests", inclusions: "Private Plunge Pool, 24/7 Butler Service, Airport Limousine", image: "assets/bali_kintamani_volcano.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4401,14 +4401,14 @@ const defaultLiveHotels = [
     address: "Crescent Road, Palm Jumeirah, Dubai, UAE",
     image: "assets/dubai_hotel_1785235546938.jpg",
     startingPrice: 38000,
-    priceFormatted: "৳38,000",
+    priceFormatted: "38,000",
     rating: 4.9,
     reviewsCount: 890,
     amenities: ["Aquaventure Waterpark", "Lost Chambers Aquarium", "Private Beach", "Michelin Star Dining", "Free Breakfast"],
     description: "World-famous 5-star iconic resort located at the crown of Palm Jumeirah with complimentary access to Aquaventure Waterpark and Lost Chambers Aquarium.",
     rooms: [
-      { id: 'atlantis-r1', name: "Ocean Queen Room", rate: 38000, rateFormatted: "৳38,000", capacity: "2 Guests", inclusions: "Arabian Sea View, Waterpark Passes Included, Gourmet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
-      { id: 'atlantis-r2', name: "Underwater Signature Suite", rate: 85000, rateFormatted: "৳85,000", capacity: "2 Guests", inclusions: "Floor-to-ceiling Aquarium View, Personal Butler, Private Chauffeur", image: "assets/dubai_goldsouk_1785235564160.jpg" }
+      { id: 'atlantis-r1', name: "Ocean Queen Room", rate: 38000, rateFormatted: "38,000", capacity: "2 Guests", inclusions: "Arabian Sea View, Waterpark Passes Included, Gourmet Breakfast", image: "assets/dubai_hotel_1785235546938.jpg" },
+      { id: 'atlantis-r2', name: "Underwater Signature Suite", rate: 85000, rateFormatted: "85,000", capacity: "2 Guests", inclusions: "Floor-to-ceiling Aquarium View, Personal Butler, Private Chauffeur", image: "assets/dubai_goldsouk_1785235564160.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4421,14 +4421,14 @@ const defaultLiveHotels = [
     address: "South Male Atoll, Republic of Maldives",
     image: "assets/maldives_villa_1785235578174.jpg",
     startingPrice: 48000,
-    priceFormatted: "৳48,000",
+    priceFormatted: "48,000",
     rating: 4.9,
     reviewsCount: 640,
     amenities: ["Overwater Villa", "Glass Floor Panel", "Plunge Pool", "House Reef Snorkeling", "Speedboat Included"],
     description: "Luxury 5-star overwater bungalows featuring glass bottom floors, private Jacuzzi plunge pools, and direct access to crystal clear reef waters.",
     rooms: [
-      { id: 'adaaran-r1', name: "Sunrise Water Villa", rate: 48000, rateFormatted: "৳48,000", capacity: "2 Guests", inclusions: "Sunrise Reef View, Plunge Pool, Speedboat Transfer, All Inclusive Meals", image: "assets/maldives_villa_1785235578174.jpg" },
-      { id: 'adaaran-r2', name: "Sunset Ocean Villa with Pool", rate: 68000, rateFormatted: "৳68,000", capacity: "2 Guests", inclusions: "Sunset Ocean View, Butler Service, Champagne Dinner on Arrival", image: "assets/maldives_snorkeling_1785235591954.jpg" }
+      { id: 'adaaran-r1', name: "Sunrise Water Villa", rate: 48000, rateFormatted: "48,000", capacity: "2 Guests", inclusions: "Sunrise Reef View, Plunge Pool, Speedboat Transfer, All Inclusive Meals", image: "assets/maldives_villa_1785235578174.jpg" },
+      { id: 'adaaran-r2', name: "Sunset Ocean Villa with Pool", rate: 68000, rateFormatted: "68,000", capacity: "2 Guests", inclusions: "Sunset Ocean View, Butler Service, Champagne Dinner on Arrival", image: "assets/maldives_snorkeling_1785235591954.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4441,14 +4441,14 @@ const defaultLiveHotels = [
     address: "28-29 Hotel Motel Zone, Kolatoli Road, Cox's Bazar",
     image: "assets/coxsbazar_resort.jpg",
     startingPrice: 8500,
-    priceFormatted: "৳8,500",
+    priceFormatted: "8,500",
     rating: 4.6,
     reviewsCount: 210,
     amenities: ["Rooftop Restaurant", "Swimming Pool", "Free WiFi", "Breakfast Included", "AC Rooms"],
     description: "Popular 4-star beach resort offering elegant rooms, rooftop ocean dining, swimming pool, and easy walk to Cox's Bazar sandy beach.",
     rooms: [
-      { id: 'op-r1', name: "Deluxe Hill View Double", rate: 8500, rateFormatted: "৳8,500", capacity: "2 Guests", inclusions: "Breakfast Included, AC, Free WiFi", image: "assets/coxsbazar_resort.jpg" },
-      { id: 'op-r2', name: "Executive Sea View Suite", rate: 11500, rateFormatted: "৳11,500", capacity: "2 Guests", inclusions: "Full Sea View Balcony, Free Breakfast", image: "assets/coxsbazar_resort.jpg" }
+      { id: 'op-r1', name: "Deluxe Hill View Double", rate: 8500, rateFormatted: "8,500", capacity: "2 Guests", inclusions: "Breakfast Included, AC, Free WiFi", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'op-r2', name: "Executive Sea View Suite", rate: 11500, rateFormatted: "11,500", capacity: "2 Guests", inclusions: "Full Sea View Balcony, Free Breakfast", image: "assets/coxsbazar_resort.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4461,14 +4461,14 @@ const defaultLiveHotels = [
     address: "Hotel Motel Zone, Sea Beach, Cox's Bazar",
     image: "assets/coxsbazar_seafood_1785235487486.jpg",
     startingPrice: 7000,
-    priceFormatted: "৳7,000",
+    priceFormatted: "7,000",
     rating: 4.5,
     reviewsCount: 190,
     amenities: ["Beachfront Access", "Swimming Pool", "Free Breakfast", "Spacious Gardens", "Free Parking"],
     description: "Classic 4-star resort with extensive lush green gardens right in front of the beach, swimming pool, and comfortable family rooms.",
     rooms: [
-      { id: 'seagull-r1', name: "Regular Double Room", rate: 7000, rateFormatted: "৳7,000", capacity: "2 Guests", inclusions: "Breakfast Included, AC Room", image: "assets/coxsbazar_seafood_1785235487486.jpg" },
-      { id: 'seagull-r2', name: "Deluxe Ocean View Room", rate: 10000, rateFormatted: "৳10,000", capacity: "2 Guests", inclusions: "Ocean View, Buffet Breakfast", image: "assets/coxsbazar_seafood_1785235487486.jpg" }
+      { id: 'seagull-r1', name: "Regular Double Room", rate: 7000, rateFormatted: "7,000", capacity: "2 Guests", inclusions: "Breakfast Included, AC Room", image: "assets/coxsbazar_seafood_1785235487486.jpg" },
+      { id: 'seagull-r2', name: "Deluxe Ocean View Room", rate: 10000, rateFormatted: "10,000", capacity: "2 Guests", inclusions: "Ocean View, Buffet Breakfast", image: "assets/coxsbazar_seafood_1785235487486.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4481,14 +4481,14 @@ const defaultLiveHotels = [
     address: "Sector 03, Uttara, Dhaka (Near Airport)",
     image: "assets/dest_tokyo_1785151883119.jpg",
     startingPrice: 4500,
-    priceFormatted: "৳4,500",
+    priceFormatted: "4,500",
     rating: 4.2,
     reviewsCount: 95,
     amenities: ["Near Dhaka Airport", "Free High-Speed WiFi", "Air Conditioned", "24h Room Service", "Free Breakfast"],
     description: "Clean 3-star deluxe hotel located just 10 minutes from Dhaka International Airport, ideal for business travelers and transit stays.",
     rooms: [
-      { id: 'wp-r1', name: "Standard AC Double Room", rate: 4500, rateFormatted: "৳4,500", capacity: "2 Guests", inclusions: "AC, WiFi, Free Breakfast", image: "assets/dest_tokyo_1785151883119.jpg" },
-      { id: 'wp-r2', name: "Deluxe Twin Suite", rate: 6000, rateFormatted: "৳6,000", capacity: "2 Guests", inclusions: "2 Twin Beds, Free Airport Pick-up", image: "assets/dest_tokyo_1785151883119.jpg" }
+      { id: 'wp-r1', name: "Standard AC Double Room", rate: 4500, rateFormatted: "4,500", capacity: "2 Guests", inclusions: "AC, WiFi, Free Breakfast", image: "assets/dest_tokyo_1785151883119.jpg" },
+      { id: 'wp-r2', name: "Deluxe Twin Suite", rate: 6000, rateFormatted: "6,000", capacity: "2 Guests", inclusions: "2 Twin Beds, Free Airport Pick-up", image: "assets/dest_tokyo_1785151883119.jpg" }
     ],
     status: "ACTIVE"
   },
@@ -4501,14 +4501,14 @@ const defaultLiveHotels = [
     address: "Kolatoli Road, Cox's Bazar",
     image: "assets/coxsbazar_resort.jpg",
     startingPrice: 2200,
-    priceFormatted: "৳2,200",
+    priceFormatted: "2,200",
     rating: 4.0,
     reviewsCount: 75,
     amenities: ["Clean Budget Rooms", "WiFi Available", "Walking Distance to Beach", "24/7 Security"],
     description: "Affordable 2-star budget hotel located within short walking distance to Kolatoli beach, clean rooms, ideal for student & budget trips.",
     rooms: [
-      { id: 'bw-r1', name: "Standard Economy Room", rate: 2200, rateFormatted: "৳2,200", capacity: "2 Guests", inclusions: "Attached Bath, Fan/AC", image: "assets/coxsbazar_resort.jpg" },
-      { id: 'bw-r2', name: "Deluxe AC Family Room", rate: 3200, rateFormatted: "৳3,200", capacity: "4 Guests", inclusions: "2 Double Beds, AC, TV", image: "assets/coxsbazar_resort.jpg" }
+      { id: 'bw-r1', name: "Standard Economy Room", rate: 2200, rateFormatted: "2,200", capacity: "2 Guests", inclusions: "Attached Bath, Fan/AC", image: "assets/coxsbazar_resort.jpg" },
+      { id: 'bw-r2', name: "Deluxe AC Family Room", rate: 3200, rateFormatted: "3,200", capacity: "4 Guests", inclusions: "2 Double Beds, AC, TV", image: "assets/coxsbazar_resort.jpg" }
     ],
     status: "ACTIVE"
   }
@@ -4978,7 +4978,7 @@ window.sendEmailInvoiceHandler = function(bookingId) {
       customerName: "Sharmin Chowdhury",
       email: "sharmin@gmail.com",
       tourTitle: "BALI PACKAGE 4D/3N - Kintamani Volcano",
-      amount: "৳17,500",
+      amount: "17,500",
       date: new Date().toISOString().split('T')[0]
     };
   }
@@ -5048,7 +5048,7 @@ window.applyCouponCode = function(codeStr, originalPriceBdt) {
     discountPercent: found.discountPercent,
     discountAmount: discountAmount,
     finalPrice: finalPrice,
-    message: ` Coupon '${found.code}' Applied! Discount: ৳${discountAmount.toLocaleString()}`
+    message: ` Coupon '${found.code}' Applied! Discount: ${discountAmount.toLocaleString()}`
   };
 };
 
@@ -5197,7 +5197,7 @@ window.openHotelBookingModal = function(hotelId) {
             <span style="font-size: 0.8rem; color: #64748b;">Max Capacity: ${r.capacity || '2 Guests'} • Free Breakfast Included</span>
           </div>
         </div>
-        <strong style="font-size: 1.15rem; color: #0072bc;">৳${(r.rate || 14500).toLocaleString()}/night</strong>
+        <strong style="font-size: 1.15rem; color: #0072bc;">${(r.rate || 14500).toLocaleString()}/night</strong>
       </label>
     `).join('');
   }
@@ -5394,7 +5394,7 @@ window.initAutoSeoEngine = function() {
       "image": seo.ogImage,
       "url": "https://engomarsany.github.io/mount2ocean/",
       "telephone": "+8801330303082",
-      "priceRange": "৳৳",
+      "priceRange": "",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "169/1 Concord Grand 4th Floor, Shantinagar",
@@ -5501,7 +5501,7 @@ window.triggerSmartSmsAndWhatsAppAlerts = function(booking) {
   const hotline = "8801330303082";
   const customerPhone = (booking.phone || '').replace(/[^0-9]/g, '');
   const bookingId = booking.id || ('M2O-BK-' + Math.floor(10000 + Math.random() * 90000));
-  const amount = booking.amount || booking.price || '৳0';
+  const amount = booking.amount || booking.price || '0';
   const title = booking.tourTitle || 'Tour Package / Hotel Reservation';
   const travelDate = booking.travelDate || 'Selected Date';
 
@@ -5543,7 +5543,7 @@ window.openLivePaymentGatewayModal = function(bookingId, amountStr, titleStr) {
     document.body.appendChild(modal);
   }
 
-  const cleanAmount = amountStr || '৳14,500';
+  const cleanAmount = amountStr || '14,500';
   const cleanTitle = titleStr || 'Mount2ocean Travel Booking';
 
   modal.innerHTML = `
@@ -5908,7 +5908,7 @@ window.generatePdfETicketWithQr = function(bookingId) {
               </div>
               <div style="text-align: right;">
                 <span class="info-label">TOTAL TARIFF PAID</span>
-                <strong style="font-size: 1.6rem; color: #00a651; font-weight: 900;">${b.amount || b.price || '৳17,500'}</strong>
+                <strong style="font-size: 1.6rem; color: #00a651; font-weight: 900;">${b.amount || b.price || '17,500'}</strong>
                 <span style="font-size: 0.72rem; color: #16a34a; font-weight: 800; display: block;"> 100% Fully Paid (${b.paymentMethod || 'bKash / Card'})</span>
               </div>
             </div>
@@ -6076,7 +6076,7 @@ window.exchangeRates = {
 };
 
 window.currencySymbols = {
-  BDT: '৳',
+  BDT: '',
   USD: '$',
   EUR: '€',
   AED: 'AED ',
@@ -6089,7 +6089,7 @@ window.switchGlobalCurrency = function(currencyCode) {
   localStorage.setItem('m2o_selected_currency', code);
 
   const rate = window.exchangeRates[code] || 1.0;
-  const symbol = window.currencySymbols[code] || '৳';
+  const symbol = window.currencySymbols[code] || '';
 
   // Update all price tags with data-base-bdt attribute
   document.querySelectorAll('[data-base-bdt]').forEach(el => {
@@ -6109,7 +6109,7 @@ window.initMultiCurrencySelector = function() {
 
   selects.forEach(select => {
     select.innerHTML = `
-      <option value="BDT">BDT (৳ BDT)</option>
+      <option value="BDT">BDT ( BDT)</option>
       <option value="USD">USD ($ USD)</option>
       <option value="EUR">EUR (€ EUR)</option>
       <option value="AED">AED (د.إ UAE)</option>
@@ -6269,7 +6269,7 @@ window.renderAdminReviewsDesk = function() {
   tbody.innerHTML = '';
 
   if (reviews.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #1e293b; font-weight: 800; padding: 2rem; background: #f8fafc;">No customer reviews published yet. (এখনো কোনো রিভিউ যুক্ত করা হয়নি)</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #1e293b; font-weight: 800; padding: 2rem; background: #f8fafc;">No customer reviews published yet. (     )</td></tr>`;
     return;
   }
 
