@@ -6162,3 +6162,60 @@ textarea::placeholder {
   color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
 }
+
+/* ==========================================================================
+   MASTER ZERO-NON-VISIBLE-TEXT CONTRAST GUARANTEE (ALL PAGES & THEMES)
+   ========================================================================== */
+
+/* 1. Light backgrounds MUST have deep dark slate text */
+.light-theme th,
+body.light-theme thead[style*="#f1f5f9"] th,
+body.light-theme tr[style*="#f1f5f9"] th,
+thead tr[style*="#f1f5f9"] th,
+tr[style*="#f1f5f9"] th,
+tr[style*="#ffffff"] th,
+tr[style*="white"] th {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* 2. Modal close buttons on light cards */
+.modal-close,
+button[onclick*="close"][style*="#f1f5f9"],
+button[onclick*="close"][style*="#ffffff"],
+button[onclick*="close"][style*="white"],
+button.modal-close {
+  color: #0f172a !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+}
+
+/* 3. All image badges & photo overlays MUST have pure crisp white text */
+.cust-tour-card span[style*="position: absolute"],
+.hotel-card span[style*="position: absolute"],
+.trip-moment-fullbleed span,
+.trip-moment-card span,
+.tour-card span[style*="position: absolute"],
+.tour-badge,
+.trip-card-rating-badge,
+[style*="backdrop-filter"] {
+  color: #ffffff !important;
+}
+
+/* 4. Badges on light backgrounds retain high contrast dark text */
+.badge-tag,
+span.badge-tag,
+.tag-light {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* 5. Inputs and forms always crisp black */
+input, select, textarea {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+input::placeholder, textarea::placeholder {
+  color: #64748b !important;
+  opacity: 0.9 !important;
+}
